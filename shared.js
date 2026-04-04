@@ -1380,7 +1380,7 @@ function closeDrawer() {
         'allow="geolocation" loading="lazy"></iframe>' +
       '<div class="tool-exit-card" id="tool-exit-card"></div>';
 
-    safelyBind(byId("tool-panel-close"), "click", function () { _showExitCard(toolId); });
+    safelyBind(byId("tool-panel-close"), "click", closeToolPanel);
 
     _toolModuleActive = toolId;
 
