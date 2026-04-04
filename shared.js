@@ -1360,22 +1360,29 @@ function closeDrawer() {
       "fails":     "Common Home Failures"
     };
 
+    /* Tool URL map — each tool is a standalone HTML page loaded in an iframe */
+    var toolUrls = {
+      "prep":      "prep.html",
+      "afford":    "afford.html",
+      "home-cost": "home-cost.html",
+      "compare":   "compare.html",
+      "fails":     "fails.html"
+    };
+    var toolUrl = toolUrls[toolId] || (toolId + ".html");
+
     _toolPanelEl.innerHTML =
       '<div class="tool-panel-header">' +
         '<div class="tool-panel-title">' + (toolTitles[toolId] || "Tool") + '</div>' +
         '<button class="tool-panel-close" id="tool-panel-close" type="button">&#10005;</button>' +
       '</div>' +
-      '<div class="tool-panel-body" id="tool-panel-body"></div>' +
+      '<iframe id="tool-iframe" src="' + toolUrl + '" ' +
+        'style="flex:1;width:100%;border:none;background:#050505;display:block;" ' +
+        'allow="geolocation" loading="lazy"></iframe>' +
       '<div class="tool-exit-card" id="tool-exit-card"></div>';
 
     safelyBind(byId("tool-panel-close"), "click", function () { _showExitCard(toolId); });
 
-    /* Mount tool module */
-    var body = byId("tool-panel-body");
-    if (body && window.TOOL_MODULES && window.TOOL_MODULES[toolId]) {
-      _toolModuleActive = toolId;
-      window.TOOL_MODULES[toolId].mount(body);
-    }
+    _toolModuleActive = toolId;
 
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
@@ -1436,13 +1443,11 @@ function closeDrawer() {
   function closeToolPanel() {
     if (_toolPanelEl) {
       _toolPanelEl.classList.remove("open");
-      if (_toolModuleActive && window.TOOL_MODULES && window.TOOL_MODULES[_toolModuleActive]) {
-        if (typeof window.TOOL_MODULES[_toolModuleActive].unmount === "function") {
-          window.TOOL_MODULES[_toolModuleActive].unmount();
-        }
-      }
-      _toolModuleActive = null;
+      /* Clear iframe src to stop the page running in background */
+      var iframe = byId("tool-iframe");
+      if (iframe) iframe.src = "about:blank";
     }
+    _toolModuleActive = null;
   }
 
   /* ============================================================
