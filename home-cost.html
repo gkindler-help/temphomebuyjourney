@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>STL Home Buyer Journey · Cost Survival Guide</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EEE14BZT9P');</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ── COST GUIDE SCOPED STYLES ── */
+.hc-wrap { max-width: 640px; margin: 0 auto; padding: 14px 14px 60px; }
+
+/* Mode bar */
+.hc-mode-bar {
+  background: var(--surface);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+.hc-mode-label { font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--text-faint); flex-shrink: 0; }
+.hc-mode-toggle { display: flex; border: 1px solid var(--line-2); border-radius: 8px; overflow: hidden; }
+.hc-mode-btn {
+  padding: 7px 16px;
+  border: none;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--text-faint);
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+.hc-mode-btn.active { background: var(--gold); color: #080808; }
+.hc-mode-desc { font-size: 11px; color: var(--text-dim); line-height: 1.4; flex: 1; }
+
+/* Address bar */
+.hc-addr-bar {
+  background: var(--surface);
+  padding: 10px 14px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--line);
+}
+.hc-addr-input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text-strong);
+  outline: none;
+  transition: border-color .18s ease;
+}
+.hc-addr-input:focus { border-color: var(--gold-line); }
+.hc-addr-input::placeholder { color: var(--text-faint); }
+.hc-addr-btn {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity .15s ease;
+}
+.hc-btn-map { background: var(--gold); color: #080808; }
+.hc-btn-map:hover { opacity: .9; }
+.hc-btn-geo { background: var(--surface-2); color: var(--text-soft); border: 1px solid var(--line-2); }
+.hc-btn-geo:hover { border-color: var(--gold-line); color: var(--text-strong); }
+
+#hc-map { height: 150px; width: 100%; border-bottom: 1px solid var(--line); }
+
+/* Tab nav */
+.hc-tab-nav {
+  background: rgba(5,5,5,.97);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  overflow-x: auto;
+}
+.hc-tab-nav::-webkit-scrollbar { display: none; }
+.hc-tnav-btn {
+  flex: 1;
+  min-width: 72px;
+  padding: 11px 8px;
+  border: none;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--text-faint);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color .15s ease, border-color .15s ease;
+  white-space: nowrap;
+  text-align: center;
+  position: relative;
+}
+.hc-tnav-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+.hc-tnav-btn:hover:not(.active) { color: var(--text-soft); }
+.hc-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: var(--warn);
+  color: #080808;
+  font-size: 9px;
+  font-weight: 800;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.hc-badge.visible { display: flex; }
+
+.hc-panel { display: none; }
+.hc-panel.active { display: block; }
+
+/* Context box */
+.hc-context {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 10px 10px 0;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  font-size: 12px;
+  color: var(--text-soft);
+  line-height: 1.72;
+}
+.hc-context strong { color: var(--gold); }
+.hc-context.seller { border-left-color: var(--green); }
+.hc-context.seller strong { color: var(--green); }
+
+/* Section header */
+.hc-sec-hd {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* House diagram */
+.hc-house-wrap {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 14px;
+  position: relative;
+}
+.hc-house-title {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 8px;
+  text-align: center;
+}
+.hc-house-svg-wrap { position: relative; width: 100%; max-width: 460px; margin: 0 auto; }
+#hc-house-svg { width: 100%; height: auto; display: block; }
+
+.hs-zone { cursor: pointer; transition: opacity .15s ease; }
+.hs-zone:hover .hs-fill { opacity: .35; }
+.hs-zone.flagged .hs-fill { opacity: .5; }
+.hs-fill { opacity: 0; transition: opacity .2s ease; }
+.hs-label { pointer-events: none; font-family: var(--font-sans); font-size: 9px; fill: white; opacity: 0; transition: opacity .2s ease; }
+.hs-zone:hover .hs-label, .hs-zone.flagged .hs-label { opacity: 1; }
+.hs-dot { r: 5; fill: var(--warn); stroke: var(--bg); stroke-width: 1.5; opacity: 0; transition: opacity .2s ease; pointer-events: none; }
+.hs-zone.flagged .hs-dot { opacity: 1; }
+
+/* House legend */
+.hc-legend { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; justify-content: center; }
+.hc-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--text-dim);
+  cursor: pointer;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 5px 8px;
+  transition: border-color .15s ease;
+}
+.hc-legend-item:hover { border-color: var(--line-2); }
+.hc-legend-item.flagged { border-color: var(--warn); background: rgba(232,160,32,.08); color: var(--warn); }
+.hc-legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* Repair cards */
+.hc-cat-hdr {
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--text-faint);
+  margin: 12px 0 6px;
+  padding-left: 2px;
+}
+.hc-repair-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border-color .18s ease, background .18s ease;
+}
+.hc-repair-card:hover { border-color: var(--line-2); }
+.hc-repair-card.flagged { border-color: var(--warn); background: rgba(232,160,32,.06); }
+.hc-repair-card.flagged.major { border-color: var(--red); background: var(--red-soft); }
+.hc-rc-left { flex: 1; }
+.hc-rc-name { font-family: var(--font-serif); font-size: 14px; font-weight: 600; color: var(--text-strong); margin-bottom: 2px; }
+.hc-rc-range { font-size: 11px; color: var(--text-dim); }
+.hc-rc-stl { font-size: 10px; color: var(--warn); margin-top: 2px; font-style: italic; }
+.hc-rc-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-left: 10px;
+  border: 1px solid var(--line-2);
+  background: var(--surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: transparent;
+  transition: background .15s ease, border-color .15s ease;
+}
+.hc-repair-card.flagged .hc-rc-check { background: var(--warn); border-color: var(--warn); color: #080808; }
+.hc-repair-card.flagged.major .hc-rc-check { background: var(--red); border-color: var(--red); color: #ffffff; }
+
+/* Measure tab */
+.hc-sf-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-bottom: 14px; }
+.hc-sf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.hc-sf-field label { display: block; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--text-faint); margin-bottom: 5px; }
+.hc-sf-field input { width: 100%; padding: 10px 12px; background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 8px; font-family: var(--font-sans); font-size: 14px; color: var(--text-strong); outline: none; transition: border-color .18s ease; }
+.hc-sf-field input:focus { border-color: var(--gold-line); }
+.hc-sf-field input::placeholder { color: var(--text-faint); }
+
+.hc-wt-label { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--text-faint); margin-bottom: 8px; }
+.hc-wt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.hc-wt-card { background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 8px; padding: 8px 10px; cursor: pointer; transition: border-color .18s ease, background .18s ease; }
+.hc-wt-card.selected { border-color: var(--gold); background: var(--gold-soft); }
+.hc-wt-card:hover:not(.selected) { border-color: var(--line-2); }
+.hc-wt-name { font-family: var(--font-serif); font-size: 13px; font-weight: 600; color: var(--text-strong); }
+.hc-wt-rate { font-size: 10px; color: var(--text-dim); margin-top: 2px; }
+
+.hc-sf-result { background: var(--surface-2); border: 1px solid var(--gold-line); border-radius: 8px; padding: 12px 14px; margin-bottom: 10px; display: none; }
+.hc-sf-result.visible { display: block; }
+.hc-sfr-val { font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: var(--gold); }
+.hc-sfr-sub { font-size: 11px; color: var(--text-dim); margin-top: 3px; }
+
+.hc-sf-list-item { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 9px 12px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; }
+.hc-sfl-name { color: var(--text-soft); flex: 1; }
+.hc-sfl-cost { font-family: var(--font-serif); font-size: 13px; font-weight: 600; color: var(--warn); margin: 0 8px; }
+.hc-sfl-remove { background: transparent; border: none; color: var(--text-faint); cursor: pointer; font-size: 14px; transition: color .15s ease; }
+.hc-sfl-remove:hover { color: var(--red); }
+
+.hc-sf-subtotal { background: var(--surface-2); border: 1px solid var(--gold-line); border-radius: 8px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; margin-top: 6px; }
+.hc-sfs-label { font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); }
+.hc-sfs-val { font-family: var(--font-serif); font-size: 20px; font-weight: 700; color: var(--gold); }
+
+.hc-merge-btn { width: 100%; margin-top: 8px; padding: 10px; border: 1px solid var(--green-line); background: transparent; border-radius: 8px; font-family: var(--font-sans); font-size: 12px; font-weight: 700; letter-spacing: .04em; color: var(--green); cursor: pointer; transition: background .15s ease; }
+.hc-merge-btn:hover { background: var(--green-soft); }
+.hc-merge-btn:disabled { opacity: .4; cursor: not-allowed; }
+.hc-merge-note { font-size: 10px; color: var(--text-faint); text-align: center; margin-top: 6px; line-height: 1.55; }
+
+/* Report tab */
+.hc-report-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+.hc-rc-header { background: var(--surface-2); padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.hc-rc-title { font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+.hc-rc-subtitle { font-size: 10px; color: var(--text-dim); }
+.hc-rc-empty { padding: 16px; text-align: center; font-size: 12px; color: var(--text-faint); line-height: 1.65; }
+.hc-rc-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 14px; border-bottom: 1px solid var(--line); font-size: 12px; }
+.hc-rc-row:last-child { border-bottom: none; }
+.hc-rcr-name { color: var(--text-soft); flex: 1; }
+.hc-rcr-cost { font-family: var(--font-serif); font-size: 13px; font-weight: 600; color: var(--warn); margin: 0 8px; }
+.hc-rcr-del { background: transparent; border: none; color: var(--text-faint); cursor: pointer; font-size: 13px; transition: color .15s ease; }
+.hc-rcr-del:hover { color: var(--red); }
+
+.hc-total-row { background: var(--surface-2); padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line-2); }
+.hc-rct-label { font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); }
+.hc-rct-val { font-family: var(--font-serif); font-size: 20px; font-weight: 700; color: var(--warn); }
+.hc-rct-val.danger { color: var(--red); }
+
+.hc-grand-total {
+  background: var(--gold-soft);
+  border: 1px solid var(--gold-line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.hc-gt-label { font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 2px; }
+.hc-gt-val { font-family: var(--font-serif); font-size: 28px; font-weight: 700; color: var(--gold); line-height: 1; }
+.hc-gt-sub { font-size: 10px; color: var(--text-faint); margin-top: 3px; }
+.hc-gt-midpoint { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--text-strong); }
+.hc-gt-mid-label { font-size: 10px; color: var(--text-faint); }
+
+.hc-insight {
+  border-radius: 0 10px 10px 0;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  line-height: 1.72;
+  border-left: 3px solid;
+}
+.hc-insight-buyer { background: rgba(232,160,32,.06); border-color: var(--warn); color: var(--text-soft); }
+.hc-insight-buyer strong { color: var(--warn); }
+.hc-insight-seller { background: var(--green-soft); border-color: var(--green); color: var(--text-soft); }
+.hc-insight-seller strong { color: var(--green); }
+
+/* Send tab */
+.hc-send-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-bottom: 14px; }
+.hc-send-field { margin-bottom: 12px; }
+.hc-send-field label { display: block; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--text-faint); margin-bottom: 5px; }
+.hc-send-field input { width: 100%; padding: 11px 12px; background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 8px; font-family: var(--font-sans); font-size: 14px; color: var(--text-strong); outline: none; transition: border-color .18s ease; }
+.hc-send-field input:focus { border-color: var(--gold-line); }
+.hc-send-field input::placeholder { color: var(--text-faint); }
+.hc-cc-row { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-dim); margin-bottom: 12px; }
+.hc-cc-row input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--gold); flex-shrink: 0; }
+
+.hc-cta-box { background: var(--surface); border: 1px solid var(--gold-line); border-radius: 12px; padding: 16px; text-align: center; margin-bottom: 12px; }
+.hc-cta-title { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--text-strong); margin-bottom: 6px; }
+.hc-cta-sub { font-size: 12px; color: var(--text-dim); line-height: 1.65; margin-bottom: 12px; }
+
+.hc-btn-primary { width: 100%; padding: 13px; border: none; border-radius: 10px; background: var(--gold); color: #080808; font-family: var(--font-sans); font-size: 13px; font-weight: 800; letter-spacing: .04em; cursor: pointer; margin-bottom: 8px; transition: opacity .15s ease; text-decoration: none; display: block; text-align: center; }
+.hc-btn-primary:hover { opacity: .92; }
+.hc-btn-secondary { width: 100%; padding: 11px; border: 1px solid var(--line-2); border-radius: 10px; background: transparent; color: var(--text-soft); font-family: var(--font-sans); font-size: 12px; font-weight: 700; cursor: pointer; margin-bottom: 6px; transition: border-color .18s ease, color .18s ease; }
+.hc-btn-secondary:hover { border-color: var(--gold-line); color: var(--text-strong); }
+
+.hc-data-source { font-size: 10px; color: var(--text-faint); text-align: center; line-height: 1.6; padding: 8px 0; }
+
+@media (max-width: 480px) {
+  .hc-sf-grid { grid-template-columns: 1fr; }
+  .hc-grand-total { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+window.CHAPTER_NUM   = 0;
+window.CHAPTER_LABEL = 'Cost Survival Guide';
+window.PREV_FILE     = 'index.html';
+window.SCENES        = [];
+
+window.TOOL_MODULES = window.TOOL_MODULES || {};
+window.TOOL_MODULES['home-cost'] = (function () {
+  'use strict';
+
+  var _container = null;
+  var _map       = null;
+  var _marker    = null;
+
+  // ── DATA ──────────────────────────────────────────────────────
+
+  var ZONE_MAP = {
+    roof:       ['roof'],
+    chimney:    ['chimney'],
+    exterior:   ['tuckpoint','siding'],
+    windows:    ['windows'],
+    garage:     ['garage'],
+    hvac:       ['hvac'],
+    electrical: ['panel','rewire'],
+    basement:   ['basement','foundation'],
+    sewer:      ['sewer','plumbing']
+  };
+
+  var REPAIR_ITEMS = [
+    {id:'hvac',      cat:'major',      name:'HVAC System',                     low:6500,  high:14000, stl:'End-of-life units common in pre-1990 St. Louis homes'},
+    {id:'roof',      cat:'major',      name:'Roof Replacement',                low:8000,  high:18000, stl:'St. Louis hail and ice cycles accelerate wear — ask age first'},
+    {id:'basement',  cat:'major',      name:'Basement Waterproofing',          low:4000,  high:30000, stl:'Most common major cost in St. Louis — clay soils shift seasonally'},
+    {id:'sewer',     cat:'major',      name:'Sewer Lateral',                   low:3000,  high:15000, stl:'Pre-1960 homes often have original clay tile — scope before you offer'},
+    {id:'foundation',cat:'major',      name:'Foundation Repair',               low:3500,  high:25000, stl:'Horizontal cracks more serious than vertical — get a structural opinion'},
+    {id:'panel',     cat:'electrical', name:'Electrical Panel (Fed. Pacific)', low:2500,  high:8000,  stl:'Known safety issues — many insurers require replacement'},
+    {id:'rewire',    cat:'electrical', name:'Partial / Full Rewire',           low:5000,  high:18000, stl:'Knob-and-tube wiring common in pre-1950 St. Louis homes'},
+    {id:'plumbing',  cat:'plumbing',   name:'Plumbing (Pipes / Supply)',       low:2000,  high:12000, stl:'Galvanized and lead pipes still present in older South City homes'},
+    {id:'water-htr', cat:'plumbing',   name:'Water Heater',                    low:800,   high:3500,  stl:'Standard life 8–12 years — check age on the label'},
+    {id:'tuckpoint', cat:'exterior',   name:'Tuckpointing (Brick)',            low:2000,  high:20000, stl:'St. Louis brick homes require periodic mortar repointing'},
+    {id:'chimney',   cat:'exterior',   name:'Chimney Repair / Tuckpoint',      low:800,   high:6000,  stl:'Check mortar and flashing — common source of water entry'},
+    {id:'siding',    cat:'exterior',   name:'Siding Repair / Replace',         low:3000,  high:14000, stl:null},
+    {id:'windows',   cat:'exterior',   name:'Window Replacement',              low:4000,  high:15000, stl:'Failed seals common — fogged glass means insulation is gone'},
+    {id:'garage',    cat:'exterior',   name:'Garage Door / Structure',         low:800,   high:5000,  stl:null},
+    {id:'kitchen',   cat:'interior',   name:'Kitchen Update',                  low:8000,  high:35000, stl:null},
+    {id:'bath',      cat:'interior',   name:'Bathroom Update',                 low:4000,  high:15000, stl:null},
+    {id:'drywall-r', cat:'interior',   name:'Drywall Repair',                  low:500,   high:4000,  stl:null},
+    {id:'paint-int', cat:'interior',   name:'Interior Paint (Full House)',     low:2500,  high:6000,  stl:null},
+    {id:'flooring-r',cat:'interior',   name:'Flooring Replacement',            low:3000,  high:12000, stl:null},
+  ];
+
+  var WORK_TYPES = [
+    {id:'paint',    name:'Interior Paint', low:2,  high:4,  unit:'SF'},
+    {id:'drywall',  name:'Drywall',        low:5,  high:10, unit:'SF'},
+    {id:'flooring', name:'Flooring',       low:6,  high:15, unit:'SF'},
+    {id:'demo',     name:'Demo',           low:2,  high:6,  unit:'SF'},
+    {id:'tile',     name:'Tile Work',      low:8,  high:20, unit:'SF'},
+    {id:'concrete', name:'Concrete',       low:6,  high:12, unit:'SF'},
+  ];
+
+  var ZONE_COLORS = {
+    roof:'#e8a020', chimney:'#e8a020', exterior:'#e05555',
+    windows:'#8ab0d0', garage:'#888', hvac:'#ffcc4d',
+    electrical:'#5dcaa5', basement:'#e05555', sewer:'#8ab0d0'
+  };
+
+  var ZONE_LABELS = {
+    roof:'Roof', chimney:'Chimney', exterior:'Exterior/Walls',
+    windows:'Windows', garage:'Garage', hvac:'HVAC',
+    electrical:'Electrical', basement:'Basement/Foundation', sewer:'Sewer/Plumbing'
+  };
+
+  // ── STATE ─────────────────────────────────────────────────────
+  var mode         = 'buyer';
+  var repairReport = [];
+  var sfReport     = [];
+  var sfMerged     = false;
+  var sfLast       = null;
+  var currentTab   = 'inspect';
+
+  // ── HTML ──────────────────────────────────────────────────────
+  function buildHTML() {
+    return (
+      '<div class="hc-mode-bar">' +
+        '<span class="hc-mode-label">I Am A:</span>' +
+        '<div class="hc-mode-toggle">' +
+          '<button class="hc-mode-btn active" id="hc-btn-buyer">🏠 Buyer</button>' +
+          '<button class="hc-mode-btn" id="hc-btn-seller">📋 Seller</button>' +
+        '</div>' +
+        '<span class="hc-mode-desc" id="hc-mode-desc">Flag issues before you make an offer</span>' +
+      '</div>' +
+
+      '<div class="hc-addr-bar">' +
+        '<input class="hc-addr-input" id="hc-addr" placeholder="Enter property address…" type="text">' +
+        '<button class="hc-addr-btn hc-btn-map" id="hc-map-btn">📍 Map</button>' +
+        '<button class="hc-addr-btn hc-btn-geo" id="hc-geo-btn">📡 Locate</button>' +
+      '</div>' +
+      '<div id="hc-map"></div>' +
+
+      '<div class="hc-tab-nav">' +
+        '<button class="hc-tnav-btn active" id="tnav-inspect" data-tab="inspect">🏚 Inspect<span class="hc-badge" id="badge-inspect">0</span></button>' +
+        '<button class="hc-tnav-btn" id="tnav-measure" data-tab="measure">📐 Measure<span class="hc-badge" id="badge-measure">0</span></button>' +
+        '<button class="hc-tnav-btn" id="tnav-report"  data-tab="report">📋 Report<span class="hc-badge" id="badge-report">0</span></button>' +
+        '<button class="hc-tnav-btn" id="tnav-send"    data-tab="send">📧 Send</button>' +
+      '</div>' +
+
+      // ── PANEL: INSPECT ──
+      '<div id="hc-panel-inspect" class="hc-panel active"><div class="hc-wrap">' +
+        '<div class="hc-context" id="hc-inspect-ctx"><strong>Walk the property and tap what you see.</strong> This tool uses St. Louis market rates — not national averages. Every dollar you identify is a dollar you can negotiate before you make an offer.</div>' +
+        '<div class="hc-house-wrap">' +
+          '<div class="hc-house-title" id="hc-house-title">Tap A Zone To Flag An Issue</div>' +
+          '<div class="hc-house-svg-wrap">' + buildSVG() + '</div>' +
+          '<div class="hc-legend" id="hc-legend"></div>' +
+        '</div>' +
+        '<div class="hc-sec-hd">All Items — Tap To Flag</div>' +
+        '<div id="hc-repair-list"></div>' +
+      '</div></div>' +
+
+      // ── PANEL: MEASURE ──
+      '<div id="hc-panel-measure" class="hc-panel"><div class="hc-wrap">' +
+        '<div class="hc-context"><strong>Measure rooms or surfaces</strong> and get a cost estimate for specific work types. Add each calculation to your SF Summary. When you are done, merge the SF total into your full report — or keep it separate to share with a contractor.</div>' +
+        '<div class="hc-sec-hd">📐 Enter Dimensions</div>' +
+        '<div class="hc-sf-card">' +
+          '<div class="hc-sf-grid">' +
+            '<div class="hc-sf-field"><label>Length (ft)</label><input id="hc-sf-length" type="number" placeholder="e.g. 20" min="1" step="0.5"></div>' +
+            '<div class="hc-sf-field"><label>Width (ft)</label><input id="hc-sf-width" type="number" placeholder="e.g. 15" min="1" step="0.5"></div>' +
+          '</div>' +
+          '<div class="hc-wt-label">Work Type</div>' +
+          '<div class="hc-wt-grid" id="hc-wt-grid"></div>' +
+          '<div class="hc-sf-result" id="hc-sf-result"><div class="hc-sfr-val" id="hc-sfr-val">—</div><div class="hc-sfr-sub" id="hc-sfr-sub">—</div></div>' +
+          '<button class="hc-btn-primary" id="hc-calc-btn" style="margin-top:0;">Calculate</button>' +
+          '<button class="hc-btn-secondary" id="hc-add-sf-btn" style="display:none;">+ Add To SF Summary</button>' +
+        '</div>' +
+        '<div class="hc-sec-hd">SF Summary</div>' +
+        '<div id="hc-sf-empty" style="padding:16px;text-align:center;font-size:12px;color:var(--text-faint);line-height:1.65;">No measurements added yet. Calculate dimensions above and add them here.</div>' +
+        '<div id="hc-sf-list"></div>' +
+        '<div id="hc-sf-subtotal-wrap" style="display:none;">' +
+          '<div class="hc-sf-subtotal"><div><div class="hc-sfs-label">SF Summary Total</div><div style="font-size:10px;color:var(--text-faint);margin-top:2px;">All measurements combined</div></div><div class="hc-sfs-val" id="hc-sfs-val">$0</div></div>' +
+          '<button class="hc-merge-btn" id="hc-merge-btn">✚ Merge Into Full Report</button>' +
+          '<div class="hc-merge-note">Merges the SF total range into the Inspect tab report. You can also keep it separate and share just the SF summary with a contractor.</div>' +
+        '</div>' +
+      '</div></div>' +
+
+      // ── PANEL: REPORT ──
+      '<div id="hc-panel-report" class="hc-panel"><div class="hc-wrap">' +
+        '<div class="hc-report-card">' +
+          '<div class="hc-rc-header"><div class="hc-rc-title">Flagged Repair Items</div><div class="hc-rc-subtitle" id="hc-repair-count">0 Items</div></div>' +
+          '<div id="hc-rp-empty" class="hc-rc-empty">No repair items flagged yet. Go to the Inspect tab and tap items you see.</div>' +
+          '<div id="hc-rp-rows"></div>' +
+          '<div class="hc-total-row" id="hc-repair-total-row" style="display:none;"><div><div class="hc-rct-label">Repair Estimate</div></div><div class="hc-rct-val" id="hc-repair-total-val">$0</div></div>' +
+        '</div>' +
+        '<div class="hc-report-card" id="hc-sf-merged-card" style="display:none;">' +
+          '<div class="hc-rc-header"><div class="hc-rc-title">SF Work Summary (Merged)</div><div class="hc-rc-subtitle" id="hc-sf-merged-count">0 Items</div></div>' +
+          '<div id="hc-sf-merged-rows"></div>' +
+          '<div class="hc-total-row"><div><div class="hc-rct-label">SF Work Estimate</div></div><div class="hc-rct-val" id="hc-sf-merged-total">$0</div></div>' +
+        '</div>' +
+        '<div class="hc-grand-total" id="hc-grand-total" style="display:none;">' +
+          '<div><div class="hc-gt-label">Total Estimated Cost</div><div class="hc-gt-val" id="hc-gt-val">$0</div><div class="hc-gt-sub">Low – High range</div></div>' +
+          '<div style="text-align:right;"><div class="hc-gt-mid-label">Midpoint (use for negotiation)</div><div class="hc-gt-midpoint" id="hc-gt-midpoint">$0</div></div>' +
+        '</div>' +
+        '<div id="hc-report-ctx" style="display:none;"></div>' +
+        '<div class="hc-sec-hd" style="margin-top:4px;">Next Steps</div>' +
+        '<a href="tel:3144351087" class="hc-btn-primary">📞 Talk To George — 314.435.1087</a>' +
+        '<button class="hc-btn-secondary" id="hc-goto-send">Save Or Email This Report →</button>' +
+      '</div></div>' +
+
+      // ── PANEL: SEND ──
+      '<div id="hc-panel-send" class="hc-panel"><div class="hc-wrap">' +
+        '<div class="hc-context">Enter your email and this report will open in your mail app pre-filled with your flagged items and cost estimates. Check the box below to send George a copy — he will follow up with negotiation context specific to this zip code.</div>' +
+        '<div class="hc-sec-hd">Your Details</div>' +
+        '<div class="hc-send-card">' +
+          '<div class="hc-send-field"><label>Your Name</label><input id="hc-userName" placeholder="First name" type="text"></div>' +
+          '<div class="hc-send-field"><label>Your Email</label><input id="hc-userEmail" placeholder="you@email.com" type="email"></div>' +
+          '<div class="hc-cc-row"><input type="checkbox" id="hc-ccMe"><label for="hc-ccMe">Send a copy to George — he will follow up with offer strategy for this zip code</label></div>' +
+          '<button class="hc-btn-primary" id="hc-send-btn">📧 Send My Report</button>' +
+          '<button class="hc-btn-secondary" id="hc-copy-btn">📋 Copy To Clipboard</button>' +
+        '</div>' +
+        '<div class="hc-cta-box">' +
+          '<div class="hc-cta-title">Want George To Walk This Property?</div>' +
+          '<div class="hc-cta-sub">13 years of St. Louis real estate experience. He can tell you whether what you\'re seeing is normal for this zip code — and whether the cost estimate justifies a price reduction or a concession ask.</div>' +
+          '<a href="tel:3144351087" class="hc-btn-primary">📞 Call 314.435.1087</a>' +
+        '</div>' +
+        '<div class="hc-data-source">George Kindler &middot; The Closing Pros LLC &middot; Licensed Missouri Real Estate Agent &middot; 2025–2026 St. Louis Market Rates</div>' +
+        '<div class="hc-data-source" style="margin-top:4px;"><span style="font-size:8px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-right:4px;">Compliance</span>The Closing Pros LLC &middot; 314-998-4550</div>' +
+      '</div></div>'
+    );
+  }
+
+  function buildSVG() {
+    return '<svg id="hc-house-svg" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect x="0" y="0" width="400" height="280" fill="#0a0a0a" rx="4"/>' +
+      '<rect x="0" y="240" width="400" height="40" fill="#080808"/>' +
+      '<line x1="0" y1="240" x2="400" y2="240" stroke="#242424" stroke-width="1.5"/>' +
+      '<rect x="60" y="110" width="280" height="130" fill="#101010" stroke="#242424" stroke-width="1.5"/>' +
+      '<polygon points="40,115 200,30 360,115" fill="#151515" stroke="#303030" stroke-width="1.5"/>' +
+      '<rect x="270" y="45" width="28" height="50" fill="#101010" stroke="#242424" stroke-width="1.5"/>' +
+      '<rect x="267" y="40" width="34" height="8" fill="#151515" stroke="#303030" stroke-width="1"/>' +
+      '<rect x="60" y="155" width="100" height="85" fill="#0a0a0a" stroke="#242424" stroke-width="1.5"/>' +
+      '<line x1="60" y1="175" x2="160" y2="175" stroke="#242424" stroke-width="1"/>' +
+      '<line x1="60" y1="195" x2="160" y2="195" stroke="#242424" stroke-width="1"/>' +
+      '<line x1="60" y1="215" x2="160" y2="215" stroke="#242424" stroke-width="1"/>' +
+      '<line x1="110" y1="155" x2="110" y2="240" stroke="#242424" stroke-width="1"/>' +
+      '<rect x="178" y="180" width="44" height="60" fill="#0a0a0a" stroke="#303030" stroke-width="1.5"/>' +
+      '<circle cx="215" cy="213" r="3" fill="#ffcc4d"/>' +
+      '<path d="M178,180 Q200,162 222,180" fill="none" stroke="#303030" stroke-width="1.5"/>' +
+      '<rect x="240" y="155" width="45" height="35" fill="#0a0a0a" stroke="#303030" stroke-width="1.5" rx="1"/>' +
+      '<line x1="262" y1="155" x2="262" y2="190" stroke="#303030" stroke-width="1"/>' +
+      '<line x1="240" y1="172" x2="285" y2="172" stroke="#303030" stroke-width="1"/>' +
+      '<rect x="177" y="75" width="46" height="30" fill="#0a0a0a" stroke="#303030" stroke-width="1.5" rx="1"/>' +
+      '<line x1="200" y1="75" x2="200" y2="105" stroke="#303030" stroke-width="1"/>' +
+      '<line x1="177" y1="90" x2="223" y2="90" stroke="#303030" stroke-width="1"/>' +
+      '<circle cx="22" cy="200" r="22" fill="#0a1a0a" stroke="#1a4a20" stroke-width="1"/>' +
+      '<rect x="18" y="218" width="8" height="22" fill="#080808"/>' +
+      '<circle cx="378" cy="195" r="18" fill="#0a1a0a" stroke="#1a4a20" stroke-width="1"/>' +
+      '<rect x="374" y="210" width="8" height="30" fill="#080808"/>' +
+      '<line x1="60" y1="240" x2="340" y2="240" stroke="#888" stroke-width="1" stroke-dasharray="4,3"/>' +
+      '<text x="200" y="253" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#888" letter-spacing="1">BASEMENT / FOUNDATION</text>' +
+      // Hotspot zones
+      '<g class="hs-zone" id="hc-zone-roof" data-zone="roof"><polygon class="hs-fill" points="40,115 200,30 360,115" fill="#e8a020"/><text class="hs-label" x="200" y="88" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="white">ROOF</text><circle class="hs-dot" cx="200" cy="72" r="5"/></g>' +
+      '<g class="hs-zone" id="hc-zone-chimney" data-zone="chimney"><rect class="hs-fill" x="265" y="38" width="38" height="58" fill="#e8a020"/><text class="hs-label" x="284" y="68" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" font-weight="700" fill="white">CHIMNEY</text><circle class="hs-dot" cx="284" cy="58" r="5"/></g>' +
+      '<g class="hs-zone" id="hc-zone-exterior" data-zone="exterior"><rect class="hs-fill" x="160" y="110" width="180" height="130" fill="#e05555"/><text class="hs-label" x="250" y="133" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="white">EXTERIOR</text><circle class="hs-dot" cx="320" cy="130" r="5"/></g>' +
+      '<g class="hs-zone" id="hc-zone-windows" data-zone="windows"><rect class="hs-fill" x="232" y="148" width="62" height="50" fill="#8ab0d0" rx="2"/><text class="hs-label" x="263" y="165" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="white">WINDOWS</text><circle class="hs-dot" cx="291" cy="157" r="5"/></g>' +
+      '<g class="hs-zone" id="hc-zone-garage" data-zone="garage"><rect class="hs-fill" x="58" y="153" width="104" height="89" fill="#888"/><text class="hs-label" x="110" y="200" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="white">GARAGE</text><circle class="hs-dot" cx="110" cy="165" r="5"/></g>' +
+      '<g class="hs-zone" id="hc-zone-hvac" data-zone="hvac"><rect class="hs-fill" x="330" y="190" width="28" height="50" fill="#ffcc4d" rx="2"/><text class="hs-label" x="344" y="220" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="#080808" transform="rotate(-90 344 220)">HVAC</text><circle class="hs-dot" cx="344" cy="210" r="5"/></g>' +
+      '<g class="hs-zone" id="hc-zone-electrical" data-zone="electrical"><rect class="hs-fill" x="62" y="112" width="30" height="40" fill="#5dcaa5" rx="1"/><text class="hs-label" x="77" y="128" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" font-weight="700" fill="#080808">ELEC</text><text class="hs-label" x="77" y="138" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" font-weight="700" fill="#080808">PANEL</text><circle class="hs-dot" cx="77" cy="120" r="5"/></g>' +
+      '<g class="hs-zone" id="hc-zone-basement" data-zone="basement"><rect class="hs-fill" x="60" y="230" width="280" height="12" fill="#e05555"/><text class="hs-label" x="200" y="239" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="white">BASEMENT / FOUNDATION</text><circle class="hs-dot" cx="200" cy="236" r="5"/></g>' +
+      '<g class="hs-zone" id="hc-zone-sewer" data-zone="sewer"><rect class="hs-fill" x="145" y="248" width="110" height="24" fill="#8ab0d0" rx="2"/><text class="hs-label" x="200" y="264" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="white">SEWER LATERAL</text><circle class="hs-dot" cx="200" cy="258" r="5"/></g>' +
+    '</svg>';
+  }
+
+  // ── MAP ───────────────────────────────────────────────────────
+  function initMap() {
+    if (_map) return;
+    var mapEl = _container.querySelector('#hc-map');
+    if (!mapEl || typeof L === 'undefined') return;
+    _map = L.map(mapEl).setView([38.627, -90.199], 12);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 19, subdomains: 'abcd', attribution: ''
+    }).addTo(_map);
+    setTimeout(function() { if (_map) _map.invalidateSize(); }, 200);
+  }
+
+  function geoLocate() {
+    if (!navigator.geolocation) { alert('Geolocation not available.'); return; }
+    navigator.geolocation.getCurrentPosition(function(pos) {
+      var lat = pos.coords.latitude, lng = pos.coords.longitude;
+      if (_map) {
+        _map.setView([lat, lng], 16);
+        if (_marker) _map.removeLayer(_marker);
+        _marker = L.marker([lat, lng]).addTo(_map);
+      }
+    }, function() { alert('Could not get location. Please enter the address manually.'); });
+  }
+
+  function searchAddress() {
+    var addr = _container.querySelector('#hc-addr');
+    if (!addr || !addr.value.trim()) return;
+    fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(addr.value.trim()) + '&limit=1')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.length && _map) {
+          var lat = parseFloat(data[0].lat), lng = parseFloat(data[0].lon);
+          _map.setView([lat, lng], 16);
+          if (_marker) _map.removeLayer(_marker);
+          _marker = L.marker([lat, lng]).addTo(_map);
+        } else { alert('Address not found. Try adding "St. Louis, MO" to your search.'); }
+      })
+      .catch(function() { alert('Search failed. Check your connection.'); });
+  }
+
+  // ── MODE ──────────────────────────────────────────────────────
+  function setMode(m) {
+    mode = m;
+    var bB = _container.querySelector('#hc-btn-buyer');
+    var bS = _container.querySelector('#hc-btn-seller');
+    if (bB) bB.classList.toggle('active', m === 'buyer');
+    if (bS) bS.classList.toggle('active', m === 'seller');
+    var desc = _container.querySelector('#hc-mode-desc');
+    if (desc) desc.textContent = m === 'buyer' ? 'Flag issues before you make an offer' : 'Identify what to fix before you list';
+    var ctx = _container.querySelector('#hc-inspect-ctx');
+    if (ctx) {
+      ctx.className = 'hc-context' + (m === 'seller' ? ' seller' : '');
+      ctx.innerHTML = m === 'buyer'
+        ? '<strong>Walk the property and tap what you see.</strong> This tool uses St. Louis market rates — not national averages. Every dollar you identify is a dollar you can negotiate before you make an offer.'
+        : '<strong>Walk your home like a buyer would.</strong> Identify what needs attention before listing. Buyers will find these items — price them in now or fix them strategically. George can advise which repairs have the best ROI in your zip code.';
+    }
+    var title = _container.querySelector('#hc-house-title');
+    if (title) title.textContent = m === 'buyer' ? 'Tap A Zone To Flag An Issue' : 'Tap A Zone To Flag What Needs Attention';
+    renderReport();
+    if (typeof gtag === 'function') gtag('event', 'mode_switch', { mode: m });
+  }
+
+  // ── TABS ──────────────────────────────────────────────────────
+  function switchTab(tab) {
+    _container.querySelectorAll('.hc-panel').forEach(function(p) { p.classList.remove('active'); });
+    _container.querySelectorAll('.hc-tnav-btn').forEach(function(b) { b.classList.remove('active'); });
+    var panel = _container.querySelector('#hc-panel-' + tab);
+    var btn   = _container.querySelector('#tnav-' + tab);
+    if (panel) panel.classList.add('active');
+    if (btn)   btn.classList.add('active');
+    currentTab = tab;
+    if (tab === 'inspect' && _map) setTimeout(function() { _map.invalidateSize(); }, 100);
+    if (tab === 'report') renderReport();
+    if (typeof gtag === 'function') gtag('event', 'tab_view', { tab_name: tab, mode: mode });
+  }
+
+  // ── LEGEND ────────────────────────────────────────────────────
+  function buildLegend() {
+    var wrap = _container.querySelector('#hc-legend');
+    if (!wrap) return;
+    Object.keys(ZONE_LABELS).forEach(function(zoneId) {
+      var el = document.createElement('div');
+      el.className = 'hc-legend-item';
+      el.id = 'hc-legend-' + zoneId;
+      el.innerHTML = '<div class="hc-legend-dot" style="background:' + (ZONE_COLORS[zoneId] || '#888') + ';"></div>' + ZONE_LABELS[zoneId];
+      el.addEventListener('click', function() { toggleZone(zoneId); });
+      wrap.appendChild(el);
+    });
+  }
+
+  // ── ZONE TOGGLE ───────────────────────────────────────────────
+  function toggleZone(zoneId) {
+    var zone   = _container.querySelector('#hc-zone-' + zoneId);
+    var legend = _container.querySelector('#hc-legend-' + zoneId);
+    if (!zone) return;
+    var isActive = zone.classList.contains('flagged');
+    if (isActive) {
+      zone.classList.remove('flagged');
+      if (legend) legend.classList.remove('flagged');
+      var itemIds = ZONE_MAP[zoneId] || [];
+      itemIds.forEach(function(id) {
+        repairReport = repairReport.filter(function(r) { return r.id !== id; });
+        var card = _container.querySelector('#hc-rc-' + id);
+        if (card) card.classList.remove('flagged');
+      });
+    } else {
+      zone.classList.add('flagged');
+      if (legend) legend.classList.add('flagged');
+      var addIds = ZONE_MAP[zoneId] || [];
+      addIds.forEach(function(id) {
+        if (!repairReport.some(function(r) { return r.id === id; })) {
+          var item = REPAIR_ITEMS.filter(function(x) { return x.id === id; })[0];
+          if (item) repairReport.push({ id: item.id, name: item.name, low: item.low, high: item.high });
+        }
+        var card = _container.querySelector('#hc-rc-' + id);
+        if (card) card.classList.add('flagged');
+      });
+      if (typeof gtag === 'function') gtag('event', 'zone_flagged', { zone: zoneId, mode: mode });
+    }
+    updateBadges();
+  }
+
+  // ── REPAIR CARDS ──────────────────────────────────────────────
+  function buildRepairList() {
+    var wrap = _container.querySelector('#hc-repair-list');
+    if (!wrap) return;
+    var cats = {
+      major:     '🔴 Major Systems — Flag These First',
+      electrical:'⚡ Electrical',
+      plumbing:  '🔧 Plumbing',
+      exterior:  '🧱 Exterior',
+      interior:  '🏠 Interior'
+    };
+    var currentCat = '';
+    REPAIR_ITEMS.forEach(function(item) {
+      if (item.cat !== currentCat) {
+        currentCat = item.cat;
+        var lbl = document.createElement('div');
+        lbl.className = 'hc-cat-hdr';
+        lbl.textContent = cats[item.cat] || item.cat;
+        wrap.appendChild(lbl);
+      }
+      var el = document.createElement('div');
+      el.className = 'hc-repair-card' + (item.cat === 'major' ? ' major' : '');
+      el.id = 'hc-rc-' + item.id;
+      el.innerHTML =
+        '<div class="hc-rc-left">' +
+          '<div class="hc-rc-name">' + item.name + '</div>' +
+          '<div class="hc-rc-range">$' + item.low.toLocaleString() + ' – $' + item.high.toLocaleString() + '</div>' +
+          (item.stl ? '<div class="hc-rc-stl">⚠ ' + item.stl + '</div>' : '') +
+        '</div>' +
+        '<div class="hc-rc-check">✓</div>';
+      el.addEventListener('click', function() { toggleRepairCard(item.id, item.name, item.low, item.high, el, item.cat); });
+      wrap.appendChild(el);
+    });
+  }
+
+  function toggleRepairCard(id, name, low, high, el, cat) {
+    var idx = repairReport.findIndex ? repairReport.findIndex(function(r) { return r.id === id; }) :
+      (function() { for (var i=0;i<repairReport.length;i++) { if (repairReport[i].id===id) return i; } return -1; })();
+    if (idx > -1) {
+      repairReport.splice(idx, 1);
+      el.classList.remove('flagged');
+      syncZonesFromReport();
+    } else {
+      repairReport.push({ id:id, name:name, low:low, high:high });
+      el.classList.add('flagged');
+      if (typeof gtag === 'function') gtag('event', 'repair_flagged', { item:name, category:cat, mode:mode });
+    }
+    updateBadges();
+  }
+
+  function syncZonesFromReport() {
+    Object.keys(ZONE_MAP).forEach(function(zoneId) {
+      var itemIds = ZONE_MAP[zoneId];
+      var anyFlagged = itemIds.some(function(id) { return repairReport.some(function(r) { return r.id === id; }); });
+      var zoneEl  = _container.querySelector('#hc-zone-'   + zoneId);
+      var legendEl = _container.querySelector('#hc-legend-' + zoneId);
+      if (zoneEl)   zoneEl.classList.toggle('flagged', anyFlagged);
+      if (legendEl) legendEl.classList.toggle('flagged', anyFlagged);
+    });
+  }
+
+  // ── WORK TYPES ────────────────────────────────────────────────
+  function buildWorkTypes() {
+    var grid = _container.querySelector('#hc-wt-grid');
+    if (!grid) return;
+    WORK_TYPES.forEach(function(wt, i) {
+      var el = document.createElement('div');
+      el.className = 'hc-wt-card' + (i === 0 ? ' selected' : '');
+      el.id = 'hc-wt-' + wt.id;
+      el.innerHTML = '<div class="hc-wt-name">' + wt.name + '</div><div class="hc-wt-rate">$' + wt.low + '–$' + wt.high + '/' + wt.unit + '</div>';
+      el.addEventListener('click', function() {
+        _container.querySelectorAll('.hc-wt-card').forEach(function(x) { x.classList.remove('selected'); });
+        el.classList.add('selected');
+      });
+      grid.appendChild(el);
+    });
+  }
+
+  function calculateSF() {
+    var lEl = _container.querySelector('#hc-sf-length');
+    var wEl = _container.querySelector('#hc-sf-width');
+    var l = lEl ? parseFloat(lEl.value) || 0 : 0;
+    var w = wEl ? parseFloat(wEl.value) || 0 : 0;
+    if (!l || !w) { alert('Enter both length and width.'); return; }
+    var sf = l * w;
+    var selEl = _container.querySelector('.hc-wt-card.selected');
+    var wtId = selEl ? selEl.id.replace('hc-wt-', '') : 'paint';
+    var wt = WORK_TYPES.filter(function(x) { return x.id === wtId; })[0] || WORK_TYPES[0];
+    var costLow = Math.round(sf * wt.low);
+    var costHigh = Math.round(sf * wt.high);
+    sfLast = { id: 'sf-' + wtId + '-' + Date.now(), name: wt.name + ' — ' + sf.toLocaleString() + ' SF', low: costLow, high: costHigh };
+    var valEl = _container.querySelector('#hc-sfr-val');
+    var subEl = _container.querySelector('#hc-sfr-sub');
+    var resEl = _container.querySelector('#hc-sf-result');
+    var addBtn = _container.querySelector('#hc-add-sf-btn');
+    if (valEl) valEl.textContent = '$' + costLow.toLocaleString() + ' – $' + costHigh.toLocaleString();
+    if (subEl) subEl.textContent = sf.toLocaleString() + ' SF × $' + wt.low + '–$' + wt.high + '/SF';
+    if (resEl) resEl.classList.add('visible');
+    if (addBtn) addBtn.style.display = 'block';
+    if (typeof gtag === 'function') gtag('event', 'sf_calculated', { work_type: wt.name, sqft: sf });
+  }
+
+  function addToSFReport() {
+    if (!sfLast) return;
+    sfReport.push(Object.assign({}, sfLast));
+    sfLast = null;
+    var resEl = _container.querySelector('#hc-sf-result');
+    var addBtn = _container.querySelector('#hc-add-sf-btn');
+    var lEl = _container.querySelector('#hc-sf-length');
+    var wEl = _container.querySelector('#hc-sf-width');
+    if (resEl) resEl.classList.remove('visible');
+    if (addBtn) addBtn.style.display = 'none';
+    if (lEl) lEl.value = '';
+    if (wEl) wEl.value = '';
+    renderSFReport();
+    updateBadges();
+    if (typeof gtag === 'function') gtag('event', 'sf_added_to_report', { items: sfReport.length });
+  }
+
+  function removeSFItem(id) {
+    sfReport = sfReport.filter(function(x) { return x.id !== id; });
+    if (sfMerged) {
+      repairReport = repairReport.filter(function(x) { return x.id !== id; });
+      renderReport();
+    }
+    renderSFReport();
+    updateBadges();
+  }
+
+  function renderSFReport() {
+    var empty    = _container.querySelector('#hc-sf-empty');
+    var list     = _container.querySelector('#hc-sf-list');
+    var subWrap  = _container.querySelector('#hc-sf-subtotal-wrap');
+    var sfsVal   = _container.querySelector('#hc-sfs-val');
+    var mergeBtn = _container.querySelector('#hc-merge-btn');
+    if (!list) return;
+    if (sfReport.length === 0) {
+      if (empty) empty.style.display = 'block';
+      list.innerHTML = '';
+      if (subWrap) subWrap.style.display = 'none';
+      return;
+    }
+    if (empty) empty.style.display = 'none';
+    list.innerHTML = sfReport.map(function(r) {
+      return '<div class="hc-sf-list-item">' +
+        '<span class="hc-sfl-name">' + r.name + '</span>' +
+        '<span class="hc-sfl-cost">$' + r.low.toLocaleString() + '–$' + r.high.toLocaleString() + '</span>' +
+        '<button class="hc-sfl-remove" data-sfremove="' + r.id + '">✕</button>' +
+      '</div>';
+    }).join('');
+    Array.prototype.forEach.call(list.querySelectorAll('[data-sfremove]'), function(btn) {
+      btn.addEventListener('click', function() { removeSFItem(btn.getAttribute('data-sfremove')); });
+    });
+    var totLow = 0, totHigh = 0;
+    sfReport.forEach(function(r) { totLow += r.low; totHigh += r.high; });
+    if (sfsVal) sfsVal.textContent = '$' + totLow.toLocaleString() + ' – $' + totHigh.toLocaleString();
+    if (subWrap) subWrap.style.display = 'block';
+    if (mergeBtn) {
+      mergeBtn.textContent = sfMerged ? '✓ Merged Into Full Report' : '✚ Merge Into Full Report';
+      mergeBtn.disabled = sfMerged;
+    }
+  }
+
+  function mergeSFIntoReport() {
+    if (sfMerged || sfReport.length === 0) return;
+    sfReport.forEach(function(r) {
+      if (!repairReport.some(function(x) { return x.id === r.id; })) {
+        repairReport.push(Object.assign({}, r));
+      }
+    });
+    sfMerged = true;
+    renderSFReport();
+    renderReport();
+    updateBadges();
+    switchTab('report');
+    if (typeof gtag === 'function') gtag('event', 'sf_merged', { items: sfReport.length });
+  }
+
+  // ── REPORT ────────────────────────────────────────────────────
+  function renderReport() {
+    var rpEmpty    = _container.querySelector('#hc-rp-empty');
+    var rpRows     = _container.querySelector('#hc-rp-rows');
+    var rpTotalRow = _container.querySelector('#hc-repair-total-row');
+    var rpTotalVal = _container.querySelector('#hc-repair-total-val');
+    var repCount   = _container.querySelector('#hc-repair-count');
+    if (!rpRows) return;
+
+    var repairItems = repairReport.filter(function(r) { return r.id.indexOf('sf-') !== 0; });
+    var sfItems     = repairReport.filter(function(r) { return r.id.indexOf('sf-') === 0; });
+
+    if (repairItems.length === 0) {
+      if (rpEmpty) rpEmpty.style.display = 'block';
+      rpRows.innerHTML = '';
+      if (rpTotalRow) rpTotalRow.style.display = 'none';
+      if (repCount) repCount.textContent = '0 Items';
+    } else {
+      if (rpEmpty) rpEmpty.style.display = 'none';
+      if (repCount) repCount.textContent = repairItems.length + ' Item' + (repairItems.length === 1 ? '' : 's');
+      var rLow = 0, rHigh = 0;
+      rpRows.innerHTML = repairItems.map(function(r) {
+        rLow += r.low; rHigh += r.high;
+        return '<div class="hc-rc-row"><span class="hc-rcr-name">' + r.name + '</span><span class="hc-rcr-cost">$' + r.low.toLocaleString() + '–$' + r.high.toLocaleString() + '</span><button class="hc-rcr-del" data-del="' + r.id + '">✕</button></div>';
+      }).join('');
+      Array.prototype.forEach.call(rpRows.querySelectorAll('[data-del]'), function(btn) {
+        btn.addEventListener('click', function() { deleteRepairFromReport(btn.getAttribute('data-del')); });
+      });
+      if (rpTotalVal) { rpTotalVal.textContent = '$' + rLow.toLocaleString() + ' – $' + rHigh.toLocaleString(); rpTotalVal.className = 'hc-rct-val' + (rLow > 15000 ? ' danger' : ''); }
+      if (rpTotalRow) rpTotalRow.style.display = 'flex';
+    }
+
+    var sfCard = _container.querySelector('#hc-sf-merged-card');
+    if (sfMerged && sfItems.length > 0) {
+      if (sfCard) sfCard.style.display = 'block';
+      var sfMergedCount = _container.querySelector('#hc-sf-merged-count');
+      var sfMergedRows  = _container.querySelector('#hc-sf-merged-rows');
+      var sfMergedTotal = _container.querySelector('#hc-sf-merged-total');
+      if (sfMergedCount) sfMergedCount.textContent = sfItems.length + ' Items';
+      var sLow = 0, sHigh = 0;
+      if (sfMergedRows) sfMergedRows.innerHTML = sfItems.map(function(r) {
+        sLow += r.low; sHigh += r.high;
+        return '<div class="hc-rc-row"><span class="hc-rcr-name">' + r.name + '</span><span class="hc-rcr-cost">$' + r.low.toLocaleString() + '–$' + r.high.toLocaleString() + '</span></div>';
+      }).join('');
+      if (sfMergedTotal) sfMergedTotal.textContent = '$' + sLow.toLocaleString() + ' – $' + sHigh.toLocaleString();
+    } else {
+      if (sfCard) sfCard.style.display = 'none';
+    }
+
+    var gtEl  = _container.querySelector('#hc-grand-total');
+    var gtVal = _container.querySelector('#hc-gt-val');
+    var gtMid = _container.querySelector('#hc-gt-midpoint');
+    var ctxEl = _container.querySelector('#hc-report-ctx');
+
+    if (repairReport.length > 0) {
+      var totalLow = 0, totalHigh = 0;
+      repairReport.forEach(function(r) { totalLow += r.low; totalHigh += r.high; });
+      var midpoint = Math.round((totalLow + totalHigh) / 2);
+      if (gtVal) gtVal.textContent = '$' + totalLow.toLocaleString() + ' – $' + totalHigh.toLocaleString();
+      if (gtMid) gtMid.textContent = '$' + midpoint.toLocaleString();
+      if (gtEl)  gtEl.style.display = 'flex';
+      if (ctxEl) {
+        var ask = Math.round(midpoint * 0.87), askH = Math.round(midpoint * 0.92);
+        if (mode === 'buyer') {
+          ctxEl.className = 'hc-insight hc-insight-buyer';
+          ctxEl.innerHTML = '<strong>Offer negotiation context:</strong> Your flagged repair midpoint is <strong>$' + midpoint.toLocaleString() + '</strong>. A defensible offer adjustment accounts for the midpoint minus 10–15% for what the inspection may surface later. That puts your ask at approximately <strong>$' + ask.toLocaleString() + ' – $' + askH.toLocaleString() + '</strong> below list price.' + (totalLow > 20000 ? ' At this cost level, ask George whether a price reduction or a seller-paid concession is the stronger strategy for this zip code.' : '');
+        } else {
+          ctxEl.className = 'hc-insight hc-insight-seller';
+          ctxEl.innerHTML = '<strong>Pre-listing context:</strong> You have identified approximately <strong>$' + midpoint.toLocaleString() + '</strong> in deferred items. Buyers and their inspectors will find these. You have three options: fix them and price at full market value, disclose them and price accordingly, or offer a seller concession. George can tell you which approach yields the best net in your zip code.';
+        }
+        ctxEl.style.display = 'block';
+      }
+    } else {
+      if (gtEl)  gtEl.style.display = 'none';
+      if (ctxEl) ctxEl.style.display = 'none';
+    }
+  }
+
+  function deleteRepairFromReport(id) {
+    repairReport = repairReport.filter(function(r) { return r.id !== id; });
+    var card = _container.querySelector('#hc-rc-' + id);
+    if (card) card.classList.remove('flagged');
+    syncZonesFromReport();
+    renderReport();
+    updateBadges();
+  }
+
+  // ── BADGES ────────────────────────────────────────────────────
+  function updateBadges() {
+    var repairCount = repairReport.filter(function(r) { return r.id.indexOf('sf-') !== 0; }).length;
+    function setBadge(id, count) {
+      var el = _container.querySelector('#' + id);
+      if (!el) return;
+      el.textContent = count;
+      el.className = 'hc-badge' + (count > 0 ? ' visible' : '');
+    }
+    setBadge('badge-inspect', repairCount);
+    setBadge('badge-measure', sfReport.length);
+    setBadge('badge-report',  repairReport.length);
+  }
+
+  // ── REPORT TEXT ───────────────────────────────────────────────
+  function buildReportText() {
+    var nameEl = _container.querySelector('#hc-userName');
+    var addrEl = _container.querySelector('#hc-addr');
+    var name   = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : 'there';
+    var address = (addrEl && addrEl.value.trim()) ? addrEl.value.trim() : 'the property';
+    var modeLabel = mode === 'buyer' ? 'BUYER INSPECTION REPORT' : 'PRE-LISTING COST ESTIMATE';
+    var text = modeLabel + '\n' + '═'.repeat(40) + '\nPrepared for: ' + name + '\nProperty: ' + address + '\n\n';
+    var repairItems = repairReport.filter(function(r) { return r.id.indexOf('sf-') !== 0; });
+    if (repairItems.length > 0) {
+      text += 'FLAGGED REPAIR ITEMS\n' + '─'.repeat(36) + '\n';
+      repairItems.forEach(function(r) { text += '• ' + r.name + ': $' + r.low.toLocaleString() + ' – $' + r.high.toLocaleString() + '\n'; });
+    }
+    if (sfReport.length > 0) {
+      text += '\nSF WORK SUMMARY\n' + '─'.repeat(36) + '\n';
+      sfReport.forEach(function(r) { text += '• ' + r.name + ': $' + r.low.toLocaleString() + ' – $' + r.high.toLocaleString() + '\n'; });
+    }
+    if (repairReport.length > 0) {
+      var tLow = 0, tHigh = 0;
+      repairReport.forEach(function(r) { tLow += r.low; tHigh += r.high; });
+      var mid = Math.round((tLow + tHigh) / 2);
+      text += '\nTOTAL RANGE: $' + tLow.toLocaleString() + ' – $' + tHigh.toLocaleString() + '\nMIDPOINT: $' + mid.toLocaleString() + '\n';
+      if (mode === 'buyer') text += '\nOFFER CONTEXT: A defensible adjustment is ~$' + Math.round(mid*0.87).toLocaleString() + ' – $' + Math.round(mid*0.92).toLocaleString() + ' below list.\n';
+      else text += '\nLISTING CONTEXT: Buyers will find these. Fix, disclose, or price accordingly.\n';
+    }
+    text += '\n' + '─'.repeat(36) + '\nGeorge Kindler · The Closing Pros LLC · 314.435.1087\nLicensed Missouri Real Estate Agent · 13 Years · St. Louis Market Rates';
+    return text;
+  }
+
+  function sendReport() {
+    var emailEl = _container.querySelector('#hc-userEmail');
+    if (!emailEl || !emailEl.value.trim()) { alert('Enter your email address first.'); return; }
+    var ccEl    = _container.querySelector('#hc-ccMe');
+    var addrEl  = _container.querySelector('#hc-addr');
+    var address = (addrEl && addrEl.value.trim()) ? addrEl.value.trim() : '';
+    var subject = (mode === 'buyer' ? 'Home Cost Report' : 'Pre-Listing Cost Estimate') + (address ? ' — ' + address : '');
+    var mailto  = 'mailto:' + emailEl.value.trim() + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(buildReportText());
+    if (ccEl && ccEl.checked) mailto += '&cc=whatsyourstlouishomeworth@gmail.com';
+    window.location.href = mailto;
+    if (typeof gtag === 'function') gtag('event', 'report_sent', { mode:mode, repair_items:repairReport.length });
+  }
+
+  function copyReport() {
+    var text = buildReportText();
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function() { alert('Copied to clipboard.'); }).catch(function() { fallbackCopy(text); });
+    } else { fallbackCopy(text); }
+    if (typeof gtag === 'function') gtag('event', 'report_copied', { mode:mode });
+  }
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.cssText = 'position:fixed;opacity:0;';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); alert('Copied to clipboard.'); }
+    catch(e) { alert('Copy failed. Use Send by Email instead.'); }
+    document.body.removeChild(ta);
+  }
+
+  // ── BIND ──────────────────────────────────────────────────────
+  function bindAll() {
+    // Mode buttons
+    var bB = _container.querySelector('#hc-btn-buyer');
+    var bS = _container.querySelector('#hc-btn-seller');
+    if (bB) bB.addEventListener('click', function() { setMode('buyer'); });
+    if (bS) bS.addEventListener('click', function() { setMode('seller'); });
+    // Address
+    var mapBtn = _container.querySelector('#hc-map-btn');
+    var geoBtn = _container.querySelector('#hc-geo-btn');
+    var addrIn = _container.querySelector('#hc-addr');
+    if (mapBtn) mapBtn.addEventListener('click', searchAddress);
+    if (geoBtn) geoBtn.addEventListener('click', geoLocate);
+    if (addrIn) addrIn.addEventListener('keydown', function(e) { if (e.key === 'Enter') searchAddress(); });
+    // Tabs
+    Array.prototype.forEach.call(_container.querySelectorAll('.hc-tnav-btn'), function(btn) {
+      btn.addEventListener('click', function() { switchTab(btn.getAttribute('data-tab')); });
+    });
+    // Zone clicks (SVG)
+    Array.prototype.forEach.call(_container.querySelectorAll('.hs-zone'), function(zone) {
+      zone.addEventListener('click', function() { toggleZone(zone.getAttribute('data-zone')); });
+    });
+    // Measure
+    var calcBtn = _container.querySelector('#hc-calc-btn');
+    var addSfBtn = _container.querySelector('#hc-add-sf-btn');
+    var mergeBtn = _container.querySelector('#hc-merge-btn');
+    if (calcBtn)  calcBtn.addEventListener('click',  calculateSF);
+    if (addSfBtn) addSfBtn.addEventListener('click', addToSFReport);
+    if (mergeBtn) mergeBtn.addEventListener('click', mergeSFIntoReport);
+    // Send
+    var sendBtn = _container.querySelector('#hc-send-btn');
+    var copyBtn = _container.querySelector('#hc-copy-btn');
+    var gotoSend = _container.querySelector('#hc-goto-send');
+    if (sendBtn)  sendBtn.addEventListener('click',  sendReport);
+    if (copyBtn)  copyBtn.addEventListener('click',  copyReport);
+    if (gotoSend) gotoSend.addEventListener('click', function() { switchTab('send'); });
+  }
+
+  // ── PUBLIC ────────────────────────────────────────────────────
+  return {
+    mount: function (container) {
+      _container   = container;
+      mode         = 'buyer';
+      repairReport = [];
+      sfReport     = [];
+      sfMerged     = false;
+      sfLast       = null;
+      container.innerHTML = buildHTML();
+      bindAll();
+      buildLegend();
+      buildRepairList();
+      buildWorkTypes();
+      updateBadges();
+      // Init map after render
+      setTimeout(function() {
+        if (typeof L !== 'undefined') initMap();
+      }, 100);
+    },
+    unmount: function () {
+      if (_map) { _map.remove(); _map = null; _marker = null; }
+      if (_container) _container.innerHTML = '';
+      _container = null;
+    }
+  };
+})();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="zip-data.js"></script>
+<script src="resources.js"></script>
+<script src="shared.js"></script>
+
+<script>
+(function () {
+  function mountStandalone() {
+    if (!window.TOOL_MODULES || !window.TOOL_MODULES['home-cost']) { setTimeout(mountStandalone, 30); return; }
+    if (!document.getElementById('tool-panel-body')) {
+      var wrapper = document.createElement('div');
+      wrapper.style.cssText = 'background:var(--bg);min-height:100vh;';
+      document.body.appendChild(wrapper);
+      window.TOOL_MODULES['home-cost'].mount(wrapper);
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mountStandalone);
+  else mountStandalone();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>STL Home Buyer Journey · Open House Prep</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EEE14BZT9P');</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ── PREP TOOL SCOPED STYLES ── */
+.prep-wrap {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+}
+
+.prep-hero {
+  text-align: center;
+  padding: 20px 0 16px;
+}
+
+.prep-hero-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-strong);
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.prep-hero-title span { color: var(--gold); }
+
+.prep-hero-sub {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Search */
+.prep-search-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.prep-sc-label {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.prep-search-wrap { position: relative; }
+
+.prep-search-input {
+  width: 100%;
+  padding: 12px 40px 12px 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--text-strong);
+  outline: none;
+  transition: border-color .18s ease;
+}
+
+.prep-search-input:focus { border-color: var(--gold-line); }
+.prep-search-input::placeholder { color: var(--text-faint); }
+
+.prep-search-icon {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-faint);
+  pointer-events: none;
+  font-size: 14px;
+}
+
+.prep-search-results {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--surface-2);
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 200;
+  display: none;
+  box-shadow: var(--shadow-md);
+}
+
+.prep-search-results.open { display: block; }
+
+.prep-sr-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 13px;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-soft);
+  transition: background .12s ease;
+}
+
+.prep-sr-item:last-child { border-bottom: none; }
+.prep-sr-item:hover { background: var(--surface-3); }
+
+.prep-sr-zip {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  color: var(--gold);
+  margin-right: 8px;
+  font-weight: 600;
+}
+
+.prep-locate-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: border-color .18s ease, color .18s ease;
+}
+
+.prep-locate-btn:hover { border-color: var(--gold-line); color: var(--text-strong); }
+
+/* Empty state */
+.prep-empty {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--text-faint);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.prep-empty-icon { font-size: 36px; margin-bottom: 10px; opacity: .4; }
+
+/* ZIP header */
+.prep-zip-header {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.prep-zh-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.prep-zh-zip {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-strong);
+  line-height: 1;
+}
+
+.prep-zh-city {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-top: 2px;
+}
+
+.prep-zh-county {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+.prep-badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.prep-badge-hot  { background: var(--green-soft); color: var(--green); border: 1px solid var(--green-line); }
+.prep-badge-warm { background: var(--gold-soft); color: var(--gold); border: 1px solid var(--gold-line); }
+.prep-badge-slow { background: var(--red-soft); color: var(--red); border: 1px solid var(--red-line); }
+
+/* Stat pills */
+.prep-stat-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.prep-stat-row::-webkit-scrollbar { display: none; }
+
+.prep-stat-pill {
+  flex-shrink: 0;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-align: center;
+  min-width: 72px;
+}
+
+.prep-sp-val {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.prep-sp-lbl {
+  font-size: 9px;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-top: 3px;
+}
+
+.c-hot  { color: var(--green); }
+.c-warm { color: var(--gold); }
+.c-slow { color: var(--red); }
+.c-gold { color: var(--gold); }
+.c-white { color: var(--text-strong); }
+
+/* Value flag */
+.prep-value-flag {
+  border-radius: 0 10px 10px 0;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  border-left: 3px solid;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-soft);
+}
+
+.prep-vf-hot      { background: var(--green-soft); border-color: var(--green); }
+.prep-vf-warm     { background: var(--gold-soft); border-color: var(--gold); }
+.prep-vf-leverage { background: var(--green-soft); border-color: var(--green); }
+
+.prep-vf-label {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 3px;
+}
+
+.prep-vf-status {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.prep-vf-hot .prep-vf-status      { color: var(--green); }
+.prep-vf-warm .prep-vf-status     { color: var(--gold); }
+.prep-vf-leverage .prep-vf-status { color: var(--green); }
+
+/* Info cards */
+.prep-info-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.prep-card-title {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.prep-data-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+
+.prep-data-row:last-child { border-bottom: none; }
+.prep-dr-lbl { color: var(--text-soft); }
+
+.prep-dr-val {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+/* Cost grid */
+.prep-cost-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.prep-cost-cell {
+  background: var(--surface-2);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.prep-cc-val {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.prep-cc-lbl {
+  font-size: 9px;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-top: 3px;
+}
+
+.prep-cost-total {
+  background: var(--surface-2);
+  border: 1px solid var(--gold-line);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prep-ct-val {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.prep-ct-lbl {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* Micro-education triggers */
+.prep-me-trigger {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--warn);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  animation: prepMeIn .25s ease;
+}
+
+@keyframes prepMeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+.prep-me-trigger.me-danger { border-left-color: var(--red); }
+.prep-me-trigger.me-info   { border-left-color: var(--green); }
+.prep-me-trigger.me-tip    { border-left-color: rgba(138,176,208,.6); }
+.prep-me-trigger.me-caution { border-left-color: var(--warn); }
+
+.prep-me-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.prep-me-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+.prep-me-short {
+  font-size: 12px;
+  color: var(--text-soft);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.prep-me-short strong { color: var(--text-strong); }
+
+.prep-me-expand {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+.prep-me-detail {
+  display: none;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--text-soft);
+  line-height: 1.72;
+}
+
+.prep-me-trigger.open .prep-me-detail { display: block; }
+.prep-me-detail strong { color: var(--text-strong); }
+
+/* Action buttons */
+.prep-action-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.prep-btn-primary {
+  flex: 1;
+  min-width: 140px;
+  padding: 13px 14px;
+  background: var(--gold);
+  color: #080808;
+  border: none;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: opacity .15s ease;
+}
+
+.prep-btn-primary:hover { opacity: .9; }
+
+.prep-btn-secondary {
+  flex: 1;
+  min-width: 140px;
+  padding: 12px 14px;
+  background: transparent;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  color: var(--text-soft);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: border-color .18s ease, color .18s ease;
+}
+
+.prep-btn-secondary:hover { border-color: var(--gold-line); color: var(--text-strong); }
+
+.prep-data-source {
+  font-size: 10px;
+  color: var(--text-faint);
+  text-align: center;
+  line-height: 1.6;
+  padding: 8px 0;
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+window.CHAPTER_NUM   = 0;
+window.CHAPTER_LABEL = 'Open House Prep';
+window.PREV_FILE     = 'index.html';
+window.SCENES        = []; /* No SCENES — tool manages its own rendering */
+
+/* ── TOOL MODULE DEFINITION ── */
+window.TOOL_MODULES = window.TOOL_MODULES || {};
+window.TOOL_MODULES['prep'] = {
+  _container: null,
+
+  mount: function (container) {
+    this._container = container;
+    container.innerHTML = this._buildHTML();
+    this._bind(container);
+    /* Auto-load if zip passed via URL */
+    var urlZip = new URLSearchParams(window.location.search).get('zip');
+    if (urlZip && window.ZIP_DATA && window.ZIP_DATA[urlZip]) {
+      this._selectZip(urlZip, container);
+    }
+  },
+
+  unmount: function () {
+    if (this._container) this._container.innerHTML = '';
+    this._container = null;
+  },
+
+  _buildHTML: function () {
+    return (
+      '<div class="prep-wrap">' +
+        '<div class="tool-data-strip">' +
+          '<div class="tool-data-stat"><div class="tool-data-num">7,006</div><div class="tool-data-lbl">MLS Sales</div></div>' +
+          '<div class="tool-data-stat"><div class="tool-data-num">79</div><div class="tool-data-lbl">ZIP Codes</div></div>' +
+          '<div class="tool-data-stat"><div class="tool-data-num">2025–26</div><div class="tool-data-lbl">MARIS Data</div></div>' +
+        '</div>' +
+        '<div class="prep-hero">' +
+          '<div class="prep-hero-title">Before You <span>Walk In</span></div>' +
+          '<div class="prep-hero-sub">Search the zip code you\'re heading to. Get the real market picture — competition level, true monthly cost, what to watch for — before the open house starts.</div>' +
+        '</div>' +
+        '<div class="prep-search-card">' +
+          '<div class="prep-sc-label">📍 Where Are You Going?</div>' +
+          '<div class="prep-search-wrap">' +
+            '<input class="prep-search-input" id="prep-search-input" type="text" placeholder="ZIP code, city, or neighborhood…" autocomplete="off">' +
+            '<span class="prep-search-icon">🔍</span>' +
+            '<div class="prep-search-results" id="prep-search-results"></div>' +
+          '</div>' +
+          '<button class="prep-locate-btn" id="prep-locate-btn">📡 Use My Current Location</button>' +
+        '</div>' +
+        '<div id="prep-results">' +
+          '<div class="prep-empty">' +
+            '<div class="prep-empty-icon">🏚</div>' +
+            '<div>Search a zip code above and get the full picture before you walk in the door.</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>'
+    );
+  },
+
+  _bind: function (container) {
+    var self = this;
+    var searchRes = [], focusIdx = -1;
+
+    var input   = container.querySelector('#prep-search-input');
+    var resBox  = container.querySelector('#prep-search-results');
+    var locBtn  = container.querySelector('#prep-locate-btn');
+
+    if (input) {
+      input.addEventListener('input', function () {
+        var q = input.value.trim();
+        if (!q) { resBox.classList.remove('open'); return; }
+        searchRes = window.STL_CALC ? window.STL_CALC.searchZips(q) : [];
+        focusIdx  = -1;
+        if (!searchRes.length) { resBox.classList.remove('open'); return; }
+        resBox.innerHTML = searchRes.map(function (r) {
+          return '<div class="prep-sr-item" data-zip="' + r.zip + '">' +
+            '<span class="prep-sr-zip">' + r.zip + '</span>' + r.city +
+            '</div>';
+        }).join('');
+        resBox.classList.add('open');
+        Array.prototype.forEach.call(resBox.querySelectorAll('.prep-sr-item'), function (item) {
+          item.addEventListener('mousedown', function () {
+            self._selectZip(item.getAttribute('data-zip'), container);
+          });
+        });
+      });
+
+      input.addEventListener('keydown', function (e) {
+        var items = resBox.querySelectorAll('.prep-sr-item');
+        if (e.key === 'ArrowDown') { e.preventDefault(); focusIdx = Math.min(focusIdx + 1, items.length - 1); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); focusIdx = Math.max(focusIdx - 1, 0); }
+        else if (e.key === 'Enter') {
+          if (focusIdx >= 0 && searchRes[focusIdx]) self._selectZip(searchRes[focusIdx].zip, container);
+          else if (searchRes.length > 0) self._selectZip(searchRes[0].zip, container);
+        } else if (e.key === 'Escape') { resBox.classList.remove('open'); }
+        Array.prototype.forEach.call(items, function (el, i) {
+          el.style.background = i === focusIdx ? 'var(--surface-3)' : '';
+        });
+      });
+    }
+
+    document.addEventListener('click', function (e) {
+      if (resBox && !e.target.closest('.prep-search-wrap')) resBox.classList.remove('open');
+    });
+
+    if (locBtn) {
+      locBtn.addEventListener('click', function () {
+        if (!navigator.geolocation) { alert('Geolocation not available.'); return; }
+        navigator.geolocation.getCurrentPosition(function (pos) {
+          var lat = pos.coords.latitude, lng = pos.coords.longitude;
+          var CENTS = {
+            "63125":[38.528,-90.318],"63123":[38.550,-90.337],"63026":[38.512,-90.444],
+            "63043":[38.710,-90.432],"63303":[38.768,-90.518],"63376":[38.788,-90.644],
+            "63122":[38.583,-90.409],"63119":[38.596,-90.358],"63088":[38.549,-90.491],
+            "63052":[38.414,-90.440],"63010":[38.428,-90.422]
+          };
+          var nearest = null, minD = Infinity;
+          Object.keys(CENTS).forEach(function (z) {
+            var c = CENTS[z];
+            var d = Math.sqrt(Math.pow(lat - c[0], 2) + Math.pow(lng - c[1], 2));
+            if (d < minD) { minD = d; nearest = z; }
+          });
+          if (nearest) self._selectZip(nearest, container);
+        }, function () { alert('Could not get location. Search manually above.'); });
+      });
+    }
+  },
+
+  _selectZip: function (zip, container) {
+    var C = window.STL_CALC;
+    var ZD = window.ZIP_DATA;
+    if (!C || !ZD) return;
+
+    var d = ZD[zip];
+    if (!d) {
+      container.querySelector('#prep-results').innerHTML =
+        '<div class="prep-empty"><div class="prep-empty-icon">❓</div><div>No data for this zip code.</div></div>';
+      return;
+    }
+
+    var input = container.querySelector('#prep-search-input');
+    if (input) input.value = zip + ' — ' + d.city;
+    container.querySelector('#prep-search-results').classList.remove('open');
+
+    var county   = C.ZIP_COUNTY[zip]   || '';
+    var district = C.ZIP_DISTRICT[zip] || '';
+    var taxRate  = C.ZIP_TAX[zip]      || 0.0114;
+    var monthly  = C.calcTrueMonthly(d.price, d.price * 0.05, 6.75, zip);
+    var vf       = C.getValueFlag(d, zip);
+    var fmt$     = C.fmt$;
+    var fmtK     = C.fmtK;
+
+    var fwCls    = d.fw  >= 50 ? 'c-hot' : d.fw  >= 35 ? 'c-warm' : 'c-slow';
+    var domCls   = d.dom <= 10 ? 'c-hot' : d.dom <= 25 ? 'c-warm' : 'c-slow';
+    var aboveCls = d.above >= 65 ? 'c-hot' : d.above >= 50 ? 'c-warm' : 'c-slow';
+
+    var badgeCls = 'prep-badge-warm', badgeTxt = 'Active Market';
+    if (d.fw >= 50) { badgeCls = 'prep-badge-hot';  badgeTxt = 'Hot Market'; }
+    else if (d.fw < 30) { badgeCls = 'prep-badge-slow'; badgeTxt = 'Slower Market'; }
+
+    var vfCls = 'prep-vf-warm';
+    if (vf.flag.toLowerCase().includes('hot'))      vfCls = 'prep-vf-hot';
+    else if (vf.flag.toLowerCase().includes('leverage') || vf.flag.toLowerCase().includes('tax')) vfCls = 'prep-vf-leverage';
+
+    var triggers = this._buildTriggers(zip, d, taxRate, county, C);
+
+    var marketInsight = d.fw >= 50
+      ? '<strong>' + d.fw + '%</strong> of homes in ' + d.city + ' sell the first weekend. This is one of the most competitive corridors in the metro. Have pre-approval in hand before you walk in. If you like it, move the same day.'
+      : d.fw >= 35
+      ? '<strong>' + d.fw + '%</strong> first weekend rate means competition is real but not overwhelming. Correctly priced homes move fast. Overpriced ones give you an opening — the average home here sits ' + d.dom + ' days.'
+      : '<strong>' + d.fw + '%</strong> first weekend rate. Buyers have more negotiating room here than most of the metro. Average days on market is ' + d.dom + '. The data supports asking for concessions.';
+
+    container.querySelector('#prep-results').innerHTML =
+      '<div class="prep-zip-header">' +
+        '<div class="prep-zh-top">' +
+          '<div>' +
+            '<div class="prep-zh-zip">' + zip + '</div>' +
+            '<div class="prep-zh-city">' + d.city + '</div>' +
+            '<div class="prep-zh-county">' + county + ' &middot; ' + d.n + ' sales analyzed</div>' +
+          '</div>' +
+          '<span class="prep-badge ' + badgeCls + '">' + badgeTxt + '</span>' +
+        '</div>' +
+        '<div class="prep-stat-row">' +
+          '<div class="prep-stat-pill"><div class="prep-sp-val ' + fwCls + '">' + d.fw + '%</div><div class="prep-sp-lbl">First Weekend</div></div>' +
+          '<div class="prep-stat-pill"><div class="prep-sp-val ' + domCls + '">' + d.dom + 'd</div><div class="prep-sp-lbl">Avg Days</div></div>' +
+          '<div class="prep-stat-pill"><div class="prep-sp-val c-gold">' + fmtK(d.price) + '</div><div class="prep-sp-lbl">Median Price</div></div>' +
+          '<div class="prep-stat-pill"><div class="prep-sp-val ' + aboveCls + '">' + d.above + '%</div><div class="prep-sp-lbl">Above List</div></div>' +
+          '<div class="prep-stat-pill"><div class="prep-sp-val c-white">' + d.splp + '%</div><div class="prep-sp-lbl">Sale/List</div></div>' +
+        '</div>' +
+      '</div>' +
+
+      '<div class="prep-value-flag ' + vfCls + '">' +
+        '<div class="prep-vf-label">True Value Assessment</div>' +
+        '<div class="prep-vf-status">' + vf.flag + '</div>' +
+        vf.text +
+      '</div>' +
+
+      triggers +
+
+      '<div class="prep-info-card">' +
+        '<div class="prep-card-title">💰 True Monthly Cost At Median Price</div>' +
+        '<p style="font-size:11px;color:var(--text-dim);margin-bottom:12px;">Based on ' + fmtK(d.price) + ' median &middot; 5% down &middot; 6.75% rate &middot; includes taxes, insurance, PMI, maintenance</p>' +
+        '<div class="prep-cost-grid">' +
+          '<div class="prep-cost-cell"><div class="prep-cc-val">' + fmt$(monthly.pi) + '</div><div class="prep-cc-lbl">Principal &amp; Interest</div></div>' +
+          '<div class="prep-cost-cell"><div class="prep-cc-val">' + fmt$(monthly.tax) + '</div><div class="prep-cc-lbl">Tax /mo</div></div>' +
+          '<div class="prep-cost-cell"><div class="prep-cc-val">' + fmt$(monthly.ins) + '</div><div class="prep-cc-lbl">Insurance /mo</div></div>' +
+          '<div class="prep-cost-cell"><div class="prep-cc-val">' + fmt$(monthly.pmi) + '</div><div class="prep-cc-lbl">PMI /mo</div></div>' +
+        '</div>' +
+        '<div class="prep-cost-total">' +
+          '<div><div class="prep-ct-lbl">All-In Monthly</div><div style="font-size:10px;color:var(--text-faint);">PITI + PMI + Maintenance</div></div>' +
+          '<div class="prep-ct-val">' + fmt$(monthly.total) + '</div>' +
+        '</div>' +
+      '</div>' +
+
+      '<div class="prep-info-card">' +
+        '<div class="prep-card-title">🏠 Price By Condition</div>' +
+        '<div class="prep-data-row"><span class="prep-dr-lbl">As-Is — Needs Work</span><span class="prep-dr-val c-slow">' + fmt$(C.getTierPrice(d, 'aisis')) + '</span></div>' +
+        '<div class="prep-data-row"><span class="prep-dr-lbl">Mid-Tier — Some Updating</span><span class="prep-dr-val c-warm">' + fmt$(C.getTierPrice(d, 'mid')) + '</span></div>' +
+        '<div class="prep-data-row"><span class="prep-dr-lbl">Move-In Ready</span><span class="prep-dr-val c-hot">' + fmt$(C.getTierPrice(d, 'move')) + '</span></div>' +
+        '<p style="font-size:10px;color:var(--text-faint);margin-top:8px;line-height:1.6;">Calculated from ' + d.n + ' closed sales. As-Is = 82% of median. Move-In Ready = 108%.</p>' +
+      '</div>' +
+
+      '<div class="prep-info-card">' +
+        '<div class="prep-card-title">🏫 School &amp; Tax</div>' +
+        (district ? '<div class="prep-data-row"><span class="prep-dr-lbl">School District</span><span class="prep-dr-val" style="font-size:12px;text-align:right;max-width:200px;">' + district + '</span></div>' : '') +
+        '<div class="prep-data-row"><span class="prep-dr-lbl">Tax Rate</span><span class="prep-dr-val c-gold">' + (taxRate * 100).toFixed(2) + '%</span></div>' +
+        '<div class="prep-data-row"><span class="prep-dr-lbl">Monthly Tax At Median Price</span><span class="prep-dr-val">' + fmt$(monthly.tax) + '/mo</span></div>' +
+        '<div class="prep-data-row"><span class="prep-dr-lbl">County</span><span class="prep-dr-val">' + county + '</span></div>' +
+        (taxRate <= 0.0092 ? '<p style="font-size:10px;color:var(--green);margin-top:8px;line-height:1.6;">✅ Lowest tax rate in the metro — significant monthly savings vs. St. Louis County at the same price.</p>' : '') +
+      '</div>' +
+
+      '<div class="prep-info-card">' +
+        '<div class="prep-card-title">📊 What This Means For You</div>' +
+        '<p style="font-size:13px;color:var(--text-soft);line-height:1.72;">' + marketInsight + '</p>' +
+      '</div>' +
+
+      '<div class="prep-action-row">' +
+        '<a href="tel:3144351087" class="prep-btn-primary">📞 Call George — 314.435.1087</a>' +
+      '</div>' +
+      '<div class="prep-data-source">Data: 2025–2026 MARIS MLS &middot; ' + d.n + ' transactions &middot; George Kindler &middot; The Closing Pros LLC</div>' +
+      '<div class="prep-data-source" style="margin-top:4px;"><span style="font-size:8px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-right:4px;">Compliance</span>The Closing Pros LLC &middot; 314-998-4550</div>';
+
+    this._bindTriggers(container);
+
+    if (typeof gtag === 'function') gtag('event', 'prep_zip_viewed', { zip: zip, city: d.city, fw: d.fw });
+  },
+
+  _buildTriggers: function (zip, d, taxRate, county, C) {
+    var out = [];
+    var fmt$ = C.fmt$;
+
+    function me(type, icon, short, detail) {
+      var id = 'pme-' + Math.random().toString(36).slice(2, 8);
+      return '<div class="prep-me-trigger me-' + type + '" id="' + id + '">' +
+        '<div class="prep-me-header" data-me="' + id + '">' +
+          '<span class="prep-me-icon">' + icon + '</span>' +
+          '<span class="prep-me-short">' + short + '</span>' +
+          '<span class="prep-me-expand">Learn More ▼</span>' +
+        '</div>' +
+        '<div class="prep-me-detail">' + detail + '</div>' +
+      '</div>';
+    }
+
+    if (d.fw >= 50 && d.splp >= 101) {
+      out.push(me('danger', '⚡',
+        '<strong>Hot market warning:</strong> ' + d.fw + '% of homes here sell the first weekend. Buyers sometimes waive inspection to compete. That is a serious risk.',
+        'Waiving your inspection to win a bidding war means you own every problem the house has — no recourse. In a market this competitive, a better strategy is a short inspection period (5–7 days) rather than no inspection at all. An experienced agent can write a strong offer that does not require giving up your only protection. <strong>Ask George before you waive anything.</strong>'
+      ));
+    }
+
+    if (d.fw >= 50 && d.above >= 70) {
+      out.push(me('danger', '📈',
+        '<strong>' + d.above + '% of homes sell at or above list price.</strong> This zip almost always goes over asking. Know your ceiling before you walk in.',
+        'An escalation clause lets you automatically beat competing offers up to a maximum you set. Example: "I\'ll pay $2,000 above the highest offer up to $305,000." It protects you from overpaying blind while staying competitive. Ask your agent to write one before Saturday. If you do not have an agent yet — <strong>call George before the showing, not after.</strong>'
+      ));
+    }
+
+    if (d.price < 150000) {
+      out.push(me('danger', '🏦',
+        '<strong>Homes under $150K often have financing complications.</strong> Lenders may require repairs before approving a loan — even if the seller agrees to the price.',
+        'FHA and conventional loans require a home to meet minimum condition standards — functioning systems, no exposed wiring, weathertight roof, no active pest infestation. If a home is missing a ceiling, has a failed HVAC, or visible structural damage, your lender may require those issues corrected before closing. This is called a "repair requirement" and can kill a deal. <strong>Ask your lender what conditions would cause them to decline the appraisal before you make an offer.</strong>'
+      ));
+    }
+
+    if (d.dom <= 5) {
+      out.push(me('caution', '⏱️',
+        '<strong>Average days on market: ' + d.dom + ' days.</strong> Homes here move in less than a week. If you like it Saturday, Monday may be too late.',
+        'In a sub-5-day market, the decision timeline is compressed. Have your pre-approval letter ready before the showing. Know your maximum before you walk in — not after. If you leave to "think about it," the home is likely gone. This does not mean skip due diligence — it means do your homework before the showing, not after.'
+      ));
+    }
+
+    if (taxRate >= 0.0132) {
+      out.push(me('caution', '🏛️',
+        '<strong>Tax rate: ' + (taxRate * 100).toFixed(2) + '% — highest in the metro.</strong> At the median price, that is ' + fmt$(Math.round((d.price * taxRate) / 12)) + '/month in taxes alone.',
+        county + ' has the highest effective property tax rate in the St. Louis dataset. A home priced the same as one in St. Charles County costs <strong>$' + Math.round((d.price * (taxRate - 0.0092)) / 12).toLocaleString() + '/month more in taxes</strong>. Over 30 years that difference is <strong>$' + Math.round((d.price * (taxRate - 0.0092)) * 30).toLocaleString() + '</strong>. This is a real number worth factoring into your budget — not a footnote.'
+      ));
+    }
+
+    if (taxRate <= 0.0092) {
+      out.push(me('info', '💰',
+        '<strong>Tax advantage zone:</strong> ' + county + ' rate is ' + (taxRate * 100).toFixed(2) + '% — lowest in the metro. Real monthly savings vs. comparable St. Louis County addresses.',
+        'At the median price here, property taxes run ' + fmt$(Math.round((d.price * taxRate) / 12)) + '/month. The same home priced identically in St. Louis County would cost ' + fmt$(Math.round((d.price * 0.0114) / 12)) + '/month in taxes — a difference of <strong>' + fmt$(Math.round((d.price * (0.0114 - taxRate)) / 12)) + '/month</strong>. Your budget goes further here than the list price suggests.'
+      ));
+    }
+
+    if (county === 'St. Louis City') {
+      out.push(me('caution', '🔧',
+        '<strong>St. Louis City homes commonly have original sewer laterals.</strong> Pre-1960 clay tile — tree roots find every joint. A sewer scope is not optional here.',
+        'A sewer scope is a camera inspection of the pipe running from your house to the city main — typically $300–400. In St. Louis City, clay tile laterals from the 1920s–1950s are still in place on many blocks. Root infiltration, joint separation, and partial collapse are common. A failed scope is one of the strongest negotiating positions you can have — or a reason to walk. <strong>Make your offer contingent on a scope. If the seller refuses, that tells you something.</strong>'
+      ));
+    }
+
+    if (county === 'Jefferson County') {
+      out.push(me('tip', '🏡',
+        '<strong>Some Jefferson County properties use septic systems</strong> rather than municipal sewer. Ask before you schedule a showing.',
+        'Properties outside Arnold and Festus city limits may be on private septic rather than city sewer. Septic systems require maintenance and eventual replacement (typically 25–30 years, $5,000–$25,000). Ask the listing agent directly: is this on city sewer or septic? If septic — get an inspection as a condition of your offer and ask for the last service record.'
+      ));
+    }
+
+    if (d.fw < 30 && d.dom > 20) {
+      out.push(me('info', '🤝',
+        '<strong>Buyer leverage zone:</strong> ' + d.fw + '% first weekend rate. Homes here average ' + d.dom + ' days on market. The data supports negotiating.',
+        'A first weekend rate under 30% means sellers are not seeing the immediate competition that drives bidding wars. With ' + d.dom + ' average days on market, a seller whose home has been sitting knows they are not getting a flood of offers. This is the market where repair requests, closing cost contributions, and price reductions are realistic asks — not wishful thinking. <strong>Come in with documentation. A flagged inspection report is your negotiating tool.</strong>'
+      ));
+    }
+
+    return out.join('');
+  },
+
+  _bindTriggers: function (container) {
+    Array.prototype.forEach.call(container.querySelectorAll('.prep-me-header'), function (hdr) {
+      hdr.addEventListener('click', function () {
+        var id  = hdr.getAttribute('data-me');
+        var el  = document.getElementById(id);
+        if (!el) return;
+        var open = el.classList.toggle('open');
+        var exp  = hdr.querySelector('.prep-me-expand');
+        if (exp) exp.textContent = open ? 'Close ▲' : 'Learn More ▼';
+        if (open && typeof gtag === 'function') gtag('event', 'prep_me_expanded', { trigger_id: id });
+      });
+    });
+  }
+};
+</script>
+
+<script src="zip-data.js"></script>
+<script src="resources.js"></script>
+<script src="shared.js"></script>
+
+<script>
+/* Standalone page — mount the tool directly into the page body */
+(function () {
+  function mountStandalone() {
+    var app = document.getElementById('app');
+    if (!app || !window.TOOL_MODULES || !window.TOOL_MODULES['prep']) {
+      setTimeout(mountStandalone, 30);
+      return;
+    }
+    /* If loaded as a standalone page rather than inside a panel */
+    if (!document.getElementById('tool-panel-body')) {
+      var wrapper = document.createElement('div');
+      wrapper.style.cssText = 'background:var(--bg);min-height:100vh;padding-top:8px;';
+      document.body.appendChild(wrapper);
+      window.TOOL_MODULES['prep'].mount(wrapper);
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', mountStandalone);
+  } else {
+    mountStandalone();
+  }
+})();
+</script>
+</body>
+</html>
