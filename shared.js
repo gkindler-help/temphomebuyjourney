@@ -1203,11 +1203,11 @@ function closeDrawer() {
 
   function _buildToolSelectorHTML() {
     var tools = [
-      { id:"prep",      ico:"🏚", title:"Open House Prep",      sub:"Competition, true monthly cost, price tiers by zip — before you walk in." },
-      { id:"afford",    ico:"🗺", title:"Affordability Map",     sub:"79 zip codes color-coded by what your budget actually buys." },
+      { id:"prep",      ico:"🏚", title:"STL Open House Prep",      sub:"Competition, true monthly cost, price tiers by zip — before you walk in." },
+      { id:"afford",    ico:"🗺", title:"STL Affordability Map",     sub:"79 zip codes color-coded by what your budget actually buys." },
       { id:"home-cost", ico:"🔧", title:"STL Home Cost Survival Guide",   sub:"Walk the property, flag issues, get St. Louis repair estimates." },
-      { id:"compare",   ico:"⚖️", title:"Compare Properties",    sub:"Two homes side by side — true monthly cost, taxes, 30-year difference." },
-      { id:"fails",     ico:"⚠️", title:"Common Home Failures",  sub:"Visual guide to the most expensive defects in St. Louis housing stock." }
+      { id:"compare",   ico:"⚖️", title:"Compare STL Properties",    sub:"Two homes side by side — true monthly cost, taxes, 30-year difference." },
+      { id:"fails",     ico:"⚠️", title:"STL Common Home Failures",  sub:"Visual guide to the most expensive defects in St. Louis housing stock." }
     ];
 
     var strip =
@@ -1354,11 +1354,11 @@ function closeDrawer() {
     }
 
     var toolTitles = {
-      "prep":      "Open House Prep",
-      "afford":    "Affordability Map",
-      "home-cost": "Cost Survival Guide",
-      "compare":   "Compare Properties",
-      "fails":     "Common Home Failures"
+      "prep":      "STL Open House Prep",
+      "afford":    "STL Affordability Map",
+      "home-cost": "STL Home Cost Survival Guide",
+      "compare":   "Compare STL Properties",
+      "fails":     "STL Common Home Failures"
     };
 
     /* Tool URL map — each tool is a standalone HTML page loaded in an iframe */
