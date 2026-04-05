@@ -1376,7 +1376,7 @@ function closeDrawer() {
         '<button class="tool-panel-close" id="tool-panel-close" type="button">&#10005;</button>' +
       '</div>' +
       '<iframe id="tool-iframe" src="' + toolUrl + '" ' +
-        'style="flex:1;width:100%;border:none;background:#050505;display:block;" ' +
+        'style="flex:1;width:100%;height:100%;border:none;background:#050505;display:block;overflow:auto;"' +
         'allow="geolocation" loading="lazy"></iframe>' +
       '<div class="tool-exit-card" id="tool-exit-card"></div>';
 
