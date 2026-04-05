@@ -161,7 +161,7 @@ svg {
   justify-content: space-between;
   gap: 10px;
   flex-shrink: 0;
-  z-index: 50;
+  z-index: 200;
   position: relative;
 }
 
