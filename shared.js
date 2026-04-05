@@ -548,6 +548,7 @@
         '<span class="scene-chip-ico">' + renderIcon(chip.icon || "check") + '</span>' +
         '<span>' + (chip.label || "") + '</span>';
       btn.addEventListener("click", function () {
+        if (chip.action)                       { chip.action(); return; }
         if (chip.deep)                         { showDeep(chip.deep.title, chip.deep.body); return; }
         if (chip.cueIndex != null)             { activateSpotlightFromCueIndex(chip.cueIndex); }
       });
