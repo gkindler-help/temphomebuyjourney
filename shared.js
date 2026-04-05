@@ -1204,7 +1204,7 @@ function closeDrawer() {
     var tools = [
       { id:"prep",      ico:"🏚", title:"Open House Prep",      sub:"Competition, true monthly cost, price tiers by zip — before you walk in." },
       { id:"afford",    ico:"🗺", title:"Affordability Map",     sub:"79 zip codes color-coded by what your budget actually buys." },
-      { id:"home-cost", ico:"🔧", title:"Cost Survival Guide",   sub:"Walk the property, flag issues, get St. Louis repair estimates." },
+      { id:"home-cost", ico:"🔧", title:"STL Home Cost Survival Guide",   sub:"Walk the property, flag issues, get St. Louis repair estimates." },
       { id:"compare",   ico:"⚖️", title:"Compare Properties",    sub:"Two homes side by side — true monthly cost, taxes, 30-year difference." },
       { id:"fails",     ico:"⚠️", title:"Common Home Failures",  sub:"Visual guide to the most expensive defects in St. Louis housing stock." }
     ];
