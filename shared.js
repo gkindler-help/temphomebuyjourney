@@ -491,7 +491,7 @@
     dismissInterrupt(true);
     closeDrawer();
     clearVisualCues();
-    renderSceneChips(scene.chips   || []);
+    renderSceneChips(_mergeRegistryChips(scene.chips || [], currentSceneIndex));
     renderSceneCues(scene.cues    || []);
     buildChoices(scene.choices  || []);
 
@@ -535,7 +535,31 @@
   /* ============================================================
      CHIPS
      ============================================================ */
+function _mergeRegistryChips(sceneChips, sceneIdx) {
+    var chNum    = getChapterNumber ? getChapterNumber() : 0;
+    var registry = window.RESOURCES_REGISTRY || [];
+    var injected = [];
 
+    registry.forEach(function (entry) {
+      (entry.citations || []).forEach(function (cit) {
+        if (cit.chapter === chNum && cit.scene === sceneIdx) {
+          injected.push({
+            label:  entry.title,
+            action: function () {
+              if (entry.tool && entry.toolId) {
+                closeDashboard();
+                openToolPanel(entry.toolId);
+              } else {
+                window.location.href = entry.url || '#';
+              }
+            }
+          });
+        }
+      });
+    });
+
+    return sceneChips.concat(injected);
+  }
   function renderSceneChips(chips) {
     var wrap = byId("scene-chip-row");
     if (!wrap) return;
