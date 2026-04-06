@@ -400,6 +400,11 @@ window.CHAPTER_LABEL = 'STL Home Cost Survival Guide';
 window.PREV_FILE     = 'index.html';
 window.SCENES        = [];
 
+/* Suppress the shared.js dashboard bar when running inside a demo iframe */
+if (window.location.search.indexOf('demo=1') !== -1) {
+  window.SUPPRESS_DASHBOARD = true;
+}
+
 window.TOOL_MODULES = window.TOOL_MODULES || {};
 window.TOOL_MODULES['home-cost'] = (function () {
   'use strict';
@@ -1167,6 +1172,19 @@ window.TOOL_MODULES['home-cost'] = (function () {
   var _drawerH = 200;
 
   /* Receive config and action commands from parent */
+  /* Poll until #hc-repair-list has children, then signal parent the iframe is ready */
+  (function () {
+    var poll = setInterval(function () {
+      var list = document.getElementById('hc-repair-list');
+      if (list && list.children.length > 0) {
+        clearInterval(poll);
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({ hcDemoReady: true }, '*');
+        }
+      }
+    }, 80);
+  })();
+
   window.addEventListener('message', function (e) {
     var msg = e.data;
     if (!msg || !msg.hcDemo) return;
