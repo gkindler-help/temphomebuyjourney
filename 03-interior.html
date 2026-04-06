@@ -313,6 +313,118 @@ window.SCENES = [
   ],
   nextLabel:'Pre-Offer Strategy \u2192',
   nextFile:'05-pre-offer.html',
+  nextChapter:4
+},
+// 14 — TOOL DEMO
+{
+  bg:'about:blank',
+  george:'serious',
+  room:'Before Your Next Showing',
+  title:'One more thing before we move on.',
+  sub:'I built a tool for exactly what we just walked through.',
+  demoIframe:'home-cost.html?demo=1',
+  interrupt:{
+    title:'Before your next showing.',
+    text:'I built a tool that turns what you see in a house into a number you can negotiate with. Want to see how it works?',
+    btnText:'Show me how it works'
+  },
+  choices:[
+    {label:'Show me how it works',
+     response:'Watch what happens when you walk a house with this open. I\'ll show you.',
+     demoStep:1
+    },
+    {label:'What problem does this solve?',
+     response:'Before you write an offer you\'re committing earnest money, inspection costs, and time — on one house. This tool helps you decide if that commitment makes sense before you make it.',
+     demoStep:1
+    },
+    {label:'Is this just for buyers with an agent?',
+     response:'No. Especially useful at open houses. Walk through, flag what you see, get a ballpark on what you\'re looking at. You still need a contractor to confirm — but this tells you whether it\'s worth finding out.',
+     demoStep:1
+    }
+  ],
+  demoSteps:[
+    // Step 1 — Inspect list, Windows and Sewer Lateral
+    {
+      georgeText:'You tap what you see. It builds your list as you walk the house.',
+      sequence:[
+        {action:'scroll-to', itemId:'windows',   delay:500},
+        {action:'select-item', itemId:'windows',  delay:2000},
+        {action:'scroll-to', itemId:'sewer',      delay:4500},
+        {action:'select-item', itemId:'sewer',    delay:6000},
+        {action:'scroll-top',                     delay:8500},
+        {action:'highlight-badge', tab:'inspect', delay:9500}
+      ],
+      choices:[
+        {label:'How accurate are these numbers?',
+         response:'These are ranges based on St. Louis contractor rates — not guarantees. You still need a licensed contractor to walk the home and give you an actual bid. What this tells you is whether the repair is a $3,000 conversation or a $30,000 one.'
+        },
+        {label:'What zones can I flag?',
+         response:'Roof, chimney, exterior walls, windows, garage, HVAC, electrical panel, basement, and sewer lateral. The items that move the needle on whether a house is worth pursuing.'
+        },
+        {label:'Can I use this at an open house without an agent?',
+         response:'Yes. Walk through, tap what you see, leave with enough information to decide if this property is worth spending inspection money on.'
+        }
+      ]
+    },
+    // Step 2 — Measure tab, paint a room
+    {
+      georgeText:'Room by room, it calculates St. Louis contractor rates — not what Google says nationally.',
+      sequence:[
+        {action:'switch-tab', tab:'measure',                        delay:500},
+        {action:'measure-demo', length:20, width:15, workType:'paint', delay:1500}
+      ],
+      choices:[
+        {label:'What work types does it cover?',
+         response:'Interior paint, drywall, flooring, demo, tile, and concrete. Enter the dimensions and it gives you a St. Louis rate range for that work. A contractor will give you the real number — this tells you what ballpark you\'re in.'
+        },
+        {label:'How precise does the measurement need to be?',
+         response:'Close enough to make a decision. You\'re not pulling permits with this number — you\'re deciding whether the property is worth tying up your earnest money and inspection budget.'
+        },
+        {label:'Can I measure multiple rooms?',
+         response:'Yes. Add each room to the SF summary and it accumulates the total. Merge it into your full report when you\'re done walking the house.'
+        }
+      ]
+    },
+    // Step 3 — Report tab
+    {
+      georgeText:'That midpoint is your number. It\'s what you bring to the offer conversation — or the inspection negotiation.',
+      sequence:[
+        {action:'switch-tab', tab:'report', delay:500}
+      ],
+      choices:[
+        {label:'How do I use the midpoint in an offer?',
+         response:'The midpoint gives you a defensible starting point for a price reduction or inspection credit request. Your contractor\'s actual bid is the number you negotiate with — this gets you to the table with context before you even book the inspection.'
+        },
+        {label:'What if the seller pushes back?',
+         response:'Then you have a real conversation backed by real numbers. A flagged Federal Pacific panel isn\'t an opinion — it\'s an insurance issue. Knowing that before you write the offer changes how you price it.'
+        },
+        {label:'Can I save this report?',
+         response:'Copy it to clipboard or email it to yourself from the Send tab. Every flagged item, the cost range, and the midpoint — formatted and ready to share with a contractor or your agent.'
+        }
+      ]
+    },
+    // Step 4 — Send tab
+    {
+      georgeText:'Email it to yourself. Check the box and I\'ll follow up with what that number means for your offer in that zip code. No obligation.',
+      sequence:[
+        {action:'switch-tab', tab:'send',           delay:500},
+        {action:'check-cc',                         delay:2000}
+      ],
+      choices:[
+        {label:'What do you do with that information?',
+         response:'I look at what you flagged against the zip code and price point. Then I tell you whether the repair picture justifies the asking price or whether you\'re walking into a project that doesn\'t pencil. That call is free.'
+        },
+        {label:'What if I\'m not ready to work with an agent?',
+         response:'Send me the report. I\'ll tell you whether what you flagged is normal for that zip code and price range — no obligation. If the numbers don\'t work I\'ll tell you that too.'
+        },
+        {label:'Is this just a sales pitch?',
+         response:'The tool works whether you call me or not. I built it because too many buyers were spending inspection money on houses they would have passed on if they\'d seen the repair picture first.'
+        }
+      ]
+    }
+  ],
+  nextLabel:'Pre-Offer Strategy \u2192',
+  nextFile:'05-pre-offer.html',
   nextChapter:4,
   isLast:true
 }
