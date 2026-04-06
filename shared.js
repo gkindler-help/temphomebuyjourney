@@ -1450,7 +1450,7 @@ var chNum2 = parseInt(item.getAttribute("data-ch"), 10);
 var step   = item.getAttribute("data-step");
 if (file) {
   closeDashboard();
-  if (step !== null) state.lastStep = parseInt(step, 10);
+  if (step) state.lastStep = parseInt(step, 10);
   jumpTo(file, chNum2);
 }
         });
