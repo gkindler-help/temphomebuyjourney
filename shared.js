@@ -1317,9 +1317,10 @@ function closeDrawer() {
     bar.className = "dash-bar";
     bar.id        = "dash-bar";
     bar.innerHTML =
-      '<button class="dash-tab" id="dash-tab-tools"    type="button">Tools</button>'    +
-      '<button class="dash-tab" id="dash-tab-resources" type="button">Resources</button>' +
-      '<button class="dash-tab" id="dash-tab-journey"  type="button">Journey</button>';
+      '<button class="dash-tab" id="dash-tab-tools"         type="button">Tools</button>'         +
+      '<button class="dash-tab" id="dash-tab-resources"     type="button">Resources</button>'     +
+      '<button class="dash-tab" id="dash-tab-neighborhoods" type="button">Neighborhoods</button>' +
+      '<button class="dash-tab" id="dash-tab-journey"       type="button">Journey</button>';
 
     /* Inject AFTER the header (.hdr) inside .app so it sits below the header in the flow */
     var app = document.querySelector(".app") || document.querySelector("#app");
@@ -1336,9 +1337,10 @@ function closeDrawer() {
       document.body.insertBefore(bar, document.body.firstChild);
     }
 
-    safelyBind(byId("dash-tab-tools"),     "click", function () { openDashboard("tools"); });
-    safelyBind(byId("dash-tab-resources"), "click", function () { openDashboard("resources"); });
-    safelyBind(byId("dash-tab-journey"),   "click", function () { openDashboard("journey"); });
+    safelyBind(byId("dash-tab-tools"),         "click", function () { openDashboard("tools"); });
+    safelyBind(byId("dash-tab-resources"),     "click", function () { openDashboard("resources"); });
+    safelyBind(byId("dash-tab-neighborhoods"), "click", function () { openDashboard("neighborhoods"); });
+    safelyBind(byId("dash-tab-journey"),       "click", function () { openDashboard("journey"); });
   }
 
   function openDashboard(tab) {
@@ -1351,7 +1353,7 @@ function closeDrawer() {
     _dashActiveTab = tab;
 
     /* Update tab active state */
-    ["tools","resources","journey"].forEach(function (t) {
+    ["tools","resources","neighborhoods","journey"].forEach(function (t) {
       var el = byId("dash-tab-" + t);
       if (el) toggleClass(el, "active", t === tab);
     });
@@ -1377,7 +1379,7 @@ function closeDrawer() {
   function closeDashboard() {
     if (_dashPanelEl) _dashPanelEl.classList.remove("open");
     _dashActiveTab = null;
-    ["tools","resources","journey"].forEach(function (t) {
+    ["tools","resources","neighborhoods","journey"].forEach(function (t) {
       var el = byId("dash-tab-" + t);
       if (el) el.classList.remove("active");
     });
@@ -1386,8 +1388,9 @@ function closeDrawer() {
   function _buildDashPanelHTML(tab) {
     var chNum = getChapterNumber ? getChapterNumber() : 0;
 
-    var hdrTitle = tab === "tools"     ? "Tools" :
-                   tab === "resources" ? "Resources" : "Journey";
+    var hdrTitle = tab === "tools"          ? "Tools"         :
+                   tab === "resources"    ? "Resources"    :
+                   tab === "neighborhoods"? "Neighborhoods" : "Journey";
 
     var header =
       '<div class="tool-panel-header">' +
@@ -1401,6 +1404,8 @@ function closeDrawer() {
       body = _buildToolSelectorHTML();
     } else if (tab === "resources") {
       body = _buildResourcesPanelHTML(chNum);
+    } else if (tab === "neighborhoods") {
+      body = _buildNeighborhoodsPanelHTML();
     } else {
       body = _buildJourneyPanelHTML(chNum);
     }
@@ -1411,7 +1416,15 @@ function closeDrawer() {
   function _bindDashPanelEvents(tab) {
     safelyBind(byId("dash-close"), "click", closeDashboard);
 
-    if (tab === "tools") {
+    if (tab === "neighborhoods") {
+      var hoodCards = _dashPanelEl.querySelectorAll(".tool-card[data-hood-url]");
+      Array.prototype.forEach.call(hoodCards, function (card) {
+        card.addEventListener("click", function () {
+          var url = card.getAttribute("data-hood-url");
+          if (url) { closeDashboard(); window.location.href = url; }
+        });
+      });
+    } else if (tab === "tools") {
       var cards = _dashPanelEl.querySelectorAll(".tool-card");
       Array.prototype.forEach.call(cards, function (card) {
         card.addEventListener("click", function () {
@@ -1573,6 +1586,50 @@ function closeDrawer() {
         '</div>' +
       '</div>'
     );
+  }
+
+  function _buildNeighborhoodsPanelHTML() {
+    var hoods = [
+      { name: "Concord",          zip: "63128 · 63123",           tag: "South County",   url: "neighborhoods/concord.html" },
+      { name: "St. Louis Hills",  zip: "63109",                        tag: "South City",     url: "neighborhoods/st-louis-hills.html" },
+      { name: "Soulard",          zip: "63104",                        tag: "South City",     url: "neighborhoods/soulard.html" },
+      { name: "Tower Grove South",zip: "63116",                        tag: "South City",     url: "neighborhoods/tower-grove-south.html" },
+      { name: "Lafayette Square", zip: "63104",                        tag: "Midtown",        url: "neighborhoods/lafayette-square.html" },
+      { name: "Central West End", zip: "63108",                        tag: "West End",       url: "neighborhoods/central-west-end.html" },
+      { name: "The Hill",         zip: "63110",                        tag: "Southwest City", url: "neighborhoods/the-hill.html" },
+      { name: "Dogtown",          zip: "63139",                        tag: "Southwest City", url: "neighborhoods/dogtown.html" },
+      { name: "Benton Park",      zip: "63118",                        tag: "South City",     url: "neighborhoods/benton-park.html" },
+      { name: "Shaw",             zip: "63110",                        tag: "Southwest City", url: "neighborhoods/shaw.html" },
+      { name: "Kirkwood",         zip: "63122",                        tag: "Inner West",     url: "neighborhoods/kirkwood.html" },
+      { name: "Webster Groves",   zip: "63119",                        tag: "Inner West",     url: "neighborhoods/webster-groves.html" },
+      { name: "Clayton",          zip: "63105",                        tag: "Inner West",     url: "neighborhoods/clayton.html" },
+      { name: "University City",  zip: "63130 · 63133",           tag: "Inner West",     url: "neighborhoods/university-city.html" },
+      { name: "Maplewood",        zip: "63143",                        tag: "Inner West",     url: "neighborhoods/maplewood.html" },
+      { name: "Ballwin",          zip: "63011 · 63021",           tag: "West County",    url: "neighborhoods/ballwin.html" },
+      { name: "Chesterfield",     zip: "63005 · 63017 · 63141", tag: "West County", url: "neighborhoods/chesterfield.html" }
+    ];
+
+    var strip =
+      '<div class="tool-data-strip" style="margin:16px 16px 0;">' +
+        '<div class="tool-data-stat"><div class="tool-data-num">17</div><div class="tool-data-lbl">Neighborhoods</div></div>' +
+        '<div class="tool-data-stat"><div class="tool-data-num">79</div><div class="tool-data-lbl">ZIP Codes</div></div>' +
+        '<div class="tool-data-stat"><div class="tool-data-num">2025\u201326</div><div class="tool-data-lbl">MARIS Data</div></div>' +
+      '</div>';
+
+    var cards = hoods.map(function (h) {
+      return (
+        '<div class="tool-card" data-hood-url="' + h.url + '">' +
+          '<div class="tool-card-ico">&#127968;</div>' +
+          '<div class="tool-card-copy">' +
+            '<div class="tool-card-title">' + h.name + '</div>' +
+            '<div class="tool-card-sub">' + h.tag + ' \u00b7 ' + h.zip + '</div>' +
+          '</div>' +
+          '<div class="tool-card-arr">\u203a</div>' +
+        '</div>'
+      );
+    }).join("");
+
+    return strip + '<div class="tool-selector">' + cards + '</div>';
   }
 
   function _buildJourneyPanelHTML(chNum) {
