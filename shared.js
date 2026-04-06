@@ -1585,7 +1585,7 @@ if (file) {
       );
     }).join("");
 
-    return '<div class="journey-panel">' + items +
+    return '<div class="journey-panel">' + items +   '<div style="border-top:1px solid var(--line);margin:8px 0 4px;padding:8px 14px 0;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);">Tools</div>' +
   '<div class="journey-panel-item" data-file="03-interior.html" data-ch="3" data-step="14">' +
     '<div class="ji-dot"></div>' +
     '<div class="ji-icon">' + renderIcon('house') + '</div>' +
