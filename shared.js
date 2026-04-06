@@ -1590,23 +1590,23 @@ function closeDrawer() {
 
   function _buildNeighborhoodsPanelHTML() {
     var hoods = [
-      { name: "Concord",          zip: "63128 · 63123",           tag: "South County",   url: "neighborhoods/concord.html" },
-      { name: "St. Louis Hills",  zip: "63109",                        tag: "South City",     url: "neighborhoods/st-louis-hills.html" },
-      { name: "Soulard",          zip: "63104",                        tag: "South City",     url: "neighborhoods/soulard.html" },
-      { name: "Tower Grove South",zip: "63116",                        tag: "South City",     url: "neighborhoods/tower-grove-south.html" },
-      { name: "Lafayette Square", zip: "63104",                        tag: "Midtown",        url: "neighborhoods/lafayette-square.html" },
-      { name: "Central West End", zip: "63108",                        tag: "West End",       url: "neighborhoods/central-west-end.html" },
-      { name: "The Hill",         zip: "63110",                        tag: "Southwest City", url: "neighborhoods/the-hill.html" },
-      { name: "Dogtown",          zip: "63139",                        tag: "Southwest City", url: "neighborhoods/dogtown.html" },
-      { name: "Benton Park",      zip: "63118",                        tag: "South City",     url: "neighborhoods/benton-park.html" },
-      { name: "Shaw",             zip: "63110",                        tag: "Southwest City", url: "neighborhoods/shaw.html" },
-      { name: "Kirkwood",         zip: "63122",                        tag: "Inner West",     url: "neighborhoods/kirkwood.html" },
-      { name: "Webster Groves",   zip: "63119",                        tag: "Inner West",     url: "neighborhoods/webster-groves.html" },
-      { name: "Clayton",          zip: "63105",                        tag: "Inner West",     url: "neighborhoods/clayton.html" },
-      { name: "University City",  zip: "63130 · 63133",           tag: "Inner West",     url: "neighborhoods/university-city.html" },
-      { name: "Maplewood",        zip: "63143",                        tag: "Inner West",     url: "neighborhoods/maplewood.html" },
-      { name: "Ballwin",          zip: "63011 · 63021",           tag: "West County",    url: "neighborhoods/ballwin.html" },
-      { name: "Chesterfield",     zip: "63005 · 63017 · 63141", tag: "West County", url: "neighborhoods/chesterfield.html" }
+      { name: "Concord",          zip: "63128 · 63123",           tag: "South County",   url: "/concord.html" },
+      { name: "St. Louis Hills",  zip: "63109",                        tag: "South City",     url: "/st-louis-hills.html" },
+      { name: "Soulard",          zip: "63104",                        tag: "South City",     url: "/soulard.html" },
+      { name: "Tower Grove South",zip: "63116",                        tag: "South City",     url: "/tower-grove-south.html" },
+      { name: "Lafayette Square", zip: "63104",                        tag: "Midtown",        url: "/lafayette-square.html" },
+      { name: "Central West End", zip: "63108",                        tag: "West End",       url: "/central-west-end.html" },
+      { name: "The Hill",         zip: "63110",                        tag: "Southwest City", url: "/the-hill.html" },
+      { name: "Dogtown",          zip: "63139",                        tag: "Southwest City", url: "/dogtown.html" },
+      { name: "Benton Park",      zip: "63118",                        tag: "South City",     url: "/benton-park.html" },
+      { name: "Shaw",             zip: "63110",                        tag: "Southwest City", url: "/shaw.html" },
+      { name: "Kirkwood",         zip: "63122",                        tag: "Inner West",     url: "/kirkwood.html" },
+      { name: "Webster Groves",   zip: "63119",                        tag: "Inner West",     url: "/webster-groves.html" },
+      { name: "Clayton",          zip: "63105",                        tag: "Inner West",     url: "/clayton.html" },
+      { name: "University City",  zip: "63130 · 63133",           tag: "Inner West",     url: "/university-city.html" },
+      { name: "Maplewood",        zip: "63143",                        tag: "Inner West",     url: "/maplewood.html" },
+      { name: "Ballwin",          zip: "63011 · 63021",           tag: "West County",    url: "/ballwin.html" },
+      { name: "Chesterfield",     zip: "63005 · 63017 · 63141", tag: "West County", url: "/chesterfield.html" }
     ];
 
     var strip =
