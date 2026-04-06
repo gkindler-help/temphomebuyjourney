@@ -112,6 +112,9 @@
   var currentSceneIndex   = 0;
   var interruptDismissed  = false;
   var interruptTimer      = null;
+  var _demoIframe         = null;
+  var _demoStepIndex      = 0;
+  var _demoScene          = null;
   var spotlightTimeout    = null;
 
   function loadState() {
@@ -459,9 +462,15 @@
 
     currentSceneIndex = idx;
 
-    /* Allow chapter-specific photo-reveal override */
+  /* Allow chapter-specific photo-reveal override */
     if (scene.type === "photo-reveal" && typeof window.renderPhotoReveal === "function") {
       window.renderPhotoReveal(scene, idx);
+      return;
+    }
+
+    /* Demo scene — iframe fills stage, Next locked until demo completes */
+    if (scene.demoIframe) {
+      _renderDemoScene(scene, idx);
       return;
     }
 
@@ -491,6 +500,15 @@
     dismissInterrupt(true);
     closeDrawer();
     clearVisualCues();
+
+    /* Clean up demo iframe if leaving a demo scene */
+    var oldIframe = byId("demo-iframe");
+    if (oldIframe) oldIframe.remove();
+    _demoIframe = null;
+    var gf0 = byId("george-float");
+    if (gf0) gf0.style.opacity = "1";
+    var sc0 = byId("scene-caption");
+    if (sc0) sc0.style.opacity = "1";
     renderSceneChips(_mergeRegistryChips(scene.chips || [], currentSceneIndex));
     renderSceneCues(scene.cues    || []);
     buildChoices(scene.choices  || []);
@@ -507,7 +525,7 @@
         btnNext.textContent = "Next \u2192";
         btnNext.classList.remove("gold");
       }
-      btnNext.disabled = false;
+     btnNext.disabled = !!scene.demoIframe;
     }
 
     if (scene.interrupt) {
@@ -531,7 +549,197 @@
 
     track("scene_view", { chapter: getChapterNumber(), scene: idx, room: scene.room || "" });
   }
+/* ============================================================
+     DEMO SCENE
+     ============================================================ */
 
+  function _renderDemoScene(scene, idx) {
+    _demoScene     = scene;
+    _demoStepIndex = 0;
+
+    setProgress(idx, getScenes().length);
+    setText("scene-lbl", scene.room || "");
+
+    /* Hide George float and caption — iframe fills stage */
+    var gf = byId("george-float");
+    var sc = byId("scene-caption");
+    if (gf) gf.style.opacity = "0";
+    if (sc) sc.style.opacity = "0";
+
+    /* Clear any existing demo iframe */
+    var stage = byId("stage");
+    var existing = byId("demo-iframe");
+    if (existing) existing.remove();
+
+    /* Build iframe */
+    _demoIframe = document.createElement("iframe");
+    _demoIframe.id = "demo-iframe";
+    _demoIframe.src = scene.demoIframe;
+    _demoIframe.setAttribute("allow", "geolocation");
+    _demoIframe.style.cssText = [
+      "position:absolute",
+      "inset:0",
+      "width:100%",
+      "height:100%",
+      "border:none",
+      "z-index:4",
+      "background:var(--bg)",
+      "pointer-events:none"
+    ].join(";");
+
+    if (stage) stage.appendChild(_demoIframe);
+
+    /* Send init message once iframe loads */
+    _demoIframe.addEventListener("load", function () {
+      var stageEl  = byId("stage");
+      var drawerEl = byId("drawer");
+      var stageH   = stageEl  ? stageEl.offsetHeight  : 420;
+      var drawerH  = drawerEl ? drawerEl.offsetHeight  : 200;
+      _demoIframe.contentWindow.postMessage({
+        hcDemo:      true,
+        action:      "init",
+        stageHeight: stageH,
+        drawerHeight: drawerH
+      }, "*");
+    });
+
+    /* Keep Next locked, Skip always works via prevScene/nextScene */
+    var btnNext = byId("btn-next");
+    if (btnNext) { btnNext.disabled = true; btnNext.classList.remove("gold"); }
+
+    /* Show interrupt first — George appears on top of iframe */
+    dismissInterrupt(true);
+    closeDrawer();
+    buildChoices(scene.choices || []);
+
+    /* Wire choice taps to start demo step 1 */
+    _wireDemoChoices(scene.choices || [], 0);
+
+    if (scene.interrupt) {
+      interruptDismissed = false;
+      if (interruptTimer) clearTimeout(interruptTimer);
+      interruptTimer = setTimeout(function () {
+        if (!interruptDismissed) showInterrupt(scene.interrupt);
+      }, 800);
+    } else {
+      setTimeout(openDrawer, 700);
+    }
+
+    state.lastStep    = idx;
+    state.lastChapter = getChapterNumber();
+    saveState();
+  }
+
+  function _wireDemoChoices(choices, stepIdx) {
+    /* Rebuild choices with demo-aware click handlers */
+    var container = byId("choices");
+    if (!container) return;
+    container.innerHTML = "";
+    choices.forEach(function (c) {
+      var btn = document.createElement("button");
+      btn.className = "choice-btn";
+      btn.textContent = c.label;
+      btn.addEventListener("click", function () {
+        /* Show response */
+        var resp = byId("drawer-response");
+        if (resp) { resp.textContent = c.response || ""; resp.classList.add("show"); }
+        /* If this choice triggers a demo step, run it */
+        if (c.demoStep != null) {
+          _runDemoStep(c.demoStep - 1);
+        }
+      });
+      container.appendChild(btn);
+    });
+    openDrawer();
+  }
+
+  function _runDemoStep(stepIdx) {
+    if (!_demoScene || !_demoScene.demoSteps) return;
+    var step = _demoScene.demoSteps[stepIdx];
+    if (!step) return;
+
+    _demoStepIndex = stepIdx;
+
+    /* Dismiss interrupt and close drawer during demo */
+    dismissInterrupt(true);
+    closeDrawer();
+
+    /* Hide George, show iframe fully */
+    var gf = byId("george-float");
+    if (gf) gf.style.opacity = "0";
+
+    /* Fire postMessage sequence */
+    (step.sequence || []).forEach(function (cmd) {
+      setTimeout(function () {
+        if (!_demoIframe || !_demoIframe.contentWindow) return;
+        var msg = { hcDemo: true, action: cmd.action };
+        if (cmd.itemId)   msg.itemId   = cmd.itemId;
+        if (cmd.tab)      msg.tab      = cmd.tab;
+        if (cmd.length)   msg.length   = cmd.length;
+        if (cmd.width)    msg.width    = cmd.width;
+        if (cmd.workType) msg.workType = cmd.workType;
+        _demoIframe.contentWindow.postMessage(msg, "*");
+      }, cmd.delay || 0);
+    });
+
+    /* After sequence completes — show George text and next step choices */
+    var lastDelay = 0;
+    (step.sequence || []).forEach(function (cmd) {
+      if ((cmd.delay || 0) > lastDelay) lastDelay = cmd.delay || 0;
+    });
+
+    setTimeout(function () {
+      /* George reappears with step text */
+      var gf2 = byId("george-float");
+      if (gf2) gf2.style.opacity = "1";
+      setText("sc-sub", step.georgeText || "");
+
+      var isLastStep = (stepIdx >= _demoScene.demoSteps.length - 1);
+
+      if (isLastStep) {
+        /* Demo complete — enable Next, show final choices */
+        var btnNext = byId("btn-next");
+        if (btnNext) {
+          btnNext.disabled = false;
+          btnNext.classList.add("gold");
+          btnNext.textContent = _demoScene.nextLabel || "Next \u2192";
+          /* Pulse to draw attention */
+          btnNext.style.animation = "none";
+          setTimeout(function () { btnNext.style.animation = ""; }, 50);
+        }
+        buildChoices([
+          {label: "Open the Cost Survival Guide now",
+           response: "Opening the tool now.",
+           action: function () { if (window.SharedPlatform) window.SharedPlatform.openToolPanel("home-cost"); }
+          },
+          {label: "Continue to offer strategy \u2192",
+           response: "Let\u2019s move on.",
+           action: function () { nextScene(); }
+          }
+        ]);
+      } else {
+        /* Wire next step choices */
+        _wireDemoChoices(step.choices || [], stepIdx + 1);
+        /* Update choices to trigger next step */
+        var container2 = byId("choices");
+        if (container2) {
+          Array.prototype.forEach.call(
+            container2.querySelectorAll(".choice-btn"),
+            function (btn, i) {
+              var ch = (step.choices || [])[i];
+              if (!ch) return;
+              btn.addEventListener("click", function () {
+                setTimeout(function () {
+                  _runDemoStep(stepIdx + 1);
+                }, 600);
+              });
+            }
+          );
+        }
+      }
+      openDrawer();
+    }, lastDelay + 2000);
+  }
   /* ============================================================
      CHIPS
      ============================================================ */
