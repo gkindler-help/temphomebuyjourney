@@ -603,6 +603,18 @@
       }, "*");
     });
 
+    /* Gate scroll-to commands on iframe readiness.
+       hcDemoReady is posted by home-cost.html once #hc-repair-list has children. */
+    _demoIframe._hcReady = false;
+    (function () {
+      var handler = function (e) {
+        if (!e.data || !e.data.hcDemoReady) return;
+        _demoIframe._hcReady = true;
+        window.removeEventListener("message", handler);
+      };
+      window.addEventListener("message", handler);
+    })();
+
     /* Keep Next locked, Skip always works via prevScene/nextScene */
     var btnNext = byId("btn-next");
     if (btnNext) { btnNext.disabled = true; btnNext.classList.remove("gold"); }
@@ -668,10 +680,21 @@
     var gf = byId("george-float");
     if (gf) gf.style.opacity = "0";
 
-    /* Fire postMessage sequence */
+    /* Fire postMessage sequence — gate scroll-to on iframe readiness */
     (step.sequence || []).forEach(function (cmd) {
       setTimeout(function () {
         if (!_demoIframe || !_demoIframe.contentWindow) return;
+        /* If this is a scroll-to command, wait until iframe signals hcDemoReady */
+        if (cmd.action === "scroll-to" && !_demoIframe._hcReady) {
+          var pollReady = setInterval(function () {
+            if (!_demoIframe || !_demoIframe._hcReady) return;
+            clearInterval(pollReady);
+            var msg2 = { hcDemo: true, action: cmd.action };
+            if (cmd.itemId) msg2.itemId = cmd.itemId;
+            _demoIframe.contentWindow.postMessage(msg2, "*");
+          }, 80);
+          return;
+        }
         var msg = { hcDemo: true, action: cmd.action };
         if (cmd.itemId)   msg.itemId   = cmd.itemId;
         if (cmd.tab)      msg.tab      = cmd.tab;
@@ -1755,7 +1778,10 @@ function closeDrawer() {
     }
 
     /* Render dashboard on every page — must run after ensureShell so .app exists */
-    renderDashboard();
+    /* Suppressed when a tool page is loaded inside a demo iframe */
+    if (!window.SUPPRESS_DASHBOARD) {
+      renderDashboard();
+    }
 
     if (!scenes.length) return;   /* index.html has no SCENES — it manages its own rendering */
     bindShellEvents();
@@ -1775,4 +1801,5 @@ function closeDrawer() {
     init();
   }
 
+})();
 })();
