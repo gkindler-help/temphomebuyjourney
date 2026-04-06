@@ -572,22 +572,12 @@ window.TOOL_MODULES['home-cost'] = (function () {
   }
 
   function wireDemoSteps() {
-    /* Intercept renderScene to run demo animation when scene has demoToolStep */
-    var origRender = window.SharedPlatform && window.SharedPlatform.renderScene;
-    if (!origRender) { setTimeout(wireDemoSteps, 100); return; }
-
-    window.SharedPlatform.renderScene = function(idx) {
-      origRender(idx);
-      var scenes = window.SCENES || [];
-      var scene = scenes[idx];
+    /* Hook into shared.js renderScene via window.onSceneRender */
+    window.onSceneRender = function(idx, scene) {
       if (scene && scene.demoToolStep) {
         setTimeout(function() { runDemoStep(scene.demoToolStep); }, 600);
       }
     };
-
-    /* Run step for current scene if it has one */
-    var currentScene = (window.SCENES || [])[0];
-    /* Scene 0 has no demoToolStep — tool just sits visible */
   }
 
   function closeDrawer() {

@@ -550,6 +550,11 @@
     saveState();
 
     track("scene_view", { chapter: getChapterNumber(), scene: idx, room: scene.room || "" });
+
+    /* Hook for resource chapter demo controllers */
+    if (typeof window.onSceneRender === "function") {
+      window.onSceneRender(idx, scene);
+    }
   }
 /* ============================================================
      DEMO SCENE
