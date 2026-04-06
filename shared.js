@@ -1339,7 +1339,9 @@ function closeDrawer() {
 
     safelyBind(byId("dash-tab-tools"),         "click", function () { openDashboard("tools"); });
     safelyBind(byId("dash-tab-resources"),     "click", function () { openDashboard("resources"); });
-    safelyBind(byId("dash-tab-neighborhoods"), "click", function () { openDashboard("neighborhoods"); });
+    safelyBind(byId("dash-tab-neighborhoods"), "click", function () {
+      _ensureNeighborhoodsRegistry(function () { openDashboard("neighborhoods"); });
+    });
     safelyBind(byId("dash-tab-journey"),       "click", function () { openDashboard("journey"); });
   }
 
@@ -1589,6 +1591,15 @@ function closeDrawer() {
         '</div>' +
       '</div>'
     );
+  }
+
+  function _ensureNeighborhoodsRegistry(cb) {
+    if (window.NEIGHBORHOODS_REGISTRY) { cb(); return; }
+    var s = document.createElement("script");
+    s.src = "neighborhoods.js";
+    s.onload = cb;
+    s.onerror = cb; /* fail gracefully — registry will just be empty */
+    document.head.appendChild(s);
   }
 
   function _buildNeighborhoodsPanelHTML() {
