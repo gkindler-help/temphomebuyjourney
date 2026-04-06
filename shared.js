@@ -1445,12 +1445,14 @@ function closeDrawer() {
       var items = _dashPanelEl.querySelectorAll(".journey-panel-item");
       Array.prototype.forEach.call(items, function (item) {
         item.addEventListener("click", function () {
-          var file  = item.getAttribute("data-file");
-          var chNum2 = parseInt(item.getAttribute("data-ch"), 10);
-          if (file) {
-            closeDashboard();
-            jumpTo(file, chNum2);
-          }
+var file   = item.getAttribute("data-file");
+var chNum2 = parseInt(item.getAttribute("data-ch"), 10);
+var step   = item.getAttribute("data-step");
+if (file) {
+  closeDashboard();
+  if (step !== null) state.lastStep = parseInt(step, 10);
+  jumpTo(file, chNum2);
+}
         });
       });
     }
@@ -1572,7 +1574,14 @@ function closeDrawer() {
       );
     }).join("");
 
-    return '<div class="journey-panel">' + items + '</div>';
+    return '<div class="journey-panel">' + items +
+  '<div class="journey-panel-item" data-file="03-interior.html" data-ch="3" data-step="14">' +
+    '<div class="ji-dot"></div>' +
+    '<div class="ji-icon">' + renderIcon('house') + '</div>' +
+    '<div class="ji-lbl">How to: STL Home Cost Survival Guide</div>' +
+    '<div class="ji-arr">›</div>' +
+  '</div>' +
+'</div>';
   }
 
   /* ============================================================
