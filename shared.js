@@ -1437,12 +1437,11 @@ function closeDrawer() {
             state.lastPage    = window.location.pathname.split("/").pop() || "index.html";
             state.lastChapter = getChapterNumber ? getChapterNumber() : 0;
             saveState();
-            window.location.href = url + (section ? "#" + section : "");
+          window.location.href = url + (section ? "#" + section : "");
           }
         });
       });
-    }
-   } else {
+    } else {
       var items = _dashPanelEl.querySelectorAll(".journey-panel-item");
       Array.prototype.forEach.call(items, function (item) {
         item.addEventListener("click", function () {
