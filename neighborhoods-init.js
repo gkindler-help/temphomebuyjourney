@@ -195,17 +195,29 @@
       map.setView([38.627, -90.197], 10);
     }
 
-    /* Force Leaflet to recalculate container size after paint */
-    setTimeout(function () {
-      map.invalidateSize();
-      if (highlightFeatures.length) {
-        var hoodLayer2 = window.L.geoJSON({
-          type: 'FeatureCollection',
-          features: highlightFeatures
-        });
-        map.fitBounds(hoodLayer2.getBounds().pad(0.6));
-      }
-    }, 250);
+    /* Force Leaflet to recalculate after tool panel transition completes (~380ms)
+       Run multiple times to catch any late repaints */
+    [400, 800, 1400].forEach(function (delay) {
+      setTimeout(function () {
+        map.invalidateSize();
+        if (highlightFeatures.length) {
+          var hoodLayer2 = window.L.geoJSON({
+            type: 'FeatureCollection',
+            features: highlightFeatures
+          });
+          map.fitBounds(hoodLayer2.getBounds().pad(0.6));
+        }
+      }, delay);
+    });
+
+    /* Register destroy hook so shared.js closeToolPanel can clean up */
+    window._hoodMapDestroy = function () {
+      try {
+        map.remove();
+        var wrapper = document.getElementById('hood-map-wrapper');
+        if (wrapper && wrapper.parentNode) wrapper.parentNode.removeChild(wrapper);
+      } catch (e) {}
+    };
   }
 
   /* ============================================================
