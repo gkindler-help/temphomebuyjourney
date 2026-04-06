@@ -1441,26 +1441,31 @@ function closeDrawer() {
           }
         });
       });
-    } else {
-if (file) {
-  closeDashboard();
-  if (step) {
-    state.lastStep = parseInt(step, 10);
-    saveState();
-    if (chNum2 === getChapterNumber()) {
-      window.SharedPlatform.renderScene(parseInt(step, 10));
-    } else {
-      window.location.href = file;
-    }
-  } else {
-    jumpTo(file, chNum2);
-  }
-}
+ } else {
+      var items = _dashPanelEl.querySelectorAll(".journey-panel-item");
+      Array.prototype.forEach.call(items, function (item) {
+        item.addEventListener("click", function () {
+          var file   = item.getAttribute("data-file");
+          var chNum2 = parseInt(item.getAttribute("data-ch"), 10);
+          var step   = item.getAttribute("data-step");
+          if (file) {
+            closeDashboard();
+            if (step) {
+              state.lastStep = parseInt(step, 10);
+              saveState();
+              if (chNum2 === getChapterNumber()) {
+                window.SharedPlatform.renderScene(parseInt(step, 10));
+              } else {
+                window.location.href = file;
+              }
+            } else {
+              jumpTo(file, chNum2);
+            }
+          }
         });
       });
     }
   }
-
   function _buildToolSelectorHTML() {
     var tools = [
       { id:"prep",      ico:"🏚", title:"STL Open House Prep",      sub:"Competition, true monthly cost, price tiers by zip — before you walk in." },
