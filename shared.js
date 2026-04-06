@@ -1441,7 +1441,8 @@ function closeDrawer() {
           }
         });
       });
- } else {
+    }
+   } else {
       var items = _dashPanelEl.querySelectorAll(".journey-panel-item");
       Array.prototype.forEach.call(items, function (item) {
         item.addEventListener("click", function () {
