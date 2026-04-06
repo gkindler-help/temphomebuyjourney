@@ -2143,3 +2143,13 @@ svg {
   border-color: var(--gold-line);
   color: var(--text-strong);
 }
+
+/* ── RESOURCE CHAPTER DEMO MOUNT ── */
+#hc-demo-mount {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  background: var(--bg);
+  overflow-y: auto;
+  overflow-x: hidden;
+}

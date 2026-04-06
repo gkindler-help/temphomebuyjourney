@@ -133,15 +133,7 @@
 .hc-btn-secondary { width: 100%; padding: 11px; border: 1px solid var(--line-2); border-radius: 10px; background: transparent; color: var(--text-soft); font-family: var(--font-sans); font-size: 12px; font-weight: 700; cursor: pointer; margin-bottom: 6px; }
 .hc-data-source { font-size: 10px; color: var(--text-faint); text-align: center; line-height: 1.6; padding: 8px 0; }
 
-/* ── DEMO TOOL CONTAINER ── */
-#hc-demo-mount {
-  position: absolute;
-  inset: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background: var(--bg);
-  z-index: 1;
-}
+/* ── DEMO TOOL CONTAINER — styles in shared.css ── */
 
 @media (max-width: 480px) {
   .hc-sf-grid { grid-template-columns: 1fr; }
@@ -552,20 +544,13 @@ window.TOOL_MODULES['home-cost'] = (function () {
   function mount() {
     if (!window.TOOL_MODULES || !window.TOOL_MODULES['home-cost']) { setTimeout(mount, 30); return; }
 
-    /* Create the scrollable tool container inside the stage */
-    var stage = document.getElementById('stage');
-    if (!stage) { setTimeout(mount, 30); return; }
-
+    /* Mount tool as full-viewport body child — sits below shell via z-index */
     _mount = document.createElement('div');
     _mount.id = 'hc-demo-mount';
-    stage.appendChild(_mount);
+    document.body.appendChild(_mount);
 
     _mod = window.TOOL_MODULES['home-cost'];
     _mod.mount(_mount);
-
-    /* Hide george caption — tool fills stage */
-    var cap = document.getElementById('scene-caption');
-    if (cap) cap.style.opacity = '0';
 
     /* Wire scene changes to demo steps */
     wireDemoSteps();
