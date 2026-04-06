@@ -1619,7 +1619,6 @@ function closeDrawer() {
     var cards = hoods.map(function (h) {
       return (
         '<div class="tool-card" data-hood-url="' + h.url + '">' +
-          '<div class="tool-card-ico">&#127968;</div>' +
           '<div class="tool-card-copy">' +
             '<div class="tool-card-title">' + h.name + '</div>' +
             '<div class="tool-card-sub">' + h.tag + ' \u00b7 ' + h.zip + '</div>' +
