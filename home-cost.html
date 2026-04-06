@@ -1226,6 +1226,15 @@ window.TOOL_MODULES['home-cost'] = (function () {
       _runMeasureDemo(msg.length, msg.width, msg.workType);
       return;
     }
+    if (msg.action === 'check-cc') {
+  var cb = document.getElementById('hc-ccMe');
+  if (cb) {
+    cb.checked = true;
+    cb.classList.add('hc-demo-pulse');
+    setTimeout(function () { cb.classList.remove('hc-demo-pulse'); }, 2000);
+  }
+  return;
+}
   });
 
   function _scrollToItem(itemId) {
@@ -1239,16 +1248,14 @@ window.TOOL_MODULES['home-cost'] = (function () {
   }
 
   function _selectItem(itemId) {
-    var el = document.getElementById('hc-rc-' + itemId);
-    if (!el) return;
-    el.classList.add('hc-demo-pulse');
-    setTimeout(function () {
-      el.classList.remove('hc-demo-pulse');
-      el.classList.add('hc-demo-selected', 'flagged');
-      var check = el.querySelector('.hc-rc-check');
-      if (check) check.textContent = '✓';
-    }, 1800);
-  }
+  var el = document.getElementById('hc-rc-' + itemId);
+  if (!el) return;
+  el.classList.add('hc-demo-pulse');
+  setTimeout(function () {
+    el.classList.remove('hc-demo-pulse');
+    el.click();
+  }, 1800);
+}
 
   function _switchTab(tab) {
     var btns = document.querySelectorAll('.hc-tnav-btn');
