@@ -1417,12 +1417,27 @@ function closeDrawer() {
     safelyBind(byId("dash-close"), "click", closeDashboard);
 
     if (tab === "neighborhoods") {
+      /* Wire accordion drawer triggers */
+      var drawerTriggers = _dashPanelEl.querySelectorAll(".res-drawer-trigger");
+      Array.prototype.forEach.call(drawerTriggers, function(btn) {
+        btn.addEventListener("click", function() {
+          var drawer = btn.closest(".res-drawer");
+          if (!drawer) return;
+          var isOpen = drawer.classList.contains("open");
+          Array.prototype.forEach.call(
+            _dashPanelEl.querySelectorAll(".res-drawer"),
+            function(d) { d.classList.remove("open"); }
+          );
+          if (!isOpen) drawer.classList.add("open");
+        });
+      });
+      /* Wire neighborhood card clicks */
       var hoodCards = _dashPanelEl.querySelectorAll(".tool-card[data-hood-url]");
-      Array.prototype.forEach.call(hoodCards, function (card) {
-        card.addEventListener("click", function () {
-          var url  = card.getAttribute("data-hood-url");
-          var name = card.querySelector(".tool-card-title");
-          var title = name ? name.textContent : "Neighborhood";
+      Array.prototype.forEach.call(hoodCards, function(card) {
+        card.addEventListener("click", function() {
+          var url   = card.getAttribute("data-hood-url");
+          var nameEl = card.querySelector(".tool-card-title");
+          var title  = nameEl ? nameEl.textContent : "Neighborhood";
           if (url) { closeDashboard(); openNeighborhoodPanel(url, title); }
         });
       });
@@ -1593,67 +1608,151 @@ function closeDrawer() {
   function _buildNeighborhoodsPanelHTML() {
     var registry = window.NEIGHBORHOODS_REGISTRY || [];
 
-    /* Fall back to hardcoded list if registry not loaded */
-    var hoods = registry.length ? registry.map(function(n){
-      return { id: n.id, name: n.title.replace(/, (St\. Louis|Missouri)$/, ''), zip: (n.zips||[]).join(' \u00b7 '), tag: n.tag||n.group||'', url: n.url, group: n.group||'' };
+    /* Build hood lookup from registry or hardcoded fallback */
+    var hoods = registry.length ? registry.map(function(n) {
+      return {
+        id:    n.id,
+        name:  n.title.replace(/, (St\.\s*Louis|Missouri)$/, ''),
+        zip:   (n.zips || []).join(' \u00b7 '),
+        tag:   n.tag || n.group || '',
+        url:   n.url,
+        group: n.group || ''
+      };
     }) : [
-      { id: "central-west-end", name: "Central West End", zip: "63108", tag: "West End", url: "central-west-end.html" },
-      { id: "tower-grove-south", name: "Tower Grove South", zip: "63116", tag: "South City", url: "tower-grove-south.html" },
-      { id: "shaw", name: "Shaw", zip: "63110", tag: "Southwest City", url: "shaw.html" },
-      { id: "dogtown", name: "Dogtown", zip: "63139", tag: "Southwest City", url: "dogtown.html" },
-      { id: "soulard", name: "Soulard", zip: "63104", tag: "South City", url: "soulard.html" },
-      { id: "lafayette-square", name: "Lafayette Square", zip: "63104", tag: "Midtown", url: "lafayette-square.html" },
-      { id: "the-hill", name: "The Hill", zip: "63110", tag: "Southwest City", url: "the-hill.html" },
-      { id: "benton-park", name: "Benton Park", zip: "63118", tag: "South City", url: "benton-park.html" },
-      { id: "st-louis-hills", name: "St. Louis Hills", zip: "63109", tag: "South City", url: "st-louis-hills.html" },
-      { id: "kirkwood", name: "Kirkwood", zip: "63122", tag: "Inner West", url: "kirkwood.html" },
-      { id: "webster-groves", name: "Webster Groves", zip: "63119", tag: "Inner West", url: "webster-groves.html" },
-      { id: "clayton", name: "Clayton", zip: "63105", tag: "Inner West", url: "clayton.html" },
-      { id: "university-city", name: "University City", zip: "63130 · 63133", tag: "Inner West", url: "university-city.html" },
-      { id: "maplewood", name: "Maplewood", zip: "63143", tag: "Inner West", url: "maplewood.html" },
-      { id: "affton", name: "Affton", zip: "63123", tag: "South County", url: "affton.html" },
-      { id: "concord", name: "Concord", zip: "63128 · 63123", tag: "South County", url: "concord.html" },
-      { id: "crestwood", name: "Crestwood", zip: "63126", tag: "South County", url: "crestwood.html" },
-      { id: "green-park", name: "Green Park", zip: "63123", tag: "South County", url: "green-park.html" },
-      { id: "lemay", name: "Lemay", zip: "63125", tag: "South County", url: "lemay.html" },
-      { id: "mehlville", name: "Mehlville", zip: "63125", tag: "South County", url: "mehlville.html" },
-      { id: "oakville", name: "Oakville", zip: "63129", tag: "South County", url: "oakville.html" },
-      { id: "sappington", name: "Sappington", zip: "63126 · 63128", tag: "South County", url: "sappington.html" },
-      { id: "sunset-hills", name: "Sunset Hills", zip: "63127", tag: "South County", url: "sunset-hills.html" },
-      { id: "ballwin", name: "Ballwin", zip: "63011 · 63021", tag: "West County", url: "ballwin.html" },
-      { id: "chesterfield", name: "Chesterfield", zip: "63005 · 63017 · 63141", tag: "West County", url: "chesterfield.html" }
+      {id:"central-west-end",name:"Central West End",zip:"63108",tag:"West End",url:"central-west-end.html",group:"St. Louis City"},
+      {id:"tower-grove-south",name:"Tower Grove South",zip:"63116",tag:"South City",url:"tower-grove-south.html",group:"St. Louis City"},
+      {id:"shaw",name:"Shaw",zip:"63110",tag:"Southwest City",url:"shaw.html",group:"St. Louis City"},
+      {id:"dogtown",name:"Dogtown",zip:"63139",tag:"Southwest City",url:"dogtown.html",group:"St. Louis City"},
+      {id:"soulard",name:"Soulard",zip:"63104",tag:"South City",url:"soulard.html",group:"St. Louis City"},
+      {id:"lafayette-square",name:"Lafayette Square",zip:"63104",tag:"Midtown",url:"lafayette-square.html",group:"St. Louis City"},
+      {id:"the-hill",name:"The Hill",zip:"63110",tag:"Southwest City",url:"the-hill.html",group:"St. Louis City"},
+      {id:"benton-park",name:"Benton Park",zip:"63118",tag:"South City",url:"benton-park.html",group:"St. Louis City"},
+      {id:"st-louis-hills",name:"St. Louis Hills",zip:"63109",tag:"South City",url:"st-louis-hills.html",group:"St. Louis City"},
+      {id:"kirkwood",name:"Kirkwood",zip:"63122",tag:"Inner West",url:"kirkwood.html",group:"Central Corridor"},
+      {id:"webster-groves",name:"Webster Groves",zip:"63119",tag:"Inner West",url:"webster-groves.html",group:"Central Corridor"},
+      {id:"clayton",name:"Clayton",zip:"63105",tag:"Inner West",url:"clayton.html",group:"Central Corridor"},
+      {id:"university-city",name:"University City",zip:"63130 \u00b7 63133",tag:"Inner West",url:"university-city.html",group:"Central Corridor"},
+      {id:"maplewood",name:"Maplewood",zip:"63143",tag:"Inner West",url:"maplewood.html",group:"Central Corridor"},
+      {id:"florissant",name:"Florissant",zip:"63031 \u00b7 63033 \u00b7 63034",tag:"North County",url:"florissant.html",group:"North County"},
+      {id:"ferguson",name:"Ferguson",zip:"63135",tag:"North County",url:"ferguson.html",group:"North County"},
+      {id:"hazelwood",name:"Hazelwood",zip:"63042",tag:"North County",url:"hazelwood.html",group:"North County"},
+      {id:"jennings",name:"Jennings",zip:"63136",tag:"North County",url:"jennings.html",group:"North County"},
+      {id:"spanish-lake",name:"Spanish Lake",zip:"63138",tag:"North County",url:"spanish-lake.html",group:"North County"},
+      {id:"riverview",name:"Riverview",zip:"63137",tag:"North County",url:"riverview.html",group:"North County"},
+      {id:"berkeley",name:"Berkeley",zip:"63134",tag:"North County",url:"berkeley.html",group:"North County"},
+      {id:"bridgeton",name:"Bridgeton",zip:"63044",tag:"North County",url:"bridgeton.html",group:"North County"},
+      {id:"st-ann",name:"St. Ann",zip:"63074",tag:"North County",url:"st-ann.html",group:"North County"},
+      {id:"st-john",name:"St. John",zip:"63114",tag:"North County",url:"st-john.html",group:"North County"},
+      {id:"normandy",name:"Normandy",zip:"63121",tag:"North County",url:"normandy.html",group:"North County"},
+      {id:"black-jack",name:"Black Jack",zip:"63033",tag:"North County",url:"black-jack.html",group:"North County"},
+      {id:"dellwood",name:"Dellwood",zip:"63135",tag:"North County",url:"dellwood.html",group:"North County"},
+      {id:"moline-acres",name:"Moline Acres",zip:"63136",tag:"North County",url:"moline-acres.html",group:"North County"},
+      {id:"cool-valley",name:"Cool Valley",zip:"63121",tag:"North County",url:"cool-valley.html",group:"North County"},
+      {id:"pagedale",name:"Pagedale",zip:"63133",tag:"North County",url:"pagedale.html",group:"North County"},
+      {id:"wellston",name:"Wellston",zip:"63133",tag:"North County",url:"wellston.html",group:"North County"},
+      {id:"pine-lawn",name:"Pine Lawn",zip:"63120",tag:"North County",url:"pine-lawn.html",group:"North County"},
+      {id:"bel-nor",name:"Bel-Nor",zip:"63121",tag:"North County",url:"bel-nor.html",group:"North County"},
+      {id:"bel-ridge",name:"Bel-Ridge",zip:"63121",tag:"North County",url:"bel-ridge.html",group:"North County"},
+      {id:"bellefontaine-neighbors",name:"Bellefontaine Neighbors",zip:"63137",tag:"North County",url:"bellefontaine-neighbors.html",group:"North County"},
+      {id:"calverton-park",name:"Calverton Park",zip:"63033",tag:"North County",url:"calverton-park.html",group:"North County"},
+      {id:"castle-point",name:"Castle Point",zip:"63136",tag:"North County",url:"castle-point.html",group:"North County"},
+      {id:"country-club-hills",name:"Country Club Hills",zip:"63136",tag:"North County",url:"country-club-hills.html",group:"North County"},
+      {id:"edmundson",name:"Edmundson",zip:"63134",tag:"North County",url:"edmundson.html",group:"North County"},
+      {id:"flordell-hills",name:"Flordell Hills",zip:"63136",tag:"North County",url:"flordell-hills.html",group:"North County"},
+      {id:"glen-echo-park",name:"Glen Echo Park",zip:"63136",tag:"North County",url:"glen-echo-park.html",group:"North County"},
+      {id:"greendale",name:"Greendale",zip:"63136",tag:"North County",url:"greendale.html",group:"North County"},
+      {id:"hanley-hills",name:"Hanley Hills",zip:"63133",tag:"North County",url:"hanley-hills.html",group:"North County"},
+      {id:"hillsdale",name:"Hillsdale",zip:"63121",tag:"North County",url:"hillsdale.html",group:"North County"},
+      {id:"norwood-court",name:"Norwood Court",zip:"63121",tag:"North County",url:"norwood-court.html",group:"North County"},
+      {id:"northwoods",name:"Northwoods",zip:"63121",tag:"North County",url:"northwoods.html",group:"North County"},
+      {id:"olympian-village",name:"Olympian Village",zip:"63121",tag:"North County",url:"olympian-village.html",group:"North County"},
+      {id:"parkdale",name:"Parkdale",zip:"63121",tag:"North County",url:"parkdale.html",group:"North County"},
+      {id:"pasadena-hills",name:"Pasadena Hills",zip:"63121",tag:"North County",url:"pasadena-hills.html",group:"North County"},
+      {id:"pasadena-park",name:"Pasadena Park",zip:"63121",tag:"North County",url:"pasadena-park.html",group:"North County"},
+      {id:"peaceful-village",name:"Peaceful Village",zip:"63136",tag:"North County",url:"peaceful-village.html",group:"North County"},
+      {id:"scotsdale",name:"Scotsdale",zip:"63033",tag:"North County",url:"scotsdale.html",group:"North County"},
+      {id:"sycamore-hills",name:"Sycamore Hills",zip:"63114",tag:"North County",url:"sycamore-hills.html",group:"North County"},
+      {id:"uplands-park",name:"Uplands Park",zip:"63121",tag:"North County",url:"uplands-park.html",group:"North County"},
+      {id:"velda-city",name:"Velda City",zip:"63121",tag:"North County",url:"velda-city.html",group:"North County"},
+      {id:"velda-village-hills",name:"Velda Village Hills",zip:"63121",tag:"North County",url:"velda-village-hills.html",group:"North County"},
+      {id:"vinita-park",name:"Vinita Park",zip:"63114",tag:"North County",url:"vinita-park.html",group:"North County"},
+      {id:"vinita-terrace",name:"Vinita Terrace",zip:"63121",tag:"North County",url:"vinita-terrace.html",group:"North County"},
+      {id:"woodson-terrace",name:"Woodson Terrace",zip:"63134",tag:"North County",url:"woodson-terrace.html",group:"North County"},
+      {id:"charlack",name:"Charlack",zip:"63114",tag:"North County",url:"charlack.html",group:"North County"},
+      {id:"champ",name:"Champ",zip:"63114",tag:"North County",url:"champ.html",group:"North County"},
+      {id:"breckenridge-hills",name:"Breckenridge Hills",zip:"63114",tag:"North County",url:"breckenridge-hills.html",group:"North County"},
+      {id:"bellerive-acres",name:"Bellerive Acres",zip:"63121",tag:"North County",url:"bellerive-acres.html",group:"North County"},
+      {id:"beverly-hills",name:"Beverly Hills",zip:"63121",tag:"North County",url:"beverly-hills.html",group:"North County"},
+      {id:"normandy-park",name:"Normandy Park",zip:"63121",tag:"North County",url:"normandy-park.html",group:"North County"},
+      {id:"affton",name:"Affton",zip:"63123",tag:"South County",url:"affton.html",group:"South County"},
+      {id:"concord",name:"Concord",zip:"63128 \u00b7 63123",tag:"South County",url:"concord.html",group:"South County"},
+      {id:"crestwood",name:"Crestwood",zip:"63126",tag:"South County",url:"crestwood.html",group:"South County"},
+      {id:"green-park",name:"Green Park",zip:"63123",tag:"South County",url:"green-park.html",group:"South County"},
+      {id:"lemay",name:"Lemay",zip:"63125",tag:"South County",url:"lemay.html",group:"South County"},
+      {id:"mehlville",name:"Mehlville",zip:"63125",tag:"South County",url:"mehlville.html",group:"South County"},
+      {id:"oakville",name:"Oakville",zip:"63129",tag:"South County",url:"oakville.html",group:"South County"},
+      {id:"sappington",name:"Sappington",zip:"63126 \u00b7 63128",tag:"South County",url:"sappington.html",group:"South County"},
+      {id:"sunset-hills",name:"Sunset Hills",zip:"63127",tag:"South County",url:"sunset-hills.html",group:"South County"},
+      {id:"ballwin",name:"Ballwin",zip:"63011 \u00b7 63021",tag:"West County",url:"ballwin.html",group:"West County"},
+      {id:"chesterfield",name:"Chesterfield",zip:"63005 \u00b7 63017 \u00b7 63141",tag:"West County",url:"chesterfield.html",group:"West County"},
+      {id:"st-charles",name:"St. Charles",zip:"63301 \u00b7 63303 \u00b7 63304",tag:"St. Charles Co.",url:"st-charles.html",group:"St. Charles County"},
+      {id:"o-fallon",name:"O'Fallon",zip:"63366 \u00b7 63368",tag:"St. Charles Co.",url:"o-fallon.html",group:"St. Charles County"},
+      {id:"st-peters",name:"St. Peters",zip:"63376",tag:"St. Charles Co.",url:"st-peters.html",group:"St. Charles County"},
+      {id:"wentzville",name:"Wentzville",zip:"63385",tag:"St. Charles Co.",url:"wentzville.html",group:"St. Charles County"},
+      {id:"lake-st-louis",name:"Lake St. Louis",zip:"63367",tag:"St. Charles Co.",url:"lake-st-louis.html",group:"St. Charles County"},
+      {id:"cottleville",name:"Cottleville",zip:"63304",tag:"St. Charles Co.",url:"cottleville.html",group:"St. Charles County"},
+      {id:"dardenne-prairie",name:"Dardenne Prairie",zip:"63368",tag:"St. Charles Co.",url:"dardenne-prairie.html",group:"St. Charles County"},
+      {id:"weldon-spring",name:"Weldon Spring",zip:"63304",tag:"St. Charles Co.",url:"weldon-spring.html",group:"St. Charles County"},
+      {id:"weldon-spring-heights",name:"Weldon Spring Heights",zip:"63304",tag:"St. Charles Co.",url:"weldon-spring-heights.html",group:"St. Charles County"},
+      {id:"josephville",name:"Josephville",zip:"63301",tag:"St. Charles Co.",url:"josephville.html",group:"St. Charles County"},
+      {id:"st-paul",name:"St. Paul",zip:"63366",tag:"St. Charles Co.",url:"st-paul.html",group:"St. Charles County"},
+      {id:"west-alton",name:"West Alton",zip:"63386",tag:"St. Charles Co.",url:"west-alton.html",group:"St. Charles County"},
+      {id:"arnold",name:"Arnold",zip:"63010",tag:"Jefferson Co.",url:"arnold.html",group:"Jefferson County"},
+      {id:"festus",name:"Festus",zip:"63028",tag:"Jefferson Co.",url:"festus.html",group:"Jefferson County"},
+      {id:"crystal-city",name:"Crystal City",zip:"63019",tag:"Jefferson Co.",url:"crystal-city.html",group:"Jefferson County"},
+      {id:"de-soto",name:"De Soto",zip:"63020",tag:"Jefferson Co.",url:"de-soto.html",group:"Jefferson County"},
+      {id:"imperial",name:"Imperial",zip:"63052",tag:"Jefferson Co.",url:"imperial.html",group:"Jefferson County"},
+      {id:"high-ridge",name:"High Ridge",zip:"63049",tag:"Jefferson Co.",url:"high-ridge.html",group:"Jefferson County"},
+      {id:"hillsboro",name:"Hillsboro",zip:"63050",tag:"Jefferson Co.",url:"hillsboro.html",group:"Jefferson County"},
+      {id:"house-springs",name:"House Springs",zip:"63051",tag:"Jefferson Co.",url:"house-springs.html",group:"Jefferson County"},
+      {id:"barnhart",name:"Barnhart",zip:"63012",tag:"Jefferson Co.",url:"barnhart.html",group:"Jefferson County"},
+      {id:"cedar-hill",name:"Cedar Hill",zip:"63016",tag:"Jefferson Co.",url:"cedar-hill.html",group:"Jefferson County"}
     ];
 
     var groups = [
-      { label: "St. Louis City", ids: ["central-west-end", "tower-grove-south", "shaw", "dogtown", "soulard", "lafayette-square", "the-hill", "benton-park", "st-louis-hills"] },
-      { label: "Inner Ring County", ids: ["kirkwood", "webster-groves", "clayton", "university-city", "maplewood"] },
-      { label: "South County", ids: ["affton", "concord", "crestwood", "green-park", "lemay", "mehlville", "oakville", "sappington", "sunset-hills"] },
-      { label: "West County", ids: ["ballwin", "chesterfield"] }
+      {label:"St. Louis City",ids:["central-west-end", "tower-grove-south", "shaw", "dogtown", "soulard", "lafayette-square", "the-hill", "benton-park", "st-louis-hills"]},
+      {label:"Central Corridor",ids:["kirkwood", "webster-groves", "clayton", "university-city", "maplewood"]},
+      {label:"North County",ids:["florissant", "ferguson", "hazelwood", "jennings", "spanish-lake", "riverview", "berkeley", "bridgeton", "st-ann", "st-john", "normandy", "black-jack", "dellwood", "moline-acres", "cool-valley", "pagedale", "wellston", "pine-lawn", "bel-nor", "bel-ridge", "bellefontaine-neighbors", "calverton-park", "castle-point", "country-club-hills", "edmundson", "flordell-hills", "glen-echo-park", "greendale", "hanley-hills", "hillsdale", "norwood-court", "northwoods", "olympian-village", "parkdale", "pasadena-hills", "pasadena-park", "peaceful-village", "scotsdale", "sycamore-hills", "uplands-park", "velda-city", "velda-village-hills", "vinita-park", "vinita-terrace", "woodson-terrace", "charlack", "champ", "breckenridge-hills", "bellerive-acres", "beverly-hills", "normandy-park"]},
+      {label:"South County",ids:["affton", "concord", "crestwood", "green-park", "lemay", "mehlville", "oakville", "sappington", "sunset-hills"]},
+      {label:"West County",ids:["ballwin", "chesterfield"]},
+      {label:"St. Charles County",ids:["st-charles", "o-fallon", "st-peters", "wentzville", "lake-st-louis", "cottleville", "dardenne-prairie", "weldon-spring", "weldon-spring-heights", "josephville", "st-paul", "west-alton"]},
+      {label:"Jefferson County",ids:["arnold", "festus", "crystal-city", "de-soto", "imperial", "high-ridge", "hillsboro", "house-springs", "barnhart", "cedar-hill"]}
     ];
 
-    var byId2 = {};
-    hoods.forEach(function(h){ byId2[h.id] = h; });
+    var byId = {};
+    hoods.forEach(function(h) { byId[h.id] = h; });
 
     var total = hoods.length;
-    var strip =
-      '<div class="tool-data-strip" style="margin:16px 16px 0;">' +
+
+    /* Stats strip */
+    var html =
+      '<div class="tool-data-strip" style="margin:12px 16px 0;">' +
         '<div class="tool-data-stat"><div class="tool-data-num">' + total + '</div><div class="tool-data-lbl">Neighborhoods</div></div>' +
         '<div class="tool-data-stat"><div class="tool-data-num">79</div><div class="tool-data-lbl">ZIP Codes</div></div>' +
         '<div class="tool-data-stat"><div class="tool-data-num">2025\u201326</div><div class="tool-data-lbl">MARIS Data</div></div>' +
-      '</div>';
+      '</div>' +
+      '<div style="padding:8px 16px 4px;font-size:9px;color:var(--text-dim);letter-spacing:.08em;">Tap a region to expand</div>';
 
-    var html = '';
-    var placed = {};
-
+    /* Accordion groups */
     groups.forEach(function(grp) {
-      var members = grp.ids.filter(function(id){ return byId2[id]; });
+      var members = grp.ids.filter(function(id) { return byId[id]; });
       if (!members.length) return;
-      html += '<div class="res-section-title" style="margin-top:8px;">' + grp.label + '</div>';
-      html += members.map(function(id) {
-        placed[id] = true;
-        var h = byId2[id];
+
+      var count = members.length;
+      var cards = members.map(function(id) {
+        var h = byId[id];
         return (
-          '<div class="tool-card" data-hood-url="' + h.url + '">' +
+          '<div class="tool-card" data-hood-url="' + h.url + '" style="border-radius:0;border-left:none;border-right:none;border-top:none;">' +
             '<div class="tool-card-copy">' +
               '<div class="tool-card-title">' + h.name + '</div>' +
               '<div class="tool-card-sub">' + h.tag + ' \u00b7 ' + h.zip + '</div>' +
@@ -1662,18 +1761,27 @@ function closeDrawer() {
           '</div>'
         );
       }).join('');
+
+      html +=
+        '<div class="res-drawer" id="hood-grp-' + grp.label.replace(/[^a-z]/gi,'-').toLowerCase() + '">' +
+          '<button class="res-drawer-trigger" type="button" style="padding:11px 16px;">' +
+            '<div class="res-drawer-copy">' +
+              '<div class="res-drawer-title" style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;">' +
+                grp.label +
+              '</div>' +
+              '<div class="res-drawer-summary">' + count + ' neighborhood' + (count !== 1 ? 's' : '') + '</div>' +
+            '</div>' +
+            '<div class="res-drawer-chevron">\u203a</div>' +
+          '</button>' +
+          '<div class="res-drawer-body" style="padding:0;">' +
+            '<div class="res-drawer-content" style="padding:0;">' +
+              cards +
+            '</div>' +
+          '</div>' +
+        '</div>';
     });
 
-    /* Any registry entries not in a group */
-    hoods.forEach(function(h) {
-      if (placed[h.id]) return;
-      html += '<div class="tool-card" data-hood-url="' + h.url + '">' +
-        '<div class="tool-card-copy"><div class="tool-card-title">' + h.name + '</div>' +
-        '<div class="tool-card-sub">' + h.tag + ' \u00b7 ' + h.zip + '</div></div>' +
-        '<div class="tool-card-arr">\u203a</div></div>';
-    });
-
-    return strip + '<div class="tool-selector">' + html + '</div>';
+    return html;
   }
 
   function _buildJourneyPanelHTML(chNum) {
