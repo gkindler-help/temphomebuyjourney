@@ -216,9 +216,12 @@
         map.fitBounds(hl.getBounds().pad(0.6));
       }
     }
+    /* Expose globally so the postMessage handler can call it */
+    window._refitMapGlobal = _refitMap;
+
+    /* Also fire on a timer as fallback */
     setTimeout(_refitMap, 400);
-    setTimeout(_refitMap, 800);
-    setTimeout(_refitMap, 1500);
+    setTimeout(_refitMap, 900);
 
     /* Register destroy hook — called by shared.js closeToolPanel */
     window._hoodMapDestroy = function () {
@@ -454,7 +457,6 @@
      ============================================================ */
   function ready(fn) {
     if (document.readyState !== 'loading') {
-      /* shared.js may still be setting up SharedPlatform — small defer */
       setTimeout(fn, 100);
     } else {
       document.addEventListener('DOMContentLoaded', function () {
@@ -462,6 +464,17 @@
       });
     }
   }
+
+  /* Listen for parent panel-ready signal — fires after tool panel CSS
+     transition completes. Tells Leaflet the container now has real dimensions. */
+  window.addEventListener('message', function (e) {
+    if (!e.data || !e.data.hoodPanelReady) return;
+    if (typeof _refitMapGlobal === 'function') {
+      _refitMapGlobal();
+      /* Fire again 300ms later for any slow repaints */
+      setTimeout(_refitMapGlobal, 300);
+    }
+  });
 
   ready(init);
 

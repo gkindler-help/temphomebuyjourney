@@ -1420,8 +1420,10 @@ function closeDrawer() {
       var hoodCards = _dashPanelEl.querySelectorAll(".tool-card[data-hood-url]");
       Array.prototype.forEach.call(hoodCards, function (card) {
         card.addEventListener("click", function () {
-          var url = card.getAttribute("data-hood-url");
-          if (url) { closeDashboard(); window.location.href = url; }
+          var url  = card.getAttribute("data-hood-url");
+          var name = card.querySelector(".tool-card-title");
+          var title = name ? name.textContent : "Neighborhood";
+          if (url) { closeDashboard(); openNeighborhoodPanel(url, title); }
         });
       });
     } else if (tab === "tools") {
@@ -1823,6 +1825,53 @@ function closeDrawer() {
     });
   }
 
+  function openNeighborhoodPanel(url, title) {
+    /* Reuse the exact tool panel mechanism — iframe + X + slide.
+       After the panel fully opens, post a message to the iframe so
+       neighborhoods-init.js can call map.invalidateSize(). */
+
+    /* Create panel element if needed (same singleton as tool panel) */
+    if (!_toolPanelEl) {
+      _toolPanelEl = document.createElement("div");
+      _toolPanelEl.id        = "tool-panel";
+      _toolPanelEl.className = "tool-panel";
+      document.body.appendChild(_toolPanelEl);
+    }
+
+    _toolPanelEl.innerHTML =
+      '<div class="tool-panel-header">' +
+        '<div class="tool-panel-title">' + (title || "Neighborhood") + '</div>' +
+        '<button class="tool-panel-close" id="tool-panel-close" type="button">&#10005;</button>' +
+      '</div>' +
+      '<iframe id="tool-iframe" src="' + url + '" ' +
+        'style="flex:1;width:100%;height:100%;border:none;background:#050505;display:block;overflow:auto;"' +
+        'allow="geolocation" loading="lazy"></iframe>';
+
+    safelyBind(byId("tool-panel-close"), "click", closeToolPanel);
+
+    _toolModuleActive = "neighborhood";
+
+    /* Open panel with slide animation */
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        _toolPanelEl.classList.add("open");
+
+        /* After transition completes (~400ms), tell the iframe to refit its map.
+           neighborhoods-init.js listens for { hoodPanelReady: true } */
+        setTimeout(function () {
+          var iframe = byId("tool-iframe");
+          if (iframe && iframe.contentWindow) {
+            try {
+              iframe.contentWindow.postMessage({ hoodPanelReady: true }, "*");
+            } catch (e) {}
+          }
+        }, 420);
+      });
+    });
+
+    track("neighborhood_open", { url: url });
+  }
+
   function closeToolPanel() {
     if (_toolPanelEl) {
       _toolPanelEl.classList.remove("open");
@@ -1885,8 +1934,9 @@ function closeDrawer() {
       openDashboard:           openDashboard,
       closeDashboard:          closeDashboard,
       /* Tool panel */
-      openToolPanel:           openToolPanel,
-      closeToolPanel:          closeToolPanel,
+      openToolPanel:              openToolPanel,
+      closeToolPanel:             closeToolPanel,
+      openNeighborhoodPanel:      openNeighborhoodPanel,
       /* Resources */
       /* (registry read from window.RESOURCES_REGISTRY set by resources.js) */
       /* Page tracking */
