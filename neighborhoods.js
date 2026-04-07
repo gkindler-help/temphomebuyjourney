@@ -2,209 +2,407 @@ window.NEIGHBORHOODS_REGISTRY = [
   {
     "id": "central-west-end",
     "title": "Central West End, St. Louis",
-    "summary": "Central West End neighborhood guide: what the Central West End is known for, where it sits, what buyers actually find there, and how it compares inside the St. Louis market.",
+    "summary": "Central West End neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
     "url": "central-west-end.html",
     "type": "neighborhood",
     "slug": "central-west-end",
-    "status": "draft",
+    "group": "St. Louis City",
+    "tag": "West End",
+    "zips": [
+      "63108"
+    ],
+    "status": "published",
     "indexable": true,
-    "seoPriority": 1,
-    "launchTier": 1,
     "template": "neighborhood"
   },
   {
     "id": "tower-grove-south",
     "title": "Tower Grove South, St. Louis",
-    "summary": "Tower Grove South neighborhood guide: boundaries, Tower Grove Park access, housing character, and what buyers should know before shopping this high-demand South City neighborhood.",
+    "summary": "Tower Grove South neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
     "url": "tower-grove-south.html",
     "type": "neighborhood",
     "slug": "tower-grove-south",
-    "status": "draft",
+    "group": "St. Louis City",
+    "tag": "South City",
+    "zips": [
+      "63116"
+    ],
+    "status": "published",
     "indexable": true,
-    "seoPriority": 2,
-    "launchTier": 1,
     "template": "neighborhood"
   },
   {
     "id": "shaw",
     "title": "Shaw, St. Louis",
-    "summary": "Shaw neighborhood guide for buyers: Missouri Botanical Garden adjacency, Tower Grove access, historic district context, and what homes in Shaw actually feel like.",
+    "summary": "Shaw neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
     "url": "shaw.html",
     "type": "neighborhood",
     "slug": "shaw",
-    "status": "draft",
+    "group": "St. Louis City",
+    "tag": "Southwest City",
+    "zips": [
+      "63110"
+    ],
+    "status": "published",
     "indexable": true,
-    "seoPriority": 3,
-    "launchTier": 1,
     "template": "neighborhood"
   },
   {
     "id": "dogtown",
     "title": "Dogtown, St. Louis",
-    "summary": "Dogtown neighborhood guide: what locals mean by Dogtown, the neighborhoods it includes, Forest Park access, and what buyers should know before choosing this St. Louis area.",
+    "summary": "Dogtown neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
     "url": "dogtown.html",
     "type": "neighborhood",
     "slug": "dogtown",
-    "status": "draft",
+    "group": "St. Louis City",
+    "tag": "Southwest City",
+    "zips": [
+      "63139"
+    ],
+    "status": "published",
     "indexable": true,
-    "seoPriority": 4,
-    "launchTier": 1,
     "template": "neighborhood"
   },
   {
     "id": "soulard",
     "title": "Soulard, St. Louis",
-    "summary": "Soulard neighborhood guide: official boundaries, market history, housing style, and what buyers should know before searching in one of St. Louis' best-known city neighborhoods.",
+    "summary": "Soulard neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
     "url": "soulard.html",
     "type": "neighborhood",
     "slug": "soulard",
-    "status": "draft",
+    "group": "St. Louis City",
+    "tag": "South City",
+    "zips": [
+      "63104"
+    ],
+    "status": "published",
     "indexable": true,
-    "seoPriority": 5,
-    "launchTier": 1,
     "template": "neighborhood"
   },
   {
     "id": "lafayette-square",
     "title": "Lafayette Square, St. Louis",
-    "summary": "Lafayette Square neighborhood guide: Lafayette Park, historic housing, official boundaries, and what buyers should know about this prestige St. Louis neighborhood.",
+    "summary": "Lafayette Square neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
     "url": "lafayette-square.html",
     "type": "neighborhood",
     "slug": "lafayette-square",
-    "status": "draft",
+    "group": "St. Louis City",
+    "tag": "Midtown",
+    "zips": [
+      "63104"
+    ],
+    "status": "published",
     "indexable": true,
-    "seoPriority": 6,
-    "launchTier": 1,
     "template": "neighborhood"
   },
   {
     "id": "the-hill",
     "title": "The Hill, St. Louis",
-    "summary": "The Hill neighborhood guide: official boundaries, clay-mining history, Italian heritage, and what buyers should know before searching this St. Louis neighborhood.",
+    "summary": "The Hill neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
     "url": "the-hill.html",
     "type": "neighborhood",
     "slug": "the-hill",
-    "status": "draft",
+    "group": "St. Louis City",
+    "tag": "Southwest City",
+    "zips": [
+      "63110"
+    ],
+    "status": "published",
     "indexable": true,
-    "seoPriority": 7,
-    "launchTier": 1,
     "template": "neighborhood"
   },
   {
     "id": "benton-park",
     "title": "Benton Park, St. Louis",
-    "summary": "Benton Park neighborhood guide: boundaries, park history, housing character, and what buyers should know about one of St. Louis' oldest residential areas.",
+    "summary": "Benton Park neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
     "url": "benton-park.html",
     "type": "neighborhood",
     "slug": "benton-park",
-    "status": "draft",
+    "group": "St. Louis City",
+    "tag": "South City",
+    "zips": [
+      "63118"
+    ],
+    "status": "published",
     "indexable": true,
-    "seoPriority": 8,
-    "launchTier": 1,
     "template": "neighborhood"
   },
   {
     "id": "st-louis-hills",
     "title": "St. Louis Hills, St. Louis",
-    "summary": "St. Louis Hills neighborhood guide: official boundaries, Francis Park, development history, and what buyers should know about this sought-after southwest St. Louis neighborhood.",
+    "summary": "St. Louis Hills neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
     "url": "st-louis-hills.html",
     "type": "neighborhood",
     "slug": "st-louis-hills",
-    "status": "draft",
+    "group": "St. Louis City",
+    "tag": "South City",
+    "zips": [
+      "63109"
+    ],
+    "status": "published",
     "indexable": true,
-    "seoPriority": 9,
-    "launchTier": 1,
     "template": "neighborhood"
   },
   {
     "id": "kirkwood",
     "title": "Kirkwood, Missouri",
-    "summary": "Kirkwood neighborhood and city guide for buyers: population, downtown, historic train station, and what to expect in one of St. Louis County's most searched suburbs.",
+    "summary": "Kirkwood neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Inner Ring County area.",
     "url": "kirkwood.html",
     "type": "neighborhood",
     "slug": "kirkwood",
-    "status": "draft",
+    "group": "Inner Ring County",
+    "tag": "Inner West",
+    "zips": [
+      "63122"
+    ],
+    "status": "published",
     "indexable": true,
-    "seoPriority": 10,
-    "launchTier": 1,
     "template": "neighborhood"
   },
   {
     "id": "webster-groves",
     "title": "Webster Groves, Missouri",
-    "summary": "Webster Groves guide for buyers: population, history, Old Webster and Old Orchard context, and what makes Webster Groves one of St. Louis County's most searched suburbs.",
+    "summary": "Webster Groves neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Inner Ring County area.",
     "url": "webster-groves.html",
     "type": "neighborhood",
     "slug": "webster-groves",
-    "status": "draft",
+    "group": "Inner Ring County",
+    "tag": "Inner West",
+    "zips": [
+      "63119"
+    ],
+    "status": "published",
     "indexable": true,
-    "seoPriority": 11,
-    "launchTier": 1,
     "template": "neighborhood"
   },
   {
     "id": "clayton",
     "title": "Clayton, Missouri",
-    "summary": "Clayton buyer guide: official population, daytime workforce, Shaw Park, and what buyers should know about one of St. Louis County's most central and high-value cities.",
+    "summary": "Clayton neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Inner Ring County area.",
     "url": "clayton.html",
     "type": "neighborhood",
     "slug": "clayton",
-    "status": "draft",
+    "group": "Inner Ring County",
+    "tag": "Inner West",
+    "zips": [
+      "63105"
+    ],
+    "status": "published",
     "indexable": true,
-    "seoPriority": 12,
-    "launchTier": 1,
     "template": "neighborhood"
   },
   {
     "id": "university-city",
     "title": "University City, Missouri",
-    "summary": "University City guide for buyers: population, Delmar Loop context, neighborhood variety, and what to know before shopping this large inner-ring St. Louis County city.",
+    "summary": "University City neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Inner Ring County area.",
     "url": "university-city.html",
     "type": "neighborhood",
     "slug": "university-city",
-    "status": "draft",
+    "group": "Inner Ring County",
+    "tag": "Inner West",
+    "zips": [
+      "63130",
+      "63133"
+    ],
+    "status": "published",
     "indexable": true,
-    "seoPriority": 13,
-    "launchTier": 1,
     "template": "neighborhood"
   },
   {
     "id": "maplewood",
     "title": "Maplewood, Missouri",
-    "summary": "Maplewood buyer guide: population, historic downtown, housing style, and what to know before searching this compact St. Louis County city.",
+    "summary": "Maplewood neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Inner Ring County area.",
     "url": "maplewood.html",
     "type": "neighborhood",
     "slug": "maplewood",
-    "status": "draft",
+    "group": "Inner Ring County",
+    "tag": "Inner West",
+    "zips": [
+      "63143"
+    ],
+    "status": "published",
     "indexable": true,
-    "seoPriority": 14,
-    "launchTier": 1,
+    "template": "neighborhood"
+  },
+  {
+    "id": "affton",
+    "title": "Affton, Missouri",
+    "summary": "Affton neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
+    "url": "affton.html",
+    "type": "neighborhood",
+    "slug": "affton",
+    "group": "South County",
+    "tag": "South County",
+    "zips": [
+      "63123"
+    ],
+    "status": "published",
+    "indexable": true,
+    "template": "neighborhood"
+  },
+  {
+    "id": "concord",
+    "title": "Concord, Missouri",
+    "summary": "Concord neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
+    "url": "concord.html",
+    "type": "neighborhood",
+    "slug": "concord",
+    "group": "South County",
+    "tag": "South County",
+    "zips": [
+      "63128",
+      "63123"
+    ],
+    "status": "published",
+    "indexable": true,
+    "template": "neighborhood"
+  },
+  {
+    "id": "crestwood",
+    "title": "Crestwood, Missouri",
+    "summary": "Crestwood neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
+    "url": "crestwood.html",
+    "type": "neighborhood",
+    "slug": "crestwood",
+    "group": "South County",
+    "tag": "South County",
+    "zips": [
+      "63126"
+    ],
+    "status": "published",
+    "indexable": true,
+    "template": "neighborhood"
+  },
+  {
+    "id": "green-park",
+    "title": "Green Park, Missouri",
+    "summary": "Green Park neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
+    "url": "green-park.html",
+    "type": "neighborhood",
+    "slug": "green-park",
+    "group": "South County",
+    "tag": "South County",
+    "zips": [
+      "63123"
+    ],
+    "status": "published",
+    "indexable": true,
+    "template": "neighborhood"
+  },
+  {
+    "id": "lemay",
+    "title": "Lemay, Missouri",
+    "summary": "Lemay neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
+    "url": "lemay.html",
+    "type": "neighborhood",
+    "slug": "lemay",
+    "group": "South County",
+    "tag": "South County",
+    "zips": [
+      "63125"
+    ],
+    "status": "published",
+    "indexable": true,
+    "template": "neighborhood"
+  },
+  {
+    "id": "mehlville",
+    "title": "Mehlville, Missouri",
+    "summary": "Mehlville neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
+    "url": "mehlville.html",
+    "type": "neighborhood",
+    "slug": "mehlville",
+    "group": "South County",
+    "tag": "South County",
+    "zips": [
+      "63125"
+    ],
+    "status": "published",
+    "indexable": true,
+    "template": "neighborhood"
+  },
+  {
+    "id": "oakville",
+    "title": "Oakville, Missouri",
+    "summary": "Oakville neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
+    "url": "oakville.html",
+    "type": "neighborhood",
+    "slug": "oakville",
+    "group": "South County",
+    "tag": "South County",
+    "zips": [
+      "63129"
+    ],
+    "status": "published",
+    "indexable": true,
+    "template": "neighborhood"
+  },
+  {
+    "id": "sappington",
+    "title": "Sappington, Missouri",
+    "summary": "Sappington neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
+    "url": "sappington.html",
+    "type": "neighborhood",
+    "slug": "sappington",
+    "group": "South County",
+    "tag": "South County",
+    "zips": [
+      "63126",
+      "63128"
+    ],
+    "status": "published",
+    "indexable": true,
+    "template": "neighborhood"
+  },
+  {
+    "id": "sunset-hills",
+    "title": "Sunset Hills, Missouri",
+    "summary": "Sunset Hills neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
+    "url": "sunset-hills.html",
+    "type": "neighborhood",
+    "slug": "sunset-hills",
+    "group": "South County",
+    "tag": "South County",
+    "zips": [
+      "63127"
+    ],
+    "status": "published",
+    "indexable": true,
     "template": "neighborhood"
   },
   {
     "id": "ballwin",
     "title": "Ballwin, Missouri",
-    "summary": "Ballwin guide for buyers: population, housing character, recreation anchors, and what to know before searching this major West County suburb.",
+    "summary": "Ballwin neighborhood guide for buyers: location, housing character, market data, and what to know before searching this West County area.",
     "url": "ballwin.html",
     "type": "neighborhood",
     "slug": "ballwin",
-    "status": "draft",
+    "group": "West County",
+    "tag": "West County",
+    "zips": [
+      "63011",
+      "63021"
+    ],
+    "status": "published",
     "indexable": true,
-    "seoPriority": 15,
-    "launchTier": 1,
     "template": "neighborhood"
   },
   {
     "id": "chesterfield",
     "title": "Chesterfield, Missouri",
-    "summary": "Chesterfield buyer guide: population, parks, city size, and what to know before searching one of West County's biggest and most established housing markets.",
+    "summary": "Chesterfield neighborhood guide for buyers: location, housing character, market data, and what to know before searching this West County area.",
     "url": "chesterfield.html",
     "type": "neighborhood",
     "slug": "chesterfield",
-    "status": "draft",
+    "group": "West County",
+    "tag": "West County",
+    "zips": [
+      "63005",
+      "63017",
+      "63141"
+    ],
+    "status": "published",
     "indexable": true,
-    "seoPriority": 16,
-    "launchTier": 1,
     "template": "neighborhood"
   }
 ];

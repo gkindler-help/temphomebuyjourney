@@ -18,23 +18,31 @@
      Add entries here when adding new neighborhood pages.
      ============================================================ */
   var HOOD_ZIPS = {
-    'central-west-end':  ['63108'],
+    'central-west-end': ['63108'],
     'tower-grove-south': ['63116'],
-    'shaw':              ['63110'],
-    'dogtown':           ['63139'],
-    'soulard':           ['63104'],
-    'lafayette-square':  ['63104'],
-    'the-hill':          ['63110'],
-    'benton-park':       ['63118'],
-    'st-louis-hills':    ['63109'],
-    'kirkwood':          ['63122'],
-    'webster-groves':    ['63119'],
-    'clayton':           ['63105'],
-    'university-city':   ['63130', '63133'],
-    'maplewood':         ['63143'],
-    'ballwin':           ['63011', '63021'],
-    'chesterfield':      ['63005', '63017', '63141'],
-    'concord':           ['63128', '63123']
+    'shaw': ['63110'],
+    'dogtown': ['63139'],
+    'soulard': ['63104'],
+    'lafayette-square': ['63104'],
+    'the-hill': ['63110'],
+    'benton-park': ['63118'],
+    'st-louis-hills': ['63109'],
+    'kirkwood': ['63122'],
+    'webster-groves': ['63119'],
+    'clayton': ['63105'],
+    'university-city': ['63130', '63133'],
+    'maplewood': ['63143'],
+    'affton': ['63123'],
+    'concord': ['63128', '63123'],
+    'crestwood': ['63126'],
+    'green-park': ['63123'],
+    'lemay': ['63125'],
+    'mehlville': ['63125'],
+    'oakville': ['63129'],
+    'sappington': ['63126', '63128'],
+    'sunset-hills': ['63127'],
+    'ballwin': ['63011', '63021'],
+    'chesterfield': ['63005', '63017', '63141']
   };
 
   /* ============================================================
@@ -104,6 +112,10 @@
         'The shaded area above reflects the ZIP code or codes most closely associated with this neighborhood and is intended as a general orientation, not a legal or official boundary. ' +
         'When in doubt, verify the specific address.' +
       '</div>';
+
+    /* Guard against double-injection (e.g. panel reopened) */
+    var existing = document.getElementById('hood-map-wrapper');
+    if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
 
     /* Insert before the first child of the content area */
     content.insertBefore(wrapper, content.firstChild);
@@ -195,28 +207,27 @@
       map.setView([38.627, -90.197], 10);
     }
 
-    /* Force Leaflet to recalculate after tool panel transition completes (~380ms)
-       Run multiple times to catch any late repaints */
-    [400, 800, 1400].forEach(function (delay) {
-      setTimeout(function () {
-        map.invalidateSize();
-        if (highlightFeatures.length) {
-          var hoodLayer2 = window.L.geoJSON({
-            type: 'FeatureCollection',
-            features: highlightFeatures
-          });
-          map.fitBounds(hoodLayer2.getBounds().pad(0.6));
-        }
-      }, delay);
-    });
+    /* Force Leaflet to recalculate container dimensions after panel animation.
+       Tool panel CSS transition is ~350ms — fire at 400ms, 800ms, 1500ms to be safe. */
+    function _refitMap() {
+      map.invalidateSize({ animate: false });
+      if (highlightFeatures.length) {
+        var hl = window.L.geoJSON({ type: 'FeatureCollection', features: highlightFeatures });
+        map.fitBounds(hl.getBounds().pad(0.6));
+      }
+    }
+    setTimeout(_refitMap, 400);
+    setTimeout(_refitMap, 800);
+    setTimeout(_refitMap, 1500);
 
-    /* Register destroy hook so shared.js closeToolPanel can clean up */
+    /* Register destroy hook — called by shared.js closeToolPanel */
     window._hoodMapDestroy = function () {
-      try {
-        map.remove();
-        var wrapper = document.getElementById('hood-map-wrapper');
-        if (wrapper && wrapper.parentNode) wrapper.parentNode.removeChild(wrapper);
-      } catch (e) {}
+      try { map.remove(); } catch (e) {}
+      var w = document.getElementById('hood-map-wrapper');
+      if (w && w.parentNode) w.parentNode.removeChild(w);
+      var s = document.getElementById('hood-market-strip');
+      if (s && s.parentNode) s.parentNode.removeChild(s);
+      window._hoodMapDestroy = null;
     };
   }
 

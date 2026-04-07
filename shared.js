@@ -1589,46 +1589,89 @@ function closeDrawer() {
   }
 
   function _buildNeighborhoodsPanelHTML() {
-    var hoods = [
-      { name: "Concord",          zip: "63128 · 63123",           tag: "South County",   url: "concord.html" },
-      { name: "St. Louis Hills",  zip: "63109",                        tag: "South City",     url: "st-louis-hills.html" },
-      { name: "Soulard",          zip: "63104",                        tag: "South City",     url: "soulard.html" },
-      { name: "Tower Grove South",zip: "63116",                        tag: "South City",     url: "tower-grove-south.html" },
-      { name: "Lafayette Square", zip: "63104",                        tag: "Midtown",        url: "lafayette-square.html" },
-      { name: "Central West End", zip: "63108",                        tag: "West End",       url: "central-west-end.html" },
-      { name: "The Hill",         zip: "63110",                        tag: "Southwest City", url: "the-hill.html" },
-      { name: "Dogtown",          zip: "63139",                        tag: "Southwest City", url: "dogtown.html" },
-      { name: "Benton Park",      zip: "63118",                        tag: "South City",     url: "benton-park.html" },
-      { name: "Shaw",             zip: "63110",                        tag: "Southwest City", url: "shaw.html" },
-      { name: "Kirkwood",         zip: "63122",                        tag: "Inner West",     url: "kirkwood.html" },
-      { name: "Webster Groves",   zip: "63119",                        tag: "Inner West",     url: "webster-groves.html" },
-      { name: "Clayton",          zip: "63105",                        tag: "Inner West",     url: "clayton.html" },
-      { name: "University City",  zip: "63130 · 63133",           tag: "Inner West",     url: "university-city.html" },
-      { name: "Maplewood",        zip: "63143",                        tag: "Inner West",     url: "maplewood.html" },
-      { name: "Ballwin",          zip: "63011 · 63021",           tag: "West County",    url: "ballwin.html" },
-      { name: "Chesterfield",     zip: "63005 · 63017 · 63141", tag: "West County", url: "chesterfield.html" }
+    var registry = window.NEIGHBORHOODS_REGISTRY || [];
+
+    /* Fall back to hardcoded list if registry not loaded */
+    var hoods = registry.length ? registry.map(function(n){
+      return { id: n.id, name: n.title.replace(/, (St\. Louis|Missouri)$/, ''), zip: (n.zips||[]).join(' \u00b7 '), tag: n.tag||n.group||'', url: n.url, group: n.group||'' };
+    }) : [
+      { id: "central-west-end", name: "Central West End", zip: "63108", tag: "West End", url: "central-west-end.html" },
+      { id: "tower-grove-south", name: "Tower Grove South", zip: "63116", tag: "South City", url: "tower-grove-south.html" },
+      { id: "shaw", name: "Shaw", zip: "63110", tag: "Southwest City", url: "shaw.html" },
+      { id: "dogtown", name: "Dogtown", zip: "63139", tag: "Southwest City", url: "dogtown.html" },
+      { id: "soulard", name: "Soulard", zip: "63104", tag: "South City", url: "soulard.html" },
+      { id: "lafayette-square", name: "Lafayette Square", zip: "63104", tag: "Midtown", url: "lafayette-square.html" },
+      { id: "the-hill", name: "The Hill", zip: "63110", tag: "Southwest City", url: "the-hill.html" },
+      { id: "benton-park", name: "Benton Park", zip: "63118", tag: "South City", url: "benton-park.html" },
+      { id: "st-louis-hills", name: "St. Louis Hills", zip: "63109", tag: "South City", url: "st-louis-hills.html" },
+      { id: "kirkwood", name: "Kirkwood", zip: "63122", tag: "Inner West", url: "kirkwood.html" },
+      { id: "webster-groves", name: "Webster Groves", zip: "63119", tag: "Inner West", url: "webster-groves.html" },
+      { id: "clayton", name: "Clayton", zip: "63105", tag: "Inner West", url: "clayton.html" },
+      { id: "university-city", name: "University City", zip: "63130 · 63133", tag: "Inner West", url: "university-city.html" },
+      { id: "maplewood", name: "Maplewood", zip: "63143", tag: "Inner West", url: "maplewood.html" },
+      { id: "affton", name: "Affton", zip: "63123", tag: "South County", url: "affton.html" },
+      { id: "concord", name: "Concord", zip: "63128 · 63123", tag: "South County", url: "concord.html" },
+      { id: "crestwood", name: "Crestwood", zip: "63126", tag: "South County", url: "crestwood.html" },
+      { id: "green-park", name: "Green Park", zip: "63123", tag: "South County", url: "green-park.html" },
+      { id: "lemay", name: "Lemay", zip: "63125", tag: "South County", url: "lemay.html" },
+      { id: "mehlville", name: "Mehlville", zip: "63125", tag: "South County", url: "mehlville.html" },
+      { id: "oakville", name: "Oakville", zip: "63129", tag: "South County", url: "oakville.html" },
+      { id: "sappington", name: "Sappington", zip: "63126 · 63128", tag: "South County", url: "sappington.html" },
+      { id: "sunset-hills", name: "Sunset Hills", zip: "63127", tag: "South County", url: "sunset-hills.html" },
+      { id: "ballwin", name: "Ballwin", zip: "63011 · 63021", tag: "West County", url: "ballwin.html" },
+      { id: "chesterfield", name: "Chesterfield", zip: "63005 · 63017 · 63141", tag: "West County", url: "chesterfield.html" }
     ];
 
+    var groups = [
+      { label: "St. Louis City", ids: ["central-west-end", "tower-grove-south", "shaw", "dogtown", "soulard", "lafayette-square", "the-hill", "benton-park", "st-louis-hills"] },
+      { label: "Inner Ring County", ids: ["kirkwood", "webster-groves", "clayton", "university-city", "maplewood"] },
+      { label: "South County", ids: ["affton", "concord", "crestwood", "green-park", "lemay", "mehlville", "oakville", "sappington", "sunset-hills"] },
+      { label: "West County", ids: ["ballwin", "chesterfield"] }
+    ];
+
+    var byId2 = {};
+    hoods.forEach(function(h){ byId2[h.id] = h; });
+
+    var total = hoods.length;
     var strip =
       '<div class="tool-data-strip" style="margin:16px 16px 0;">' +
-        '<div class="tool-data-stat"><div class="tool-data-num">17</div><div class="tool-data-lbl">Neighborhoods</div></div>' +
+        '<div class="tool-data-stat"><div class="tool-data-num">' + total + '</div><div class="tool-data-lbl">Neighborhoods</div></div>' +
         '<div class="tool-data-stat"><div class="tool-data-num">79</div><div class="tool-data-lbl">ZIP Codes</div></div>' +
         '<div class="tool-data-stat"><div class="tool-data-num">2025\u201326</div><div class="tool-data-lbl">MARIS Data</div></div>' +
       '</div>';
 
-    var cards = hoods.map(function (h) {
-      return (
-        '<div class="tool-card" data-hood-url="' + h.url + '">' +
-          '<div class="tool-card-copy">' +
-            '<div class="tool-card-title">' + h.name + '</div>' +
-            '<div class="tool-card-sub">' + h.tag + ' \u00b7 ' + h.zip + '</div>' +
-          '</div>' +
-          '<div class="tool-card-arr">\u203a</div>' +
-        '</div>'
-      );
-    }).join("");
+    var html = '';
+    var placed = {};
 
-    return strip + '<div class="tool-selector">' + cards + '</div>';
+    groups.forEach(function(grp) {
+      var members = grp.ids.filter(function(id){ return byId2[id]; });
+      if (!members.length) return;
+      html += '<div class="res-section-title" style="margin-top:8px;">' + grp.label + '</div>';
+      html += members.map(function(id) {
+        placed[id] = true;
+        var h = byId2[id];
+        return (
+          '<div class="tool-card" data-hood-url="' + h.url + '">' +
+            '<div class="tool-card-copy">' +
+              '<div class="tool-card-title">' + h.name + '</div>' +
+              '<div class="tool-card-sub">' + h.tag + ' \u00b7 ' + h.zip + '</div>' +
+            '</div>' +
+            '<div class="tool-card-arr">\u203a</div>' +
+          '</div>'
+        );
+      }).join('');
+    });
+
+    /* Any registry entries not in a group */
+    hoods.forEach(function(h) {
+      if (placed[h.id]) return;
+      html += '<div class="tool-card" data-hood-url="' + h.url + '">' +
+        '<div class="tool-card-copy"><div class="tool-card-title">' + h.name + '</div>' +
+        '<div class="tool-card-sub">' + h.tag + ' \u00b7 ' + h.zip + '</div></div>' +
+        '<div class="tool-card-arr">\u203a</div></div>';
+    });
+
+    return strip + '<div class="tool-selector">' + html + '</div>';
   }
 
   function _buildJourneyPanelHTML(chNum) {
