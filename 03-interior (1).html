@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>STL Home Buyer Journey · Chapter 3 · Walk The Property</title>
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EEE14BZT9P');</script>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Shared visual system — owns all tokens, reset, header, footer -->
+<link rel="stylesheet" href="shared.css">
+
+<style>
+/* ============================================================
+   03-INTERIOR CHOOSER — PAGE-ONLY STYLES
+   shared.css owns all tokens, reset, .hdr, .ftr.
+   This block owns only the chooser layout and cards.
+   ============================================================ */
+
+/* ── APP SHELL ── */
+.chooser-app {
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg);
+}
+@media (min-width: 768px)  { .chooser-app { max-width: 540px; margin: 0 auto; } }
+@media (min-width: 1024px) { .chooser-app { max-width: 640px; } }
+
+/* ── SCROLLABLE MAIN ── */
+.chooser-main {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 0 24px;
+  min-height: 0;
+}
+.chooser-main::-webkit-scrollbar { display: none; }
+
+/* ── GEORGE STRIP ── */
+.g-strip {
+  display: flex;
+  align-items: flex-end;
+  padding: 20px 18px 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+.g-strip.show { opacity: 1; transform: translateY(0); }
+
+.gs-face {
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  position: relative;
+  margin-bottom: -2px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--line-2);
+}
+.gs-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.gs-info {
+  padding-left: 12px;
+  padding-bottom: 6px;
+  flex: 1;
+}
+.gs-name {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-strong);
+  margin-bottom: 2px;
+}
+.gs-tag {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-soft);
+  letter-spacing: .02em;
+}
+
+/* ── HEADLINE ── */
+.ch-headline {
+  padding: 16px 18px 14px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+.ch-headline.show { opacity: 1; transform: translateY(0); }
+
+.ch-hl-main {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-strong);
+  line-height: 1.14;
+  margin-bottom: 10px;
+  letter-spacing: -.01em;
+}
+.ch-hl-main span { color: var(--gold); }
+
+.ch-hl-sub {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-soft);
+  line-height: 1.65;
+  letter-spacing: .01em;
+}
+
+/* ── TENSION CUE ── */
+.ch-tension {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-soft);
+  letter-spacing: .02em;
+  line-height: 1.5;
+  padding: 0 18px 4px;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.ch-tension.show { opacity: 1; }
+
+.ch-tension-sub {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-dim);
+  letter-spacing: .02em;
+  line-height: 1.5;
+  padding: 0 18px 16px;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.ch-tension-sub.show { opacity: 1; }
+
+/* ── SECTION DIVIDER ── */
+.ch-divider {
+  padding: 16px 18px 8px;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.ch-divider.show { opacity: 1; }
+.ch-divider-label {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+}
+
+/* ── PROPERTY TYPE CARD GRID ── */
+/*
+  3-click interaction matching index.html exactly:
+  Click 1 → activate grid (icons shrink), show title
+  Click 2 → reveal hook + commit line
+  Click 3 → navigate to sub-chapter
+*/
+.pt-grid {
+  padding: 0 14px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.pt-grid.show { opacity: 1; }
+
+/* Grid activated — all cards compress */
+.pt-grid.activated .pt-card {
+  padding: 14px 8px 12px;
+  min-height: 80px;
+}
+.pt-grid.activated .pt-card-ico {
+  width: 36px;
+  height: 36px;
+}
+.pt-grid.activated .pt-card-ico .ico-fb {
+  font-size: 20px;
+}
+
+/* Individual card */
+.pt-card {
+  background: rgba(255,255,255,.025);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px 16px;
+  cursor: pointer;
+  transition:
+    border-color .2s ease,
+    background .2s ease,
+    transform .15s ease,
+    padding .3s ease;
+  position: relative;
+  min-height: 96px;
+  -webkit-tap-highlight-color: transparent;
+}
+.pt-card:active { transform: scale(.97); }
+
+.pt-card.active {
+  border-color: var(--gold-line);
+  background: var(--gold-soft);
+}
+
+/* Coming soon */
+.pt-card.soon {
+  opacity: .35;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Icon */
+.pt-card-ico {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width .3s ease, height .3s ease;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+.pt-card-ico svg { width: 100%; height: 100%; display: block; }
+.ico-fb {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+
+/* Title — shown on first click */
+.pt-card-title {
+  display: none;
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-strong);
+  line-height: 1.35;
+  text-align: center;
+  margin-top: 10px;
+  letter-spacing: -.005em;
+}
+.pt-card.active .pt-card-title { display: block; }
+
+/* Detail — shown on second click */
+.pt-card-detail {
+  display: none;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line-soft);
+  width: 100%;
+}
+.pt-card.revealed .pt-card-detail { display: block; }
+
+.pt-card-desc {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-dim);
+  line-height: 1.6;
+  text-align: center;
+  letter-spacing: .01em;
+}
+.pt-card-commit {
+  display: block;
+  margin-top: 6px;
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255,204,77,.7);
+  letter-spacing: .04em;
+  text-align: center;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* Coming soon badge */
+.soon-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  background: rgba(255,255,255,.05);
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+
+/* ── INTERRUPT OVERLAY ── */
+/*
+  Fires on page load before chooser is visible.
+  Round video bubble replaces static George image.
+  Dismiss reveals the card grid.
+*/
+.ch-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  background: rgba(0,0,0,.88);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 28px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease;
+}
+.ch-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+.ch-overlay.gone {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── VIDEO BUBBLE (chooser version) ── */
+/*
+  188px diameter — matches george-float canonical size.
+  Uses shared.css ring token via inline border style.
+  YouTube plays inline inside the circle.
+*/
+.ch-vid-bubble {
+  width: 188px;
+  height: 188px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid var(--gold-line);
+  box-shadow:
+    0 0 0 6px var(--gold-soft),
+    0 18px 50px rgba(0,0,0,.55);
+  flex-shrink: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.ch-vid-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 2;
+  transition: opacity .3s ease;
+  border-radius: 50%;
+}
+.ch-vid-thumb.hidden { opacity: 0; pointer-events: none; }
+.ch-vid-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.ch-vid-frame iframe { width: 100%; height: 100%; border: none; }
+
+/* Play button below bubble */
+.ch-vid-play {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  background: none;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  padding: 8px 18px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: border-color .18s, color .18s;
+  -webkit-tap-highlight-color: transparent;
+}
+.ch-vid-play:hover { border-color: var(--gold-line); color: var(--white); }
+.ch-vid-play svg { width: 11px; height: 11px; flex-shrink: 0; display: inline-block; }
+
+/* Interrupt copy */
+.ch-int-statement {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-strong);
+  text-align: center;
+  line-height: 1.25;
+  letter-spacing: -.01em;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  max-width: 280px;
+}
+.ch-int-statement span { color: var(--gold); }
+
+.ch-int-sub {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-dim);
+  text-align: center;
+  line-height: 1.65;
+  max-width: 264px;
+  margin-bottom: 28px;
+}
+
+/* Dismiss button */
+.ch-int-dismiss {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: #080808;
+  background: var(--white);
+  border: none;
+  border-radius: 3px;
+  padding: 13px 32px;
+  cursor: pointer;
+  transition: background .15s, transform .12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.ch-int-dismiss:hover  { background: rgba(255,255,255,.88); }
+.ch-int-dismiss:active { transform: scale(.97); }
+
+/* ── SPACER ── */
+.ch-spacer { height: 24px; }
+</style>
+</head>
+
+<body>
+<div class="chooser-app">
+
+  <!-- ═══════════════════════════════════
+       HEADER — matches shared.js shell exactly
+       Uses shared.css .hdr classes throughout
+  ════════════════════════════════════ -->
+  <header class="hdr">
+    <div class="hdr-l">
+      <div class="hdr-ico">
+        <img src="assets/STLhomebuyerjourneylogo.png"
+             alt="STL Home Buyer Journey"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <span style="display:none;color:var(--gold);width:100%;height:100%;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 11.5L12 4l9 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 10.5V20h11V10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </div>
+      <div>
+        <div class="hdr-t"><span>STL</span> Home Buyer Journey</div>
+        <div class="hdr-name">George Kindler</div>
+        <div class="hdr-tagline">13 Years Of Real Estate Experience At Your Fingertips</div>
+      </div>
+    </div>
+    <button class="btn-at" id="btn-explore" type="button">Explore</button>
+  </header>
+
+  <!-- Progress bar — sits at Chapter 3 position -->
+  <div class="prog-wrap">
+    <div class="prog-fill" id="prog" style="width:28%"></div>
+  </div>
+
+  <!-- Scene bar -->
+  <div class="scene-bar">
+    <div class="scene-lbl">Walk The Property</div>
+    <div class="scene-ch">Chapter 3</div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════
+       MAIN — scrollable
+  ════════════════════════════════════ -->
+  <div class="chooser-main" id="chooser-main">
+
+    <!-- George strip -->
+    <div class="g-strip" id="g-strip">
+      <div class="gs-face">
+        <img src="assets/george-serious.png"
+             alt="George Kindler"
+             onerror="this.style.display='none'">
+      </div>
+      <div class="gs-info">
+        <div class="gs-name">George Kindler</div>
+        <div class="gs-tag">The Closing Pros LLC &middot; 314.435.1087</div>
+      </div>
+    </div>
+
+    <!-- Headline -->
+    <div class="ch-headline" id="ch-headline">
+      <div class="ch-hl-main">I don&rsquo;t walk homes like other agents.<br><span>Neither should you.</span></div>
+      <div class="ch-hl-sub">One wrong set of eyes can cost you $15k&ndash;$40k after you buy. I&rsquo;ll show you exactly what changes based on the age, style, and condition of the house.</div>
+    </div>
+
+    <!-- Tension cue -->
+    <div class="ch-tension" id="ch-tension">What I&rsquo;m looking for changes the moment I know what kind of house we&rsquo;re walking.</div>
+    <div class="ch-tension-sub" id="ch-tension-sub">Tap a property type to open it &mdash; each one is a different showing.</div>
+
+    <!-- ── ACTIVE WALKTHROUGHS ── -->
+    <div class="ch-divider show" id="div-active">
+      <div class="ch-divider-label">Choose your property type</div>
+    </div>
+
+    <div class="pt-grid" id="pt-grid">
+
+      <!-- As-Is -->
+      <div class="pt-card" id="pc0"
+           data-file="03a-asis.html"
+           data-event="interior_asis">
+        <div class="pt-card-ico">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 11.5L12 4l9 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6.5 10.5V20h11V10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9.5 20v-5h5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="pt-card-title">Walk this one only if you&rsquo;re ready to work</div>
+        <div class="pt-card-detail">
+          <div class="pt-card-desc">The price is low for a reason. Let&rsquo;s find out how many reasons.</div>
+          <span class="pt-card-commit">As-Is</span>
+        </div>
+      </div>
+
+      <!-- Move-In Ready -->
+      <div class="pt-card" id="pc1"
+           data-file="03b-moveinready.html"
+           data-event="interior_movein">
+        <div class="pt-card-ico">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 11.5L12 4l9 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6.5 10.5V20h11V10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 13h6M9 16h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pt-card-title">Updated doesn&rsquo;t mean problem-free</div>
+        <div class="pt-card-detail">
+          <div class="pt-card-desc">It means the problems are harder to see.</div>
+          <span class="pt-card-commit">Move-In Ready</span>
+        </div>
+      </div>
+
+      <!-- Renovated -->
+      <div class="pt-card" id="pc2"
+           data-file="03c-renovated.html"
+           data-event="interior_renovated">
+        <div class="pt-card-ico">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 11.5L12 4l9 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6.5 10.5V20h11V10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="14" r="2.5" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+        </div>
+        <div class="pt-card-title">Someone spent money on this house</div>
+        <div class="pt-card-detail">
+          <div class="pt-card-desc">The question is whether they spent it right.</div>
+          <span class="pt-card-commit">Renovated</span>
+        </div>
+      </div>
+
+    </div><!-- /pt-grid -->
+
+    <!-- ── COMING SOON ── -->
+    <div class="ch-divider" id="div-soon">
+      <div class="ch-divider-label">More walkthroughs coming</div>
+    </div>
+
+    <div class="pt-grid show" id="pt-grid-soon">
+
+      <div class="pt-card soon">
+        <div class="soon-badge">Soon</div>
+        <div class="pt-card-ico"><span class="ico-fb" style="color:rgba(255,204,77,.28);">A</span></div>
+        <div class="pt-card-title" style="display:block;color:var(--text-faint);font-size:11px;">As-Is &mdash; 1920s</div>
+      </div>
+
+      <div class="pt-card soon">
+        <div class="soon-badge">Soon</div>
+        <div class="pt-card-ico"><span class="ico-fb" style="color:rgba(255,204,77,.28);">A</span></div>
+        <div class="pt-card-title" style="display:block;color:var(--text-faint);font-size:11px;">As-Is &mdash; 1990s</div>
+      </div>
+
+      <div class="pt-card soon">
+        <div class="soon-badge">Soon</div>
+        <div class="pt-card-ico"><span class="ico-fb" style="color:rgba(255,204,77,.28);">+</span></div>
+        <div class="pt-card-title" style="display:block;color:var(--text-faint);font-size:11px;">More coming</div>
+      </div>
+
+    </div><!-- /pt-grid-soon -->
+
+    <div class="ch-spacer"></div>
+
+  </div><!-- /chooser-main -->
+
+
+  <!-- ═══════════════════════════════════
+       FOOTER — matches shared.js shell exactly
+  ════════════════════════════════════ -->
+  <footer class="ftr">
+    <div class="ftr-compliance">
+      <div class="ftr-compliance-label">Compliance</div>
+      <div class="ftr-brokerage">The Closing Pros LLC</div>
+      <div class="ftr-phone">314-998-4550</div>
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════
+       INTERRUPT OVERLAY
+       Fires on load. Video bubble + statement.
+       Dismiss reveals chooser cards.
+  ════════════════════════════════════ -->
+  <div class="ch-overlay" id="ch-overlay">
+
+    <!-- Video bubble — 188px circle -->
+    <div class="ch-vid-bubble" id="ch-vid-bubble">
+      <!--
+        THUMBNAIL: swap src for your recorded thumbnail.
+        Name convention: assets/thumb-interior-chooser.png
+        Until recorded, george-serious.png fills as placeholder.
+      -->
+      <img class="ch-vid-thumb"
+           id="ch-vid-thumb"
+           src="assets/george-serious.png"
+           alt="George Kindler">
+      <div class="ch-vid-frame" id="ch-vid-frame"></div>
+    </div>
+
+    <!-- Play button below bubble -->
+    <button class="ch-vid-play" id="ch-vid-play" type="button">
+      <svg viewBox="0 0 11 11" fill="none">
+        <path d="M2 1.5l8 4-8 4V1.5Z" fill="currentColor"/>
+      </svg>
+      Watch first
+    </button>
+
+    <!-- Statement -->
+    <div class="ch-int-statement">The wrong eyes cost you <span>real money.</span></div>
+    <div class="ch-int-sub">One wrong set of eyes can cost you $15k&ndash;$40k after you buy. I&rsquo;ll show you exactly what changes based on the age, style, and condition of the house.</div>
+
+    <!-- Dismiss -->
+    <button class="ch-int-dismiss" id="ch-int-dismiss" type="button">
+      Show me how to walk a house
+    </button>
+
+  </div><!-- /ch-overlay -->
+
+</div><!-- /chooser-app -->
+
+
+<!-- ── SCRIPTS ── -->
+<script>
+/*
+  Tell the dashboard which chapter this is so the journey
+  rail highlights Chapter 3 correctly. No scene engine loads.
+*/
+window.CHAPTER_NUM   = 3;
+window.CHAPTER_LABEL = 'Walk The Property';
+window.PREV_FILE     = '02-affordability.html';
+window.SCENES        = [];   /* Empty — chooser has no scenes */
+</script>
+
+<script src="zip-data.js"></script>
+<script src="resources.js"></script>
+<script src="shared.js"></script>
+
+<!--
+  YouTube IFrame API — lazy loaded only if user taps play.
+  Loaded by inline script below, not shared.js, because
+  the chooser video is independent of the scene video system.
+-->
+<script>
+(function () {
+  'use strict';
+
+  /*
+    ── YOUTUBE VIDEO ID ──
+    Replace with your actual YouTube video ID after recording.
+    Format: the string after ?v= in the YouTube URL.
+  */
+  var YT_VIDEO_ID = 'REPLACE_WITH_YOUR_VIDEO_ID';
+
+  var ytPlayer     = null;
+  var ytReady      = false;
+  var ytApiLoaded  = false;
+  var playPending  = false;
+
+  /* YouTube API callback */
+  window.onYouTubeIframeAPIReady = function () {
+    ytReady = true;
+    if (playPending) startPlayer();
+  };
+
+  function loadYTApi() {
+    if (ytApiLoaded) return;
+    ytApiLoaded = true;
+    var s = document.createElement('script');
+    s.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(s);
+  }
+
+  function startPlayer() {
+    var frame = document.getElementById('ch-vid-frame');
+    var thumb = document.getElementById('ch-vid-thumb');
+    if (!frame || ytPlayer) return;
+
+    if (thumb) thumb.classList.add('hidden');
+
+    var div = document.createElement('div');
+    div.id = 'yt-player-chooser';
+    frame.appendChild(div);
+
+    ytPlayer = new YT.Player('yt-player-chooser', {
+      videoId: YT_VIDEO_ID,
+      playerVars: {
+        autoplay:       1,
+        controls:       0,
+        modestbranding: 1,
+        rel:            0,
+        playsinline:    1,
+        mute:           0
+      },
+      events: {
+        onStateChange: function (e) {
+          if (e.data === YT.PlayerState.ENDED) {
+            var t = document.getElementById('ch-vid-thumb');
+            if (t) t.classList.remove('hidden');
+            var pb = document.getElementById('ch-vid-play');
+            if (pb) pb.innerHTML =
+              '<svg viewBox="0 0 11 11" fill="none"><path d="M2 1.5l8 4-8 4V1.5Z" fill="currentColor"/></svg>Watch again';
+            ytPlayer = null;
+          }
+        }
+      }
+    });
+  }
+
+  function onPlayTap() {
+    loadYTApi();
+    if (ytReady) { startPlayer(); }
+    else         { playPending = true; }
+  }
+
+  /* ── INTERRUPT OVERLAY ── */
+  window.addEventListener('load', function () {
+
+    /* Show overlay */
+    setTimeout(function () {
+      var ov = document.getElementById('ch-overlay');
+      if (ov) ov.classList.add('show');
+      if (typeof gtag === 'function') {
+        gtag('event', 'interior_chooser_shown', {});
+      }
+    }, 400);
+
+    /* Play taps */
+    var playBtn = document.getElementById('ch-vid-play');
+    var bubble  = document.getElementById('ch-vid-bubble');
+    if (playBtn) playBtn.addEventListener('click', onPlayTap);
+    if (bubble)  bubble.addEventListener('click', function () {
+      if (!ytPlayer) onPlayTap();
+    });
+
+    /* Dismiss */
+    var dismissBtn = document.getElementById('ch-int-dismiss');
+    if (dismissBtn) dismissBtn.addEventListener('click', dismiss);
+
+    /* Explore button — opens shared.js dashboard */
+    var exploreBtn = document.getElementById('btn-explore');
+    if (exploreBtn) {
+      exploreBtn.addEventListener('click', function () {
+        if (window.SharedPlatform && window.SharedPlatform.openDashboard) {
+          window.SharedPlatform.openDashboard('journey');
+        }
+      });
+    }
+
+  });
+
+  function dismiss() {
+    /* Stop video if playing */
+    if (ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
+      ytPlayer.pauseVideo();
+    }
+
+    var ov = document.getElementById('ch-overlay');
+    if (ov) {
+      ov.classList.add('gone');
+      setTimeout(function () { ov.style.display = 'none'; }, 450);
+    }
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'interior_chooser_dismissed', {});
+    }
+
+    revealContent();
+  }
+
+  function revealContent() {
+    setTimeout(function () {
+      var gs = document.getElementById('g-strip');
+      var hl = document.getElementById('ch-headline');
+      var tl = document.getElementById('ch-tension');
+      var ts = document.getElementById('ch-tension-sub');
+      var ds = document.getElementById('div-soon');
+      if (gs) gs.classList.add('show');
+      if (hl) hl.classList.add('show');
+      if (tl) tl.classList.add('show');
+      if (ts) ts.classList.add('show');
+      if (ds) ds.classList.add('show');
+    }, 100);
+
+    setTimeout(function () {
+      var grid = document.getElementById('pt-grid');
+      if (grid) grid.classList.add('show');
+    }, 380);
+  }
+
+  /* ── 3-CLICK CARD INTERACTION ── */
+  var gridActivated = false;
+  var cards = document.querySelectorAll('#pt-grid .pt-card');
+
+  Array.prototype.forEach.call(cards, function (card) {
+    card._state = 0;
+    card.addEventListener('click', function () { handleCard(card); });
+  });
+
+  function handleCard(card) {
+    var s = card._state || 0;
+
+    if (s === 0) {
+      activateGrid();
+      setActive(card);
+      card._state = 1;
+      return;
+    }
+    if (s === 1) {
+      if (!card.classList.contains('active')) {
+        setActive(card);
+        card._state = 1;
+        return;
+      }
+      card.classList.add('revealed');
+      card._state = 2;
+      return;
+    }
+    if (s === 2) {
+      if (!card.classList.contains('active')) {
+        setActive(card);
+        card._state = 1;
+        return;
+      }
+      go(card);
+    }
+  }
+
+  function activateGrid() {
+    if (gridActivated) return;
+    gridActivated = true;
+    var g = document.getElementById('pt-grid');
+    if (g) g.classList.add('activated');
+  }
+
+  function setActive(card) {
+    Array.prototype.forEach.call(cards, function (c) {
+      if (c !== card) {
+        c.classList.remove('active', 'revealed');
+        c._state = 0;
+      }
+    });
+    card.classList.add('active');
+  }
+
+  function go(card) {
+    var file  = card.getAttribute('data-file');
+    var event = card.getAttribute('data-event') || 'interior';
+    if (typeof gtag === 'function') {
+      gtag('event', 'interior_type_selected', { type: event });
+    }
+    if (file) window.location.href = file;
+  }
+
+})();
+</script>
+
+</body>
+</html>
