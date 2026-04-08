@@ -499,6 +499,15 @@
       scene.georgeImageContext
     );
 
+    /* ── VIDEO BUBBLE ── */
+    /* If scene has a video ID, replace George image with inline YouTube bubble.
+       If no video, restore George image normally. */
+    if (scene.video) {
+      _renderVideoFloat(scene.video, scene.george);
+    } else {
+      _destroyVideoFloat();
+    }
+
     dismissInterrupt(true);
     closeDrawer();
     clearVisualCues();
@@ -2083,6 +2092,162 @@ function closeDrawer() {
     );
 
     renderScene(currentSceneIndex);
+  }
+
+  /* ============================================================
+     VIDEO FLOAT SYSTEM
+     Replaces the George image with an inline YouTube bubble
+     when scene.video is set. Restores George image on teardown.
+     ============================================================ */
+
+  var _ytPlayer      = null;
+  var _ytReady       = false;
+  var _ytPending     = null;   /* video ID waiting for API */
+  var _ytApiLoaded   = false;
+
+  /* YouTube IFrame API callback — must be on window */
+  window.onYouTubeIframeAPIReady = function () {
+    _ytReady = true;
+    if (_ytPending) {
+      _initYTPlayer(_ytPending);
+      _ytPending = null;
+    }
+  };
+
+  function _loadYTApi() {
+    if (_ytApiLoaded) return;
+    _ytApiLoaded = true;
+    var s = document.createElement("script");
+    s.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(s);
+  }
+
+  function _renderVideoFloat(videoId, georgeFaceName) {
+    var gfWrap = byId("gf-wrap");
+    var georgeImg = byId("george-img");
+    if (!gfWrap) return;
+
+    /* Hide existing George image — bubble takes its place */
+    if (georgeImg) georgeImg.style.display = "none";
+
+    /* Avoid re-rendering if same video already showing */
+    if (byId("gf-video-bubble") && gfWrap._currentVideoId === videoId) return;
+
+    /* Remove any existing bubble */
+    _destroyVideoFloat(true);
+
+    /* Build bubble container */
+    var bubble = document.createElement("div");
+    bubble.className = "gf-video-bubble";
+    bubble.id = "gf-video-bubble";
+
+    /* Thumbnail — uses current George face as placeholder
+       until chapter author swaps it for a real thumbnail via scene.videoThumb */
+    var thumb = document.createElement("img");
+    thumb.className = "gf-video-thumb";
+    thumb.id = "gf-video-thumb";
+    thumb.src = georgeFace(georgeFaceName || "serious");
+    thumb.alt = "George Kindler";
+    bubble.appendChild(thumb);
+
+    /* iframe mount point */
+    var frameWrap = document.createElement("div");
+    frameWrap.className = "gf-video-frame";
+    frameWrap.id = "gf-video-frame";
+    bubble.appendChild(frameWrap);
+
+    gfWrap.appendChild(bubble);
+    gfWrap._currentVideoId = videoId;
+
+    /* Play button below george-float */
+    var playRow = document.createElement("div");
+    playRow.className = "gf-video-play";
+    playRow.id = "gf-video-play";
+    playRow.innerHTML =
+      '<button type="button">' +
+      '<svg viewBox="0 0 10 10" fill="none"><path d="M2 1l7 4-7 4V1Z" fill="currentColor"/></svg>' +
+      'Watch' +
+      '</button>';
+
+    var georgeFloat = byId("george-float");
+    if (georgeFloat) georgeFloat.appendChild(playRow);
+
+    /* Tap handlers — bubble or play button starts video */
+    function onPlayTap() {
+      _loadYTApi();
+      if (_ytReady) {
+        _initYTPlayer(videoId);
+      } else {
+        _ytPending = videoId;
+      }
+    }
+
+    bubble.addEventListener("click", onPlayTap);
+    var playBtn = playRow.querySelector("button");
+    if (playBtn) playBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      onPlayTap();
+    });
+  }
+
+  function _initYTPlayer(videoId) {
+    var frameWrap = byId("gf-video-frame");
+    var thumb = byId("gf-video-thumb");
+    if (!frameWrap || _ytPlayer) return;
+
+    /* Hide thumbnail */
+    if (thumb) thumb.classList.add("gf-thumb-hidden");
+
+    /* Create player div */
+    var div = document.createElement("div");
+    div.id = "gf-yt-player";
+    frameWrap.appendChild(div);
+
+    _ytPlayer = new YT.Player("gf-yt-player", {
+      videoId: videoId,
+      playerVars: {
+        autoplay:       1,
+        controls:       0,
+        modestbranding: 1,
+        rel:            0,
+        playsinline:    1,
+        mute:           0
+      },
+      events: {
+        onStateChange: function (e) {
+          if (e.data === YT.PlayerState.ENDED) {
+            /* Restore thumbnail on end */
+            var t = byId("gf-video-thumb");
+            if (t) t.classList.remove("gf-thumb-hidden");
+            _ytPlayer = null;
+          }
+        }
+      }
+    });
+  }
+
+  function _destroyVideoFloat(keepGeorgeHidden) {
+    /* Stop and destroy player */
+    if (_ytPlayer) {
+      try { _ytPlayer.stopVideo(); } catch (e) {}
+      _ytPlayer = null;
+    }
+    _ytPending = null;
+
+    /* Remove bubble and play button */
+    var bubble  = byId("gf-video-bubble");
+    var playRow = byId("gf-video-play");
+    if (bubble)  bubble.remove();
+    if (playRow) playRow.remove();
+
+    /* Restore George image unless caller wants it hidden */
+    if (!keepGeorgeHidden) {
+      var georgeImg = byId("george-img");
+      if (georgeImg) georgeImg.style.display = "block";
+    }
+
+    var gfWrap = byId("gf-wrap");
+    if (gfWrap) gfWrap._currentVideoId = null;
   }
 
   if (document.readyState === "loading") {

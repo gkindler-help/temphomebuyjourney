@@ -438,6 +438,97 @@ svg {
 }
 
 /* ============================================================
+   7b. VIDEO BUBBLE SYSTEM
+   Replaces george-float image when scene.video is set.
+   Same 188px canonical size. Same ring system.
+   YouTube plays inline inside the circle — no fullscreen.
+   George image is used as thumbnail until play is tapped.
+   ============================================================ */
+
+/* Bubble wraps the existing george-float container */
+.gf-video-bubble {
+  width: 100%;
+  height: 188px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Thumbnail — George image shown before play */
+.gf-video-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  z-index: 2;
+  transition: opacity .3s ease;
+  border-radius: 50%;
+}
+.gf-video-thumb.gf-thumb-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* YouTube iframe sits inside bubble */
+.gf-video-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.gf-video-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Play button — rendered below george-float by shared.js */
+.gf-video-play {
+  position: absolute;
+  left: 0;
+  bottom: -38px;
+  width: 188px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.gf-video-play button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.7);
+  background: rgba(8,8,8,.88);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 999px;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: border-color .18s, color .18s;
+  -webkit-tap-highlight-color: transparent;
+}
+.gf-video-play button:hover {
+  border-color: var(--gold-line);
+  color: var(--white);
+}
+.gf-video-play svg {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* ============================================================
    8. SCENE CAPTION
    ============================================================ */
 
