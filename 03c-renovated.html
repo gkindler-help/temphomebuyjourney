@@ -8,6 +8,18 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EEE14BZT9P');</script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
+<style>
+/* Hide all caption text — photo is the content on walkthrough scenes */
+.scene-caption { display: none !important; }
+
+/* George hidden by default — appears only on interrupt and summary */
+.george-float { opacity: 0 !important; pointer-events: none !important; }
+.george-float.george-visible {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transition: opacity .4s ease;
+}
+</style>
 </head>
 <body>
 <div id="app"></div>
@@ -15,47 +27,38 @@
 <script>
 // ── CHAPTER CONFIG ─────────────────────────────────────────────
 window.CHAPTER_NUM   = 202;
-window.CHAPTER_LABEL = 'Renovated Home';
+window.CHAPTER_LABEL = 'Renovated';
 window.PREV_FILE     = '03-interior.html';
 
-// ── CUE TRACKING ──────────────────────────────────────────────
-// Every pulse cue across all scenes is registered here.
-// When tapped, its id is logged to state.
-// Summary scene reads this to score the walkthrough.
+// ── ALL TRACKABLE CUES ─────────────────────────────────────────
 window.ALL_CUES = [
-  // Scene 0 — Exterior front
-  { id:'roof',        label:'Roof condition',         scene:0 },
-  { id:'chimney',     label:'Chimney inspection',     scene:0 },
-  { id:'bay-window',  label:'Bay window glazing',     scene:0 },
-  { id:'ac-unit',     label:'AC condenser age',       scene:0 },
-  { id:'foundation',  label:'Foundation grade',       scene:0 },
-  // Scene 1 — Exterior rear
-  { id:'rear-grade',  label:'Rear grading',           scene:1 },
-  { id:'gutters',     label:'Gutter condition',       scene:1 },
-  { id:'alley-str',   label:'Alley structure',        scene:1 },
-  // Scene 2 — Living room fireplace
-  { id:'fireplace',   label:'Fireplace liner',        scene:2 },
-  { id:'hardwood',    label:'Hardwood condition',     scene:2 },
-  { id:'lr-outlet',   label:'Living room outlets',    scene:2 },
-  // Scene 3 — Living room wide
-  { id:'arch-doors',  label:'Arched doorways',        scene:3 },
-  { id:'hvac-vent',   label:'HVAC vent placement',    scene:3 },
-  // Scene 4 — Kitchen
-  { id:'appliance-age','label':'Appliance age',       scene:4 },
-  { id:'counter-edge','label':'Counter install quality',scene:4},
-  { id:'cabinet-gap', 'label':'Cabinet alignment',   scene:4 },
-  // Scene 5 — Upper bedroom
-  { id:'two-prong',   label:'Two-prong outlets',      scene:5 },
-  { id:'dormer-ceil', label:'Dormer ceiling angle',   scene:5 },
-  // Scene 6 — Original bathroom
-  { id:'orig-tile',   label:'Original tile condition',scene:6 },
-  { id:'pedestal-sink','label':'Pedestal sink age',   scene:6 },
-  // Scene 7 — Updated bathroom
-  { id:'grout-lines', label:'Grout and caulk quality',scene:7 },
-  { id:'fixture-qual','label':'Fixture quality',      scene:7 },
+  { id:'roof',          label:'Roof condition',          scene:0 },
+  { id:'chimney',       label:'Chimney',                 scene:0 },
+  { id:'bay-window',    label:'Bay window glazing',      scene:0 },
+  { id:'ac-unit',       label:'AC condenser',            scene:0 },
+  { id:'foundation',    label:'Foundation grade',        scene:0 },
+  { id:'fireplace',     label:'Fireplace',               scene:1 },
+  { id:'hardwood',      label:'Hardwood floors',         scene:1 },
+  { id:'lr-outlet',     label:'Living room outlets',     scene:1 },
+  { id:'arch-doors',    label:'Original architecture',   scene:2 },
+  { id:'hvac-vent',     label:'HVAC vents',              scene:2 },
+  { id:'appliance-age', label:'Appliance age',           scene:3 },
+  { id:'counter-edge',  label:'Counter quality',         scene:3 },
+  { id:'cabinet-gap',   label:'Cabinet quality',         scene:3 },
+  { id:'two-prong',     label:'Two-prong outlets',       scene:4 },
+  { id:'dormer-ceil',   label:'Dormer ceiling',          scene:4 },
+  { id:'orig-tile',     label:'Original tile',           scene:5 },
+  { id:'pedestal-sink', label:'Plumbing age',            scene:5 },
+  { id:'grout-lines',   label:'Grout quality',           scene:6 },
+  { id:'fixture-qual',  label:'Fixture quality',         scene:6 },
+  { id:'rear-grade',    label:'Rear grading',            scene:7 },
+  { id:'gutters',       label:'Gutters',                 scene:7 },
+  { id:'side-ac',       label:'AC condenser close',      scene:8 },
+  { id:'side-grade',    label:'Side grade',              scene:8 },
+  { id:'basement-door', label:'Basement access',         scene:9 },
 ];
 
-// ── CUE TAP LOGGER ────────────────────────────────────────────
+// ── CUE TAP LOGGER ─────────────────────────────────────────────
 window.CUE_TAPPED = [];
 function logCueTap(id) {
   if (window.CUE_TAPPED.indexOf(id) === -1) {
@@ -71,605 +74,542 @@ function logCueTap(id) {
 // ── SCENES ─────────────────────────────────────────────────────
 window.SCENES = [
 
-// 0 — EXTERIOR FRONT — video bubble, interrupt, pulse cues
+// ── 0  EXTERIOR FRONT ──────────────────────────────────────────
 {
   bg: 'assets/renovated-01.png',
   george: 'serious',
   video: 'REPLACE_WITH_YOUR_VIDEO_ID',
-  videoThumb: 'assets/thumb-renovated-exterior.png',
+  videoThumb: 'assets/thumb-renovated-01.png',
   room: 'Exterior',
-  title: 'Someone spent money on this house.',
-  sub: 'The question is whether they spent it right.',
+  title: '',
+  sub: '',
   drawerLabel: 'What do you see out here?',
   interrupt: {
-    title: 'Before we walk in.',
-    text: 'I\'ve already been looking at this house from the street. Renovated doesn\'t mean problem-free. It means the problems are harder to find. Let me show you what I\'m looking at before we touch the door.',
+    title: 'Before we touch the door.',
+    text: 'Renovated doesn\'t mean problem-free. It means the problems are harder to find.',
     btnText: 'Show me'
   },
   cues: [
     {
+      type: 'spotlight', autoplay: true,
+      delay: 1400, x: 62, y: 68, size: 80, duration: 2400
+    },
+    {
       type: 'pulse', tone: 'yellow',
-      x: 52, y: 14,
-      label: 'Roof',
-      id: 'roof',
+      x: 52, y: 14, label: 'Roof', id: 'roof',
       deep: {
-        title: 'Roof condition',
-        body: 'First question on any renovated home — did they replace the roof or just the kitchen? Asphalt shingles in St. Louis last 20-25 years. If the renovation was cosmetic only, you may be inheriting a 15-year-old roof. I check the age on the disclosure.'
+        title: 'Roof age',
+        body: 'Did the renovation include the roof? Asphalt shingles last 20-25 years in St. Louis. Check the disclosure for the last replacement date.'
       }
     },
     {
       type: 'pulse', tone: 'yellow',
-      x: 60, y: 8,
-      label: 'Chimney',
-      id: 'chimney',
+      x: 60, y: 8, label: 'Chimney', id: 'chimney',
       deep: {
         title: 'Chimney liner',
-        body: 'Two chimneys on this house. Renovated homes often get cosmetic chimney work — tuckpointing, new cap — without addressing the liner. A damaged liner is a fire hazard. If there\'s a fireplace inside, a chimney inspection is non-negotiable.'
+        body: 'Cosmetic chimney work — tuckpointing, new cap — doesn\'t mean the liner was addressed. A chimney inspection is the only way to know.'
       }
     },
     {
       type: 'pulse', tone: 'yellow',
-      x: 63, y: 36,
-      label: 'Bay window',
-      id: 'bay-window',
+      x: 63, y: 36, label: 'Bay window', id: 'bay-window',
       deep: {
-        title: 'Bay window glazing',
-        body: 'Fresh white trim on the bay window looks great in photos. But original single-pane glass behind new trim is common in STL brick renovations. I check whether the glass was actually replaced or just the surround. Failed seals add up fast at $150-400 per unit.'
+        title: 'Window glazing',
+        body: 'Fresh trim doesn\'t mean new glass. Original single-pane glass behind new trim is common on STL brick renovations.'
       }
     },
     {
-      type: 'spotlight',
-      autoplay: true,
-      delay: 1200,
-      x: 79, y: 56,
-      size: 80,
-      duration: 2400
-    },
-    {
       type: 'pulse', tone: 'red',
-      x: 79, y: 56,
-      label: 'AC unit',
-      id: 'ac-unit',
+      x: 62, y: 68, label: 'AC unit', id: 'ac-unit',
       deep: {
         title: 'AC condenser age',
-        body: 'The condenser sitting on the side of the house is one of the first things I look at. If the renovation didn\'t include HVAC, you\'re buying someone else\'s timeline. A condenser over 12 years old is near end of life. I check the serial number to confirm the date.'
+        body: 'If the HVAC wasn\'t part of the renovation, you\'re buying someone else\'s timeline. The serial number tells me the manufacture date.'
       }
     },
     {
       type: 'pulse', tone: 'red',
-      x: 28, y: 70,
-      label: 'Grade',
-      id: 'foundation',
+      x: 28, y: 72, label: 'Grade', id: 'foundation',
       deep: {
-        title: 'Foundation grading',
-        body: 'Negative grading — ground sloping toward the foundation — is one of the most common causes of basement moisture in St. Louis. Renovators fix kitchens. They rarely fix drainage. I check every corner of the foundation before we go inside.'
+        title: 'Foundation grade',
+        body: 'Ground sloping toward the foundation causes basement moisture. Renovators fix kitchens. They rarely fix drainage.'
       }
     }
   ],
   chips: [
-    { label: 'Roof age', icon: 'house', cueIndex: 0 },
-    { label: 'AC unit', icon: 'electric', cueIndex: 3 },
-    { label: 'Foundation grade', icon: 'water', cueIndex: 4 }
+    { label: 'Roof', icon: 'house', cueIndex: 1 },
+    { label: 'AC unit', icon: 'electric', cueIndex: 4 },
+    { label: 'Grade', icon: 'water', cueIndex: 5 }
   ],
   choices: [
     {
       label: 'What\'s the first thing you noticed?',
-      response: 'The AC condenser on the side. It\'s telling me they may not have touched the HVAC. On a renovated home that sells for a premium, that\'s the number I need before I make an offer.',
+      response: 'The AC condenser. It tells me whether HVAC was part of this renovation or not.',
       deep: {
-        title: 'Why HVAC matters on renovated homes',
-        body: 'A renovated home commands $30-60k over as-is pricing in most St. Louis zip codes. If the HVAC wasn\'t part of that renovation, you\'re paying renovation prices for a system that may need $8-12k in the next 3-5 years. That changes my offer number before we even get inside.'
+        title: 'Why HVAC matters here',
+        body: 'A renovated home commands a premium. If HVAC wasn\'t included, that\'s a cost you\'ll carry. Worth knowing before you decide what to offer.'
       }
     },
     {
-      label: 'The curb appeal looks great though.',
-      response: 'It does. And that\'s exactly what I\'m suspicious of. Curb appeal is cheap. Landscaping, fresh paint, new shutters — none of that touches what matters. I want to see what\'s behind the pretty.',
-    },
-    {
-      label: 'What are we looking for on the roof?',
-      response: 'Age and condition. Curling shingles, missing granules, any soft spots around the chimney flashing. If the roof wasn\'t replaced in the renovation I use that in negotiations — not as an afterthought.',
+      label: 'The curb appeal is strong.',
+      response: 'It is. Landscaping and fresh paint are inexpensive. I want to see what\'s behind it.',
     }
   ]
 },
 
-// 1 — EXTERIOR REAR — pre-entry observations
-{
-  bg: 'assets/renovated-08.png',
-  george: 'serious',
-  room: 'Before We Walk In',
-  title: 'I walked around back before you got here.',
-  sub: 'Most buyers go straight to the front door. I don\'t.',
-  drawerLabel: 'What did you find back here?',
-  cues: [
-    {
-      type: 'pulse', tone: 'yellow',
-      x: 50, y: 22,
-      label: 'Gutters',
-      id: 'gutters',
-      deep: {
-        title: 'Gutter condition',
-        body: 'Clogged or damaged gutters are one of the leading causes of basement moisture in St. Louis. On a renovated home I expect new or cleaned gutters. If they\'re original and full of debris, it tells me how thorough the renovation actually was.'
-      }
-    },
-    {
-      type: 'pulse', tone: 'red',
-      x: 35, y: 65,
-      label: 'Rear grade',
-      id: 'rear-grade',
-      deep: {
-        title: 'Rear grading',
-        body: 'The ground behind this house slopes toward the foundation. That\'s moisture waiting to happen. Regrading costs $500-2,000 depending on scope. Left unaddressed it causes basement seepage that costs 10 times that to fix.'
-      }
-    },
-    {
-      type: 'pulse', tone: 'yellow',
-      x: 68, y: 55,
-      label: 'Structure',
-      id: 'alley-str',
-      deep: {
-        title: 'Alley structure condition',
-        body: 'The detached garage or alley structure is often excluded from renovation budgets entirely. Roof, foundation, electrical — all potentially original. I always check the alley structure separately. It\'s not included in the main home inspection unless you request it.'
-      }
-    }
-  ],
-  chips: [
-    { label: 'Rear drainage', icon: 'water', cueIndex: 1 },
-    { label: 'Alley structure', icon: 'house', cueIndex: 2 }
-  ],
-  choices: [
-    {
-      label: 'What does the rear tell you that the front doesn\'t?',
-      response: 'Everything the photographer didn\'t want you to see. Rear grade, gutter condition, the alley structure. Every one of those items can be expensive. None of them show up in the listing photos.',
-    },
-    {
-      label: 'Is the grading a deal breaker?',
-      response: 'No. But it goes on the list. If the basement shows any moisture evidence inside, this grading becomes Exhibit A in my inspection request.',
-      deep: {
-        title: 'Grading + basement moisture connection',
-        body: 'Negative rear grading combined with any basement moisture evidence is my strongest negotiating position on a renovated home. The seller renovated around the problem. That\'s a disclosure issue and a repair cost. I use both.'
-      }
-    }
-  ]
-},
-
-// 2 — LIVING ROOM FIREPLACE
+// ── 1  LIVING ROOM FIREPLACE ────────────────────────────────────
 {
   bg: 'assets/renovated-02.png',
-  george: 'welcome',
+  george: 'serious',
   room: 'Living Room',
-  title: 'Good bones. Now let\'s see what they touched.',
-  sub: 'Original hardwood, original fireplace, fresh paint. I\'m reading what stayed and what changed.',
-  drawerLabel: 'What are you looking at in here?',
+  title: '',
+  sub: '',
+  drawerLabel: 'What are you reading in here?',
   cues: [
     {
-      type: 'spotlight',
-      autoplay: true,
-      delay: 800,
-      x: 50, y: 52,
-      size: 110,
-      duration: 2000
+      type: 'spotlight', autoplay: true,
+      delay: 900, x: 50, y: 52, size: 110, duration: 2000
     },
     {
       type: 'pulse', tone: 'yellow',
-      x: 50, y: 52,
-      label: 'Fireplace',
-      id: 'fireplace',
+      x: 50, y: 52, label: 'Fireplace', id: 'fireplace',
       deep: {
-        title: 'Fireplace liner',
-        body: 'Original brick fireplace with the original mantle. Beautiful — and potentially uninspected. A chimney sweep and liner inspection runs $150-300. Without it you don\'t know if this fireplace is functional or decorative. On an FHA loan a non-functional fireplace that\'s marketed as functional is a disclosure problem.'
+        title: 'Fireplace condition',
+        body: 'Original mantle, original brick. Beautiful — and potentially uninspected. A liner inspection tells us if it\'s functional or decorative.'
       }
     },
     {
       type: 'pulse', tone: 'green',
-      x: 35, y: 78,
-      label: 'Hardwood',
-      id: 'hardwood',
+      x: 35, y: 78, label: 'Floors', id: 'hardwood',
       deep: {
         title: 'Hardwood condition',
-        body: 'Refinished hardwood is one of the highest-value renovation items in St. Louis. These floors look clean and consistent. I\'m checking for soft spots near the bathroom wall and any cupping along the edges — both indicate moisture history under the floor.'
+        body: 'Refinished floors look clean and consistent. I\'m checking for soft spots near the bathroom wall — that\'s where moisture hides.'
       }
     },
     {
       type: 'pulse', tone: 'red',
-      x: 18, y: 62,
-      label: 'Outlets',
-      id: 'lr-outlet',
+      x: 18, y: 62, label: 'Outlets', id: 'lr-outlet',
       deep: {
-        title: 'Living room outlets',
-        body: 'I can see the outlet plate from here. Two-prong or three-prong tells me whether the electrical was updated as part of the renovation. On a home being sold at renovation pricing, ungrounded outlets mean the electrical was cosmetic-only — new fixtures on old wiring.'
+        title: 'Outlet type',
+        body: 'Two-prong or three-prong tells me whether the electrical was updated. Worth noting before we go further.'
       }
     }
   ],
   chips: [
     { label: 'Fireplace', icon: 'warning', cueIndex: 1 },
-    { label: 'Floor condition', icon: 'check', cueIndex: 2 },
+    { label: 'Floors', icon: 'check', cueIndex: 2 },
     { label: 'Electrical', icon: 'electric', cueIndex: 3 }
   ],
   choices: [
     {
-      label: 'The floors look great.',
-      response: 'They do. Refinished hardwood is a $3-8 per sq ft investment and it shows. What I\'m checking is whether they refinished over a problem or refinished clean floors. Soft spots near that bathroom wall tell the real story.',
+      label: 'Were the floors part of the renovation?',
+      response: 'Looks like it. Refinishing runs $3-8 per sq ft. I\'m checking for soft spots near that bathroom wall.',
     },
     {
-      label: 'Was the fireplace part of the renovation?',
-      response: 'I don\'t know yet. The mantle looks original which is actually a good sign — they didn\'t cover it up. But I need a chimney inspection before I can tell you whether it\'s functional.',
-      deep: {
-        title: 'Original mantle value',
-        body: 'Original craftsman mantles in St. Louis brick homes are genuinely valuable. Replacing one with a replica costs $2,000-6,000. If this one is intact and in good condition it\'s a real asset — not just cosmetic.'
-      }
-    },
-    {
-      label: 'The room feels bigger than the photos.',
-      response: 'That\'s the ceiling height. Nine-foot ceilings in a 1940s brick make the room. And the arched doorway into the dining room extends the sight line. That\'s original architecture — not a renovation feature.'
+      label: 'Is the fireplace functional?',
+      response: 'Unknown until inspected. The mantle looks original — a good sign they didn\'t cover anything up.',
     }
   ]
 },
 
-// 3 — LIVING ROOM WIDE
+// ── 2  LIVING ROOM WIDE ─────────────────────────────────────────
 {
   bg: 'assets/renovated-03.png',
-  george: 'welcome',
+  george: 'serious',
   room: 'Living Room',
-  title: 'Walk the flow.',
-  sub: 'The layout tells you what the renovation changed and what it didn\'t.',
-  drawerLabel: 'What does the layout tell you?',
+  title: '',
+  sub: '',
+  drawerLabel: 'Walk the layout.',
   cues: [
     {
       type: 'pulse', tone: 'green',
-      x: 22, y: 48,
-      label: 'Arch',
-      id: 'arch-doors',
+      x: 22, y: 48, label: 'Arches', id: 'arch-doors',
       deep: {
-        title: 'Original arched doorways',
-        body: 'These arched doorways are original to the house. They indicate the renovation worked with the existing architecture rather than gutting it. That\'s a good sign — it suggests the renovation was thoughtful rather than a quick flip.'
+        title: 'Original architecture',
+        body: 'These arched doorways are original. They tell me the renovation worked with the house rather than gutting it.'
       }
     },
     {
       type: 'pulse', tone: 'yellow',
-      x: 52, y: 28,
-      label: 'HVAC vent',
-      id: 'hvac-vent',
+      x: 52, y: 28, label: 'HVAC vent', id: 'hvac-vent',
       deep: {
-        title: 'HVAC vent placement',
-        body: 'The vent placement tells me whether the ductwork was redesigned as part of the renovation. Original duct placement in 1940s St. Louis homes is often inefficient — rooms at the end of the run get poor airflow. If the renovation didn\'t address ductwork, you\'ll feel it in the utility bills.'
+        title: 'Vent placement',
+        body: 'Vent location tells me whether ductwork was redesigned. Original placement in 1940s homes is often inefficient at the far end of the run.'
       }
     }
   ],
   chips: [
-    { label: 'Original architecture', icon: 'house', cueIndex: 0 },
-    { label: 'HVAC distribution', icon: 'electric', cueIndex: 1 }
+    { label: 'Architecture', icon: 'house', cueIndex: 0 },
+    { label: 'HVAC', icon: 'electric', cueIndex: 1 }
   ],
   choices: [
     {
-      label: 'What are load-bearing walls in a house like this?',
-      response: 'In a 1940s St. Louis brick, the exterior walls and the center spine wall are load-bearing. The arched openings you see here are original — they weren\'t opened up. If a buyer wants to open the floor plan further, that\'s a structural conversation before it\'s a design one.',
+      label: 'Can these walls come down?',
+      response: 'The exterior walls and center spine are load-bearing. Any changes are a structural conversation before they\'re a design one.',
       deep: {
         title: 'Load-bearing walls',
-        body: 'Removing a load-bearing wall without a proper beam runs $3,000-10,000 and requires permits. An unpermitted wall removal follows the property — not the seller. I always check permit records before we write an offer on any renovated home.'
+        body: 'Removing a load-bearing wall without a proper beam runs $3,000-10,000. Unpermitted work follows the property — not the seller.'
       }
     },
     {
-      label: 'Did they update the ductwork?',
-      response: 'I don\'t know yet. I\'ll check the mechanical room in the basement. Original flex duct from the 1970s in a home being sold at renovation pricing is a red flag — it means the HVAC update was surface-level.'
+      label: 'Was the ductwork updated?',
+      response: 'I\'ll check in the basement. Original flex duct on a renovation-priced home is worth noting.',
     }
   ]
 },
 
-// 4 — KITCHEN
+// ── 3  KITCHEN ──────────────────────────────────────────────────
 {
   bg: 'assets/renovated-04.png',
   george: 'serious',
   room: 'Kitchen',
-  title: 'This is where the renovation budget shows.',
-  sub: 'Or where it ran out.',
-  drawerLabel: 'What are you checking in the kitchen?',
+  title: '',
+  sub: '',
+  drawerLabel: 'Read the kitchen.',
   interrupt: {
-    title: 'Read the details.',
-    text: 'Anyone can put in white cabinets. I\'m looking at the gaps, the alignment, the install quality. That tells me whether this was a professional renovation or a motivated seller with a YouTube account.',
-    btnText: 'Show me what to look for'
+    title: 'Read the details, not the photos.',
+    text: 'Anyone can put in white cabinets. Install quality tells you how much of the budget actually went here.',
+    btnText: 'Show me'
   },
   cues: [
     {
-      type: 'spotlight',
-      autoplay: true,
-      delay: 900,
-      x: 62, y: 58,
-      size: 100,
-      duration: 2200
+      type: 'spotlight', autoplay: true,
+      delay: 900, x: 62, y: 58, size: 100, duration: 2200
     },
     {
       type: 'pulse', tone: 'yellow',
-      x: 62, y: 58,
-      label: 'Appliances',
-      id: 'appliance-age',
+      x: 62, y: 58, label: 'Appliances', id: 'appliance-age',
       deep: {
         title: 'Appliance age',
-        body: 'Stainless appliances photograph well but age matters. The serial number on the range encodes the manufacture date. If these appliances are 8+ years old and weren\'t part of the renovation, you\'re buying someone else\'s replacement cycle. A full appliance suite runs $3,000-6,000.'
+        body: 'The serial number encodes the manufacture date. Appliances over 8 years old that weren\'t part of the renovation are worth noting.'
       }
     },
     {
       type: 'pulse', tone: 'yellow',
-      x: 45, y: 62,
-      label: 'Counter edge',
-      id: 'counter-edge',
+      x: 45, y: 62, label: 'Counter edge', id: 'counter-edge',
       deep: {
-        title: 'Counter installation quality',
-        body: 'I look at the counter edge where it meets the wall and the sink cutout. Poor seam alignment, visible caulk gaps, or uneven overhang are signs of a DIY or budget installation. On a premium-priced renovation those details matter — they indicate what else was cut short.'
+        title: 'Counter installation',
+        body: 'Poor seam alignment or visible caulk gaps at the wall indicate a rushed or budget install. Small detail, meaningful signal.'
       }
     },
     {
       type: 'pulse', tone: 'yellow',
-      x: 30, y: 55,
-      label: 'Cabinet gaps',
-      id: 'cabinet-gap',
+      x: 30, y: 55, label: 'Cabinets', id: 'cabinet-gap',
       deep: {
-        title: 'Cabinet alignment',
-        body: 'Uneven cabinet gaps, doors that don\'t close flush, or visible shimming at the crown molding are signs of budget cabinetry installed quickly. Semi-custom cabinets in a kitchen this size run $8,000-15,000. Builder-grade boxes with painted fronts run $3,000-5,000. The install quality tells you which one you\'re looking at.'
+        title: 'Cabinet quality',
+        body: 'Open every door. Soft-close hinges, plywood box construction, flush alignment — those are the tells between a real renovation and a cosmetic one.'
       }
     }
   ],
   chips: [
-    { label: 'Appliance age', icon: 'electric', cueIndex: 1 },
-    { label: 'Install quality', icon: 'check', cueIndex: 2 },
-    { label: 'Cabinet quality', icon: 'layout', cueIndex: 3 }
+    { label: 'Appliances', icon: 'electric', cueIndex: 1 },
+    { label: 'Counters', icon: 'check', cueIndex: 2 },
+    { label: 'Cabinets', icon: 'layout', cueIndex: 3 }
   ],
   choices: [
     {
-      label: 'The kitchen looks really good.',
-      response: 'It photographs well. White shaker cabinets, subway tile, dark counters — that\'s the formula right now. What I\'m reading is the install quality and the appliance age. Both tell me how much of the budget actually went into this kitchen versus how much went into making it look like a kitchen.',
-    },
-    {
-      label: 'How do I tell if the cabinets are quality?',
-      response: 'Open every door. Check the hinges — soft close is a minimum standard on a renovation. Pull every drawer. Look at the box construction inside — plywood box versus particle board. Particle board swells with moisture. In a kitchen that\'s a lifespan issue.',
+      label: 'How do I read cabinet quality?',
+      response: 'Open every door. Check the hinges and pull every drawer. Plywood box vs particle board is the real quality split.',
       deep: {
-        title: 'Cabinet box construction',
-        body: 'Plywood box cabinets last 20-30 years. Particle board boxes last 10-15 in a dry environment and less in a kitchen with any moisture. The price difference between them at install is $2,000-4,000. The difference in lifespan is significant.'
+        title: 'Cabinet construction',
+        body: 'Plywood boxes last 20-30 years. Particle board lasts 10-15 in a dry environment and less in a kitchen.'
       }
     },
     {
-      label: 'What about the counters?',
-      response: 'Dark laminate photographed as stone is common on budget renovations. I run my hand along the edge and feel for the seam. Stone has no seam at the wall. Laminate does. These look like a mid-grade quartz — not stone, but legitimate.'
+      label: 'Are the counters stone or laminate?',
+      response: 'Run your hand along the edge and feel for a seam at the wall. Stone has none. These look like mid-grade quartz.',
     }
   ]
 },
 
-// 5 — UPPER BEDROOM — two-prong outlets
+// ── 4  UPPER BEDROOM ────────────────────────────────────────────
 {
   bg: 'assets/renovated-05.png',
   george: 'serious',
   room: 'Upper Bedroom',
-  title: 'Look at the baseboard.',
-  sub: 'Before you look at anything else in this room.',
+  title: '',
+  sub: '',
+  drawerLabel: 'Look at the baseboard first.',
   interrupt: {
     title: 'The electrical wasn\'t touched.',
-    text: 'Two-prong outlets in a renovated home tell me one thing — the renovation budget stopped at the cosmetic layer. New floors, new paint, original wiring. That\'s not a renovation. That\'s staging.',
-    btnText: 'What does this mean for my offer?'
+    text: 'New floors, new paint, original wiring. Two-prong outlets on a renovated home are worth putting on our list.',
+    btnText: 'Got it'
   },
   cues: [
     {
-      type: 'spotlight',
-      autoplay: true,
-      delay: 600,
-      x: 18, y: 82,
-      size: 70,
-      duration: 2600
+      type: 'spotlight', autoplay: true,
+      delay: 600, x: 18, y: 82, size: 70, duration: 2600
     },
     {
       type: 'pulse', tone: 'red',
-      x: 18, y: 82,
-      label: 'Two-prong outlet',
-      id: 'two-prong',
+      x: 18, y: 82, label: 'Two-prong', id: 'two-prong',
       deep: {
-        title: 'Ungrounded electrical on a renovated home',
-        body: 'Two-prong outlets mean the wiring was never updated. On a home priced at renovation value this is a negotiating point — not a footnote. A full rewire on a 1,200 sq ft house runs $8,000-15,000. At minimum I\'m asking for a panel inspection and a credit. At maximum I\'m adjusting my offer number before we even get to inspection.'
+        title: 'Ungrounded electrical',
+        body: 'On a renovation-priced home, ungrounded outlets mean the electrical was cosmetic-only. Worth noting for our list.'
       }
     },
     {
       type: 'pulse', tone: 'yellow',
-      x: 75, y: 30,
-      label: 'Dormer ceiling',
-      id: 'dormer-ceil',
+      x: 75, y: 30, label: 'Dormer ceiling', id: 'dormer-ceil',
       deep: {
-        title: 'Dormer ceiling condition',
-        body: 'The angled ceiling in a dormer room is a common location for roof leak damage. I look for any staining, soft drywall, or paint bubbling at the ceiling peak. It\'s subtle and easy to miss — and it tells me whether the roof has leaked recently.'
+        title: 'Dormer ceiling',
+        body: 'Staining or soft drywall at the ceiling peak indicates a recent roof leak. Easy to miss, worth a close look.'
       }
     }
   ],
   chips: [
     { label: 'Electrical', icon: 'electric', cueIndex: 1 },
-    { label: 'Dormer ceiling', icon: 'warning', cueIndex: 2 }
+    { label: 'Ceiling', icon: 'warning', cueIndex: 2 }
   ],
   choices: [
     {
-      label: 'How much does rewiring cost?',
-      response: 'A full rewire on a house this size runs $8,000-15,000. Partial updates — adding grounds only — are cheaper but don\'t solve the underlying age of the system. On a home priced as renovated I expect updated electrical. This tells me they didn\'t.',
-      deep: {
-        title: 'Aluminum wiring era',
-        body: 'If the original wiring is from the late 1960s or 1970s, there\'s a chance it\'s aluminum branch wiring. Insurance companies flag it. It needs pigtailing at every connection or full replacement. I ask the age of the house before I assess the electrical risk.'
-      }
+      label: 'What does two-prong mean here?',
+      response: 'It means the wiring wasn\'t updated as part of this renovation. A full rewire runs $8,000-15,000 on a house this size.',
     },
     {
-      label: 'Can I use this in the negotiation?',
-      response: 'Yes. And I will. Two-prong outlets on a renovation-priced home are an objective deficiency — not a subjective preference. I use objective deficiencies. I don\'t ask for paint colors.'
-    },
-    {
-      label: 'The room itself looks good though.',
-      response: 'It does. New hardwood, fresh paint, recessed lighting added. Someone put real money into this room. They just stopped at the outlet plate. That\'s the tell.'
+      label: 'The room looks good otherwise.',
+      response: 'It does. New hardwood, recessed lighting added. Real money went in here. The outlet plate is the tell.',
     }
   ]
 },
 
-// 6 — ORIGINAL BATHROOM
+// ── 5  BATHROOM ORIGINAL ────────────────────────────────────────
 {
   bg: 'assets/renovated-06.png',
   george: 'serious',
   room: 'Bathroom',
-  title: 'They didn\'t touch this one.',
-  sub: 'Original tile, original fixtures, original everything. That\'s a choice.',
-  drawerLabel: 'What does the original bathroom tell you?',
+  title: '',
+  sub: '',
+  drawerLabel: 'They didn\'t touch this one.',
   cues: [
     {
       type: 'pulse', tone: 'yellow',
-      x: 72, y: 55,
-      label: 'Original tile',
-      id: 'orig-tile',
+      x: 72, y: 55, label: 'Original tile', id: 'orig-tile',
       deep: {
-        title: 'Original tile condition',
-        body: 'Mid-century ceramic tile in good condition is actually desirable — it\'s thicker and more durable than modern budget tile. The question is grout condition and any cracking at the floor-wall seam. Cracked grout at the base of a shower is water intrusion waiting to happen.'
+        title: 'Tile condition',
+        body: 'Mid-century ceramic is actually durable. The question is grout condition at the floor-wall seam — that\'s where water gets in.'
       }
     },
     {
       type: 'pulse', tone: 'yellow',
-      x: 22, y: 60,
-      label: 'Pedestal sink',
-      id: 'pedestal-sink',
+      x: 22, y: 60, label: 'Plumbing', id: 'pedestal-sink',
       deep: {
-        title: 'Pedestal sink plumbing age',
-        body: 'An original pedestal sink means the supply lines and drain are likely original too. I look under the sink for any staining on the floor — that tells me if there\'s been a slow drip. Galvanized supply lines in a 1940s house are near end of life and should be budgeted for replacement.'
+        title: 'Supply line age',
+        body: 'Original pedestal sink likely means original supply lines. I look under the sink for floor staining — that tells me if there\'s been a slow drip.'
       }
     }
   ],
   chips: [
-    { label: 'Tile condition', icon: 'check', cueIndex: 0 },
-    { label: 'Plumbing age', icon: 'water', cueIndex: 1 }
+    { label: 'Tile', icon: 'check', cueIndex: 0 },
+    { label: 'Plumbing', icon: 'water', cueIndex: 1 }
   ],
   choices: [
     {
-      label: 'Why didn\'t they renovate this bathroom?',
-      response: 'Budget or timeline. Renovators prioritize the rooms that photograph — kitchen, primary bath, living room. A secondary bath in original condition on a renovated home tells me the renovation had limits. That\'s not a deal killer. It\'s information.',
-    },
-    {
-      label: 'Is original tile a problem?',
-      response: 'Not inherently. Original ceramic tile in good condition is durable. What I\'m checking is the grout at the floor-wall seam and the caulk around the tub. Those are the failure points — not the tile itself.',
+      label: 'Why did they skip this bathroom?',
+      response: 'Budget or timeline. Renovators prioritize what photographs — kitchen, primary bath. This tells me the renovation had limits.',
     },
     {
       label: 'What\'s a bathroom renovation cost?',
-      response: 'A full bathroom renovation in St. Louis runs $8,000-18,000 depending on scope. If I\'m pricing a home at renovation value and one bathroom is original, I\'m factoring that into my offer — or my inspection request.',
-      deep: {
-        title: 'Using the original bathroom in negotiations',
-        body: 'An unrenovated secondary bathroom is concrete justification for a price adjustment. Not emotional — concrete. I use it as part of a documented list: here is what was renovated, here is what was not, here is the cost to address what was not. That list is my negotiating position.'
-      }
+      response: 'A full bathroom runs $8,000-18,000 in St. Louis depending on scope. Worth noting for our list.',
     }
   ]
 },
 
-// 7 — UPDATED BATHROOM
+// ── 6  BATHROOM UPDATED ─────────────────────────────────────────
 {
   bg: 'assets/renovated-07.png',
   george: 'serious',
   room: 'Updated Bathroom',
-  title: 'This one they did.',
-  sub: 'Now I\'m reading the quality of the work.',
-  drawerLabel: 'What are you checking in here?',
+  title: '',
+  sub: '',
+  drawerLabel: 'Read the quality of the work.',
   cues: [
     {
-      type: 'spotlight',
-      autoplay: true,
-      delay: 700,
-      x: 68, y: 60,
-      size: 90,
-      duration: 2000
+      type: 'spotlight', autoplay: true,
+      delay: 700, x: 68, y: 60, size: 90, duration: 2000
     },
     {
       type: 'pulse', tone: 'yellow',
-      x: 68, y: 60,
-      label: 'Grout lines',
-      id: 'grout-lines',
+      x: 68, y: 60, label: 'Grout', id: 'grout-lines',
       deep: {
-        title: 'Grout and caulk quality',
-        body: 'Consistent grout lines and clean caulk at the tub-wall seam are the most honest indicators of renovation quality. Inconsistent grout spacing means a rushed or amateur tile job. Missing caulk at the tub seam means water intrusion is already starting. Both are visible without touching anything.'
+        title: 'Grout and caulk',
+        body: 'Consistent lines and clean caulk at the tub seam tell me whether this was a professional install or a rushed one.'
       }
     },
     {
       type: 'pulse', tone: 'yellow',
-      x: 25, y: 55,
-      label: 'Fixtures',
-      id: 'fixture-qual',
+      x: 25, y: 55, label: 'Fixtures', id: 'fixture-qual',
       deep: {
         title: 'Fixture quality',
-        body: 'Brushed nickel or matte black fixtures in a budget renovation are often builder-grade — they look identical to premium fixtures in photos but fail within 5 years. I look at the base where the fixture meets the wall. A clean install with no visible caulk gap indicates professional work. A messy base plate indicates otherwise.'
+        body: 'Builder-grade and premium fixtures look identical in photos. Look at the base where it meets the wall — a clean install indicates professional work.'
       }
     }
   ],
   chips: [
-    { label: 'Tile quality', icon: 'check', cueIndex: 1 },
-    { label: 'Fixture quality', icon: 'check', cueIndex: 2 }
+    { label: 'Tile work', icon: 'check', cueIndex: 1 },
+    { label: 'Fixtures', icon: 'check', cueIndex: 2 }
   ],
   choices: [
     {
-      label: 'How do I read tile work quality?',
-      response: 'Grout line consistency is the fastest tell. Stand back and look at the tile pattern. Consistent lines, clean corners, no lippage between tiles — that\'s a professional install. Wavy lines, varying grout width, cracked grout at the corners — that\'s a weekend warrior.',
+      label: 'How do I read tile quality?',
+      response: 'Stand back and look at the grout lines. Consistent spacing and clean corners mean a professional install.',
     },
     {
-      label: 'The mirror cabinet looks original.',
-      response: 'It is. And that\'s fine — original medicine cabinets in good condition are functional. What I\'m noting is that they updated the tile and vanity but kept the original mirror. That tells me about the renovation budget prioritization.',
-    },
-    {
-      label: 'What about the toilet?',
-      response: 'New toilet, new vanity, new tile — good. The supply line behind the toilet is what I\'m checking. A braided stainless supply line means it was replaced. An original chrome line that\'s 30+ years old is a cheap fix that\'s waiting to become an expensive one.',
-      deep: {
-        title: 'Supply line replacement',
-        body: 'A toilet supply line replacement costs $15 in parts and 20 minutes. An original supply line that fails while you\'re away from home costs whatever water damage it causes before someone notices. It\'s a cheap ask on an inspection addendum.'
-      }
+      label: 'Anything else to check in here?',
+      response: 'The supply line behind the toilet. Braided stainless means it was replaced. Original chrome means it wasn\'t.',
     }
   ]
 },
 
-// 8 — NO BASEMENT PHOTOS
+// ── 7  REAR EXTERIOR ────────────────────────────────────────────
 {
-  bg: 'assets/renovated-01.png',
+  bg: 'assets/renovated-08.png',
   george: 'serious',
-  room: 'Basement',
-  title: 'You\'re not going to find basement photos online.',
-  sub: 'That\'s not an accident.',
-  interrupt: {
-    title: 'No basement photos. Here\'s what that means.',
-    text: 'On a renovated home, missing basement photos almost always mean one of three things: the basement is unfinished and they didn\'t want to show it, there\'s deferred maintenance they\'d rather you discover in person, or the seller was present during photography and said no. Any of those reasons matters to me.',
-    btnText: 'What do we do about it?'
-  },
+  room: 'Rear Exterior',
+  title: '',
+  sub: '',
+  drawerLabel: 'We always walk the perimeter.',
+  cues: [
+    {
+      type: 'pulse', tone: 'yellow',
+      x: 50, y: 22, label: 'Gutters', id: 'gutters',
+      deep: {
+        title: 'Gutter condition',
+        body: 'Clogged or damaged gutters are a leading cause of basement moisture. On a renovated home I expect this was addressed.'
+      }
+    },
+    {
+      type: 'pulse', tone: 'red',
+      x: 35, y: 65, label: 'Rear grade', id: 'rear-grade',
+      deep: {
+        title: 'Rear grading',
+        body: 'Ground sloping toward the foundation at the rear. Same concern as the front — moisture follows gravity. Worth noting for our list.'
+      }
+    }
+  ],
+  chips: [
+    { label: 'Gutters', icon: 'water', cueIndex: 0 },
+    { label: 'Grade', icon: 'water', cueIndex: 1 }
+  ],
   choices: [
     {
-      label: 'Is this a red flag?',
-      response: 'It\'s a yellow flag. It\'s not enough to walk away — but it\'s enough to make the basement the first place I go when we walk the house. Not the kitchen. Not the primary bedroom. The basement.',
-      deep: {
-        title: 'Basement inspection on renovated homes',
-        body: 'On any renovated home I request a thermal imaging inspection of the basement walls. Cosmetic renovations above grade can mask years of moisture intrusion below. Thermal imaging shows temperature differentials behind walls that indicate moisture or missing insulation — things a standard visual inspection misses.'
-      }
-    },
-    {
-      label: 'What are you looking for when we get there?',
-      response: 'Four things immediately: smell, efflorescence on the walls, any previous waterproofing attempts, and the condition of the mechanicals. A renovated home with an untouched 20-year-old furnace and a damp basement is a different conversation than one with updated mechanicals and a dry floor.',
-    },
-    {
-      label: 'Can we make the offer contingent on the basement?',
-      response: 'Your inspection contingency covers the basement. What I want before we write the offer is a sewer scope — $150-300 — and a commitment to a thermal imaging inspection. Both happen during the inspection period. Both protect you.'
+      label: 'Why walk the rear?',
+      response: 'Everything the photographer didn\'t show you lives back here. Grade, gutters, alley structure — none of it shows up in the listing.',
     }
   ]
 },
 
-// 9 — SUMMARY
+// ── 8  EXTERIOR SIDE ────────────────────────────────────────────
+{
+  bg: 'assets/renovated-09.png',
+  george: 'serious',
+  room: 'Exterior Side',
+  title: '',
+  sub: '',
+  drawerLabel: 'Walk all four sides.',
+  cues: [
+    {
+      type: 'spotlight', autoplay: true,
+      delay: 800, x: 58, y: 68, size: 85, duration: 2200
+    },
+    {
+      type: 'pulse', tone: 'red',
+      x: 58, y: 68, label: 'AC unit', id: 'side-ac',
+      deep: {
+        title: 'Condenser up close',
+        body: 'Here\'s the condenser. The serial number is on the label on the side. First four digits typically encode the manufacture year.'
+      }
+    },
+    {
+      type: 'pulse', tone: 'yellow',
+      x: 80, y: 75, label: 'Side grade', id: 'side-grade',
+      deep: {
+        title: 'Side grade and drainage',
+        body: 'The concrete walkway here actually helps drainage. I\'m checking where the water goes at the foundation line.'
+      }
+    }
+  ],
+  chips: [
+    { label: 'AC condenser', icon: 'electric', cueIndex: 1 },
+    { label: 'Side drainage', icon: 'water', cueIndex: 2 }
+  ],
+  choices: [
+    {
+      label: 'I always walk all four sides.',
+      response: 'Every time. You see different things from each angle. Most buyers go straight to the front door.',
+    },
+    {
+      label: 'What else are you looking at out here?',
+      response: 'Brick condition, mortar joints, any staining under the eaves. Tuckpointing on a brick house runs $1,000-5,000 depending on scope.',
+    }
+  ]
+},
+
+// ── 9  KITCHEN / BASEMENT DOOR ──────────────────────────────────
+{
+  bg: 'assets/renovated-10.png',
+  george: 'serious',
+  room: 'Kitchen',
+  title: '',
+  sub: '',
+  drawerLabel: 'That door on the left.',
+  cues: [
+    {
+      type: 'spotlight', autoplay: true,
+      delay: 700, x: 12, y: 52, size: 90, duration: 2400
+    },
+    {
+      type: 'pulse', tone: 'yellow',
+      x: 12, y: 52, label: 'Basement door', id: 'basement-door',
+      deep: {
+        title: 'Basement access',
+        body: 'That\'s how you get to the basement. On a renovated home it\'s often the least photographed room — and the most revealing.'
+      }
+    }
+  ],
+  chips: [
+    { label: 'Basement access', icon: 'warning', cueIndex: 1 }
+  ],
+  choices: [
+    {
+      label: 'Why no basement photos online?',
+      response: 'Three reasons: unfinished and not worth showing, deferred maintenance they\'d rather you find in person, or the seller was present and said no.',
+      deep: {
+        title: 'What this means for your showing',
+        body: 'The basement is the first place I go when we walk this house. Not the kitchen. Not the primary bedroom. The basement.'
+      }
+    },
+    {
+      label: 'What are you looking for down there?',
+      response: 'Smell, efflorescence on the walls, any previous waterproofing attempts, and the age of the mechanicals. Four things immediately.',
+    },
+    {
+      label: 'Is missing basement photos common?',
+      response: 'On renovated homes — yes. The renovation budget rarely includes finishing the basement. It\'s storage, mechanicals, and what the house has been through.',
+    }
+  ]
+},
+
+// ── 10  SUMMARY ─────────────────────────────────────────────────
 {
   bg: 'assets/renovated-02.png',
   george: 'proud',
   room: 'George\'s Call',
-  title: 'Here\'s what we found.',
-  sub: 'This is the conversation most buyers never have before they write an offer.',
+  title: '',
+  sub: '',
+  drawerLabel: 'Here\'s what we saw.',
   interrupt: {
-    title: 'Here\'s where we stand.',
-    text: 'AC unit age unknown. Electrical not updated — two-prong throughout. No basement photos. One bathroom unrenovated. The renovation is real but it has limits. None of this kills the deal. All of it changes the number.',
-    btnText: 'What\'s the number?'
+    title: 'Here\'s what we found.',
+    text: 'AC age unknown. Electrical not updated. One bathroom unrenovated. No basement photos. The renovation is real — it has limits.',
+    btnText: 'See my results'
   },
   choices: [
     {
-      label: 'What\'s my negotiating position?',
-      response: 'Electrical credit: $4,000-6,000. HVAC inspection contingency: ask for service records or a credit. Unrenovated bathroom: $8,000-12,000 adjustment or inspection ask. Sewer scope required. That\'s a $12,000-18,000 documented position before inspection.',
-      deep: {
-        title: 'Offer strategy on a renovated home',
-        body: 'I don\'t ask for everything in the inspection request — that signals desperation. I build two lists: items that go into the initial offer price adjustment, and items that go into the inspection request. Electrical and HVAC go into the offer. Cosmetic items go into the inspection. Two different conversations, two different outcomes.'
-      }
+      label: 'Do you like this house?',
+      response: 'That\'s your call — not mine. My job is to make sure you saw it clearly before you decide.',
     },
     {
-      label: 'Do we walk away?',
-      response: 'Not from this. The bones are right — original brick, original hardwood, real renovation quality in the kitchen and primary bath. The gaps are documented and priceable. That\'s a workable position.'
+      label: 'What happens next if we want to move forward?',
+      response: 'We talk through what we saw and what matters to you before we write anything. That\'s the next chapter.',
     }
   ],
   isLast: true,
@@ -685,20 +625,26 @@ window.SCENES = [
 <script src="resources.js"></script>
 <script src="shared.js"></script>
 
-<!-- Cue tap wiring — fires after shared.js renders cues -->
 <script>
 (function () {
   'use strict';
 
-  /*
-    Wire cue tap logging into the shared.js cue system.
-    shared.js renders cue buttons into .scene-cue-layer.
-    We intercept those clicks and log the cue id.
+  // ── GEORGE VISIBILITY CONTROL ──────────────────────────────────
+  // George hidden by default via CSS.
+  // Shown only on scenes with interrupt or on summary (scene 10).
+  var GEORGE_SCENES = [0, 3, 4, 10]; // scenes with interrupt or summary
 
-    Each cue in the SCENES array has an id property.
-    We match by position in the cues array for the current scene.
-  */
+  function setGeorgeVisibility(sceneIdx) {
+    var gf = document.getElementById('george-float');
+    if (!gf) return;
+    if (GEORGE_SCENES.indexOf(sceneIdx) !== -1) {
+      gf.classList.add('george-visible');
+    } else {
+      gf.classList.remove('george-visible');
+    }
+  }
 
+  // ── CUE TAP WIRING ─────────────────────────────────────────────
   var _wiredScenes = {};
 
   function wireCueTaps(sceneIdx) {
@@ -711,34 +657,34 @@ window.SCENES = [
     var layer = document.getElementById('scene-cue-layer');
     if (!layer) return;
 
-    var btns = layer.querySelectorAll('.scene-cue');
-    var cueButtons = Array.prototype.filter.call(
-      scene.cues,
-      function(c) { return c.type === 'pulse' || c.type === 'badge'; }
-    );
+    var pulseCues = scene.cues.filter(function (c) {
+      return c.type === 'pulse' || c.type === 'badge';
+    });
 
+    var btns = layer.querySelectorAll('.scene-cue');
     Array.prototype.forEach.call(btns, function (btn, i) {
-      var cue = cueButtons[i];
+      var cue = pulseCues[i];
       if (!cue || !cue.id) return;
       btn.addEventListener('click', function () {
         logCueTap(cue.id);
-      }, { once: false });
+      });
     });
   }
 
-  /* Hook into shared.js scene render */
-  var _origOnSceneRender = window.onSceneRender;
+  // ── SCENE RENDER HOOK ──────────────────────────────────────────
+  var _orig = window.onSceneRender;
   window.onSceneRender = function (idx, scene) {
-    if (_origOnSceneRender) _origOnSceneRender(idx, scene);
+    if (_orig) _orig(idx, scene);
+    setGeorgeVisibility(idx);
     setTimeout(function () { wireCueTaps(idx); }, 200);
 
-    /* On summary scene — build results */
+    // Summary scene
     if (idx === window.SCENES.length - 1) {
-      setTimeout(buildSummary, 400);
+      setTimeout(buildSummary, 500);
     }
   };
 
-  /* ── SUMMARY BUILDER ── */
+  // ── SUMMARY ────────────────────────────────────────────────────
   function buildSummary() {
     var allCues    = window.ALL_CUES || [];
     var tapped     = window.CUE_TAPPED || [];
@@ -750,107 +696,62 @@ window.SCENES = [
       return tapped.indexOf(c.id) === -1;
     });
 
-    /* Score tier */
-    var tier, headline, sub;
+    var headline, sub, barColor;
     if (pct >= 80) {
-      tier     = 'george';
-      headline = 'You walked that house the way I do.';
-      sub      = 'You caught ' + tappedCount + ' of ' + total + ' items. That\'s ' + pct + '%. You\'re ready to write an offer with your eyes open.';
+      headline = 'You walked it like George.';
+      sub      = 'You caught ' + tappedCount + ' of ' + total + ' items. You\'re ready to talk about what you saw.';
+      barColor = 'var(--green)';
     } else if (pct >= 50) {
-      tier     = 'close';
       headline = 'You caught most of it.';
-      sub      = 'You found ' + tappedCount + ' of ' + total + ' items (' + pct + '%). Here\'s what you almost missed:';
+      sub      = tappedCount + ' of ' + total + ' items. Here\'s what you almost missed:';
+      barColor = 'var(--gold)';
     } else {
-      tier     = 'skipped';
       headline = 'Looks like you moved fast.';
-      sub      = 'You caught ' + tappedCount + ' of ' + total + ' items (' + pct + '%). A few things worth going back for:';
+      sub      = tappedCount + ' of ' + total + ' items. Want to go back and see what you missed?';
+      barColor = 'var(--red)';
     }
 
-    /* Build result HTML */
     var missedHTML = '';
-    if (missed.length && tier !== 'george') {
-      missedHTML = '<div style="' +
-        'margin:12px 0 0;' +
-        'padding:12px 14px;' +
-        'background:rgba(255,255,255,.03);' +
-        'border:1px solid rgba(255,255,255,.08);' +
-        'border-radius:10px;' +
-      '">';
+    if (missed.length && pct < 80) {
+      missedHTML = '<div style="margin:10px 0 0;padding:10px 12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;">';
       missed.slice(0, 6).forEach(function (c) {
-        missedHTML +=
-          '<div style="' +
-            'font-size:11px;' +
-            'color:rgba(255,255,255,.6);' +
-            'padding:4px 0;' +
-            'border-bottom:1px solid rgba(255,255,255,.05);' +
-          '">\u2014 ' + c.label + '</div>';
+        missedHTML += '<div style="font-size:11px;color:rgba(255,255,255,.55);padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04);">\u2014 ' + c.label + '</div>';
       });
       if (missed.length > 6) {
-        missedHTML += '<div style="font-size:10px;color:rgba(255,204,77,.6);padding-top:6px;">+ ' + (missed.length - 6) + ' more</div>';
+        missedHTML += '<div style="font-size:10px;color:rgba(255,204,77,.55);padding-top:5px;">+ ' + (missed.length - 6) + ' more</div>';
       }
       missedHTML += '</div>';
     }
 
-    /* Score bar */
-    var barColor = pct >= 80 ? 'var(--green)' : pct >= 50 ? 'var(--gold)' : 'var(--red)';
     var scoreHTML =
-      '<div style="margin:16px 0 0;">' +
-        '<div style="display:flex;justify-content:space-between;margin-bottom:6px;">' +
-          '<span style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4);">Walked like George</span>' +
+      '<div style="margin:14px 0 0;">' +
+        '<div style="display:flex;justify-content:space-between;margin-bottom:5px;">' +
+          '<span style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);">Walked like George</span>' +
           '<span style="font-size:12px;font-weight:700;color:' + barColor + ';">' + pct + '%</span>' +
         '</div>' +
-        '<div style="height:4px;background:rgba(255,255,255,.08);border-radius:999px;">' +
-          '<div style="height:100%;width:' + pct + '%;background:' + barColor + ';border-radius:999px;transition:width .6s ease;"></div>' +
+        '<div style="height:4px;background:rgba(255,255,255,.07);border-radius:999px;">' +
+          '<div style="height:100%;width:' + pct + '%;background:' + barColor + ';border-radius:999px;"></div>' +
         '</div>' +
       '</div>';
 
-    /* Action buttons */
-    var btnHTML =
-      '<div style="display:flex;flex-direction:column;gap:8px;margin-top:20px;">';
-
-    btnHTML +=
-      '<button onclick="window.location.href=\'05-pre-offer.html\'" style="' +
-        'width:100%;padding:14px;background:var(--gold);color:#080808;' +
-        'border:none;border-radius:10px;font-size:13px;font-weight:800;' +
-        'letter-spacing:.04em;cursor:pointer;font-family:var(--font-sans);' +
-      '">Continue The Journey \u2192</button>';
-
-    btnHTML +=
-      '<button onclick="window.location.href=\'03-interior.html\'" style="' +
-        'width:100%;padding:12px;background:transparent;color:rgba(255,255,255,.8);' +
-        'border:1px solid rgba(255,255,255,.18);border-radius:10px;font-size:12px;' +
-        'font-weight:700;cursor:pointer;font-family:var(--font-sans);' +
-      '">Walk Another Home</button>';
-
-    if (tier === 'skipped' || tier === 'close') {
-      btnHTML +=
-        '<button onclick="restartScenario()" style="' +
-          'width:100%;padding:12px;background:transparent;color:rgba(255,255,255,.5);' +
-          'border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:12px;' +
-          'font-weight:600;cursor:pointer;font-family:var(--font-sans);' +
-        '">Start Over \u2014 See What You Missed</button>';
+    var btnHTML = '<div style="display:flex;flex-direction:column;gap:8px;margin-top:18px;">';
+    btnHTML += '<button onclick="window.location.href=\'05-pre-offer.html\'" style="width:100%;padding:14px;background:var(--gold);color:#080808;border:none;border-radius:10px;font-size:13px;font-weight:800;letter-spacing:.04em;cursor:pointer;font-family:var(--font-sans);">Continue The Journey \u2192</button>';
+    btnHTML += '<button onclick="window.location.href=\'03-interior.html\'" style="width:100%;padding:12px;background:transparent;color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.16);border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font-sans);">Walk Another Home</button>';
+    if (pct < 80) {
+      btnHTML += '<button onclick="window.restartScenario()" style="width:100%;padding:12px;background:transparent;color:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.09);border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font-sans);">Start Over \u2014 See What You Missed</button>';
     }
-
     btnHTML += '</div>';
 
-    /* Inject into drawer */
-    var choices = document.getElementById('choices');
     var label   = document.getElementById('drawer-label');
-
-    if (label) label.textContent = headline;
-
-    if (choices) {
-      choices.innerHTML =
-        '<div style="padding:0 0 4px;">' +
-          '<div style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.6;">' + sub + '</div>' +
-          missedHTML +
-          scoreHTML +
-          btnHTML +
-        '</div>';
-    }
+    var choices = document.getElementById('choices');
+    if (label)   label.textContent = headline;
+    if (choices) choices.innerHTML =
+      '<div style="padding:0 0 4px;">' +
+        '<div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.6;">' + sub + '</div>' +
+        missedHTML + scoreHTML + btnHTML +
+      '</div>';
   }
 
-  /* Restart from Scene 0 — clears cue state */
   window.restartScenario = function () {
     window.CUE_TAPPED = [];
     try {
