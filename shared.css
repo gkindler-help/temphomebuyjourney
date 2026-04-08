@@ -1425,13 +1425,13 @@ svg {
 
 .gc-about {
   padding: 18px 22px 0;
-  color: var(--text-soft);
-  font-size: 14px;
-  line-height: 1.72;
+  color: var(--text-dim);
+  font-size: 13px;
+  line-height: 1.65;
 }
 
 .gc-about strong {
-  color: var(--text-strong);
+  color: var(--text-soft);
   font-weight: 600;
 }
 
@@ -2234,4 +2234,3 @@ svg {
   border-color: var(--gold-line);
   color: var(--text-strong);
 }
-
