@@ -3,14 +3,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "central-west-end",
     "title": "Central West End, St. Louis",
     "summary": "Central West End neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
-    "url": "central-west-end.html",
+    "url": "neighborhoods/central-west-end.html",
     "type": "neighborhood",
     "slug": "central-west-end",
     "group": "St. Louis City",
     "tag": "West End",
-    "zips": [
-      "63108"
-    ],
+    "zips": ["63108"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -19,14 +17,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "tower-grove-south",
     "title": "Tower Grove South, St. Louis",
     "summary": "Tower Grove South neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
-    "url": "tower-grove-south.html",
+    "url": "neighborhoods/tower-grove-south.html",
     "type": "neighborhood",
     "slug": "tower-grove-south",
     "group": "St. Louis City",
     "tag": "South City",
-    "zips": [
-      "63116"
-    ],
+    "zips": ["63116"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -35,14 +31,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "shaw",
     "title": "Shaw, St. Louis",
     "summary": "Shaw neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
-    "url": "shaw.html",
+    "url": "neighborhoods/shaw.html",
     "type": "neighborhood",
     "slug": "shaw",
     "group": "St. Louis City",
     "tag": "Southwest City",
-    "zips": [
-      "63110"
-    ],
+    "zips": ["63110"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -51,14 +45,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "dogtown",
     "title": "Dogtown, St. Louis",
     "summary": "Dogtown neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
-    "url": "dogtown.html",
+    "url": "neighborhoods/dogtown.html",
     "type": "neighborhood",
     "slug": "dogtown",
     "group": "St. Louis City",
     "tag": "Southwest City",
-    "zips": [
-      "63139"
-    ],
+    "zips": ["63139"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -67,14 +59,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "soulard",
     "title": "Soulard, St. Louis",
     "summary": "Soulard neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
-    "url": "soulard.html",
+    "url": "neighborhoods/soulard.html",
     "type": "neighborhood",
     "slug": "soulard",
     "group": "St. Louis City",
     "tag": "South City",
-    "zips": [
-      "63104"
-    ],
+    "zips": ["63104"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -83,14 +73,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "lafayette-square",
     "title": "Lafayette Square, St. Louis",
     "summary": "Lafayette Square neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
-    "url": "lafayette-square.html",
+    "url": "neighborhoods/lafayette-square.html",
     "type": "neighborhood",
     "slug": "lafayette-square",
     "group": "St. Louis City",
     "tag": "Midtown",
-    "zips": [
-      "63104"
-    ],
+    "zips": ["63104"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -99,14 +87,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "the-hill",
     "title": "The Hill, St. Louis",
     "summary": "The Hill neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
-    "url": "the-hill.html",
+    "url": "neighborhoods/the-hill.html",
     "type": "neighborhood",
     "slug": "the-hill",
     "group": "St. Louis City",
     "tag": "Southwest City",
-    "zips": [
-      "63110"
-    ],
+    "zips": ["63110"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -115,14 +101,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "benton-park",
     "title": "Benton Park, St. Louis",
     "summary": "Benton Park neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
-    "url": "benton-park.html",
+    "url": "neighborhoods/benton-park.html",
     "type": "neighborhood",
     "slug": "benton-park",
     "group": "St. Louis City",
     "tag": "South City",
-    "zips": [
-      "63118"
-    ],
+    "zips": ["63118"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -131,14 +115,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "st-louis-hills",
     "title": "St. Louis Hills, St. Louis",
     "summary": "St. Louis Hills neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
-    "url": "st-louis-hills.html",
+    "url": "neighborhoods/st-louis-hills.html",
     "type": "neighborhood",
     "slug": "st-louis-hills",
     "group": "St. Louis City",
     "tag": "South City",
-    "zips": [
-      "63109"
-    ],
+    "zips": ["63109"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -147,14 +129,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "kirkwood",
     "title": "Kirkwood, Missouri",
     "summary": "Kirkwood neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Central Corridor area.",
-    "url": "kirkwood.html",
+    "url": "neighborhoods/kirkwood.html",
     "type": "neighborhood",
     "slug": "kirkwood",
     "group": "Central Corridor",
     "tag": "Inner West",
-    "zips": [
-      "63122"
-    ],
+    "zips": ["63122"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -163,14 +143,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "webster-groves",
     "title": "Webster Groves, Missouri",
     "summary": "Webster Groves neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Central Corridor area.",
-    "url": "webster-groves.html",
+    "url": "neighborhoods/webster-groves.html",
     "type": "neighborhood",
     "slug": "webster-groves",
     "group": "Central Corridor",
     "tag": "Inner West",
-    "zips": [
-      "63119"
-    ],
+    "zips": ["63119"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -179,14 +157,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "clayton",
     "title": "Clayton, Missouri",
     "summary": "Clayton neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Central Corridor area.",
-    "url": "clayton.html",
+    "url": "neighborhoods/clayton.html",
     "type": "neighborhood",
     "slug": "clayton",
     "group": "Central Corridor",
     "tag": "Inner West",
-    "zips": [
-      "63105"
-    ],
+    "zips": ["63105"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -195,15 +171,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "university-city",
     "title": "University City, Missouri",
     "summary": "University City neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Central Corridor area.",
-    "url": "university-city.html",
+    "url": "neighborhoods/university-city.html",
     "type": "neighborhood",
     "slug": "university-city",
     "group": "Central Corridor",
     "tag": "Inner West",
-    "zips": [
-      "63130",
-      "63133"
-    ],
+    "zips": ["63130", "63133"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -212,14 +185,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "maplewood",
     "title": "Maplewood, Missouri",
     "summary": "Maplewood neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Central Corridor area.",
-    "url": "maplewood.html",
+    "url": "neighborhoods/maplewood.html",
     "type": "neighborhood",
     "slug": "maplewood",
     "group": "Central Corridor",
     "tag": "Inner West",
-    "zips": [
-      "63143"
-    ],
+    "zips": ["63143"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -228,16 +199,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "florissant",
     "title": "Florissant, Missouri",
     "summary": "Florissant neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "florissant.html",
+    "url": "neighborhoods/florissant.html",
     "type": "neighborhood",
     "slug": "florissant",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63031",
-      "63033",
-      "63034"
-    ],
+    "zips": ["63031", "63033", "63034"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -246,14 +213,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "ferguson",
     "title": "Ferguson, Missouri",
     "summary": "Ferguson neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "ferguson.html",
+    "url": "neighborhoods/ferguson.html",
     "type": "neighborhood",
     "slug": "ferguson",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63135"
-    ],
+    "zips": ["63135"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -262,14 +227,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "hazelwood",
     "title": "Hazelwood, Missouri",
     "summary": "Hazelwood neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "hazelwood.html",
+    "url": "neighborhoods/hazelwood.html",
     "type": "neighborhood",
     "slug": "hazelwood",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63042"
-    ],
+    "zips": ["63042"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -278,14 +241,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "jennings",
     "title": "Jennings, Missouri",
     "summary": "Jennings neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "jennings.html",
+    "url": "neighborhoods/jennings.html",
     "type": "neighborhood",
     "slug": "jennings",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63136"
-    ],
+    "zips": ["63136"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -294,14 +255,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "spanish-lake",
     "title": "Spanish Lake, Missouri",
     "summary": "Spanish Lake neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "spanish-lake.html",
+    "url": "neighborhoods/spanish-lake.html",
     "type": "neighborhood",
     "slug": "spanish-lake",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63138"
-    ],
+    "zips": ["63138"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -310,14 +269,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "riverview",
     "title": "Riverview, Missouri",
     "summary": "Riverview neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "riverview.html",
+    "url": "neighborhoods/riverview.html",
     "type": "neighborhood",
     "slug": "riverview",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63137"
-    ],
+    "zips": ["63137"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -326,14 +283,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "berkeley",
     "title": "Berkeley, Missouri",
     "summary": "Berkeley neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "berkeley.html",
+    "url": "neighborhoods/berkeley.html",
     "type": "neighborhood",
     "slug": "berkeley",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63134"
-    ],
+    "zips": ["63134"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -342,14 +297,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "bridgeton",
     "title": "Bridgeton, Missouri",
     "summary": "Bridgeton neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "bridgeton.html",
+    "url": "neighborhoods/bridgeton.html",
     "type": "neighborhood",
     "slug": "bridgeton",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63044"
-    ],
+    "zips": ["63044"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -358,14 +311,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "st-ann",
     "title": "St. Ann, Missouri",
     "summary": "St. Ann neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "st-ann.html",
+    "url": "neighborhoods/st-ann.html",
     "type": "neighborhood",
     "slug": "st-ann",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63074"
-    ],
+    "zips": ["63074"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -374,14 +325,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "st-john",
     "title": "St. John, Missouri",
     "summary": "St. John neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "st-john.html",
+    "url": "neighborhoods/st-john.html",
     "type": "neighborhood",
     "slug": "st-john",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63114"
-    ],
+    "zips": ["63114"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -390,14 +339,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "normandy",
     "title": "Normandy, Missouri",
     "summary": "Normandy neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "normandy.html",
+    "url": "neighborhoods/normandy.html",
     "type": "neighborhood",
     "slug": "normandy",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -406,14 +353,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "black-jack",
     "title": "Black Jack, Missouri",
     "summary": "Black Jack neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "black-jack.html",
+    "url": "neighborhoods/black-jack.html",
     "type": "neighborhood",
     "slug": "black-jack",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63033"
-    ],
+    "zips": ["63033"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -422,14 +367,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "dellwood",
     "title": "Dellwood, Missouri",
     "summary": "Dellwood neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "dellwood.html",
+    "url": "neighborhoods/dellwood.html",
     "type": "neighborhood",
     "slug": "dellwood",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63135"
-    ],
+    "zips": ["63135"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -438,14 +381,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "moline-acres",
     "title": "Moline Acres, Missouri",
     "summary": "Moline Acres neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "moline-acres.html",
+    "url": "neighborhoods/moline-acres.html",
     "type": "neighborhood",
     "slug": "moline-acres",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63136"
-    ],
+    "zips": ["63136"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -454,14 +395,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "cool-valley",
     "title": "Cool Valley, Missouri",
     "summary": "Cool Valley neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "cool-valley.html",
+    "url": "neighborhoods/cool-valley.html",
     "type": "neighborhood",
     "slug": "cool-valley",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -470,14 +409,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "pagedale",
     "title": "Pagedale, Missouri",
     "summary": "Pagedale neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "pagedale.html",
+    "url": "neighborhoods/pagedale.html",
     "type": "neighborhood",
     "slug": "pagedale",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63133"
-    ],
+    "zips": ["63133"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -486,14 +423,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "wellston",
     "title": "Wellston, Missouri",
     "summary": "Wellston neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "wellston.html",
+    "url": "neighborhoods/wellston.html",
     "type": "neighborhood",
     "slug": "wellston",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63133"
-    ],
+    "zips": ["63133"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -502,14 +437,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "pine-lawn",
     "title": "Pine Lawn, Missouri",
     "summary": "Pine Lawn neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "pine-lawn.html",
+    "url": "neighborhoods/pine-lawn.html",
     "type": "neighborhood",
     "slug": "pine-lawn",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63120"
-    ],
+    "zips": ["63120"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -518,14 +451,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "bel-nor",
     "title": "Bel-Nor, Missouri",
     "summary": "Bel-Nor neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "bel-nor.html",
+    "url": "neighborhoods/bel-nor.html",
     "type": "neighborhood",
     "slug": "bel-nor",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -534,14 +465,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "bel-ridge",
     "title": "Bel-Ridge, Missouri",
     "summary": "Bel-Ridge neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "bel-ridge.html",
+    "url": "neighborhoods/bel-ridge.html",
     "type": "neighborhood",
     "slug": "bel-ridge",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -550,14 +479,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "bellefontaine-neighbors",
     "title": "Bellefontaine Neighbors, Missouri",
     "summary": "Bellefontaine Neighbors neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "bellefontaine-neighbors.html",
+    "url": "neighborhoods/bellefontaine-neighbors.html",
     "type": "neighborhood",
     "slug": "bellefontaine-neighbors",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63137"
-    ],
+    "zips": ["63137"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -566,14 +493,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "calverton-park",
     "title": "Calverton Park, Missouri",
     "summary": "Calverton Park neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "calverton-park.html",
+    "url": "neighborhoods/calverton-park.html",
     "type": "neighborhood",
     "slug": "calverton-park",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63033"
-    ],
+    "zips": ["63033"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -582,14 +507,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "castle-point",
     "title": "Castle Point, Missouri",
     "summary": "Castle Point neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "castle-point.html",
+    "url": "neighborhoods/castle-point.html",
     "type": "neighborhood",
     "slug": "castle-point",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63136"
-    ],
+    "zips": ["63136"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -598,14 +521,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "country-club-hills",
     "title": "Country Club Hills, Missouri",
     "summary": "Country Club Hills neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "country-club-hills.html",
+    "url": "neighborhoods/country-club-hills.html",
     "type": "neighborhood",
     "slug": "country-club-hills",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63136"
-    ],
+    "zips": ["63136"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -614,14 +535,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "edmundson",
     "title": "Edmundson, Missouri",
     "summary": "Edmundson neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "edmundson.html",
+    "url": "neighborhoods/edmundson.html",
     "type": "neighborhood",
     "slug": "edmundson",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63134"
-    ],
+    "zips": ["63134"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -630,14 +549,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "flordell-hills",
     "title": "Flordell Hills, Missouri",
     "summary": "Flordell Hills neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "flordell-hills.html",
+    "url": "neighborhoods/flordell-hills.html",
     "type": "neighborhood",
     "slug": "flordell-hills",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63136"
-    ],
+    "zips": ["63136"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -646,14 +563,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "glen-echo-park",
     "title": "Glen Echo Park, Missouri",
     "summary": "Glen Echo Park neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "glen-echo-park.html",
+    "url": "neighborhoods/glen-echo-park.html",
     "type": "neighborhood",
     "slug": "glen-echo-park",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63136"
-    ],
+    "zips": ["63136"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -662,14 +577,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "greendale",
     "title": "Greendale, Missouri",
     "summary": "Greendale neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "greendale.html",
+    "url": "neighborhoods/greendale.html",
     "type": "neighborhood",
     "slug": "greendale",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63136"
-    ],
+    "zips": ["63136"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -678,14 +591,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "hanley-hills",
     "title": "Hanley Hills, Missouri",
     "summary": "Hanley Hills neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "hanley-hills.html",
+    "url": "neighborhoods/hanley-hills.html",
     "type": "neighborhood",
     "slug": "hanley-hills",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63133"
-    ],
+    "zips": ["63133"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -694,14 +605,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "hillsdale",
     "title": "Hillsdale, Missouri",
     "summary": "Hillsdale neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "hillsdale.html",
+    "url": "neighborhoods/hillsdale.html",
     "type": "neighborhood",
     "slug": "hillsdale",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -710,14 +619,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "norwood-court",
     "title": "Norwood Court, Missouri",
     "summary": "Norwood Court neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "norwood-court.html",
+    "url": "neighborhoods/norwood-court.html",
     "type": "neighborhood",
     "slug": "norwood-court",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -726,14 +633,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "northwoods",
     "title": "Northwoods, Missouri",
     "summary": "Northwoods neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "northwoods.html",
+    "url": "neighborhoods/northwoods.html",
     "type": "neighborhood",
     "slug": "northwoods",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -742,14 +647,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "olympian-village",
     "title": "Olympian Village, Missouri",
     "summary": "Olympian Village neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "olympian-village.html",
+    "url": "neighborhoods/olympian-village.html",
     "type": "neighborhood",
     "slug": "olympian-village",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -758,14 +661,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "parkdale",
     "title": "Parkdale, Missouri",
     "summary": "Parkdale neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "parkdale.html",
+    "url": "neighborhoods/parkdale.html",
     "type": "neighborhood",
     "slug": "parkdale",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -774,14 +675,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "pasadena-hills",
     "title": "Pasadena Hills, Missouri",
     "summary": "Pasadena Hills neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "pasadena-hills.html",
+    "url": "neighborhoods/pasadena-hills.html",
     "type": "neighborhood",
     "slug": "pasadena-hills",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -790,14 +689,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "pasadena-park",
     "title": "Pasadena Park, Missouri",
     "summary": "Pasadena Park neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "pasadena-park.html",
+    "url": "neighborhoods/pasadena-park.html",
     "type": "neighborhood",
     "slug": "pasadena-park",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -806,14 +703,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "peaceful-village",
     "title": "Peaceful Village, Missouri",
     "summary": "Peaceful Village neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "peaceful-village.html",
+    "url": "neighborhoods/peaceful-village.html",
     "type": "neighborhood",
     "slug": "peaceful-village",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63136"
-    ],
+    "zips": ["63136"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -822,14 +717,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "scotsdale",
     "title": "Scotsdale, Missouri",
     "summary": "Scotsdale neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "scotsdale.html",
+    "url": "neighborhoods/scotsdale.html",
     "type": "neighborhood",
     "slug": "scotsdale",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63033"
-    ],
+    "zips": ["63033"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -838,14 +731,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "sycamore-hills",
     "title": "Sycamore Hills, Missouri",
     "summary": "Sycamore Hills neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "sycamore-hills.html",
+    "url": "neighborhoods/sycamore-hills.html",
     "type": "neighborhood",
     "slug": "sycamore-hills",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63114"
-    ],
+    "zips": ["63114"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -854,14 +745,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "uplands-park",
     "title": "Uplands Park, Missouri",
     "summary": "Uplands Park neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "uplands-park.html",
+    "url": "neighborhoods/uplands-park.html",
     "type": "neighborhood",
     "slug": "uplands-park",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -870,14 +759,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "velda-city",
     "title": "Velda City, Missouri",
     "summary": "Velda City neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "velda-city.html",
+    "url": "neighborhoods/velda-city.html",
     "type": "neighborhood",
     "slug": "velda-city",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -886,14 +773,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "velda-village-hills",
     "title": "Velda Village Hills, Missouri",
     "summary": "Velda Village Hills neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "velda-village-hills.html",
+    "url": "neighborhoods/velda-village-hills.html",
     "type": "neighborhood",
     "slug": "velda-village-hills",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -902,14 +787,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "vinita-park",
     "title": "Vinita Park, Missouri",
     "summary": "Vinita Park neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "vinita-park.html",
+    "url": "neighborhoods/vinita-park.html",
     "type": "neighborhood",
     "slug": "vinita-park",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63114"
-    ],
+    "zips": ["63114"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -918,14 +801,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "vinita-terrace",
     "title": "Vinita Terrace, Missouri",
     "summary": "Vinita Terrace neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "vinita-terrace.html",
+    "url": "neighborhoods/vinita-terrace.html",
     "type": "neighborhood",
     "slug": "vinita-terrace",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -934,14 +815,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "woodson-terrace",
     "title": "Woodson Terrace, Missouri",
     "summary": "Woodson Terrace neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "woodson-terrace.html",
+    "url": "neighborhoods/woodson-terrace.html",
     "type": "neighborhood",
     "slug": "woodson-terrace",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63134"
-    ],
+    "zips": ["63134"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -950,14 +829,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "charlack",
     "title": "Charlack, Missouri",
     "summary": "Charlack neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "charlack.html",
+    "url": "neighborhoods/charlack.html",
     "type": "neighborhood",
     "slug": "charlack",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63114"
-    ],
+    "zips": ["63114"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -966,14 +843,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "champ",
     "title": "Champ, Missouri",
     "summary": "Champ neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "champ.html",
+    "url": "neighborhoods/champ.html",
     "type": "neighborhood",
     "slug": "champ",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63114"
-    ],
+    "zips": ["63114"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -982,14 +857,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "breckenridge-hills",
     "title": "Breckenridge Hills, Missouri",
     "summary": "Breckenridge Hills neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "breckenridge-hills.html",
+    "url": "neighborhoods/breckenridge-hills.html",
     "type": "neighborhood",
     "slug": "breckenridge-hills",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63114"
-    ],
+    "zips": ["63114"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -998,14 +871,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "bellerive-acres",
     "title": "Bellerive Acres, Missouri",
     "summary": "Bellerive Acres neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "bellerive-acres.html",
+    "url": "neighborhoods/bellerive-acres.html",
     "type": "neighborhood",
     "slug": "bellerive-acres",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1014,14 +885,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "beverly-hills",
     "title": "Beverly Hills, Missouri",
     "summary": "Beverly Hills neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "beverly-hills.html",
+    "url": "neighborhoods/beverly-hills.html",
     "type": "neighborhood",
     "slug": "beverly-hills",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1030,14 +899,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "normandy-park",
     "title": "Normandy Park, Missouri",
     "summary": "Normandy Park neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
-    "url": "normandy-park.html",
+    "url": "neighborhoods/normandy-park.html",
     "type": "neighborhood",
     "slug": "normandy-park",
     "group": "North County",
     "tag": "North County",
-    "zips": [
-      "63121"
-    ],
+    "zips": ["63121"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1046,14 +913,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "affton",
     "title": "Affton, Missouri",
     "summary": "Affton neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
-    "url": "affton.html",
+    "url": "neighborhoods/affton.html",
     "type": "neighborhood",
     "slug": "affton",
     "group": "South County",
     "tag": "South County",
-    "zips": [
-      "63123"
-    ],
+    "zips": ["63123"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1062,15 +927,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "concord",
     "title": "Concord, Missouri",
     "summary": "Concord neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
-    "url": "concord.html",
+    "url": "neighborhoods/concord.html",
     "type": "neighborhood",
     "slug": "concord",
     "group": "South County",
     "tag": "South County",
-    "zips": [
-      "63128",
-      "63123"
-    ],
+    "zips": ["63128", "63123"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1079,14 +941,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "crestwood",
     "title": "Crestwood, Missouri",
     "summary": "Crestwood neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
-    "url": "crestwood.html",
+    "url": "neighborhoods/crestwood.html",
     "type": "neighborhood",
     "slug": "crestwood",
     "group": "South County",
     "tag": "South County",
-    "zips": [
-      "63126"
-    ],
+    "zips": ["63126"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1095,14 +955,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "green-park",
     "title": "Green Park, Missouri",
     "summary": "Green Park neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
-    "url": "green-park.html",
+    "url": "neighborhoods/green-park.html",
     "type": "neighborhood",
     "slug": "green-park",
     "group": "South County",
     "tag": "South County",
-    "zips": [
-      "63123"
-    ],
+    "zips": ["63123"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1111,14 +969,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "lemay",
     "title": "Lemay, Missouri",
     "summary": "Lemay neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
-    "url": "lemay.html",
+    "url": "neighborhoods/lemay.html",
     "type": "neighborhood",
     "slug": "lemay",
     "group": "South County",
     "tag": "South County",
-    "zips": [
-      "63125"
-    ],
+    "zips": ["63125"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1127,14 +983,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "mehlville",
     "title": "Mehlville, Missouri",
     "summary": "Mehlville neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
-    "url": "mehlville.html",
+    "url": "neighborhoods/mehlville.html",
     "type": "neighborhood",
     "slug": "mehlville",
     "group": "South County",
     "tag": "South County",
-    "zips": [
-      "63125"
-    ],
+    "zips": ["63125"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1143,14 +997,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "oakville",
     "title": "Oakville, Missouri",
     "summary": "Oakville neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
-    "url": "oakville.html",
+    "url": "neighborhoods/oakville.html",
     "type": "neighborhood",
     "slug": "oakville",
     "group": "South County",
     "tag": "South County",
-    "zips": [
-      "63129"
-    ],
+    "zips": ["63129"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1159,15 +1011,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "sappington",
     "title": "Sappington, Missouri",
     "summary": "Sappington neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
-    "url": "sappington.html",
+    "url": "neighborhoods/sappington.html",
     "type": "neighborhood",
     "slug": "sappington",
     "group": "South County",
     "tag": "South County",
-    "zips": [
-      "63126",
-      "63128"
-    ],
+    "zips": ["63126", "63128"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1176,14 +1025,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "sunset-hills",
     "title": "Sunset Hills, Missouri",
     "summary": "Sunset Hills neighborhood guide for buyers: location, housing character, market data, and what to know before searching this South County area.",
-    "url": "sunset-hills.html",
+    "url": "neighborhoods/sunset-hills.html",
     "type": "neighborhood",
     "slug": "sunset-hills",
     "group": "South County",
     "tag": "South County",
-    "zips": [
-      "63127"
-    ],
+    "zips": ["63127"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1192,15 +1039,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "ballwin",
     "title": "Ballwin, Missouri",
     "summary": "Ballwin neighborhood guide for buyers: location, housing character, market data, and what to know before searching this West County area.",
-    "url": "ballwin.html",
+    "url": "neighborhoods/ballwin.html",
     "type": "neighborhood",
     "slug": "ballwin",
     "group": "West County",
     "tag": "West County",
-    "zips": [
-      "63011",
-      "63021"
-    ],
+    "zips": ["63011", "63021"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1209,16 +1053,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "chesterfield",
     "title": "Chesterfield, Missouri",
     "summary": "Chesterfield neighborhood guide for buyers: location, housing character, market data, and what to know before searching this West County area.",
-    "url": "chesterfield.html",
+    "url": "neighborhoods/chesterfield.html",
     "type": "neighborhood",
     "slug": "chesterfield",
     "group": "West County",
     "tag": "West County",
-    "zips": [
-      "63005",
-      "63017",
-      "63141"
-    ],
+    "zips": ["63005", "63017", "63141"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1227,16 +1067,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "st-charles",
     "title": "St. Charles, Missouri",
     "summary": "St. Charles neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Charles County area.",
-    "url": "st-charles.html",
+    "url": "neighborhoods/st-charles.html",
     "type": "neighborhood",
     "slug": "st-charles",
     "group": "St. Charles County",
     "tag": "St. Charles Co.",
-    "zips": [
-      "63301",
-      "63303",
-      "63304"
-    ],
+    "zips": ["63301", "63303", "63304"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1245,15 +1081,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "o-fallon",
     "title": "O'Fallon, Missouri",
     "summary": "O'Fallon neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Charles County area.",
-    "url": "o-fallon.html",
+    "url": "neighborhoods/o-fallon.html",
     "type": "neighborhood",
     "slug": "o-fallon",
     "group": "St. Charles County",
     "tag": "St. Charles Co.",
-    "zips": [
-      "63366",
-      "63368"
-    ],
+    "zips": ["63366", "63368"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1262,14 +1095,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "st-peters",
     "title": "St. Peters, Missouri",
     "summary": "St. Peters neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Charles County area.",
-    "url": "st-peters.html",
+    "url": "neighborhoods/st-peters.html",
     "type": "neighborhood",
     "slug": "st-peters",
     "group": "St. Charles County",
     "tag": "St. Charles Co.",
-    "zips": [
-      "63376"
-    ],
+    "zips": ["63376"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1278,14 +1109,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "wentzville",
     "title": "Wentzville, Missouri",
     "summary": "Wentzville neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Charles County area.",
-    "url": "wentzville.html",
+    "url": "neighborhoods/wentzville.html",
     "type": "neighborhood",
     "slug": "wentzville",
     "group": "St. Charles County",
     "tag": "St. Charles Co.",
-    "zips": [
-      "63385"
-    ],
+    "zips": ["63385"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1294,14 +1123,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "lake-st-louis",
     "title": "Lake St. Louis, Missouri",
     "summary": "Lake St. Louis neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Charles County area.",
-    "url": "lake-st-louis.html",
+    "url": "neighborhoods/lake-st-louis.html",
     "type": "neighborhood",
     "slug": "lake-st-louis",
     "group": "St. Charles County",
     "tag": "St. Charles Co.",
-    "zips": [
-      "63367"
-    ],
+    "zips": ["63367"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1310,14 +1137,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "cottleville",
     "title": "Cottleville, Missouri",
     "summary": "Cottleville neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Charles County area.",
-    "url": "cottleville.html",
+    "url": "neighborhoods/cottleville.html",
     "type": "neighborhood",
     "slug": "cottleville",
     "group": "St. Charles County",
     "tag": "St. Charles Co.",
-    "zips": [
-      "63304"
-    ],
+    "zips": ["63304"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1326,14 +1151,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "dardenne-prairie",
     "title": "Dardenne Prairie, Missouri",
     "summary": "Dardenne Prairie neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Charles County area.",
-    "url": "dardenne-prairie.html",
+    "url": "neighborhoods/dardenne-prairie.html",
     "type": "neighborhood",
     "slug": "dardenne-prairie",
     "group": "St. Charles County",
     "tag": "St. Charles Co.",
-    "zips": [
-      "63368"
-    ],
+    "zips": ["63368"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1342,14 +1165,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "weldon-spring",
     "title": "Weldon Spring, Missouri",
     "summary": "Weldon Spring neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Charles County area.",
-    "url": "weldon-spring.html",
+    "url": "neighborhoods/weldon-spring.html",
     "type": "neighborhood",
     "slug": "weldon-spring",
     "group": "St. Charles County",
     "tag": "St. Charles Co.",
-    "zips": [
-      "63304"
-    ],
+    "zips": ["63304"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1358,14 +1179,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "weldon-spring-heights",
     "title": "Weldon Spring Heights, Missouri",
     "summary": "Weldon Spring Heights neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Charles County area.",
-    "url": "weldon-spring-heights.html",
+    "url": "neighborhoods/weldon-spring-heights.html",
     "type": "neighborhood",
     "slug": "weldon-spring-heights",
     "group": "St. Charles County",
     "tag": "St. Charles Co.",
-    "zips": [
-      "63304"
-    ],
+    "zips": ["63304"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1374,14 +1193,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "josephville",
     "title": "Josephville, Missouri",
     "summary": "Josephville neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Charles County area.",
-    "url": "josephville.html",
+    "url": "neighborhoods/josephville.html",
     "type": "neighborhood",
     "slug": "josephville",
     "group": "St. Charles County",
     "tag": "St. Charles Co.",
-    "zips": [
-      "63301"
-    ],
+    "zips": ["63301"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1390,14 +1207,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "st-paul",
     "title": "St. Paul, Missouri",
     "summary": "St. Paul neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Charles County area.",
-    "url": "st-paul.html",
+    "url": "neighborhoods/st-paul.html",
     "type": "neighborhood",
     "slug": "st-paul",
     "group": "St. Charles County",
     "tag": "St. Charles Co.",
-    "zips": [
-      "63366"
-    ],
+    "zips": ["63366"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1406,14 +1221,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "west-alton",
     "title": "West Alton, Missouri",
     "summary": "West Alton neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Charles County area.",
-    "url": "west-alton.html",
+    "url": "neighborhoods/west-alton.html",
     "type": "neighborhood",
     "slug": "west-alton",
     "group": "St. Charles County",
     "tag": "St. Charles Co.",
-    "zips": [
-      "63386"
-    ],
+    "zips": ["63386"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1422,14 +1235,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "arnold",
     "title": "Arnold, Missouri",
     "summary": "Arnold neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Jefferson County area.",
-    "url": "arnold.html",
+    "url": "neighborhoods/arnold.html",
     "type": "neighborhood",
     "slug": "arnold",
     "group": "Jefferson County",
     "tag": "Jefferson Co.",
-    "zips": [
-      "63010"
-    ],
+    "zips": ["63010"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1438,14 +1249,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "festus",
     "title": "Festus, Missouri",
     "summary": "Festus neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Jefferson County area.",
-    "url": "festus.html",
+    "url": "neighborhoods/festus.html",
     "type": "neighborhood",
     "slug": "festus",
     "group": "Jefferson County",
     "tag": "Jefferson Co.",
-    "zips": [
-      "63028"
-    ],
+    "zips": ["63028"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1454,14 +1263,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "crystal-city",
     "title": "Crystal City, Missouri",
     "summary": "Crystal City neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Jefferson County area.",
-    "url": "crystal-city.html",
+    "url": "neighborhoods/crystal-city.html",
     "type": "neighborhood",
     "slug": "crystal-city",
     "group": "Jefferson County",
     "tag": "Jefferson Co.",
-    "zips": [
-      "63019"
-    ],
+    "zips": ["63019"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1470,14 +1277,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "de-soto",
     "title": "De Soto, Missouri",
     "summary": "De Soto neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Jefferson County area.",
-    "url": "de-soto.html",
+    "url": "neighborhoods/de-soto.html",
     "type": "neighborhood",
     "slug": "de-soto",
     "group": "Jefferson County",
     "tag": "Jefferson Co.",
-    "zips": [
-      "63020"
-    ],
+    "zips": ["63020"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1486,14 +1291,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "imperial",
     "title": "Imperial, Missouri",
     "summary": "Imperial neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Jefferson County area.",
-    "url": "imperial.html",
+    "url": "neighborhoods/imperial.html",
     "type": "neighborhood",
     "slug": "imperial",
     "group": "Jefferson County",
     "tag": "Jefferson Co.",
-    "zips": [
-      "63052"
-    ],
+    "zips": ["63052"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1502,14 +1305,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "high-ridge",
     "title": "High Ridge, Missouri",
     "summary": "High Ridge neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Jefferson County area.",
-    "url": "high-ridge.html",
+    "url": "neighborhoods/high-ridge.html",
     "type": "neighborhood",
     "slug": "high-ridge",
     "group": "Jefferson County",
     "tag": "Jefferson Co.",
-    "zips": [
-      "63049"
-    ],
+    "zips": ["63049"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1518,14 +1319,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "hillsboro",
     "title": "Hillsboro, Missouri",
     "summary": "Hillsboro neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Jefferson County area.",
-    "url": "hillsboro.html",
+    "url": "neighborhoods/hillsboro.html",
     "type": "neighborhood",
     "slug": "hillsboro",
     "group": "Jefferson County",
     "tag": "Jefferson Co.",
-    "zips": [
-      "63050"
-    ],
+    "zips": ["63050"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1534,14 +1333,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "house-springs",
     "title": "House Springs, Missouri",
     "summary": "House Springs neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Jefferson County area.",
-    "url": "house-springs.html",
+    "url": "neighborhoods/house-springs.html",
     "type": "neighborhood",
     "slug": "house-springs",
     "group": "Jefferson County",
     "tag": "Jefferson Co.",
-    "zips": [
-      "63051"
-    ],
+    "zips": ["63051"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1550,14 +1347,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "barnhart",
     "title": "Barnhart, Missouri",
     "summary": "Barnhart neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Jefferson County area.",
-    "url": "barnhart.html",
+    "url": "neighborhoods/barnhart.html",
     "type": "neighborhood",
     "slug": "barnhart",
     "group": "Jefferson County",
     "tag": "Jefferson Co.",
-    "zips": [
-      "63012"
-    ],
+    "zips": ["63012"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
@@ -1566,14 +1361,12 @@ window.NEIGHBORHOODS_REGISTRY = [
     "id": "cedar-hill",
     "title": "Cedar Hill, Missouri",
     "summary": "Cedar Hill neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Jefferson County area.",
-    "url": "cedar-hill.html",
+    "url": "neighborhoods/cedar-hill.html",
     "type": "neighborhood",
     "slug": "cedar-hill",
     "group": "Jefferson County",
     "tag": "Jefferson Co.",
-    "zips": [
-      "63016"
-    ],
+    "zips": ["63016"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
