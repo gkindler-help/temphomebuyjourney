@@ -1426,7 +1426,8 @@ function closeDrawer() {
     safelyBind(byId("dash-close"), "click", closeDashboard);
 
     if (tab === "neighborhoods") {
-      /* Wire accordion drawer triggers */
+      /* Redirects to neighborhood-matcher tool panel — no bindings needed */
+      return;
       var drawerTriggers = _dashPanelEl.querySelectorAll(".res-drawer-trigger");
       Array.prototype.forEach.call(drawerTriggers, function(btn) {
         btn.addEventListener("click", function() {
@@ -1616,7 +1617,9 @@ function closeDrawer() {
   }
 
   function _buildNeighborhoodsPanelHTML() {
-    var registry = window.NEIGHBORHOODS_REGISTRY || [];
+    closeDashboard();
+    openToolPanel("neighborhood-matcher");
+    return "";
 
     /* Build hood lookup from registry or hardcoded fallback */
     var hoods = registry.length ? registry.map(function(n) {
