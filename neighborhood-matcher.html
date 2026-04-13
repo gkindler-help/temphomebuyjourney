@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STL Neighborhood Matcher — George Kindler</title>
+<link rel="stylesheet" href="shared.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+/* ── PAGE SHELL ─────────────────────────────────────────── */
+.nm-wrap {
+  padding: 0 0 48px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ── HERO ──────────────────────────────────────────────── */
+.nm-hero {
+  padding: 24px 16px 20px;
+  border-bottom: 1px solid var(--line);
+  background: radial-gradient(ellipse 100% 80% at 50% 0%,
+    rgba(255,204,77,.07) 0%, transparent 70%);
+  position: relative;
+}
+
+.nm-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 16px; right: 16px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-line), transparent);
+}
+
+.nm-eyebrow {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+  opacity: .85;
+}
+
+.nm-hero-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--text-strong);
+  margin-bottom: 8px;
+}
+
+.nm-hero-title em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.nm-hero-sub {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  max-width: 380px;
+}
+
+.nm-stats-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.nm-stat {
+  font-size: 11px;
+  color: var(--text-faint);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ── PROGRESS ───────────────────────────────────────────── */
+.nm-progress-wrap {
+  height: 2px;
+  background: var(--line);
+}
+
+.nm-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #d6a825, var(--gold));
+  box-shadow: 0 0 10px rgba(255,204,77,.3);
+  transition: width .4s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── QUESTION CARD ──────────────────────────────────────── */
+.nm-question-wrap {
+  padding: 20px 16px 0;
+  animation: nmSlideIn .3s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes nmSlideIn {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.nm-q-step {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: .8;
+  margin-bottom: 6px;
+}
+
+.nm-q-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-strong);
+  line-height: 1.25;
+  margin-bottom: 5px;
+}
+
+.nm-q-sub {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.55;
+  margin-bottom: 18px;
+}
+
+/* ── OPTION CARDS ───────────────────────────────────────── */
+.nm-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nm-opt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color .18s ease, background .18s ease, transform .12s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.nm-opt:hover {
+  border-color: var(--gold-line);
+  background: var(--surface-2);
+  transform: translateY(-1px);
+}
+
+.nm-opt.selected {
+  border-color: var(--gold);
+  background: rgba(255,204,77,.06);
+}
+
+.nm-opt-emoji {
+  font-size: 20px;
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+}
+
+.nm-opt-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  flex: 1;
+}
+
+.nm-opt-check {
+  color: var(--gold);
+  font-size: 15px;
+  opacity: 0;
+  transform: scale(.4);
+  transition: opacity .2s ease, transform .2s ease;
+  flex-shrink: 0;
+}
+
+.nm-opt.selected .nm-opt-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── CHIP MULTI-SELECT ──────────────────────────────────── */
+.nm-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.nm-chip {
+  padding: 8px 14px;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-soft);
+  background: var(--surface);
+  cursor: pointer;
+  transition: all .18s ease;
+  white-space: nowrap;
+}
+
+.nm-chip:hover { border-color: var(--gold-line); color: var(--text); }
+
+.nm-chip.active {
+  border-color: var(--gold);
+  background: rgba(255,204,77,.1);
+  color: var(--gold);
+}
+
+.nm-chip-hint {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-top: 6px;
+}
+
+/* ── SLIDER ─────────────────────────────────────────────── */
+.nm-slider-display {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.nm-slider-icon {
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+
+.nm-slider-label {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+input[type="range"].nm-range {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 3px;
+  background: var(--line-2);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"].nm-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--gold);
+  transition: transform .15s ease;
+  cursor: pointer;
+}
+
+input[type="range"].nm-range::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.nm-slider-range-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.nm-slider-range-labels span {
+  font-size: 10px;
+  color: var(--text-faint);
+}
+
+/* ── NAV BUTTONS ────────────────────────────────────────── */
+.nm-nav {
+  display: flex;
+  gap: 10px;
+  padding: 20px 16px 0;
+}
+
+/* ── RESULTS ────────────────────────────────────────────── */
+.nm-results-wrap {
+  padding: 20px 16px 0;
+}
+
+.nm-results-hero {
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 20px;
+}
+
+.nm-results-eyebrow {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: .8;
+  margin-bottom: 8px;
+}
+
+.nm-results-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-strong);
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.nm-results-sub {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* ── ARCHETYPE MATCH CARD ───────────────────────────────── */
+.nm-archetype-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  animation: nmCardIn .4s cubic-bezier(.4,0,.2,1) both;
+}
+
+.nm-archetype-card:nth-child(1) { animation-delay: .04s; }
+.nm-archetype-card:nth-child(2) { animation-delay: .12s; }
+.nm-archetype-card:nth-child(3) { animation-delay: .20s; }
+
+@keyframes nmCardIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.nm-archetype-card.top-match {
+  border-color: var(--gold-line);
+  background: rgba(255,204,77,.03);
+}
+
+.nm-card-header {
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.nm-card-top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.nm-card-identity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nm-card-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.nm-card-name {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-strong);
+  line-height: 1.2;
+}
+
+.nm-card-archetype {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  margin-top: 2px;
+}
+
+.nm-top-badge {
+  background: var(--gold);
+  color: #080808;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nm-score-block {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.nm-score-num {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.nm-score-lbl {
+  font-size: 9px;
+  color: var(--text-faint);
+  letter-spacing: .06em;
+}
+
+/* Match bar */
+.nm-bar-track {
+  height: 3px;
+  background: var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.nm-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #d6a825, var(--gold));
+  width: 0;
+  transition: width 1s cubic-bezier(.4,0,.2,1) .3s;
+}
+
+/* Card desc + reason */
+.nm-card-body {
+  padding: 12px 16px 0;
+}
+
+.nm-card-desc {
+  font-size: 12px;
+  color: var(--text-soft);
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+
+.nm-card-reason {
+  background: rgba(255,204,77,.05);
+  border: 1px solid rgba(255,204,77,.14);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+}
+
+.nm-card-reason-lbl {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.nm-card-reason-text {
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+
+/* Neighborhood list inside card */
+.nm-hood-section {
+  border-top: 1px solid var(--line);
+}
+
+.nm-hood-section-hd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background .12s ease;
+}
+
+.nm-hood-section-hd:hover { background: rgba(255,255,255,.02); }
+
+.nm-hood-section-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.nm-hood-count {
+  font-size: 10px;
+  color: var(--text-faint);
+}
+
+.nm-hood-chevron {
+  color: var(--text-faint);
+  font-size: 12px;
+  transition: transform .22s ease;
+  flex-shrink: 0;
+}
+
+.nm-hood-section.open .nm-hood-chevron {
+  transform: rotate(90deg);
+  color: var(--gold);
+}
+
+.nm-hood-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .32s cubic-bezier(.32,.72,0,1);
+}
+
+.nm-hood-section.open .nm-hood-list {
+  max-height: 800px;
+}
+
+.nm-hood-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px 16px;
+  border-top: 1px solid var(--line);
+  cursor: pointer;
+  transition: background .12s ease;
+  text-decoration: none;
+}
+
+.nm-hood-item:hover { background: var(--surface-2); }
+.nm-hood-item:active { background: var(--surface-3); }
+
+.nm-hood-item-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.nm-hood-item-meta {
+  font-size: 10px;
+  color: var(--text-faint);
+  margin-top: 1px;
+}
+
+.nm-hood-item-arr {
+  color: var(--text-faint);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* ── LEAD CAPTURE ───────────────────────────────────────── */
+.nm-lead-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 16px;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.nm-lead-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-line), transparent);
+}
+
+.nm-lead-eyebrow {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.nm-lead-title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-strong);
+  margin-bottom: 6px;
+}
+
+.nm-lead-sub {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.nm-lead-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.nm-lead-disclaimer {
+  font-size: 10px;
+  color: var(--text-faint);
+  text-align: center;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+/* ── RESTART ROW ────────────────────────────────────────── */
+.nm-action-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+/* ── SHAKE ANIM ─────────────────────────────────────────── */
+@keyframes nmShake {
+  0%,100% { transform: translateX(0); }
+  20%      { transform: translateX(-5px); }
+  40%      { transform: translateX(5px); }
+  60%      { transform: translateX(-4px); }
+  80%      { transform: translateX(4px); }
+}
+
+.nm-shake { animation: nmShake .3s ease; }
+
+</style>
+</head>
+<body class="tool-page">
+
+<div class="nm-wrap" id="nm-root">
+
+  <!-- HERO -->
+  <div class="nm-hero">
+    <div class="nm-eyebrow">STL Neighborhood Matcher</div>
+    <h1 class="nm-hero-title">Find Your <em>Right</em> Part of St. Louis</h1>
+    <p class="nm-hero-sub">5 questions. Real neighborhoods. No generic answers — your results link directly to neighborhood guides.</p>
+    <div class="nm-stats-row">
+      <span class="nm-stat">🏘 98 Neighborhoods</span>
+      <span class="nm-stat">📊 7 Areas</span>
+      <span class="nm-stat">⏱ 2 Min</span>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="nm-progress-wrap">
+    <div class="nm-progress-fill" id="nm-prog" style="width:20%"></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="nm-quiz">
+    <div id="nm-question-container"></div>
+    <div class="nm-nav" id="nm-nav">
+      <button class="tool-btn-secondary" id="nm-back" style="display:none;width:auto;padding:12px 18px;margin:0;" onclick="nmBack()">← Back</button>
+      <button class="tool-btn-primary" id="nm-next" style="margin:0;" onclick="nmNext()">Continue →</button>
+    </div>
+  </div>
+
+  <!-- RESULTS (hidden until quiz done) -->
+  <div id="nm-results" style="display:none">
+    <div class="nm-results-wrap">
+
+      <div class="nm-results-hero">
+        <div class="nm-results-eyebrow">Your Match Report</div>
+        <div class="nm-results-title">Here's Where You Fit in St. Louis</div>
+        <p class="nm-results-sub">Ranked by fit score. Each result shows which specific neighborhoods to explore.</p>
+      </div>
+
+      <div id="nm-cards-container"></div>
+
+      <!-- Lead capture -->
+      <div class="nm-lead-card" id="nm-lead-card">
+        <div class="nm-lead-eyebrow">Free Deep-Dive Report</div>
+        <div class="nm-lead-title">Get the Full Picture on Your Top Matches</div>
+        <p class="nm-lead-sub">I'll send you a personalized breakdown: school ratings, flood zone notes, price trend context, and my honest take on each area. One email. No drip campaigns.</p>
+        <div class="nm-lead-fields">
+          <input type="text" id="nm-name" class="tool-input" placeholder="First name">
+          <input type="email" id="nm-email" class="tool-input" placeholder="your@email.com">
+          <button class="tool-btn-primary" style="margin:0;" onclick="nmSubmitLead()">Send My Report →</button>
+        </div>
+        <p class="nm-lead-disclaimer">George Kindler · The Closing Pros LLC · 314-998-4550</p>
+      </div>
+
+      <div id="nm-lead-success" style="display:none;padding:20px 0;text-align:center;">
+        <div style="font-size:28px;margin-bottom:8px;">✓</div>
+        <div style="font-family:var(--font-serif);font-size:17px;color:var(--gold);margin-bottom:4px;">Report on the way.</div>
+        <div style="font-size:12px;color:var(--text-dim);">Check your inbox — usually within a few minutes.</div>
+      </div>
+
+      <!-- Actions -->
+      <div class="nm-action-row">
+        <button class="tool-btn-secondary" style="margin:0;" onclick="nmRestart()">↺ Start Over</button>
+        <button class="tool-btn-secondary" style="margin:0;" onclick="nmShare()">⇪ Share</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="neighborhoods.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ============================================================
+     ARCHETYPE DEFINITIONS
+     Each archetype maps to one or more neighborhood groups/tags.
+     The scoreFn receives the answers object.
+     groups[] maps to NEIGHBORHOODS_REGISTRY group field.
+     tags[]   maps to NEIGHBORHOODS_REGISTRY tag field (optional filter).
+  ============================================================ */
+  var ARCHETYPES = [
+    {
+      id:    "city-charm",
+      name:  "South City / City Charm",
+      icon:  "🌳",
+      color: "#5dcaa5",
+      archetype: "Historic Urban Charm",
+      desc:  "Brick bungalows, front porches, block associations that actually meet, and Tower Grove Park in your backyard. South City is where you buy character — walkable streets, local coffee shops, and neighbors who wave. The tradeoff is older housing stock and city school options that lean toward private and charter.",
+      groups: ["St. Louis City"],
+      tags:   ["South City", "Southwest City", "Midtown"],
+      scoreFn: function (a) {
+        var s = 45;
+        if (a.stage === "single" || a.stage === "couple") s += 18;
+        if (a.priorities.includes("walkability"))  s += 20;
+        if (a.priorities.includes("urban-vibe"))   s += 18;
+        if (a.priorities.includes("taxes"))        s += 12;
+        if (a.budget <= 2)                         s += 14;
+        if (a.priorities.includes("schools"))      s -= 12;
+        if (a.commute >= 4)                        s -= 8;
+        return Math.min(s, 97);
+      }
+    },
+    {
+      id:    "cwe",
+      name:  "Central West End / West End",
+      icon:  "🏛",
+      color: "#60a5fa",
+      archetype: "Urban Professional",
+      desc:  "Walkable boulevards, Forest Park on your doorstep, and some of the best restaurants in the city within walking distance. CWE is where attorneys, physicians, and empty-nesters land when they want genuine city energy without the chaos. Condos, renovated Victorians, and a strong sense of place.",
+      groups: ["St. Louis City"],
+      tags:   ["West End"],
+      scoreFn: function (a) {
+        var s = 40;
+        if (a.stage === "professional" || a.stage === "empty-nester") s += 20;
+        if (a.priorities.includes("walkability"))  s += 22;
+        if (a.priorities.includes("urban-vibe"))   s += 18;
+        if (a.budget >= 3)                         s += 16;
+        if (a.priorities.includes("taxes"))        s -= 10;
+        if (a.priorities.includes("schools"))      s -= 8;
+        return Math.min(s, 97);
+      }
+    },
+    {
+      id:    "central-corridor",
+      name:  "Central Corridor",
+      icon:  "🏡",
+      color: "#f472b6",
+      archetype: "Suburban Schools & Community",
+      desc:  "Kirkwood, Webster Groves, Maplewood, Clayton, University City. The Central Corridor is where school-conscious buyers and career-focused professionals converge. Top public school districts, charming downtowns, and genuine community identity. Competitive inventory and prices that reflect the demand.",
+      groups: ["Central Corridor"],
+      tags:   ["Inner West"],
+      scoreFn: function (a) {
+        var s = 44;
+        if (a.stage === "young-family" || a.stage === "growing-family") s += 22;
+        if (a.stage === "professional")                                  s += 14;
+        if (a.priorities.includes("schools"))      s += 24;
+        if (a.priorities.includes("walkability"))  s += 10;
+        if (a.budget >= 2)                         s += 10;
+        if (a.priorities.includes("taxes"))        s -= 8;
+        return Math.min(s, 97);
+      }
+    },
+    {
+      id:    "south-county",
+      name:  "South County",
+      icon:  "💡",
+      color: "#86efac",
+      archetype: "Underrated Value",
+      desc:  "Affton, Mehlville, Oakville, Sappington, Sunset Hills, Concord. South County is the most consistently underestimated part of the metro. Solid school districts, generous lot sizes, lower tax rates than West County, and a quiet, established feel. The value math here is hard to argue with.",
+      groups: ["South County"],
+      tags:   [],
+      scoreFn: function (a) {
+        var s = 44;
+        if (a.stage === "young-family" || a.stage === "growing-family") s += 16;
+        if (a.priorities.includes("taxes"))        s += 22;
+        if (a.priorities.includes("quiet"))        s += 18;
+        if (a.priorities.includes("schools"))      s += 10;
+        if (a.budget <= 3)                         s += 12;
+        if (a.priorities.includes("walkability"))  s -= 10;
+        if (a.priorities.includes("urban-vibe"))   s -= 12;
+        return Math.min(s, 97);
+      }
+    },
+    {
+      id:    "west-county",
+      name:  "West County",
+      icon:  "🛡",
+      color: "#38bdf8",
+      archetype: "Established Suburban",
+      desc:  "Chesterfield and Ballwin anchor the West County picture — master-planned neighborhoods, Rockwood and Parkway school districts, newer construction, and lower flood risk in most areas. Commutes run longer, but buyers consistently accept that tradeoff for the package. Top choice for growing families.",
+      groups: ["West County"],
+      tags:   [],
+      scoreFn: function (a) {
+        var s = 40;
+        if (a.stage === "growing-family")          s += 22;
+        if (a.priorities.includes("schools"))      s += 24;
+        if (a.priorities.includes("flood-safety")) s += 18;
+        if (a.budget >= 3)                         s += 12;
+        if (a.priorities.includes("quiet"))        s += 10;
+        if (a.priorities.includes("walkability"))  s -= 12;
+        if (a.priorities.includes("urban-vibe"))   s -= 14;
+        if (a.commute >= 4)                        s -= 10;
+        return Math.min(s, 97);
+      }
+    },
+    {
+      id:    "st-charles",
+      name:  "St. Charles County",
+      icon:  "🌾",
+      color: "#fbbf24",
+      archetype: "Space & Growth",
+      desc:  "O\'Fallon, St. Peters, Wentzville, St. Charles, Lake St. Louis, Cottleville. St. Charles County offers the most square footage per dollar in the metro. Fast-growing, newer infrastructure, strong schools, and room to breathe. Commutes to downtown STL run 35-50 minutes — buyers who land here rarely leave.",
+      groups: ["St. Charles County"],
+      tags:   [],
+      scoreFn: function (a) {
+        var s = 38;
+        if (a.stage === "growing-family" || a.stage === "young-family") s += 20;
+        if (a.priorities.includes("schools"))      s += 18;
+        if (a.priorities.includes("quiet"))        s += 14;
+        if (a.priorities.includes("taxes"))        s += 10;
+        if (a.budget >= 2)                         s += 12;
+        if (a.commute <= 2)                        s -= 15;
+        if (a.priorities.includes("walkability"))  s -= 14;
+        if (a.priorities.includes("urban-vibe"))   s -= 16;
+        return Math.min(s, 97);
+      }
+    },
+    {
+      id:    "north-county",
+      name:  "North County",
+      icon:  "🔑",
+      color: "#c084fc",
+      archetype: "Maximum Value",
+      desc:  "Florissant, Hazelwood, Bridgeton, St. Ann, Jennings, and more. North County is the most overlooked value play in the metro. Florissant in particular has historic character, solid school options, and prices that make first-time buyers do a double-take. Perception consistently lags reality here — which creates real opportunity for buyers who look past it.",
+      groups: ["North County"],
+      tags:   [],
+      scoreFn: function (a) {
+        var s = 40;
+        if (a.stage === "single" || a.stage === "couple") s += 16;
+        if (a.priorities.includes("taxes"))        s += 24;
+        if (a.budget <= 1)                         s += 26;
+        if (a.budget === 2)                        s += 12;
+        if (a.priorities.includes("quiet"))        s += 10;
+        if (a.priorities.includes("schools"))      s -= 6;
+        if (a.priorities.includes("walkability"))  s -= 6;
+        return Math.min(s, 97);
+      }
+    },
+    {
+      id:    "jefferson-county",
+      name:  "Jefferson County",
+      icon:  "🌲",
+      color: "#6ee7b7",
+      archetype: "Nature & Space",
+      desc:  "Arnold, Festus, Imperial, High Ridge, Hillsboro. Jefferson County is for buyers who want land, trees, and real quiet — and are willing to drive for it. Prices are low, lots are large, and the pace is different. Commutes to South City and South County jobs run 25-40 minutes; to downtown, longer.",
+      groups: ["Jefferson County"],
+      tags:   [],
+      scoreFn: function (a) {
+        var s = 35;
+        if (a.priorities.includes("quiet"))        s += 22;
+        if (a.budget <= 2)                         s += 20;
+        if (a.priorities.includes("taxes"))        s += 16;
+        if (a.stage === "empty-nester")            s += 14;
+        if (a.commute >= 3)                        s += 8;
+        if (a.priorities.includes("walkability"))  s -= 18;
+        if (a.priorities.includes("urban-vibe"))   s -= 20;
+        if (a.commute <= 2)                        s -= 14;
+        return Math.min(s, 97);
+      }
+    }
+  ];
+
+  /* ============================================================
+     QUESTIONS
+  ============================================================ */
+  var QUESTIONS = [
+    {
+      id:   "stage",
+      type: "single",
+      q:    "What stage of life are you buying for?",
+      sub:  "This shapes school priorities, space needs, and commute tolerance.",
+      opts: [
+        { value: "single",       label: "Single / First Home",           emoji: "🙋" },
+        { value: "couple",       label: "Couple, No Kids Yet",           emoji: "💑" },
+        { value: "young-family", label: "Young Family — kids 0 to 8",    emoji: "👶" },
+        { value: "growing-family",label:"Growing Family — kids 9 and up",emoji: "🏡" },
+        { value: "professional", label: "Career-Focused / Relocating",   emoji: "💼" },
+        { value: "empty-nester", label: "Empty Nester / Downsizing",     emoji: "🌅" }
+      ]
+    },
+    {
+      id:   "priorities",
+      type: "multi",
+      q:    "What are your non-negotiables? Pick up to 3.",
+      sub:  "Choose what would actually change your decision — not just what sounds good.",
+      opts: [
+        { value: "schools",      label: "🏫 Public Schools"   },
+        { value: "taxes",        label: "💰 Lower Taxes"      },
+        { value: "walkability",  label: "🚶 Walkability"      },
+        { value: "flood-safety", label: "🌊 Flood Safety"     },
+        { value: "urban-vibe",   label: "🌆 Urban Energy"     },
+        { value: "quiet",        label: "🌿 Peace & Quiet"    },
+        { value: "community",    label: "🤝 Tight Community"  }
+      ]
+    },
+    {
+      id:   "budget",
+      type: "slider",
+      q:    "What is your comfortable purchase range?",
+      sub:  "Honest answer leads to better matches.",
+      min:  1, max: 6,
+      labels: ["Under $200K", "$200–$300K", "$300–$450K", "$450–$600K", "$600K–$900K", "$900K+"],
+      icons:  ["🔑",          "🏠",          "🏡",          "🏘",          "🏛",           "🌟"]
+    },
+    {
+      id:   "commute",
+      type: "single",
+      q:    "How much daily commute can you realistically live with?",
+      sub:  "Be honest — this matters more than people admit.",
+      opts: [
+        { value: 1, label: "Under 15 minutes",                          emoji: "⚡" },
+        { value: 2, label: "15 to 25 minutes",                          emoji: "🚗" },
+        { value: 3, label: "25 to 35 minutes",                          emoji: "☕" },
+        { value: 4, label: "35+ minutes — worth it for the right home", emoji: "🎧" }
+      ]
+    },
+    {
+      id:   "vibe",
+      type: "single",
+      q:    "Gut check — what kind of neighborhood actually feels like home?",
+      sub:  "Not what you think you should want. What fits.",
+      opts: [
+        { value: "urban",    label: "Walkable, busy, full of energy",      emoji: "🌆" },
+        { value: "mixed",    label: "Suburban with some walkability",       emoji: "🏘" },
+        { value: "quiet",    label: "Quiet streets, room to breathe",       emoji: "🌳" },
+        { value: "prestige", label: "Established, private, high-end feel",  emoji: "🏛" }
+      ]
+    }
+  ];
+
+  /* ============================================================
+     STATE
+  ============================================================ */
+  var answers   = { priorities: [] };
+  var step      = 0;
+  var submitted = false;
+
+  /* ============================================================
+     RENDER QUESTION
+  ============================================================ */
+  function renderQ() {
+    var q   = QUESTIONS[step];
+    var pct = ((step + 1) / QUESTIONS.length) * 100;
+    document.getElementById("nm-prog").style.width = pct + "%";
+
+    var backBtn = document.getElementById("nm-back");
+    var nextBtn = document.getElementById("nm-next");
+    backBtn.style.display = step > 0 ? "inline-block" : "none";
+
+    var isLast = step === QUESTIONS.length - 1;
+    nextBtn.textContent = isLast ? "See My Matches ✦" : "Continue →";
+
+    var html = '<div class="nm-question-wrap">';
+    html += '<div class="nm-q-step">Question ' + (step + 1) + ' of ' + QUESTIONS.length + '</div>';
+    html += '<div class="nm-q-title">' + q.q + '</div>';
+    html += '<div class="nm-q-sub">' + q.sub + '</div>';
+
+    if (q.type === "single") {
+      html += '<div class="nm-options">';
+      q.opts.forEach(function (opt) {
+        var sel  = answers[q.id] === opt.value;
+        var vStr = String(opt.value).replace(/"/g, "&quot;");
+        html += '<button class="nm-opt' + (sel ? " selected" : "") + '"'
+              + ' data-action="single" data-key="' + q.id + '" data-value="' + vStr + '">'
+              + '<span class="nm-opt-emoji">' + opt.emoji + '</span>'
+              + '<span class="nm-opt-label">' + opt.label + '</span>'
+              + '<span class="nm-opt-check">✓</span>'
+              + '</button>';
+      });
+      html += '</div>';
+    }
+
+    if (q.type === "multi") {
+      html += '<div class="nm-chips">';
+      q.opts.forEach(function (opt) {
+        var active = answers.priorities.indexOf(opt.value) !== -1;
+        html += '<button class="nm-chip' + (active ? " active" : "") + '"'
+              + ' data-action="chip" data-value="' + opt.value + '">'
+              + opt.label + '</button>';
+      });
+      html += '</div>';
+      html += '<div class="nm-chip-hint">Selected: <span id="nm-chip-count">'
+            + answers.priorities.length + '</span> / 3</div>';
+    }
+
+    if (q.type === "slider") {
+      var val = answers[q.id] || q.min;
+      html += '<div class="nm-slider-display">'
+            + '<div class="nm-slider-icon" id="nm-sl-icon">' + q.icons[val - 1] + '</div>'
+            + '<div class="nm-slider-label" id="nm-sl-label">' + q.labels[val - 1] + '</div>'
+            + '</div>';
+      html += '<input type="range" class="nm-range" id="nm-slider"'
+            + ' min="' + q.min + '" max="' + q.max + '" value="' + val + '">';
+      html += '<div class="nm-slider-range-labels">'
+            + '<span>' + q.labels[0] + '</span>'
+            + '<span>' + q.labels[q.labels.length - 1] + '</span>'
+            + '</div>';
+    }
+
+    html += '</div>';
+
+    var container = document.getElementById("nm-question-container");
+    container.innerHTML = html;
+
+    /* Slider listener — must attach after innerHTML */
+    if (q.type === "slider") {
+      var slider = document.getElementById("nm-slider");
+      if (!answers[q.id]) answers[q.id] = q.min;
+      slider.addEventListener("input", function () {
+        var v = parseInt(this.value, 10);
+        answers[q.id] = v;
+        document.getElementById("nm-sl-label").textContent = q.labels[v - 1];
+        document.getElementById("nm-sl-icon").textContent  = q.icons[v - 1];
+      });
+    }
+  }
+
+  /* ============================================================
+     DELEGATED EVENTS on question container
+  ============================================================ */
+  document.getElementById("nm-question-container").addEventListener("click", function (e) {
+    var el = e.target.closest("[data-action]");
+    if (!el) return;
+
+    var action = el.dataset.action;
+
+    if (action === "single") {
+      var key = el.dataset.key;
+      var val = el.dataset.value;
+      /* coerce numeric answers */
+      if (!isNaN(val) && val !== "") val = Number(val);
+      answers[key] = val;
+      var container = document.getElementById("nm-question-container");
+      Array.prototype.forEach.call(container.querySelectorAll(".nm-opt"), function (opt) {
+        opt.classList.remove("selected");
+      });
+      el.classList.add("selected");
+    }
+
+    if (action === "chip") {
+      var chipVal = el.dataset.value;
+      var idx     = answers.priorities.indexOf(chipVal);
+      if (idx === -1) {
+        if (answers.priorities.length >= 3) return;
+        answers.priorities.push(chipVal);
+        el.classList.add("active");
+      } else {
+        answers.priorities.splice(idx, 1);
+        el.classList.remove("active");
+      }
+      var cnt = document.getElementById("nm-chip-count");
+      if (cnt) cnt.textContent = answers.priorities.length;
+    }
+  });
+
+  /* ============================================================
+     NAVIGATION
+  ============================================================ */
+  window.nmNext = function () {
+    var q = QUESTIONS[step];
+
+    if (q.type === "single" && answers[q.id] == null) {
+      shake(); return;
+    }
+    if (q.type === "multi" && answers.priorities.length === 0) {
+      shake(); return;
+    }
+    if (q.type === "slider" && !answers[q.id]) {
+      answers[q.id] = QUESTIONS[step].min;
+    }
+
+    if (step < QUESTIONS.length - 1) {
+      step++;
+      renderQ();
+      window.scrollTo(0, 0);
+    } else {
+      showResults();
+    }
+  };
+
+  window.nmBack = function () {
+    if (step > 0) {
+      step--;
+      renderQ();
+      window.scrollTo(0, 0);
+    }
+  };
+
+  function shake() {
+    var btn = document.getElementById("nm-next");
+    btn.classList.remove("nm-shake");
+    void btn.offsetWidth; /* reflow */
+    btn.classList.add("nm-shake");
+    setTimeout(function () { btn.classList.remove("nm-shake"); }, 350);
+  }
+
+  /* ============================================================
+     RESULTS
+  ============================================================ */
+  function showResults() {
+    document.getElementById("nm-quiz").style.display    = "none";
+    document.getElementById("nm-results").style.display = "block";
+    window.scrollTo(0, 0);
+
+    /* Score archetypes */
+    var scored = ARCHETYPES.map(function (a) {
+      return { archetype: a, score: a.scoreFn(answers) };
+    }).sort(function (a, b) { return b.score - a.score; });
+
+    /* Show top 3 */
+    var top3 = scored.slice(0, 3);
+
+    var container = document.getElementById("nm-cards-container");
+    container.innerHTML = top3.map(function (item, i) {
+      return buildCard(item.archetype, item.score, i === 0);
+    }).join("");
+
+    /* Animate match bars after paint */
+    setTimeout(function () {
+      Array.prototype.forEach.call(
+        container.querySelectorAll(".nm-bar-fill"),
+        function (bar) { bar.style.width = bar.dataset.target; }
+      );
+    }, 80);
+
+    /* Wire hood section toggles */
+    Array.prototype.forEach.call(
+      container.querySelectorAll(".nm-hood-section-hd"),
+      function (hd) {
+        hd.addEventListener("click", function () {
+          var section = hd.closest(".nm-hood-section");
+          if (!section) return;
+          var isOpen = section.classList.contains("open");
+          /* close siblings */
+          Array.prototype.forEach.call(
+            container.querySelectorAll(".nm-hood-section"),
+            function (s) { s.classList.remove("open"); }
+          );
+          if (!isOpen) section.classList.add("open");
+        });
+      }
+    );
+
+    /* Wire neighborhood clicks — open neighborhood panel via SharedPlatform */
+    Array.prototype.forEach.call(
+      container.querySelectorAll(".nm-hood-item[data-url]"),
+      function (item) {
+        item.addEventListener("click", function () {
+          var url   = item.getAttribute("data-url");
+          var title = item.getAttribute("data-name") || "Neighborhood";
+          if (!url) return;
+          if (window.parent && window.parent.SharedPlatform && window.parent.SharedPlatform.openNeighborhoodPanel) {
+            window.parent.SharedPlatform.openNeighborhoodPanel(url, title);
+          } else {
+            window.location.href = url;
+          }
+        });
+      }
+    );
+  }
+
+  function buildCard(arc, score, isTop) {
+    /* Get matching neighborhoods from registry */
+    var registry = window.NEIGHBORHOODS_REGISTRY || [];
+    var hoods    = registry.filter(function (n) {
+      var groupMatch = arc.groups.indexOf(n.group) !== -1;
+      var tagMatch   = arc.tags.length === 0 || arc.tags.indexOf(n.tag) !== -1;
+      return groupMatch && tagMatch;
+    });
+
+    /* Limit displayed neighborhoods; sort published first */
+    var published = hoods.filter(function (n) { return n.status === "published"; });
+    var display   = published.length ? published : hoods;
+
+    var hoodListHTML = display.map(function (n) {
+      var name = n.title.replace(/, (St\.\s*Louis|Missouri)$/, "");
+      var zip  = (n.zips || []).join(" · ");
+      return '<div class="nm-hood-item" data-url="' + n.url + '" data-name="' + name + '">'
+           + '<div>'
+           + '<div class="nm-hood-item-name">' + name + '</div>'
+           + '<div class="nm-hood-item-meta">' + n.tag + (zip ? " · " + zip : "") + '</div>'
+           + '</div>'
+           + '<div class="nm-hood-item-arr">›</div>'
+           + '</div>';
+    }).join("");
+
+    var reason = buildReason(arc, answers);
+
+    return '<div class="nm-archetype-card' + (isTop ? " top-match" : "") + '">'
+
+      /* Header */
+      + '<div class="nm-card-header">'
+      +   '<div class="nm-card-top-row">'
+      +     '<div class="nm-card-identity">'
+      +       '<div class="nm-card-icon">' + arc.icon + '</div>'
+      +       '<div>'
+      +         '<div class="nm-card-name">' + arc.name + '</div>'
+      +         '<div class="nm-card-archetype" style="color:' + arc.color + '">' + arc.archetype + '</div>'
+      +       '</div>'
+      +     '</div>'
+      +     (isTop ? '<div class="nm-top-badge">Top Match</div>' : '')
+      +   '</div>'
+      +   '<div style="display:flex;align-items:center;gap:12px;margin-top:4px;">'
+      +     '<div class="nm-bar-track" style="flex:1;"><div class="nm-bar-fill" data-target="' + score + '%"></div></div>'
+      +     '<div class="nm-score-block"><div class="nm-score-num">' + score + '<span style="font-size:14px;color:var(--text-faint)">%</span></div><div class="nm-score-lbl">match</div></div>'
+      +   '</div>'
+      + '</div>'
+
+      /* Body */
+      + '<div class="nm-card-body">'
+      +   '<div class="nm-card-desc">' + arc.desc + '</div>'
+      +   '<div class="nm-card-reason">'
+      +     '<div class="nm-card-reason-lbl">Why this matches you</div>'
+      +     '<div class="nm-card-reason-text">' + reason + '</div>'
+      +   '</div>'
+      + '</div>'
+
+      /* Neighborhood list */
+      + '<div class="nm-hood-section">'
+      +   '<div class="nm-hood-section-hd">'
+      +     '<div style="display:flex;align-items:center;gap:8px;">'
+      +       '<div class="nm-hood-section-label">Neighborhoods in This Area</div>'
+      +       '<div class="nm-hood-count">' + display.length + '</div>'
+      +     '</div>'
+      +     '<div class="nm-hood-chevron">›</div>'
+      +   '</div>'
+      +   '<div class="nm-hood-list">' + hoodListHTML + '</div>'
+      + '</div>'
+
+      + '</div>';
+  }
+
+  function buildReason(arc, a) {
+    var parts = [];
+    var stageMap = {
+      "single":         "single buyer",
+      "couple":         "couple without kids yet",
+      "young-family":   "family with young kids",
+      "growing-family": "growing family",
+      "professional":   "career-focused buyer",
+      "empty-nester":   "empty nester"
+    };
+    var stageName = stageMap[a.stage] || "your life stage";
+
+    if (a.priorities.indexOf("schools") !== -1 && arc.scoreFn.toString().indexOf("schools") !== -1
+        && arc.id === "central-corridor") {
+      parts.push("top-rated school districts align with your priority");
+    }
+    if (a.priorities.indexOf("taxes") !== -1
+        && (arc.id === "south-county" || arc.id === "north-county" || arc.id === "jefferson-county")) {
+      parts.push("lower tax environment fits your budget priorities");
+    }
+    if (a.priorities.indexOf("walkability") !== -1
+        && (arc.id === "city-charm" || arc.id === "cwe")) {
+      parts.push("walkable streets match your lifestyle preference");
+    }
+    if (a.priorities.indexOf("urban-vibe") !== -1
+        && (arc.id === "city-charm" || arc.id === "cwe")) {
+      parts.push("urban energy is exactly what you said you want");
+    }
+    if (a.priorities.indexOf("quiet") !== -1
+        && (arc.id === "jefferson-county" || arc.id === "st-charles" || arc.id === "south-county")) {
+      parts.push("quiet residential character matches your preference");
+    }
+    if (a.priorities.indexOf("flood-safety") !== -1 && arc.id === "west-county") {
+      parts.push("post-levee flood risk management fits your safety concern");
+    }
+    if (a.priorities.indexOf("schools") !== -1 && arc.id === "west-county") {
+      parts.push("Rockwood and Parkway school districts rank among the best in Missouri");
+    }
+    if (a.budget <= 1 && arc.id === "north-county") {
+      parts.push("prices here give you the most purchasing power in the metro");
+    }
+
+    if (parts.length === 0) {
+      parts.push("overall area profile fits well for a " + stageName);
+    }
+
+    return "Matched for a " + stageName + " — " + parts.slice(0, 2).join(" · ") + ".";
+  }
+
+  /* ============================================================
+     ACTIONS
+  ============================================================ */
+  window.nmRestart = function () {
+    answers   = { priorities: [] };
+    step      = 0;
+    submitted = false;
+    document.getElementById("nm-quiz").style.display     = "block";
+    document.getElementById("nm-results").style.display  = "none";
+    document.getElementById("nm-lead-card").style.display    = "block";
+    document.getElementById("nm-lead-success").style.display = "none";
+    renderQ();
+    window.scrollTo(0, 0);
+  };
+
+  window.nmShare = function () {
+    var url = window.location.href.split("?")[0] + "?ref=share";
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function () {
+        var btn = document.querySelector("[onclick='nmShare()']");
+        if (btn) {
+          btn.textContent = "✓ Copied";
+          setTimeout(function () { btn.textContent = "⇪ Share"; }, 2000);
+        }
+      });
+    }
+  };
+
+  window.nmSubmitLead = function () {
+    if (submitted) return;
+    var name  = (document.getElementById("nm-name")  || {}).value || "";
+    var email = (document.getElementById("nm-email") || {}).value || "";
+    if (!email || email.indexOf("@") === -1) {
+      var emailEl = document.getElementById("nm-email");
+      if (emailEl) {
+        emailEl.style.borderColor = "var(--red)";
+        setTimeout(function () { emailEl.style.borderColor = ""; }, 1500);
+      }
+      return;
+    }
+    submitted = true;
+    /* Wire to Formspree / Apps Script endpoint here */
+    console.log("NM Lead:", { name: name, email: email, answers: answers });
+    document.getElementById("nm-lead-card").style.display    = "none";
+    document.getElementById("nm-lead-success").style.display = "block";
+  };
+
+  /* ============================================================
+     INIT
+  ============================================================ */
+  renderQ();
+
+}());
+</script>
+</body>
+</html>

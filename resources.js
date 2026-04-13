@@ -102,6 +102,25 @@ window.RESOURCES_REGISTRY = [
       { chapter: 3, scene: 7, context: 'Federal Pacific panel. Know what you are looking at before the inspector does.' },
       { chapter: 7, scene: 2, context: 'The defects that show up most in St. Louis homes — and what they actually cost.' }
     ]
+  },
+
+  /* ── NEIGHBORHOOD MATCHER ────────────────────────────────────
+     Ch.1 scene 0 — very first scene (buyer just starting out)
+     Ch.2 scene 0 — first price/area discussion
+     Ch.4 scene 0 — beginning of pre-offer chapter (area focus)
+  ─────────────────────────────────────────────────────────────── */
+  {
+    id:      'neighborhood-matcher',
+    title:   'STL Neighborhood Matcher',
+    summary: '5 questions. Ranked area matches across 98 St. Louis neighborhoods — with links to individual neighborhood guides.',
+    url:     'neighborhood-matcher.html',
+    tool:    true,
+    toolId:  'neighborhood-matcher',
+    citations: [
+      { chapter: 1, scene: 0, context: 'Before you start touring — figure out which part of St. Louis actually fits your life.' },
+      { chapter: 2, scene: 0, context: 'Budget and location are linked. Find the areas that match both before you set a price range.' },
+      { chapter: 4, scene: 0, context: 'Narrowing down where to buy is part of offer strategy. Run the matcher if you have not yet.' }
+    ]
   }
 
 ];
