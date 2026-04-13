@@ -1519,7 +1519,8 @@ function closeDrawer() {
       { id:"afford",    ico:"🗺", title:"STL Affordability Map",     sub:"79 zip codes color-coded by what your budget actually buys." },
       { id:"home-cost", ico:"🔧", title:"STL Home Cost Survival Guide",   sub:"Walk the property, flag issues, get St. Louis repair estimates." },
       { id:"compare",   ico:"⚖️", title:"Compare STL Properties",    sub:"Two homes side by side — true monthly cost, taxes, 30-year difference." },
-      { id:"fails",     ico:"⚠️", title:"STL Common Home Failures",  sub:"Visual guide to the most expensive defects in St. Louis housing stock." }
+      { id:"fails", ico:"⚠️", title:"STL Common Home Failures", sub:"Visual guide to the most expensive defects in St. Louis housing stock." }, 
+      { id:"neighborhood-matcher", ico:"🗺", title:"STL Neighborhood Matcher", sub:"5 questions. Ranked area matches with 98 neighborhoods to explore." }
     ];
 
     var strip =
@@ -1877,7 +1878,8 @@ function closeDrawer() {
       "afford":    "STL Affordability Map",
       "home-cost": "STL Home Cost Survival Guide",
       "compare":   "Compare STL Properties",
-      "fails":     "STL Common Home Failures"
+      "fails":     "STL Common Home Failures",
+      "neighborhood-matcher": "STL Neighborhood Matcher"
     };
 
     /* Tool URL map — each tool is a standalone HTML page loaded in an iframe */
@@ -1886,7 +1888,8 @@ function closeDrawer() {
       "afford":    "afford.html",
       "home-cost": "home-cost.html",
       "compare":   "compare.html",
-      "fails":     "fails.html"
+      "fails":     "fails.html",
+      "neighborhood-matcher": "neighborhood-matcher.html"
     };
     var toolUrl = toolUrls[toolId] || (toolId + ".html");
 
