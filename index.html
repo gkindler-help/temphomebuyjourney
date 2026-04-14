@@ -241,7 +241,7 @@
 
 /* ── HEADLINE ── */
 .headline {
-  padding: 16px 18px 18px;
+  padding: 16px 18px 12px;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity .4s ease, transform .4s ease;
@@ -250,11 +250,11 @@
 
 .hl-main {
   font-family: var(--font-serif);
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.12;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   letter-spacing: -.01em;
 }
 .hl-main span { color: #FFCC4D; }
@@ -263,10 +263,334 @@
   font-family: var(--font-sans);
   font-size: 12px;
   font-weight: 400;
-  color: rgba(255,255,255,.82);
+  color: rgba(255,255,255,.65);
   line-height: 1.65;
   letter-spacing: .01em;
 }
+
+/* ── TOWN SCENE ── */
+.town-wrap {
+  position: relative;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .6s ease, transform .6s ease;
+  overflow: hidden;
+  /* Fixed height — buildings composite inside this */
+  height: 420px;
+  flex-shrink: 0;
+}
+.town-wrap.show { opacity: 1; transform: translateY(0); }
+
+/* Arch — back layer, centered, horizon */
+.town-arch {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: auto;
+  z-index: 1;
+  opacity: .55;
+  pointer-events: none;
+}
+
+/* Ground crossroad — base layer */
+.town-ground {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Park — center of scene */
+.town-park {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: auto;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ── BUILDING BASE POSITIONS ── */
+/* Each building is absolutely positioned in isometric space.
+   Positions tuned for a 390px wide mobile viewport.
+   Numbers are: bottom (distance from scene bottom), left (% or px) */
+
+.town-building {
+  position: absolute;
+  z-index: 4;
+  cursor: pointer;
+  transition: transform .18s ease, filter .18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.town-building:hover,
+.town-building:focus { transform: translateY(-4px) scale(1.03); filter: brightness(1.12); outline: none; }
+.town-building:active { transform: scale(.97); }
+
+/* Building sizes — isometric scale hierarchy */
+.town-building img { display: block; width: 100%; height: auto; }
+
+/* Individual building placements — isometric grid positions */
+/* Row 1 (back row — smaller, higher up) */
+#tb-ch1  { width: 110px; bottom: 230px; left: 8%;   } /* Bank — top left */
+#tb-ch6  { width: 70px;  bottom: 268px; left: 42%;  transform: translateX(-50%); } /* Clock tower — top center */
+#tb-ch2  { width: 100px; bottom: 230px; right: 8%;  } /* Real estate — top right */
+
+/* Row 2 (middle row) */
+#tb-ch4  { width: 115px; bottom: 155px; left: 2%;   } /* Title — mid left */
+#tb-ch5  { width: 100px; bottom: 155px; right: 2%;  } /* Contract — mid right */
+
+/* Row 3 (front row — bigger, lower) */
+#tb-ch3  { width: 120px; bottom: 68px;  left: 0%;   } /* Bungalow — front left */
+#tb-ch7  { width: 118px; bottom: 68px;  right: 1%;  } /* Inspector house — front right */
+#tb-ch8  { width: 108px; bottom: 30px;  left: 22%;  } /* Row house — front center-left */
+#tb-ch9  { width: 108px; bottom: 30px;  right: 22%; } /* Closing — front center-right */
+
+/* ── VEHICLES ── */
+.town-vehicle {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+}
+.town-vehicle img { display: block; width: 100%; height: auto; }
+
+#tv-van   { width: 70px; bottom: 108px; left: 28%; }
+#tv-truck { width: 88px; bottom: 22px;  left: 36%; }
+#tv-suv   { width: 72px; bottom: 148px; right: 26%; }
+
+/* ── GEORGE FIGURE ── */
+.town-george {
+  position: absolute;
+  z-index: 6;
+  bottom: 178px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  pointer-events: none;
+  /* Hidden until asset dropped in — shows placeholder ring */
+}
+.town-george img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* Placeholder pulse while george.png not yet present */
+.town-george-placeholder {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,204,77,.4);
+  background: rgba(255,204,77,.08);
+  animation: georgePulse 2.4s ease-in-out infinite;
+  margin: 0 auto;
+}
+@keyframes georgePulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(255,204,77,.3); }
+  50%      { box-shadow: 0 0 0 10px rgba(255,204,77,0); }
+}
+
+/* ── WALKING PEOPLE ── */
+/* person-a walks left-to-right across front sidewalk */
+.town-person {
+  position: absolute;
+  z-index: 6;
+  pointer-events: none;
+}
+.town-person img { display: block; width: 100%; height: auto; }
+
+#tp-a {
+  width: 28px;
+  bottom: 80px;
+  /* Walk animation — starts off left, crosses to right */
+  animation: walkAcross 18s linear infinite;
+  /* Hidden until person-a.png dropped in */
+  opacity: 0;
+}
+#tp-a.loaded { opacity: 1; }
+
+#tp-b {
+  width: 26px;
+  bottom: 110px;
+  animation: walkAcrossB 24s linear infinite 6s;
+  opacity: 0;
+}
+#tp-b.loaded { opacity: 1; }
+
+@keyframes walkAcross {
+  0%   { left: -40px; }
+  100% { left: calc(100% + 40px); }
+}
+@keyframes walkAcrossB {
+  0%   { left: calc(100% + 40px); transform: scaleX(-1); }
+  100% { left: -40px; transform: scaleX(-1); }
+}
+
+/* ── CHAPTER PINS ── */
+/* Gold pulsing pin sits above each building */
+.ch-pin {
+  position: absolute;
+  z-index: 8;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pin-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #FFCC4D;
+  border: 2px solid #080808;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 800;
+  color: #080808;
+  letter-spacing: -.02em;
+  position: relative;
+  transition: transform .15s ease, background .15s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,.5);
+}
+
+.pin-dot::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,204,77,.35);
+  animation: pinPulse 2s ease-out infinite;
+}
+
+@keyframes pinPulse {
+  0%   { transform: scale(1);   opacity: .7; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+
+.ch-pin:hover .pin-dot,
+.ch-pin.active .pin-dot {
+  background: #fff;
+  transform: scale(1.15);
+}
+
+/* Pin positions — centered above each building */
+#pin-ch1 { bottom: 300px; left:  calc(8%  + 35px); }
+#pin-ch2 { bottom: 300px; right: calc(8%  + 30px); }
+#pin-ch3 { bottom: 155px; left:  calc(0%  + 42px); }
+#pin-ch4 { bottom: 240px; left:  calc(2%  + 40px); }
+#pin-ch5 { bottom: 228px; right: calc(2%  + 28px); }
+#pin-ch6 { bottom: 306px; left:  calc(42% + 12px); }
+#pin-ch7 { bottom: 155px; right: calc(1%  + 38px); }
+#pin-ch8 { bottom: 112px; left:  calc(22% + 38px); }
+#pin-ch9 { bottom: 112px; right: calc(22% + 20px); }
+
+/* ── CHAPTER POPUP CARD ── */
+.ch-popup {
+  position: absolute;
+  z-index: 20;
+  width: 200px;
+  background: #0e0e0e;
+  border: 1px solid rgba(255,204,77,.3);
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.7);
+  opacity: 0;
+  transform: translateY(6px) scale(.96);
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.ch-popup.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+/* Auto-position: by default opens upward */
+.ch-popup::before {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: #0e0e0e;
+  border-right: 1px solid rgba(255,204,77,.3);
+  border-bottom: 1px solid rgba(255,204,77,.3);
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+  rotate: -45deg;
+}
+
+.popup-ch-num {
+  font-family: var(--font-sans);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #FFCC4D;
+  margin-bottom: 4px;
+  opacity: .8;
+}
+.popup-title {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.popup-quote {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(255,255,255,.6);
+  line-height: 1.55;
+  margin-bottom: 12px;
+  border-left: 2px solid rgba(255,204,77,.3);
+  padding-left: 8px;
+}
+.popup-enter {
+  width: 100%;
+  background: #FFCC4D;
+  color: #080808;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 9px 0;
+  cursor: pointer;
+  transition: background .15s, transform .1s;
+  -webkit-appearance: none;
+}
+.popup-enter:hover  { background: #ffd966; }
+.popup-enter:active { transform: scale(.97); }
+
+/* ── SCROLL HINT ── */
+.town-hint {
+  text-align: center;
+  padding: 8px 0 4px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255,255,255,.3);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.town-hint.show { opacity: 1; }
 
 /* ── TENSION CUE ── */
 .tension-line {
@@ -289,153 +613,11 @@
   color: rgba(255,255,255,.65);
   letter-spacing: .02em;
   line-height: 1.5;
-  padding: 0 18px 16px;
+  padding: 0 18px 14px;
   opacity: 0;
   transition: opacity .4s ease;
 }
 .tension-sub.show { opacity: 1; }
-
-/* ── ICON CARD GRID ── */
-/*
-  Post-intro interaction:
-  State 0 (default): large icon only, no text, all cards same size
-  State 1 (clicked once): all icons shrink, clicked card shows title
-  State 2 (clicked twice): clicked card shows title + summary + commit
-  State 3 (clicked three times): navigate
-*/
-
-.idx-cards {
-  padding: 0 14px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  opacity: 0;
-  transition: opacity .4s ease;
-}
-.idx-cards.show { opacity: 1; }
-
-/* Each chapter card */
-.ch-card {
-  background: rgba(255,255,255,.025);
-  border: 1px solid #282828;
-  border-radius: 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 10px 16px;
-  cursor: pointer;
-  transition:
-    border-color .2s ease,
-    background .2s ease,
-    transform .15s ease,
-    padding .3s ease;
-  position: relative;
-  min-height: 96px;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.ch-card:active { transform: scale(.97); }
-
-/* State: any card clicked — grid compresses, icons shrink */
-.idx-cards.activated .ch-card {
-  padding: 14px 8px 12px;
-  min-height: 80px;
-}
-
-/* Active card — highlighted */
-.ch-card.active {
-  border-color: rgba(255,204,77,.5);
-  background: rgba(255,204,77,.05);
-}
-
-/* Icon image — 56px default, shrinks when grid activated */
-.ch-card-ico {
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: width .3s ease, height .3s ease;
-  flex-shrink: 0;
-}
-.ch-card-ico img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-/* Fallback number shown when PNG missing */
-.ch-card-ico .ico-fallback {
-  font-family: var(--font-serif);
-  font-size: 28px;
-  font-weight: 700;
-  color: #FFCC4D;
-  line-height: 1;
-}
-
-/* Shrink icon after first click anywhere */
-.idx-cards.activated .ch-card-ico {
-  width: 36px;
-  height: 36px;
-}
-.idx-cards.activated .ch-card-ico .ico-fallback {
-  font-size: 20px;
-}
-
-/* Title — hidden until state 1 */
-.ch-card-title {
-  display: none;
-  font-family: var(--font-serif);
-  font-size: 12px;
-  font-weight: 600;
-  color: #ffffff;
-  line-height: 1.35;
-  text-align: center;
-  margin-top: 10px;
-  letter-spacing: -.005em;
-}
-.ch-card.active .ch-card-title {
-  display: block;
-}
-
-/* Summary + commit — hidden until state 2 */
-.ch-card-detail {
-  display: none;
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(255,255,255,.08);
-  width: 100%;
-}
-.ch-card.revealed .ch-card-detail {
-  display: block;
-}
-.ch-card-desc {
-  font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 400;
-  color: rgba(255,255,255,.65);
-  line-height: 1.6;
-  text-align: center;
-  letter-spacing: .01em;
-}
-.ch-card-commit {
-  display: block;
-  margin-top: 6px;
-  font-family: var(--font-sans);
-  font-size: 9px;
-  font-weight: 600;
-  color: rgba(255,204,77,.7);
-  letter-spacing: .03em;
-  text-align: center;
-  line-height: 1.4;
-}
-
-/* Ch 1 primary accent */
-.ch-card.primary {
-  border-left: 2px solid #FFCC4D;
-}
 
 /* ── RESUME CARD ── */
 .resume-card {
@@ -469,7 +651,7 @@
   margin-left: 10px;
 }
 
-/* ── FOOTER (hidden until reveal) ── */
+/* ── FOOTER ── */
 .idx-ftr {
   background: rgba(5,5,5,.98);
   border-top: 1px solid #1e1e1e;
@@ -483,10 +665,7 @@
   transform: translateY(100%);
   transition: opacity .4s ease, transform .4s ease;
 }
-.idx-ftr.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+.idx-ftr.show { opacity: 1; transform: translateY(0); }
 .idx-ftr-l {
   font-family: var(--font-sans);
   font-size: 9px;
@@ -495,21 +674,50 @@
   line-height: 1.6;
   letter-spacing: .02em;
 }
-.idx-ftr-r a {
-  font-family: var(--font-sans);
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: #FFCC4D;
-  text-decoration: none;
-  opacity: .7;
-  transition: opacity .15s;
-}
-.idx-ftr-r a:hover { opacity: 1; }
 
-/* Spacer at bottom of scroll */
 .idx-spacer { height: 20px; }
+
+/* ── VEHICLE ANIMATIONS ── */
+/* Van idles with subtle bob */
+@keyframes vanIdle {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-2px); }
+}
+#tv-van { animation: vanIdle 3s ease-in-out infinite; }
+
+/* Truck rocks slightly */
+@keyframes truckIdle {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  33%      { transform: translateY(-1px) rotate(.2deg); }
+  66%      { transform: translateY(0px) rotate(-.1deg); }
+}
+#tv-truck { animation: truckIdle 4s ease-in-out infinite 1s; }
+
+/* SUV gentle rock */
+@keyframes suvIdle {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-1.5px); }
+}
+#tv-suv { animation: suvIdle 3.5s ease-in-out infinite 0.5s; }
+
+/* ── STREETLAMP GLOW FLICKER ── */
+@keyframes lampFlicker {
+  0%,95%,100% { opacity: 1; }
+  96%          { opacity: .7; }
+  98%          { opacity: .9; }
+}
+
+/* ── RESPONSIVE ADJUSTMENTS ── */
+@media (max-width: 360px) {
+  .town-wrap { height: 360px; }
+  #tb-ch1  { width: 95px; }
+  #tb-ch2  { width: 88px; }
+  #tb-ch3  { width: 104px; }
+  #tb-ch6  { width: 60px; }
+}
+@media (min-width: 420px) {
+  .town-wrap { height: 460px; }
+}
 </style>
 </head>
 
@@ -518,8 +726,7 @@
 
   <!-- ═══════════════════════════════════
        PHASE 1 — CINEMATIC INTRO
-       Copy preserved exactly from original.
-       No changes permitted here.
+       Preserved exactly from original.
   ════════════════════════════════════ -->
   <div class="intro" id="intro">
 
@@ -570,7 +777,6 @@
         <div class="hdr-tagline">13 Years Of Real Estate Experience At Your Fingertips</div>
       </div>
     </div>
-
   </header>
 
 
@@ -596,134 +802,237 @@
     <!-- Headline -->
     <div class="headline" id="headline">
       <div class="hl-main">Where buyers lose money &mdash;<br><span>without realizing it.</span></div>
-      <div class="hl-sub">Start anywhere &mdash; or follow the full journey from start to closing.</div>
+      <div class="hl-sub">Tap any building to enter that chapter.</div>
     </div>
 
     <!-- Tension cue -->
-    <div class="tension-line" id="tension-line">Most buyers skip the part that costs them. Don&rsquo;t.</div>
-    <div class="tension-sub"  id="tension-sub">Tap any section to open it &mdash; or follow the journey step by step.</div>
+    <div class="tension-line" id="tension-line">Every stop on this street is a place buyers make mistakes.</div>
+    <div class="tension-sub"  id="tension-sub">Walk the journey. Tap the pins.</div>
 
-    <!-- Resume card (injected by JS if applicable) -->
+    <!-- Resume card (injected by JS) -->
     <div id="resume-slot"></div>
 
     <!-- ═══════════════════════════════════
-         ICON CARD GRID
-         3-click interaction:
-           Click 1 → activates grid (icons shrink), shows this card's title
-           Click 2 → reveals summary + commit on this card
-           Click 3 → navigates to chapter
+         ISOMETRIC TOWN SCENE
     ════════════════════════════════════ -->
-    <div class="idx-cards" id="idx-cards">
+    <div class="town-wrap" id="town-wrap">
 
-      <!-- Ch. 1 — Pre-Approval -->
-      <div class="ch-card primary" id="cc0" data-file="01-preapproval.html" data-event="start">
-        <div class="ch-card-ico" id="ico0">
-          <img src="assets/icon-ch1.png" alt="" onerror="this.parentNode.innerHTML='<span class=\'ico-fallback\'>1</span>'">
-        </div>
-        <div class="ch-card-title">What actually happens when you click &ldquo;Contact Agent&rdquo;</div>
-        <div class="ch-card-detail">
-          <div class="ch-card-desc">The agent who calls you paid to be there. That changes everything before you ever see a house.</div>
-          <span class="ch-card-commit">Start here if you haven&rsquo;t made any moves yet.</span>
-        </div>
+      <!-- LAYER 1: Gateway Arch horizon -->
+      <img class="town-arch"
+           src="assets/town/arch.png"
+           alt=""
+           onerror="this.style.display='none'">
+
+      <!-- LAYER 2: Ground crossroad -->
+      <img class="town-ground"
+           src="assets/town/crossroad.png"
+           alt=""
+           onerror="this.style.display='none'">
+
+      <!-- LAYER 3: Town square park -->
+      <img class="town-park"
+           src="assets/town/park.png"
+           alt=""
+           onerror="this.style.display='none'">
+
+      <!-- LAYER 4: BUILDINGS
+           Each building is a clickable zone.
+           data-chapter, data-file, data-event match original card attributes.
+           data-popup-id points to its popup card.
+      -->
+
+      <!-- Ch.1 Bank -->
+      <div class="town-building" id="tb-ch1"
+           data-chapter="1" data-file="01-preapproval.html" data-event="start"
+           data-popup="popup-ch1" tabindex="0" role="button" aria-label="Chapter 1: Pre-Approval">
+        <img src="assets/town/bank.png" alt="Lender / Pre-Approval"
+             onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch. 2 — Affordability -->
-      <div class="ch-card" id="cc1" data-file="02-affordability.html" data-event="afford">
-        <div class="ch-card-ico" id="ico1">
-          <img src="assets/icon-ch2.png" alt="" onerror="this.parentNode.innerHTML='<span class=\'ico-fallback\'>2</span>'">
-        </div>
-        <div class="ch-card-title">Where buyers accidentally overpay &mdash; before they even make an offer</div>
-        <div class="ch-card-detail">
-          <div class="ch-card-desc">The number your lender approved is not the number you should spend. Most agents never make that distinction.</div>
-          <span class="ch-card-commit">I will never tell you to max it out.</span>
-        </div>
+      <!-- Ch.2 Real Estate Office -->
+      <div class="town-building" id="tb-ch2"
+           data-chapter="2" data-file="02-affordability.html" data-event="afford"
+           data-popup="popup-ch2" tabindex="0" role="button" aria-label="Chapter 2: Affordability">
+        <img src="assets/town/realestate-office.png" alt="Affordability"
+             onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch. 3 — Interior -->
-      <div class="ch-card" id="cc2" data-file="03-interior.html" data-event="interior">
-        <div class="ch-card-ico" id="ico2">
-          <img src="assets/icon-ch3.png" alt="" onerror="this.parentNode.innerHTML='<span class=\'ico-fallback\'>3</span>'">
-        </div>
-        <div class="ch-card-title">What I look at the moment we walk in &mdash; and what you should too</div>
-        <div class="ch-card-detail">
-          <div class="ch-card-desc">Most buyers look at countertops and paint. I look at the basement, the panel, the roof, and the mechanicals. Walk through a house the way I do.</div>
-          <span class="ch-card-commit">What costs money is rarely what costs paint.</span>
-        </div>
+      <!-- Ch.3 Brick Bungalow -->
+      <div class="town-building" id="tb-ch3"
+           data-chapter="3" data-file="03-interior.html" data-event="interior"
+           data-popup="popup-ch3" tabindex="0" role="button" aria-label="Chapter 3: Interior Walk">
+        <img src="assets/town/bungalow.png" alt="Interior Showing"
+             onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch. 4 — Pre-Offer -->
-      <div class="ch-card" id="cc3" data-file="05-pre-offer.html" data-event="offer">
-        <div class="ch-card-ico" id="ico3">
-          <img src="assets/icon-ch4.png" alt="" onerror="this.parentNode.innerHTML='<span class=\'ico-fallback\'>4</span>'">
-        </div>
-        <div class="ch-card-title">Where buyers get pushed into offers they can&rsquo;t take back</div>
-        <div class="ch-card-detail">
-          <div class="ch-card-desc">Competing offers, manufactured urgency, escalation clauses. What agents say, what it means, and what actually gets your offer accepted.</div>
-          <span class="ch-card-commit">No version held back. All of it.</span>
-        </div>
+      <!-- Ch.4 Title Company -->
+      <div class="town-building" id="tb-ch4"
+           data-chapter="4" data-file="05-pre-offer.html" data-event="offer"
+           data-popup="popup-ch4" tabindex="0" role="button" aria-label="Chapter 4: Pre-Offer">
+        <img src="assets/town/title-company.png" alt="Pre-Offer Strategy"
+             onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch. 5 — Under Contract -->
-      <div class="ch-card" id="cc4" data-file="06-under-contract.html" data-event="contract">
-        <div class="ch-card-ico" id="ico4">
-          <img src="assets/icon-ch5.png" alt="" onerror="this.parentNode.innerHTML='<span class=\'ico-fallback\'>5</span>'">
-        </div>
-        <div class="ch-card-title">Offer accepted: where deals fall apart</div>
-        <div class="ch-card-detail">
-          <div class="ch-card-desc">Earnest money. Inspection windows. Day Zero actions. Small mistakes here can quietly kill a deal after you think you&rsquo;re safe.</div>
-          <span class="ch-card-commit">This is where most buyers lose control. You won&rsquo;t.</span>
-        </div>
+      <!-- Ch.5 Contract Office -->
+      <div class="town-building" id="tb-ch5"
+           data-chapter="5" data-file="06-under-contract.html" data-event="contract"
+           data-popup="popup-ch5" tabindex="0" role="button" aria-label="Chapter 5: Under Contract">
+        <img src="assets/town/contract-office.png" alt="Under Contract"
+             onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch. 6 — Deadlines -->
-      <div class="ch-card" id="cc5" data-file="06b-deadlines.html" data-event="deadlines">
-        <div class="ch-card-ico" id="ico5">
-          <img src="assets/icon-ch6.png" alt="" onerror="this.parentNode.innerHTML='<span class=\'ico-fallback\'>6</span>'">
-        </div>
-        <div class="ch-card-title">Three deadlines running in parallel &mdash; miss any one and the protection is gone</div>
-        <div class="ch-card-detail">
-          <div class="ch-card-desc">Loan contingency. Appraisal. Title. They all run simultaneously from Day 1. Every one has a hard stop. I track all three so nothing slips.</div>
-          <span class="ch-card-commit">Miss a deadline once and you can&rsquo;t un-miss it.</span>
-        </div>
+      <!-- Ch.6 Clock Tower -->
+      <div class="town-building" id="tb-ch6"
+           data-chapter="6" data-file="06b-deadlines.html" data-event="deadlines"
+           data-popup="popup-ch6" tabindex="0" role="button" aria-label="Chapter 6: Deadlines">
+        <img src="assets/town/clock-tower.png" alt="The Deadlines"
+             onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch. 7 — Inspection -->
-      <div class="ch-card" id="cc6" data-file="07-inspection.html" data-event="inspect">
-        <div class="ch-card-ico" id="ico6">
-          <img src="assets/icon-ch7.png" alt="" onerror="this.parentNode.innerHTML='<span class=\'ico-fallback\'>7</span>'">
-        </div>
-        <div class="ch-card-title">This is where buyers miss the problems they end up paying for</div>
-        <div class="ch-card-detail">
-          <div class="ch-card-desc">By the time most buyers read the inspection report, their earnest money is already at risk. The items that matter most are rarely the ones at the top.</div>
-          <span class="ch-card-commit">It&rsquo;s not my house. I will never overlook a repair to get you to close.</span>
-        </div>
+      <!-- Ch.7 Inspector House -->
+      <div class="town-building" id="tb-ch7"
+           data-chapter="7" data-file="07-inspection.html" data-event="inspect"
+           data-popup="popup-ch7" tabindex="0" role="button" aria-label="Chapter 7: Inspection">
+        <img src="assets/town/inspector-house.png" alt="Inspection"
+             onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch. 8 — Walk-Through -->
-      <div class="ch-card" id="cc7" data-file="08-walkthrough.html" data-event="walkthrough">
-        <div class="ch-card-ico" id="ico7">
-          <img src="assets/icon-ch8.png" alt="" onerror="this.parentNode.innerHTML='<span class=\'ico-fallback\'>8</span>'">
-        </div>
-        <div class="ch-card-title">The final walk-through is not a second showing &mdash; it&rsquo;s a condition verification</div>
-        <div class="ch-card-detail">
-          <div class="ch-card-desc">Same condition as the day you made the offer. Agreed repairs complete. Seller out. Utilities on. If anything is wrong, you address it before you sign &mdash; not after.</div>
-          <span class="ch-card-commit">After you sign, your leverage is gone.</span>
-        </div>
+      <!-- Ch.8 Row House -->
+      <div class="town-building" id="tb-ch8"
+           data-chapter="8" data-file="08-walkthrough.html" data-event="walkthrough"
+           data-popup="popup-ch8" tabindex="0" role="button" aria-label="Chapter 8: Final Walk-Through">
+        <img src="assets/town/row-house.png" alt="Final Walk-Through"
+             onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch. 9 — Closing -->
-      <div class="ch-card" id="cc8" data-file="09-closing.html" data-event="closing">
-        <div class="ch-card-ico" id="ico8">
-          <img src="assets/icon-ch9.png" alt="" onerror="this.parentNode.innerHTML='<span class=\'ico-fallback\'>9</span>'">
-        </div>
-        <div class="ch-card-title">What you&rsquo;re signing at closing &mdash; and what most buyers don&rsquo;t catch</div>
-        <div class="ch-card-detail">
-          <div class="ch-card-desc">The final walk. The closing table. The documents. Wire fraud. What the note and deed of trust actually say. Your job is to fall in love with the house.</div>
-          <span class="ch-card-commit">My job is to make sure you don&rsquo;t own a disaster.</span>
-        </div>
+      <!-- Ch.9 Closing Office -->
+      <div class="town-building" id="tb-ch9"
+           data-chapter="9" data-file="09-closing.html" data-event="closing"
+           data-popup="popup-ch9" tabindex="0" role="button" aria-label="Chapter 9: Closing">
+        <img src="assets/town/closing-office.png" alt="Closing Day"
+             onerror="this.style.display='none'">
       </div>
 
-    </div><!-- /idx-cards -->
+      <!-- LAYER 5: VEHICLES -->
+      <div class="town-vehicle" id="tv-van">
+        <img src="assets/town/inspector-van.png" alt=""
+             onerror="this.style.display='none'">
+      </div>
+      <div class="town-vehicle" id="tv-truck">
+        <img src="assets/town/moving-truck.png" alt=""
+             onerror="this.style.display='none'">
+      </div>
+      <div class="town-vehicle" id="tv-suv">
+        <img src="assets/town/suv.png" alt=""
+             onerror="this.style.display='none'">
+      </div>
+
+      <!-- LAYER 6: GEORGE FIGURE
+           Drop assets/town/george.png to activate.
+           Placeholder ring shows until image loads. -->
+      <div class="town-george" id="town-george">
+        <img src="assets/town/george.png" alt="George Kindler"
+             id="george-town-img"
+             style="display:none;"
+             onload="this.style.display='block'; document.getElementById('george-placeholder').style.display='none';"
+             onerror="this.style.display='none'">
+        <div class="town-george-placeholder" id="george-placeholder"></div>
+      </div>
+
+      <!-- LAYER 7: WALKING PEOPLE
+           Drop assets/town/person-a.png and person-b.png to activate.
+           They auto-animate once loaded. -->
+      <div class="town-person" id="tp-a">
+        <img src="assets/town/person-a.png" alt=""
+             onload="document.getElementById('tp-a').classList.add('loaded')"
+             onerror="this.parentNode.style.display='none'">
+      </div>
+      <div class="town-person" id="tp-b">
+        <img src="assets/town/person-b.png" alt=""
+             onload="document.getElementById('tp-b').classList.add('loaded')"
+             onerror="this.parentNode.style.display='none'">
+      </div>
+
+      <!-- LAYER 8: CHAPTER PINS -->
+      <div class="ch-pin" id="pin-ch1" data-target="tb-ch1"><div class="pin-dot">1</div></div>
+      <div class="ch-pin" id="pin-ch2" data-target="tb-ch2"><div class="pin-dot">2</div></div>
+      <div class="ch-pin" id="pin-ch3" data-target="tb-ch3"><div class="pin-dot">3</div></div>
+      <div class="ch-pin" id="pin-ch4" data-target="tb-ch4"><div class="pin-dot">4</div></div>
+      <div class="ch-pin" id="pin-ch5" data-target="tb-ch5"><div class="pin-dot">5</div></div>
+      <div class="ch-pin" id="pin-ch6" data-target="tb-ch6"><div class="pin-dot">6</div></div>
+      <div class="ch-pin" id="pin-ch7" data-target="tb-ch7"><div class="pin-dot">7</div></div>
+      <div class="ch-pin" id="pin-ch8" data-target="tb-ch8"><div class="pin-dot">8</div></div>
+      <div class="ch-pin" id="pin-ch9" data-target="tb-ch9"><div class="pin-dot">9</div></div>
+
+      <!-- LAYER 9: POPUP CARDS
+           One per chapter, positioned near its pin. -->
+
+      <div class="ch-popup" id="popup-ch1" style="bottom:330px;left:4%;">
+        <div class="popup-ch-num">Chapter 1 · Pre-Approval</div>
+        <div class="popup-title">What actually happens when you click "Contact Agent"</div>
+        <div class="popup-quote">The agent who calls you paid to be there. That changes everything before you see a house.</div>
+        <button class="popup-enter" data-file="01-preapproval.html" data-event="start">Enter Chapter →</button>
+      </div>
+
+      <div class="ch-popup" id="popup-ch2" style="bottom:330px;right:4%;">
+        <div class="popup-ch-num">Chapter 2 · Affordability</div>
+        <div class="popup-title">Where buyers accidentally overpay before they make an offer</div>
+        <div class="popup-quote">The number your lender approved is not the number you should spend.</div>
+        <button class="popup-enter" data-file="02-affordability.html" data-event="afford">Enter Chapter →</button>
+      </div>
+
+      <div class="ch-popup" id="popup-ch3" style="bottom:220px;left:2%;">
+        <div class="popup-ch-num">Chapter 3 · Interior Walk</div>
+        <div class="popup-title">Walk a property the way I do — pick your home type</div>
+        <div class="popup-quote">Most buyers look at countertops. I look at the basement, panel, roof, and mechanicals.</div>
+        <button class="popup-enter" data-file="03-interior.html" data-event="interior">Enter Chapter →</button>
+      </div>
+
+      <div class="ch-popup" id="popup-ch4" style="bottom:310px;left:2%;">
+        <div class="popup-ch-num">Chapter 4 · Pre-Offer</div>
+        <div class="popup-title">Where buyers get pushed into offers they can't take back</div>
+        <div class="popup-quote">Competing offers, manufactured urgency, escalation clauses — all of it explained.</div>
+        <button class="popup-enter" data-file="05-pre-offer.html" data-event="offer">Enter Chapter →</button>
+      </div>
+
+      <div class="ch-popup" id="popup-ch5" style="bottom:298px;right:2%;">
+        <div class="popup-ch-num">Chapter 5 · Under Contract</div>
+        <div class="popup-title">Offer accepted — where deals fall apart</div>
+        <div class="popup-quote">Earnest money. Inspection windows. Day Zero actions. Small mistakes here can kill a deal.</div>
+        <button class="popup-enter" data-file="06-under-contract.html" data-event="contract">Enter Chapter →</button>
+      </div>
+
+      <div class="ch-popup" id="popup-ch6" style="bottom:346px;left:50%;transform:translateX(-50%);">
+        <div class="popup-ch-num">Chapter 6 · Deadlines</div>
+        <div class="popup-title">Three deadlines running in parallel — miss one and the protection is gone</div>
+        <div class="popup-quote">Loan contingency. Appraisal. Title. All running simultaneously from Day 1.</div>
+        <button class="popup-enter" data-file="06b-deadlines.html" data-event="deadlines">Enter Chapter →</button>
+      </div>
+
+      <div class="ch-popup" id="popup-ch7" style="bottom:220px;right:2%;">
+        <div class="popup-ch-num">Chapter 7 · Inspection</div>
+        <div class="popup-title">Where buyers miss the problems they end up paying for</div>
+        <div class="popup-quote">By the time most buyers read the report, their earnest money is already at risk.</div>
+        <button class="popup-enter" data-file="07-inspection.html" data-event="inspect">Enter Chapter →</button>
+      </div>
+
+      <div class="ch-popup" id="popup-ch8" style="bottom:178px;left:14%;">
+        <div class="popup-ch-num">Chapter 8 · Final Walk-Through</div>
+        <div class="popup-title">The final walk-through is not a second showing</div>
+        <div class="popup-quote">Same condition as the day you made the offer. Agreed repairs complete. Seller out.</div>
+        <button class="popup-enter" data-file="08-walkthrough.html" data-event="walkthrough">Enter Chapter →</button>
+      </div>
+
+      <div class="ch-popup" id="popup-ch9" style="bottom:178px;right:14%;">
+        <div class="popup-ch-num">Chapter 9 · Closing Day</div>
+        <div class="popup-title">What you're signing at closing — and what most buyers don't catch</div>
+        <div class="popup-quote">Wire fraud. The note. The deed of trust. Your job is to fall in love. Mine is to protect you.</div>
+        <button class="popup-enter" data-file="09-closing.html" data-event="closing">Enter Chapter →</button>
+      </div>
+
+    </div><!-- /town-wrap -->
+
+    <div class="town-hint" id="town-hint">↑ Tap the gold pins to explore</div>
 
     <div class="idx-spacer"></div>
 
@@ -801,11 +1110,13 @@
       if (ts) ts.classList.add('show');
     }, 980);
 
-    /* Icon grid arrives */
+    /* Town scene arrives */
     setTimeout(function () {
-      var grid = document.getElementById('idx-cards');
-      if (grid) grid.classList.add('show');
-    }, 1400);
+      var town = document.getElementById('town-wrap');
+      var hint = document.getElementById('town-hint');
+      if (town) town.classList.add('show');
+      if (hint) hint.classList.add('show');
+    }, 1300);
 
     /* Resume card check */
     setTimeout(checkResume, 1600);
@@ -813,84 +1124,85 @@
     if (typeof gtag === 'function') gtag('event', 'journey_intro_tap', {});
   }
 
-  /* ── 3-CLICK CARD INTERACTION ── */
-  /*
-    clickState per card:
-      0 = untouched (icon only)
-      1 = first click — grid activates, title shown
-      2 = second click — detail revealed
-      3 = third click — navigate
-  */
-  var gridActivated = false;
+  /* ── TOWN INTERACTION ── */
+  var activePopup = null;
+  var activePin   = null;
 
-  var cards = document.querySelectorAll('.ch-card');
-  Array.prototype.forEach.call(cards, function (card) {
-    card._clickState = 0;
-    card.addEventListener('click', function () { handleCardClick(card); });
+  /* Wire buildings */
+  var buildings = document.querySelectorAll('.town-building');
+  Array.prototype.forEach.call(buildings, function (b) {
+    b.addEventListener('click',   function () { handleBuildingTap(b); });
+    b.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleBuildingTap(b); }
+    });
   });
 
-  function handleCardClick(card) {
-    var state = card._clickState || 0;
-
-    if (state === 0) {
-      /* First click — activate grid, show this card's title */
-      activateGrid();
-      setActiveCard(card);
-      card._clickState = 1;
-      return;
-    }
-
-    if (state === 1) {
-      /* Second click — only if this card is already active */
-      if (!card.classList.contains('active')) {
-        /* Clicked a different card — just switch active */
-        setActiveCard(card);
-        card._clickState = 1;
-        return;
-      }
-      /* Reveal detail */
-      card.classList.add('revealed');
-      card._clickState = 2;
-      return;
-    }
-
-    if (state === 2) {
-      if (!card.classList.contains('active')) {
-        setActiveCard(card);
-        card._clickState = 1;
-        return;
-      }
-      /* Third click — navigate */
-      navigate(card);
-    }
-  }
-
-  function activateGrid() {
-    if (gridActivated) return;
-    gridActivated = true;
-    var grid = document.getElementById('idx-cards');
-    if (grid) grid.classList.add('activated');
-  }
-
-  function setActiveCard(card) {
-    /* Deactivate all others */
-    Array.prototype.forEach.call(cards, function (c) {
-      if (c !== card) {
-        c.classList.remove('active', 'revealed');
-        c._clickState = gridActivated ? 0 : 0;
-      }
+  /* Wire pins */
+  var pins = document.querySelectorAll('.ch-pin');
+  Array.prototype.forEach.call(pins, function (pin) {
+    pin.addEventListener('click', function () {
+      var targetId = pin.getAttribute('data-target');
+      var building = document.getElementById(targetId);
+      if (building) handleBuildingTap(building);
     });
-    card.classList.add('active');
+  });
+
+  function handleBuildingTap(building) {
+    var popupId = building.getAttribute('data-popup');
+    var popup   = popupId ? document.getElementById(popupId) : null;
+    var chNum   = building.getAttribute('data-chapter');
+
+    /* If same building tapped again — close */
+    if (activePopup && activePopup === popup) {
+      closeActivePopup();
+      return;
+    }
+
+    /* Close previous */
+    closeActivePopup();
+
+    if (!popup) return;
+
+    /* Open new */
+    activePopup = popup;
+    activePin   = document.getElementById('pin-ch' + chNum);
+
+    popup.classList.add('show');
+    if (activePin) activePin.classList.add('active');
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'town_building_tap', { chapter: chNum });
+    }
   }
 
-  function navigate(card) {
-    var file  = card.getAttribute('data-file');
-    var event = card.getAttribute('data-event') || 'start';
-    if (typeof gtag === 'function') gtag('event', 'journey_entry', { entry_point: event });
-    S.jumpEntry = event;
-    save();
-    if (file) window.location.href = file;
+  function closeActivePopup() {
+    if (activePopup) activePopup.classList.remove('show');
+    if (activePin)   activePin.classList.remove('active');
+    activePopup = null;
+    activePin   = null;
   }
+
+  /* Close on background tap */
+  document.getElementById('town-wrap').addEventListener('click', function (e) {
+    if (!e.target.closest('.town-building') &&
+        !e.target.closest('.ch-pin') &&
+        !e.target.closest('.ch-popup')) {
+      closeActivePopup();
+    }
+  });
+
+  /* Wire popup Enter buttons */
+  var enterBtns = document.querySelectorAll('.popup-enter');
+  Array.prototype.forEach.call(enterBtns, function (btn) {
+    btn.addEventListener('click', function () {
+      var file  = btn.getAttribute('data-file');
+      var event = btn.getAttribute('data-event') || 'start';
+      if (typeof gtag === 'function') gtag('event', 'journey_entry', { entry_point: event });
+      S.jumpEntry = event;
+      save();
+      if (file) window.location.href = file;
+    });
+  });
 
   /* ── RESUME CARD ── */
   function checkResume() {
@@ -926,11 +1238,29 @@
     });
     slot.appendChild(r);
 
-    /* Fade resume card in */
     requestAnimationFrame(function () {
       requestAnimationFrame(function () { r.classList.add('show'); });
     });
   }
+
+  /* ── HIGHLIGHT VISITED BUILDINGS ── */
+  /* Buildings for chapters the user has visited get a subtle gold tint */
+  try {
+    var visited = JSON.parse(localStorage.getItem(SK) || '{}').chaptersVisited || [];
+    visited.forEach(function (ch) {
+      var b = document.getElementById('tb-ch' + ch);
+      var p = document.getElementById('pin-ch' + ch);
+      if (b) b.style.filter = 'brightness(1.05) saturate(1.1)';
+      if (p) {
+        var dot = p.querySelector('.pin-dot');
+        if (dot) {
+          dot.style.background = 'rgba(255,204,77,.4)';
+          dot.style.border = '2px solid #FFCC4D';
+          dot.style.color = '#FFCC4D';
+        }
+      }
+    });
+  } catch (e) {}
 
 })();
 </script>
