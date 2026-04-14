@@ -269,62 +269,78 @@
 }
 
 /* ── TOWN SCENE ── */
+/*
+  Layout strategy: fixed 390px internal coordinate system.
+  The scene scales via transform: scale() based on actual viewport width.
+  This means positions are always accurate regardless of screen size.
+  All pixel values below are designed for a 390px wide viewport.
+*/
 .town-wrap {
   position: relative;
   width: 100%;
   opacity: 0;
   transform: translateY(14px);
   transition: opacity .6s ease, transform .6s ease;
-  overflow: hidden;
-  /* Fixed height — buildings composite inside this */
-  height: 420px;
+  overflow: visible;
+  height: 480px;
   flex-shrink: 0;
 }
 .town-wrap.show { opacity: 1; transform: translateY(0); }
 
-/* Arch — back layer, centered, horizon */
-.town-arch {
+/* Inner scene — fixed 390px wide, scaled by JS */
+.town-scene {
   position: absolute;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 260px;
-  height: auto;
-  z-index: 1;
-  opacity: .55;
-  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 390px;
+  height: 480px;
+  transform-origin: top left;
+  /* JS sets transform: scale(N) based on viewport width */
 }
 
-/* Ground crossroad — base layer */
-.town-ground {
+/* ── BACKGROUND LAYERS ── */
+
+/* Arch — sits behind everything, large, prominent */
+.town-arch {
   position: absolute;
-  bottom: 0;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
-  max-width: 520px;
+  width: 280px;
+  height: auto;
+  z-index: 1;
+  opacity: 1;
+  pointer-events: none;
+  /* Arch has black bg so use screen blend to make black transparent */
+  mix-blend-mode: screen;
+}
+
+/* Ground crossroad — fills scene floor */
+.town-ground {
+  position: absolute;
+  top: 100px;
+  left: -10px;
+  width: 410px;
   height: auto;
   z-index: 2;
   pointer-events: none;
+  mix-blend-mode: screen;
 }
 
-/* Park — center of scene */
+/* Park — center of scene, sits on ground */
 .town-park {
   position: absolute;
-  bottom: 120px;
+  top: 150px;
   left: 50%;
   transform: translateX(-50%);
-  width: 160px;
+  width: 170px;
   height: auto;
   z-index: 3;
   pointer-events: none;
+  /* Park has transparent bg — no blend needed */
 }
 
-/* ── BUILDING BASE POSITIONS ── */
-/* Each building is absolutely positioned in isometric space.
-   Positions tuned for a 390px wide mobile viewport.
-   Numbers are: bottom (distance from scene bottom), left (% or px) */
-
+/* ── BUILDINGS ── */
 .town-building {
   position: absolute;
   z-index: 4;
@@ -332,28 +348,44 @@
   transition: transform .18s ease, filter .18s ease;
   -webkit-tap-highlight-color: transparent;
 }
-.town-building:hover,
-.town-building:focus { transform: translateY(-4px) scale(1.03); filter: brightness(1.12); outline: none; }
-.town-building:active { transform: scale(.97); }
+.town-building:active { transform: scale(.96); }
+.town-building img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* mix-blend-mode: multiply makes white/light backgrounds disappear on dark surface */
+  mix-blend-mode: multiply;
+}
+/* Black-background buildings don't need multiply — use screen instead */
+.town-building.black-bg img { mix-blend-mode: screen; }
 
-/* Building sizes — isometric scale hierarchy */
-.town-building img { display: block; width: 100%; height: auto; }
+/*
+  ISOMETRIC GRID — 390px coordinate system
+  Visualize the crossroad as an X shape.
+  Top-left quadrant, top-right, bottom-left, bottom-right.
+  Buildings sit in their quadrant, sized to feel properly scaled.
 
-/* Individual building placements — isometric grid positions */
-/* Row 1 (back row — smaller, higher up) */
-#tb-ch1  { width: 110px; bottom: 230px; left: 8%;   } /* Bank — top left */
-#tb-ch6  { width: 70px;  bottom: 268px; left: 42%;  transform: translateX(-50%); } /* Clock tower — top center */
-#tb-ch2  { width: 100px; bottom: 230px; right: 8%;  } /* Real estate — top right */
+  Naming reference:
+  Ch1 = Bank (top-left)
+  Ch2 = Real Estate (top-right)
+  Ch3 = Bungalow (bottom-left front)
+  Ch4 = Title Co (mid-left)
+  Ch5 = Contract (mid-right)
+  Ch6 = Clock Tower (top-center)
+  Ch7 = Inspector House (bottom-right front)
+  Ch8 = Row House (front center-left)
+  Ch9 = Closing Office (front center-right)
+*/
 
-/* Row 2 (middle row) */
-#tb-ch4  { width: 115px; bottom: 155px; left: 2%;   } /* Title — mid left */
-#tb-ch5  { width: 100px; bottom: 155px; right: 2%;  } /* Contract — mid right */
-
-/* Row 3 (front row — bigger, lower) */
-#tb-ch3  { width: 120px; bottom: 68px;  left: 0%;   } /* Bungalow — front left */
-#tb-ch7  { width: 118px; bottom: 68px;  right: 1%;  } /* Inspector house — front right */
-#tb-ch8  { width: 108px; bottom: 30px;  left: 22%;  } /* Row house — front center-left */
-#tb-ch9  { width: 108px; bottom: 30px;  right: 22%; } /* Closing — front center-right */
+#tb-ch1 { width: 150px; top:  80px; left:   0px; } /* Bank — top left */
+#tb-ch2 { width: 140px; top:  80px; right:  0px; } /* Real estate — top right */
+#tb-ch6 { width:  80px; top:  60px; left: 155px; } /* Clock tower — top center */
+#tb-ch4 { width: 150px; top: 195px; left:   0px; } /* Title co — mid left */
+#tb-ch5 { width: 138px; top: 195px; right:  0px; } /* Contract — mid right */
+#tb-ch3 { width: 155px; top: 300px; left:   0px; } /* Bungalow — front left */
+#tb-ch7 { width: 152px; top: 300px; right:  0px; } /* Inspector house — front right */
+#tb-ch8 { width: 138px; top: 340px; left:  80px; } /* Row house — front center-left */
+#tb-ch9 { width: 138px; top: 340px; right: 80px; } /* Closing — front center-right */
 
 /* ── VEHICLES ── */
 .town-vehicle {
@@ -361,91 +393,78 @@
   z-index: 5;
   pointer-events: none;
 }
-.town-vehicle img { display: block; width: 100%; height: auto; }
+.town-vehicle img {
+  display: block;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+.town-vehicle.black-bg img { mix-blend-mode: screen; }
 
-#tv-van   { width: 70px; bottom: 108px; left: 28%; }
-#tv-truck { width: 88px; bottom: 22px;  left: 36%; }
-#tv-suv   { width: 72px; bottom: 148px; right: 26%; }
+#tv-van   { width: 90px;  top: 290px; left: 145px; }
+#tv-truck { width: 110px; top: 370px; left: 140px; }
+#tv-suv   { width: 90px;  top: 250px; right: 90px; }
 
 /* ── GEORGE FIGURE ── */
 .town-george {
   position: absolute;
   z-index: 6;
-  bottom: 178px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 48px;
+  top: 230px;
+  left: 185px;
+  width: 52px;
   pointer-events: none;
-  /* Hidden until asset dropped in — shows placeholder ring */
 }
-.town-george img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-/* Placeholder pulse while george.png not yet present */
+.town-george img { display: block; width: 100%; height: auto; }
 .town-george-placeholder {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 2px solid rgba(255,204,77,.4);
-  background: rgba(255,204,77,.08);
+  border: 2px solid rgba(255,204,77,.5);
+  background: rgba(255,204,77,.1);
   animation: georgePulse 2.4s ease-in-out infinite;
-  margin: 0 auto;
+  margin: 6px auto 0;
 }
 @keyframes georgePulse {
-  0%,100% { box-shadow: 0 0 0 0 rgba(255,204,77,.3); }
-  50%      { box-shadow: 0 0 0 10px rgba(255,204,77,0); }
+  0%,100% { box-shadow: 0 0 0 0 rgba(255,204,77,.4); }
+  50%      { box-shadow: 0 0 0 12px rgba(255,204,77,0); }
 }
 
 /* ── WALKING PEOPLE ── */
-/* person-a walks left-to-right across front sidewalk */
 .town-person {
   position: absolute;
   z-index: 6;
   pointer-events: none;
 }
-.town-person img { display: block; width: 100%; height: auto; }
-
-#tp-a {
-  width: 28px;
-  bottom: 80px;
-  /* Walk animation — starts off left, crosses to right */
-  animation: walkAcross 18s linear infinite;
-  /* Hidden until person-a.png dropped in */
-  opacity: 0;
+.town-person img {
+  display: block;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
 }
+#tp-a { width: 30px; top: 395px; opacity: 0; animation: walkAcross 20s linear infinite; }
+#tp-b { width: 28px; top: 360px; opacity: 0; animation: walkAcrossB 26s linear infinite 8s; }
 #tp-a.loaded { opacity: 1; }
-
-#tp-b {
-  width: 26px;
-  bottom: 110px;
-  animation: walkAcrossB 24s linear infinite 6s;
-  opacity: 0;
-}
 #tp-b.loaded { opacity: 1; }
 
-@keyframes walkAcross {
+@keyframes walkAcross  {
   0%   { left: -40px; }
-  100% { left: calc(100% + 40px); }
+  100% { left: 430px; }
 }
 @keyframes walkAcrossB {
-  0%   { left: calc(100% + 40px); transform: scaleX(-1); }
+  0%   { left: 430px; transform: scaleX(-1); }
   100% { left: -40px; transform: scaleX(-1); }
 }
 
 /* ── CHAPTER PINS ── */
-/* Gold pulsing pin sits above each building */
 .ch-pin {
   position: absolute;
   z-index: 8;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
-
 .pin-dot {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: #FFCC4D;
   border: 2px solid #080808;
@@ -456,80 +475,57 @@
   font-size: 9px;
   font-weight: 800;
   color: #080808;
-  letter-spacing: -.02em;
   position: relative;
   transition: transform .15s ease, background .15s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,.5);
+  box-shadow: 0 2px 10px rgba(0,0,0,.6);
 }
-
 .pin-dot::after {
   content: '';
   position: absolute;
   inset: -5px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255,204,77,.35);
+  border: 1.5px solid rgba(255,204,77,.4);
   animation: pinPulse 2s ease-out infinite;
 }
-
 @keyframes pinPulse {
-  0%   { transform: scale(1);   opacity: .7; }
-  100% { transform: scale(1.9); opacity: 0; }
+  0%   { transform: scale(1);   opacity: .8; }
+  100% { transform: scale(2.2); opacity: 0;  }
 }
+.ch-pin:active .pin-dot,
+.ch-pin.active .pin-dot { background: #fff; transform: scale(1.2); }
 
-.ch-pin:hover .pin-dot,
-.ch-pin.active .pin-dot {
-  background: #fff;
-  transform: scale(1.15);
-}
+/* Pin positions — anchored above building center points */
+#pin-ch1 { top:  68px; left:  58px; }
+#pin-ch2 { top:  68px; right: 58px; }
+#pin-ch6 { top:  46px; left: 176px; }
+#pin-ch4 { top: 183px; left:  58px; }
+#pin-ch5 { top: 183px; right: 52px; }
+#pin-ch3 { top: 288px; left:  62px; }
+#pin-ch7 { top: 288px; right: 58px; }
+#pin-ch8 { top: 328px; left: 132px; }
+#pin-ch9 { top: 328px; right: 108px; }
 
-/* Pin positions — centered above each building */
-#pin-ch1 { bottom: 300px; left:  calc(8%  + 35px); }
-#pin-ch2 { bottom: 300px; right: calc(8%  + 30px); }
-#pin-ch3 { bottom: 155px; left:  calc(0%  + 42px); }
-#pin-ch4 { bottom: 240px; left:  calc(2%  + 40px); }
-#pin-ch5 { bottom: 228px; right: calc(2%  + 28px); }
-#pin-ch6 { bottom: 306px; left:  calc(42% + 12px); }
-#pin-ch7 { bottom: 155px; right: calc(1%  + 38px); }
-#pin-ch8 { bottom: 112px; left:  calc(22% + 38px); }
-#pin-ch9 { bottom: 112px; right: calc(22% + 20px); }
-
-/* ── CHAPTER POPUP CARD ── */
+/* ── POPUP CARD ── */
 .ch-popup {
   position: absolute;
   z-index: 20;
-  width: 200px;
-  background: #0e0e0e;
-  border: 1px solid rgba(255,204,77,.3);
+  width: 190px;
+  background: rgba(10,10,10,.97);
+  border: 1px solid rgba(255,204,77,.35);
   border-radius: 12px;
-  padding: 14px;
-  box-shadow: 0 8px 32px rgba(0,0,0,.7);
+  padding: 13px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.8);
   opacity: 0;
-  transform: translateY(6px) scale(.96);
+  transform: translateY(6px) scale(.95);
   pointer-events: none;
   transition: opacity .2s ease, transform .2s ease;
+  backdrop-filter: blur(4px);
 }
 .ch-popup.show {
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: all;
 }
-
-/* Auto-position: by default opens upward */
-.ch-popup::before {
-  content: '';
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 10px;
-  height: 10px;
-  background: #0e0e0e;
-  border-right: 1px solid rgba(255,204,77,.3);
-  border-bottom: 1px solid rgba(255,204,77,.3);
-  clip-path: polygon(0 0, 100% 100%, 0 100%);
-  rotate: -45deg;
-}
-
 .popup-ch-num {
   font-family: var(--font-sans);
   font-size: 8px;
@@ -538,25 +534,23 @@
   text-transform: uppercase;
   color: #FFCC4D;
   margin-bottom: 4px;
-  opacity: .8;
 }
 .popup-title {
   font-family: var(--font-serif);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: #fff;
   line-height: 1.3;
-  margin-bottom: 8px;
+  margin-bottom: 7px;
 }
 .popup-quote {
   font-family: var(--font-sans);
   font-size: 10px;
-  font-weight: 400;
-  color: rgba(255,255,255,.6);
-  line-height: 1.55;
-  margin-bottom: 12px;
-  border-left: 2px solid rgba(255,204,77,.3);
-  padding-left: 8px;
+  color: rgba(255,255,255,.55);
+  line-height: 1.5;
+  margin-bottom: 10px;
+  border-left: 2px solid rgba(255,204,77,.25);
+  padding-left: 7px;
 }
 .popup-enter {
   width: 100%;
@@ -565,22 +559,32 @@
   border: none;
   border-radius: 6px;
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
-  padding: 9px 0;
+  padding: 8px 0;
   cursor: pointer;
-  transition: background .15s, transform .1s;
   -webkit-appearance: none;
+  transition: background .15s;
 }
-.popup-enter:hover  { background: #ffd966; }
-.popup-enter:active { transform: scale(.97); }
+.popup-enter:active { background: #ffd966; }
+
+/* Popup positions — one per chapter, keep within scene bounds */
+#popup-ch1 { top:  10px; left:   0px; }
+#popup-ch2 { top:  10px; right:  0px; }
+#popup-ch6 { top:  10px; left: 100px; }
+#popup-ch4 { top: 130px; left:   0px; }
+#popup-ch5 { top: 130px; right:  0px; }
+#popup-ch3 { top: 230px; left:   0px; }
+#popup-ch7 { top: 230px; right:  0px; }
+#popup-ch8 { top: 260px; left:  80px; }
+#popup-ch9 { top: 260px; right: 80px; }
 
 /* ── SCROLL HINT ── */
 .town-hint {
   text-align: center;
-  padding: 8px 0 4px;
+  padding: 10px 0 4px;
   font-family: var(--font-sans);
   font-size: 10px;
   font-weight: 500;
@@ -605,7 +609,6 @@
   transition: opacity .4s ease;
 }
 .tension-line.show { opacity: 1; }
-
 .tension-sub {
   font-family: var(--font-sans);
   font-size: 11px;
@@ -674,50 +677,15 @@
   line-height: 1.6;
   letter-spacing: .02em;
 }
-
 .idx-spacer { height: 20px; }
 
-/* ── VEHICLE ANIMATIONS ── */
-/* Van idles with subtle bob */
-@keyframes vanIdle {
-  0%,100% { transform: translateY(0); }
-  50%      { transform: translateY(-2px); }
-}
-#tv-van { animation: vanIdle 3s ease-in-out infinite; }
-
-/* Truck rocks slightly */
-@keyframes truckIdle {
-  0%,100% { transform: translateY(0) rotate(0deg); }
-  33%      { transform: translateY(-1px) rotate(.2deg); }
-  66%      { transform: translateY(0px) rotate(-.1deg); }
-}
-#tv-truck { animation: truckIdle 4s ease-in-out infinite 1s; }
-
-/* SUV gentle rock */
-@keyframes suvIdle {
-  0%,100% { transform: translateY(0); }
-  50%      { transform: translateY(-1.5px); }
-}
-#tv-suv { animation: suvIdle 3.5s ease-in-out infinite 0.5s; }
-
-/* ── STREETLAMP GLOW FLICKER ── */
-@keyframes lampFlicker {
-  0%,95%,100% { opacity: 1; }
-  96%          { opacity: .7; }
-  98%          { opacity: .9; }
-}
-
-/* ── RESPONSIVE ADJUSTMENTS ── */
-@media (max-width: 360px) {
-  .town-wrap { height: 360px; }
-  #tb-ch1  { width: 95px; }
-  #tb-ch2  { width: 88px; }
-  #tb-ch3  { width: 104px; }
-  #tb-ch6  { width: 60px; }
-}
-@media (min-width: 420px) {
-  .town-wrap { height: 460px; }
-}
+/* ── VEHICLE IDLE ANIMATIONS ── */
+@keyframes vanIdle   { 0%,100%{transform:translateY(0)}  50%{transform:translateY(-2px)} }
+@keyframes truckIdle { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-1px) rotate(.15deg)} }
+@keyframes suvIdle   { 0%,100%{transform:translateY(0)}  50%{transform:translateY(-1.5px)} }
+#tv-van   { animation: vanIdle   3s   ease-in-out infinite; }
+#tv-truck { animation: truckIdle 4s   ease-in-out infinite 1s; }
+#tv-suv   { animation: suvIdle   3.5s ease-in-out infinite .5s; }
 </style>
 </head>
 
@@ -816,40 +784,37 @@
          ISOMETRIC TOWN SCENE
     ════════════════════════════════════ -->
     <div class="town-wrap" id="town-wrap">
+    <div class="town-scene" id="town-scene">
 
-      <!-- LAYER 1: Gateway Arch horizon -->
+      <!-- LAYER 1: Gateway Arch — screen blend, black bg disappears -->
       <img class="town-arch"
            src="assets/town/arch.png"
            alt=""
            onerror="this.style.display='none'">
 
-      <!-- LAYER 2: Ground crossroad -->
+      <!-- LAYER 2: Ground crossroad — screen blend -->
       <img class="town-ground"
            src="assets/town/crossroad.png"
            alt=""
            onerror="this.style.display='none'">
 
-      <!-- LAYER 3: Town square park -->
+      <!-- LAYER 3: Town square park — transparent bg -->
       <img class="town-park"
            src="assets/town/park.png"
            alt=""
            onerror="this.style.display='none'">
 
-      <!-- LAYER 4: BUILDINGS
-           Each building is a clickable zone.
-           data-chapter, data-file, data-event match original card attributes.
-           data-popup-id points to its popup card.
-      -->
+      <!-- LAYER 4: BUILDINGS -->
 
-      <!-- Ch.1 Bank -->
-      <div class="town-building" id="tb-ch1"
+      <!-- Ch.1 Bank — black bg → screen blend -->
+      <div class="town-building black-bg" id="tb-ch1"
            data-chapter="1" data-file="01-preapproval.html" data-event="start"
            data-popup="popup-ch1" tabindex="0" role="button" aria-label="Chapter 1: Pre-Approval">
         <img src="assets/town/bank.png" alt="Lender / Pre-Approval"
              onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch.2 Real Estate Office -->
+      <!-- Ch.2 Real Estate Office — transparent bg → multiply blend -->
       <div class="town-building" id="tb-ch2"
            data-chapter="2" data-file="02-affordability.html" data-event="afford"
            data-popup="popup-ch2" tabindex="0" role="button" aria-label="Chapter 2: Affordability">
@@ -857,7 +822,7 @@
              onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch.3 Brick Bungalow -->
+      <!-- Ch.3 Bungalow — transparent bg -->
       <div class="town-building" id="tb-ch3"
            data-chapter="3" data-file="03-interior.html" data-event="interior"
            data-popup="popup-ch3" tabindex="0" role="button" aria-label="Chapter 3: Interior Walk">
@@ -865,31 +830,31 @@
              onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch.4 Title Company -->
-      <div class="town-building" id="tb-ch4"
+      <!-- Ch.4 Title Company — black bg → screen -->
+      <div class="town-building black-bg" id="tb-ch4"
            data-chapter="4" data-file="05-pre-offer.html" data-event="offer"
            data-popup="popup-ch4" tabindex="0" role="button" aria-label="Chapter 4: Pre-Offer">
         <img src="assets/town/title-company.png" alt="Pre-Offer Strategy"
              onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch.5 Contract Office -->
-      <div class="town-building" id="tb-ch5"
+      <!-- Ch.5 Contract Office — black bg → screen -->
+      <div class="town-building black-bg" id="tb-ch5"
            data-chapter="5" data-file="06-under-contract.html" data-event="contract"
            data-popup="popup-ch5" tabindex="0" role="button" aria-label="Chapter 5: Under Contract">
         <img src="assets/town/contract-office.png" alt="Under Contract"
              onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch.6 Clock Tower -->
-      <div class="town-building" id="tb-ch6"
+      <!-- Ch.6 Clock Tower — black bg → screen -->
+      <div class="town-building black-bg" id="tb-ch6"
            data-chapter="6" data-file="06b-deadlines.html" data-event="deadlines"
            data-popup="popup-ch6" tabindex="0" role="button" aria-label="Chapter 6: Deadlines">
         <img src="assets/town/clock-tower.png" alt="The Deadlines"
              onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch.7 Inspector House -->
+      <!-- Ch.7 Inspector House — transparent bg -->
       <div class="town-building" id="tb-ch7"
            data-chapter="7" data-file="07-inspection.html" data-event="inspect"
            data-popup="popup-ch7" tabindex="0" role="button" aria-label="Chapter 7: Inspection">
@@ -897,7 +862,7 @@
              onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch.8 Row House -->
+      <!-- Ch.8 Row House — transparent bg -->
       <div class="town-building" id="tb-ch8"
            data-chapter="8" data-file="08-walkthrough.html" data-event="walkthrough"
            data-popup="popup-ch8" tabindex="0" role="button" aria-label="Chapter 8: Final Walk-Through">
@@ -905,8 +870,8 @@
              onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch.9 Closing Office -->
-      <div class="town-building" id="tb-ch9"
+      <!-- Ch.9 Closing Office — black bg → screen -->
+      <div class="town-building black-bg" id="tb-ch9"
            data-chapter="9" data-file="09-closing.html" data-event="closing"
            data-popup="popup-ch9" tabindex="0" role="button" aria-label="Chapter 9: Closing">
         <img src="assets/town/closing-office.png" alt="Closing Day"
@@ -914,34 +879,33 @@
       </div>
 
       <!-- LAYER 5: VEHICLES -->
+      <!-- Inspector van — transparent bg -->
       <div class="town-vehicle" id="tv-van">
         <img src="assets/town/inspector-van.png" alt=""
              onerror="this.style.display='none'">
       </div>
+      <!-- Moving truck — transparent bg -->
       <div class="town-vehicle" id="tv-truck">
         <img src="assets/town/moving-truck.png" alt=""
              onerror="this.style.display='none'">
       </div>
+      <!-- SUV — transparent bg -->
       <div class="town-vehicle" id="tv-suv">
         <img src="assets/town/suv.png" alt=""
              onerror="this.style.display='none'">
       </div>
 
-      <!-- LAYER 6: GEORGE FIGURE
-           Drop assets/town/george.png to activate.
-           Placeholder ring shows until image loads. -->
+      <!-- LAYER 6: GEORGE — placeholder ring until george.png dropped in -->
       <div class="town-george" id="town-george">
         <img src="assets/town/george.png" alt="George Kindler"
              id="george-town-img"
              style="display:none;"
-             onload="this.style.display='block'; document.getElementById('george-placeholder').style.display='none';"
+             onload="this.style.display='block';document.getElementById('george-placeholder').style.display='none';"
              onerror="this.style.display='none'">
         <div class="town-george-placeholder" id="george-placeholder"></div>
       </div>
 
-      <!-- LAYER 7: WALKING PEOPLE
-           Drop assets/town/person-a.png and person-b.png to activate.
-           They auto-animate once loaded. -->
+      <!-- LAYER 7: WALKING PEOPLE — invisible until PNGs dropped in -->
       <div class="town-person" id="tp-a">
         <img src="assets/town/person-a.png" alt=""
              onload="document.getElementById('tp-a').classList.add('loaded')"
@@ -964,72 +928,63 @@
       <div class="ch-pin" id="pin-ch8" data-target="tb-ch8"><div class="pin-dot">8</div></div>
       <div class="ch-pin" id="pin-ch9" data-target="tb-ch9"><div class="pin-dot">9</div></div>
 
-      <!-- LAYER 9: POPUP CARDS
-           One per chapter, positioned near its pin. -->
-
-      <div class="ch-popup" id="popup-ch1" style="bottom:330px;left:4%;">
+      <!-- LAYER 9: POPUP CARDS -->
+      <div class="ch-popup" id="popup-ch1">
         <div class="popup-ch-num">Chapter 1 · Pre-Approval</div>
         <div class="popup-title">What actually happens when you click "Contact Agent"</div>
         <div class="popup-quote">The agent who calls you paid to be there. That changes everything before you see a house.</div>
         <button class="popup-enter" data-file="01-preapproval.html" data-event="start">Enter Chapter →</button>
       </div>
-
-      <div class="ch-popup" id="popup-ch2" style="bottom:330px;right:4%;">
+      <div class="ch-popup" id="popup-ch2">
         <div class="popup-ch-num">Chapter 2 · Affordability</div>
         <div class="popup-title">Where buyers accidentally overpay before they make an offer</div>
         <div class="popup-quote">The number your lender approved is not the number you should spend.</div>
         <button class="popup-enter" data-file="02-affordability.html" data-event="afford">Enter Chapter →</button>
       </div>
-
-      <div class="ch-popup" id="popup-ch3" style="bottom:220px;left:2%;">
+      <div class="ch-popup" id="popup-ch3">
         <div class="popup-ch-num">Chapter 3 · Interior Walk</div>
         <div class="popup-title">Walk a property the way I do — pick your home type</div>
         <div class="popup-quote">Most buyers look at countertops. I look at the basement, panel, roof, and mechanicals.</div>
         <button class="popup-enter" data-file="03-interior.html" data-event="interior">Enter Chapter →</button>
       </div>
-
-      <div class="ch-popup" id="popup-ch4" style="bottom:310px;left:2%;">
+      <div class="ch-popup" id="popup-ch4">
         <div class="popup-ch-num">Chapter 4 · Pre-Offer</div>
         <div class="popup-title">Where buyers get pushed into offers they can't take back</div>
         <div class="popup-quote">Competing offers, manufactured urgency, escalation clauses — all of it explained.</div>
         <button class="popup-enter" data-file="05-pre-offer.html" data-event="offer">Enter Chapter →</button>
       </div>
-
-      <div class="ch-popup" id="popup-ch5" style="bottom:298px;right:2%;">
+      <div class="ch-popup" id="popup-ch5">
         <div class="popup-ch-num">Chapter 5 · Under Contract</div>
         <div class="popup-title">Offer accepted — where deals fall apart</div>
         <div class="popup-quote">Earnest money. Inspection windows. Day Zero actions. Small mistakes here can kill a deal.</div>
         <button class="popup-enter" data-file="06-under-contract.html" data-event="contract">Enter Chapter →</button>
       </div>
-
-      <div class="ch-popup" id="popup-ch6" style="bottom:346px;left:50%;transform:translateX(-50%);">
+      <div class="ch-popup" id="popup-ch6">
         <div class="popup-ch-num">Chapter 6 · Deadlines</div>
         <div class="popup-title">Three deadlines running in parallel — miss one and the protection is gone</div>
         <div class="popup-quote">Loan contingency. Appraisal. Title. All running simultaneously from Day 1.</div>
         <button class="popup-enter" data-file="06b-deadlines.html" data-event="deadlines">Enter Chapter →</button>
       </div>
-
-      <div class="ch-popup" id="popup-ch7" style="bottom:220px;right:2%;">
+      <div class="ch-popup" id="popup-ch7">
         <div class="popup-ch-num">Chapter 7 · Inspection</div>
         <div class="popup-title">Where buyers miss the problems they end up paying for</div>
         <div class="popup-quote">By the time most buyers read the report, their earnest money is already at risk.</div>
         <button class="popup-enter" data-file="07-inspection.html" data-event="inspect">Enter Chapter →</button>
       </div>
-
-      <div class="ch-popup" id="popup-ch8" style="bottom:178px;left:14%;">
+      <div class="ch-popup" id="popup-ch8">
         <div class="popup-ch-num">Chapter 8 · Final Walk-Through</div>
         <div class="popup-title">The final walk-through is not a second showing</div>
         <div class="popup-quote">Same condition as the day you made the offer. Agreed repairs complete. Seller out.</div>
         <button class="popup-enter" data-file="08-walkthrough.html" data-event="walkthrough">Enter Chapter →</button>
       </div>
-
-      <div class="ch-popup" id="popup-ch9" style="bottom:178px;right:14%;">
+      <div class="ch-popup" id="popup-ch9">
         <div class="popup-ch-num">Chapter 9 · Closing Day</div>
         <div class="popup-title">What you're signing at closing — and what most buyers don't catch</div>
         <div class="popup-quote">Wire fraud. The note. The deed of trust. Your job is to fall in love. Mine is to protect you.</div>
         <button class="popup-enter" data-file="09-closing.html" data-event="closing">Enter Chapter →</button>
       </div>
 
+    </div><!-- /town-scene -->
     </div><!-- /town-wrap -->
 
     <div class="town-hint" id="town-hint">↑ Tap the gold pins to explore</div>
@@ -1262,6 +1217,29 @@
     });
   } catch (e) {}
 
+})();
+</script>
+
+<script>
+/* ── TOWN SCENE SCALE ──
+   The town-scene is fixed at 390px wide.
+   Scale it proportionally to fill the actual viewport width.
+   Re-runs on resize so it works on every device. */
+(function () {
+  function scaleTownScene() {
+    var scene = document.getElementById('town-scene');
+    var wrap  = document.getElementById('town-wrap');
+    if (!scene || !wrap) return;
+    var vw    = wrap.offsetWidth || window.innerWidth;
+    var scale = vw / 390;
+    scene.style.transform = 'scale(' + scale + ')';
+    /* Adjust wrap height to match scaled scene height */
+    wrap.style.height = Math.round(480 * scale) + 'px';
+  }
+  scaleTownScene();
+  window.addEventListener('resize', scaleTownScene);
+  /* Also run after fonts/images may have shifted layout */
+  window.addEventListener('load', scaleTownScene);
 })();
 </script>
 
