@@ -269,12 +269,6 @@
 }
 
 /* ── TOWN SCENE ── */
-/*
-  Layout strategy: fixed 390px internal coordinate system.
-  The scene scales via transform: scale() based on actual viewport width.
-  This means positions are always accurate regardless of screen size.
-  All pixel values below are designed for a 390px wide viewport.
-*/
 .town-wrap {
   position: relative;
   width: 100%;
@@ -282,65 +276,32 @@
   transform: translateY(14px);
   transition: opacity .6s ease, transform .6s ease;
   overflow: visible;
-  height: 480px;
+  height: 394px;
   flex-shrink: 0;
 }
 .town-wrap.show { opacity: 1; transform: translateY(0); }
 
-/* Inner scene — fixed 390px wide, scaled by JS */
 .town-scene {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 390px;
-  height: 480px;
+  height: 394px;
   transform-origin: top left;
-  /* JS sets transform: scale(N) based on viewport width */
 }
 
-/* ── BACKGROUND LAYERS ── */
-
-/* Arch — sits behind everything, large, prominent */
+/* ── ARCH (background, full-width, starts above scene) ── */
 .town-arch {
   position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 280px;
+  left:   4.1px;
+  top:  -26.8px;
+  width: 394.3px;
   height: auto;
   z-index: 1;
-  opacity: 1;
-  pointer-events: none;
-  /* Arch has black bg so use screen blend to make black transparent */
-  mix-blend-mode: screen;
-}
-
-/* Ground crossroad — fills scene floor */
-.town-ground {
-  position: absolute;
-  top: 100px;
-  left: -10px;
-  width: 410px;
-  height: auto;
-  z-index: 2;
   pointer-events: none;
   mix-blend-mode: screen;
 }
 
-/* Park — center of scene, sits on ground */
-.town-park {
-  position: absolute;
-  top: 150px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 170px;
-  height: auto;
-  z-index: 3;
-  pointer-events: none;
-  /* Park has transparent bg — no blend needed */
-}
-
-/* ── BUILDINGS ── */
+/* ── BUILDINGS — exact Photoshop coordinates scaled 0.0975 ── */
 .town-building {
   position: absolute;
   z-index: 4;
@@ -349,335 +310,292 @@
   -webkit-tap-highlight-color: transparent;
 }
 .town-building:active { transform: scale(.96); }
-.town-building img {
-  display: block;
-  width: 100%;
-  height: auto;
-  /* mix-blend-mode: multiply makes white/light backgrounds disappear on dark surface */
-  mix-blend-mode: multiply;
+.town-building img { display: block; width: 100%; height: auto; }
+
+/* Gold glow on auto-tour active building */
+.town-building.tour-active {
+  filter: drop-shadow(0 0 12px rgba(255,204,77,.75))
+          drop-shadow(0 0 24px rgba(255,204,77,.4))
+          drop-shadow(0 0 4px rgba(255,204,77,.95));
+  transform: translateY(-2px);
+  z-index: 10 !important;
+  transition: filter .4s ease, transform .3s ease;
 }
-/* Black-background buildings don't need multiply — use screen instead */
-.town-building.black-bg img { mix-blend-mode: screen; }
-
-/*
-  ISOMETRIC GRID — 390px coordinate system
-  Visualize the crossroad as an X shape.
-  Top-left quadrant, top-right, bottom-left, bottom-right.
-  Buildings sit in their quadrant, sized to feel properly scaled.
-
-  Naming reference:
-  Ch1 = Bank (top-left)
-  Ch2 = Real Estate (top-right)
-  Ch3 = Bungalow (bottom-left front)
-  Ch4 = Title Co (mid-left)
-  Ch5 = Contract (mid-right)
-  Ch6 = Clock Tower (top-center)
-  Ch7 = Inspector House (bottom-right front)
-  Ch8 = Row House (front center-left)
-  Ch9 = Closing Office (front center-right)
-*/
-
-#tb-ch1 { width: 150px; top:  80px; left:   0px; } /* Bank — top left */
-#tb-ch2 { width: 140px; top:  80px; right:  0px; } /* Real estate — top right */
-#tb-ch6 { width:  80px; top:  60px; left: 155px; } /* Clock tower — top center */
-#tb-ch4 { width: 150px; top: 195px; left:   0px; } /* Title co — mid left */
-#tb-ch5 { width: 138px; top: 195px; right:  0px; } /* Contract — mid right */
-#tb-ch3 { width: 155px; top: 300px; left:   0px; } /* Bungalow — front left */
-#tb-ch7 { width: 152px; top: 300px; right:  0px; } /* Inspector house — front right */
-#tb-ch8 { width: 138px; top: 340px; left:  80px; } /* Row house — front center-left */
-#tb-ch9 { width: 138px; top: 340px; right: 80px; } /* Closing — front center-right */
-
-/* ── VEHICLES ── */
-.town-vehicle {
-  position: absolute;
-  z-index: 5;
-  pointer-events: none;
+.town-building.visited {
+  filter: drop-shadow(0 0 5px rgba(255,204,77,.2));
 }
-.town-vehicle img {
-  display: block;
-  width: 100%;
-  height: auto;
-  mix-blend-mode: multiply;
-}
-.town-vehicle.black-bg img { mix-blend-mode: screen; }
 
-#tv-van   { width: 90px;  top: 290px; left: 145px; }
-#tv-truck { width: 110px; top: 370px; left: 140px; }
-#tv-suv   { width: 90px;  top: 250px; right: 90px; }
+#tb-clock-tower       { left:  45.7px; top: 167.7px; width:  27.1px; z-index: 3; }
+#tb-title-company     { left:  79.5px; top: 159.9px; width:  83.3px; z-index: 4; }
+#tb-contract-office   { left: 241.9px; top: 154.5px; width:  64.4px; z-index: 4; }
+#tb-realestate-office { left: 264.1px; top: 167.7px; width: 125.9px; z-index: 4; }
+#tb-bank              { left: 115.7px; top: 183.5px; width: 171.0px; z-index: 5; }
+#tb-bungalow          { left:   4.1px; top: 190.7px; width: 148.2px; z-index: 5; }
+#tb-inspector-house   { left: 261.2px; top: 213.9px; width: 127.4px; z-index: 5; }
+#tb-row-house         { left:   2.7px; top: 249.8px; width: 195.6px; z-index: 6; }
+#tb-closing-office    { left: 177.7px; top: 249.8px; width: 205.0px; z-index: 6; }
 
-/* ── GEORGE FIGURE ── */
+/* ── GEORGE ── */
 .town-george {
   position: absolute;
-  z-index: 6;
-  top: 230px;
-  left: 185px;
-  width: 52px;
+  left:  162.7px;
+  top:   278.9px;
+  width:  76.8px;
+  z-index: 7;
   pointer-events: none;
 }
 .town-george img { display: block; width: 100%; height: auto; }
 .town-george-placeholder {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 2px solid rgba(255,204,77,.5);
-  background: rgba(255,204,77,.1);
+  width: 36px; height: 60px;
+  border: 2px dashed rgba(255,204,77,.4);
+  border-radius: 4px;
+  background: rgba(255,204,77,.05);
   animation: georgePulse 2.4s ease-in-out infinite;
-  margin: 6px auto 0;
+  margin: 0 auto;
 }
 @keyframes georgePulse {
-  0%,100% { box-shadow: 0 0 0 0 rgba(255,204,77,.4); }
-  50%      { box-shadow: 0 0 0 12px rgba(255,204,77,0); }
+  0%,100% { box-shadow: 0 0 0 0 rgba(255,204,77,.3); }
+  50%      { box-shadow: 0 0 0 10px rgba(255,204,77,0); }
 }
-
-/* ── WALKING PEOPLE ── */
-.town-person {
+/* ── GEORGE WELCOME BUBBLE ── */
+.george-bubble {
   position: absolute;
-  z-index: 6;
-  pointer-events: none;
-}
-.town-person img {
-  display: block;
-  width: 100%;
-  height: auto;
-  mix-blend-mode: multiply;
-}
-#tp-a { width: 30px; top: 395px; opacity: 0; animation: walkAcross 20s linear infinite; }
-#tp-b { width: 28px; top: 360px; opacity: 0; animation: walkAcrossB 26s linear infinite 8s; }
-#tp-a.loaded { opacity: 1; }
-#tp-b.loaded { opacity: 1; }
-
-@keyframes walkAcross  {
-  0%   { left: -40px; }
-  100% { left: 430px; }
-}
-@keyframes walkAcrossB {
-  0%   { left: 430px; transform: scaleX(-1); }
-  100% { left: -40px; transform: scaleX(-1); }
-}
-
-/* ── CHAPTER PINS ── */
-.ch-pin {
-  position: absolute;
-  z-index: 8;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-.pin-dot {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: #FFCC4D;
-  border: 2px solid #080808;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-sans);
-  font-size: 9px;
-  font-weight: 800;
-  color: #080808;
-  position: relative;
-  transition: transform .15s ease, background .15s ease;
-  box-shadow: 0 2px 10px rgba(0,0,0,.6);
-}
-.pin-dot::after {
-  content: '';
-  position: absolute;
-  inset: -5px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255,204,77,.4);
-  animation: pinPulse 2s ease-out infinite;
-}
-@keyframes pinPulse {
-  0%   { transform: scale(1);   opacity: .8; }
-  100% { transform: scale(2.2); opacity: 0;  }
-}
-.ch-pin:active .pin-dot,
-.ch-pin.active .pin-dot { background: #fff; transform: scale(1.2); }
-
-/* Pin positions — anchored above building center points */
-#pin-ch1 { top:  68px; left:  58px; }
-#pin-ch2 { top:  68px; right: 58px; }
-#pin-ch6 { top:  46px; left: 176px; }
-#pin-ch4 { top: 183px; left:  58px; }
-#pin-ch5 { top: 183px; right: 52px; }
-#pin-ch3 { top: 288px; left:  62px; }
-#pin-ch7 { top: 288px; right: 58px; }
-#pin-ch8 { top: 328px; left: 132px; }
-#pin-ch9 { top: 328px; right: 108px; }
-
-/* ── POPUP CARD ── */
-.ch-popup {
-  position: absolute;
-  z-index: 20;
-  width: 190px;
-  background: rgba(10,10,10,.97);
-  border: 1px solid rgba(255,204,77,.35);
-  border-radius: 12px;
-  padding: 13px;
-  box-shadow: 0 8px 32px rgba(0,0,0,.8);
+  left: 155px;
+  top:  240px;
+  width: 148px;
+  z-index: 15;
   opacity: 0;
-  transform: translateY(6px) scale(.95);
+  transform: translateY(4px) scale(.96);
+  transition: opacity .35s ease, transform .35s ease;
   pointer-events: none;
-  transition: opacity .2s ease, transform .2s ease;
-  backdrop-filter: blur(4px);
 }
-.ch-popup.show {
+.george-bubble.show {
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: all;
 }
-.popup-ch-num {
+.george-bubble-inner {
+  background: rgba(8,8,8,.94);
+  border: 1px solid rgba(255,204,77,.4);
+  border-radius: 10px;
+  padding: 10px 12px 12px;
+  position: relative;
+}
+/* tail pointing down toward George */
+.george-bubble-inner::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 12px; height: 12px;
+  background: rgba(8,8,8,.94);
+  border-right: 1px solid rgba(255,204,77,.4);
+  border-bottom: 1px solid rgba(255,204,77,.4);
+}
+.george-bubble-tag {
   font-family: var(--font-sans);
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: #FFCC4D;
-  margin-bottom: 4px;
+  font-size: 7px; font-weight: 800;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: #FFCC4D; margin-bottom: 4px; opacity: .85;
+}
+.george-bubble-text {
+  font-family: var(--font-serif);
+  font-size: 11px; font-weight: 600;
+  color: #fff; line-height: 1.35;
+  margin-bottom: 8px;
+}
+.george-bubble-sub {
+  font-family: var(--font-sans);
+  font-size: 9px; color: rgba(255,255,255,.55);
+  line-height: 1.5; margin-bottom: 10px;
+}
+.george-bubble-cta {
+  width: 100%; background: #FFCC4D; color: #080808;
+  border: none; border-radius: 5px;
+  font-family: var(--font-sans); font-size: 9px; font-weight: 800;
+  letter-spacing: .06em; text-transform: uppercase;
+  padding: 7px 0; cursor: pointer; -webkit-appearance: none;
+  transition: background .15s;
+  display: none;
+}
+.george-bubble-cta.show { display: block; }
+.george-bubble-cta:active { background: #ffd966; }
+
+/* ── AUTO-TOUR POPUP (ambient floating labels) ── */
+.auto-popup {
+  position: absolute;
+  z-index: 12;
+  background: rgba(8,8,8,.9);
+  border: 1px solid rgba(255,204,77,.25);
+  border-radius: 8px;
+  padding: 8px 10px;
+  width: 130px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .5s ease, transform .5s ease;
+  pointer-events: none;
+}
+.auto-popup.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.auto-popup-num {
+  font-family: var(--font-sans); font-size: 7px; font-weight: 800;
+  letter-spacing: .12em; text-transform: uppercase; color: #FFCC4D;
+  margin-bottom: 3px; opacity: .8;
+}
+.auto-popup-title {
+  font-family: var(--font-serif); font-size: 10px; font-weight: 700;
+  color: #fff; line-height: 1.3;
+}
+
+/* ── CH1 PIN SPECIAL HIGHLIGHT (start here) ── */
+.ch-pin.start-here .pin-dot {
+  background: #FFCC4D;
+  animation: startHerePulse 1s ease-in-out infinite;
+}
+@keyframes startHerePulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(255,204,77,.6), 0 2px 10px rgba(0,0,0,.7); }
+  50%      { box-shadow: 0 0 0 8px rgba(255,204,77,0), 0 2px 10px rgba(0,0,0,.7); }
+}
+
+
+/* ── VEHICLES ── */
+.town-vehicle {
+  position: absolute;
+  pointer-events: none;
+  z-index: 6;
+}
+.town-vehicle img { display: block; width: 100%; height: auto; }
+
+#tv-van   { width: 55px; left: 100px; top: 255px; animation: vanIdle 3s ease-in-out infinite; }
+#tv-truck { width: 70px; left: 150px; top: 330px; animation: truckIdle 4s ease-in-out infinite 1s; }
+#tv-suv   { width: 60px; left: 215px; top: 240px; animation: suvIdle 3.5s ease-in-out infinite .5s; }
+
+/* ── WALKING PEOPLE ── */
+.town-person { position: absolute; pointer-events: none; z-index: 7; }
+.town-person img { display: block; width: 100%; height: auto; }
+#tp-a { width: 22px; top: 340px; opacity: 0; animation: walkAcross 20s linear infinite; }
+#tp-b { width: 20px; top: 310px; opacity: 0; animation: walkAcrossB 26s linear infinite 8s; }
+#tp-a.loaded { opacity: 1; }
+#tp-b.loaded { opacity: 1; }
+@keyframes walkAcross  { 0%{left:-30px} 100%{left:420px} }
+@keyframes walkAcrossB { 0%{left:420px;transform:scaleX(-1)} 100%{left:-30px;transform:scaleX(-1)} }
+
+/* pins removed */
+
+/* Pin anchors — positioned at top-center of each building */
+#pin-ch1  { left:  202px; top: 184px; } /* bank */
+#pin-ch2  { left:  327px; top: 168px; } /* realestate */
+#pin-ch3  { left:   78px; top: 191px; } /* bungalow */
+#pin-ch4  { left:  121px; top: 160px; } /* title-company */
+#pin-ch5  { left:  274px; top: 155px; } /* contract */
+#pin-ch6  { left:   59px; top: 168px; } /* clock-tower */
+#pin-ch7  { left:  325px; top: 214px; } /* inspector-house */
+#pin-ch8  { left:  101px; top: 250px; } /* row-house */
+#pin-ch9  { left:  280px; top: 250px; } /* closing */
+
+/* ── POPUP CARDS ── */
+.ch-popup {
+  position: absolute;
+  z-index: 20;
+  width: 175px;
+  background: rgba(8,8,8,.96);
+  border: 1px solid rgba(255,204,77,.35);
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 8px 28px rgba(0,0,0,.85);
+  opacity: 0;
+  transform: translateY(6px) scale(.95);
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+  backdrop-filter: blur(6px);
+}
+.ch-popup.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
+.popup-ch-num {
+  font-family: var(--font-sans); font-size: 8px; font-weight: 800;
+  letter-spacing: .14em; text-transform: uppercase; color: #FFCC4D; margin-bottom: 4px;
 }
 .popup-title {
-  font-family: var(--font-serif);
-  font-size: 12px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.3;
-  margin-bottom: 7px;
+  font-family: var(--font-serif); font-size: 12px; font-weight: 700;
+  color: #fff; line-height: 1.3; margin-bottom: 7px;
 }
 .popup-quote {
-  font-family: var(--font-sans);
-  font-size: 10px;
-  color: rgba(255,255,255,.55);
-  line-height: 1.5;
-  margin-bottom: 10px;
-  border-left: 2px solid rgba(255,204,77,.25);
-  padding-left: 7px;
+  font-family: var(--font-sans); font-size: 10px; color: rgba(255,255,255,.55);
+  line-height: 1.5; margin-bottom: 10px;
+  border-left: 2px solid rgba(255,204,77,.25); padding-left: 7px;
 }
 .popup-enter {
-  width: 100%;
-  background: #FFCC4D;
-  color: #080808;
-  border: none;
-  border-radius: 6px;
-  font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  padding: 8px 0;
-  cursor: pointer;
-  -webkit-appearance: none;
-  transition: background .15s;
+  width: 100%; background: #FFCC4D; color: #080808; border: none; border-radius: 5px;
+  font-family: var(--font-sans); font-size: 10px; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; padding: 8px 0;
+  cursor: pointer; -webkit-appearance: none; transition: background .15s;
 }
 .popup-enter:active { background: #ffd966; }
 
-/* Popup positions — one per chapter, keep within scene bounds */
-#popup-ch1 { top:  10px; left:   0px; }
-#popup-ch2 { top:  10px; right:  0px; }
-#popup-ch6 { top:  10px; left: 100px; }
-#popup-ch4 { top: 130px; left:   0px; }
-#popup-ch5 { top: 130px; right:  0px; }
-#popup-ch3 { top: 230px; left:   0px; }
-#popup-ch7 { top: 230px; right:  0px; }
-#popup-ch8 { top: 260px; left:  80px; }
-#popup-ch9 { top: 260px; right: 80px; }
+/* Popup positions — keep within scene, open toward center */
+#popup-ch1 { left: 115px; top: 110px; } /* bank — center, opens up */
+#popup-ch2 { left: 195px; top: 100px; } /* realestate — right, opens left */
+#popup-ch3 { left:   4px; top: 110px; } /* bungalow — left edge */
+#popup-ch4 { left:  79px; top:  85px; } /* title company */
+#popup-ch5 { left: 205px; top:  80px; } /* contract */
+#popup-ch6 { left:  40px; top:  90px; } /* clock tower */
+#popup-ch7 { left: 200px; top: 140px; } /* inspector */
+#popup-ch8 { left:   4px; top: 175px; } /* row house */
+#popup-ch9 { left: 178px; top: 175px; } /* closing */
 
 /* ── SCROLL HINT ── */
 .town-hint {
-  text-align: center;
-  padding: 10px 0 4px;
-  font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 500;
-  color: rgba(255,255,255,.3);
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  opacity: 0;
-  transition: opacity .4s ease;
+  text-align: center; padding: 10px 0 4px;
+  font-family: var(--font-sans); font-size: 10px; font-weight: 500;
+  color: rgba(255,255,255,.3); letter-spacing: .08em; text-transform: uppercase;
+  opacity: 0; transition: opacity .4s ease;
 }
 .town-hint.show { opacity: 1; }
 
-/* ── TENSION CUE ── */
+/* ── TENSION / RESUME ── */
 .tension-line {
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(255,255,255,.82);
-  letter-spacing: .02em;
-  line-height: 1.5;
-  padding: 0 18px 4px;
-  opacity: 0;
-  transition: opacity .4s ease;
+  font-family: var(--font-sans); font-size: 12px; font-weight: 600;
+  color: rgba(255,255,255,.82); letter-spacing: .02em; line-height: 1.5;
+  padding: 0 18px 4px; opacity: 0; transition: opacity .4s ease;
 }
 .tension-line.show { opacity: 1; }
 .tension-sub {
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 400;
-  color: rgba(255,255,255,.65);
-  letter-spacing: .02em;
-  line-height: 1.5;
-  padding: 0 18px 14px;
-  opacity: 0;
-  transition: opacity .4s ease;
+  font-family: var(--font-sans); font-size: 11px; font-weight: 400;
+  color: rgba(255,255,255,.65); letter-spacing: .02em; line-height: 1.5;
+  padding: 0 18px 14px; opacity: 0; transition: opacity .4s ease;
 }
 .tension-sub.show { opacity: 1; }
-
-/* ── RESUME CARD ── */
 .resume-card {
   margin: 0 14px 10px;
-  background: rgba(255,255,255,.02);
-  border: 1px solid rgba(255,255,255,.12);
-  border-left: 3px solid rgba(255,255,255,.3);
-  border-radius: 10px;
-  padding: 14px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity .4s ease, border-color .18s, background .18s;
+  background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.12);
+  border-left: 3px solid rgba(255,255,255,.3); border-radius: 10px;
+  padding: 14px 16px; display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; opacity: 0; transition: opacity .4s ease, border-color .18s, background .18s;
 }
 .resume-card.show { opacity: 1; }
-.resume-card:hover { border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.035); }
-.resume-lbl {
-  font-family: var(--font-serif);
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(255,255,255,.92);
-  line-height: 1.3;
-  flex: 1;
-}
-.resume-arr {
-  font-size: 16px;
-  color: rgba(255,255,255,.3);
-  flex-shrink: 0;
-  margin-left: 10px;
-}
+.resume-lbl { font-family: var(--font-serif); font-size: 13px; font-weight: 600; color: rgba(255,255,255,.92); line-height: 1.3; flex: 1; }
+.resume-arr { font-size: 16px; color: rgba(255,255,255,.3); flex-shrink: 0; margin-left: 10px; }
 
 /* ── FOOTER ── */
 .idx-ftr {
-  background: rgba(5,5,5,.98);
-  border-top: 1px solid #1e1e1e;
+  background: rgba(5,5,5,.98); border-top: 1px solid #1e1e1e;
   padding: 8px 16px calc(10px + env(safe-area-inset-bottom, 0px));
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  flex-shrink: 0;
-  opacity: 0;
-  transform: translateY(100%);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; flex-shrink: 0;
+  opacity: 0; transform: translateY(100%);
   transition: opacity .4s ease, transform .4s ease;
 }
 .idx-ftr.show { opacity: 1; transform: translateY(0); }
-.idx-ftr-l {
-  font-family: var(--font-sans);
-  font-size: 9px;
-  font-weight: 400;
-  color: rgba(255,255,255,.4);
-  line-height: 1.6;
-  letter-spacing: .02em;
-}
+.idx-ftr-l { font-family: var(--font-sans); font-size: 9px; font-weight: 400; color: rgba(255,255,255,.4); line-height: 1.6; letter-spacing: .02em; }
 .idx-spacer { height: 20px; }
+
+/* ── VEHICLE IDLES ── */
+@keyframes vanIdle   { 0%,100%{transform:translateY(0)}    50%{transform:translateY(-2px)} }
+@keyframes truckIdle { 0%,100%{transform:translateY(0)}    50%{transform:translateY(-1px)} }
+@keyframes suvIdle   { 0%,100%{transform:translateY(0)}    50%{transform:translateY(-1.5px)} }
+
 
 /* ── VEHICLE IDLE ANIMATIONS ── */
 @keyframes vanIdle   { 0%,100%{transform:translateY(0)}  50%{transform:translateY(-2px)} }
@@ -786,126 +704,140 @@
     <div class="town-wrap" id="town-wrap">
     <div class="town-scene" id="town-scene">
 
-      <!-- LAYER 1: Gateway Arch — screen blend, black bg disappears -->
-      <img class="town-arch"
-           src="assets/town/arch.png"
-           alt=""
-           onerror="this.style.display='none'">
+      <!-- ARCH — screen blend, starts above scene top -->
+      <img class="town-arch" src="assets/town/arch.png" alt="" onerror="this.style.display='none'">
 
-      <!-- LAYER 2: Ground crossroad — screen blend -->
-      <img class="town-ground"
-           src="assets/town/crossroad.png"
-           alt=""
-           onerror="this.style.display='none'">
+      <!-- BUILDINGS — z-ordered back to front -->
 
-      <!-- LAYER 3: Town square park — transparent bg -->
-      <img class="town-park"
-           src="assets/town/park.png"
-           alt=""
-           onerror="this.style.display='none'">
-
-      <!-- LAYER 4: BUILDINGS -->
-
-      <!-- Ch.1 Bank — black bg → screen blend -->
-      <div class="town-building black-bg" id="tb-ch1"
-           data-chapter="1" data-file="01-preapproval.html" data-event="start"
-           data-popup="popup-ch1" tabindex="0" role="button" aria-label="Chapter 1: Pre-Approval">
-        <img src="assets/town/bank.png" alt="Lender / Pre-Approval"
-             onerror="this.style.display='none'">
-      </div>
-
-      <!-- Ch.2 Real Estate Office — transparent bg → multiply blend -->
-      <div class="town-building" id="tb-ch2"
-           data-chapter="2" data-file="02-affordability.html" data-event="afford"
-           data-popup="popup-ch2" tabindex="0" role="button" aria-label="Chapter 2: Affordability">
-        <img src="assets/town/realestate-office.png" alt="Affordability"
-             onerror="this.style.display='none'">
-      </div>
-
-      <!-- Ch.3 Bungalow — transparent bg -->
-      <div class="town-building" id="tb-ch3"
-           data-chapter="3" data-file="03-interior.html" data-event="interior"
-           data-popup="popup-ch3" tabindex="0" role="button" aria-label="Chapter 3: Interior Walk">
-        <img src="assets/town/bungalow.png" alt="Interior Showing"
-             onerror="this.style.display='none'">
-      </div>
-
-      <!-- Ch.4 Title Company — black bg → screen -->
-      <div class="town-building black-bg" id="tb-ch4"
-           data-chapter="4" data-file="05-pre-offer.html" data-event="offer"
-           data-popup="popup-ch4" tabindex="0" role="button" aria-label="Chapter 4: Pre-Offer">
-        <img src="assets/town/title-company.png" alt="Pre-Offer Strategy"
-             onerror="this.style.display='none'">
-      </div>
-
-      <!-- Ch.5 Contract Office — black bg → screen -->
-      <div class="town-building black-bg" id="tb-ch5"
-           data-chapter="5" data-file="06-under-contract.html" data-event="contract"
-           data-popup="popup-ch5" tabindex="0" role="button" aria-label="Chapter 5: Under Contract">
-        <img src="assets/town/contract-office.png" alt="Under Contract"
-             onerror="this.style.display='none'">
-      </div>
-
-      <!-- Ch.6 Clock Tower — black bg → screen -->
-      <div class="town-building black-bg" id="tb-ch6"
+      <div class="town-building" id="tb-clock-tower"
            data-chapter="6" data-file="06b-deadlines.html" data-event="deadlines"
            data-popup="popup-ch6" tabindex="0" role="button" aria-label="Chapter 6: Deadlines">
-        <img src="assets/town/clock-tower.png" alt="The Deadlines"
-             onerror="this.style.display='none'">
+        <img src="assets/town/clock-tower.png" alt="" onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch.7 Inspector House — transparent bg -->
-      <div class="town-building" id="tb-ch7"
+      <div class="town-building" id="tb-title-company"
+           data-chapter="4" data-file="05-pre-offer.html" data-event="offer"
+           data-popup="popup-ch4" tabindex="0" role="button" aria-label="Chapter 4: Pre-Offer">
+        <img src="assets/town/title-company.png" alt="" onerror="this.style.display='none'">
+      </div>
+
+      <div class="town-building" id="tb-contract-office"
+           data-chapter="5" data-file="06-under-contract.html" data-event="contract"
+           data-popup="popup-ch5" tabindex="0" role="button" aria-label="Chapter 5: Under Contract">
+        <img src="assets/town/contract-office.png" alt="" onerror="this.style.display='none'">
+      </div>
+
+      <div class="town-building" id="tb-realestate-office"
+           data-chapter="2" data-file="02-affordability.html" data-event="afford"
+           data-popup="popup-ch2" tabindex="0" role="button" aria-label="Chapter 2: Affordability">
+        <img src="assets/town/realestate-office.png" alt="" onerror="this.style.display='none'">
+      </div>
+
+      <div class="town-building" id="tb-bank"
+           data-chapter="1" data-file="01-preapproval.html" data-event="start"
+           data-popup="popup-ch1" tabindex="0" role="button" aria-label="Chapter 1: Pre-Approval">
+        <img src="assets/town/bank.png" alt="" onerror="this.style.display='none'">
+      </div>
+
+      <div class="town-building" id="tb-bungalow"
+           data-chapter="3" data-file="03-interior.html" data-event="interior"
+           data-popup="popup-ch3" tabindex="0" role="button" aria-label="Chapter 3: Interior Walk">
+        <img src="assets/town/bungalow.png" alt="" onerror="this.style.display='none'">
+      </div>
+
+      <div class="town-building" id="tb-inspector-house"
            data-chapter="7" data-file="07-inspection.html" data-event="inspect"
            data-popup="popup-ch7" tabindex="0" role="button" aria-label="Chapter 7: Inspection">
-        <img src="assets/town/inspector-house.png" alt="Inspection"
-             onerror="this.style.display='none'">
+        <img src="assets/town/inspector-house.png" alt="" onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch.8 Row House — transparent bg -->
-      <div class="town-building" id="tb-ch8"
+      <div class="town-building" id="tb-row-house"
            data-chapter="8" data-file="08-walkthrough.html" data-event="walkthrough"
-           data-popup="popup-ch8" tabindex="0" role="button" aria-label="Chapter 8: Final Walk-Through">
-        <img src="assets/town/row-house.png" alt="Final Walk-Through"
-             onerror="this.style.display='none'">
+           data-popup="popup-ch8" tabindex="0" role="button" aria-label="Chapter 8: Walkthrough">
+        <img src="assets/town/row-house.png" alt="" onerror="this.style.display='none'">
       </div>
 
-      <!-- Ch.9 Closing Office — black bg → screen -->
-      <div class="town-building black-bg" id="tb-ch9"
+      <div class="town-building" id="tb-closing-office"
            data-chapter="9" data-file="09-closing.html" data-event="closing"
            data-popup="popup-ch9" tabindex="0" role="button" aria-label="Chapter 9: Closing">
-        <img src="assets/town/closing-office.png" alt="Closing Day"
-             onerror="this.style.display='none'">
+        <img src="assets/town/closing-office.png" alt="" onerror="this.style.display='none'">
       </div>
 
-      <!-- LAYER 5: VEHICLES -->
-      <!-- Inspector van — transparent bg -->
+      <!-- VEHICLES -->
       <div class="town-vehicle" id="tv-van">
-        <img src="assets/town/inspector-van.png" alt=""
-             onerror="this.style.display='none'">
+        <img src="assets/town/inspector-van.png" alt="" onerror="this.style.display='none'">
       </div>
-      <!-- Moving truck — transparent bg -->
       <div class="town-vehicle" id="tv-truck">
-        <img src="assets/town/moving-truck.png" alt=""
-             onerror="this.style.display='none'">
+        <img src="assets/town/moving-truck.png" alt="" onerror="this.style.display='none'">
       </div>
-      <!-- SUV — transparent bg -->
       <div class="town-vehicle" id="tv-suv">
-        <img src="assets/town/suv.png" alt=""
-             onerror="this.style.display='none'">
+        <img src="assets/town/suv.png" alt="" onerror="this.style.display='none'">
       </div>
 
-      <!-- LAYER 6: GEORGE — placeholder ring until george.png dropped in -->
-      <div class="town-george" id="town-george">
-        <img src="assets/town/george.png" alt="George Kindler"
-             id="george-town-img"
-             style="display:none;"
-             onload="this.style.display='block';document.getElementById('george-placeholder').style.display='none';"
+      <!-- GEORGE WAVE — shows immediately on town load -->
+      <div class="town-george" id="george-wave">
+        <img src="assets/town/george-wave.png" alt="George Kindler waving"
              onerror="this.style.display='none'">
         <div class="town-george-placeholder" id="george-placeholder"></div>
       </div>
 
-      <!-- LAYER 7: WALKING PEOPLE — invisible until PNGs dropped in -->
+      <!-- GEORGE EXPLAIN — fades in after 4-5s -->
+      <div id="george-explain">
+        <img src="assets/town/george-explain.png" alt="George Kindler explaining"
+             onerror="this.style.display='none'">
+      </div>
+      <!-- GEORGE WELCOME BUBBLE -->
+      <div class="george-bubble" id="george-bubble">
+        <div class="george-bubble-inner">
+          <div class="george-bubble-tag">George Kindler</div>
+          <div class="george-bubble-text" id="bubble-text">Welcome to the STL Home Buyer Journey</div>
+          <div class="george-bubble-sub" id="bubble-sub">13 years. 130+ deals. All of it here.</div>
+          <button class="george-bubble-cta" id="bubble-cta"
+                  data-file="01-preapproval.html" data-event="start">
+            Start at Pre-Approval →
+          </button>
+        </div>
+      </div>
+
+      <!-- AUTO-TOUR POPUPS — one per chapter, shown in sequence -->
+      <div class="auto-popup" id="ap-ch1" style="left:115px;top:148px;">
+        <div class="auto-popup-num">Ch.1 · Pre-Approval</div>
+        <div class="auto-popup-title">What happens when you click "Contact Agent"</div>
+      </div>
+      <div class="auto-popup" id="ap-ch2" style="left:220px;top:132px;">
+        <div class="auto-popup-num">Ch.2 · Affordability</div>
+        <div class="auto-popup-title">Where buyers accidentally overpay</div>
+      </div>
+      <div class="auto-popup" id="ap-ch3" style="left:2px;top:155px;">
+        <div class="auto-popup-num">Ch.3 · Interior Walk</div>
+        <div class="auto-popup-title">Walk a property the way I do</div>
+      </div>
+      <div class="auto-popup" id="ap-ch4" style="left:2px;top:124px;">
+        <div class="auto-popup-num">Ch.4 · Pre-Offer</div>
+        <div class="auto-popup-title">Where buyers get pushed into bad offers</div>
+      </div>
+      <div class="auto-popup" id="ap-ch5" style="left:220px;top:118px;">
+        <div class="auto-popup-num">Ch.5 · Under Contract</div>
+        <div class="auto-popup-title">Offer accepted — where deals fall apart</div>
+      </div>
+      <div class="auto-popup" id="ap-ch6" style="left:2px;top:132px;">
+        <div class="auto-popup-num">Ch.6 · Deadlines</div>
+        <div class="auto-popup-title">Three deadlines running at once</div>
+      </div>
+      <div class="auto-popup" id="ap-ch7" style="left:220px;top:178px;">
+        <div class="auto-popup-num">Ch.7 · Inspection</div>
+        <div class="auto-popup-title">Where buyers miss the problems</div>
+      </div>
+      <div class="auto-popup" id="ap-ch8" style="left:2px;top:214px;">
+        <div class="auto-popup-num">Ch.8 · Walk-Through</div>
+        <div class="auto-popup-title">Not a second showing — a verification</div>
+      </div>
+      <div class="auto-popup" id="ap-ch9" style="left:178px;top:214px;">
+        <div class="auto-popup-num">Ch.9 · Closing</div>
+        <div class="auto-popup-title">What you're signing and what buyers miss</div>
+      </div>
+
+      <!-- WALKING PEOPLE -->
       <div class="town-person" id="tp-a">
         <img src="assets/town/person-a.png" alt=""
              onload="document.getElementById('tp-a').classList.add('loaded')"
@@ -917,22 +849,22 @@
              onerror="this.parentNode.style.display='none'">
       </div>
 
-      <!-- LAYER 8: CHAPTER PINS -->
-      <div class="ch-pin" id="pin-ch1" data-target="tb-ch1"><div class="pin-dot">1</div></div>
-      <div class="ch-pin" id="pin-ch2" data-target="tb-ch2"><div class="pin-dot">2</div></div>
-      <div class="ch-pin" id="pin-ch3" data-target="tb-ch3"><div class="pin-dot">3</div></div>
-      <div class="ch-pin" id="pin-ch4" data-target="tb-ch4"><div class="pin-dot">4</div></div>
-      <div class="ch-pin" id="pin-ch5" data-target="tb-ch5"><div class="pin-dot">5</div></div>
-      <div class="ch-pin" id="pin-ch6" data-target="tb-ch6"><div class="pin-dot">6</div></div>
-      <div class="ch-pin" id="pin-ch7" data-target="tb-ch7"><div class="pin-dot">7</div></div>
-      <div class="ch-pin" id="pin-ch8" data-target="tb-ch8"><div class="pin-dot">8</div></div>
-      <div class="ch-pin" id="pin-ch9" data-target="tb-ch9"><div class="pin-dot">9</div></div>
+      <!-- CHAPTER PINS -->
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-      <!-- LAYER 9: POPUP CARDS -->
+      <!-- POPUP CARDS -->
       <div class="ch-popup" id="popup-ch1">
         <div class="popup-ch-num">Chapter 1 · Pre-Approval</div>
         <div class="popup-title">What actually happens when you click "Contact Agent"</div>
-        <div class="popup-quote">The agent who calls you paid to be there. That changes everything before you see a house.</div>
+        <div class="popup-quote">The agent who calls you paid to be there. That changes everything.</div>
         <button class="popup-enter" data-file="01-preapproval.html" data-event="start">Enter Chapter →</button>
       </div>
       <div class="ch-popup" id="popup-ch2">
@@ -944,43 +876,43 @@
       <div class="ch-popup" id="popup-ch3">
         <div class="popup-ch-num">Chapter 3 · Interior Walk</div>
         <div class="popup-title">Walk a property the way I do — pick your home type</div>
-        <div class="popup-quote">Most buyers look at countertops. I look at the basement, panel, roof, and mechanicals.</div>
+        <div class="popup-quote">Most buyers look at countertops. I look at the basement and panel.</div>
         <button class="popup-enter" data-file="03-interior.html" data-event="interior">Enter Chapter →</button>
       </div>
       <div class="ch-popup" id="popup-ch4">
         <div class="popup-ch-num">Chapter 4 · Pre-Offer</div>
         <div class="popup-title">Where buyers get pushed into offers they can't take back</div>
-        <div class="popup-quote">Competing offers, manufactured urgency, escalation clauses — all of it explained.</div>
+        <div class="popup-quote">Competing offers, manufactured urgency — all of it explained.</div>
         <button class="popup-enter" data-file="05-pre-offer.html" data-event="offer">Enter Chapter →</button>
       </div>
       <div class="ch-popup" id="popup-ch5">
         <div class="popup-ch-num">Chapter 5 · Under Contract</div>
         <div class="popup-title">Offer accepted — where deals fall apart</div>
-        <div class="popup-quote">Earnest money. Inspection windows. Day Zero actions. Small mistakes here can kill a deal.</div>
+        <div class="popup-quote">Small mistakes here can quietly kill a deal after you think you're safe.</div>
         <button class="popup-enter" data-file="06-under-contract.html" data-event="contract">Enter Chapter →</button>
       </div>
       <div class="ch-popup" id="popup-ch6">
         <div class="popup-ch-num">Chapter 6 · Deadlines</div>
-        <div class="popup-title">Three deadlines running in parallel — miss one and the protection is gone</div>
-        <div class="popup-quote">Loan contingency. Appraisal. Title. All running simultaneously from Day 1.</div>
+        <div class="popup-title">Three deadlines running in parallel — miss one and it's gone</div>
+        <div class="popup-quote">Loan contingency. Appraisal. Title. All running from Day 1.</div>
         <button class="popup-enter" data-file="06b-deadlines.html" data-event="deadlines">Enter Chapter →</button>
       </div>
       <div class="ch-popup" id="popup-ch7">
         <div class="popup-ch-num">Chapter 7 · Inspection</div>
         <div class="popup-title">Where buyers miss the problems they end up paying for</div>
-        <div class="popup-quote">By the time most buyers read the report, their earnest money is already at risk.</div>
+        <div class="popup-quote">By the time most buyers read the report, earnest money is at risk.</div>
         <button class="popup-enter" data-file="07-inspection.html" data-event="inspect">Enter Chapter →</button>
       </div>
       <div class="ch-popup" id="popup-ch8">
         <div class="popup-ch-num">Chapter 8 · Final Walk-Through</div>
         <div class="popup-title">The final walk-through is not a second showing</div>
-        <div class="popup-quote">Same condition as the day you made the offer. Agreed repairs complete. Seller out.</div>
+        <div class="popup-quote">Same condition as the day you made the offer. Seller out.</div>
         <button class="popup-enter" data-file="08-walkthrough.html" data-event="walkthrough">Enter Chapter →</button>
       </div>
       <div class="ch-popup" id="popup-ch9">
         <div class="popup-ch-num">Chapter 9 · Closing Day</div>
-        <div class="popup-title">What you're signing at closing — and what most buyers don't catch</div>
-        <div class="popup-quote">Wire fraud. The note. The deed of trust. Your job is to fall in love. Mine is to protect you.</div>
+        <div class="popup-title">What you're signing — and what most buyers don't catch</div>
+        <div class="popup-quote">Wire fraud. The note. The deed of trust. I protect you here.</div>
         <button class="popup-enter" data-file="09-closing.html" data-event="closing">Enter Chapter →</button>
       </div>
 
@@ -1035,17 +967,14 @@
   document.getElementById('btn-reveal').addEventListener('click', revealSite);
 
   function revealSite() {
-    /* Swap George face */
     var face = document.getElementById('intro-face');
     if (face) face.classList.add('swapped');
 
-    /* Fade intro */
     setTimeout(function () {
       var intro = document.getElementById('intro');
       if (intro) intro.classList.add('gone');
     }, 520);
 
-    /* Header + footer */
     setTimeout(function () {
       var h = document.getElementById('hdr');
       var f = document.getElementById('ftr');
@@ -1053,7 +982,6 @@
       if (f) f.classList.add('show');
     }, 680);
 
-    /* George strip + headline + tension */
     setTimeout(function () {
       var gs = document.getElementById('g-strip');
       var hl = document.getElementById('headline');
@@ -1065,7 +993,6 @@
       if (ts) ts.classList.add('show');
     }, 980);
 
-    /* Town scene arrives */
     setTimeout(function () {
       var town = document.getElementById('town-wrap');
       var hint = document.getElementById('town-hint');
@@ -1073,10 +1000,173 @@
       if (hint) hint.classList.add('show');
     }, 1300);
 
-    /* Resume card check */
+    /* George welcome sequence starts after town appears */
+    setTimeout(startGeorgeSequence, 2000);
+
     setTimeout(checkResume, 1600);
 
     if (typeof gtag === 'function') gtag('event', 'journey_intro_tap', {});
+  }
+
+  /* ══════════════════════════════════════════════════════
+     GEORGE WELCOME SEQUENCE
+     Phase 1: Wave bubble — "Welcome to the STL Home Buyer Journey"
+     Phase 2: Transition to serious pose — "Most buyers start at pre-approval"
+     Phase 3: Highlight Ch.1 pin, show CTA button
+     After sequence: hand off to auto-tour loop
+  ══════════════════════════════════════════════════════ */
+  var autoTourActive   = false;
+  var autoTourTimer    = null;
+  var georgeSequenceDone = false;
+
+  function startGeorgeSequence() {
+    var bubble   = document.getElementById('george-bubble');
+    var text     = document.getElementById('bubble-text');
+    var sub      = document.getElementById('bubble-sub');
+    var cta      = document.getElementById('bubble-cta');
+    var georgeEl = document.getElementById('town-george');
+
+    if (!bubble) { startAutoTour(); return; }
+
+    /* Phase 1: Welcome message */
+    if (text) text.textContent = 'Welcome to the STL Home Buyer Journey';
+    if (sub)  sub.textContent  = '13 years. 130+ transactions. All of it here.';
+    bubble.classList.add('show');
+
+    /* Phase 2: Transition to advice after 3s */
+    setTimeout(function () {
+      if (text) text.textContent = 'Most buyers start at Pre-Approval.';
+      if (sub)  sub.textContent  = "That’s where the game is already being played — before you see a house.";
+    }, 3200);
+
+    /* Phase 1b: Show wave George immediately */
+    var waveEl = document.getElementById('george-wave');
+    if (waveEl) waveEl.classList.add('show');
+
+    /* Phase 2: Swap to explain George after 4.5s */
+    setTimeout(function () {
+      var waveEl2   = document.getElementById('george-wave');
+      var explainEl = document.getElementById('george-explain');
+      if (waveEl2)   waveEl2.classList.remove('show');
+      if (explainEl) explainEl.classList.add('show');
+      if (text) text.textContent = 'Most buyers start at Pre-Approval.';
+      if (sub)  sub.textContent  = "That\u2019s where the game is already being played \u2014 before you see a house.";
+    }, 4500);
+
+    /* Phase 3: Show CTA + glow Ch.1 building */
+    setTimeout(function () {
+      if (cta) cta.classList.add('show');
+      var bank = document.getElementById('tb-bank');
+      if (bank) bank.classList.add('tour-active');
+    }, 6500);
+
+    /* Phase 4: Dismiss after 10s */
+    setTimeout(function () {
+      dismissGeorgeBubble();
+    }, 10000);
+  }
+
+  function dismissGeorgeBubble() {
+    var bubble = document.getElementById('george-bubble');
+    var bank   = document.getElementById('tb-bank');
+    if (bubble) bubble.classList.remove('show');
+    if (bank)   { bank.classList.remove('tour-active'); bank.classList.add('visited'); }
+    georgeSequenceDone = true;
+    setTimeout(startAutoTour, 1500);
+  }
+
+  /* Wire CTA button */
+  var bubbleCta = document.getElementById('bubble-cta');
+  if (bubbleCta) {
+    bubbleCta.addEventListener('click', function () {
+      var file  = bubbleCta.getAttribute('data-file');
+      var event = bubbleCta.getAttribute('data-event') || 'start';
+      if (typeof gtag === 'function') gtag('event', 'journey_entry', { entry_point: event });
+      S.jumpEntry = event;
+      save();
+      if (file) window.location.href = file;
+    });
+  }
+
+  /* ══════════════════════════════════════════════════════
+     AUTO-TOUR SYSTEM
+     Cycles through all 9 chapters showing ambient popups
+     and highlighting pins one at a time.
+     Each popup visible ~3s, then fades while next appears.
+     Full cycle repeats indefinitely until user taps.
+  ══════════════════════════════════════════════════════ */
+
+  var CH_TO_BUILDING = {
+    1:'tb-bank', 2:'tb-realestate-office', 3:'tb-bungalow',
+    4:'tb-title-company', 5:'tb-contract-office', 6:'tb-clock-tower',
+    7:'tb-inspector-house', 8:'tb-row-house', 9:'tb-closing-office'
+  };
+
+  var tourOrder    = [1,2,3,4,5,6,7,8,9];
+  var tourIndex    = 0;
+  var tourActive   = false;
+  var tourCurrentPopup    = null;
+  var tourCurrentBuilding = null;
+
+  function startAutoTour() {
+    if (tourActive) return;
+    tourActive = true;
+    tourIndex  = 0;
+    runTourStep();
+  }
+
+  function stopAutoTour() {
+    tourActive = false;
+    if (autoTourTimer) { clearTimeout(autoTourTimer); autoTourTimer = null; }
+    hideTourCurrent();
+  }
+
+  function hideTourCurrent() {
+    if (tourCurrentPopup)    tourCurrentPopup.classList.remove('visible');
+    if (tourCurrentBuilding) {
+      tourCurrentBuilding.classList.remove('tour-active');
+      /* Mark as visited */
+      tourCurrentBuilding.classList.add('visited');
+    }
+    tourCurrentPopup    = null;
+    tourCurrentBuilding = null;
+  }
+
+  function runTourStep() {
+    if (!tourActive) return;
+
+    hideTourCurrent();
+
+    var ch       = tourOrder[tourIndex % tourOrder.length];
+    var popup    = document.getElementById('ap-ch' + ch);
+    var buildId  = CH_TO_BUILDING[ch];
+    var building = buildId ? document.getElementById(buildId) : null;
+
+    autoTourTimer = setTimeout(function () {
+      if (!tourActive) return;
+
+      /* Glow the building */
+      if (building) {
+        building.classList.add('tour-active');
+        tourCurrentBuilding = building;
+      }
+      /* Show popup */
+      if (popup) {
+        popup.classList.add('visible');
+        tourCurrentPopup = popup;
+      }
+
+      tourIndex++;
+
+      /* Hold for 3.5s then fade out and step to next */
+      autoTourTimer = setTimeout(function () {
+        if (popup)    popup.classList.remove('visible');
+        if (building) building.classList.remove('tour-active');
+        /* 0.6s quiet gap between buildings */
+        autoTourTimer = setTimeout(runTourStep, 600);
+      }, 3500);
+
+    }, 400);
   }
 
   /* ── TOWN INTERACTION ── */
@@ -1103,6 +1193,15 @@
   });
 
   function handleBuildingTap(building) {
+    /* User tapped — stop the auto-tour, clear any active glow */
+    stopAutoTour();
+    dismissGeorgeBubble();
+    /* Remove tour-active from all buildings */
+    Array.prototype.forEach.call(
+      document.querySelectorAll('.town-building.tour-active'),
+      function(b) { b.classList.remove('tour-active'); }
+    );
+
     var popupId = building.getAttribute('data-popup');
     var popup   = popupId ? document.getElementById(popupId) : null;
     var chNum   = building.getAttribute('data-chapter');
@@ -1141,8 +1240,10 @@
   document.getElementById('town-wrap').addEventListener('click', function (e) {
     if (!e.target.closest('.town-building') &&
         !e.target.closest('.ch-pin') &&
-        !e.target.closest('.ch-popup')) {
+        !e.target.closest('.ch-popup') &&
+        !e.target.closest('.george-bubble')) {
       closeActivePopup();
+      dismissGeorgeBubble();
     }
   });
 
