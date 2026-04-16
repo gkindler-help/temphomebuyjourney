@@ -276,7 +276,7 @@
   transform: translateY(14px);
   transition: opacity .6s ease, transform .6s ease;
   overflow: visible;
-  height: 394px;
+  height: 520px;
   flex-shrink: 0;
 }
 .town-wrap.show { opacity: 1; transform: translateY(0); }
@@ -285,20 +285,19 @@
   position: absolute;
   top: 0; left: 0;
   width: 390px;
-  height: 394px;
+  height: 520px;
   transform-origin: top left;
 }
 
 /* ── ARCH (background, full-width, starts above scene) ── */
 .town-arch {
   position: absolute;
-  left:   4.1px;
-  top:  -26.8px;
-  width: 394.3px;
+  left:   5.5px;
+  top:  -35.7px;
+  width: 525.7px;
   height: auto;
   z-index: 1;
   pointer-events: none;
-  mix-blend-mode: screen;
 }
 
 /* ── BUILDINGS — exact Photoshop coordinates scaled 0.0975 ── */
@@ -325,25 +324,39 @@
   filter: drop-shadow(0 0 5px rgba(255,204,77,.2));
 }
 
-#tb-clock-tower       { left:  45.7px; top: 167.7px; width:  27.1px; z-index: 3; }
-#tb-title-company     { left:  79.5px; top: 159.9px; width:  83.3px; z-index: 4; }
-#tb-contract-office   { left: 241.9px; top: 154.5px; width:  64.4px; z-index: 4; }
-#tb-realestate-office { left: 264.1px; top: 167.7px; width: 125.9px; z-index: 4; }
-#tb-bank              { left: 115.7px; top: 183.5px; width: 171.0px; z-index: 5; }
-#tb-bungalow          { left:   4.1px; top: 190.7px; width: 148.2px; z-index: 5; }
-#tb-inspector-house   { left: 261.2px; top: 213.9px; width: 127.4px; z-index: 5; }
-#tb-row-house         { left:   2.7px; top: 249.8px; width: 195.6px; z-index: 6; }
-#tb-closing-office    { left: 177.7px; top: 249.8px; width: 205.0px; z-index: 6; }
+#tb-clock-tower       { left:  60.9px; top: 223.6px; width:  36.1px; z-index: 3; }
+#tb-title-company     { left:  106.0px; top: 213.2px; width:  111.1px; z-index: 4; }
+#tb-contract-office   { left: 322.5px; top: 206.0px; width:  85.9px; z-index: 4; }
+#tb-realestate-office { left: 352.1px; top: 223.6px; width: 167.9px; z-index: 4; }
+#tb-bank              { left: 154.3px; top: 244.7px; width: 228.0px; z-index: 5; }
+#tb-bungalow          { left:   5.5px; top: 254.3px; width: 197.6px; z-index: 5; }
+#tb-inspector-house   { left: 348.3px; top: 285.2px; width: 169.9px; z-index: 5; }
+#tb-row-house         { left:   3.6px; top: 333.1px; width: 260.8px; z-index: 6; }
+#tb-closing-office    { left: 236.9px; top: 333.1px; width: 273.3px; z-index: 6; }
 
 /* ── GEORGE ── */
 .town-george {
   position: absolute;
-  left:  162.7px;
-  top:   278.9px;
-  width:  76.8px;
+  left:  216.9px;
+  top:   371.9px;
+  width:  102.4px;
   z-index: 7;
   pointer-events: none;
 }
+
+/* George explain figure */
+#george-explain {
+  position: absolute;
+  left:  216.9px;
+  top:   371.9px;
+  width:  102.4px;
+  z-index: 8;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+#george-explain img { display: block; width: 100%; height: auto; }
+#george-explain.show { opacity: 1; }
 .town-george img { display: block; width: 100%; height: auto; }
 .town-george-placeholder {
   width: 36px; height: 60px;
@@ -360,8 +373,8 @@
 /* ── GEORGE WELCOME BUBBLE ── */
 .george-bubble {
   position: absolute;
-  left: 155px;
-  top:  240px;
+  left: 206.7px;
+  top: 320.0px;
   width: 148px;
   z-index: 15;
   opacity: 0;
@@ -469,15 +482,15 @@
 }
 .town-vehicle img { display: block; width: 100%; height: auto; }
 
-#tv-van   { width: 55px; left: 100px; top: 255px; animation: vanIdle 3s ease-in-out infinite; }
-#tv-truck { width: 70px; left: 150px; top: 330px; animation: truckIdle 4s ease-in-out infinite 1s; }
-#tv-suv   { width: 60px; left: 215px; top: 240px; animation: suvIdle 3.5s ease-in-out infinite .5s; }
+#tv-van   { width: 73.3px; left: 133.3px; top: 340.0px; animation: vanIdle 3s ease-in-out infinite; }
+#tv-truck { width: 93.3px; left: 200.0px; top: 440.0px; animation: truckIdle 4s ease-in-out infinite 1s; }
+#tv-suv   { width: 80.0px; left: 286.7px; top: 320.0px; animation: suvIdle 3.5s ease-in-out infinite .5s; }
 
 /* ── WALKING PEOPLE ── */
 .town-person { position: absolute; pointer-events: none; z-index: 7; }
 .town-person img { display: block; width: 100%; height: auto; }
-#tp-a { width: 22px; top: 340px; opacity: 0; animation: walkAcross 20s linear infinite; }
-#tp-b { width: 20px; top: 310px; opacity: 0; animation: walkAcrossB 26s linear infinite 8s; }
+#tp-a { width: 22px; top: 453.3px; opacity: 0; animation: walkAcross 20s linear infinite; }
+#tp-b { width: 20px; top: 413.3px; opacity: 0; animation: walkAcrossB 26s linear infinite 8s; }
 #tp-a.loaded { opacity: 1; }
 #tp-b.loaded { opacity: 1; }
 @keyframes walkAcross  { 0%{left:-30px} 100%{left:420px} }
@@ -486,15 +499,15 @@
 /* pins removed */
 
 /* Pin anchors — positioned at top-center of each building */
-#pin-ch1  { left:  202px; top: 184px; } /* bank */
-#pin-ch2  { left:  327px; top: 168px; } /* realestate */
-#pin-ch3  { left:   78px; top: 191px; } /* bungalow */
-#pin-ch4  { left:  121px; top: 160px; } /* title-company */
-#pin-ch5  { left:  274px; top: 155px; } /* contract */
-#pin-ch6  { left:   59px; top: 168px; } /* clock-tower */
-#pin-ch7  { left:  325px; top: 214px; } /* inspector-house */
-#pin-ch8  { left:  101px; top: 250px; } /* row-house */
-#pin-ch9  { left:  280px; top: 250px; } /* closing */
+#pin-ch1  { left:  269.3px; top: 245.3px; } /* bank */
+#pin-ch2  { left:  436.0px; top: 224.0px; } /* realestate */
+#pin-ch3  { left:   104.0px; top: 254.7px; } /* bungalow */
+#pin-ch4  { left:  161.3px; top: 213.3px; } /* title-company */
+#pin-ch5  { left:  365.3px; top: 206.7px; } /* contract */
+#pin-ch6  { left:   78.7px; top: 224.0px; } /* clock-tower */
+#pin-ch7  { left:  433.3px; top: 285.3px; } /* inspector-house */
+#pin-ch8  { left:  134.7px; top: 333.3px; } /* row-house */
+#pin-ch9  { left:  373.3px; top: 333.3px; } /* closing */
 
 /* ── POPUP CARDS ── */
 .ch-popup {
@@ -535,15 +548,15 @@
 .popup-enter:active { background: #ffd966; }
 
 /* Popup positions — keep within scene, open toward center */
-#popup-ch1 { left: 115px; top: 110px; } /* bank — center, opens up */
-#popup-ch2 { left: 195px; top: 100px; } /* realestate — right, opens left */
-#popup-ch3 { left:   4px; top: 110px; } /* bungalow — left edge */
-#popup-ch4 { left:  79px; top:  85px; } /* title company */
-#popup-ch5 { left: 205px; top:  80px; } /* contract */
-#popup-ch6 { left:  40px; top:  90px; } /* clock tower */
-#popup-ch7 { left: 200px; top: 140px; } /* inspector */
-#popup-ch8 { left:   4px; top: 175px; } /* row house */
-#popup-ch9 { left: 178px; top: 175px; } /* closing */
+#popup-ch1 { left: 153.3px; top: 146.7px; } /* bank — center, opens up */
+#popup-ch2 { left: 260.0px; top: 133.3px; } /* realestate — right, opens left */
+#popup-ch3 { left:   5.3px; top: 146.7px; } /* bungalow — left edge */
+#popup-ch4 { left:  105.3px; top:  113.3px; } /* title company */
+#popup-ch5 { left: 273.3px; top:  106.7px; } /* contract */
+#popup-ch6 { left:  53.3px; top:  120.0px; } /* clock tower */
+#popup-ch7 { left: 266.7px; top: 186.7px; } /* inspector */
+#popup-ch8 { left:   5.3px; top: 233.3px; } /* row house */
+#popup-ch9 { left: 237.3px; top: 233.3px; } /* closing */
 
 /* ── SCROLL HINT ── */
 .town-hint {
@@ -800,39 +813,39 @@
       </div>
 
       <!-- AUTO-TOUR POPUPS — one per chapter, shown in sequence -->
-      <div class="auto-popup" id="ap-ch1" style="left:115px;top:148px;">
+      <div class="auto-popup" id="ap-ch1" style="left:153.3px;top:197.3px;">
         <div class="auto-popup-num">Ch.1 · Pre-Approval</div>
         <div class="auto-popup-title">What happens when you click "Contact Agent"</div>
       </div>
-      <div class="auto-popup" id="ap-ch2" style="left:220px;top:132px;">
+      <div class="auto-popup" id="ap-ch2" style="left:293.3px;top:176.0px;">
         <div class="auto-popup-num">Ch.2 · Affordability</div>
         <div class="auto-popup-title">Where buyers accidentally overpay</div>
       </div>
-      <div class="auto-popup" id="ap-ch3" style="left:2px;top:155px;">
+      <div class="auto-popup" id="ap-ch3" style="left:2.7px;top:206.7px;">
         <div class="auto-popup-num">Ch.3 · Interior Walk</div>
         <div class="auto-popup-title">Walk a property the way I do</div>
       </div>
-      <div class="auto-popup" id="ap-ch4" style="left:2px;top:124px;">
+      <div class="auto-popup" id="ap-ch4" style="left:2.7px;top:165.3px;">
         <div class="auto-popup-num">Ch.4 · Pre-Offer</div>
         <div class="auto-popup-title">Where buyers get pushed into bad offers</div>
       </div>
-      <div class="auto-popup" id="ap-ch5" style="left:220px;top:118px;">
+      <div class="auto-popup" id="ap-ch5" style="left:293.3px;top:157.3px;">
         <div class="auto-popup-num">Ch.5 · Under Contract</div>
         <div class="auto-popup-title">Offer accepted — where deals fall apart</div>
       </div>
-      <div class="auto-popup" id="ap-ch6" style="left:2px;top:132px;">
+      <div class="auto-popup" id="ap-ch6" style="left:2.7px;top:176.0px;">
         <div class="auto-popup-num">Ch.6 · Deadlines</div>
         <div class="auto-popup-title">Three deadlines running at once</div>
       </div>
-      <div class="auto-popup" id="ap-ch7" style="left:220px;top:178px;">
+      <div class="auto-popup" id="ap-ch7" style="left:293.3px;top:237.3px;">
         <div class="auto-popup-num">Ch.7 · Inspection</div>
         <div class="auto-popup-title">Where buyers miss the problems</div>
       </div>
-      <div class="auto-popup" id="ap-ch8" style="left:2px;top:214px;">
+      <div class="auto-popup" id="ap-ch8" style="left:2.7px;top:285.3px;">
         <div class="auto-popup-num">Ch.8 · Walk-Through</div>
         <div class="auto-popup-title">Not a second showing — a verification</div>
       </div>
-      <div class="auto-popup" id="ap-ch9" style="left:178px;top:214px;">
+      <div class="auto-popup" id="ap-ch9" style="left:237.3px;top:285.3px;">
         <div class="auto-popup-num">Ch.9 · Closing</div>
         <div class="auto-popup-title">What you're signing and what buyers miss</div>
       </div>
@@ -1335,7 +1348,7 @@
     var scale = vw / 390;
     scene.style.transform = 'scale(' + scale + ')';
     /* Adjust wrap height to match scaled scene height */
-    wrap.style.height = Math.round(480 * scale) + 'px';
+    wrap.style.height = Math.round(520 * scale) + 'px';
   }
   scaleTownScene();
   window.addEventListener('resize', scaleTownScene);
