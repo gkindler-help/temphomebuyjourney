@@ -305,15 +305,18 @@
   height: auto;
   z-index: 1;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
 }
+.town-arch.fadein { opacity: 1; }
 
 
 /* ── FADE-IN SEQUENCE ── */
-.town-arch    { opacity: 0; transition: opacity 1s ease; }
-.town-arch.fadein { opacity: 1; }
 
-.town-building { opacity: 0; transition: opacity .6s ease, transform .18s ease, filter .18s ease; }
-.town-building.fadein { opacity: 1; }
+
+
+
+.town-building.fadein { opacity: 1; pointer-events: auto; cursor: pointer; }
 
 .town-george  { opacity: 0; transition: opacity .8s ease; }
 #george-wave.fadein  { opacity: 1; }
@@ -327,6 +330,7 @@
   z-index: 4;
   cursor: pointer;
   transition: transform .18s ease, filter .18s ease;
+  opacity: 0;
   -webkit-tap-highlight-color: transparent;
 }
 .town-building:active { transform: scale(.96); }
@@ -345,7 +349,7 @@
   filter: drop-shadow(0 0 5px rgba(255,204,77,.2));
 }
 
-#tb-clock-tower { left: 50.4px; top: 294.5px; width: 33.8px; z-index: 3; }
+#tb-clock-tower { left: 50.4px; top: 294.5px; width: 67.6px; z-index: 3; }
 #tb-title-company { left: 87.6px; top: 285.9px; width: 103.7px; z-index: 4; }
 #tb-contract-office { left: 266.7px; top: 280.0px; width: 80.2px; z-index: 4; }
 #tb-realestate-office { left: 291.2px; top: 294.5px; width: 156.8px; z-index: 4; }
@@ -925,23 +929,35 @@
   ];
 
   function startSceneSequence() {
-    /* Center scene scroll on building cluster */
-    var wrap = document.getElementById('town-wrap');
-    if (wrap) wrap.scrollLeft = 60;
+    var wrap  = document.getElementById('town-wrap');
+    var scene = document.getElementById('town-scene');
 
-    /* Step 1: Arch fades in immediately */
+    /* Step 1: Start at top — arch visible */
+    if (wrap) wrap.scrollTop = 0;
+
+    /* Step 2: Arch fades in */
     var arch = document.querySelector('.town-arch');
     if (arch) arch.classList.add('fadein');
 
-    /* Step 2: George wave fades in 800ms after arch — BIG entrance */
+    /* Step 3: George appears BIG at 800ms */
     setTimeout(function() {
       var wave = document.getElementById('george-wave');
       if (wave) wave.classList.add('fadein');
+
+      /* Auto-scroll: smoothly follow George as he scales down to his position
+         George is at top:417px in scene. Scroll so George is ~40% from top of viewport */
+      setTimeout(function() {
+        if (!wrap) return;
+        var scale      = wrap.offsetWidth / 430;
+        var georgeTop  = 417 * scale;  /* George's top in scaled px */
+        var vpHeight   = wrap.offsetHeight;
+        var targetScroll = Math.max(0, georgeTop - (vpHeight * 0.35));
+        smoothScrollTo(wrap, targetScroll, 2800); /* scroll over 2.8s matching entrance */
+      }, 200);
     }, 800);
 
-    /* Step 3: Buildings fade in AFTER George has settled (~3.5s after George appears)
-       George entrance animation is 1.4s, then hold big, then buildings come in */
-    var buildingStart = 800 + 3500; /* George appears at 800ms, buildings at +3.5s */
+    /* Step 4: Buildings stagger in after George settles */
+    var buildingStart = 800 + 3500;
     BUILDING_IDS.forEach(function(id, i) {
       setTimeout(function() {
         var b = document.getElementById(id);
@@ -949,11 +965,28 @@
       }, buildingStart + (i * 180));
     });
 
-    /* Step 4: George welcome sequence starts as buildings are coming in */
-    var totalTime = buildingStart + (BUILDING_IDS.length * 180) + 400;
+    /* Step 5: George welcome sequence starts as buildings come in */
     setTimeout(startGeorgeSequence, buildingStart + 200);
   }
 
+  /* Smooth scroll helper */
+  function smoothScrollTo(el, target, duration) {
+    var start     = el.scrollTop;
+    var change    = target - start;
+    var startTime = null;
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var elapsed  = timestamp - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      /* Ease in-out cubic */
+      var ease = progress < 0.5
+        ? 4 * progress * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+      el.scrollTop = start + change * ease;
+      if (elapsed < duration) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
   /* ══════════════════════════════════════════════════════
      GEORGE WELCOME SEQUENCE
      Phase 1: Wave bubble — "Welcome to the STL Home Buyer Journey"
