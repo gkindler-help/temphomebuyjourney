@@ -229,7 +229,7 @@
 .town-scene {
   position: relative;
   width: 430px;
-  height: 530px;
+  height: 560px;
   transform-origin: top left;
   flex-shrink: 0;
 }
@@ -290,16 +290,15 @@
   filter: drop-shadow(0 0 5px rgba(255,204,77,.2));
 }
 
-/* ── BUILDING COORDINATES — compressed to fit screen, 15% depth scaling ──
-   Front z6: ~217px | Mid z5: ~185px | Back z4: ~152px | Back z3: ~118px */
-#tb-clock-tower       { left: 0px;   top:  50px; width: 118px;   z-index: 3; }
-#tb-contract-office   { left: 280px; top:  50px; width: 118px;   z-index: 3; }
-#tb-title-company     { left: 0px;   top: 153px; width: 152px;   z-index: 4; }
-#tb-realestate-office { left: 275px; top: 163px; width: 152px;   z-index: 4; }
+/* ── BUILDING COORDINATES — from layout tool v3 screenshot ── */
+#tb-clock-tower       { left:  30px; top:  90px; width: 118px;   z-index: 3; }
+#tb-contract-office   { left: 278px; top:  90px; width: 118px;   z-index: 3; }
+#tb-title-company     { left:   0px; top: 190px; width: 152px;   z-index: 4; }
+#tb-realestate-office { left: 270px; top: 190px; width: 152px;   z-index: 4; }
 #tb-bank              { left: 120px; top: 245px; width: 185px;   z-index: 5; }
-#tb-bungalow          { left: 0px;   top: 297px; width: 185px;   z-index: 5; }
-#tb-inspector-house   { left: 289px; top: 307px; width: 185px;   z-index: 5; }
-#tb-row-house         { left: 0px;   top: 420px; width: 215.6px; z-index: 6; }
+#tb-bungalow          { left:   0px; top: 310px; width: 185px;   z-index: 5; }
+#tb-inspector-house   { left: 245px; top: 310px; width: 185px;   z-index: 5; }
+#tb-row-house         { left:   0px; top: 420px; width: 215.6px; z-index: 6; }
 #tb-closing-office    { left: 212px; top: 420px; width: 218.0px; z-index: 6; }
 
 
@@ -771,17 +770,17 @@
         </div>
 
         <div class="town-building" id="tb-realestate-office"
-             data-chapter="2" data-file="02-affordability.html" data-event="afford"
-             data-popup="popup-ch2" tabindex="0" role="button" aria-label="Chapter 2: Affordability">
+             data-chapter="1" data-file="01-preapproval.html" data-event="start"
+             data-popup="popup-ch1" tabindex="0" role="button" aria-label="Chapter 1: Pre-Approval">
           <img src="assets/town/realestate-office.png" alt="">
-          <div class="bld-label">Ch.2 · Affordability</div>
+          <div class="bld-label">Ch.1 · Pre-Approval</div>
         </div>
 
         <div class="town-building" id="tb-bank"
-             data-chapter="1" data-file="01-preapproval.html" data-event="start"
-             data-popup="popup-ch1" tabindex="0" role="button" aria-label="Chapter 1: Pre-Approval">
+             data-chapter="2" data-file="02-affordability.html" data-event="afford"
+             data-popup="popup-ch2" tabindex="0" role="button" aria-label="Chapter 2: Affordability">
           <img src="assets/town/bank.png" alt="">
-          <div class="bld-label">Ch.1 · Pre-Approval</div>
+          <div class="bld-label">Ch.2 · Affordability</div>
         </div>
 
         <div class="town-building" id="tb-bungalow"
@@ -837,31 +836,31 @@
         </div>
 
         <!-- AUTO-TOUR POPUPS — above each building -->
-        <div class="auto-popup" id="ap-ch1" style="left:120px;top:165px;">
+        <div class="auto-popup" id="ap-ch1" style="left:245px;top:110px;">
           <div class="auto-popup-num">Ch.1 · Pre-Approval</div>
           <div class="auto-popup-title">What happens when you click "Contact Agent"</div>
         </div>
-        <div class="auto-popup" id="ap-ch2" style="left:275px;top:85px;">
+        <div class="auto-popup" id="ap-ch2" style="left:120px;top:165px;">
           <div class="auto-popup-num">Ch.2 · Affordability</div>
           <div class="auto-popup-title">Where buyers accidentally overpay</div>
         </div>
-        <div class="auto-popup" id="ap-ch3" style="left:0px;top:215px;">
+        <div class="auto-popup" id="ap-ch3" style="left:0px;top:230px;">
           <div class="auto-popup-num">Ch.3 · Interior Walk</div>
           <div class="auto-popup-title">Walk a property the way I do</div>
         </div>
-        <div class="auto-popup" id="ap-ch4" style="left:0px;top:75px;">
+        <div class="auto-popup" id="ap-ch4" style="left:0px;top:110px;">
           <div class="auto-popup-num">Ch.4 · Pre-Offer</div>
           <div class="auto-popup-title">Where buyers get pushed into bad offers</div>
         </div>
-        <div class="auto-popup" id="ap-ch5" style="left:280px;top:5px;">
+        <div class="auto-popup" id="ap-ch5" style="left:278px;top:10px;">
           <div class="auto-popup-num">Ch.5 · Under Contract</div>
           <div class="auto-popup-title">Offer accepted — where deals fall apart</div>
         </div>
-        <div class="auto-popup" id="ap-ch6" style="left:0px;top:5px;">
+        <div class="auto-popup" id="ap-ch6" style="left:30px;top:10px;">
           <div class="auto-popup-num">Ch.6 · Deadlines</div>
           <div class="auto-popup-title">Three deadlines running at once</div>
         </div>
-        <div class="auto-popup" id="ap-ch7" style="left:289px;top:225px;">
+        <div class="auto-popup" id="ap-ch7" style="left:245px;top:230px;">
           <div class="auto-popup-num">Ch.7 · Inspection</div>
           <div class="auto-popup-title">Where buyers miss the problems</div>
         </div>
@@ -879,7 +878,7 @@
              Each has explicit top/left to float above its building.
              ══════════════════════════════════════════════════════ -->
         <!-- ch1: bank top:450 → popup above at 270 -->
-        <div class="ch-popup" id="popup-ch1" style="left:90px;top:155px;">
+        <div class="ch-popup" id="popup-ch1" style="left:245px;top:90px;">
           <div class="popup-ch-num">Chapter 1 · Pre-Approval</div>
           <div class="popup-title">What actually happens when you click "Contact Agent"</div>
           <div class="popup-quote">The agent who calls you paid to be there. That changes everything.</div>
@@ -887,7 +886,7 @@
         </div>
 
         <!-- ch2: realestate-office top:200 → popup above at 20 -->
-        <div class="ch-popup" id="popup-ch2" style="left:245px;top:60px;">
+        <div class="ch-popup" id="popup-ch2" style="left:90px;top:145px;">
           <div class="popup-ch-num">Chapter 2 · Affordability</div>
           <div class="popup-title">Where buyers accidentally overpay before they make an offer</div>
           <div class="popup-quote">The number your lender approved is not the number you should spend.</div>
@@ -895,7 +894,7 @@
         </div>
 
         <!-- ch3: bungalow top:360 → popup above at 180 -->
-        <div class="ch-popup" id="popup-ch3" style="left:0px;top:195px;">
+        <div class="ch-popup" id="popup-ch3" style="left:0px;top:210px;">
           <div class="popup-ch-num">Chapter 3 · Interior Walk</div>
           <div class="popup-title">Walk a property the way I do — pick your home type</div>
           <div class="popup-quote">Most buyers look at countertops. I look at the basement and panel.</div>
@@ -903,7 +902,7 @@
         </div>
 
         <!-- ch4: title-company top:210 → popup above at 30 -->
-        <div class="ch-popup" id="popup-ch4" style="left:0px;top:60px;">
+        <div class="ch-popup" id="popup-ch4" style="left:0px;top:90px;">
           <div class="popup-ch-num">Chapter 4 · Pre-Offer</div>
           <div class="popup-title">Where buyers get pushed into offers they can't take back</div>
           <div class="popup-quote">Competing offers, manufactured urgency — all of it explained.</div>
@@ -919,7 +918,7 @@
         </div>
 
         <!-- ch6: clock-tower top:50 → popup above at 5 -->
-        <div class="ch-popup" id="popup-ch6" style="left:0px;top:5px;">
+        <div class="ch-popup" id="popup-ch6" style="left:30px;top:5px;">
           <div class="popup-ch-num">Chapter 6 · Deadlines</div>
           <div class="popup-title">Three deadlines running in parallel — miss one and it's gone</div>
           <div class="popup-quote">Loan contingency. Appraisal. Title. All running from Day 1.</div>
@@ -927,7 +926,7 @@
         </div>
 
         <!-- ch7: inspector-house top:470 → popup above at 290 -->
-        <div class="ch-popup" id="popup-ch7" style="left:248px;top:210px;">
+        <div class="ch-popup" id="popup-ch7" style="left:245px;top:210px;">
           <div class="popup-ch-num">Chapter 7 · Inspection</div>
           <div class="popup-title">Where buyers miss the problems they end up paying for</div>
           <div class="popup-quote">By the time most buyers read the report, earnest money is at risk.</div>
@@ -1179,7 +1178,7 @@
      AUTO-TOUR SYSTEM — cycles all 9 chapters, repeats
   ══════════════════════════════════════════════════════ */
   var CH_TO_BUILDING = {
-    1:'tb-bank', 2:'tb-realestate-office', 3:'tb-bungalow',
+    1:'tb-realestate-office', 2:'tb-bank', 3:'tb-bungalow',
     4:'tb-title-company', 5:'tb-contract-office', 6:'tb-clock-tower',
     7:'tb-inspector-house', 8:'tb-row-house', 9:'tb-closing-office'
   };
@@ -1364,7 +1363,7 @@
     if (!saved.lastChapter || saved.lastChapter < 2) return;
 
     var buildMap = {
-      1:'tb-bank', 2:'tb-realestate-office', 3:'tb-bungalow',
+      1:'tb-realestate-office', 2:'tb-bank', 3:'tb-bungalow',
       4:'tb-title-company', 5:'tb-contract-office', 6:'tb-clock-tower',
       7:'tb-inspector-house', 8:'tb-row-house', 9:'tb-closing-office'
     };
@@ -1392,7 +1391,7 @@
   try {
     var visited = JSON.parse(localStorage.getItem(SK) || '{}').chaptersVisited || [];
     visited.forEach(function (ch) {
-      var buildMap = {1:'tb-bank',2:'tb-realestate-office',3:'tb-bungalow',
+      var buildMap = {1:'tb-realestate-office',2:'tb-bank',3:'tb-bungalow',
                       4:'tb-title-company',5:'tb-contract-office',6:'tb-clock-tower',
                       7:'tb-inspector-house',8:'tb-row-house',9:'tb-closing-office'};
       var b = document.getElementById(buildMap[ch]);
@@ -1416,7 +1415,7 @@
     var scale = vw / 430;
     scene.style.transform = 'scale(' + scale + ')';
     /* Set scene container height to match scaled scene height */
-    scene.parentElement.style.minHeight = (530 * scale) + 'px';
+    scene.parentElement.style.minHeight = (560 * scale) + 'px';
   }
   scaleTownScene();
   window.addEventListener('resize', scaleTownScene);
