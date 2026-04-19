@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,17 +7,23 @@
 <title>STL Home Buyer Journey · George Kindler</title>
 
 <!-- GA4 -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EEE14BZT9P');</script>
 
 <!-- Fonts -->
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <!-- Shared visual system -->
+
 <link rel="stylesheet" href="shared.css">
 
 <!-- Market data + resource registry -->
+
 <script src="zip-data.js"></script>
+
 <script src="resources.js"></script>
 
 <style>
@@ -168,16 +175,16 @@
   transform: translateY(0);
 }
 
-/* ── SCROLLABLE MAIN ── */
+/* ── SCROLLABLE MAIN ──
+   FIX #7: idx-main is flex column so town-wrap can fill remaining height.
+   padding-bottom removed so town-wrap gets all available space. */
 .idx-main {
   flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  padding: 0 0 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   min-height: 0;
 }
-.idx-main::-webkit-scrollbar { display: none; }
 
 /* ── GEORGE STRIP ── */
 .g-strip {
@@ -188,6 +195,7 @@
   opacity: 0;
   transform: translateY(10px);
   transition: opacity .4s ease, transform .4s ease;
+  flex-shrink: 0;
 }
 .g-strip.show { opacity: 1; transform: translateY(0); }
 
@@ -245,6 +253,7 @@
   opacity: 0;
   transform: translateY(10px);
   transition: opacity .4s ease, transform .4s ease;
+  flex-shrink: 0;
 }
 .headline.show { opacity: 1; transform: translateY(0); }
 
@@ -268,23 +277,20 @@
   letter-spacing: .01em;
 }
 
-/* ── TOWN SCENE ── */
+/* ── TOWN SCENE ──
+   FIX #7: town-wrap gets flex:1 min-height:0 so it fills all remaining vertical space */
 .town-wrap {
   position: relative;
   width: 100%;
+  flex: 1;
+  min-height: 0;
   opacity: 0;
   transform: translateY(14px);
   transition: opacity .6s ease, transform .6s ease;
-  overflow: scroll;
-  overflow-x: scroll;
-  overflow-y: scroll;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
-  flex: 1;
-  min-height: 0;
   scrollbar-width: none;
 }
-.town-wrap::-webkit-scrollbar { display: none; }
-.town-wrap.show { opacity: 1; transform: translateY(0); }
 .town-wrap::-webkit-scrollbar { display: none; }
 .town-wrap.show { opacity: 1; transform: translateY(0); }
 
@@ -296,35 +302,24 @@
   flex-shrink: 0;
 }
 
-/* ── ARCH (background, full-width, starts above scene) ── */
+/* ── ARCH
+   FIX #2: Single consolidated rule. No onerror display:none on the img.
+   pointer-events:auto + cursor:pointer for FIX #6 (arch tappable). */
 .town-arch {
   position: absolute;
-  left: 0px;
+  left: 0;
   top: -63px;
   width: 430px;
   height: auto;
   z-index: 1;
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
   opacity: 0;
   transition: opacity 1.2s ease;
 }
 .town-arch.fadein { opacity: 1; }
 
-
-/* ── FADE-IN SEQUENCE ── */
-
-
-
-
-.town-building.fadein { opacity: 1; pointer-events: auto; cursor: pointer; }
-
-.town-george  { opacity: 0; transition: opacity .8s ease; }
-#george-wave.fadein  { opacity: 1; }
-
-#george-explain { position: absolute; left: 179.4px; top: 417.1px; width: 84.7px; z-index: 8; pointer-events: none; opacity: 0; transition: opacity .8s ease; }
-#george-explain.show { opacity: 1; }
-
-/* ── BUILDINGS — exact Photoshop coordinates scaled 0.0975 ── */
+/* ── BUILDINGS ── */
 .town-building {
   position: absolute;
   z-index: 4;
@@ -333,6 +328,7 @@
   opacity: 0;
   -webkit-tap-highlight-color: transparent;
 }
+.town-building.fadein { opacity: 1; pointer-events: auto; cursor: pointer; }
 .town-building:active { transform: scale(.96); }
 .town-building img { display: block; width: 100%; height: auto; }
 
@@ -349,15 +345,16 @@
   filter: drop-shadow(0 0 5px rgba(255,204,77,.2));
 }
 
-#tb-clock-tower { left: 50.4px; top: 294.5px; width: 67.6px; z-index: 3; }
-#tb-title-company { left: 87.6px; top: 285.9px; width: 103.7px; z-index: 4; }
-#tb-contract-office { left: 258px; top: 280.0px; width: 80.2px; z-index: 4; }
-#tb-realestate-office { left: 262px; top: 294.5px; width: 156.8px; z-index: 4; }
-#tb-bank { left: 127.6px; top: 311.9px; width: 188.6px; z-index: 5; }
-#tb-bungalow { left: 4.5px; top: 319.9px; width: 163.4px; z-index: 5; }
-#tb-inspector-house { left: 260px; top: 345.5px; width: 140.5px; z-index: 5; }
-#tb-row-house { left: 3.0px; top: 385.0px; width: 215.6px; z-index: 6; }
-#tb-closing-office { left: 210px; top: 385.0px; width: 218.0px; z-index: 6; }
+/* ── BUILDING COORDINATES (only clock-tower width changed: 67.6 → 135) ── */
+#tb-clock-tower       { left: 50.4px;  top: 294.5px; width: 135px;   z-index: 3; }
+#tb-title-company     { left: 87.6px;  top: 285.9px; width: 103.7px; z-index: 4; }
+#tb-contract-office   { left: 258px;   top: 280.0px; width: 80.2px;  z-index: 4; }
+#tb-realestate-office { left: 262px;   top: 294.5px; width: 156.8px; z-index: 4; }
+#tb-bank              { left: 127.6px; top: 311.9px; width: 188.6px; z-index: 5; }
+#tb-bungalow          { left: 4.5px;   top: 319.9px; width: 163.4px; z-index: 5; }
+#tb-inspector-house   { left: 260px;   top: 345.5px; width: 140.5px; z-index: 5; }
+#tb-row-house         { left: 3.0px;   top: 385.0px; width: 215.6px; z-index: 6; }
+#tb-closing-office    { left: 210px;   top: 385.0px; width: 218.0px; z-index: 6; }
 
 /* ── GEORGE ── */
 .town-george {
@@ -368,8 +365,8 @@
   z-index: 7;
   pointer-events: none;
 }
+.town-george img { display: block; width: 100%; height: auto; }
 
-/* George explain figure */
 #george-explain {
   position: absolute;
   left: 179.4px;
@@ -382,34 +379,29 @@
 }
 #george-explain img { display: block; width: 100%; height: auto; }
 #george-explain.show { opacity: 1; }
-.town-george img { display: block; width: 100%; height: auto; }
 
-/* Wave: fadein class shows it, hide class fades it out */
 #george-wave { opacity: 0; transition: opacity .8s ease; }
 #george-wave.fadein { opacity: 1; }
-#george-wave.hide { opacity: 0 !important; }
-.town-george-placeholder { display: none; }
+#george-wave.hide   { opacity: 0 !important; }
 
-/* George welcome entrance — large then settles to normal */
 @keyframes georgeEntrance {
   0%   { transform: scale(4.5) translateY(-20px); opacity: 0; }
   15%  { opacity: 1; }
-  55%  { transform: scale(4.0) translateY(-10px); opacity: 1; } /* hold big */
-  100% { transform: scale(1)   translateY(0);    opacity: 1; }
+  55%  { transform: scale(4.0) translateY(-10px); opacity: 1; }
+  100% { transform: scale(1)   translateY(0);     opacity: 1; }
 }
 #george-wave.fadein {
   opacity: 1;
   animation: georgeEntrance 3.2s cubic-bezier(.22,1,.36,1) forwards;
 }
-@keyframes georgePulse {
-  0%,100% { box-shadow: 0 0 0 0 rgba(255,204,77,.3); }
-  50%      { box-shadow: 0 0 0 10px rgba(255,204,77,0); }
-}
-/* ── GEORGE WELCOME BUBBLE ── */
+
+/* ── GEORGE WELCOME BUBBLE
+   FIX #4: Moved to top:260px so bubble floats above George's head at 417px.
+   Width 148px, tail points DOWN toward George. */
 .george-bubble {
   position: absolute;
   left: 169.4px;
-  top: 297.1px;
+  top: 260px;
   width: 148px;
   z-index: 15;
   opacity: 0;
@@ -429,99 +421,68 @@
   padding: 10px 12px 12px;
   position: relative;
 }
-/* tail pointing down toward George */
+/* Tail pointing down toward George */
 .george-bubble-inner::after {
   content: '';
   position: absolute;
   bottom: -7px;
   left: 50%;
   transform: translateX(-50%) rotate(45deg);
-  width: 12px; height: 12px;
+  width: 12px;
+  height: 12px;
   background: rgba(8,8,8,.94);
   border-right: 1px solid rgba(255,204,77,.4);
   border-bottom: 1px solid rgba(255,204,77,.4);
 }
 .george-bubble-tag {
   font-family: var(--font-sans);
-  font-size: 7px; font-weight: 800;
-  letter-spacing: .14em; text-transform: uppercase;
-  color: #FFCC4D; margin-bottom: 4px; opacity: .85;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #FFCC4D;
+  margin-bottom: 4px;
+  opacity: .85;
 }
 .george-bubble-text {
   font-family: var(--font-serif);
-  font-size: 11px; font-weight: 600;
-  color: #fff; line-height: 1.35;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.35;
   margin-bottom: 8px;
 }
 .george-bubble-sub {
   font-family: var(--font-sans);
-  font-size: 9px; color: rgba(255,255,255,.55);
-  line-height: 1.5; margin-bottom: 10px;
+  font-size: 9px;
+  color: rgba(255,255,255,.55);
+  line-height: 1.5;
+  margin-bottom: 10px;
 }
 .george-bubble-cta {
-  width: 100%; background: #FFCC4D; color: #080808;
-  border: none; border-radius: 5px;
-  font-family: var(--font-sans); font-size: 9px; font-weight: 800;
-  letter-spacing: .06em; text-transform: uppercase;
-  padding: 7px 0; cursor: pointer; -webkit-appearance: none;
+  width: 100%;
+  background: #FFCC4D;
+  color: #080808;
+  border: none;
+  border-radius: 5px;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 7px 0;
+  cursor: pointer;
+  -webkit-appearance: none;
   transition: background .15s;
   display: none;
 }
 .george-bubble-cta.show { display: block; }
 .george-bubble-cta:active { background: #ffd966; }
 
-/* ── AUTO-TOUR POPUP (ambient floating labels) ── */
-.auto-popup {
-  position: absolute;
-  z-index: 12;
-  background: rgba(8,8,8,.9);
-  border: 1px solid rgba(255,204,77,.25);
-  border-radius: 8px;
-  padding: 8px 10px;
-  width: 130px;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity .5s ease, transform .5s ease;
-  pointer-events: none;
-}
-.auto-popup.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.auto-popup-num {
-  font-family: var(--font-sans); font-size: 7px; font-weight: 800;
-  letter-spacing: .12em; text-transform: uppercase; color: #FFCC4D;
-  margin-bottom: 3px; opacity: .8;
-}
-.auto-popup-title {
-  font-family: var(--font-serif); font-size: 10px; font-weight: 700;
-  color: #fff; line-height: 1.3;
-}
-
-/* ── CH1 PIN SPECIAL HIGHLIGHT (start here) ── */
-.ch-pin.start-here .pin-dot {
-  background: #FFCC4D;
-  animation: startHerePulse 1s ease-in-out infinite;
-}
-@keyframes startHerePulse {
-  0%,100% { box-shadow: 0 0 0 0 rgba(255,204,77,.6), 0 2px 10px rgba(0,0,0,.7); }
-  50%      { box-shadow: 0 0 0 8px rgba(255,204,77,0), 0 2px 10px rgba(0,0,0,.7); }
-}
-
-
-/* vehicles removed */    50%{transform:translateY(-1.5px)} }
-
-
-/* ── VEHICLE IDLE ANIMATIONS ── */
-@keyframes vanIdle   { 0%,100%{transform:translateY(0)}  50%{transform:translateY(-2px)} }
-@keyframes truckIdle { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-1px) rotate(.15deg)} }
-@keyframes suvIdle   { 0%,100%{transform:translateY(0)}  50%{transform:translateY(-1.5px)} }
-
-
-
-
 /* ══════════════════════════════════════════════════════
    CHAPTER POPUP CARDS
+   FIX #1: Popups live INSIDE .town-scene (position:absolute relative to scene).
+   Each has explicit top/left so it floats above its building.
    ══════════════════════════════════════════════════════ */
 .ch-popup {
   position: absolute;
@@ -589,7 +550,7 @@
 }
 .popup-enter:active { background: #ffd966; }
 
-/* Auto-tour ambient popup */
+/* AUTO-TOUR POPUPS */
 .auto-popup {
   position: absolute;
   z-index: 12;
@@ -624,7 +585,79 @@
   line-height: 1.3;
 }
 
+/* ── VEHICLE IDLE ANIMATIONS ── */
+@keyframes vanIdle   { 0%,100%{transform:translateY(0)}   50%{transform:translateY(-2px)} }
+@keyframes truckIdle { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-1px) rotate(.15deg)} }
+@keyframes suvIdle   { 0%,100%{transform:translateY(0)}   50%{transform:translateY(-1.5px)} }
+
+/* ── Ch.1 PIN PULSE ── */
+.ch-pin.start-here .pin-dot {
+  background: #FFCC4D;
+  animation: startHerePulse 1s ease-in-out infinite;
+}
+@keyframes startHerePulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(255,204,77,.6), 0 2px 10px rgba(0,0,0,.7); }
+  50%      { box-shadow: 0 0 0 8px rgba(255,204,77,0), 0 2px 10px rgba(0,0,0,.7); }
+}
+
+/* ── RESUME CARD ── */
+.resume-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 18px 12px;
+  padding: 12px 14px;
+  background: rgba(255,204,77,.06);
+  border: 1px solid rgba(255,204,77,.2);
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .35s ease, transform .35s ease;
+  flex-shrink: 0;
+}
+.resume-card.show { opacity: 1; transform: translateY(0); }
+.resume-lbl {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: rgba(255,255,255,.75);
+  line-height: 1.4;
+}
+.resume-arr {
+  font-size: 18px;
+  color: #FFCC4D;
+  margin-left: 8px;
+}
+
+/* ── TOWN HINT ── */
+.town-hint {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(255,255,255,.25);
+  text-align: center;
+  padding: 6px 0 4px;
+  letter-spacing: .04em;
+  opacity: 0;
+  transition: opacity .4s ease;
+  flex-shrink: 0;
+}
+.town-hint.show { opacity: 1; }
+
+/* ── TENSION LINES ── */
+.tension-line, .tension-sub {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: rgba(255,255,255,.4);
+  padding: 0 18px;
+  margin-bottom: 4px;
+  opacity: 0;
+  transition: opacity .4s ease;
+  flex-shrink: 0;
+}
+.tension-line.show, .tension-sub.show { opacity: 1; }
 </style>
+
 </head>
 
 <body>
@@ -632,22 +665,14 @@
 
   <!-- ═══════════════════════════════════
        PHASE 1 — CINEMATIC INTRO
-       Preserved exactly from original.
   ════════════════════════════════════ -->
-  <div class="intro" id="intro">
 
+  <div class="intro" id="intro">
     <div class="intro-face" id="intro-face">
-      <img class="raised"
-           src="assets/george-serious.png"
-           alt="George Kindler"
-           onerror="this.style.display='none'">
-      <img class="normal"
-           src="assets/george-welcome.png"
-           alt="George Kindler"
-           onerror="this.style.display='none'">
+      <img class="raised" src="assets/george-serious.png" alt="George Kindler">
+      <img class="normal" src="assets/george-welcome.png" alt="George Kindler">
       <div class="fb">GK</div>
     </div>
-
     <div class="intro-copy">
       <div class="intro-main">
         You tapped <strong>Request Tour.</strong><br>
@@ -658,21 +683,19 @@
         <em>before you ever picked up the phone.</em>
       </div>
     </div>
-
     <button class="btn-reveal" id="btn-reveal" type="button">
       Show me what I'm missing
     </button>
-
   </div><!-- /intro -->
-
 
   <!-- ═══════════════════════════════════
        HEADER
   ════════════════════════════════════ -->
+
   <header class="hdr idx-hidden" id="hdr">
     <div class="hdr-l">
       <div class="hdr-ico">
-        <img src="assets/STLhomebuyerjourneylogo.png" alt="STL Home Buyer Journey" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img src="assets/STLhomebuyerjourneylogo.png" alt="STL Home Buyer Journey">
         <span style="display:none;color:var(--gold);width:100%;height:100%;align-items:center;justify-content:center;">
           <svg viewBox="0 0 24 24" fill="none"><path d="M3 11.5L12 4l9 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 10.5V20h11V10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
@@ -685,261 +708,254 @@
     </div>
   </header>
 
-
   <!-- ═══════════════════════════════════
-       MAIN — scrollable
+       MAIN — flex column, no overflow-y
   ════════════════════════════════════ -->
+
   <div class="idx-main" id="idx-main">
 
-    <!-- George strip -->
-    <div class="g-strip" id="g-strip">
-      <div class="gs-face">
-        <img src="assets/george-welcome.png"
-             alt="George Kindler"
-             onerror="this.style.display='none'">
-        <div class="fb">GK</div>
-      </div>
-      <div class="gs-info">
-        <div class="gs-name">George Kindler</div>
-        <div class="gs-tag">The Closing Pros LLC &middot; 314.435.1087</div>
+```
+<!-- George strip -->
+<div class="g-strip" id="g-strip">
+  <div class="gs-face">
+    <img src="assets/george-welcome.png" alt="George Kindler">
+    <div class="fb">GK</div>
+  </div>
+  <div class="gs-info">
+    <div class="gs-name">George Kindler</div>
+    <div class="gs-tag">The Closing Pros LLC &middot; 314.435.1087</div>
+  </div>
+</div>
+
+<!-- Headline -->
+<div class="headline" id="headline">
+  <div class="hl-main">Where buyers lose money &mdash;<br><span>without realizing it.</span></div>
+  <!-- FIX #8: Updated copy — no more "pins" reference -->
+  <div class="hl-sub">Tap any building to enter that chapter.</div>
+</div>
+
+<!-- Tension cue — FIX #8: updated sub copy -->
+<div class="tension-line" id="tension-line">Every stop on this street is a place buyers make mistakes.</div>
+<div class="tension-sub"  id="tension-sub">Tap any building to enter that chapter.</div>
+
+<!-- Resume card (injected by JS) -->
+<div id="resume-slot"></div>
+
+<!-- ═══════════════════════════════════
+     ISOMETRIC TOWN SCENE
+     FIX #7: town-wrap is flex:1, fills remaining height in idx-main
+════════════════════════════════════ -->
+<div class="town-wrap" id="town-wrap">
+  <div class="town-scene" id="town-scene">
+
+    <!-- ARCH — FIX #2: no onerror display:none; FIX #6: tappable via JS -->
+    <img class="town-arch" id="town-arch" src="assets/town/arch.png" alt="Neighborhood Map">
+
+    <!-- BUILDINGS — z-ordered back to front -->
+    <div class="town-building" id="tb-clock-tower"
+         data-chapter="6" data-file="06b-deadlines.html" data-event="deadlines"
+         data-popup="popup-ch6" tabindex="0" role="button" aria-label="Chapter 6: Deadlines">
+      <img src="assets/town/clock-tower.png" alt="">
+    </div>
+
+    <div class="town-building" id="tb-title-company"
+         data-chapter="4" data-file="05-pre-offer.html" data-event="offer"
+         data-popup="popup-ch4" tabindex="0" role="button" aria-label="Chapter 4: Pre-Offer">
+      <img src="assets/town/title-company.png" alt="">
+    </div>
+
+    <div class="town-building" id="tb-contract-office"
+         data-chapter="5" data-file="06-under-contract.html" data-event="contract"
+         data-popup="popup-ch5" tabindex="0" role="button" aria-label="Chapter 5: Under Contract">
+      <img src="assets/town/contract-office.png" alt="">
+    </div>
+
+    <div class="town-building" id="tb-realestate-office"
+         data-chapter="2" data-file="02-affordability.html" data-event="afford"
+         data-popup="popup-ch2" tabindex="0" role="button" aria-label="Chapter 2: Affordability">
+      <img src="assets/town/realestate-office.png" alt="">
+    </div>
+
+    <div class="town-building" id="tb-bank"
+         data-chapter="1" data-file="01-preapproval.html" data-event="start"
+         data-popup="popup-ch1" tabindex="0" role="button" aria-label="Chapter 1: Pre-Approval">
+      <img src="assets/town/bank.png" alt="">
+    </div>
+
+    <div class="town-building" id="tb-bungalow"
+         data-chapter="3" data-file="03-interior.html" data-event="interior"
+         data-popup="popup-ch3" tabindex="0" role="button" aria-label="Chapter 3: Interior Walk">
+      <img src="assets/town/bungalow.png" alt="">
+    </div>
+
+    <div class="town-building" id="tb-inspector-house"
+         data-chapter="7" data-file="07-inspection.html" data-event="inspect"
+         data-popup="popup-ch7" tabindex="0" role="button" aria-label="Chapter 7: Inspection">
+      <img src="assets/town/inspector-house.png" alt="">
+    </div>
+
+    <div class="town-building" id="tb-row-house"
+         data-chapter="8" data-file="08-walkthrough.html" data-event="walkthrough"
+         data-popup="popup-ch8" tabindex="0" role="button" aria-label="Chapter 8: Walkthrough">
+      <img src="assets/town/row-house.png" alt="">
+    </div>
+
+    <div class="town-building" id="tb-closing-office"
+         data-chapter="9" data-file="09-closing.html" data-event="closing"
+         data-popup="popup-ch9" tabindex="0" role="button" aria-label="Chapter 9: Closing">
+      <img src="assets/town/closing-office.png" alt="">
+    </div>
+
+    <!-- GEORGE WAVE -->
+    <div class="town-george" id="george-wave">
+      <img src="assets/town/george-wave.png" alt="George Kindler waving">
+    </div>
+
+    <!-- GEORGE EXPLAIN -->
+    <div id="george-explain">
+      <img src="assets/town/george-explain.png" alt="George Kindler explaining">
+    </div>
+
+    <!-- GEORGE WELCOME BUBBLE
+         FIX #4: top:260px floats above George's head at 417px -->
+    <div class="george-bubble" id="george-bubble">
+      <div class="george-bubble-inner">
+        <div class="george-bubble-tag">George Kindler</div>
+        <div class="george-bubble-text" id="bubble-text">Welcome to the STL Home Buyer Journey</div>
+        <div class="george-bubble-sub" id="bubble-sub">13 years. 130+ deals. All of it here.</div>
+        <button class="george-bubble-cta" id="bubble-cta"
+                data-file="01-preapproval.html" data-event="start">
+          Start at Pre-Approval →
+        </button>
       </div>
     </div>
 
-    <!-- Headline -->
-    <div class="headline" id="headline">
-      <div class="hl-main">Where buyers lose money &mdash;<br><span>without realizing it.</span></div>
-      <div class="hl-sub">Tap any building to enter that chapter.</div>
+    <!-- AUTO-TOUR POPUPS — positioned above each building -->
+    <div class="auto-popup" id="ap-ch1" style="left:90px;top:220px;">
+      <div class="auto-popup-num">Ch.1 · Pre-Approval</div>
+      <div class="auto-popup-title">What happens when you click "Contact Agent"</div>
+    </div>
+    <div class="auto-popup" id="ap-ch2" style="left:255px;top:200px;">
+      <div class="auto-popup-num">Ch.2 · Affordability</div>
+      <div class="auto-popup-title">Where buyers accidentally overpay</div>
+    </div>
+    <div class="auto-popup" id="ap-ch3" style="left:5px;top:235px;">
+      <div class="auto-popup-num">Ch.3 · Interior Walk</div>
+      <div class="auto-popup-title">Walk a property the way I do</div>
+    </div>
+    <div class="auto-popup" id="ap-ch4" style="left:75px;top:195px;">
+      <div class="auto-popup-num">Ch.4 · Pre-Offer</div>
+      <div class="auto-popup-title">Where buyers get pushed into bad offers</div>
+    </div>
+    <div class="auto-popup" id="ap-ch5" style="left:240px;top:190px;">
+      <div class="auto-popup-num">Ch.5 · Under Contract</div>
+      <div class="auto-popup-title">Offer accepted — where deals fall apart</div>
+    </div>
+    <div class="auto-popup" id="ap-ch6" style="left:35px;top:210px;">
+      <div class="auto-popup-num">Ch.6 · Deadlines</div>
+      <div class="auto-popup-title">Three deadlines running at once</div>
+    </div>
+    <div class="auto-popup" id="ap-ch7" style="left:245px;top:255px;">
+      <div class="auto-popup-num">Ch.7 · Inspection</div>
+      <div class="auto-popup-title">Where buyers miss the problems</div>
+    </div>
+    <div class="auto-popup" id="ap-ch8" style="left:5px;top:300px;">
+      <div class="auto-popup-num">Ch.8 · Walk-Through</div>
+      <div class="auto-popup-title">Not a second showing — a verification</div>
+    </div>
+    <div class="auto-popup" id="ap-ch9" style="left:206px;top:300px;">
+      <div class="auto-popup-num">Ch.9 · Closing</div>
+      <div class="auto-popup-title">What you're signing and what buyers miss</div>
     </div>
 
-    <!-- Tension cue -->
-    <div class="tension-line" id="tension-line">Every stop on this street is a place buyers make mistakes.</div>
-    <div class="tension-sub"  id="tension-sub">Walk the journey. Tap the pins.</div>
+    <!-- ══════════════════════════════════════════════════════
+         FIX #1: POPUP CARDS ARE NOW INSIDE .town-scene
+         Each has explicit top/left to float above its building.
+         ══════════════════════════════════════════════════════ -->
+    <!-- ch1: bank left:127.6 top:311.9 w:188.6 → popup left:90 top:220 -->
+    <div class="ch-popup" id="popup-ch1" style="left:90px;top:130px;">
+      <div class="popup-ch-num">Chapter 1 · Pre-Approval</div>
+      <div class="popup-title">What actually happens when you click "Contact Agent"</div>
+      <div class="popup-quote">The agent who calls you paid to be there. That changes everything.</div>
+      <button class="popup-enter" data-file="01-preapproval.html" data-event="start">Enter Chapter →</button>
+    </div>
 
-    <!-- Resume card (injected by JS) -->
-    <div id="resume-slot"></div>
+    <!-- ch2: realestate-office left:262 top:294.5 w:156.8 → popup left:255 top:200 -->
+    <div class="ch-popup" id="popup-ch2" style="left:245px;top:120px;">
+      <div class="popup-ch-num">Chapter 2 · Affordability</div>
+      <div class="popup-title">Where buyers accidentally overpay before they make an offer</div>
+      <div class="popup-quote">The number your lender approved is not the number you should spend.</div>
+      <button class="popup-enter" data-file="02-affordability.html" data-event="afford">Enter Chapter →</button>
+    </div>
 
-    <!-- ═══════════════════════════════════
-         ISOMETRIC TOWN SCENE
-    ════════════════════════════════════ -->
-    <div class="town-wrap" id="town-wrap">
-    <div class="town-scene" id="town-scene">
+    <!-- ch3: bungalow left:4.5 top:319.9 w:163.4 → popup left:5 top:235 -->
+    <div class="ch-popup" id="popup-ch3" style="left:5px;top:140px;">
+      <div class="popup-ch-num">Chapter 3 · Interior Walk</div>
+      <div class="popup-title">Walk a property the way I do — pick your home type</div>
+      <div class="popup-quote">Most buyers look at countertops. I look at the basement and panel.</div>
+      <button class="popup-enter" data-file="03-interior.html" data-event="interior">Enter Chapter →</button>
+    </div>
 
-      <!-- ARCH — screen blend, starts above scene top -->
-      <img class="town-arch" src="assets/town/arch.png" alt="" onerror="this.style.display='none'">
+    <!-- ch4: title-company left:87.6 top:285.9 w:103.7 → popup left:75 top:195 -->
+    <div class="ch-popup" id="popup-ch4" style="left:75px;top:110px;">
+      <div class="popup-ch-num">Chapter 4 · Pre-Offer</div>
+      <div class="popup-title">Where buyers get pushed into offers they can't take back</div>
+      <div class="popup-quote">Competing offers, manufactured urgency — all of it explained.</div>
+      <button class="popup-enter" data-file="05-pre-offer.html" data-event="offer">Enter Chapter →</button>
+    </div>
 
-      <!-- BUILDINGS — z-ordered back to front -->
+    <!-- ch5: contract-office left:258 top:280 w:80.2 → popup left:240 top:190 -->
+    <div class="ch-popup" id="popup-ch5" style="left:240px;top:105px;">
+      <div class="popup-ch-num">Chapter 5 · Under Contract</div>
+      <div class="popup-title">Offer accepted — where deals fall apart</div>
+      <div class="popup-quote">Small mistakes here can quietly kill a deal after you think you're safe.</div>
+      <button class="popup-enter" data-file="06-under-contract.html" data-event="contract">Enter Chapter →</button>
+    </div>
 
-      <div class="town-building" id="tb-clock-tower"
-           data-chapter="6" data-file="06b-deadlines.html" data-event="deadlines"
-           data-popup="popup-ch6" tabindex="0" role="button" aria-label="Chapter 6: Deadlines">
-        <img src="assets/town/clock-tower.png" alt="" onerror="this.style.display='none'">
-      </div>
+    <!-- ch6: clock-tower left:50.4 top:294.5 w:135 → popup left:35 top:210 -->
+    <div class="ch-popup" id="popup-ch6" style="left:35px;top:125px;">
+      <div class="popup-ch-num">Chapter 6 · Deadlines</div>
+      <div class="popup-title">Three deadlines running in parallel — miss one and it's gone</div>
+      <div class="popup-quote">Loan contingency. Appraisal. Title. All running from Day 1.</div>
+      <button class="popup-enter" data-file="06b-deadlines.html" data-event="deadlines">Enter Chapter →</button>
+    </div>
 
-      <div class="town-building" id="tb-title-company"
-           data-chapter="4" data-file="05-pre-offer.html" data-event="offer"
-           data-popup="popup-ch4" tabindex="0" role="button" aria-label="Chapter 4: Pre-Offer">
-        <img src="assets/town/title-company.png" alt="" onerror="this.style.display='none'">
-      </div>
+    <!-- ch7: inspector-house left:260 top:345.5 w:140.5 → popup left:245 top:255 -->
+    <div class="ch-popup" id="popup-ch7" style="left:240px;top:170px;">
+      <div class="popup-ch-num">Chapter 7 · Inspection</div>
+      <div class="popup-title">Where buyers miss the problems they end up paying for</div>
+      <div class="popup-quote">By the time most buyers read the report, earnest money is at risk.</div>
+      <button class="popup-enter" data-file="07-inspection.html" data-event="inspect">Enter Chapter →</button>
+    </div>
 
-      <div class="town-building" id="tb-contract-office"
-           data-chapter="5" data-file="06-under-contract.html" data-event="contract"
-           data-popup="popup-ch5" tabindex="0" role="button" aria-label="Chapter 5: Under Contract">
-        <img src="assets/town/contract-office.png" alt="" onerror="this.style.display='none'">
-      </div>
+    <!-- ch8: row-house left:3 top:385 w:215.6 → popup left:5 top:300 -->
+    <div class="ch-popup" id="popup-ch8" style="left:5px;top:210px;">
+      <div class="popup-ch-num">Chapter 8 · Final Walk-Through</div>
+      <div class="popup-title">The final walk-through is not a second showing</div>
+      <div class="popup-quote">Same condition as the day you made the offer. Seller out.</div>
+      <button class="popup-enter" data-file="08-walkthrough.html" data-event="walkthrough">Enter Chapter →</button>
+    </div>
 
-      <div class="town-building" id="tb-realestate-office"
-           data-chapter="2" data-file="02-affordability.html" data-event="afford"
-           data-popup="popup-ch2" tabindex="0" role="button" aria-label="Chapter 2: Affordability">
-        <img src="assets/town/realestate-office.png" alt="" onerror="this.style.display='none'">
-      </div>
+    <!-- ch9: closing-office left:210 top:385 w:218 → popup left:205 top:300 -->
+    <div class="ch-popup" id="popup-ch9" style="left:205px;top:210px;">
+      <div class="popup-ch-num">Chapter 9 · Closing Day</div>
+      <div class="popup-title">What you're signing — and what most buyers don't catch</div>
+      <div class="popup-quote">Wire fraud. The note. The deed of trust. I protect you here.</div>
+      <button class="popup-enter" data-file="09-closing.html" data-event="closing">Enter Chapter →</button>
+    </div>
 
-      <div class="town-building" id="tb-bank"
-           data-chapter="1" data-file="01-preapproval.html" data-event="start"
-           data-popup="popup-ch1" tabindex="0" role="button" aria-label="Chapter 1: Pre-Approval">
-        <img src="assets/town/bank.png" alt="" onerror="this.style.display='none'">
-      </div>
+  </div><!-- /town-scene -->
+</div><!-- /town-wrap -->
 
-      <div class="town-building" id="tb-bungalow"
-           data-chapter="3" data-file="03-interior.html" data-event="interior"
-           data-popup="popup-ch3" tabindex="0" role="button" aria-label="Chapter 3: Interior Walk">
-        <img src="assets/town/bungalow.png" alt="" onerror="this.style.display='none'">
-      </div>
-
-      <div class="town-building" id="tb-inspector-house"
-           data-chapter="7" data-file="07-inspection.html" data-event="inspect"
-           data-popup="popup-ch7" tabindex="0" role="button" aria-label="Chapter 7: Inspection">
-        <img src="assets/town/inspector-house.png" alt="" onerror="this.style.display='none'">
-      </div>
-
-      <div class="town-building" id="tb-row-house"
-           data-chapter="8" data-file="08-walkthrough.html" data-event="walkthrough"
-           data-popup="popup-ch8" tabindex="0" role="button" aria-label="Chapter 8: Walkthrough">
-        <img src="assets/town/row-house.png" alt="" onerror="this.style.display='none'">
-      </div>
-
-      <div class="town-building" id="tb-closing-office"
-           data-chapter="9" data-file="09-closing.html" data-event="closing"
-           data-popup="popup-ch9" tabindex="0" role="button" aria-label="Chapter 9: Closing">
-        <img src="assets/town/closing-office.png" alt="" onerror="this.style.display='none'">
-      </div>
-
-      <!-- VEHICLES -->
-
-      <!-- GEORGE WAVE — shows immediately on town load -->
-      <div class="town-george" id="george-wave">
-        <img src="assets/town/george-wave.png" alt="George Kindler waving"
-             onerror="this.style.display='none'">
-        <!-- george-wave.png loads here — no placeholder shown -->
-      </div>
-
-      <!-- GEORGE EXPLAIN — fades in after 4-5s -->
-      <div id="george-explain">
-        <img src="assets/town/george-explain.png" alt="George Kindler explaining"
-             onerror="this.style.display='none'">
-      </div>
-      <!-- GEORGE WELCOME BUBBLE -->
-      <div class="george-bubble" id="george-bubble">
-        <div class="george-bubble-inner">
-          <div class="george-bubble-tag">George Kindler</div>
-          <div class="george-bubble-text" id="bubble-text">Welcome to the STL Home Buyer Journey</div>
-          <div class="george-bubble-sub" id="bubble-sub">13 years. 130+ deals. All of it here.</div>
-          <button class="george-bubble-cta" id="bubble-cta"
-                  data-file="01-preapproval.html" data-event="start">
-            Start at Pre-Approval →
-          </button>
-        </div>
-      </div>
-
-      <!-- AUTO-TOUR POPUPS — one per chapter, shown in sequence -->
-      <div class="auto-popup" id="ap-ch1" style="left:117.6px;top:231.9px;">
-        <div class="auto-popup-num">Ch.1 · Pre-Approval</div>
-        <div class="auto-popup-title">What happens when you click "Contact Agent"</div>
-      </div>
-      <div class="auto-popup" id="ap-ch2" style="left:255.0px;top:224.5px;">
-        <div class="auto-popup-num">Ch.2 · Affordability</div>
-        <div class="auto-popup-title">Where buyers accidentally overpay</div>
-      </div>
-      <div class="auto-popup" id="ap-ch3" style="left:9.5px;top:249.9px;">
-        <div class="auto-popup-num">Ch.3 · Interior Walk</div>
-        <div class="auto-popup-title">Walk a property the way I do</div>
-      </div>
-      <div class="auto-popup" id="ap-ch4" style="left:92.6px;top:215.9px;">
-        <div class="auto-popup-num">Ch.4 · Pre-Offer</div>
-        <div class="auto-popup-title">Where buyers get pushed into bad offers</div>
-      </div>
-      <div class="auto-popup" id="ap-ch5" style="left:255.0px;top:210.0px;">
-        <div class="auto-popup-num">Ch.5 · Under Contract</div>
-        <div class="auto-popup-title">Offer accepted — where deals fall apart</div>
-      </div>
-      <div class="auto-popup" id="ap-ch6" style="left:55.4px;top:234.5px;">
-        <div class="auto-popup-num">Ch.6 · Deadlines</div>
-        <div class="auto-popup-title">Three deadlines running at once</div>
-      </div>
-      <div class="auto-popup" id="ap-ch7" style="left:255.0px;top:275.5px;">
-        <div class="auto-popup-num">Ch.7 · Inspection</div>
-        <div class="auto-popup-title">Where buyers miss the problems</div>
-      </div>
-      <div class="auto-popup" id="ap-ch8" style="left:8.0px;top:315.0px;">
-        <div class="auto-popup-num">Ch.8 · Walk-Through</div>
-        <div class="auto-popup-title">Not a second showing — a verification</div>
-      </div>
-      <div class="auto-popup" id="ap-ch9" style="left:206.0px;top:315.0px;">
-        <div class="auto-popup-num">Ch.9 · Closing</div>
-        <div class="auto-popup-title">What you're signing and what buyers miss</div>
-      </div>
-
-      <!-- WALKING PEOPLE -->
-      <div class="town-person" id="tp-a">
-        <img src="assets/town/person-a.png" alt=""
-             onload="document.getElementById('tp-a').classList.add('loaded')"
-             onerror="this.parentNode.style.display='none'">
-      </div>
-      <div class="town-person" id="tp-b">
-        <img src="assets/town/person-b.png" alt=""
-             onload="document.getElementById('tp-b').classList.add('loaded')"
-             onerror="this.parentNode.style.display='none'">
-      </div>
-
-      <!-- CHAPTER PINS -->
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-      <!-- POPUP CARDS -->
-      <div class="ch-popup" id="popup-ch1">
-        <div class="popup-ch-num">Chapter 1 · Pre-Approval</div>
-        <div class="popup-title">What actually happens when you click "Contact Agent"</div>
-        <div class="popup-quote">The agent who calls you paid to be there. That changes everything.</div>
-        <button class="popup-enter" data-file="01-preapproval.html" data-event="start">Enter Chapter →</button>
-      </div>
-      <div class="ch-popup" id="popup-ch2">
-        <div class="popup-ch-num">Chapter 2 · Affordability</div>
-        <div class="popup-title">Where buyers accidentally overpay before they make an offer</div>
-        <div class="popup-quote">The number your lender approved is not the number you should spend.</div>
-        <button class="popup-enter" data-file="02-affordability.html" data-event="afford">Enter Chapter →</button>
-      </div>
-      <div class="ch-popup" id="popup-ch3">
-        <div class="popup-ch-num">Chapter 3 · Interior Walk</div>
-        <div class="popup-title">Walk a property the way I do — pick your home type</div>
-        <div class="popup-quote">Most buyers look at countertops. I look at the basement and panel.</div>
-        <button class="popup-enter" data-file="03-interior.html" data-event="interior">Enter Chapter →</button>
-      </div>
-      <div class="ch-popup" id="popup-ch4">
-        <div class="popup-ch-num">Chapter 4 · Pre-Offer</div>
-        <div class="popup-title">Where buyers get pushed into offers they can't take back</div>
-        <div class="popup-quote">Competing offers, manufactured urgency — all of it explained.</div>
-        <button class="popup-enter" data-file="05-pre-offer.html" data-event="offer">Enter Chapter →</button>
-      </div>
-      <div class="ch-popup" id="popup-ch5">
-        <div class="popup-ch-num">Chapter 5 · Under Contract</div>
-        <div class="popup-title">Offer accepted — where deals fall apart</div>
-        <div class="popup-quote">Small mistakes here can quietly kill a deal after you think you're safe.</div>
-        <button class="popup-enter" data-file="06-under-contract.html" data-event="contract">Enter Chapter →</button>
-      </div>
-      <div class="ch-popup" id="popup-ch6">
-        <div class="popup-ch-num">Chapter 6 · Deadlines</div>
-        <div class="popup-title">Three deadlines running in parallel — miss one and it's gone</div>
-        <div class="popup-quote">Loan contingency. Appraisal. Title. All running from Day 1.</div>
-        <button class="popup-enter" data-file="06b-deadlines.html" data-event="deadlines">Enter Chapter →</button>
-      </div>
-      <div class="ch-popup" id="popup-ch7">
-        <div class="popup-ch-num">Chapter 7 · Inspection</div>
-        <div class="popup-title">Where buyers miss the problems they end up paying for</div>
-        <div class="popup-quote">By the time most buyers read the report, earnest money is at risk.</div>
-        <button class="popup-enter" data-file="07-inspection.html" data-event="inspect">Enter Chapter →</button>
-      </div>
-      <div class="ch-popup" id="popup-ch8">
-        <div class="popup-ch-num">Chapter 8 · Final Walk-Through</div>
-        <div class="popup-title">The final walk-through is not a second showing</div>
-        <div class="popup-quote">Same condition as the day you made the offer. Seller out.</div>
-        <button class="popup-enter" data-file="08-walkthrough.html" data-event="walkthrough">Enter Chapter →</button>
-      </div>
-      <div class="ch-popup" id="popup-ch9">
-        <div class="popup-ch-num">Chapter 9 · Closing Day</div>
-        <div class="popup-title">What you're signing — and what most buyers don't catch</div>
-        <div class="popup-quote">Wire fraud. The note. The deed of trust. I protect you here.</div>
-        <button class="popup-enter" data-file="09-closing.html" data-event="closing">Enter Chapter →</button>
-      </div>
-
-    </div><!-- /town-scene -->
-    </div><!-- /town-wrap -->
-
-    <div class="town-hint" id="town-hint">↑ Tap the gold pins to explore</div>
-
-    <div class="idx-spacer"></div>
+<div class="town-hint" id="town-hint">↑ Tap any building to explore</div>
+```
 
   </div><!-- /idx-main -->
-
 
   <!-- ═══════════════════════════════════
        FOOTER
   ════════════════════════════════════ -->
+
   <footer class="idx-ftr" id="ftr">
     <div class="idx-ftr-l">
       <div style="font-size:8px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:2px;">Compliance</div>
@@ -949,7 +965,6 @@
   </footer>
 
 </div><!-- /idx-app -->
-
 
 <script>
 (function () {
@@ -1011,9 +1026,7 @@
       if (hint) hint.classList.add('show');
     }, 1300);
 
-    /* Sequence: arch → buildings → george → welcome → auto-tour */
     setTimeout(startSceneSequence, 1500);
-
     setTimeout(checkResume, 1600);
 
     if (typeof gtag === 'function') gtag('event', 'journey_intro_tap', {});
@@ -1021,12 +1034,7 @@
 
   /* ══════════════════════════════════════════════════════
      SCENE FADE-IN SEQUENCE
-     1. Arch fades in
-     2. Buildings stagger in
-     3. George wave appears
-     4. Welcome bubble → George sequence → auto-tour
   ══════════════════════════════════════════════════════ */
-
   var BUILDING_IDS = [
     'tb-clock-tower','tb-title-company','tb-contract-office',
     'tb-realestate-office','tb-bank','tb-bungalow',
@@ -1034,43 +1042,39 @@
   ];
 
   function startSceneSequence() {
-    var wrap  = document.getElementById('town-wrap');
-    var scene = document.getElementById('town-scene');
-
-    /* Step 1: Start at top — arch visible */
+    var wrap = document.getElementById('town-wrap');
     if (wrap) wrap.scrollTop = 0;
 
-    /* Step 2: Arch fades in */
-    var arch = document.querySelector('.town-arch');
+    /* FIX #2: Arch fadein */
+    var arch = document.getElementById('town-arch');
     if (arch) arch.classList.add('fadein');
 
-    /* Step 3: George appears BIG at 800ms */
-    setTimeout(function() {
+    /* George appears at 800ms */
+    setTimeout(function () {
       var wave = document.getElementById('george-wave');
       if (wave) wave.classList.add('fadein');
 
-      /* Auto-scroll: smoothly follow George as he scales down to his position
-         George is at top:417px in scene. Scroll so George is ~40% from top of viewport */
-      setTimeout(function() {
+      /* Smooth scroll to George */
+      setTimeout(function () {
         if (!wrap) return;
         var scale      = wrap.offsetWidth / 430;
-        var georgeTop  = 417 * scale;  /* George's top in scaled px */
+        var georgeTop  = 417 * scale;
         var vpHeight   = wrap.offsetHeight;
         var targetScroll = Math.max(0, georgeTop - (vpHeight * 0.35));
-        smoothScrollTo(wrap, targetScroll, 2800); /* scroll over 2.8s matching entrance */
+        smoothScrollTo(wrap, targetScroll, 2800);
       }, 200);
     }, 800);
 
-    /* Step 4: Buildings stagger in after George settles */
-    var buildingStart = 800 + 3500;
-    BUILDING_IDS.forEach(function(id, i) {
-      setTimeout(function() {
+    /* Buildings stagger in after George settles (~4.3s) */
+    var buildingStart = 4300;
+    BUILDING_IDS.forEach(function (id, i) {
+      setTimeout(function () {
         var b = document.getElementById(id);
         if (b) b.classList.add('fadein');
       }, buildingStart + (i * 180));
     });
 
-    /* Step 5: George welcome sequence starts as buildings come in */
+    /* George welcome sequence starts as buildings come in */
     setTimeout(startGeorgeSequence, buildingStart + 200);
   }
 
@@ -1083,7 +1087,6 @@
       if (!startTime) startTime = timestamp;
       var elapsed  = timestamp - startTime;
       var progress = Math.min(elapsed / duration, 1);
-      /* Ease in-out cubic */
       var ease = progress < 0.5
         ? 4 * progress * progress * progress
         : 1 - Math.pow(-2 * progress + 2, 3) / 2;
@@ -1092,68 +1095,69 @@
     }
     requestAnimationFrame(step);
   }
+
   /* ══════════════════════════════════════════════════════
      GEORGE WELCOME SEQUENCE
-     Phase 1: Wave bubble — "Welcome to the STL Home Buyer Journey"
-     Phase 2: Transition to serious pose — "Most buyers start at pre-approval"
-     Phase 3: Highlight Ch.1 pin, show CTA button
-     After sequence: hand off to auto-tour loop
+     FIX #5: Auto-tour ONLY starts after this full sequence ends (~10s).
+     Building taps dismiss the bubble but do NOT start the auto-tour early —
+     only the 10s timeout or user leaving the bubble triggers auto-tour.
   ══════════════════════════════════════════════════════ */
-  var autoTourActive   = false;
-  var autoTourTimer    = null;
-  var georgeSequenceDone = false;
+  var autoTourStarted = false;
 
   function startGeorgeSequence() {
-    var bubble   = document.getElementById('george-bubble');
-    var text     = document.getElementById('bubble-text');
-    var sub      = document.getElementById('bubble-sub');
-    var cta      = document.getElementById('bubble-cta');
-    var georgeEl = document.getElementById('town-george');
+    var bubble = document.getElementById('george-bubble');
+    var text   = document.getElementById('bubble-text');
+    var sub    = document.getElementById('bubble-sub');
+    var cta    = document.getElementById('bubble-cta');
 
-    if (!bubble) { startAutoTour(); return; }
+    if (!bubble) { scheduleAutoTour(); return; }
 
-    /* Phase 1: Welcome message */
+    /* Phase 1: Welcome */
     if (text) text.textContent = 'Welcome to the STL Home Buyer Journey';
     if (sub)  sub.textContent  = '13 years. 130+ transactions. All of it here.';
     bubble.classList.add('show');
 
-    /* Phase 2: Transition to advice after 3s */
+    /* Phase 2: Advice at 3.2s */
     setTimeout(function () {
       if (text) text.textContent = 'Most buyers start at Pre-Approval.';
-      if (sub)  sub.textContent  = "That’s where the game is already being played — before you see a house.";
+      if (sub)  sub.textContent  = "That's where the game is already being played \u2014 before you see a house.";
     }, 3200);
 
-    /* Wave George already faded in by startSceneSequence */
-
-    /* Phase 2: Swap to explain George after 4.5s */
+    /* Phase 2b: Swap wave → explain George at 4.5s */
     setTimeout(function () {
-      var waveEl2   = document.getElementById('george-wave');
+      var waveEl    = document.getElementById('george-wave');
       var explainEl = document.getElementById('george-explain');
-      if (waveEl2)   waveEl2.classList.add('hide');
+      if (waveEl)    waveEl.classList.add('hide');
       if (explainEl) explainEl.classList.add('show');
-      if (text) text.textContent = 'Most buyers start at Pre-Approval.';
-      if (sub)  sub.textContent  = "That\u2019s where the game is already being played \u2014 before you see a house.";
     }, 4500);
 
-    /* Phase 3: Show CTA + glow Ch.1 building */
+    /* Phase 3: Show CTA + glow Ch.1 bank at 6.5s */
     setTimeout(function () {
       if (cta) cta.classList.add('show');
       var bank = document.getElementById('tb-bank');
       if (bank) bank.classList.add('tour-active');
     }, 6500);
 
-    /* Phase 4: Dismiss after 10s */
+    /* Phase 4: Auto-dismiss at 10s → start auto-tour (FIX #5) */
     setTimeout(function () {
-      dismissGeorgeBubble();
+      hideBubbleOnly();
+      scheduleAutoTour();
     }, 10000);
   }
 
-  function dismissGeorgeBubble() {
+  /* Hides the bubble and removes bank glow WITHOUT starting auto-tour.
+     Used when user taps a building mid-sequence. */
+  function hideBubbleOnly() {
     var bubble = document.getElementById('george-bubble');
     var bank   = document.getElementById('tb-bank');
     if (bubble) bubble.classList.remove('show');
     if (bank)   { bank.classList.remove('tour-active'); bank.classList.add('visited'); }
-    georgeSequenceDone = true;
+  }
+
+  /* Schedules auto-tour with a 1.5s gap. Only fires once. */
+  function scheduleAutoTour() {
+    if (autoTourStarted) return;
+    autoTourStarted = true;
     setTimeout(startAutoTour, 1500);
   }
 
@@ -1171,22 +1175,18 @@
   }
 
   /* ══════════════════════════════════════════════════════
-     AUTO-TOUR SYSTEM
-     Cycles through all 9 chapters showing ambient popups
-     and highlighting pins one at a time.
-     Each popup visible ~3s, then fades while next appears.
-     Full cycle repeats indefinitely until user taps.
+     AUTO-TOUR SYSTEM — cycles all 9 chapters, repeats
   ══════════════════════════════════════════════════════ */
-
   var CH_TO_BUILDING = {
     1:'tb-bank', 2:'tb-realestate-office', 3:'tb-bungalow',
     4:'tb-title-company', 5:'tb-contract-office', 6:'tb-clock-tower',
     7:'tb-inspector-house', 8:'tb-row-house', 9:'tb-closing-office'
   };
 
-  var tourOrder    = [1,2,3,4,5,6,7,8,9];
-  var tourIndex    = 0;
-  var tourActive   = false;
+  var tourOrder           = [1,2,3,4,5,6,7,8,9];
+  var tourIndex           = 0;
+  var tourActive          = false;
+  var autoTourTimer       = null;
   var tourCurrentPopup    = null;
   var tourCurrentBuilding = null;
 
@@ -1207,7 +1207,6 @@
     if (tourCurrentPopup)    tourCurrentPopup.classList.remove('visible');
     if (tourCurrentBuilding) {
       tourCurrentBuilding.classList.remove('tour-active');
-      /* Mark as visited */
       tourCurrentBuilding.classList.add('visited');
     }
     tourCurrentPopup    = null;
@@ -1216,7 +1215,6 @@
 
   function runTourStep() {
     if (!tourActive) return;
-
     hideTourCurrent();
 
     var ch       = tourOrder[tourIndex % tourOrder.length];
@@ -1226,37 +1224,25 @@
 
     autoTourTimer = setTimeout(function () {
       if (!tourActive) return;
-
-      /* Glow the building */
-      if (building) {
-        building.classList.add('tour-active');
-        tourCurrentBuilding = building;
-      }
-      /* Show popup */
-      if (popup) {
-        popup.classList.add('visible');
-        tourCurrentPopup = popup;
-      }
-
+      if (building) { building.classList.add('tour-active'); tourCurrentBuilding = building; }
+      if (popup)    { popup.classList.add('visible');        tourCurrentPopup    = popup;    }
       tourIndex++;
 
-      /* Hold for 3.5s then fade out and step to next */
       autoTourTimer = setTimeout(function () {
         if (popup)    popup.classList.remove('visible');
         if (building) building.classList.remove('tour-active');
-        /* 0.6s quiet gap between buildings */
         autoTourTimer = setTimeout(runTourStep, 600);
       }, 3500);
-
     }, 400);
   }
 
-  /* ── TOWN INTERACTION ── */
+  /* ══════════════════════════════════════════════════════
+     TOWN INTERACTION — FIX #1: popups are now inside scene,
+     positioned correctly, tap → glow → popup → Enter → navigate
+  ══════════════════════════════════════════════════════ */
   var activePopup    = null;
-  var activePin      = null;
   var activeBuilding = null;
 
-  /* Wire buildings */
   var buildings = document.querySelectorAll('.town-building');
   Array.prototype.forEach.call(buildings, function (b) {
     b.addEventListener('click',   function () { handleBuildingTap(b); });
@@ -1265,46 +1251,33 @@
     });
   });
 
-  /* Wire pins */
-  var pins = document.querySelectorAll('.ch-pin');
-  Array.prototype.forEach.call(pins, function (pin) {
-    pin.addEventListener('click', function () {
-      var targetId = pin.getAttribute('data-target');
-      var building = document.getElementById(targetId);
-      if (building) handleBuildingTap(building);
-    });
-  });
-
   function handleBuildingTap(building) {
-    /* User tapped — stop the auto-tour, clear any active glow */
+    /* Stop auto-tour, dismiss bubble without triggering auto-tour */
     stopAutoTour();
-    dismissGeorgeBubble();
+    hideBubbleOnly();
+
     /* Remove tour-active from all buildings */
     Array.prototype.forEach.call(
       document.querySelectorAll('.town-building.tour-active'),
-      function(b) { b.classList.remove('tour-active'); }
+      function (b) { b.classList.remove('tour-active'); }
     );
 
     var popupId = building.getAttribute('data-popup');
     var popup   = popupId ? document.getElementById(popupId) : null;
     var chNum   = building.getAttribute('data-chapter');
 
-    /* If same building tapped again — close */
+    /* Same building tapped again — close */
     if (activePopup && activePopup === popup) {
       closeActivePopup();
       return;
     }
 
-    /* Close previous */
     closeActivePopup();
-
     if (!popup) return;
 
-    /* Open new */
     activePopup    = popup;
     activeBuilding = building;
 
-    /* Same gold glow + raise as auto-tour */
     building.classList.add('tour-active');
     popup.classList.add('show');
 
@@ -1326,11 +1299,10 @@
   /* Close on background tap */
   document.getElementById('town-wrap').addEventListener('click', function (e) {
     if (!e.target.closest('.town-building') &&
-        !e.target.closest('.ch-pin') &&
         !e.target.closest('.ch-popup') &&
-        !e.target.closest('.george-bubble')) {
+        !e.target.closest('.george-bubble') &&
+        !e.target.closest('#town-arch')) {
       closeActivePopup();
-      dismissGeorgeBubble();
     }
   });
 
@@ -1347,6 +1319,20 @@
     });
   });
 
+  /* ── FIX #6: ARCH TAPPABLE → neighborhood-matcher tool panel ── */
+  var archEl = document.getElementById('town-arch');
+  if (archEl) {
+    archEl.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (window.SharedPlatform && SharedPlatform.openToolPanel) {
+        SharedPlatform.openToolPanel('neighborhood-matcher');
+      }
+      if (typeof gtag === 'function') {
+        gtag('event', 'town_arch_tap', { action: 'neighborhood_matcher' });
+      }
+    });
+  }
+
   /* ── RESUME CARD ── */
   function checkResume() {
     var saved = JSON.parse(localStorage.getItem(SK) || '{}');
@@ -1357,8 +1343,8 @@
                    5:'06-under-contract.html', 6:'06b-deadlines.html',
                    7:'07-inspection.html',  8:'08-walkthrough.html',
                    9:'09-closing.html' };
-    var labels = { 1:'Pre-Approval',    2:'Affordability',      3:'Interior Showing',
-                   4:'Pre-Offer Strategy', 5:'Under Contract',  6:'The Deadlines',
+    var labels = { 1:'Pre-Approval', 2:'Affordability', 3:'Interior Showing',
+                   4:'Pre-Offer Strategy', 5:'Under Contract', 6:'The Deadlines',
                    7:'Inspection Report', 8:'Final Walk-Through', 9:'Closing Day' };
 
     var ch   = saved.lastChapter;
@@ -1387,21 +1373,14 @@
   }
 
   /* ── HIGHLIGHT VISITED BUILDINGS ── */
-  /* Buildings for chapters the user has visited get a subtle gold tint */
   try {
     var visited = JSON.parse(localStorage.getItem(SK) || '{}').chaptersVisited || [];
     visited.forEach(function (ch) {
-      var b = document.getElementById('tb-ch' + ch);
-      var p = document.getElementById('pin-ch' + ch);
-      if (b) b.style.filter = 'brightness(1.05) saturate(1.1)';
-      if (p) {
-        var dot = p.querySelector('.pin-dot');
-        if (dot) {
-          dot.style.background = 'rgba(255,204,77,.4)';
-          dot.style.border = '2px solid #FFCC4D';
-          dot.style.color = '#FFCC4D';
-        }
-      }
+      var buildMap = {1:'tb-bank',2:'tb-realestate-office',3:'tb-bungalow',
+                      4:'tb-title-company',5:'tb-contract-office',6:'tb-clock-tower',
+                      7:'tb-inspector-house',8:'tb-row-house',9:'tb-closing-office'};
+      var b = document.getElementById(buildMap[ch]);
+      if (b) b.classList.add('visited');
     });
   } catch (e) {}
 
@@ -1410,9 +1389,8 @@
 
 <script>
 /* ── TOWN SCENE SCALE ──
-   The town-scene is fixed at 390px wide.
-   Scale it proportionally to fill the actual viewport width.
-   Re-runs on resize so it works on every device. */
+   town-scene is fixed at 430px internal coordinates.
+   Scale proportionally to fill the actual viewport width. */
 (function () {
   function scaleTownScene() {
     var scene = document.getElementById('town-scene');
@@ -1421,18 +1399,18 @@
     var vw    = wrap.offsetWidth || window.innerWidth;
     var scale = vw / 430;
     scene.style.transform = 'scale(' + scale + ')';
-    /* Don't override height — let flex:1 fill the screen */
+    /* Set scene container height to match scaled scene height */
+    scene.parentElement.style.minHeight = (580 * scale) + 'px';
   }
   scaleTownScene();
   window.addEventListener('resize', scaleTownScene);
-  /* Also run after fonts/images may have shifted layout */
-  window.addEventListener('load', scaleTownScene);
+  window.addEventListener('load',   scaleTownScene);
 })();
 </script>
 
 <script src="shared.js"></script>
+
 <script>
-  /* Dashboard renders on top of idx-app after shared.js loads */
   if (window.SharedPlatform && SharedPlatform.renderDashboard) {
     SharedPlatform.renderDashboard();
   }
