@@ -229,7 +229,7 @@
 .town-scene {
   position: relative;
   width: 430px;
-  height: 580px;
+  height: 530px;
   transform-origin: top left;
   flex-shrink: 0;
 }
@@ -238,9 +238,9 @@
    left:76 centers it. top:-30 puts towers above back buildings. */
 .town-arch {
   position: absolute;
-  left: 76px;
-  top: -30px;
-  width: 278px;
+  left: 131px;
+  top: 60px;
+  width: 167px;
   height: auto;
   z-index: 2;
   pointer-events: auto;
@@ -290,16 +290,18 @@
   filter: drop-shadow(0 0 5px rgba(255,204,77,.2));
 }
 
-/* ── BUILDING COORDINATES — from layout tool drag ── */
-#tb-clock-tower       { left: 0px;   top: 110px; width: 168.8px; z-index: 3; }
-#tb-contract-office   { left: 310px; top: 110px; width: 100.2px; z-index: 3; }
-#tb-title-company     { left: 10px;  top: 210px; width: 129.6px; z-index: 4; }
-#tb-realestate-office { left: 275px; top: 220px; width: 155.0px; z-index: 4; }
-#tb-bungalow          { left: 0px;   top: 300px; width: 163.4px; z-index: 5; }
-#tb-bank              { left: 120px; top: 260px; width: 188.6px; z-index: 5; }
-#tb-inspector-house   { left: 289px; top: 300px; width: 140.5px; z-index: 5; }
+/* ── BUILDING COORDINATES — compressed to fit screen, 15% depth scaling ──
+   Front z6: ~217px | Mid z5: ~185px | Back z4: ~152px | Back z3: ~118px */
+#tb-clock-tower       { left: 0px;   top:  50px; width: 118px;   z-index: 3; }
+#tb-contract-office   { left: 280px; top:  50px; width: 118px;   z-index: 3; }
+#tb-title-company     { left: 0px;   top: 153px; width: 152px;   z-index: 4; }
+#tb-realestate-office { left: 275px; top: 163px; width: 152px;   z-index: 4; }
+#tb-bank              { left: 120px; top: 245px; width: 185px;   z-index: 5; }
+#tb-bungalow          { left: 0px;   top: 297px; width: 185px;   z-index: 5; }
+#tb-inspector-house   { left: 289px; top: 307px; width: 185px;   z-index: 5; }
 #tb-row-house         { left: 0px;   top: 420px; width: 215.6px; z-index: 6; }
 #tb-closing-office    { left: 212px; top: 420px; width: 218.0px; z-index: 6; }
+
 
 /* ── GEORGE — top:420, between row-house and closing-office ── */
 .town-george {
@@ -531,9 +533,11 @@
 /* ── TEMP TEXT PLACEHOLDERS — visible touch targets until PNGs load ── */
 .bld-label {
   position: absolute;
-  bottom: 4px;
-  left: 0;
-  right: 0;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 4px;
+  white-space: nowrap;
   text-align: center;
   font-family: var(--font-sans);
   font-size: 9px;
@@ -544,15 +548,10 @@
   line-height: 1.4;
   pointer-events: none;
   text-shadow: 0 1px 4px rgba(0,0,0,.9);
+  z-index: 9;
 }
-.bld-label span {
-  display: block;
-  font-weight: 400;
-  color: rgba(255,255,255,.55);
-  font-size: 8px;
-  letter-spacing: .02em;
-  text-transform: none;
-}
+/* building div must allow label to overflow below */
+.town-building { overflow: visible; }
 /* Hide label once image loads */
 .town-building img.loaded + .bld-label { display: none; }
 
@@ -733,15 +732,15 @@
              data-popup="popup-arch" role="button" tabindex="0" aria-label="Explore Neighborhoods"
              style="mix-blend-mode:screen;">
         <!-- PLACEHOLDER: shows arch landing position until PNG is swapped -->
-        <div style="position:absolute;left:76px;top:148px;width:278px;text-align:center;
+        <div style="position:absolute;left:131px;top:134px;width:167px;text-align:center;
                     font-family:'Inter',sans-serif;font-size:9px;font-weight:700;
                     letter-spacing:.1em;text-transform:uppercase;
                     color:#FFCC4D;pointer-events:none;z-index:3;opacity:.7;">
-          Find Your Neighborhood
+          Your Neighborhood
         </div>
 
         <!-- ARCH POPUP CARD — same structure as building popups -->
-        <div class="ch-popup" id="popup-arch" style="left:76px;top:5px;">
+        <div class="ch-popup" id="popup-arch" style="left:34px;top:180px;">
           <div class="popup-ch-num">STL Neighborhoods</div>
           <div class="popup-title">Find the right neighborhood for your budget</div>
           <div class="popup-quote">98 neighborhoods. ZIP-level market data. All in one place.</div>
@@ -754,63 +753,63 @@
              data-chapter="6" data-file="06b-deadlines.html" data-event="deadlines"
              data-popup="popup-ch6" tabindex="0" role="button" aria-label="Chapter 6: Deadlines">
           <img src="assets/town/clock-tower.png" alt="">
-          <div class="bld-label">Ch.6 · Deadlines<br><span>Clock Tower</span></div>
+          <div class="bld-label">Ch.6 · Deadlines</div>
         </div>
 
         <div class="town-building" id="tb-title-company"
              data-chapter="4" data-file="05-pre-offer.html" data-event="offer"
              data-popup="popup-ch4" tabindex="0" role="button" aria-label="Chapter 4: Pre-Offer">
           <img src="assets/town/title-company.png" alt="">
-          <div class="bld-label">Ch.4 · Pre-Offer<br><span>Title Company</span></div>
+          <div class="bld-label">Ch.4 · Pre-Offer</div>
         </div>
 
         <div class="town-building" id="tb-contract-office"
              data-chapter="5" data-file="06-under-contract.html" data-event="contract"
              data-popup="popup-ch5" tabindex="0" role="button" aria-label="Chapter 5: Under Contract">
           <img src="assets/town/contract-office.png" alt="">
-          <div class="bld-label">Ch.5 · Under Contract<br><span>Contract Office</span></div>
+          <div class="bld-label">Ch.5 · Under Contract</div>
         </div>
 
         <div class="town-building" id="tb-realestate-office"
              data-chapter="2" data-file="02-affordability.html" data-event="afford"
              data-popup="popup-ch2" tabindex="0" role="button" aria-label="Chapter 2: Affordability">
           <img src="assets/town/realestate-office.png" alt="">
-          <div class="bld-label">Ch.2 · Affordability<br><span>Real Estate Office</span></div>
+          <div class="bld-label">Ch.2 · Affordability</div>
         </div>
 
         <div class="town-building" id="tb-bank"
              data-chapter="1" data-file="01-preapproval.html" data-event="start"
              data-popup="popup-ch1" tabindex="0" role="button" aria-label="Chapter 1: Pre-Approval">
           <img src="assets/town/bank.png" alt="">
-          <div class="bld-label">Ch.1 · Pre-Approval<br><span>Bank</span></div>
+          <div class="bld-label">Ch.1 · Pre-Approval</div>
         </div>
 
         <div class="town-building" id="tb-bungalow"
              data-chapter="3" data-file="03-interior.html" data-event="interior"
              data-popup="popup-ch3" tabindex="0" role="button" aria-label="Chapter 3: Interior Walk">
           <img src="assets/town/bungalow.png" alt="">
-          <div class="bld-label">Ch.3 · Interior Walk<br><span>Bungalow</span></div>
+          <div class="bld-label">Ch.3 · Interior Walk</div>
         </div>
 
         <div class="town-building" id="tb-inspector-house"
              data-chapter="7" data-file="07-inspection.html" data-event="inspect"
              data-popup="popup-ch7" tabindex="0" role="button" aria-label="Chapter 7: Inspection">
           <img src="assets/town/inspector-house.png" alt="">
-          <div class="bld-label">Ch.7 · Inspection<br><span>Inspector House</span></div>
+          <div class="bld-label">Ch.7 · Inspection</div>
         </div>
 
         <div class="town-building" id="tb-row-house"
              data-chapter="8" data-file="08-walkthrough.html" data-event="walkthrough"
              data-popup="popup-ch8" tabindex="0" role="button" aria-label="Chapter 8: Walkthrough">
           <img src="assets/town/row-house.png" alt="">
-          <div class="bld-label">Ch.8 · Walk-Through<br><span>Row House</span></div>
+          <div class="bld-label">Ch.8 · Walk-Through</div>
         </div>
 
         <div class="town-building" id="tb-closing-office"
              data-chapter="9" data-file="09-closing.html" data-event="closing"
              data-popup="popup-ch9" tabindex="0" role="button" aria-label="Chapter 9: Closing">
           <img src="assets/town/closing-office.png" alt="">
-          <div class="bld-label">Ch.9 · Closing Day<br><span>Closing Office</span></div>
+          <div class="bld-label">Ch.9 · Closing Day</div>
         </div>
 
         <!-- GEORGE WAVE -->
@@ -838,11 +837,11 @@
         </div>
 
         <!-- AUTO-TOUR POPUPS — above each building -->
-        <div class="auto-popup" id="ap-ch1" style="left:120px;top:175px;">
+        <div class="auto-popup" id="ap-ch1" style="left:120px;top:165px;">
           <div class="auto-popup-num">Ch.1 · Pre-Approval</div>
           <div class="auto-popup-title">What happens when you click "Contact Agent"</div>
         </div>
-        <div class="auto-popup" id="ap-ch2" style="left:275px;top:140px;">
+        <div class="auto-popup" id="ap-ch2" style="left:275px;top:85px;">
           <div class="auto-popup-num">Ch.2 · Affordability</div>
           <div class="auto-popup-title">Where buyers accidentally overpay</div>
         </div>
@@ -850,19 +849,19 @@
           <div class="auto-popup-num">Ch.3 · Interior Walk</div>
           <div class="auto-popup-title">Walk a property the way I do</div>
         </div>
-        <div class="auto-popup" id="ap-ch4" style="left:10px;top:130px;">
+        <div class="auto-popup" id="ap-ch4" style="left:0px;top:75px;">
           <div class="auto-popup-num">Ch.4 · Pre-Offer</div>
           <div class="auto-popup-title">Where buyers get pushed into bad offers</div>
         </div>
-        <div class="auto-popup" id="ap-ch5" style="left:290px;top:30px;">
+        <div class="auto-popup" id="ap-ch5" style="left:280px;top:5px;">
           <div class="auto-popup-num">Ch.5 · Under Contract</div>
           <div class="auto-popup-title">Offer accepted — where deals fall apart</div>
         </div>
-        <div class="auto-popup" id="ap-ch6" style="left:0px;top:30px;">
+        <div class="auto-popup" id="ap-ch6" style="left:0px;top:5px;">
           <div class="auto-popup-num">Ch.6 · Deadlines</div>
           <div class="auto-popup-title">Three deadlines running at once</div>
         </div>
-        <div class="auto-popup" id="ap-ch7" style="left:289px;top:215px;">
+        <div class="auto-popup" id="ap-ch7" style="left:289px;top:225px;">
           <div class="auto-popup-num">Ch.7 · Inspection</div>
           <div class="auto-popup-title">Where buyers miss the problems</div>
         </div>
@@ -880,7 +879,7 @@
              Each has explicit top/left to float above its building.
              ══════════════════════════════════════════════════════ -->
         <!-- ch1: bank top:450 → popup above at 270 -->
-        <div class="ch-popup" id="popup-ch1" style="left:120px;top:80px;">
+        <div class="ch-popup" id="popup-ch1" style="left:90px;top:155px;">
           <div class="popup-ch-num">Chapter 1 · Pre-Approval</div>
           <div class="popup-title">What actually happens when you click "Contact Agent"</div>
           <div class="popup-quote">The agent who calls you paid to be there. That changes everything.</div>
@@ -888,7 +887,7 @@
         </div>
 
         <!-- ch2: realestate-office top:200 → popup above at 20 -->
-        <div class="ch-popup" id="popup-ch2" style="left:245px;top:40px;">
+        <div class="ch-popup" id="popup-ch2" style="left:245px;top:60px;">
           <div class="popup-ch-num">Chapter 2 · Affordability</div>
           <div class="popup-title">Where buyers accidentally overpay before they make an offer</div>
           <div class="popup-quote">The number your lender approved is not the number you should spend.</div>
@@ -896,7 +895,7 @@
         </div>
 
         <!-- ch3: bungalow top:360 → popup above at 180 -->
-        <div class="ch-popup" id="popup-ch3" style="left:0px;top:120px;">
+        <div class="ch-popup" id="popup-ch3" style="left:0px;top:195px;">
           <div class="popup-ch-num">Chapter 3 · Interior Walk</div>
           <div class="popup-title">Walk a property the way I do — pick your home type</div>
           <div class="popup-quote">Most buyers look at countertops. I look at the basement and panel.</div>
@@ -904,7 +903,7 @@
         </div>
 
         <!-- ch4: title-company top:210 → popup above at 30 -->
-        <div class="ch-popup" id="popup-ch4" style="left:10px;top:40px;">
+        <div class="ch-popup" id="popup-ch4" style="left:0px;top:60px;">
           <div class="popup-ch-num">Chapter 4 · Pre-Offer</div>
           <div class="popup-title">Where buyers get pushed into offers they can't take back</div>
           <div class="popup-quote">Competing offers, manufactured urgency — all of it explained.</div>
@@ -912,7 +911,7 @@
         </div>
 
         <!-- ch5: contract-office top:50 → popup above, shifted left to stay in scene -->
-        <div class="ch-popup" id="popup-ch5" style="left:248px;top:30px;">
+        <div class="ch-popup" id="popup-ch5" style="left:248px;top:5px;">
           <div class="popup-ch-num">Chapter 5 · Under Contract</div>
           <div class="popup-title">Offer accepted — where deals fall apart</div>
           <div class="popup-quote">Small mistakes here can quietly kill a deal after you think you're safe.</div>
@@ -920,7 +919,7 @@
         </div>
 
         <!-- ch6: clock-tower top:50 → popup above at 5 -->
-        <div class="ch-popup" id="popup-ch6" style="left:0px;top:30px;">
+        <div class="ch-popup" id="popup-ch6" style="left:0px;top:5px;">
           <div class="popup-ch-num">Chapter 6 · Deadlines</div>
           <div class="popup-title">Three deadlines running in parallel — miss one and it's gone</div>
           <div class="popup-quote">Loan contingency. Appraisal. Title. All running from Day 1.</div>
@@ -928,7 +927,7 @@
         </div>
 
         <!-- ch7: inspector-house top:470 → popup above at 290 -->
-        <div class="ch-popup" id="popup-ch7" style="left:248px;top:120px;">
+        <div class="ch-popup" id="popup-ch7" style="left:248px;top:210px;">
           <div class="popup-ch-num">Chapter 7 · Inspection</div>
           <div class="popup-title">Where buyers miss the problems they end up paying for</div>
           <div class="popup-quote">By the time most buyers read the report, earnest money is at risk.</div>
@@ -936,7 +935,7 @@
         </div>
 
         <!-- ch8: row-house top:560 → popup above at 380 -->
-        <div class="ch-popup" id="popup-ch8" style="left:0px;top:240px;">
+        <div class="ch-popup" id="popup-ch8" style="left:0px;top:330px;">
           <div class="popup-ch-num">Chapter 8 · Final Walk-Through</div>
           <div class="popup-title">The final walk-through is not a second showing</div>
           <div class="popup-quote">Same condition as the day you made the offer. Seller out.</div>
@@ -944,7 +943,7 @@
         </div>
 
         <!-- ch9: closing-office top:560 → popup above at 380 -->
-        <div class="ch-popup" id="popup-ch9" style="left:212px;top:240px;">
+        <div class="ch-popup" id="popup-ch9" style="left:212px;top:330px;">
           <div class="popup-ch-num">Chapter 9 · Closing Day</div>
           <div class="popup-title">What you're signing — and what most buyers don't catch</div>
           <div class="popup-quote">Wire fraud. The note. The deed of trust. I protect you here.</div>
@@ -988,19 +987,12 @@
   } catch (e) {}
   function save() { try { localStorage.setItem(SK, JSON.stringify(S)); } catch (e) {} }
 
-  /* ── SHOW REVEAL BUTTON AFTER 400ms, AUTO-DISMISS AT 3s ── */
+  /* ── SHOW REVEAL BUTTON AFTER 400ms ── */
   window.addEventListener('load', function () {
     setTimeout(function () {
       var b = document.getElementById('btn-reveal');
       if (b) b.classList.add('show');
     }, 400);
-    /* Auto-dismiss intro after 3 seconds if user hasn't tapped */
-    setTimeout(function () {
-      var intro = document.getElementById('intro');
-      if (intro && !intro.classList.contains('gone')) {
-        revealSite();
-      }
-    }, 3000);
   });
 
   /* ── REVEAL BUTTON CLICK ── */
@@ -1424,7 +1416,7 @@
     var scale = vw / 430;
     scene.style.transform = 'scale(' + scale + ')';
     /* Set scene container height to match scaled scene height */
-    scene.parentElement.style.minHeight = (580 * scale) + 'px';
+    scene.parentElement.style.minHeight = (530 * scale) + 'px';
   }
   scaleTownScene();
   window.addEventListener('resize', scaleTownScene);
