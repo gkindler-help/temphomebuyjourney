@@ -200,11 +200,15 @@
 /* ── MAIN — flex column so town-wrap fills remaining space ── */
 .idx-main {
   flex: 1;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   min-height: 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+.idx-main::-webkit-scrollbar { display: none; }
 
 /* ── TOWN SCENE ──
    town-wrap fills all remaining vertical space.
@@ -229,7 +233,7 @@
 .town-scene {
   position: relative;
   width: 430px;
-  height: 560px;
+  height: 490px;
   transform-origin: top left;
   flex-shrink: 0;
 }
@@ -238,9 +242,9 @@
    left:76 centers it. top:-30 puts towers above back buildings. */
 .town-arch {
   position: absolute;
-  left: 131px;
-  top: 60px;
-  width: 167px;
+  left: 90px;
+  top: 10px;
+  width: 250px;
   height: auto;
   z-index: 2;
   pointer-events: auto;
@@ -269,6 +273,7 @@
   position: absolute;
   z-index: 4;
   cursor: pointer;
+  overflow: visible;
   transition: transform .18s ease, filter .18s ease;
   opacity: 0;
   -webkit-tap-highlight-color: transparent;
@@ -290,23 +295,23 @@
   filter: drop-shadow(0 0 5px rgba(255,204,77,.2));
 }
 
-/* ── BUILDING COORDINATES — from layout tool v3 screenshot ── */
-#tb-clock-tower       { left:  30px; top:  90px; width: 118px;   z-index: 3; }
-#tb-contract-office   { left: 278px; top:  90px; width: 118px;   z-index: 3; }
-#tb-title-company     { left:   0px; top: 190px; width: 152px;   z-index: 4; }
-#tb-realestate-office { left: 270px; top: 190px; width: 152px;   z-index: 4; }
-#tb-bank              { left: 120px; top: 245px; width: 185px;   z-index: 5; }
-#tb-bungalow          { left:   0px; top: 310px; width: 185px;   z-index: 5; }
-#tb-inspector-house   { left: 245px; top: 310px; width: 185px;   z-index: 5; }
-#tb-row-house         { left:   0px; top: 420px; width: 215.6px; z-index: 6; }
-#tb-closing-office    { left: 212px; top: 420px; width: 218.0px; z-index: 6; }
+/* ── BUILDING COORDINATES — shifted up 80px to remove black space ── */
+#tb-clock-tower            { left: 30px; top: 10px; width: 118px; z-index: 3; }
+#tb-contract-office        { left: 278px; top: 10px; width: 118px; z-index: 3; }
+#tb-title-company          { left: 0px; top: 110px; width: 152px; z-index: 4; }
+#tb-realestate-office      { left: 270px; top: 110px; width: 152px; z-index: 4; }
+#tb-bank                   { left: 120px; top: 165px; width: 185px; z-index: 5; }
+#tb-bungalow               { left: 0px; top: 230px; width: 185px; z-index: 5; }
+#tb-inspector-house        { left: 245px; top: 230px; width: 185px; z-index: 5; }
+#tb-row-house              { left: 0px; top: 340px; width: 215.6px; z-index: 6; }
+#tb-closing-office         { left: 212px; top: 340px; width: 218.0px; z-index: 6; }
 
 
 /* ── GEORGE — top:420, between row-house and closing-office ── */
 .town-george {
   position: absolute;
   left: 170px;
-  top:  420px;
+  top:  340px;
   width: 84.7px;
   z-index: 7;
   pointer-events: none;
@@ -316,7 +321,7 @@
 #george-explain {
   position: absolute;
   left: 170px;
-  top:  420px;
+  top:  340px;
   width: 84.7px;
   z-index: 8;
   pointer-events: none;
@@ -345,7 +350,7 @@
 .george-bubble {
   position: absolute;
   left: 169.4px;
-  top: 270px;
+  top: 190px;
   width: 148px;
   z-index: 15;
   opacity: 0;
@@ -550,7 +555,7 @@
   z-index: 9;
 }
 /* building div must allow label to overflow below */
-.town-building { overflow: visible; }
+/* overflow:visible merged into main .town-building rule above */
 /* Hide label once image loads */
 .town-building img.loaded + .bld-label { display: none; }
 
@@ -731,7 +736,7 @@
              data-popup="popup-arch" role="button" tabindex="0" aria-label="Explore Neighborhoods"
              style="mix-blend-mode:screen;">
         <!-- PLACEHOLDER: shows arch landing position until PNG is swapped -->
-        <div style="position:absolute;left:131px;top:134px;width:167px;text-align:center;
+        <div style="position:absolute;left:90px;top:118px;width:250px;text-align:center;
                     font-family:'Inter',sans-serif;font-size:9px;font-weight:700;
                     letter-spacing:.1em;text-transform:uppercase;
                     color:#FFCC4D;pointer-events:none;z-index:3;opacity:.7;">
@@ -739,7 +744,7 @@
         </div>
 
         <!-- ARCH POPUP CARD — same structure as building popups -->
-        <div class="ch-popup" id="popup-arch" style="left:34px;top:180px;">
+        <div class="ch-popup" id="popup-arch" style="left:90px;top:60px;">
           <div class="popup-ch-num">STL Neighborhoods</div>
           <div class="popup-title">Find the right neighborhood for your budget</div>
           <div class="popup-quote">98 neighborhoods. ZIP-level market data. All in one place.</div>
@@ -836,39 +841,39 @@
         </div>
 
         <!-- AUTO-TOUR POPUPS — above each building -->
-        <div class="auto-popup" id="ap-ch1" style="left:245px;top:110px;">
+        <div class="auto-popup" id="ap-ch1" style="left:245px;top:30px;">
           <div class="auto-popup-num">Ch.1 · Pre-Approval</div>
           <div class="auto-popup-title">What happens when you click "Contact Agent"</div>
         </div>
-        <div class="auto-popup" id="ap-ch2" style="left:120px;top:165px;">
+        <div class="auto-popup" id="ap-ch2" style="left:120px;top:85px;">
           <div class="auto-popup-num">Ch.2 · Affordability</div>
           <div class="auto-popup-title">Where buyers accidentally overpay</div>
         </div>
-        <div class="auto-popup" id="ap-ch3" style="left:0px;top:230px;">
+        <div class="auto-popup" id="ap-ch3" style="left:0px;top:150px;">
           <div class="auto-popup-num">Ch.3 · Interior Walk</div>
           <div class="auto-popup-title">Walk a property the way I do</div>
         </div>
-        <div class="auto-popup" id="ap-ch4" style="left:0px;top:110px;">
+        <div class="auto-popup" id="ap-ch4" style="left:0px;top:30px;">
           <div class="auto-popup-num">Ch.4 · Pre-Offer</div>
           <div class="auto-popup-title">Where buyers get pushed into bad offers</div>
         </div>
-        <div class="auto-popup" id="ap-ch5" style="left:278px;top:10px;">
+        <div class="auto-popup" id="ap-ch5" style="left:278px;top:5px;">
           <div class="auto-popup-num">Ch.5 · Under Contract</div>
           <div class="auto-popup-title">Offer accepted — where deals fall apart</div>
         </div>
-        <div class="auto-popup" id="ap-ch6" style="left:30px;top:10px;">
+        <div class="auto-popup" id="ap-ch6" style="left:30px;top:5px;">
           <div class="auto-popup-num">Ch.6 · Deadlines</div>
           <div class="auto-popup-title">Three deadlines running at once</div>
         </div>
-        <div class="auto-popup" id="ap-ch7" style="left:245px;top:230px;">
+        <div class="auto-popup" id="ap-ch7" style="left:245px;top:150px;">
           <div class="auto-popup-num">Ch.7 · Inspection</div>
           <div class="auto-popup-title">Where buyers miss the problems</div>
         </div>
-        <div class="auto-popup" id="ap-ch8" style="left:0px;top:340px;">
+        <div class="auto-popup" id="ap-ch8" style="left:0px;top:260px;">
           <div class="auto-popup-num">Ch.8 · Walk-Through</div>
           <div class="auto-popup-title">Not a second showing — a verification</div>
         </div>
-        <div class="auto-popup" id="ap-ch9" style="left:212px;top:340px;">
+        <div class="auto-popup" id="ap-ch9" style="left:212px;top:260px;">
           <div class="auto-popup-num">Ch.9 · Closing</div>
           <div class="auto-popup-title">What you're signing and what buyers miss</div>
         </div>
@@ -878,7 +883,7 @@
              Each has explicit top/left to float above its building.
              ══════════════════════════════════════════════════════ -->
         <!-- ch1: bank top:450 → popup above at 270 -->
-        <div class="ch-popup" id="popup-ch1" style="left:245px;top:90px;">
+        <div class="ch-popup" id="popup-ch1" style="left:245px;top:20px;">
           <div class="popup-ch-num">Chapter 1 · Pre-Approval</div>
           <div class="popup-title">What actually happens when you click "Contact Agent"</div>
           <div class="popup-quote">The agent who calls you paid to be there. That changes everything.</div>
@@ -886,7 +891,7 @@
         </div>
 
         <!-- ch2: realestate-office top:200 → popup above at 20 -->
-        <div class="ch-popup" id="popup-ch2" style="left:90px;top:145px;">
+        <div class="ch-popup" id="popup-ch2" style="left:90px;top:70px;">
           <div class="popup-ch-num">Chapter 2 · Affordability</div>
           <div class="popup-title">Where buyers accidentally overpay before they make an offer</div>
           <div class="popup-quote">The number your lender approved is not the number you should spend.</div>
@@ -894,7 +899,7 @@
         </div>
 
         <!-- ch3: bungalow top:360 → popup above at 180 -->
-        <div class="ch-popup" id="popup-ch3" style="left:0px;top:210px;">
+        <div class="ch-popup" id="popup-ch3" style="left:0px;top:135px;">
           <div class="popup-ch-num">Chapter 3 · Interior Walk</div>
           <div class="popup-title">Walk a property the way I do — pick your home type</div>
           <div class="popup-quote">Most buyers look at countertops. I look at the basement and panel.</div>
@@ -902,7 +907,7 @@
         </div>
 
         <!-- ch4: title-company top:210 → popup above at 30 -->
-        <div class="ch-popup" id="popup-ch4" style="left:0px;top:90px;">
+        <div class="ch-popup" id="popup-ch4" style="left:0px;top:20px;">
           <div class="popup-ch-num">Chapter 4 · Pre-Offer</div>
           <div class="popup-title">Where buyers get pushed into offers they can't take back</div>
           <div class="popup-quote">Competing offers, manufactured urgency — all of it explained.</div>
@@ -926,7 +931,7 @@
         </div>
 
         <!-- ch7: inspector-house top:470 → popup above at 290 -->
-        <div class="ch-popup" id="popup-ch7" style="left:245px;top:210px;">
+        <div class="ch-popup" id="popup-ch7" style="left:245px;top:135px;">
           <div class="popup-ch-num">Chapter 7 · Inspection</div>
           <div class="popup-title">Where buyers miss the problems they end up paying for</div>
           <div class="popup-quote">By the time most buyers read the report, earnest money is at risk.</div>
@@ -934,7 +939,7 @@
         </div>
 
         <!-- ch8: row-house top:560 → popup above at 380 -->
-        <div class="ch-popup" id="popup-ch8" style="left:0px;top:330px;">
+        <div class="ch-popup" id="popup-ch8" style="left:0px;top:250px;">
           <div class="popup-ch-num">Chapter 8 · Final Walk-Through</div>
           <div class="popup-title">The final walk-through is not a second showing</div>
           <div class="popup-quote">Same condition as the day you made the offer. Seller out.</div>
@@ -942,7 +947,7 @@
         </div>
 
         <!-- ch9: closing-office top:560 → popup above at 380 -->
-        <div class="ch-popup" id="popup-ch9" style="left:212px;top:330px;">
+        <div class="ch-popup" id="popup-ch9" style="left:212px;top:250px;">
           <div class="popup-ch-num">Chapter 9 · Closing Day</div>
           <div class="popup-title">What you're signing — and what most buyers don't catch</div>
           <div class="popup-quote">Wire fraud. The note. The deed of trust. I protect you here.</div>
@@ -1058,7 +1063,7 @@
       setTimeout(function () {
         if (!wrap) return;
         var scale      = wrap.offsetWidth / 430;
-        var georgeTop  = 420 * scale;
+        var georgeTop  = 340 * scale;
         var vpHeight   = wrap.offsetHeight;
         var targetScroll = Math.max(0, georgeTop - (vpHeight * 0.35));
         smoothScrollTo(wrap, targetScroll, 2800);
@@ -1415,7 +1420,7 @@
     var scale = vw / 430;
     scene.style.transform = 'scale(' + scale + ')';
     /* Set scene container height to match scaled scene height */
-    scene.parentElement.style.minHeight = (560 * scale) + 'px';
+    scene.parentElement.style.minHeight = (490 * scale) + 'px';
   }
   scaleTownScene();
   window.addEventListener('resize', scaleTownScene);
