@@ -1462,8 +1462,7 @@ var chNum = getChapterNumber ? getChapterNumber() : 0;
 ```
 var hdrTitle = tab === "tools"          ? "Tools"         :
                tab === "resources"    ? "Resources"    :
-               tab === "neighborhoods"? "Neighborhoods" :
-               tab === "guides"       ? "St. Louis Guides" : "Journey";
+               tab === "neighborhoods"? "Neighborhoods" : tab === "guides" ? "St. Louis Guides" : "Journey";
 
 var header =
   '<div class="tool-panel-header">' +
@@ -1477,10 +1476,10 @@ if (tab === "tools") {
   body = _buildToolSelectorHTML();
 } else if (tab === "resources") {
   body = _buildResourcesPanelHTML(chNum);
-} else if (tab === "neighborhoods") {
-  body = _buildNeighborhoodsPanelHTML();
 } else if (tab === "guides") {
   body = _buildGuidesPanelHTML();
+} else if (tab === "neighborhoods") {
+  body = _buildNeighborhoodsPanelHTML();
 } else {
   body = _buildJourneyPanelHTML(chNum);
 }
@@ -1558,8 +1557,8 @@ if (tab === "neighborhoods") {
     });
   });
 } else if (tab === "guides") {
-  var guideTriggers = _dashPanelEl.querySelectorAll(".res-drawer-trigger");
-  Array.prototype.forEach.call(guideTriggers, function (btn) {
+  var gTriggers = _dashPanelEl.querySelectorAll(".res-drawer-trigger");
+  Array.prototype.forEach.call(gTriggers, function (btn) {
     btn.addEventListener("click", function () {
       var drawer = btn.closest(".res-drawer");
       if (!drawer) return;
@@ -1569,6 +1568,13 @@ if (tab === "neighborhoods") {
         function (d) { d.classList.remove("open"); }
       );
       if (!isOpen) drawer.classList.add("open");
+    });
+  });
+  var guideCards = _dashPanelEl.querySelectorAll(".tool-card[data-guide-url]");
+  Array.prototype.forEach.call(guideCards, function (card) {
+    card.addEventListener("click", function () {
+      var url = card.getAttribute("data-guide-url");
+      if (url) window.location.href = url;
     });
   });
 } else {
@@ -1895,27 +1901,27 @@ return html;
 }
 
 function _buildGuidesPanelHTML() {
-var series = [
+var guidesSeries = [
 {
 label: “The Truth About Zillow”,
 tag: “Buyers & Sellers”,
 articles: [
 { title: “The Truth About Zillow in St. Louis”, url: “articles/truth-about-zillow-stl.html” },
-{ title: “How Zillow’s Pay-to-Play System Works”, url: “articles/zillow-pay-to-play-system.html” },
-{ title: “What Happens the Moment You Click on Zillow”, url: “articles/what-happens-when-you-click-zillow.html” },
-{ title: “Is the Zillow Zestimate Accurate in St. Louis?”, url: “articles/zillow-zestimate-accurate-stl.html” },
-{ title: “How to Use Zillow Without Getting Used by Zillow”, url: “articles/how-to-use-zillow-without-getting-used.html” }
+{ title: “How Zillow Pay-to-Play Works”, url: “articles/zillow-pay-to-play-system.html” },
+{ title: “What Happens When You Click on Zillow”, url: “articles/what-happens-when-you-click-zillow.html” },
+{ title: “Is the Zestimate Accurate in St. Louis?”, url: “articles/zillow-zestimate-accurate-stl.html” },
+{ title: “How to Use Zillow Smartly”, url: “articles/how-to-use-zillow-without-getting-used.html” }
 ]
 },
 {
 label: “St. Louis Affordability by Zip Code”,
 tag: “Buyers”,
 articles: [
-{ title: “St. Louis Home Affordability by Zip Code”, url: “articles/stl-affordability-by-zip-code.html” },
-{ title: “How Much Income Do You Need to Buy a Home in St. Louis?”, url: “articles/how-much-income-to-buy-home-stl.html” },
-{ title: “Renting vs. Buying in St. Louis: What the Numbers Show”, url: “articles/renting-vs-buying-stl.html” },
+{ title: “Affordability by Zip Code”, url: “articles/stl-affordability-by-zip-code.html” },
+{ title: “Income Needed to Buy in St. Louis”, url: “articles/how-much-income-to-buy-home-stl.html” },
+{ title: “Renting vs. Buying in St. Louis”, url: “articles/renting-vs-buying-stl.html” },
 { title: “First-Time Buyer Programs in St. Louis”, url: “articles/first-time-buyer-programs-stl.html” },
-{ title: “Most Affordable Zip Codes in St. Louis (2026)”, url: “articles/most-affordable-zip-codes-stl-2026.html” }
+{ title: “Most Affordable Zip Codes (2026)”, url: “articles/most-affordable-zip-codes-stl-2026.html” }
 ]
 },
 {
@@ -1923,45 +1929,45 @@ label: “St. Louis Home Repair Cost Guide”,
 tag: “Buyers”,
 articles: [
 { title: “Home Repair Cost Guide for Buyers”, url: “articles/stl-home-repair-cost-guide.html” },
-{ title: “Walkthrough Checklist: What to Look For”, url: “articles/what-to-look-for-buying-house-stl.html” },
-{ title: “How Repair Costs Should Affect Your Offer”, url: “articles/repair-costs-affect-offer-price-stl.html” },
-{ title: “What Happens at a Home Inspection in St. Louis”, url: “articles/home-inspection-st-louis.html” }
+{ title: “Walkthrough Checklist”, url: “articles/what-to-look-for-buying-house-stl.html” },
+{ title: “How Repair Costs Affect Your Offer”, url: “articles/repair-costs-affect-offer-price-stl.html” },
+{ title: “What Happens at a Home Inspection”, url: “articles/home-inspection-st-louis.html” }
 ]
 }
 ];
 
 ```
 var html =
-  '<div style="padding:14px 16px 6px;display:flex;align-items:center;justify-content:space-between;">' +
-    '<div style="font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);">St. Louis Guides</div>' +
-    '<a href="articles/index.html" style="font-size:10px;color:var(--text-dim);text-decoration:none;border:1px solid var(--line-2);padding:4px 10px;border-radius:999px;">View All \u203a</a>' +
-  '</div>';
+  "<div style=\"padding:14px 16px 6px;display:flex;align-items:center;justify-content:space-between;\">" +
+    "<div style=\"font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)\">St. Louis Guides</div>" +
+    "<a href=\"articles/index.html\" style=\"font-size:10px;color:var(--text-dim);text-decoration:none;border:1px solid var(--line-2);padding:4px 10px;border-radius:999px;\">View All \u203a</a>" +
+  "</div>";
 
-series.forEach(function(s) {
-  var items = s.articles.map(function(a) {
+guidesSeries.forEach(function(s) {
+  var articleItems = s.articles.map(function(a) {
     return (
-      '<div class="tool-card" onclick="window.location.href=\'' + a.url + '\'" style="border-radius:0;border-left:none;border-right:none;border-top:none;cursor:pointer;">' +
-        '<div class="tool-card-copy">' +
-          '<div class="tool-card-title" style="font-size:13px;">' + a.title + '</div>' +
-        '</div>' +
-        '<div class="tool-card-arr">\u203a</div>' +
-      '</div>'
+      "<div class=\"tool-card\" data-guide-url=\"" + a.url + "\" style=\"border-radius:0;border-left:none;border-right:none;border-top:none;cursor:pointer;\">" +
+        "<div class=\"tool-card-copy\">" +
+          "<div class=\"tool-card-title\" style=\"font-size:13px;\">" + a.title + "</div>" +
+        "</div>" +
+        "<div class=\"tool-card-arr\">\u203a</div>" +
+      "</div>"
     );
-  }).join('');
+  }).join("");
 
   html +=
-    '<div class="res-drawer">' +
-      '<button class="res-drawer-trigger" type="button" style="padding:11px 16px;">' +
-        '<div class="res-drawer-copy">' +
-          '<div class="res-drawer-title" style="font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;">' + s.label + '</div>' +
-          '<div class="res-drawer-summary">' + s.tag + ' \u00b7 ' + s.articles.length + ' guides</div>' +
-        '</div>' +
-        '<div class="res-drawer-chevron">\u203a</div>' +
-      '</button>' +
-      '<div class="res-drawer-body" style="padding:0;">' +
-        '<div class="res-drawer-content" style="padding:0;">' + items + '</div>' +
-      '</div>' +
-    '</div>';
+    "<div class=\"res-drawer\">" +
+      "<button class=\"res-drawer-trigger\" type=\"button\" style=\"padding:11px 16px;\">" +
+        "<div class=\"res-drawer-copy\">" +
+          "<div class=\"res-drawer-title\" style=\"font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;\">" + s.label + "</div>" +
+          "<div class=\"res-drawer-summary\">" + s.tag + " \u00b7 " + s.articles.length + " guides</div>" +
+        "</div>" +
+        "<div class=\"res-drawer-chevron\">\u203a</div>" +
+      "</button>" +
+      "<div class=\"res-drawer-body\" style=\"padding:0;\">" +
+        "<div class=\"res-drawer-content\" style=\"padding:0;\">" + articleItems + "</div>" +
+      "</div>" +
+    "</div>";
 });
 
 return html;
@@ -1969,10 +1975,10 @@ return html;
 
 }
 
+```
 function _buildJourneyPanelHTML(chNum) {
 var visited = Array.isArray(state.chaptersVisited) ? state.chaptersVisited : [];
 
-```
 /* ── FEATURED: WALK WITH ME ── */
 var walkCard =
   '<div class="journey-panel-item" id="walk-with-me-card" data-file="03-interior.html" data-ch="3" style="' +
@@ -2476,4 +2482,4 @@ document.addEventListener(“DOMContentLoaded”, init);
 init();
 }
 
-})();
+})();t
