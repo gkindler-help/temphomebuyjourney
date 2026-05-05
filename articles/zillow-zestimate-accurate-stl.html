@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Is the Zillow Zestimate Accurate in St. Louis? | STL Home Journey</title>
+  <meta name="description" content="Only 31.6% of St. Louis Zestimates are within 5% of actual sale price. The median error rate is 8.6%. Here is what the local data shows and what to use instead.">
+  <meta name="author" content="George Kindler">
+  <meta property="og:title" content="Is the Zillow Zestimate Accurate in St. Louis? | STL Home Journey">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://stlhomejourney.com/articles/zillow-zestimate-accurate-stl.html">
+  <link rel="canonical" href="https://stlhomejourney.com/articles/zillow-zestimate-accurate-stl.html">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Is the Zillow Zestimate Accurate in St. Louis?","author":{"@type":"Person","name":"George Kindler"},"publisher":{"@type":"Organization","name":"STL Home Journey","url":"https://stlhomejourney.com"},"datePublished":"2026-05-05","dateModified":"2026-05-05","url":"https://stlhomejourney.com/articles/zillow-zestimate-accurate-stl.html"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How accurate is Zillow in St. Louis?","acceptedAnswer":{"@type":"Answer","text":"Only 31.6% of St. Louis Zestimates have been within 5% of the actual sale price. The median margin of error for St. Louis is 8.6%, meaning on a $260,000 home the Zestimate is typically off by approximately $22,360."}},{"@type":"Question","name":"Why does Zillow not report accuracy data for St. Louis?","acceptedAnswer":{"@type":"Answer","text":"Zillow stopped publicly reporting city-level accuracy data for St. Louis. They currently pull the local tax assessor value instead. Tax assessor values in Missouri are set at 19% of market value, which has no relationship to actual sale prices."}},{"@type":"Question","name":"Can I use a Zestimate to price my home for sale in St. Louis?","acceptedAnswer":{"@type":"Answer","text":"No. The 8.6% median error rate means a Zestimate-based list price is statistically likely to be $15,000 to $25,000 away from where the market actually is on a typical St. Louis home."}},{"@type":"Question","name":"What should I use instead of a Zestimate in St. Louis?","acceptedAnswer":{"@type":"Answer","text":"A comparative market analysis from an agent with access to MARIS MLS data, using season-for-season comparable sales, will give you a far more accurate picture than any automated tool."}}]}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#050505;--bg-elev:#0a0a0a;--surface:#101010;--surface-2:#151515;--line:#242424;--line-2:#303030;--text-strong:rgba(255,255,255,.96);--text:rgba(255,255,255,.88);--text-soft:rgba(255,255,255,.72);--text-dim:rgba(255,255,255,.54);--text-faint:rgba(255,255,255,.34);--gold:#ffcc4d;--gold-soft:rgba(255,204,77,.18);--gold-line:rgba(255,204,77,.34);--green:#5dcaa5;--font-serif:"Playfair Display",Georgia,serif;--font-sans:"Inter",-apple-system,sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.7;overflow-x:hidden;}
+    a{color:var(--gold);text-decoration:none;}
+    img{max-width:100%;display:block;}
+    .art-hdr{background:rgba(5,5,5,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;position:sticky;top:0;z-index:100;}
+    .art-hdr-l{display:flex;align-items:center;gap:10px;min-width:0;text-decoration:none;}
+    .art-hdr-ico{width:32px;height:32px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+    .art-hdr-ico img{width:100%;height:100%;object-fit:contain;}
+    .art-hdr-t{font-family:var(--font-serif);font-size:14px;font-weight:600;letter-spacing:.03em;color:var(--text-strong);line-height:1.05;}
+    .art-hdr-t span{color:var(--gold);}
+    .art-hdr-name{font-size:10px;font-weight:600;color:var(--text-soft);letter-spacing:.04em;margin-top:2px;}
+    .art-hdr-tagline{font-size:9px;color:var(--text-dim);letter-spacing:.03em;}
+    .art-hdr-nav{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+    .art-hdr-btn{font-size:10px;font-weight:700;letter-spacing:.05em;padding:6px 11px;border-radius:999px;border:1px solid var(--line-2);color:var(--text-soft);background:rgba(255,255,255,.02);text-decoration:none;white-space:nowrap;transition:border-color .18s,color .18s;}
+    .art-hdr-btn:hover{border-color:var(--gold-line);color:var(--text-strong);}
+    .art-hdr-btn.gold{border-color:var(--gold-line);color:var(--gold);background:var(--gold-soft);}
+    .art-nav{background:rgba(16,16,16,.96);border-bottom:1px solid var(--line);padding:0 16px;display:flex;overflow-x:auto;scrollbar-width:none;}
+    .art-nav::-webkit-scrollbar{display:none;}
+    .art-nav-item{font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--text-faint);padding:10px 14px;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;transition:color .18s,border-color .18s;}
+    .art-nav-item:hover{color:var(--text-soft);}
+    .art-nav-item.active{color:var(--gold);border-bottom-color:var(--gold);}
+    .art-layout{max-width:780px;margin:0 auto;padding:0 20px 80px;}
+    .art-eyebrow{display:flex;align-items:center;gap:8px;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-top:36px;margin-bottom:14px;flex-wrap:wrap;}
+    .art-eyebrow a{color:var(--text-faint);}
+    .art-eyebrow a:hover{color:var(--gold);}
+    .art-series-tag{display:inline-block;padding:4px 10px;border:1px solid var(--gold-line);border-radius:999px;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);background:var(--gold-soft);text-decoration:none;margin-bottom:16px;}
+    .art-title{font-family:var(--font-serif);font-size:clamp(1.6rem,5vw,2.4rem);font-weight:700;color:var(--text-strong);line-height:1.18;margin-bottom:16px;}
+    .art-lede{font-size:1rem;color:var(--text-soft);line-height:1.72;max-width:620px;margin-bottom:22px;}
+    .art-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:10px;font-weight:600;letter-spacing:.04em;color:var(--text-faint);padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:32px;}
+    .art-meta-dot{opacity:.3;}
+    .aud-both{display:inline-block;padding:3px 8px;border-radius:999px;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--gold-soft);color:var(--gold);border:1px solid var(--gold-line);}
+    .art-body{line-height:1.75;}
+    .art-body h2{font-family:var(--font-serif);font-size:1.45rem;font-weight:700;color:var(--text-strong);margin:44px 0 14px;line-height:1.22;}
+    .art-body h3{font-family:var(--font-serif);font-size:1.05rem;font-weight:700;color:var(--gold);margin:30px 0 10px;}
+    .art-body p{color:var(--text-soft);margin-bottom:18px;font-size:.97rem;line-height:1.78;}
+    .art-body ul{color:var(--text-soft);padding-left:1.4em;margin-bottom:18px;}
+    .art-body li{margin-bottom:7px;line-height:1.68;font-size:.97rem;}
+    .art-body strong{color:var(--text-strong);font-weight:600;}
+    .callout{background:rgba(255,204,77,.06);border-left:2px solid var(--gold-line);border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0;color:var(--text);font-size:.93rem;}
+    .callout strong{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:7px;font-weight:700;}
+    .stat-block{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:24px 0;}
+    .stat-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 16px;text-align:center;}
+    .stat-num{font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--gold);line-height:1;display:block;margin-bottom:6px;}
+    .stat-lbl{font-size:10px;color:var(--text-faint);line-height:1.4;font-weight:600;letter-spacing:.04em;}
+    .int-link{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;margin:16px 0;transition:border-color .18s,background .18s;}
+    .int-link:hover{border-color:var(--gold-line);background:rgba(255,204,77,.03);}
+    .int-link-text{font-size:.86rem;color:var(--text);line-height:1.5;}
+    .int-link-arr{color:var(--gold);flex-shrink:0;}
+    .faq-section{border-top:1px solid var(--line);padding-top:32px;margin-top:44px;}
+    .faq-section>h2{font-family:var(--font-serif);font-size:1.3rem;color:var(--text-strong);margin-bottom:22px;margin-top:0;}
+    .faq-item{margin-bottom:22px;}
+    .faq-q{font-weight:600;color:var(--text);margin-bottom:7px;font-size:.93rem;}
+    .faq-a{color:var(--text-soft);font-size:.88rem;line-height:1.72;}
+    .sources{font-size:.72rem;color:var(--text-faint);border-top:1px solid var(--line);padding-top:18px;margin-top:32px;line-height:1.9;}
+    .sources strong{display:block;margin-bottom:6px;font-size:9px;text-transform:uppercase;letter-spacing:.10em;}
+    .series-nav{border-top:1px solid var(--line);padding-top:32px;margin-top:44px;}
+    .series-nav h3{font-family:var(--font-serif);font-size:1.05rem;color:var(--text-strong);margin-bottom:14px;}
+    .series-links{display:flex;flex-direction:column;gap:8px;}
+    .series-link{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 16px;text-decoration:none;transition:border-color .18s,background .18s;}
+    .series-link:hover{border-color:var(--gold-line);background:rgba(255,204,77,.03);}
+    .series-link-title{font-size:.86rem;color:var(--text);font-weight:500;line-height:1.4;}
+    .series-link-arr{color:var(--text-faint);font-size:.9rem;flex-shrink:0;}
+    .george-card{background:linear-gradient(135deg,var(--surface) 0%,#0d0d00 100%);border:1px solid var(--gold-line);border-radius:14px;padding:20px;margin:40px 0 0;}
+    .george-card-top{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+    .george-card-avatar{width:52px;height:52px;border-radius:999px;border:1px solid var(--gold-line);background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
+    .george-card-name{font-family:var(--font-serif);font-size:1rem;color:var(--text-strong);margin-bottom:2px;}
+    .george-card-creds{font-size:10px;color:var(--text-dim);line-height:1.5;}
+    .george-card-line{font-size:.86rem;color:var(--text-soft);margin-bottom:16px;line-height:1.6;}
+    .george-card-btns{display:flex;gap:8px;flex-wrap:wrap;}
+    .george-btn-p{flex:1;display:block;text-align:center;background:var(--gold);color:#080808;font-weight:800;font-size:12px;letter-spacing:.04em;padding:11px;border-radius:8px;text-decoration:none;min-width:120px;}
+    .george-btn-s{flex:1;display:block;text-align:center;border:1px solid var(--line-2);color:var(--text-soft);font-weight:700;font-size:12px;padding:11px;border-radius:8px;text-decoration:none;min-width:120px;transition:border-color .18s,color .18s;}
+    .george-btn-s:hover{border-color:var(--gold-line);color:var(--text-strong);}
+    .art-footer{border-top:1px solid var(--line);padding:20px;text-align:center;font-size:9px;font-weight:600;letter-spacing:.04em;color:var(--text-faint);line-height:1.9;text-transform:uppercase;}
+    @media(max-width:600px){.art-layout{padding:0 16px 64px;}.art-title{font-size:1.5rem;}.art-hdr-tagline{display:none;}}
+  </style>
+</head>
+<body>
+
+<header class="art-hdr">
+  <a href="../index.html" class="art-hdr-l">
+    <div class="art-hdr-ico"><img src="../assets/logo.png" alt="" onerror="this.style.display='none'"></div>
+    <div>
+      <div class="art-hdr-t"><span>STL</span> Home Buyer Journey</div>
+      <div class="art-hdr-name">George Kindler</div>
+      <div class="art-hdr-tagline">13 Years Of Real Estate Experience At Your Fingertips</div>
+    </div>
+  </a>
+  <nav class="art-hdr-nav">
+    <a href="index.html" class="art-hdr-btn">Guides</a>
+    <a href="../index.html" class="art-hdr-btn gold">Journey</a>
+  </nav>
+</header>
+
+<nav class="art-nav">
+  <a href="../index.html" class="art-nav-item">Journey</a>
+  <a href="index.html" class="art-nav-item active">Guides</a>
+  <a href="../index.html" class="art-nav-item">Tools</a>
+  <a href="../index.html" class="art-nav-item">Neighborhoods</a>
+</nav>
+
+<div class="art-layout">
+  <div class="art-eyebrow">
+    <a href="../index.html">Journey</a><span>›</span>
+    <a href="index.html">Guides</a><span>›</span>
+    <a href="truth-about-zillow-stl.html">The Truth About Zillow</a>
+  </div>
+  <a href="truth-about-zillow-stl.html" class="art-series-tag">The Truth About Zillow</a>
+  <h1 class="art-title">Is the Zillow Zestimate Accurate in St. Louis?</h1>
+  <p class="art-lede">The Zestimate is the most referenced number in St. Louis real estate. It is also one of the most misunderstood. Here is what the local accuracy data actually shows.</p>
+  <div class="art-meta">
+    <span>George Kindler</span><span class="art-meta-dot">·</span>
+    <span>Licensed Missouri Realtor</span><span class="art-meta-dot">·</span>
+    <span class="aud-both">Buyers &amp; Sellers</span>
+  </div>
+
+  <div class="art-body">
+
+```
+<p>The Zestimate is the most referenced number in St. Louis real estate. Sellers check it before they list. Buyers use it to anchor their offer price. Most of them have no idea how far off it runs in this specific market — and Zillow stopped publicly reporting those numbers for St. Louis.</p>
+
+<h2 id="the-numbers">What the Data Actually Shows for St. Louis</h2>
+
+<div class="stat-block">
+  <div class="stat-card"><span class="stat-num">31.6%</span><span class="stat-lbl">of St. Louis Zestimates within 5% of actual sale price</span></div>
+  <div class="stat-card"><span class="stat-num">8.6%</span><span class="stat-lbl">median error rate for the St. Louis market</span></div>
+  <div class="stat-card"><span class="stat-num">$22K</span><span class="stat-lbl">typical dollar error on a $260,000 St. Louis home</span></div>
+</div>
+
+<p>Nationally, Zillow reports a median error rate of 1.83% for on-market homes. What they do not publicize — and stopped reporting for St. Louis specifically — is that only 31.6% of St. Louis Zestimates are within 5% of the actual sale price, and the median error rate here is 8.6%.</p>
+
+<div class="callout">
+  <strong>What That Error Rate Means in Dollars</strong>
+  On a $260,000 St. Louis home, 8.6% is $22,360. On a $300,000 home it is $25,800. That is the difference between an offer that wins and one that overpays — or a list price that generates offers the first weekend and one that sits for 60 days.
+</div>
+
+<p>Zillow stopped reporting city-level accuracy data for St. Louis. They now pull the local tax assessor's value and report that as the estimate. Tax assessor values in Missouri are assessed at 19% of market value — a number that has nothing to do with what a home would sell for today.</p>
+
+<h2 id="why-struggles">Why the Zestimate Struggles in St. Louis</h2>
+
+<h3>Older housing stock with highly variable condition</h3>
+<p>St. Louis has one of the highest concentrations of pre-1950 housing in the country. Two homes on the same block, same square footage, same year built — one renovated, one original — can differ by $80,000 or more. The Zestimate cannot see inside the house. It sees square footage, bedroom count, and nearby sales.</p>
+
+<a href="what-to-look-for-buying-house-stl.html" class="int-link">
+  <span class="int-link-text">The items that actually change a home's value — what Zillow cannot see. <strong>Walkthrough Checklist: What to Look For When Buying in St. Louis →</strong></span>
+  <span class="int-link-arr">→</span>
+</a>
+
+<h3>Fragmented tax jurisdictions</h3>
+<p>St. Louis City and County are separate taxing jurisdictions. Within the county there are dozens of municipalities each with their own levy rates. Two homes priced identically can carry monthly payments that differ by $300 to $400 based solely on zip code. The Zestimate does not account for this.</p>
+
+<a href="stl-affordability-by-zip-code.html" class="int-link">
+  <span class="int-link-text">See what your payment actually looks like in any St. Louis zip code with real local tax data. <strong>St. Louis Affordability by Zip Code →</strong></span>
+  <span class="int-link-arr">→</span>
+</a>
+
+<h3>Low transaction volume in some neighborhoods</h3>
+<p>The Zestimate's accuracy is tied directly to how many recent sales Zillow has data on nearby. In neighborhoods with lower transaction volume — parts of North City, rural Jefferson County pockets — the algorithm has less to work with and the error rate climbs further.</p>
+
+<h2 id="seller-mistake">The Mistake St. Louis Sellers Make</h2>
+<p>The most expensive Zestimate mistake sellers make is using it to set their list price. A seller who lists 8.6% above actual market value will sit on the market. Every week on market costs negotiating position. By the time they reduce to where the market is, buyers assume something is wrong with the property.</p>
+
+<h2 id="buyer-mistake">The Mistake St. Louis Buyers Make</h2>
+<p>The most expensive Zestimate mistake buyers make is using it to anchor their offer price. A Zestimate of $285,000 on a home the market would actually bear at $265,000 means a buyer who offers $280,000 has overpaid — not because they were reckless, but because they trusted a number with an 8.6% local error rate.</p>
+
+<a href="repair-costs-affect-offer-price-stl.html" class="int-link">
+  <span class="int-link-text">How to build a defensible offer number based on what you actually find in the home. <strong>How Repair Costs Should Affect Your Offer Price in St. Louis →</strong></span>
+  <span class="int-link-arr">→</span>
+</a>
+
+<div class="faq-section">
+  <h2>Zestimate Accuracy FAQ</h2>
+  <div class="faq-item">
+    <p class="faq-q">How accurate is Zillow in St. Louis?</p>
+    <p class="faq-a">Only 31.6% of St. Louis Zestimates have been within 5% of the actual sale price. The median margin of error is 8.6%, meaning on a $260,000 home the Zestimate is typically off by approximately $22,360.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Why does Zillow not report accuracy data for St. Louis?</p>
+    <p class="faq-a">Zillow stopped publicly reporting city-level accuracy data for St. Louis and now pulls the local tax assessor value instead. Tax assessor values in Missouri are set at 19% of market value — a figure that has no relationship to actual sale prices.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Can I use a Zestimate to price my home for sale in St. Louis?</p>
+    <p class="faq-a">No. The 8.6% median error rate means a Zestimate-based list price is statistically likely to be $15,000 to $25,000 away from where the market actually is on a typical St. Louis home.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Is Zillow more accurate in some St. Louis areas than others?</p>
+    <p class="faq-a">Yes. It is most accurate in high-turnover neighborhoods with consistent property types — newer suburban developments in St. Charles County. It is least accurate in older neighborhoods like Maplewood, Benton Park, Tower Grove South, and parts of North County where condition varies dramatically between properties.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">What should I use instead of a Zestimate in St. Louis?</p>
+    <p class="faq-a">A comparative market analysis from an agent with access to MARIS MLS data, using season-for-season comparable sales, will give you a far more accurate picture than any automated tool.</p>
+  </div>
+</div>
+
+<div class="sources">
+  <strong>Sources Referenced</strong>
+  University of Pennsylvania Wharton School — Professor Jerry Wind study on Zillow agent connections, March 2026<br>
+  Zillow Group Privacy Policy — zillowgroup.com/zg-privacy-policy/ — updated November 2025<br>
+  Hagens Berman — Expanded class-action complaint, Taylor v. Zillow Inc. — November 19, 2025<br>
+  Fox Business — "Penn professor says Zillow systematically deceives consumers" — March 19, 2026
+</div>
+
+<div class="series-nav">
+  <h3>Continue the Series</h3>
+  <div class="series-links">
+    <a href="how-to-use-zillow-without-getting-used.html" class="series-link"><span class="series-link-title">How to Use Zillow Without Getting Used by Zillow</span><span class="series-link-arr">→</span></a>
+    <a href="what-happens-when-you-click-zillow.html" class="series-link"><span class="series-link-title">← What Happens the Moment You Click on Zillow</span><span class="series-link-arr">←</span></a>
+  </div>
+</div>
+
+<div class="george-card">
+  <div class="george-card-top">
+    <div class="george-card-avatar">👋</div>
+    <div>
+      <div class="george-card-name">George Kindler</div>
+      <div class="george-card-creds">Licensed Missouri Realtor · The Closing Pros LLC · 13 years · 130+ transactions</div>
+    </div>
+  </div>
+  <p class="george-card-line">Questions about what you are reading? I answer personally — no team, no handoff.</p>
+  <div class="george-card-btns">
+    <a href="mailto:georgeandlizk@gmail.com" class="george-btn-p">Get in Touch</a>
+    <a href="tel:3144351087" class="george-btn-s">314.435.1087</a>
+  </div>
+</div>
+```
+
+  </div>
+</div>
+
+<footer class="art-footer">
+  <p>George Kindler · Missouri Licensed Real Estate Agent · The Closing Pros LLC<br>
+  314-998-4550 · georgeandlizk@gmail.com<br>
+  All content is for informational purposes only and does not constitute legal or financial advice.</p>
+</footer>
+
+</body>
+</html>
