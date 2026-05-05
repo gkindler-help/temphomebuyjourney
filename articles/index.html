@@ -22,10 +22,6 @@
 
   <script src="../article-registry.js"></script>
 
-  <!-- Shared styles (relative path — adjust if needed) -->
-
-  <link rel="stylesheet" href="../shared.css">
-
   <style>
     /* ── Page-specific overrides & components ── */
     :root {
@@ -55,12 +51,19 @@
       font-size: 16px;
       line-height: 1.6;
       min-height: 100vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
-    /* ── Header ── */
+    /* ── Header — matches journey brand ── */
     .page-header {
+      background: rgba(5,5,5,.96);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--card-border);
-      padding: 0 24px;
+      padding: 10px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .header-inner {
@@ -69,7 +72,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 64px;
+      gap: 10px;
     }
 
     .logo-link {
@@ -77,27 +80,67 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      min-width: 0;
     }
+
+    .logo-ico {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-ico img { width: 100%; height: 100%; object-fit: contain; }
 
     .logo-wordmark {
       font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      color: var(--gold);
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .03em;
+      color: rgba(255,255,255,.96);
+      line-height: 1.05;
+    }
+
+    .logo-wordmark span { color: var(--gold); }
+
+    .logo-name {
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(255,255,255,.72);
+      letter-spacing: .04em;
+      margin-top: 2px;
+    }
+
+    .logo-tagline {
+      font-size: 9px;
+      color: rgba(255,255,255,.54);
+      letter-spacing: .03em;
     }
 
     .back-to-journey {
-      font-size: 0.8rem;
-      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      padding: 6px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--card-border);
+      color: rgba(255,255,255,.72);
+      background: rgba(255,255,255,.02);
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: border-color .18s, color .18s;
     }
-    .back-to-journey:hover { color: var(--gold); }
-    .back-to-journey svg { width: 14px; height: 14px; }
+
+    .back-to-journey:hover {
+      border-color: var(--gold-border);
+      color: rgba(255,255,255,.96);
+    }
+
+    @media(max-width:600px) { .logo-tagline { display: none; } }
 
     /* ── Hero ── */
     .hero {
@@ -513,19 +556,21 @@
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Header — matches journey brand -->
 
   <header class="page-header">
     <div class="header-inner">
       <a href="../index.html" class="logo-link">
-        <span class="logo-wordmark">STL Home Journey</span>
+        <div class="logo-ico">
+          <img src="../assets/STLhomebuyerjourneylogo.png" alt="STL Home Journey" onerror="this.style.display='none'">
+        </div>
+        <div>
+          <div class="logo-wordmark"><span>STL</span> Home Buyer Journey</div>
+          <div class="logo-name">George Kindler</div>
+          <div class="logo-tagline">13 Years Of Real Estate Experience At Your Fingertips</div>
+        </div>
       </a>
-      <a href="../index.html" class="back-to-journey">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M10 12L6 8l4-4"/>
-        </svg>
-        Back to the Journey
-      </a>
+      <a href="../index.html" class="back-to-journey">← Journey</a>
     </div>
   </header>
 
