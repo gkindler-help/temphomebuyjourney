@@ -1975,10 +1975,10 @@ return html;
 
 }
 
-```
 function _buildJourneyPanelHTML(chNum) {
 var visited = Array.isArray(state.chaptersVisited) ? state.chaptersVisited : [];
 
+```
 /* ── FEATURED: WALK WITH ME ── */
 var walkCard =
   '<div class="journey-panel-item" id="walk-with-me-card" data-file="03-interior.html" data-ch="3" style="' +
