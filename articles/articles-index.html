@@ -478,9 +478,11 @@
     }
 
     .george-avatar {
-      width: 52px;
-      height: 52px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
       background: var(--gold-dim);
       border: 2px solid var(--gold-border);
       display: flex;
@@ -602,7 +604,7 @@
 
       <!-- George CTA bar -->
       <div class="george-cta-bar">
-        <div class="george-avatar">👋</div>
+        <div class="george-avatar"><img src="../assets/george-proud.png" alt="George Kindler" style="width:100%;height:100%;object-fit:cover;object-position:top;" onerror="this.parentElement.style.fontSize='1.6rem';this.parentElement.textContent='👋';"></div>
         <div class="george-text">
           <h3>George Kindler — Licensed Missouri Realtor</h3>
           <p>13 years · 130+ transactions · The Closing Pros LLC · St. Louis metro</p>
