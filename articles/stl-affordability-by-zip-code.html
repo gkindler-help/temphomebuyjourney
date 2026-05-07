@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>St. Louis Home Affordability by Zip Code | STL Home Journey</title>
+  <meta name="description" content="Two homes at the same price can cost hundreds more per month depending on where they sit in St. Louis. See the real monthly cost across 79 zip codes -- taxes, insurance, and all.">
+  <meta name="author" content="George Kindler">
+  <meta property="og:title" content="St. Louis Home Affordability by Zip Code | STL Home Journey">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://stlhomejourney.com/articles/stl-affordability-by-zip-code.html">
+  <link rel="canonical" href="https://stlhomejourney.com/articles/stl-affordability-by-zip-code.html">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"St. Louis Home Affordability by Zip Code","author":{"@type":"Person","name":"George Kindler","jobTitle":"Licensed Missouri Real Estate Agent"},"publisher":{"@type":"Organization","name":"STL Home Journey","url":"https://stlhomejourney.com"},"datePublished":"2026-05-05","dateModified":"2026-05-05","url":"https://stlhomejourney.com/articles/stl-affordability-by-zip-code.html"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why do two homes at the same price cost different amounts per month in St. Louis?","acceptedAnswer":{"@type":"Answer","text":"Property tax rates vary significantly across St. Louis zip codes and municipalities. Two homes priced identically can carry monthly payments that differ by $300 to $400 based solely on their location, because each municipality and school district sets its own levy rate."}},{"@type":"Question","name":"Which St. Louis zip codes have the lowest property taxes?","acceptedAnswer":{"@type":"Answer","text":"Property tax rates in St. Louis vary by municipality and school district. The affordability map at stlhomejourney.com shows real monthly costs by zip code using current MARIS MLS data and local tax rates across all 79 zip codes in the metro area."}},{"@type":"Question","name":"How do I calculate my true monthly housing cost in St. Louis?","acceptedAnswer":{"@type":"Answer","text":"True monthly cost includes principal and interest on your mortgage, property taxes (which vary by zip code in St. Louis), homeowners insurance, and any HOA fees. The STL Affordability Map calculates all of these automatically for any zip code in the metro area."}}]}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#050505;--bg-elev:#0a0a0a;--surface:#101010;--surface-2:#151515;--line:#242424;--line-2:#303030;--text-strong:rgba(255,255,255,.96);--text:rgba(255,255,255,.88);--text-soft:rgba(255,255,255,.72);--text-dim:rgba(255,255,255,.54);--text-faint:rgba(255,255,255,.34);--gold:#ffcc4d;--gold-soft:rgba(255,204,77,.18);--gold-line:rgba(255,204,77,.34);--green:#5dcaa5;--font-serif:"Playfair Display",Georgia,serif;--font-sans:"Inter",-apple-system,sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.7;overflow-x:hidden;}
+    a{color:var(--gold);text-decoration:none;}
+    .art-hdr{background:rgba(5,5,5,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;position:sticky;top:0;z-index:100;}
+    .art-hdr-l{display:flex;align-items:center;gap:10px;min-width:0;text-decoration:none;}
+    .art-hdr-ico{width:32px;height:32px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+    .art-hdr-ico img{width:100%;height:100%;object-fit:contain;}
+    .art-hdr-t{font-family:var(--font-serif);font-size:14px;font-weight:600;letter-spacing:.03em;color:var(--text-strong);line-height:1.05;}
+    .art-hdr-t span{color:var(--gold);}
+    .art-hdr-name{font-size:10px;font-weight:600;color:var(--text-soft);letter-spacing:.04em;margin-top:2px;}
+    .art-hdr-tagline{font-size:9px;color:var(--text-dim);letter-spacing:.03em;}
+    .art-hdr-nav{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+    .art-hdr-btn{font-size:10px;font-weight:700;letter-spacing:.05em;padding:6px 11px;border-radius:999px;border:1px solid var(--line-2);color:var(--text-soft);background:rgba(255,255,255,.02);text-decoration:none;white-space:nowrap;}
+    .art-hdr-btn.gold{border-color:var(--gold-line);color:var(--gold);background:var(--gold-soft);}
+    .art-nav{background:rgba(16,16,16,.96);border-bottom:1px solid var(--line);padding:0 16px;display:flex;overflow-x:auto;scrollbar-width:none;}
+    .art-nav::-webkit-scrollbar{display:none;}
+    .art-nav-item{font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--text-faint);padding:10px 14px;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;}
+    .art-nav-item.active{color:var(--gold);border-bottom-color:var(--gold);}
+    .art-layout{max-width:780px;margin:0 auto;padding:0 20px 80px;}
+    .art-eyebrow{display:flex;align-items:center;gap:8px;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-top:36px;margin-bottom:14px;flex-wrap:wrap;}
+    .art-eyebrow a{color:var(--text-faint);}
+    .art-eyebrow a:hover{color:var(--gold);}
+    .art-series-tag{display:inline-block;padding:4px 10px;border:1px solid var(--gold-line);border-radius:999px;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);background:var(--gold-soft);text-decoration:none;margin-bottom:16px;}
+    .art-title{font-family:var(--font-serif);font-size:clamp(1.6rem,5vw,2.4rem);font-weight:700;color:var(--text-strong);line-height:1.18;margin-bottom:16px;}
+    .art-lede{font-size:1rem;color:var(--text-soft);line-height:1.72;max-width:620px;margin-bottom:22px;}
+    .art-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:10px;font-weight:600;letter-spacing:.04em;color:var(--text-faint);padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:32px;}
+    .art-meta-dot{opacity:.3;}
+    .aud-buyer{display:inline-block;padding:3px 8px;border-radius:999px;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(93,202,165,.15);color:var(--green);border:1px solid rgba(93,202,165,.3);}
+    .art-body h2{font-family:var(--font-serif);font-size:1.45rem;font-weight:700;color:var(--text-strong);margin:44px 0 14px;line-height:1.22;}
+    .art-body h3{font-family:var(--font-serif);font-size:1.05rem;font-weight:700;color:var(--gold);margin:30px 0 10px;}
+    .art-body p{color:var(--text-soft);margin-bottom:18px;font-size:.97rem;line-height:1.78;}
+    .art-body ul,.art-body ol{color:var(--text-soft);padding-left:1.4em;margin-bottom:18px;}
+    .art-body li{margin-bottom:7px;line-height:1.68;font-size:.97rem;}
+    .art-body strong{color:var(--text-strong);font-weight:600;}
+    .callout{background:rgba(255,204,77,.06);border-left:2px solid var(--gold-line);border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0;color:var(--text);font-size:.93rem;}
+    .callout strong{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:7px;font-weight:700;}
+    .stat-block{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:24px 0;}
+    .stat-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 16px;text-align:center;}
+    .stat-num{font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--gold);line-height:1;display:block;margin-bottom:6px;}
+    .stat-lbl{font-size:10px;color:var(--text-faint);line-height:1.4;font-weight:600;letter-spacing:.04em;}
+    .data-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:.85rem;border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+    .data-table th{text-align:left;padding:10px 14px;background:var(--surface-2);color:var(--text-faint);font-weight:700;font-size:9px;text-transform:uppercase;letter-spacing:.10em;border-bottom:1px solid var(--line);}
+    .data-table td{padding:11px 14px;color:var(--text-soft);border-bottom:1px solid var(--line);}
+    .data-table tr:last-child td{border-bottom:none;}
+    .data-table td:first-child{color:var(--text);}
+    .data-table .hl td{background:rgba(255,204,77,.05);color:var(--gold);}
+    .tool-cta{background:linear-gradient(135deg,var(--surface) 0%,#0d0d00 100%);border:1px solid var(--gold-line);border-radius:14px;padding:24px;margin:28px 0;}
+    .tool-cta h4{font-family:var(--font-serif);font-size:1.05rem;color:var(--text-strong);margin-bottom:8px;}
+    .tool-cta p{font-size:.86rem;color:var(--text-dim);margin-bottom:16px;line-height:1.65;}
+    .tool-cta a{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#080808;font-weight:800;font-size:12px;letter-spacing:.04em;padding:10px 18px;border-radius:8px;text-decoration:none;}
+    .int-link{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;margin:16px 0;transition:border-color .18s,background .18s;}
+    .int-link:hover{border-color:var(--gold-line);background:rgba(255,204,77,.03);}
+    .int-link-text{font-size:.86rem;color:var(--text);line-height:1.5;}
+    .int-link-arr{color:var(--gold);flex-shrink:0;}
+    .faq-section{border-top:1px solid var(--line);padding-top:32px;margin-top:44px;}
+    .faq-section>h2{font-family:var(--font-serif);font-size:1.3rem;color:var(--text-strong);margin-bottom:22px;margin-top:0;}
+    .faq-item{margin-bottom:22px;}
+    .faq-q{font-weight:600;color:var(--text);margin-bottom:7px;font-size:.93rem;}
+    .faq-a{color:var(--text-soft);font-size:.88rem;line-height:1.72;}
+    .series-nav{border-top:1px solid var(--line);padding-top:32px;margin-top:44px;}
+    .series-nav h3{font-family:var(--font-serif);font-size:1.05rem;color:var(--text-strong);margin-bottom:14px;}
+    .series-links{display:flex;flex-direction:column;gap:8px;}
+    .series-link{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 16px;text-decoration:none;transition:border-color .18s,background .18s;}
+    .series-link:hover{border-color:var(--gold-line);background:rgba(255,204,77,.03);}
+    .series-link-title{font-size:.86rem;color:var(--text);font-weight:500;line-height:1.4;}
+    .series-link-arr{color:var(--text-faint);font-size:.9rem;flex-shrink:0;}
+    .george-card{background:linear-gradient(135deg,var(--surface) 0%,#0d0d00 100%);border:1px solid var(--gold-line);border-radius:14px;padding:20px;margin:40px 0 0;}
+    .george-card-top{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+    .george-card-avatar{width:52px;height:52px;border-radius:999px;border:1px solid var(--gold-line);background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
+    .george-card-name{font-family:var(--font-serif);font-size:1rem;color:var(--text-strong);margin-bottom:2px;}
+    .george-card-creds{font-size:10px;color:var(--text-dim);line-height:1.5;}
+    .george-card-line{font-size:.86rem;color:var(--text-soft);margin-bottom:16px;line-height:1.6;}
+    .george-card-btns{display:flex;gap:8px;flex-wrap:wrap;}
+    .george-btn-p{flex:1;display:block;text-align:center;background:var(--gold);color:#080808;font-weight:800;font-size:12px;letter-spacing:.04em;padding:11px;border-radius:8px;text-decoration:none;min-width:120px;}
+    .george-btn-s{flex:1;display:block;text-align:center;border:1px solid var(--line-2);color:var(--text-soft);font-weight:700;font-size:12px;padding:11px;border-radius:8px;text-decoration:none;min-width:120px;}
+    .art-footer{border-top:1px solid var(--line);padding:20px;text-align:center;font-size:9px;font-weight:600;letter-spacing:.04em;color:var(--text-faint);line-height:1.9;text-transform:uppercase;}
+    @media(max-width:600px){.art-layout{padding:0 16px 64px;}.art-title{font-size:1.5rem;}.art-hdr-tagline{display:none;}}
+  </style>
+</head>
+<body>
+<header class="art-hdr">
+  <a href="../index.html" class="art-hdr-l">
+    <div class="art-hdr-ico"><img src="../assets/STLhomebuyerjourneylogo.png" alt="" onerror="this.style.display='none'"></div>
+    <div>
+      <div class="art-hdr-t"><span>STL</span> Home Buyer Journey</div>
+      <div class="art-hdr-name">George Kindler</div>
+      <div class="art-hdr-tagline">13 Years Of Real Estate Experience At Your Fingertips</div>
+    </div>
+  </a>
+  <nav class="art-hdr-nav">
+    <a href="index.html" class="art-hdr-btn">Guides</a>
+    <a href="../index.html" class="art-hdr-btn gold">Journey</a>
+  </nav>
+</header>
+<nav class="art-nav">
+  <a href="../index.html" class="art-nav-item">Journey</a>
+  <a href="index.html" class="art-nav-item active">Guides</a>
+  <a href="../index.html" class="art-nav-item">Tools</a>
+  <a href="../index.html" class="art-nav-item">Neighborhoods</a>
+</nav>
+
+<div class="art-layout">
+  <div class="art-eyebrow">
+    <a href="../index.html">Journey</a><span>›</span>
+    <a href="index.html">Guides</a><span>›</span>
+    <span>St. Louis Affordability</span>
+  </div>
+  <a href="index.html" class="art-series-tag">St. Louis Affordability by Zip Code</a>
+  <h1 class="art-title">St. Louis Home Affordability by Zip Code</h1>
+  <p class="art-lede">Two homes at the same listing price can cost $200 to $400 more per month depending on where they sit in St. Louis. Here is what that difference looks like across 79 zip codes -- and why it matters before you ever make an offer.</p>
+  <div class="art-meta">
+    <span>George Kindler</span><span class="art-meta-dot">·</span>
+    <span>Licensed Missouri Realtor</span><span class="art-meta-dot">·</span>
+    <span>The Closing Pros LLC</span><span class="art-meta-dot">·</span>
+    <span class="aud-buyer">For Buyers</span>
+  </div>
+
+  <div class="art-body">
+
+    <p>Most buyers search by price. They filter by $250,000 to $300,000, scroll through listings, and mentally calculate what they can afford based on the number they see. The problem is that number is not your monthly payment. It is a starting point that becomes a completely different figure once you add property taxes -- and in St. Louis, those taxes are not even close to uniform across zip codes.</p>
+
+    <h2 id="the-problem">The Problem With Searching by Price</h2>
+    <p>St. Louis City and St. Louis County are separate taxing jurisdictions. Within the county there are dozens of municipalities, each with its own tax levy. There are also multiple school districts layered on top of municipal boundaries. The result is a patchwork of tax rates that can swing your monthly payment by $300 or more on an identical home at an identical purchase price.</p>
+
+    <div class="stat-block">
+      <div class="stat-card"><span class="stat-num">79</span><span class="stat-lbl">St. Louis zip codes mapped with real tax data</span></div>
+      <div class="stat-card"><span class="stat-num">$300+</span><span class="stat-lbl">monthly payment difference on same-priced homes</span></div>
+      <div class="stat-card"><span class="stat-num">7,006</span><span class="stat-lbl">MARIS MLS sales used to build the data</span></div>
+    </div>
+
+    <div class="callout">
+      <strong>Real Example</strong>
+      A $280,000 home in Affton (63123) and a $280,000 home in Sunset Hills (63127) are 8 miles apart. The effective property tax rate difference between those two zip codes means the Sunset Hills buyer pays roughly $180 more per month in taxes alone -- $2,160 per year -- on a home at the same price.
+    </div>
+
+    <h2 id="what-the-map-shows">What the Affordability Map Actually Shows</h2>
+    <p>The STL Affordability Map calculates your true monthly cost for any zip code in the metro area -- not just the mortgage payment, but property taxes at the actual local rate, estimated insurance, and HOA where applicable. It is built from 7,006 MARIS MLS residential sales across 79 zip codes and uses current local tax levy data, not county averages.</p>
+    <p>You enter your price range and down payment. The map color-codes every zip code from green (most affordable total monthly cost) to red (most expensive) so you can see immediately where your budget actually goes -- not where Zillow's search filter says it goes.</p>
+
+    <div class="tool-cta">
+      <h4>STL Affordability Map</h4>
+      <p>79 zip codes. Real tax rates. Your actual monthly payment -- not an estimate.</p>
+      <a href="https://gkindler-help.github.io/buyeraffordabilityheatmap/" target="_blank" rel="noopener">Open the Map →</a>
+    </div>
+
+    <h2 id="why-lenders-dont-tell-you">Why Your Lender's Number Is Not the Whole Story</h2>
+    <p>When a lender gives you a pre-approval, they calculate your maximum loan amount based on your income, debts, and credit score. They use an estimated property tax rate -- typically a county or state average -- that may have nothing to do with the specific zip code you are buying in.</p>
+    <p>That means you can be fully pre-approved for $300,000 and still be unable to comfortably afford a $280,000 home in a high-tax zip code, because the actual monthly payment exceeds what the lender modeled. This happens constantly in St. Louis, and it is almost never caught until after a buyer is already emotionally attached to a home.</p>
+
+    <a href="how-much-income-to-buy-home-stl.html" class="int-link">
+      <span class="int-link-text">What income you actually need by price point and zip code -- not what your lender approves. <strong>How Much Income Do You Need to Buy in St. Louis? →</strong></span>
+      <span class="int-link-arr">→</span>
+    </a>
+
+    <h2 id="what-drives-the-difference">What Drives the Difference Across Zip Codes</h2>
+
+    <h3>School district levies</h3>
+    <p>School district tax levies are the largest single driver of property tax variation in St. Louis. Two homes a quarter mile apart can fall into different school districts, and the levy difference between districts can be significant. District boundaries do not follow zip code lines -- they can split a single street down the middle.</p>
+
+    <h3>Municipal levies</h3>
+    <p>St. Louis County contains dozens of incorporated municipalities, each with its own tax levy on top of the county base rate. Unincorporated areas of the county have a lower base rate than most municipalities. St. Louis City operates as its own county entirely, with a different structure from the county.</p>
+
+    <h3>Special service districts</h3>
+    <p>Some areas have additional levies for fire protection districts, library districts, or infrastructure improvement districts that further increase the effective tax rate. These do not always appear in a Zillow listing or a basic property search.</p>
+
+    <h2 id="how-to-use-this">How to Use This Before You Search</h2>
+    <p>Before you fall in love with a neighborhood, run your target price through the affordability map for that zip code. Know your actual monthly number -- including taxes -- before you walk through a single door. That number is what determines whether a home fits your budget, not the listing price.</p>
+    <p>If you are working with me, I pull the actual tax data for every property before we tour. You should never see a payment number for the first time at the closing table.</p>
+
+    <a href="most-affordable-zip-codes-stl-2026.html" class="int-link">
+      <span class="int-link-text">Which zip codes give your budget the most buying power right now. <strong>Most Affordable Zip Codes in St. Louis (2026) →</strong></span>
+      <span class="int-link-arr">→</span>
+    </a>
+
+    <div class="faq-section">
+      <h2>Affordability FAQ</h2>
+      <div class="faq-item">
+        <p class="faq-q">Why do two homes at the same price cost different amounts per month in St. Louis?</p>
+        <p class="faq-a">Property tax rates vary significantly across St. Louis zip codes and municipalities. Two homes priced identically can carry monthly payments that differ by $300 to $400 based solely on their location, because each municipality and school district sets its own levy rate.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Does my lender account for St. Louis property taxes in my pre-approval?</p>
+        <p class="faq-a">Lenders use estimated tax rates that are often county or state averages -- not the specific rate for the zip code you are buying in. This can make your actual monthly payment significantly higher than what the lender modeled, especially in higher-tax zip codes.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">How do I find the actual property tax rate for a specific St. Louis address?</p>
+        <p class="faq-a">The St. Louis County Assessor and St. Louis City Assessor both have online lookup tools where you can enter an address and see the current assessed value and tax levy. The STL Affordability Map also incorporates these rates by zip code so you can compare areas before you commit to a specific address.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Is St. Louis City cheaper or more expensive than the county for property taxes?</p>
+        <p class="faq-a">It depends on the specific municipality and school district within the county. St. Louis City has its own tax structure as a combined city-county. Some county municipalities have higher effective rates than City zip codes; others are lower. The affordability map shows the actual comparison without generalizing.</p>
+      </div>
+    </div>
+
+    <div class="series-nav">
+      <h3>More in This Series</h3>
+      <div class="series-links">
+        <a href="how-much-income-to-buy-home-stl.html" class="series-link"><span class="series-link-title">How Much Income Do You Need to Buy a Home in St. Louis?</span><span class="series-link-arr">→</span></a>
+        <a href="renting-vs-buying-stl.html" class="series-link"><span class="series-link-title">Renting vs. Buying in St. Louis: What the Numbers Actually Show</span><span class="series-link-arr">→</span></a>
+        <a href="first-time-buyer-programs-stl.html" class="series-link"><span class="series-link-title">First-Time Buyer Programs in St. Louis: What's Actually Available</span><span class="series-link-arr">→</span></a>
+        <a href="most-affordable-zip-codes-stl-2026.html" class="series-link"><span class="series-link-title">Most Affordable Zip Codes in St. Louis Right Now (2026)</span><span class="series-link-arr">→</span></a>
+      </div>
+    </div>
+
+    <div class="george-card">
+      <div class="george-card-top">
+        <div class="george-card-avatar">👋</div>
+        <div>
+          <div class="george-card-name">George Kindler</div>
+          <div class="george-card-creds">Licensed Missouri Realtor · The Closing Pros LLC · 13 years · 130+ transactions</div>
+        </div>
+      </div>
+      <p class="george-card-line">Questions about what you are reading? I answer personally -- no team, no handoff.</p>
+      <div class="george-card-btns">
+        <a href="mailto:georgeandlizk@gmail.com" class="george-btn-p">Get in Touch</a>
+        <a href="tel:3144351087" class="george-btn-s">314.435.1087</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="art-footer">
+  <p>George Kindler · Missouri Licensed Real Estate Agent · The Closing Pros LLC<br>
+  314-998-4550 · georgeandlizk@gmail.com<br>
+  All content is for informational purposes only and does not constitute legal or financial advice.</p>
+</footer>
+</body>
+</html>
