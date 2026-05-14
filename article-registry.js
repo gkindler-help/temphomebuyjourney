@@ -282,7 +282,20 @@ window.ARTICLE_REGISTRY = {
       toolLink: null,
       published: true
     },
-
+    {
+  slug: "st-louis-home-price-reduction-negotiation",
+  title: "How a St. Louis Home Sat 90 Days -- And My Buyer Got $30,000 Off Before Inspections",
+  shortTitle: "$30K Off Before Inspections: Case Study",
+  description: "A verified St. Louis case study -- roof, foundation, 90 days on market, two failed contracts, and a $30,000 reduction before inspections started.",
+  pillLabel: "The $30K Case Study",
+  audience: "buyer",
+  series: "repair-guide",
+  isHub: false,
+  chapters: [3, 5],
+  tags: ["negotiation", "days-on-market", "inspection", "price-reduction", "case-study", "st-louis-city", "repair-costs", "red-flags"],
+  toolLink: null,
+  published: true
+    },
     /* ── BUYER: REPRESENTATION SERIES ── */
 
     {
