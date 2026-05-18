@@ -10,17 +10,11 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://stlhomejourney.com/articles/">
   <link rel="canonical" href="https://stlhomejourney.com/articles/">
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Registry -->
   <script src="../article-registry.js"></script>
-
   <style>
-    /* ── Page-specific overrides & components ── */
     :root {
       --bg: #050505;
       --gold: #ffcc4d;
@@ -37,9 +31,12 @@
       --pill-both: #2a2010;
       --pill-both-text: #ffcc4d;
       --series-line: rgba(255,204,77,0.2);
+      --stage-h: 52px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
@@ -52,7 +49,7 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    /* ── Header — matches journey brand ── */
+    /* ── Page header ── */
     .page-header {
       background: rgba(5,5,5,.96);
       backdrop-filter: blur(10px);
@@ -60,9 +57,8 @@
       padding: 10px 16px;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 200;
     }
-
     .header-inner {
       max-width: 1100px;
       margin: 0 auto;
@@ -71,7 +67,6 @@
       justify-content: space-between;
       gap: 10px;
     }
-
     .logo-link {
       text-decoration: none;
       display: flex;
@@ -79,104 +74,92 @@
       gap: 10px;
       min-width: 0;
     }
-
-    .logo-ico {
-      width: 32px;
-      height: 32px;
-      flex-shrink: 0;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
+    .logo-ico { width: 32px; height: 32px; flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; }
     .logo-ico img { width: 100%; height: 100%; object-fit: contain; }
-
-    .logo-wordmark {
-      font-family: 'Playfair Display', serif;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: .03em;
-      color: rgba(255,255,255,.96);
-      line-height: 1.05;
-    }
-
+    .logo-wordmark { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: .03em; color: rgba(255,255,255,.96); line-height: 1.05; }
     .logo-wordmark span { color: var(--gold); }
-
-    .logo-name {
-      font-size: 10px;
-      font-weight: 600;
-      color: rgba(255,255,255,.72);
-      letter-spacing: .04em;
-      margin-top: 2px;
-    }
-
-    .logo-tagline {
-      font-size: 9px;
-      color: rgba(255,255,255,.54);
-      letter-spacing: .03em;
-    }
-
+    .logo-name { font-size: 10px; font-weight: 600; color: rgba(255,255,255,.72); letter-spacing: .04em; margin-top: 2px; }
+    .logo-tagline { font-size: 9px; color: rgba(255,255,255,.54); letter-spacing: .03em; }
     .back-to-journey {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .05em;
-      padding: 6px 11px;
-      border-radius: 999px;
+      font-size: 10px; font-weight: 700; letter-spacing: .05em;
+      padding: 6px 11px; border-radius: 999px;
       border: 1px solid var(--card-border);
       color: rgba(255,255,255,.72);
       background: rgba(255,255,255,.02);
-      text-decoration: none;
-      white-space: nowrap;
-      flex-shrink: 0;
+      text-decoration: none; white-space: nowrap; flex-shrink: 0;
       transition: border-color .18s, color .18s;
     }
-
-    .back-to-journey:hover {
-      border-color: var(--gold-border);
-      color: rgba(255,255,255,.96);
-    }
-
+    .back-to-journey:hover { border-color: var(--gold-border); color: rgba(255,255,255,.96); }
     @media(max-width:600px) { .logo-tagline { display: none; } }
 
-    /* ── Hero ── */
-    .hero {
+    /* ── Stage jump nav — sticky below header ── */
+    .stage-nav {
+      background: rgba(5,5,5,.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 53px; /* header height */
+      z-index: 190;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .stage-nav::-webkit-scrollbar { display: none; }
+    .stage-nav-inner {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 64px 24px 48px;
+      display: flex;
+      align-items: stretch;
+      padding: 0 16px;
+      gap: 0;
+      min-width: max-content;
     }
-
-    .hero-eyebrow {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 900;
-      line-height: 1.1;
-      color: #fff;
-      margin-bottom: 20px;
-      max-width: 700px;
-    }
-
-    .hero h1 span {
-      color: var(--gold);
-    }
-
-    .hero-sub {
-      font-size: 1.05rem;
+    .stage-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 18px;
+      height: var(--stage-h);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
       color: var(--text-muted);
-      max-width: 560px;
-      line-height: 1.7;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: color .18s, border-color .18s;
+      margin-bottom: -1px;
+    }
+    .stage-btn:hover { color: var(--text); }
+    .stage-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .stage-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      transition: background .18s, color .18s;
+    }
+    .stage-btn.active .stage-num {
+      background: var(--gold);
+      color: #080808;
+    }
+    .stage-divider {
+      width: 1px;
+      background: var(--card-border);
+      margin: 12px 0;
+      flex-shrink: 0;
     }
 
-    /* ── Tabs ── */
+    /* ── Tabs (buyer/both/seller) — unchanged logic ── */
     .tabs-bar {
       max-width: 1100px;
       margin: 0 auto;
@@ -185,376 +168,214 @@
       display: flex;
       gap: 0;
     }
-
     .tab-btn {
-      background: none;
-      border: none;
+      background: none; border: none;
       border-bottom: 2px solid transparent;
       color: var(--text-muted);
       font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 500;
+      font-size: 0.9rem; font-weight: 500;
       padding: 14px 20px;
       cursor: pointer;
       transition: color 0.2s, border-color 0.2s;
       margin-bottom: -1px;
     }
-
     .tab-btn:hover { color: var(--text); }
-
-    .tab-btn.active {
-      color: var(--gold);
-      border-bottom-color: var(--gold);
-    }
-
+    .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
     .seller-coming-soon {
       font-size: 0.7rem;
       background: rgba(255,204,77,0.1);
       color: var(--gold);
-      padding: 2px 7px;
-      border-radius: 20px;
-      margin-left: 6px;
-      vertical-align: middle;
+      padding: 2px 7px; border-radius: 20px;
+      margin-left: 6px; vertical-align: middle;
     }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 52px 24px 36px;
+    }
+    .hero-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 900; line-height: 1.1; color: #fff; margin-bottom: 16px; max-width: 700px; }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub { font-size: 1rem; color: var(--text-muted); max-width: 520px; line-height: 1.7; margin-bottom: 28px; }
+
+    /* ── Stage hint strip (visible below hero, above tabs) ── */
+    .stage-hint {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .stage-hint::-webkit-scrollbar { display: none; }
+    .stage-hint-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .10em; white-space: nowrap; flex-shrink: 0; }
+    .hint-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px 5px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--card-border);
+      background: rgba(255,255,255,.02);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: border-color .18s, color .18s, background .18s;
+      flex-shrink: 0;
+    }
+    .hint-chip:hover { border-color: var(--gold-border); color: var(--text); background: var(--gold-dim); }
+    .hint-chip-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.08);
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .hint-chip:hover .hint-chip-num { background: var(--gold); color: #080808; }
+    .hint-sep { color: rgba(255,255,255,.12); font-size: 0.7rem; flex-shrink: 0; }
 
     /* ── Filter strip ── */
     .filter-strip {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 20px 24px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      align-items: center;
+      max-width: 1100px; margin: 0 auto;
+      padding: 18px 24px;
+      display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
     }
-
-    .filter-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-right: 4px;
-    }
-
+    .filter-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-right: 4px; }
     .filter-chip {
-      background: none;
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
-      padding: 5px 12px;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.15s;
+      background: none; border: 1px solid var(--card-border);
+      color: var(--text-muted); font-family: 'Inter', sans-serif;
+      font-size: 0.78rem; padding: 5px 12px; border-radius: 20px;
+      cursor: pointer; transition: all 0.15s;
     }
-
-    .filter-chip:hover {
-      border-color: var(--gold-border);
-      color: var(--text);
-    }
-
-    .filter-chip.active {
-      background: var(--gold-dim);
-      border-color: var(--gold);
-      color: var(--gold);
-    }
+    .filter-chip:hover { border-color: var(--gold-border); color: var(--text); }
+    .filter-chip.active { background: var(--gold-dim); border-color: var(--gold); color: var(--gold); }
 
     /* ── Content area ── */
-    .content-area {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px 80px;
-    }
+    .content-area { max-width: 1100px; margin: 0 auto; padding: 0 24px 80px; }
 
-    /* ── Series group ── */
-    .series-group {
-      margin-bottom: 52px;
-    }
-
+    /* ── Series group — now has an id anchor ── */
+    .series-group { margin-bottom: 56px; scroll-margin-top: 116px; /* header + stage nav */ }
     .series-header {
-      display: flex;
-      align-items: baseline;
-      gap: 14px;
-      margin-bottom: 20px;
-      padding-bottom: 12px;
+      display: flex; align-items: baseline; gap: 14px;
+      margin-bottom: 20px; padding-bottom: 12px;
       border-bottom: 1px solid var(--series-line);
     }
-
-    .series-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .series-count {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
+    .series-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: #fff; }
+    .series-count { font-size: 0.75rem; color: var(--text-muted); }
     .series-tool-link {
-      margin-left: auto;
-      font-size: 0.78rem;
-      color: var(--gold);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      opacity: 0.8;
-      transition: opacity 0.2s;
+      margin-left: auto; font-size: 0.78rem; color: var(--gold);
+      text-decoration: none; display: flex; align-items: center; gap: 5px;
+      opacity: 0.8; transition: opacity 0.2s;
     }
     .series-tool-link:hover { opacity: 1; }
 
-    /* ── Article cards ── */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 16px;
-    }
-
-    .article-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 22px 22px 18px;
+    /* ── Back-to-top inside each section ── */
+    .series-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      margin-left: auto;
+      font-family: 'Inter', sans-serif;
+      transition: color .15s;
       text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
     }
+    .series-back:hover { color: var(--gold); }
 
+    /* ── Article cards ── */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+    .article-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 10px; padding: 22px 22px 18px;
+      text-decoration: none; display: flex; flex-direction: column;
+      gap: 10px; transition: border-color 0.2s, transform 0.2s;
+      position: relative; overflow: hidden;
+    }
     .article-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: left;
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
       transition: transform 0.25s ease;
     }
-
-    .article-card:hover {
-      border-color: var(--gold-border);
-      transform: translateY(-2px);
-    }
-
-    .article-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .article-card.is-hub {
-      border-color: rgba(255,204,77,0.15);
-    }
-
-    .hub-badge {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.7;
-    }
-
-    .card-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.35;
-    }
-
-    .card-desc {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      flex: 1;
-    }
-
-    .card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 4px;
-    }
-
-    .audience-badge {
-      font-size: 0.68rem;
-      font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
+    .article-card:hover { border-color: var(--gold-border); transform: translateY(-2px); }
+    .article-card:hover::before { transform: scaleX(1); }
+    .article-card.is-hub { border-color: rgba(255,204,77,0.15); }
+    .hub-badge { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); opacity: 0.7; }
+    .card-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: #fff; line-height: 1.35; }
+    .card-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; flex: 1; }
+    .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
+    .audience-badge { font-size: 0.68rem; font-weight: 600; padding: 3px 8px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
     .badge-buyer  { background: var(--pill-buyer);  color: var(--pill-buyer-text); }
     .badge-seller { background: var(--pill-seller); color: var(--pill-seller-text); }
     .badge-both   { background: var(--pill-both);   color: var(--pill-both-text); }
-
-    .tool-indicator {
-      font-size: 0.72rem;
-      color: var(--gold);
-      opacity: 0.7;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .card-arrow {
-      font-size: 1rem;
-      color: var(--text-muted);
-      transition: color 0.2s, transform 0.2s;
-    }
-    .article-card:hover .card-arrow {
-      color: var(--gold);
-      transform: translateX(3px);
-    }
+    .tool-indicator { font-size: 0.72rem; color: var(--gold); opacity: 0.7; display: flex; align-items: center; gap: 4px; }
+    .card-arrow { font-size: 1rem; color: var(--text-muted); transition: color 0.2s, transform 0.2s; }
+    .article-card:hover .card-arrow { color: var(--gold); transform: translateX(3px); }
 
     /* ── Coming Soon Panel ── */
-    .coming-soon-panel {
-      display: none;
-      text-align: center;
-      padding: 80px 24px;
-    }
-
+    .coming-soon-panel { display: none; text-align: center; padding: 80px 24px; }
     .coming-soon-panel.active { display: block; }
-
-    .coming-soon-icon {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    .coming-soon-panel h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      color: #fff;
-      margin-bottom: 12px;
-    }
-
-    .coming-soon-panel p {
-      color: var(--text-muted);
-      max-width: 480px;
-      margin: 0 auto 28px;
-      line-height: 1.7;
-    }
-
-    .cta-george {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--gold);
-      color: #000;
-      font-weight: 600;
-      font-size: 0.88rem;
-      padding: 12px 24px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
+    .coming-soon-icon { font-size: 3rem; margin-bottom: 20px; }
+    .coming-soon-panel h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #fff; margin-bottom: 12px; }
+    .coming-soon-panel p { color: var(--text-muted); max-width: 480px; margin: 0 auto 28px; line-height: 1.7; }
+    .cta-george { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #000; font-weight: 600; font-size: 0.88rem; padding: 12px 24px; border-radius: 6px; text-decoration: none; transition: opacity 0.2s; }
     .cta-george:hover { opacity: 0.88; }
 
     /* ── Empty state ── */
-    .empty-state {
-      text-align: center;
-      padding: 48px 24px;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
+    .empty-state { text-align: center; padding: 48px 24px; color: var(--text-muted); font-size: 0.9rem; }
 
-    /* ── George sidebar CTA ── */
+    /* ── George CTA bar ── */
     .george-cta-bar {
       background: linear-gradient(135deg, #0f0f0f 0%, #1a1400 100%);
-      border: 1px solid var(--gold-border);
-      border-radius: 12px;
-      padding: 32px;
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      margin-bottom: 48px;
-      flex-wrap: wrap;
+      border: 1px solid var(--gold-border); border-radius: 12px;
+      padding: 32px; display: flex; align-items: center;
+      gap: 24px; margin-bottom: 48px; flex-wrap: wrap;
     }
-
     .george-avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      overflow: hidden;
-      flex-shrink: 0;
-      background: var(--gold-dim);
+      width: 64px; height: 64px; border-radius: 50%; overflow: hidden;
+      flex-shrink: 0; background: var(--gold-dim);
       border: 2px solid var(--gold-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
     }
-
-    .george-text h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      color: #fff;
-      margin-bottom: 4px;
-    }
-
-    .george-text p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    .george-contact {
-      margin-left: auto;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .contact-btn {
-      font-size: 0.82rem;
-      font-weight: 500;
-      padding: 9px 18px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: #000;
-    }
-
-    .btn-secondary {
-      background: none;
-      border: 1px solid var(--gold-border);
-      color: var(--gold);
-    }
-
+    .george-text h3 { font-family: 'Playfair Display', serif; font-size: 1rem; color: #fff; margin-bottom: 4px; }
+    .george-text p { font-size: 0.82rem; color: var(--text-muted); }
+    .george-contact { margin-left: auto; display: flex; gap: 12px; flex-wrap: wrap; }
+    .contact-btn { font-size: 0.82rem; font-weight: 500; padding: 9px 18px; border-radius: 6px; text-decoration: none; transition: opacity 0.2s; }
+    .btn-primary { background: var(--gold); color: #000; }
+    .btn-secondary { background: none; border: 1px solid var(--gold-border); color: var(--gold); }
     .contact-btn:hover { opacity: 0.85; }
 
     /* ── Compliance footer ── */
-    .compliance-footer {
-      border-top: 1px solid var(--card-border);
-      padding: 24px;
-      text-align: center;
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-    }
+    .compliance-footer { border-top: 1px solid var(--card-border); padding: 24px; text-align: center; font-size: 0.72rem; color: var(--text-muted); line-height: 1.8; }
 
     /* ── Responsive ── */
     @media (max-width: 600px) {
-      .hero { padding: 40px 20px 32px; }
+      .hero { padding: 36px 20px 24px; }
       .cards-grid { grid-template-columns: 1fr; }
       .george-cta-bar { flex-direction: column; align-items: flex-start; }
       .george-contact { margin-left: 0; }
+      .stage-hint { padding: 0 20px 20px; }
+      .tabs-bar { padding: 0 16px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header — matches journey brand -->
+  <!-- Header -->
   <header class="page-header">
     <div class="header-inner">
       <a href="../index.html" class="logo-link">
@@ -571,6 +392,13 @@
     </div>
   </header>
 
+  <!-- Stage jump nav — sticky below header -->
+  <nav class="stage-nav" id="stageNav" style="display:none;">
+    <div class="stage-nav-inner" id="stageNavInner">
+      <!-- Populated by JS -->
+    </div>
+  </nav>
+
   <!-- Hero -->
   <section class="hero">
     <p class="hero-eyebrow">Free St. Louis Real Estate Guides</p>
@@ -580,6 +408,12 @@
       The numbers you actually need before you buy or sell.
     </p>
   </section>
+
+  <!-- Stage hint chips — scannable entry points below hero -->
+  <div class="stage-hint" id="stageHint" style="display:none;">
+    <span class="stage-hint-label">Jump to:</span>
+    <!-- Populated by JS -->
+  </div>
 
   <!-- Tabs -->
   <div class="tabs-bar">
@@ -599,12 +433,11 @@
   <!-- Content -->
   <main class="content-area">
 
-    <!-- Buyer / Both tabs -->
     <div id="articlesPanel">
-
-      <!-- George CTA bar -->
       <div class="george-cta-bar">
-        <div class="george-avatar"><img src="../assets/george-proud.png" alt="George Kindler" style="width:100%;height:100%;object-fit:cover;object-position:top;" onerror="this.parentElement.style.fontSize='1.6rem';this.parentElement.textContent='👋';"></div>
+        <div class="george-avatar">
+          <img src="../assets/george-proud.png" alt="George Kindler" style="width:100%;height:100%;object-fit:cover;object-position:top;" onerror="this.parentElement.style.fontSize='1.6rem';this.parentElement.textContent='👋';">
+        </div>
         <div class="george-text">
           <h3>George Kindler — Licensed Missouri Realtor</h3>
           <p>13 years · 250+ transactions · The Closing Pros LLC · St. Louis metro</p>
@@ -614,29 +447,21 @@
           <a href="mailto:georgeandlizk@gmail.com" class="contact-btn btn-primary">Get in Touch</a>
         </div>
       </div>
-
-      <!-- Series groups render here -->
       <div id="seriesContainer"></div>
-
     </div>
 
-    <!-- Seller coming soon panel -->
     <div class="coming-soon-panel" id="sellerPanel">
       <div class="coming-soon-icon">🏡</div>
       <h2>Seller Guides Coming Soon</h2>
       <p>
         The full St. Louis Seller Journey is in development — pricing strategy, net proceeds calculators,
         cash offer analysis, and everything else sellers need before they list.
-        The buyer guides above are a preview of what's coming.
       </p>
-      <a href="mailto:georgeandlizk@gmail.com" class="cta-george">
-        Get notified when it launches
-      </a>
+      <a href="mailto:georgeandlizk@gmail.com" class="cta-george">Get notified when it launches</a>
     </div>
 
   </main>
 
-  <!-- Compliance footer -->
   <footer class="compliance-footer">
     <p>
       George Kindler · Missouri Licensed Real Estate Agent · The Closing Pros LLC<br>
@@ -646,87 +471,75 @@
   </footer>
 
   <script>
-    // ── State ────────────────────────────────────────────────────────────────
     let currentTab = 'buyer';
     let activeTag  = 'all';
 
-    // ── Tab switching ────────────────────────────────────────────────────────
+    // Map series slugs to buyer stage numbers and labels
+    // Stage 1 = Getting Ready, 2 = Searching, 3 = Making Offers, 4 = Under Contract, 5 = Closing
+    const SERIES_STAGE_MAP = {
+      'affordability':   { stage: 1, label: 'Getting Ready' },
+      'mortgage':        { stage: 1, label: 'Getting Ready' },
+      'representation':  { stage: 2, label: 'Searching' },
+      'zillow':          { stage: 2, label: 'Searching' },
+      'repair-guide':    { stage: 4, label: 'Under Contract' },
+      'seller-net':      { stage: null, label: null }, // seller-only, no stage
+    };
+
+    const STAGE_LABELS = [
+      null,
+      'Getting Ready',
+      'Searching',
+      'Making Offers',
+      'Under Contract',
+      'Closing'
+    ];
+
     function switchTab(tab) {
       currentTab = tab;
       activeTag  = 'all';
-
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
-
       const articlesPanel = document.getElementById('articlesPanel');
       const sellerPanel   = document.getElementById('sellerPanel');
-
       if (tab === 'seller') {
         articlesPanel.style.display = 'none';
         sellerPanel.classList.add('active');
         document.getElementById('filterStrip').style.display = 'none';
+        document.getElementById('stageNav').style.display = 'none';
+        document.getElementById('stageHint').style.display = 'none';
         return;
       }
-
       articlesPanel.style.display = 'block';
       sellerPanel.classList.remove('active');
       document.getElementById('filterStrip').style.display = 'flex';
-
       buildFilters(tab);
       renderArticles(tab, 'all');
     }
 
-    // ── Filter chips ─────────────────────────────────────────────────────────
     function buildFilters(audience) {
       const reg   = window.ARTICLE_REGISTRY;
       const strip = document.getElementById('filterStrip');
       const tags  = reg.getTagsForAudience(audience === 'both' ? 'both' : audience);
-
       const humanTags = {
-        'affordability':   'Affordability',
-        'budget':          'Budget',
-        'zip-codes':       'Zip Codes',
-        'property-tax':    'Property Tax',
-        'tools':           'Tools',
-        'income':          'Income',
-        'first-time-buyer':'First-Time Buyers',
-        'mortgage':        'Mortgage',
-        'renting':         'Renting',
-        'decision':        'Decision',
-        'programs':        'Programs',
-        'fha':             'FHA',
-        'va':              'VA',
-        'data':            'Data',
-        'neighborhoods':   'Neighborhoods',
-        'inspection':      'Inspection',
-        'repair-costs':    'Repair Costs',
-        'negotiation':     'Negotiation',
-        'offer':           'Offer',
-        'hvac':            'HVAC',
-        'basement':        'Basement',
-        'roof':            'Roof',
-        'checklist':       'Checklist',
-        'walkthrough':     'Walkthrough',
-        'process':         'Process',
-        'zillow':          'Zillow',
-        'consumer-protection': 'Consumer Protection',
-        'agents':          'Agents',
-        'lead-gen':        'Lead Gen',
-        'valuation':       'Valuation',
-        'zestimate':       'Zestimate',
-        'strategy':        'Strategy',
-        'maris':           'MARIS Data',
-        'commissions':     'Commissions',
+        'affordability':'Affordability','budget':'Budget','zip-codes':'Zip Codes',
+        'property-tax':'Property Tax','tools':'Tools','income':'Income',
+        'first-time-buyer':'First-Time Buyers','mortgage':'Mortgage','renting':'Renting',
+        'decision':'Decision','programs':'Programs','fha':'FHA','va':'VA','data':'Data',
+        'neighborhoods':'Neighborhoods','inspection':'Inspection','repair-costs':'Repair Costs',
+        'negotiation':'Negotiation','offer':'Offer','hvac':'HVAC','basement':'Basement',
+        'roof':'Roof','checklist':'Checklist','walkthrough':'Walkthrough','process':'Process',
+        'zillow':'Zillow','consumer-protection':'Consumer Protection','agents':'Agents',
+        'lead-gen':'Lead Gen','valuation':'Valuation','zestimate':'Zestimate',
+        'strategy':'Strategy','maris':'MARIS Data','commissions':'Commissions',
+        'closing-costs':'Closing Costs','financing':'Financing','title':'Title',
+        'seller-concessions':'Seller Concessions',
       };
-
       strip.innerHTML = '<span class="filter-label">Filter:</span>';
-
       const allChip = document.createElement('button');
       allChip.className = 'filter-chip active';
       allChip.dataset.tag = 'all';
       allChip.textContent = 'All';
       allChip.onclick = () => filterByTag('all');
       strip.appendChild(allChip);
-
       tags.forEach(tag => {
         const chip = document.createElement('button');
         chip.className = 'filter-chip';
@@ -743,74 +556,184 @@
       renderArticles(currentTab, tag);
     }
 
-    // ── Article rendering ────────────────────────────────────────────────────
+    function buildStageNav(seriesOrder) {
+      // Build the sticky stage nav and hint chips from rendered series
+      const reg = window.ARTICLE_REGISTRY;
+      const navInner = document.getElementById('stageNavInner');
+      const hintEl   = document.getElementById('stageHint');
+      navInner.innerHTML = '';
+      // Keep hint label
+      hintEl.innerHTML = '<span class="stage-hint-label">Jump to:</span>';
+
+      // Gather series with stage assignments
+      const stagesFound = {};
+      seriesOrder.forEach(slug => {
+        const stageInfo = SERIES_STAGE_MAP[slug];
+        const stageNum  = stageInfo ? stageInfo.stage : null;
+        if (stageNum && !stagesFound[stageNum]) {
+          stagesFound[stageNum] = slug;
+        }
+      });
+
+      // Also collect series without stage assignment (ungrouped)
+      const ungroupedSlugs = seriesOrder.filter(slug => {
+        const info = SERIES_STAGE_MAP[slug];
+        return !info || info.stage === null;
+      });
+
+      let navItems = [];
+
+      // Add stage-mapped items in order
+      [1,2,3,4,5].forEach(n => {
+        if (stagesFound[n]) {
+          navItems.push({ num: n, label: STAGE_LABELS[n], anchor: 'series-' + stagesFound[n] });
+        }
+      });
+
+      // Add ungrouped series as direct anchors (no stage number)
+      ungroupedSlugs.forEach(slug => {
+        const seriesDef = reg.series[slug];
+        if (seriesDef) {
+          navItems.push({ num: null, label: seriesDef.title, anchor: 'series-' + slug });
+        }
+      });
+
+      if (navItems.length === 0) {
+        document.getElementById('stageNav').style.display = 'none';
+        document.getElementById('stageHint').style.display = 'none';
+        return;
+      }
+
+      navItems.forEach((item, i) => {
+        if (i > 0) {
+          const div = document.createElement('div');
+          div.className = 'stage-divider';
+          navInner.appendChild(div);
+        }
+        const btn = document.createElement('a');
+        btn.className = 'stage-btn';
+        btn.href = '#' + item.anchor;
+        btn.innerHTML = item.num
+          ? `<span class="stage-num">${item.num}</span>${item.label}`
+          : item.label;
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.stage-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+        navInner.appendChild(btn);
+
+        // Also add hint chip
+        const chip = document.createElement('a');
+        chip.className = 'hint-chip';
+        chip.href = '#' + item.anchor;
+        chip.innerHTML = item.num
+          ? `<span class="hint-chip-num">${item.num}</span>${item.label}`
+          : item.label;
+        hintEl.appendChild(chip);
+
+        if (i < navItems.length - 1) {
+          const sep = document.createElement('span');
+          sep.className = 'hint-sep';
+          sep.textContent = '→';
+          hintEl.appendChild(sep);
+        }
+      });
+
+      document.getElementById('stageNav').style.display = 'block';
+      document.getElementById('stageHint').style.display = 'flex';
+
+      // Highlight active stage on scroll
+      setupScrollSpy(navItems);
+    }
+
+    function setupScrollSpy(navItems) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            document.querySelectorAll('.stage-btn').forEach(btn => {
+              btn.classList.toggle('active', btn.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+
+      navItems.forEach(item => {
+        const el = document.getElementById(item.anchor);
+        if (el) observer.observe(el);
+      });
+    }
+
     function renderArticles(audience, tag) {
       const reg = window.ARTICLE_REGISTRY;
       const container = document.getElementById('seriesContainer');
       container.innerHTML = '';
 
-      // Determine which articles to show
       let articles;
       if (audience === 'both') {
         articles = reg.articles.filter(a => a.published && a.audience === 'both');
       } else {
         articles = reg.getByAudience(audience);
       }
-
       if (tag !== 'all') {
         articles = articles.filter(a => a.tags.includes(tag));
       }
-
       if (articles.length === 0) {
         container.innerHTML = '<p class="empty-state">No guides match that filter.</p>';
+        document.getElementById('stageNav').style.display = 'none';
+        document.getElementById('stageHint').style.display = 'none';
         return;
       }
 
-      // Group by series
-      const seriesSeen = new Set();
       const grouped = {};
       const noSeries = [];
+      const seriesOrder = [];
 
       articles.forEach(a => {
         if (a.series) {
-          if (!grouped[a.series]) grouped[a.series] = [];
+          if (!grouped[a.series]) { grouped[a.series] = []; seriesOrder.push(a.series); }
           grouped[a.series].push(a);
-          seriesSeen.add(a.series);
         } else {
           noSeries.push(a);
         }
       });
 
-      // Render each series group
+      // Build stage nav from the series that are actually rendered
+      buildStageNav(seriesOrder);
+
       Object.entries(grouped).forEach(([seriesSlug, arts]) => {
         const seriesDef = reg.series[seriesSlug];
         const group = document.createElement('div');
         group.className = 'series-group';
+        group.id = 'series-' + seriesSlug; // anchor target
 
-        const header = document.createElement('div');
-        header.className = 'series-header';
-        header.innerHTML = `
-          <span class="series-title">${seriesDef ? seriesDef.title : seriesSlug}</span>
-          <span class="series-count">${arts.length} guide${arts.length !== 1 ? 's' : ''}</span>
-          ${seriesDef && seriesDef.toolLink ? `<a class="series-tool-link" href="${seriesDef.toolLink}" target="_blank" rel="noopener">Open Tool ↗</a>` : ''}
+        const stageInfo  = SERIES_STAGE_MAP[seriesSlug];
+        const stageLabel = stageInfo && stageInfo.stage ? `Stage ${stageInfo.stage}: ${STAGE_LABELS[stageInfo.stage]}` : null;
+
+        group.innerHTML = `
+          <div class="series-header">
+            <div>
+              ${stageLabel ? `<div style="font-size:.68rem;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:4px;">${stageLabel}</div>` : ''}
+              <span class="series-title">${seriesDef ? seriesDef.title : seriesSlug}</span>
+            </div>
+            <span class="series-count">${arts.length} guide${arts.length !== 1 ? 's' : ''}</span>
+            ${seriesDef && seriesDef.toolLink ? `<a class="series-tool-link" href="${seriesDef.toolLink}" target="_blank" rel="noopener">Open Tool ↗</a>` : ''}
+            <a href="#" class="series-back" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Back to top</a>
+          </div>
         `;
 
         const grid = document.createElement('div');
         grid.className = 'cards-grid';
-
-        // Hubs first
         const sorted = [...arts].sort((a, b) => (b.isHub ? 1 : 0) - (a.isHub ? 1 : 0));
         sorted.forEach(article => grid.appendChild(buildCard(article)));
-
-        group.appendChild(header);
         group.appendChild(grid);
         container.appendChild(group);
       });
 
-      // Render ungrouped
       if (noSeries.length > 0) {
         const group = document.createElement('div');
         group.className = 'series-group';
+        group.id = 'series-ungrouped';
         const grid = document.createElement('div');
         grid.className = 'cards-grid';
         noSeries.forEach(article => grid.appendChild(buildCard(article)));
@@ -823,10 +746,8 @@
       const card = document.createElement('a');
       card.className = 'article-card' + (article.isHub ? ' is-hub' : '');
       card.href = `${article.slug}.html`;
-
       const audienceLabel = { buyer: 'Buyer', seller: 'Seller', both: 'Buyers & Sellers' };
       const audienceClass = { buyer: 'badge-buyer', seller: 'badge-seller', both: 'badge-both' };
-
       card.innerHTML = `
         ${article.isHub ? '<span class="hub-badge">Series Overview</span>' : ''}
         <div class="card-title">${article.title}</div>
@@ -837,14 +758,13 @@
           <span class="card-arrow">→</span>
         </div>
       `;
-
       return card;
     }
 
-    // ── Init ─────────────────────────────────────────────────────────────────
+    // Init
     if (!window.ARTICLE_REGISTRY || !window.ARTICLE_REGISTRY.articles) {
       document.getElementById('seriesContainer').innerHTML =
-        '<p style="color:rgba(255,255,255,.4);padding:40px 16px;text-align:center;font-size:.9rem;">Guides loading -- if this persists, try refreshing the page.</p>';
+        '<p style="color:rgba(255,255,255,.4);padding:40px 16px;text-align:center;font-size:.9rem;">Guides loading — if this persists, try refreshing the page.</p>';
     } else {
       buildFilters('buyer');
       renderArticles('buyer', 'all');
