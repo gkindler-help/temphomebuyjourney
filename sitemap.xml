@@ -2,8 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <!-- Root pages -->
-  <url><loc>https://stlhomejourney.com/</loc><lastmod>2026-05-07</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://stlhomejourney.com/articles/</loc><lastmod>2026-05-07</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://stlhomejourney.com/</loc><lastmod>2026-05-18</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://stlhomejourney.com/articles/</loc><lastmod>2026-05-18</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://stlhomejourney.com/neighborhoods/</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Journey chapters -->
@@ -38,7 +38,7 @@
   <url><loc>https://stlhomejourney.com/articles/home-inspection-st-louis.html</loc><lastmod>2026-05-05</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
 
   <!-- Articles: Who's Actually Representing You? (5) -->
-  <url><loc>https://stlhomejourney.com/articles/do-i-need-a-buyers-agent-stl.html</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://stlhomejourney.com/articles/do-i-need-a-buyers-agent-stl.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://stlhomejourney.com/articles/what-buyer-agent-actually-does-stl.html</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
   <url><loc>https://stlhomejourney.com/articles/how-to-interview-buyers-agent-stl.html</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
   <url><loc>https://stlhomejourney.com/articles/red-flags-bad-buyer-agent-stl.html</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
@@ -49,7 +49,17 @@
   <url><loc>https://stlhomejourney.com/articles/conventional-vs-fha-loan-st-louis.html</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
   <url><loc>https://stlhomejourney.com/articles/credit-score-buy-home-st-louis.html</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
   <url><loc>https://stlhomejourney.com/articles/how-much-down-payment-st-louis.html</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
-  <url><loc>https://stlhomejourney.com/articles/buyer-closing-costs-st-louis.html</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://stlhomejourney.com/articles/buyer-closing-costs-st-louis.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+
+  <!-- Articles: South County St. Louis (5) — NEW -->
+  <url><loc>https://stlhomejourney.com/articles/south-county-stl-neighborhood-guide.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://stlhomejourney.com/articles/south-county-stl-neighborhoods-by-price.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://stlhomejourney.com/articles/buying-a-home-in-oakville-mo.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://stlhomejourney.com/articles/mehlville-vs-oakville-vs-concord-stl.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://stlhomejourney.com/articles/lindbergh-vs-mehlville-school-district-stl.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+
+  <!-- Articles: Negotiation and Offer Strategy — NEW -->
+  <url><loc>https://stlhomejourney.com/articles/st-louis-home-price-reduction-negotiation.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
 
   <!-- Neighborhoods (98) -->
   <url><loc>https://stlhomejourney.com/neighborhoods/central-west-end.html</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
