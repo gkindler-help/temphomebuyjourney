@@ -2,12 +2,12 @@
    Single source of truth for all STL Home Journey articles.
    ASCII-safe only -- no curly quotes, no smart apostrophes, no em dashes.
    ES5 compatible -- no spread operator, no shorthand methods.
-   Version 1.1.0 -- added Representation and Mortgage series
+   Version 1.1.1 -- added Neighborhood Guides series
 */
 
 window.ARTICLE_REGISTRY = {
 
-  version: "1.1.0",
+  version: "1.1.2",
 
   series: {
     "zillow": {
@@ -48,6 +48,14 @@ window.ARTICLE_REGISTRY = {
       audience: "buyer",
       description: "Pre-approval, loan types, credit scores, down payments, and closing costs.",
       hubSlug: "mortgage-pre-approval-st-louis",
+      toolLink: null
+    },
+    "neighborhoods": {
+      title: "St. Louis Neighborhood Guides for Buyers",
+      slug: "neighborhoods",
+      audience: "buyer",
+      description: "What buyers actually need to know before committing to a St. Louis neighborhood -- schools, price tiers, tradeoffs, and honest comparisons.",
+      hubSlug: "south-county-stl-neighborhood-guide",
       toolLink: null
     },
     "seller-net": {
@@ -438,6 +446,66 @@ window.ARTICLE_REGISTRY = {
       isHub: false,
       chapters: [9],
       tags: ["mortgage", "closing-costs", "financing", "title", "seller-concessions"],
+      toolLink: null,
+      published: true
+    },
+
+    /* ── BUYER: NEIGHBORHOOD GUIDES SERIES ── */
+
+
+    {
+      slug: "south-county-stl-neighborhood-guide",
+      title: "South County St. Louis Neighborhood Guide: The Full Buyer Overview",
+      shortTitle: "South County Neighborhood Guide",
+      description: "South St. Louis County covers 9 communities from Lemay to Sunset Hills -- price tiers, school districts, market speed, and which neighborhood fits which buyer.",
+      pillLabel: "South County Guide",
+      audience: "buyer",
+      series: "neighborhoods",
+      isHub: true,
+      chapters: [2, 3],
+      tags: ["neighborhoods", "south-county", "buyer-guide", "schools", "price-tiers", "market-speed"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "south-county-stl-neighborhoods-by-price",
+      title: "South County St. Louis Neighborhoods by Price: From $152K to $523K",
+      shortTitle: "South County by Price",
+      description: "South St. Louis County spans a $370,000 price range across 9 neighborhoods -- mapped by median value, market speed, and what your budget gets you.",
+      pillLabel: "South County by Price",
+      audience: "buyer",
+      series: "neighborhoods",
+      isHub: false,
+      chapters: [2, 3],
+      tags: ["neighborhoods", "south-county", "prices", "affordability", "budget", "market-speed"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "mehlville-vs-oakville-vs-concord-stl",
+      title: "Mehlville vs. Oakville vs. Concord: Which South County Suburb Is Right for You?",
+      shortTitle: "Mehlville vs. Oakville vs. Concord",
+      description: "Mehlville, Oakville, and Concord are South County's three most-searched communities -- compared on price, schools, market speed, and what buyers find when they show up.",
+      pillLabel: "Mehlville vs. Oakville vs. Concord",
+      audience: "buyer",
+      series: "neighborhoods",
+      isHub: false,
+      chapters: [2, 3],
+      tags: ["neighborhoods", "south-county", "mehlville", "oakville", "concord", "schools", "price-comparison"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "lindbergh-vs-mehlville-school-district-stl",
+      title: "Lindbergh vs. Mehlville School District: What South County Buyers Need to Know",
+      shortTitle: "Lindbergh vs. Mehlville Schools",
+      description: "Both districts serve South St. Louis County -- but which block you buy on determines which district you're in. What buyers need to know before they offer.",
+      pillLabel: "Lindbergh vs. Mehlville Schools",
+      audience: "buyer",
+      series: "neighborhoods",
+      isHub: false,
+      chapters: [2, 3],
+      tags: ["neighborhoods", "schools", "south-county", "lindbergh", "mehlville", "district"],
       toolLink: null,
       published: true
     },
