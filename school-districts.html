@@ -670,7 +670,7 @@ body {
 }
   </style>
 </head>
-<body>
+<body class="school-districts-page">
 
   <!-- Breadcrumb -->
   <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -1220,7 +1220,57 @@ body {
     <p>STL Home Journey is an educational resource. Content is for informational purposes only and does not constitute legal or financial advice. School district information is provided for general guidance only; always verify assigned schools directly with the district before writing an offer. Equal Housing Opportunity.</p>
   </footer>
 
-  <script src="/shared.js" defer></script>
+<script src="/shared.js" defer></script>
+
+<script>
+  // Page-only scroll unlock for school-districts.html
+  // Keeps shared.js active but prevents global scroll lock from breaking this page.
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!document.body.classList.contains('school-districts-page')) return;
+
+    // Remove common scroll-lock classes if shared.js adds them.
+    document.body.classList.remove(
+      'no-scroll',
+      'menu-open',
+      'nav-open',
+      'modal-open',
+      'drawer-open',
+      'locked'
+    );
+
+    document.documentElement.classList.remove(
+      'no-scroll',
+      'menu-open',
+      'nav-open',
+      'modal-open',
+      'drawer-open',
+      'locked'
+    );
+
+    // Force normal page scroll only on this page.
+    document.documentElement.style.overflowY = 'auto';
+    document.documentElement.style.height = 'auto';
+
+    document.body.style.overflowY = 'auto';
+    document.body.style.height = 'auto';
+    document.body.style.position = 'relative';
+    document.body.style.touchAction = 'auto';
+  });
+
+  // Let mouse wheel/touch scroll work even if shared.js blocks scroll events.
+  window.addEventListener('wheel', function (e) {
+    if (!document.body.classList.contains('school-districts-page')) return;
+    e.stopImmediatePropagation();
+  }, { capture: true, passive: true });
+
+  window.addEventListener('touchmove', function (e) {
+    if (!document.body.classList.contains('school-districts-page')) return;
+    e.stopImmediatePropagation();
+  }, { capture: true, passive: true });
+</script>
+
+</body>
+</html>
 
 </body>
 </html>
