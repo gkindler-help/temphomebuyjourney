@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parkway Homes & Schools | STL Home Journey</title>
+  <meta name="description" content="Parkway School District in St. Louis gives buyers elite schools, West County access, and flexible home options across several competitive price tiers.">
+  <link rel="canonical" href="https://stlhomejourney.com/school-districts/parkway-school-district.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Parkway Homes & Schools | STL Home Journey",
+    "description": "Parkway School District in St. Louis gives buyers elite schools, West County access, and flexible home options across several competitive price tiers.",
+    "author": {
+      "@type": "Person",
+      "name": "George Kindler",
+      "jobTitle": "Licensed Missouri Real Estate Agent",
+      "telephone": "314-435-1087"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Closing Pros LLC",
+      "url": "https://stlhomejourney.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://stlhomejourney.com/school-districts/parkway-school-district.html"
+    },
+    "about": {
+      "@type": "Place",
+      "name": "Parkway School District",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "MO",
+        "addressLocality": "St. Louis"
+      }
+    }
+  }
+  </script>
+  <style>
+    /* ── District page local styles ── */
+    :root {
+      --bg: #050505;
+      --gold: #FFCC4D;
+      --gold-dim: rgba(255,204,77,0.12);
+      --gold-border: rgba(255,204,77,0.25);
+      --text: #E8E4DC;
+      --text-muted: #8C8880;
+      --surface: #0F0F0F;
+      --surface-2: #161616;
+      --radius: 8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb {
+      padding: 18px 24px 0;
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .breadcrumb a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb span { margin: 0 6px; }
+
+    /* ── Hero ── */
+    .district-hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 40px;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .tier-elite  { background: rgba(255,204,77,.18); color: var(--gold); border: 1px solid rgba(255,204,77,.35); }
+    .tier-strong { background: rgba(120,200,120,.15); color: #7EC87E; border: 1px solid rgba(120,200,120,.3); }
+    .tier-value  { background: rgba(120,160,220,.15); color: #88B0E0; border: 1px solid rgba(120,160,220,.3); }
+    .price-range {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: .02em;
+    }
+    .price-range strong { color: var(--text); }
+
+    .district-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #fff;
+      letter-spacing: -.01em;
+    }
+    .hero-rule {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      margin-top: 20px;
+      border-radius: 2px;
+    }
+
+    /* ── Content body ── */
+    .district-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .content-section {
+      padding: 44px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .content-section:last-of-type { border-bottom: none; }
+
+    .content-section h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 18px;
+      line-height: 1.25;
+    }
+    .content-section h2 .section-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .content-section p {
+      color: #C8C4BC;
+      line-height: 1.8;
+    }
+
+    /* ── George field callout ── */
+    .george-callout {
+      background: var(--surface-2);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 24px 28px;
+      margin-top: 0;
+    }
+    .george-callout .george-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .george-callout .george-label svg {
+      width: 16px; height: 16px; flex-shrink: 0;
+    }
+    .george-callout p {
+      font-size: 15px;
+      color: #C8C4BC;
+      line-height: 1.8;
+    }
+
+    /* ── Neighborhood pills ── */
+    .neighborhood-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .nbhd-pill {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background .2s, border-color .2s;
+    }
+    .nbhd-pill:hover {
+      background: rgba(255,204,77,.22);
+      border-color: rgba(255,204,77,.5);
+    }
+
+    /* ── CTA block ── */
+    .cta-block {
+      background: var(--surface);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 44px 40px;
+      text-align: center;
+      margin-top: 56px;
+    }
+    .cta-block h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .cta-block p {
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 28px;
+      font-size: 15px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: #050505;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: .01em;
+      transition: opacity .2s, transform .15s;
+    }
+    .cta-btn:hover { opacity: .88; transform: translateY(-1px); }
+    .cta-sub {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color .2s;
+      margin-top: 40px;
+    }
+    .back-link:hover { color: var(--gold); }
+
+    /* ── Compliance footer ── */
+    .compliance-footer {
+      background: var(--surface);
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 20px 24px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .compliance-footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .district-hero, .district-body { padding-left: 16px; padding-right: 16px; }
+      .cta-block { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">STL Home Journey</a>
+    <span>›</span>
+    <a href="/school-districts.html">School Districts</a>
+    <span>›</span>
+    Parkway School District
+  </nav>
+
+  <!-- Hero -->
+  <header class="district-hero">
+    <div class="hero-meta">
+      <span class="tier-badge tier-elite">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><circle cx="5" cy="5" r="5"/></svg>
+        Elite tier
+      </span>
+      <span class="price-range">Typical range: <strong>$300K–$800K</strong></span>
+    </div>
+    <h1>Parkway School District</h1>
+    <div class="hero-rule" aria-hidden="true"></div>
+  </header>
+
+  <!-- Body -->
+  <main class="district-body">
+
+    <!-- Section 1: Who It's For -->
+    <section class="content-section">
+      <h2><span class="section-label">Who it's for</span>Buyer fit for Parkway School District</h2>
+      <p>Parkway is for buyers who want elite-school access with a wide range of West County and central-corridor lifestyles. It fits move-up buyers, relocation buyers, and families who want strong academics, established neighborhoods, and enough inventory variety to compare options.</p>
+    </section>
+
+    <!-- Section 2: What You're Paying For -->
+    <section class="content-section">
+      <h2><span class="section-label">What you're paying for</span>Value breakdown</h2>
+      <p>You are paying for scale, reputation, and location. Parkway is a massive district with multiple high schools, and that means the buyer experience can vary a lot depending on which attendance area you are actually in. The premium buys access to respected schools, mature suburbs, stronger resale, and proximity to major employment corridors. The risk is assuming all Parkway homes are equal, because the neighborhood, high school boundary, commute, and price tier all change the market.</p>
+    </section>
+
+    <!-- Section 3: Neighborhoods -->
+    <section class="content-section">
+      <h2><span class="section-label">Neighborhoods</span>Where buyers look inside this district</h2>
+      <p>Chesterfield offers larger homes, subdivisions, and upper-middle to luxury price points with strong family demand. Creve Coeur has a more central feel, with medical, corporate, and commuter convenience driving prices. Town and Country is higher-end and quieter, attracting buyers who want larger lots, privacy, and prestige. Clarkson Valley is more secluded and estate-like, with buyers paying for space and exclusivity. Des Peres is convenient and retail-heavy nearby, with strong demand from buyers who want location and schools. Manchester is a more accessible Parkway entry point, with practical homes and strong everyday convenience. Maryland Heights gives buyers a more affordable way into parts of Parkway, but the housing and neighborhood feel can vary. Olivette has central-corridor appeal, with buyers drawn to location, commute, and long-term resale more than big lots.</p>
+      <div class="neighborhood-pills">
+  <a href="/neighborhoods/town-and-country.html" class="nbhd-pill">Town And Country</a>
+  <a href="/neighborhoods/maryland-heights.html" class="nbhd-pill">Maryland Heights</a>
+  <a href="/neighborhoods/chesterfield.html" class="nbhd-pill">Chesterfield</a>
+  <a href="/neighborhoods/creve-coeur.html" class="nbhd-pill">Creve Coeur</a>
+  <a href="/neighborhoods/des-peres.html" class="nbhd-pill">Des Peres</a>
+  <a href="/neighborhoods/olivette.html" class="nbhd-pill">Olivette</a>
+</div>
+
+    </section>
+
+    <!-- Section 4: George Field (callout) -->
+    <section class="content-section">
+      <h2><span class="section-label">From the field</span>What I've seen on the ground</h2>
+      <div class="george-callout">
+        <div class="george-label">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          George Kindler — Licensed MO Agent · The Closing Pros LLC
+        </div>
+        <p>I have seen Parkway buyers get overwhelmed because the district is so big that two Parkway homes can feel like completely different markets. A buyer looking in Manchester is not having the same conversation as a buyer in Town and Country or Chesterfield. The smart move is to compare the specific high school, commute, neighborhood, and condition, not just the district name.</p>
+      </div>
+    </section>
+
+    <!-- Section 5: Honest Take -->
+    <section class="content-section">
+      <h2><span class="section-label">Honest take</span>What to know before you decide</h2>
+      <p>Parkway deserves its elite reputation, but it is not a simple one-size-fits-all district. Its strength is choice: price points, neighborhoods, commute patterns, and school options. Its weakness is complexity, because buyers can overpay if they lean on the Parkway name without understanding the exact pocket. If you want West County schools with more flexibility than Clayton or Ladue, Parkway gives you a lot to work with.</p>
+    </section>
+
+    <!-- Back to Hub -->
+    <a href="/school-districts.html" class="back-link" aria-label="Back to School Districts Hub">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to School Districts Hub
+    </a>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <h2>Not sure if Parkway School District is the right fit?</h2>
+      <p>I've worked this market for 13 years and 250+ transactions. One call can save you months of guessing.</p>
+      <a href="tel:3144351087" class="cta-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.5 4.5h2l1 4-1.5 1.5c1.1 2.2 2.8 3.9 5 5L15.5 13l4 1v2c0 .8-.6 1.5-1.4 1.5-7 0-12.6-5.6-12.6-12.6 0-.8.7-1.4 1.5-1.4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        Call George — 314.435.1087
+      </a>
+      <p class="cta-sub">No obligation. No pressure. Just a straight conversation about your situation.</p>
+    </div>
+
+  </main>
+
+  <!-- Compliance Footer -->
+  <footer class="compliance-footer">
+    <p>George Kindler | Licensed Missouri Real Estate Agent | <strong>The Closing Pros LLC</strong> | <a href="tel:3149984550">314-998-4550</a></p>
+    <p>STL Home Journey is an educational resource. Content is for informational purposes only and does not constitute legal or financial advice. Equal Housing Opportunity.</p>
+  </footer>
+
+  <script src="/shared.js" defer></script>
+
+</body>
+</html>
