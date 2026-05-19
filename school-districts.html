@@ -132,16 +132,28 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-   html { scroll-behavior: smooth; }
-body {
-  overflow: auto !important;
-  height: auto !important;
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  line-height: 1.7;
-}
+    html {
+      height: auto !important;
+      min-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto !important;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      height: auto !important;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto !important;
+      overscroll-behavior-y: auto;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      position: relative;
+      touch-action: auto;
+    }
 
     a { color: inherit; }
 
@@ -655,19 +667,6 @@ body {
       line-height: 1.7;
     }
     .compliance-footer a { color: var(--text-muted); text-decoration: none; }
-    html,
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-
-body {
-  overflow-x: hidden;
-  overflow-y: visible;
-  height: auto;
-  min-height: 100vh;
-  position: relative;
-}
   </style>
 </head>
 <body class="school-districts-page">
@@ -1268,9 +1267,6 @@ body {
     e.stopImmediatePropagation();
   }, { capture: true, passive: true });
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
