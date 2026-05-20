@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>St. Louis Neighborhoods Guide — Where to Buy a Home in St. Louis | STL Home Journey</title>
+  <meta name="description" content="98 St. Louis neighborhoods compared — city, county, St. Charles, and Jefferson County. ZIP-level market data, inspection red flags, and school districts. George Kindler, 250+ transactions.">
+  <link rel="canonical" href="https://stlhomejourney.com/neighborhoods-index.html">
+  <meta property="og:title" content="St. Louis Neighborhoods Guide — All 98 Areas Compared">
+  <meta property="og:description" content="98 neighborhoods. ZIP-level market data. Find your area before you find your house.">
+  <meta property="og:url" content="https://stlhomejourney.com/neighborhoods-index.html">
+  <meta property="og:type" content="website">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "St. Louis Neighborhoods Guide",
+    "description": "98 St. Louis neighborhoods with ZIP-level price, condition, and market speed data for home buyers.",
+    "url": "https://stlhomejourney.com/neighborhoods-index.html",
+    "author": { "@type": "Person", "name": "George Kindler", "url": "https://stlhomejourney.com" },
+    "publisher": { "@type": "Organization", "name": "The Closing Pros LLC", "telephone": "314-998-4550" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050505;
+      --surface: #0f0f0f;
+      --surface2: #181818;
+      --border: #2a2a2a;
+      --gold: #ffcc4d;
+      --gold-dim: rgba(255,204,77,0.10);
+      --gold-mid: rgba(255,204,77,0.22);
+      --text: #e8e8e8;
+      --text-dim: #8a8a8a;
+      --text-muted: #505050;
+      --blue: #5295e0;
+      --blue-dim: rgba(82,149,224,0.12);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; }
+
+    /* HEADER */
+    .site-header {
+      background: var(--bg); border-bottom: 1px solid var(--border);
+      padding: 14px 20px; display: flex; align-items: center;
+      justify-content: space-between; position: sticky; top: 0; z-index: 100;
+    }
+    .header-logo { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--gold); text-decoration: none; }
+    .header-back { font-size: 13px; color: var(--text-dim); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .header-back:hover { color: var(--gold); }
+
+    /* HERO */
+    .hero { padding: 52px 20px 36px; max-width: 780px; margin: 0 auto; }
+    .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(26px, 5vw, 44px); font-weight: 900; line-height: 1.1; color: #fff; margin-bottom: 16px; }
+    .hero h1 em { color: var(--gold); font-style: normal; }
+    .hero-sub { font-size: 16px; color: var(--text-dim); max-width: 560px; line-height: 1.65; margin-bottom: 26px; }
+    .hero-stats { display: flex; gap: 28px; flex-wrap: wrap; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--gold); line-height: 1; }
+    .stat-label { font-size: 12px; color: var(--text-dim); margin-top: 3px; }
+
+    /* ARTICLES */
+    .section-wrap { max-width: 780px; margin: 0 auto; padding: 0 20px 40px; }
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 10px; }
+    .article-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 15px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 5px; transition: border-color 0.2s, background 0.2s; }
+    .article-card:hover { border-color: var(--gold); background: var(--gold-dim); }
+    .article-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+    .article-title { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.4; }
+    .article-meta { font-size: 12px; color: var(--text-muted); }
+
+    /* FILTER */
+    .filter-bar { max-width: 780px; margin: 0 auto; padding: 0 20px 18px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .filter-input { flex: 1; min-width: 200px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-family: 'Inter', sans-serif; font-size: 13px; padding: 9px 13px; outline: none; transition: border-color 0.2s; }
+    .filter-input:focus { border-color: var(--gold); }
+    .filter-input::placeholder { color: var(--text-muted); }
+    .chips { display: flex; gap: 6px; flex-wrap: wrap; width: 100%; }
+    .chip { font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border); background: transparent; color: var(--text-dim); cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+    .chip:hover, .chip.active { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+
+    /* ACCORDION GROUP */
+    .nbhd-section { max-width: 780px; margin: 0 auto; padding: 0 20px 60px; }
+    .area-group { margin-bottom: 7px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; transition: border-color 0.2s; }
+    .area-group.highlight { border-color: var(--gold); }
+    .group-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 18px; background: var(--surface); cursor: pointer; user-select: none; gap: 12px; transition: background 0.15s; }
+    .group-header:hover, .area-group.open > .group-header { background: var(--surface2); }
+    .group-left { display: flex; align-items: center; gap: 12px; }
+    .group-icon { width: 34px; height: 34px; border-radius: 7px; background: var(--gold-dim); border: 1px solid var(--gold-mid); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .group-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: #fff; }
+    .group-tagline { font-size: 12px; color: var(--text-dim); margin-top: 1px; }
+    .group-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .group-count { font-size: 12px; color: var(--text-muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; white-space: nowrap; transition: all 0.2s; }
+    .area-group.highlight .group-count { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+    .chevron { width: 18px; height: 18px; color: var(--text-muted); transition: transform 0.25s; flex-shrink: 0; }
+    .area-group.open .chevron { transform: rotate(180deg); }
+
+    /* BODY */
+    .group-body { display: none; background: var(--bg); border-top: 1px solid var(--border); padding: 16px; }
+    .area-group.open .group-body { display: block; }
+    .area-blurb { font-size: 13px; color: var(--text-dim); margin-bottom: 14px; line-height: 1.65; padding: 12px 14px; background: var(--surface); border-left: 2px solid var(--gold); border-radius: 0 6px 6px 0; }
+
+    /* NEIGHBORHOOD CARDS */
+    .nbhd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(162px, 1fr)); gap: 7px; }
+    .nc { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 11px 13px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 3px; transition: border-color 0.15s, background 0.15s, transform 0.1s; position: relative; }
+    .nc:hover { border-color: var(--gold); background: var(--gold-dim); transform: translateY(-1px); }
+    .nc.hidden { display: none; }
+    .nc-name { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.3; }
+    .nc-meta { font-size: 11px; color: var(--text-muted); }
+    .badge { position: absolute; top: 7px; right: 7px; font-size: 9px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 5px; border-radius: 3px; }
+    .badge-city { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(82,149,224,0.25); }
+
+    /* NO RESULTS */
+    .no-results { display: none; text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 14px; }
+    .no-results.show { display: block; }
+
+    /* SCHOOL DISTRICTS SECTION */
+    .districts-section { max-width: 780px; margin: 0 auto; padding: 0 20px 52px; }
+    .districts-intro { font-size: 14px; color: var(--text-dim); line-height: 1.7; margin-bottom: 20px; max-width: 640px; }
+    .districts-intro strong { color: var(--text); }
+    .districts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-bottom: 18px; }
+    .district-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 9px;
+      padding: 16px; text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; gap: 6px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .district-card:hover { border-color: var(--gold); background: var(--gold-dim); }
+    .district-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+    .district-name { font-size: 14px; font-weight: 600; color: #fff; line-height: 1.3; }
+    .district-tier {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 3px 7px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+    }
+    .tier-high { background: rgba(82,201,126,0.12); color: #52c97e; border: 1px solid rgba(82,201,126,0.25); }
+    .tier-mid  { background: rgba(255,204,77,0.10); color: var(--gold); border: 1px solid var(--gold-mid); }
+    .tier-val  { background: rgba(82,149,224,0.10); color: var(--blue); border: 1px solid rgba(82,149,224,0.2); }
+    .district-coverage { font-size: 12px; color: var(--text-dim); line-height: 1.4; }
+    .district-note { font-size: 11px; color: var(--text-muted); font-style: italic; }
+    .districts-cta-row {
+      display: flex; align-items: center; gap: 12px; padding: 14px 16px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    }
+    .districts-cta-row p { font-size: 13px; color: var(--text-dim); line-height: 1.5; flex: 1; }
+    .districts-cta-row p strong { color: var(--text); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
+      padding: 9px 16px; border-radius: 6px; text-decoration: none;
+      border: 1px solid var(--gold); color: var(--gold); background: var(--gold-dim);
+      transition: background 0.2s, color 0.2s; flex-shrink: 0;
+    }
+    .btn-outline:hover { background: var(--gold); color: #000; }
+
+    /* BOTTOM CTA — ARTICLE HUB */
+    .bottom-cta {
+      max-width: 780px; margin: 0 auto 56px; padding: 0 20px;
+    }
+    .bottom-cta-inner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 32px;
+      display: flex; flex-direction: column; gap: 10px;
+      position: relative; overflow: hidden;
+    }
+    .bottom-cta-inner::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent 70%);
+    }
+    .bottom-cta-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .bottom-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 4vw, 30px); font-weight: 900;
+      color: #fff; line-height: 1.15; max-width: 560px;
+    }
+    .bottom-cta h2 em { color: var(--gold); font-style: normal; }
+    .bottom-cta-body {
+      font-size: 14px; color: var(--text-dim); line-height: 1.7; max-width: 580px;
+    }
+    .bottom-cta-body strong { color: var(--text); }
+    .bottom-cta-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+    .cta-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 500;
+      padding: 10px 18px; border-radius: 6px; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .cta-pill-primary {
+      background: var(--gold); color: #000; border: 1px solid var(--gold);
+    }
+    .cta-pill-primary:hover { background: #ffd966; }
+    .cta-pill-secondary {
+      background: transparent; color: var(--text-dim);
+      border: 1px solid var(--border);
+    }
+    .cta-pill-secondary:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+    .bottom-cta-chapters {
+      display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px;
+      padding-top: 16px; border-top: 1px solid var(--border);
+    }
+    .chapter-chip {
+      font-size: 11px; color: var(--text-muted); padding: 4px 10px;
+      border: 1px solid var(--border); border-radius: 20px;
+      text-decoration: none; transition: all 0.15s;
+    }
+    .chapter-chip:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+
+    /* FOOTER */
+    .compliance-footer { border-top: 1px solid var(--border); padding: 20px; text-align: center; font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+
+    @media (max-width: 540px) {
+      .bottom-cta-inner { padding: 24px 18px; }
+      .districts-grid { grid-template-columns: 1fr 1fr; }
+      .districts-cta-row { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 25px; }
+      .nbhd-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+      .article-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://stlhomejourney.com" class="header-logo">STL Home Journey</a>
+  <a href="https://stlhomejourney.com" class="header-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to Journey
+  </a>
+</header>
+
+<section class="hero">
+  <p class="eyebrow">St. Louis Neighborhood Guide</p>
+  <h1>Find your <em>neighborhood</em><br>before you find your house.</h1>
+  <p class="hero-sub">Most buyers pick a house, then reverse-engineer the neighborhood. That's backward. Every area in the St. Louis metro — city, county, and St. Charles — with the data that matters before you make an offer.</p>
+  <div class="hero-stats">
+    <div><div class="stat-num">98</div><div class="stat-label">Neighborhood pages</div></div>
+    <div><div class="stat-num">5</div><div class="stat-label">Metro areas</div></div>
+    <div><div class="stat-num">250+</div><div class="stat-label">Transactions, George Kindler</div></div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<div class="section-wrap">
+  <p class="section-label">Related Articles — Real Transactions, Real Numbers</p>
+  <div class="article-grid">
+    <a href="https://stlhomejourney.com/articles/st-louis-home-price-reduction-negotiation.html" class="article-card">
+      <span class="article-tag">Case Study · Ch. 3 &amp; 5</span>
+      <span class="article-title">How We Negotiated a $30K Price Reduction on a South City Home</span>
+      <span class="article-meta">Christie Park · Kings Highway area</span>
+    </a>
+    <a href="https://stlhomejourney.com/ch-07-inspection.html" class="article-card">
+      <span class="article-tag">Chapter 7 · Inspection</span>
+      <span class="article-title">Federal Pacific Panels, Cast Iron Pipe, and What to Watch in Older STL Homes</span>
+      <span class="article-meta">City + pre-1980 county stock</span>
+    </a>
+    <a href="https://stlhomejourney.com/ch-05-under-contract.html" class="article-card">
+      <span class="article-tag">Chapter 5 · Under Contract</span>
+      <span class="article-title">Why Buyers Lose Deals After the Offer Is Accepted</span>
+      <span class="article-meta">Inspection notice, earnest money risk</span>
+    </a>
+    <a href="https://stlhomejourney.com/neighborhood-matcher.html" class="article-card">
+      <span class="article-tag">Tool · Neighborhood Matcher</span>
+      <span class="article-title">Answer 5 Questions — Get Your Matched St. Louis Area</span>
+      <span class="article-meta">Budget · Commute · Lifestyle</span>
+    </a>
+    <a href="https://stlhomejourney.com/ch-02-affordability.html" class="article-card">
+      <span class="article-tag">Chapter 2 · Affordability</span>
+      <span class="article-title">What "Approved For $350K" Actually Means Neighborhood by Neighborhood</span>
+      <span class="article-meta">Real PITI by ZIP code</span>
+    </a>
+    <a href="https://stlhomejourney.com/ch-06b-deadlines.html" class="article-card">
+      <span class="article-tag">Chapter 6 · Deadlines</span>
+      <span class="article-title">Three Deadlines Running the Moment Your Offer Is Accepted</span>
+      <span class="article-meta">Applies in every neighborhood</span>
+    </a>
+  </div>
+</div>
+
+<!-- FILTER -->
+<div class="filter-bar">
+  <input class="filter-input" type="text" id="searchInput" placeholder="Search any neighborhood name or ZIP…" autocomplete="off" aria-label="Search neighborhoods">
+  <div class="chips" id="chips">
+    <button class="chip active" data-area="all">All Areas</button>
+    <button class="chip" data-area="stl-city">STL City</button>
+    <button class="chip" data-area="central">Central &amp; South County</button>
+    <button class="chip" data-area="north">North County</button>
+    <button class="chip" data-area="jefferson">Jefferson County</button>
+    <button class="chip" data-area="stcharles">St. Charles County</button>
+  </div>
+</div>
+
+<!-- NEIGHBORHOODS -->
+<main class="nbhd-section">
+  <div id="noResults" class="no-results">No neighborhoods match — try a different spelling or ZIP.</div>
+
+  <!-- ══════════════════════════════════════
+       GROUP 1 · ST. LOUIS CITY  (9)
+  ══════════════════════════════════════ -->
+  <div class="area-group" data-area="stl-city" id="g-stl-city">
+    <div class="group-header" onclick="toggle('g-stl-city')">
+      <div class="group-left">
+        <div class="group-icon">🏙️</div>
+        <div>
+          <div class="group-name">St. Louis City</div>
+          <div class="group-tagline">Historic brick, tight blocks, character-rich neighborhoods</div>
+        </div>
+      </div>
+      <div class="group-right">
+        <span class="group-count" id="cnt-stl-city">9 neighborhoods</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+    <div class="group-body">
+      <p class="area-blurb">St. Louis City is a separate municipality from St. Louis County — different taxing authority, different school district structure, and the highest concentration of pre-1950 housing stock in the metro. Brick construction, cast iron drain lines, and outdated electrical panels (Federal Pacific, Zinsco) are common findings. Prices range from the $80s in distressed blocks to $600K+ in the Central West End. Market speed varies block-to-block more than anywhere else in the metro.</p>
+      <div class="nbhd-grid">
+        <a href="/neighborhoods/benton-park.html" class="nc"><span class="nc-name">Benton Park</span><span class="nc-meta">63104 · Adjacent to Soulard</span></a>
+        <a href="/neighborhoods/central-west-end.html" class="nc"><span class="nc-name">Central West End</span><span class="nc-meta">63108 · Walk to Forest Park</span></a>
+        <a href="/neighborhoods/dogtown.html" class="nc"><span class="nc-name">Dogtown</span><span class="nc-meta">63139 · Near Forest Park</span></a>
+        <a href="/neighborhoods/lafayette-square.html" class="nc"><span class="nc-name">Lafayette Square</span><span class="nc-meta">63104 · Victorian historic district</span></a>
+        <a href="/neighborhoods/shaw.html" class="nc"><span class="nc-name">Shaw</span><span class="nc-meta">63110 · Near Missouri Botanical</span></a>
+        <a href="/neighborhoods/soulard.html" class="nc"><span class="nc-name">Soulard</span><span class="nc-meta">63104 · 1800s rowhouses</span></a>
+        <a href="/neighborhoods/st-louis-hills.html" class="nc"><span class="nc-name">St. Louis Hills</span><span class="nc-meta">63109 · Stable, well-kept</span></a>
+        <a href="/neighborhoods/the-hill.html" class="nc"><span class="nc-name">The Hill</span><span class="nc-meta">63110 · Italian heritage</span></a>
+        <a href="/neighborhoods/tower-grove-south.html" class="nc"><span class="nc-name">Tower Grove South</span><span class="nc-meta">63116 · Active market</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       GROUP 2 · CENTRAL & SOUTH COUNTY  (17)
+  ══════════════════════════════════════ -->
+  <div class="area-group" data-area="central" id="g-central">
+    <div class="group-header" onclick="toggle('g-central')">
+      <div class="group-left">
+        <div class="group-icon">🌿</div>
+        <div>
+          <div class="group-name">Central &amp; South County</div>
+          <div class="group-tagline">Clayton, Kirkwood, Webster, Oakville, Mehlville — the core market</div>
+        </div>
+      </div>
+      <div class="group-right">
+        <span class="group-count" id="cnt-central">17 neighborhoods</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+    <div class="group-body">
+      <p class="area-blurb">The corridor from Clayton through Kirkwood and Webster Groves represents the highest-competition market in the metro — sub-7-day DOM is normal on correctly priced inventory. South County (Oakville, Mehlville, Concord, Sappington) is the first-time buyer sweet spot in the $225K–$380K range, dominated by 1960s–1990s brick ranches and split-levels. School districts — Clayton, Kirkwood, Webster, Lindbergh — drive measurable premiums that show up clearly in the data.</p>
+      <div class="nbhd-grid">
+        <a href="/neighborhoods/affton.html" class="nc"><span class="nc-name">Affton</span><span class="nc-meta">63123 · Value · Unincorporated</span></a>
+        <a href="/neighborhoods/ballwin.html" class="nc"><span class="nc-name">Ballwin</span><span class="nc-meta">63011 · Rockwood district</span></a>
+        <a href="/neighborhoods/chesterfield.html" class="nc"><span class="nc-name">Chesterfield</span><span class="nc-meta">63017 · Largest west suburb</span></a>
+        <a href="/neighborhoods/clayton.html" class="nc"><span class="nc-name">Clayton</span><span class="nc-meta">63105 · Corporate HQ suburb</span></a>
+        <a href="/neighborhoods/concord.html" class="nc"><span class="nc-name">Concord</span><span class="nc-meta">63128 · Lindbergh district</span></a>
+        <a href="/neighborhoods/crestwood.html" class="nc"><span class="nc-name">Crestwood</span><span class="nc-meta">63126 · Kirkwood-adjacent</span></a>
+        <a href="/neighborhoods/green-park.html" class="nc"><span class="nc-name">Green Park</span><span class="nc-meta">63123 · Small municipality</span></a>
+        <a href="/neighborhoods/kirkwood.html" class="nc"><span class="nc-name">Kirkwood</span><span class="nc-meta">63122 · Walkable downtown</span></a>
+        <a href="/neighborhoods/lemay.html" class="nc"><span class="nc-name">Lemay</span><span class="nc-meta">63125 · Value SFR · Unincorporated</span></a>
+        <a href="/neighborhoods/maplewood.html" class="nc"><span class="nc-name">Maplewood</span><span class="nc-meta">63143 · Walkable, eclectic</span></a>
+        <a href="/neighborhoods/mehlville.html" class="nc"><span class="nc-name">Mehlville</span><span class="nc-meta">63125 · Solid schools</span></a>
+        <a href="/neighborhoods/oakville.html" class="nc"><span class="nc-name">Oakville</span><span class="nc-meta">63129 · Top south pick</span></a>
+        <a href="/neighborhoods/sappington.html" class="nc"><span class="nc-name">Sappington</span><span class="nc-meta">63126 · Quiet streets</span></a>
+        <a href="/neighborhoods/scotsdale.html" class="nc"><span class="nc-name">Scotsdale</span><span class="nc-meta">63033 · Accessible</span></a>
+        <a href="/neighborhoods/sunset-hills.html" class="nc"><span class="nc-name">Sunset Hills</span><span class="nc-meta">63127 · West corridor</span></a>
+        <a href="/neighborhoods/university-city.html" class="nc"><span class="nc-name">University City</span><span class="nc-meta">63130 · The Loop</span></a>
+        <a href="/neighborhoods/webster-groves.html" class="nc"><span class="nc-name">Webster Groves</span><span class="nc-meta">63119 · Top school district</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       GROUP 3 · NORTH COUNTY  (50)
+  ══════════════════════════════════════ -->
+  <div class="area-group" data-area="north" id="g-north">
+    <div class="group-header" onclick="toggle('g-north')">
+      <div class="group-left">
+        <div class="group-icon">🏘️</div>
+        <div>
+          <div class="group-name">North County</div>
+          <div class="group-tagline">Florissant, Hazelwood, Ferguson and 47 more — highest value-per-sqft in metro</div>
+        </div>
+      </div>
+      <div class="group-right">
+        <span class="group-count" id="cnt-north">50 neighborhoods</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+    <div class="group-body">
+      <p class="area-blurb">North County contains the most small municipalities of any area in the metro — 50 distinct communities, many sharing borders with dramatically different tax rates and school districts. Entry prices under $150K for move-in-ready SFR are real here. Inspection defects at this price point tend to be systemic — HVAC, electrical, foundation — not cosmetic. Buyers who do their due diligence can build equity fast. Florissant and Hazelwood have the most volume; smaller municipalities like Bel-Nor, Charlack, and Champ rarely have more than a handful of sales per year.</p>
+      <div class="nbhd-grid">
+        <a href="/neighborhoods/bel-nor.html" class="nc"><span class="nc-name">Bel-Nor</span><span class="nc-meta">63121 · Small municipality</span></a>
+        <a href="/neighborhoods/bel-ridge.html" class="nc"><span class="nc-name">Bel-Ridge</span><span class="nc-meta">63121 · Near Normandy</span></a>
+        <a href="/neighborhoods/bellefontaine-neighbors.html" class="nc"><span class="nc-name">Bellefontaine Neighbors</span><span class="nc-meta">63137 · North river road</span></a>
+        <a href="/neighborhoods/bellerive-acres.html" class="nc"><span class="nc-name">Bellerive Acres</span><span class="nc-meta">63137 · Quiet SFR</span></a>
+        <a href="/neighborhoods/berkeley.html" class="nc"><span class="nc-name">Berkeley</span><span class="nc-meta">63134 · Near airport</span></a>
+        <a href="/neighborhoods/beverly-hills.html" class="nc"><span class="nc-name">Beverly Hills</span><span class="nc-meta">63135 · Small municipality</span></a>
+        <a href="/neighborhoods/black-jack.html" class="nc"><span class="nc-name">Black Jack</span><span class="nc-meta">63033 · Quiet residential</span></a>
+        <a href="/neighborhoods/breckenridge-hills.html" class="nc"><span class="nc-name">Breckenridge Hills</span><span class="nc-meta">63114 · Mid-north</span></a>
+        <a href="/neighborhoods/bridgeton.html" class="nc"><span class="nc-name">Bridgeton</span><span class="nc-meta">63044 · Near airport</span></a>
+        <a href="/neighborhoods/calverton-park.html" class="nc"><span class="nc-name">Calverton Park</span><span class="nc-meta">63135 · Small community</span></a>
+        <a href="/neighborhoods/castle-point.html" class="nc"><span class="nc-name">Castle Point</span><span class="nc-meta">63136 · Entry SFR</span></a>
+        <a href="/neighborhoods/champ.html" class="nc"><span class="nc-name">Champ</span><span class="nc-meta">63026 · Very small</span></a>
+        <a href="/neighborhoods/charlack.html" class="nc"><span class="nc-name">Charlack</span><span class="nc-meta">63114 · Small municipality</span></a>
+        <a href="/neighborhoods/cool-valley.html" class="nc"><span class="nc-name">Cool Valley</span><span class="nc-meta">63121 · Near Normandy</span></a>
+        <a href="/neighborhoods/country-club-hills.html" class="nc"><span class="nc-name">Country Club Hills</span><span class="nc-meta">63121 · Quiet</span></a>
+        <a href="/neighborhoods/dellwood.html" class="nc"><span class="nc-name">Dellwood</span><span class="nc-meta">63135 · Near Ferguson</span></a>
+        <a href="/neighborhoods/edmundson.html" class="nc"><span class="nc-name">Edmundson</span><span class="nc-meta">63134 · Airport corridor</span></a>
+        <a href="/neighborhoods/ferguson.html" class="nc"><span class="nc-name">Ferguson</span><span class="nc-meta">63135 · Rebounding market</span></a>
+        <a href="/neighborhoods/flordell-hills.html" class="nc"><span class="nc-name">Flordell Hills</span><span class="nc-meta">63135 · Small municipality</span></a>
+        <a href="/neighborhoods/florissant.html" class="nc"><span class="nc-name">Florissant</span><span class="nc-meta">63031 · Largest north suburb</span></a>
+        <a href="/neighborhoods/glen-echo-park.html" class="nc"><span class="nc-name">Glen Echo Park</span><span class="nc-meta">63114 · Mid-north</span></a>
+        <a href="/neighborhoods/greendale.html" class="nc"><span class="nc-name">Greendale</span><span class="nc-meta">63121 · Small community</span></a>
+        <a href="/neighborhoods/hanley-hills.html" class="nc"><span class="nc-name">Hanley Hills</span><span class="nc-meta">63133 · Near U-City border</span></a>
+        <a href="/neighborhoods/hazelwood.html" class="nc"><span class="nc-name">Hazelwood</span><span class="nc-meta">63042 · Airport corridor</span></a>
+        <a href="/neighborhoods/hillsdale.html" class="nc"><span class="nc-name">Hillsdale</span><span class="nc-meta">63121 · Near Normandy</span></a>
+        <a href="/neighborhoods/jennings.html" class="nc"><span class="nc-name">Jennings</span><span class="nc-meta">63136 · Entry-level SFR</span></a>
+        <a href="/neighborhoods/moline-acres.html" class="nc"><span class="nc-name">Moline Acres</span><span class="nc-meta">63136 · Quiet SFR</span></a>
+        <a href="/neighborhoods/normandy.html" class="nc"><span class="nc-name">Normandy</span><span class="nc-meta">63121 · Established</span></a>
+        <a href="/neighborhoods/normandy-park.html" class="nc"><span class="nc-name">Normandy Park</span><span class="nc-meta">63121 · Adjacent to Normandy</span></a>
+        <a href="/neighborhoods/northwoods.html" class="nc"><span class="nc-name">Northwoods</span><span class="nc-meta">63121 · Small municipality</span></a>
+        <a href="/neighborhoods/norwood-court.html" class="nc"><span class="nc-name">Norwood Court</span><span class="nc-meta">63121 · Small community</span></a>
+        <a href="/neighborhoods/olympian-village.html" class="nc"><span class="nc-name">Olympian Village</span><span class="nc-meta">63042 · Near Hazelwood</span></a>
+        <a href="/neighborhoods/pagedale.html" class="nc"><span class="nc-name">Pagedale</span><span class="nc-meta">63133 · Near U-City</span></a>
+        <a href="/neighborhoods/parkdale.html" class="nc"><span class="nc-name">Parkdale</span><span class="nc-meta">63121 · Small municipality</span></a>
+        <a href="/neighborhoods/pasadena-hills.html" class="nc"><span class="nc-name">Pasadena Hills</span><span class="nc-meta">63121 · Established SFR</span></a>
+        <a href="/neighborhoods/pasadena-park.html" class="nc"><span class="nc-name">Pasadena Park</span><span class="nc-meta">63121 · Small community</span></a>
+        <a href="/neighborhoods/peaceful-village.html" class="nc"><span class="nc-name">Peaceful Village</span><span class="nc-meta">63042 · Quiet</span></a>
+        <a href="/neighborhoods/pine-lawn.html" class="nc"><span class="nc-name">Pine Lawn</span><span class="nc-meta">63120 · Deep value</span></a>
+        <a href="/neighborhoods/riverview.html" class="nc"><span class="nc-name">Riverview</span><span class="nc-meta">63137 · River road north</span></a>
+        <a href="/neighborhoods/spanish-lake.html" class="nc"><span class="nc-name">Spanish Lake</span><span class="nc-meta">63138 · Unincorporated north</span></a>
+        <a href="/neighborhoods/st-ann.html" class="nc"><span class="nc-name">St. Ann</span><span class="nc-meta">63074 · Airport adjacent</span></a>
+        <a href="/neighborhoods/st-john.html" class="nc"><span class="nc-name">St. John</span><span class="nc-meta">63114 · Near Overland</span></a>
+        <a href="/neighborhoods/sycamore-hills.html" class="nc"><span class="nc-name">Sycamore Hills</span><span class="nc-meta">63114 · Small municipality</span></a>
+        <a href="/neighborhoods/uplands-park.html" class="nc"><span class="nc-name">Uplands Park</span><span class="nc-meta">63135 · Very small</span></a>
+        <a href="/neighborhoods/velda-city.html" class="nc"><span class="nc-name">Velda City</span><span class="nc-meta">63121 · Small municipality</span></a>
+        <a href="/neighborhoods/velda-village-hills.html" class="nc"><span class="nc-name">Velda Village Hills</span><span class="nc-meta">63121 · Adjacent to Velda City</span></a>
+        <a href="/neighborhoods/vinita-park.html" class="nc"><span class="nc-name">Vinita Park</span><span class="nc-meta">63114 · Entry SFR</span></a>
+        <a href="/neighborhoods/vinita-terrace.html" class="nc"><span class="nc-name">Vinita Terrace</span><span class="nc-meta">63114 · Small community</span></a>
+        <a href="/neighborhoods/wellston.html" class="nc"><span class="nc-name">Wellston</span><span class="nc-meta">63133 · Near Ferguson</span></a>
+        <a href="/neighborhoods/woodson-terrace.html" class="nc"><span class="nc-name">Woodson Terrace</span><span class="nc-meta">63134 · Airport corridor</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       GROUP 4 · JEFFERSON COUNTY  (10)
+  ══════════════════════════════════════ -->
+  <div class="area-group" data-area="jefferson" id="g-jefferson">
+    <div class="group-header" onclick="toggle('g-jefferson')">
+      <div class="group-left">
+        <div class="group-icon">⛰️</div>
+        <div>
+          <div class="group-name">Jefferson County</div>
+          <div class="group-tagline">Arnold, Festus, De Soto — acreage, privacy, and value south</div>
+        </div>
+      </div>
+      <div class="group-right">
+        <span class="group-count" id="cnt-jefferson">10 neighborhoods</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+    <div class="group-body">
+      <p class="area-blurb">Jefferson County is for buyers who want land, privacy, or true rural character within a commutable distance of South County or Clayton. Private wells, septic systems, propane heat, and older electrical are all common — budget for a thorough inspection and potentially a well and septic addendum. Arnold is the most suburban entry point; Festus, De Soto, and Hillsboro are increasingly rural. Crystal City and Herculaneum sit on the Mississippi with distinct small-town identities.</p>
+      <div class="nbhd-grid">
+        <a href="/neighborhoods/arnold.html" class="nc"><span class="nc-name">Arnold</span><span class="nc-meta">63010 · Jefferson gateway</span></a>
+        <a href="/neighborhoods/barnhart.html" class="nc"><span class="nc-name">Barnhart</span><span class="nc-meta">63012 · Unincorporated</span></a>
+        <a href="/neighborhoods/cedar-hill.html" class="nc"><span class="nc-name">Cedar Hill</span><span class="nc-meta">63016 · Rural acreage</span></a>
+        <a href="/neighborhoods/crystal-city.html" class="nc"><span class="nc-name">Crystal City</span><span class="nc-meta">63019 · Mississippi river</span></a>
+        <a href="/neighborhoods/de-soto.html" class="nc"><span class="nc-name">De Soto</span><span class="nc-meta">63020 · Rural SFR</span></a>
+        <a href="/neighborhoods/festus.html" class="nc"><span class="nc-name">Festus</span><span class="nc-meta">63028 · River town</span></a>
+        <a href="/neighborhoods/high-ridge.html" class="nc"><span class="nc-name">High Ridge</span><span class="nc-meta">63049 · Acreage common</span></a>
+        <a href="/neighborhoods/hillsboro.html" class="nc"><span class="nc-name">Hillsboro</span><span class="nc-meta">63050 · County seat</span></a>
+        <a href="/neighborhoods/house-springs.html" class="nc"><span class="nc-name">House Springs</span><span class="nc-meta">63051 · Rural residential</span></a>
+        <a href="/neighborhoods/imperial.html" class="nc"><span class="nc-name">Imperial</span><span class="nc-meta">63052 · South County border</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       GROUP 5 · ST. CHARLES COUNTY  (12)
+  ══════════════════════════════════════ -->
+  <div class="area-group" data-area="stcharles" id="g-stcharles">
+    <div class="group-header" onclick="toggle('g-stcharles')">
+      <div class="group-left">
+        <div class="group-icon">🌾</div>
+        <div>
+          <div class="group-name">St. Charles County</div>
+          <div class="group-tagline">O'Fallon, St. Peters, Wentzville — the metro's growth corridor</div>
+        </div>
+      </div>
+      <div class="group-right">
+        <span class="group-count" id="cnt-stcharles">12 neighborhoods</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+    <div class="group-body">
+      <p class="area-blurb">St. Charles County has led the metro in population growth for over a decade. O'Fallon and St. Peters are full of planned subdivisions with newer construction; Wentzville is the current growth edge with significant new-build inventory. VA loans are heavily used here — appraisal values and VA MPR compliance matter more in this area than anywhere else in the metro. HOA covenants and transfer fees are standard in most planned communities.</p>
+      <div class="nbhd-grid">
+        <a href="/neighborhoods/cottleville.html" class="nc"><span class="nc-name">Cottleville</span><span class="nc-meta">63338 · Top-ranked suburb</span></a>
+        <a href="/neighborhoods/dardenne-prairie.html" class="nc"><span class="nc-name">Dardenne Prairie</span><span class="nc-meta">63368 · Newer builds</span></a>
+        <a href="/neighborhoods/josephville.html" class="nc"><span class="nc-name">Josephville</span><span class="nc-meta">63357 · Rural edge</span></a>
+        <a href="/neighborhoods/lake-st-louis.html" class="nc"><span class="nc-name">Lake St. Louis</span><span class="nc-meta">63367 · Waterfront community</span></a>
+        <a href="/neighborhoods/o-fallon.html" class="nc"><span class="nc-name">O'Fallon</span><span class="nc-meta">63366 · Largest growth city</span></a>
+        <a href="/neighborhoods/st-charles.html" class="nc"><span class="nc-name">St. Charles</span><span class="nc-meta">63301 · Main Street charm</span></a>
+        <a href="/neighborhoods/st-paul.html" class="nc"><span class="nc-name">St. Paul</span><span class="nc-meta">63366 · Small community</span></a>
+        <a href="/neighborhoods/st-peters.html" class="nc"><span class="nc-name">St. Peters</span><span class="nc-meta">63376 · Established suburban</span></a>
+        <a href="/neighborhoods/weldon-spring.html" class="nc"><span class="nc-name">Weldon Spring</span><span class="nc-meta">63304 · Near Chesterfield</span></a>
+        <a href="/neighborhoods/weldon-spring-heights.html" class="nc"><span class="nc-name">Weldon Spring Heights</span><span class="nc-meta">63304 · Adjacent community</span></a>
+        <a href="/neighborhoods/wentzville.html" class="nc"><span class="nc-name">Wentzville</span><span class="nc-meta">63385 · New build frontier</span></a>
+        <a href="/neighborhoods/west-alton.html" class="nc"><span class="nc-name">West Alton</span><span class="nc-meta">63386 · River bottom land</span></a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ══════════════════════════════════════════════════
+     SCHOOL DISTRICTS
+══════════════════════════════════════════════════ -->
+<section class="districts-section">
+  <p class="section-label">School Districts — St. Louis Metro</p>
+  <p class="districts-intro">The district your house sits in affects <strong>your tax rate, your resale speed, and your buyer pool</strong> when you sell. Two houses on the same street can be in different districts. Look this up before you make an offer — not after.</p>
+
+  <div class="districts-grid">
+
+    <a href="/school-districts.html#clayton" class="district-card">
+      <div class="district-header">
+        <span class="district-name">Clayton School District</span>
+        <span class="district-tier tier-high">Top Tier</span>
+      </div>
+      <span class="district-coverage">Clayton, parts of Richmond Heights &amp; Ladue</span>
+      <span class="district-note">Highest price premium in the metro — adds measurable dollars to comps</span>
+    </a>
+
+    <a href="/school-districts.html#kirkwood" class="district-card">
+      <div class="district-header">
+        <span class="district-name">Kirkwood School District</span>
+        <span class="district-tier tier-high">Top Tier</span>
+      </div>
+      <span class="district-coverage">Kirkwood, Glendale, Warson Woods, parts of Crestwood</span>
+      <span class="district-note">Strong resale velocity — buyers specifically search for Kirkwood district</span>
+    </a>
+
+    <a href="/school-districts.html#webster-groves" class="district-card">
+      <div class="district-header">
+        <span class="district-name">Webster Groves School District</span>
+        <span class="district-tier tier-high">Top Tier</span>
+      </div>
+      <span class="district-coverage">Webster Groves, Shrewsbury, parts of Rock Hill</span>
+      <span class="district-note">Consistent buyer demand — district boundaries drive offers in this zip</span>
+    </a>
+
+    <a href="/school-districts.html#lindbergh" class="district-card">
+      <div class="district-header">
+        <span class="district-name">Lindbergh School District</span>
+        <span class="district-tier tier-high">Top Tier</span>
+      </div>
+      <span class="district-coverage">Sunset Hills, parts of Crestwood, Sappington, Concord</span>
+      <span class="district-note">Often overlooked — competes with Kirkwood on performance, lower entry price</span>
+    </a>
+
+    <a href="/school-districts.html#rockwood" class="district-card">
+      <div class="district-header">
+        <span class="district-name">Rockwood School District</span>
+        <span class="district-tier tier-high">Top Tier</span>
+      </div>
+      <span class="district-coverage">Ballwin, Ellisville, parts of Chesterfield &amp; Manchester</span>
+      <span class="district-note">Largest high-performing district in the metro by enrollment</span>
+    </a>
+
+    <a href="/school-districts.html#parkway" class="district-card">
+      <div class="district-header">
+        <span class="district-name">Parkway School District</span>
+        <span class="district-tier tier-high">Top Tier</span>
+      </div>
+      <span class="district-coverage">Chesterfield, Town &amp; Country, Creve Coeur, Des Peres</span>
+      <span class="district-note">Four high schools — district spans the west county corridor</span>
+    </a>
+
+    <a href="/school-districts.html#ladue" class="district-card">
+      <div class="district-header">
+        <span class="district-name">Ladue School District</span>
+        <span class="district-tier tier-high">Top Tier</span>
+      </div>
+      <span class="district-coverage">Ladue, parts of Creve Coeur &amp; University City</span>
+      <span class="district-note">Small, well-funded, high per-pupil spend — estate market pricing</span>
+    </a>
+
+    <a href="/school-districts.html#mehlville" class="district-card">
+      <div class="district-header">
+        <span class="district-name">Mehlville School District</span>
+        <span class="district-tier tier-mid">Solid</span>
+      </div>
+      <span class="district-coverage">Mehlville, Oakville, Lemay, parts of Affton</span>
+      <span class="district-note">South County's primary district — strong value relative to entry price</span>
+    </a>
+
+    <a href="/school-districts.html#afton" class="district-card">
+      <div class="district-header">
+        <span class="district-name">Affton School District</span>
+        <span class="district-tier tier-mid">Solid</span>
+      </div>
+      <span class="district-coverage">Affton, parts of Lemay &amp; Green Park</span>
+      <span class="district-note">One of the smallest independent districts — tight geographic boundaries</span>
+    </a>
+
+    <a href="/school-districts.html#university-city" class="district-card">
+      <div class="district-header">
+        <span class="district-name">University City School District</span>
+        <span class="district-tier tier-mid">Solid</span>
+      </div>
+      <span class="district-coverage">University City, Olivette, parts of Ladue</span>
+      <span class="district-note">Urban-suburban mix — buyer pool is specific, know the boundaries</span>
+    </a>
+
+    <a href="/school-districts.html#fort-zumwalt" class="district-card">
+      <div class="district-header">
+        <span class="district-name">Fort Zumwalt School District</span>
+        <span class="district-tier tier-mid">Solid</span>
+      </div>
+      <span class="district-coverage">O'Fallon, St. Peters, Wentzville (portions)</span>
+      <span class="district-note">Fastest-growing district in the metro — new schools opening regularly</span>
+    </a>
+
+    <a href="/school-districts.html#francis-howell" class="district-card">
+      <div class="district-header">
+        <span class="district-name">Francis Howell School District</span>
+        <span class="district-tier tier-mid">Solid</span>
+      </div>
+      <span class="district-coverage">St. Charles, Cottleville, Weldon Spring, Lake St. Louis</span>
+      <span class="district-note">Well-regarded in St. Charles County — strong resale in its boundaries</span>
+    </a>
+
+    <a href="/school-districts.html#wentzville" class="district-card">
+      <div class="district-header">
+        <span class="district-name">Wentzville School District</span>
+        <span class="district-tier tier-mid">Solid</span>
+      </div>
+      <span class="district-coverage">Wentzville, Dardenne Prairie, parts of O'Fallon</span>
+      <span class="district-note">Growth-edge district — enrollment rising with new subdivision builds</span>
+    </a>
+
+    <a href="/school-districts.html#florissant" class="district-card">
+      <div class="district-header">
+        <span class="district-name">Ferguson-Florissant School District</span>
+        <span class="district-tier tier-val">Value Zone</span>
+      </div>
+      <span class="district-coverage">Florissant, Ferguson, Dellwood, parts of Hazelwood</span>
+      <span class="district-note">Largest north county district — entry price paired with school awareness matters here</span>
+    </a>
+
+    <a href="/school-districts.html#hazelwood" class="district-card">
+      <div class="district-header">
+        <span class="district-name">Hazelwood School District</span>
+        <span class="district-tier tier-val">Value Zone</span>
+      </div>
+      <span class="district-coverage">Hazelwood, Bridgeton, Berkeley, Florissant (portions)</span>
+      <span class="district-note">Second largest north county district — Hazelwood East vs. West matters to buyers</span>
+    </a>
+
+    <a href="/school-districts.html#normandy" class="district-card">
+      <div class="district-header">
+        <span class="district-name">Normandy School District</span>
+        <span class="district-tier tier-val">Value Zone</span>
+      </div>
+      <span class="district-coverage">Normandy, Bel-Nor, Cool Valley, surrounding municipalities</span>
+      <span class="district-note">Know the boundaries before you offer — district affects appraisal comparables</span>
+    </a>
+
+  </div>
+
+  <div class="districts-cta-row">
+    <p><strong>District boundaries don't follow ZIP codes.</strong> Two houses on the same block can be in different districts with different tax levies and different resale pools. Always verify the exact parcel before writing an offer.</p>
+    <a href="/school-districts.html" class="btn-outline">
+      Explore All Districts
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     BOTTOM CTA — ARTICLE HUB
+══════════════════════════════════════════════════ -->
+<section class="bottom-cta">
+  <div class="bottom-cta-inner">
+    <p class="bottom-cta-eyebrow">You've found your neighborhood. Now what?</p>
+    <h2>What you need to know before you <em>search, offer,</em> and negotiate.</h2>
+    <p class="bottom-cta-body">
+      Most buyers spend months finding the right neighborhood, then rush through the part that actually costs them money. 
+      The offer. The inspection. The deadlines. <strong>That's where deals fall apart — and where buyers lose thousands they never get back.</strong> 
+      Every article here is built from real St. Louis transactions — real numbers, real mistakes, real outcomes.
+    </p>
+    <div class="bottom-cta-links">
+      <a href="/articles/index.html" class="cta-pill cta-pill-primary">
+        Read the Articles
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="/neighborhood-matcher.html" class="cta-pill cta-pill-secondary">Not sure which area fits? → Take the Matcher</a>
+      <a href="https://stlhomejourney.com" class="cta-pill cta-pill-secondary">Start the Full Buyer Journey →</a>
+    </div>
+    <div class="bottom-cta-chapters">
+      <span style="font-size:11px; color:var(--text-muted); margin-right:4px; align-self:center;">Jump to a chapter:</span>
+      <a href="/ch-01-preapproval.html" class="chapter-chip">Ch.1 · Pre-Approval</a>
+      <a href="/ch-02-affordability.html" class="chapter-chip">Ch.2 · Affordability</a>
+      <a href="/ch-03a-asis.html" class="chapter-chip">Ch.3 · Interior Walk</a>
+      <a href="/ch-04-pre-offer.html" class="chapter-chip">Ch.4 · Pre-Offer</a>
+      <a href="/ch-05-under-contract.html" class="chapter-chip">Ch.5 · Under Contract</a>
+      <a href="/ch-06b-deadlines.html" class="chapter-chip">Ch.6 · Deadlines</a>
+      <a href="/ch-07-inspection.html" class="chapter-chip">Ch.7 · Inspection</a>
+      <a href="/ch-08-walkthrough.html" class="chapter-chip">Ch.8 · Walk-Through</a>
+      <a href="/ch-09-closing.html" class="chapter-chip">Ch.9 · Closing</a>
+    </div>
+  </div>
+</section>
+
+<footer class="compliance-footer">
+  <p>The Closing Pros LLC &nbsp;·&nbsp; 314-998-4550 &nbsp;·&nbsp; George Kindler, Licensed Missouri Real Estate Agent</p>
+  <p style="margin-top:4px; color:#3a3a3a;">Market data sourced from MARIS. Information is for educational purposes only and does not constitute a representation of value or investment advice.</p>
+</footer>
+
+<script>
+// ACCORDION
+function toggle(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+// FILTER + SEARCH
+const searchInput = document.getElementById('searchInput');
+const chips = document.querySelectorAll('.chip');
+let activeArea = 'all';
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('g-stl-city').classList.add('open');
+});
+
+searchInput.addEventListener('input', run);
+chips.forEach(chip => {
+  chip.addEventListener('click', () => {
+    chips.forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    activeArea = chip.dataset.area;
+    run();
+  });
+});
+
+function run() {
+  const q = searchInput.value.toLowerCase().trim();
+  const groups = document.querySelectorAll('.area-group');
+  let anyVisible = false;
+
+  groups.forEach(group => {
+    const areaMatch = activeArea === 'all' || group.dataset.area === activeArea;
+    if (!areaMatch) { group.style.display = 'none'; return; }
+    group.style.display = '';
+
+    const cards = group.querySelectorAll('.nc');
+    let hits = 0;
+    cards.forEach(card => {
+      const text = card.textContent.toLowerCase();
+      const show = !q || text.includes(q);
+      card.classList.toggle('hidden', !show);
+      if (show) hits++;
+    });
+
+    group.classList.toggle('highlight', q !== '' && hits > 0);
+    if (hits > 0) { anyVisible = true; if (q) group.classList.add('open'); }
+
+    // Update count to show filtered number
+    const countEl = group.querySelector('.group-count');
+    if (countEl) {
+      const total = cards.length;
+      countEl.textContent = q ? `${hits} of ${total}` : `${total} neighborhoods`;
+    }
+  });
+
+  document.getElementById('noResults').classList.toggle('show', !anyVisible && q !== '');
+}
+</script>
+</body>
+</html>
