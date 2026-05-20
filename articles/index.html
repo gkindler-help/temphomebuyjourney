@@ -1,37 +1,20 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>St. Louis Real Estate Guides | STL Home Journey</title>
-  <meta name="description" content="Free, no-fluff guides for St. Louis home buyers and sellers — affordability, repair costs, Zillow, cash offers, pricing, and more.">
+  <meta name="description" content="Free, no-fluff guides for St. Louis home buyers — affordability, repair costs, Zillow, cash offers, pricing, and more.">
   <meta property="og:title" content="St. Louis Real Estate Guides | STL Home Journey">
-  <meta property="og:description" content="Free guides for St. Louis buyers and sellers. Real numbers, straight talk, no lead-gen agenda.">
+  <meta property="og:description" content="Free guides for St. Louis buyers. Real numbers, straight talk, no lead-gen agenda.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://stlhomejourney.com/articles/">
   <link rel="canonical" href="https://stlhomejourney.com/articles/">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-EEE14BZT9P');
-</script>
-
-  <!-- Fonts -->
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Registry -->
-
   <script src="../article-registry.js"></script>
-
   <style>
-    /* ── Page-specific overrides & components ── */
     :root {
       --bg: #050505;
       --gold: #ffcc4d;
@@ -41,17 +24,10 @@
       --text-muted: #8a8070;
       --card-bg: #0f0f0f;
       --card-border: rgba(255,255,255,0.07);
-      --pill-buyer: #1a3a2a;
-      --pill-buyer-text: #5dbb87;
-      --pill-seller: #2a1a35;
-      --pill-seller-text: #b47fe0;
-      --pill-both: #2a2010;
-      --pill-both-text: #ffcc4d;
-      --series-line: rgba(255,204,77,0.2);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    html { scroll-behavior: smooth; }
     body {
       background: var(--bg);
       color: var(--text);
@@ -63,7 +39,7 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    /* ── Header — matches journey brand ── */
+    /* ── Header ── */
     .page-header {
       background: rgba(5,5,5,.96);
       backdrop-filter: blur(10px);
@@ -71,9 +47,8 @@
       padding: 10px 16px;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 200;
     }
-
     .header-inner {
       max-width: 1100px;
       margin: 0 auto;
@@ -82,7 +57,6 @@
       justify-content: space-between;
       gap: 10px;
     }
-
     .logo-link {
       text-decoration: none;
       display: flex;
@@ -90,778 +64,564 @@
       gap: 10px;
       min-width: 0;
     }
-
-    .logo-ico {
-      width: 32px;
-      height: 32px;
-      flex-shrink: 0;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
+    .logo-ico { width: 32px; height: 32px; flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; }
     .logo-ico img { width: 100%; height: 100%; object-fit: contain; }
-
-    .logo-wordmark {
-      font-family: 'Playfair Display', serif;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: .03em;
-      color: rgba(255,255,255,.96);
-      line-height: 1.05;
-    }
-
+    .logo-wordmark { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: .03em; color: rgba(255,255,255,.96); line-height: 1.05; }
     .logo-wordmark span { color: var(--gold); }
-
-    .logo-name {
-      font-size: 10px;
-      font-weight: 600;
-      color: rgba(255,255,255,.72);
-      letter-spacing: .04em;
-      margin-top: 2px;
-    }
-
-    .logo-tagline {
-      font-size: 9px;
-      color: rgba(255,255,255,.54);
-      letter-spacing: .03em;
-    }
-
+    .logo-name { font-size: 10px; font-weight: 600; color: rgba(255,255,255,.72); letter-spacing: .04em; margin-top: 2px; }
     .back-to-journey {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .05em;
-      padding: 6px 11px;
-      border-radius: 999px;
+      font-size: 10px; font-weight: 700; letter-spacing: .05em;
+      padding: 6px 11px; border-radius: 999px;
       border: 1px solid var(--card-border);
       color: rgba(255,255,255,.72);
       background: rgba(255,255,255,.02);
-      text-decoration: none;
-      white-space: nowrap;
-      flex-shrink: 0;
+      text-decoration: none; white-space: nowrap; flex-shrink: 0;
       transition: border-color .18s, color .18s;
     }
-
-    .back-to-journey:hover {
-      border-color: var(--gold-border);
-      color: rgba(255,255,255,.96);
-    }
-
-    @media(max-width:600px) { .logo-tagline { display: none; } }
+    .back-to-journey:hover { border-color: var(--gold-border); color: rgba(255,255,255,.96); }
 
     /* ── Hero ── */
     .hero {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 64px 24px 48px;
+      padding: 52px 24px 36px;
+    }
+    .hero-eyebrow { 
+      font-size: 0.72rem; 
+      font-weight: 600; 
+      letter-spacing: 0.15em; 
+      text-transform: uppercase; 
+      color: var(--gold); 
+      margin-bottom: 14px; 
+    }
+    .hero h1 { 
+      font-family: 'Playfair Display', serif; 
+      font-size: clamp(1.8rem, 5vw, 2.8rem); 
+      font-weight: 900; 
+      line-height: 1.1; 
+      color: #fff; 
+      margin-bottom: 16px; 
+      max-width: 700px; 
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub { 
+      font-size: 1rem; 
+      color: var(--text-muted); 
+      max-width: 520px; 
+      line-height: 1.7; 
+      margin-bottom: 28px; 
     }
 
-    .hero-eyebrow {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 900;
-      line-height: 1.1;
-      color: #fff;
-      margin-bottom: 20px;
-      max-width: 700px;
-    }
-
-    .hero h1 span {
-      color: var(--gold);
-    }
-
-    .hero-sub {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 560px;
-      line-height: 1.7;
-    }
-
-    /* ── Tabs ── */
-    .tabs-bar {
+    /* ── Topic Sections ── */
+    .topic-section {
       max-width: 1100px;
-      margin: 0 auto;
+      margin: 0 auto 64px;
       padding: 0 24px;
-      border-bottom: 1px solid var(--card-border);
-      display: flex;
-      gap: 0;
     }
-
-    .tab-btn {
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
-      color: var(--text-muted);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 500;
-      padding: 14px 20px;
-      cursor: pointer;
-      transition: color 0.2s, border-color 0.2s;
-      margin-bottom: -1px;
+    .topic-header {
+      margin-bottom: 24px;
     }
-
-    .tab-btn:hover { color: var(--text); }
-
-    .tab-btn.active {
-      color: var(--gold);
-      border-bottom-color: var(--gold);
-    }
-
-    .seller-coming-soon {
-      font-size: 0.7rem;
-      background: rgba(255,204,77,0.1);
-      color: var(--gold);
-      padding: 2px 7px;
-      border-radius: 20px;
-      margin-left: 6px;
-      vertical-align: middle;
-    }
-
-    /* ── Filter strip ── */
-    .filter-strip {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 20px 24px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .filter-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-right: 4px;
-    }
-
-    .filter-chip {
-      background: none;
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
-      padding: 5px 12px;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-
-    .filter-chip:hover {
-      border-color: var(--gold-border);
-      color: var(--text);
-    }
-
-    .filter-chip.active {
-      background: var(--gold-dim);
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
-    /* ── Content area ── */
-    .content-area {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px 80px;
-    }
-
-    /* ── Series group ── */
-    .series-group {
-      margin-bottom: 52px;
-    }
-
-    .series-header {
-      display: flex;
-      align-items: baseline;
-      gap: 14px;
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--series-line);
-    }
-
-    .series-title {
+    .topic-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
       font-weight: 700;
       color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.2;
     }
-
-    .series-count {
-      font-size: 0.75rem;
+    .topic-subtitle {
+      font-size: 0.95rem;
       color: var(--text-muted);
+      line-height: 1.5;
     }
 
-    .series-tool-link {
-      margin-left: auto;
-      font-size: 0.78rem;
-      color: var(--gold);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      opacity: 0.8;
-      transition: opacity 0.2s;
-    }
-    .series-tool-link:hover { opacity: 1; }
-
-    /* ── Article cards ── */
+    /* ── Cards Grid ── */
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+    @media (max-width: 600px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
+    /* ── Article Card ── */
     .article-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 22px 22px 18px;
+      border-radius: 8px;
+      padding: 24px;
       text-decoration: none;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      transition: border-color 0.2s, transform 0.2s;
+      gap: 12px;
+      transition: border-color 0.2s, background 0.2s, transform 0.1s;
       position: relative;
-      overflow: hidden;
     }
-
-    .article-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.25s ease;
-    }
-
     .article-card:hover {
       border-color: var(--gold-border);
+      background: rgba(255,204,77,0.03);
       transform: translateY(-2px);
     }
-
-    .article-card:hover::before {
-      transform: scaleX(1);
+    
+    /* Featured card - larger, stands out */
+    .featured-card {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, rgba(255,204,77,0.06) 0%, rgba(255,204,77,0.02) 100%);
+      border: 1px solid var(--gold-border);
+      padding: 32px;
     }
-
-    .article-card.is-hub {
-      border-color: rgba(255,204,77,0.15);
+    .featured-card:hover {
+      background: linear-gradient(135deg, rgba(255,204,77,0.08) 0%, rgba(255,204,77,0.04) 100%);
+      border-color: var(--gold);
     }
-
-    .hub-badge {
-      font-size: 0.65rem;
+    .featured-card .card-title {
+      font-size: 1.6rem;
+    }
+    .featured-card .card-desc {
+      font-size: 1rem;
+    }
+    
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.68rem;
       font-weight: 600;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+      background: var(--gold-dim);
       color: var(--gold);
-      opacity: 0.7;
+      width: fit-content;
     }
-
+    .featured-badge {
+      background: var(--gold);
+      color: #050505;
+      padding: 5px 12px;
+      font-size: 0.7rem;
+    }
     .card-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1rem;
+      font-size: 1.3rem;
       font-weight: 700;
+      line-height: 1.3;
       color: #fff;
-      line-height: 1.35;
     }
-
     .card-desc {
-      font-size: 0.82rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
       line-height: 1.6;
       flex: 1;
     }
-
+    .tool-indicator {
+      font-size: 0.82rem;
+      color: var(--gold);
+      padding: 8px 12px;
+      background: var(--gold-dim);
+      border-radius: 4px;
+      border-left: 3px solid var(--gold);
+    }
     .card-footer {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-top: 4px;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 8px;
     }
-
-    .audience-badge {
-      font-size: 0.68rem;
-      font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .badge-buyer  { background: var(--pill-buyer);  color: var(--pill-buyer-text); }
-    .badge-seller { background: var(--pill-seller); color: var(--pill-seller-text); }
-    .badge-both   { background: var(--pill-both);   color: var(--pill-both-text); }
-
-    .tool-indicator {
-      font-size: 0.72rem;
-      color: var(--gold);
-      opacity: 0.7;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
     .card-arrow {
-      font-size: 1rem;
-      color: var(--text-muted);
-      transition: color 0.2s, transform 0.2s;
+      font-size: 1.2rem;
+      color: var(--gold);
+      transition: transform 0.2s;
     }
     .article-card:hover .card-arrow {
-      color: var(--gold);
-      transform: translateX(3px);
+      transform: translateX(4px);
     }
 
-    /* ── Coming Soon Panel ── */
-    .coming-soon-panel {
-      display: none;
+    /* ── George CTA ── */
+    .george-cta {
+      max-width: 1100px;
+      margin: 80px auto 64px;
+      padding: 0 24px;
+    }
+    .cta-box {
+      background: linear-gradient(135deg, rgba(255,204,77,0.08) 0%, rgba(255,204,77,0.02) 100%);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 40px 32px;
       text-align: center;
-      padding: 80px 24px;
     }
-
-    .coming-soon-panel.active { display: block; }
-
-    .coming-soon-icon {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    .coming-soon-panel h2 {
+    .cta-box h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 700;
       color: #fff;
       margin-bottom: 12px;
     }
-
-    .coming-soon-panel p {
+    .cta-box p {
+      font-size: 1rem;
       color: var(--text-muted);
-      max-width: 480px;
-      margin: 0 auto 28px;
-      line-height: 1.7;
+      margin-bottom: 24px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
     }
-
-    .cta-george {
+    .cta-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      padding: 14px 28px;
       background: var(--gold);
-      color: #000;
+      color: #050505;
+      font-size: 0.95rem;
       font-weight: 600;
-      font-size: 0.88rem;
-      padding: 12px 24px;
       border-radius: 6px;
       text-decoration: none;
-      transition: opacity 0.2s;
+      transition: background 0.2s, transform 0.1s;
     }
-    .cta-george:hover { opacity: 0.88; }
-
-    /* ── Empty state ── */
-    .empty-state {
-      text-align: center;
-      padding: 48px 24px;
-      color: var(--text-muted);
-      font-size: 0.9rem;
+    .cta-btn:hover {
+      background: #ffd666;
+      transform: translateY(-1px);
     }
-
-    /* ── George sidebar CTA ── */
-    .george-cta-bar {
-      background: linear-gradient(135deg, #0f0f0f 0%, #1a1400 100%);
-      border: 1px solid var(--gold-border);
-      border-radius: 12px;
-      padding: 32px;
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      margin-bottom: 48px;
-      flex-wrap: wrap;
-    }
-
-    .george-avatar {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: var(--gold-dim);
-      border: 2px solid var(--gold-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      flex-shrink: 0;
-    }
-
-    .george-text h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      color: #fff;
-      margin-bottom: 4px;
-    }
-
-    .george-text p {
-      font-size: 0.82rem;
+    .cta-phone {
+      display: block;
+      margin-top: 16px;
+      font-size: 0.85rem;
       color: var(--text-muted);
     }
-
-    .george-contact {
-      margin-left: auto;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .contact-btn {
-      font-size: 0.82rem;
-      font-weight: 500;
-      padding: 9px 18px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: #000;
-    }
-
-    .btn-secondary {
-      background: none;
-      border: 1px solid var(--gold-border);
+    .cta-phone a {
       color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .cta-phone a:hover {
+      text-decoration: underline;
     }
 
-    .contact-btn:hover { opacity: 0.85; }
-
-    /* ── Compliance footer ── */
-    .compliance-footer {
+    /* ── Footer ── */
+    .footer {
       border-top: 1px solid var(--card-border);
-      padding: 24px;
+      padding: 32px 24px;
       text-align: center;
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      line-height: 1.8;
+      background: rgba(5,5,5,0.98);
     }
-
-    /* ── Responsive ── */
-    @media (max-width: 600px) {
-      .hero { padding: 40px 20px 32px; }
-      .cards-grid { grid-template-columns: 1fr; }
-      .george-cta-bar { flex-direction: column; align-items: flex-start; }
-      .george-contact { margin-left: 0; }
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .footer-content a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .footer-content a:hover {
+      text-decoration: underline;
+    }
+    .footer-company {
+      font-weight: 600;
+      color: var(--text);
     }
   </style>
-
 </head>
 <body>
 
-  <!-- Header — matches journey brand -->
-
+  <!-- Header -->
   <header class="page-header">
     <div class="header-inner">
       <a href="../index.html" class="logo-link">
         <div class="logo-ico">
-          <img src="../assets/STLhomebuyerjourneylogo.png" alt="STL Home Journey" onerror="this.style.display='none'">
+          <img src="../assets/stl-icon-gold.svg" alt="STL Home Journey">
         </div>
         <div>
-          <div class="logo-wordmark"><span>STL</span> Home Buyer Journey</div>
-          <div class="logo-name">George Kindler</div>
-          <div class="logo-tagline">13 Years Of Real Estate Experience At Your Fingertips</div>
+          <div class="logo-wordmark">STL <span>Home Journey</span></div>
+          <div class="logo-name">by George Kindler</div>
         </div>
       </a>
-      <a href="../index.html" class="back-to-journey">← Journey</a>
+      <a href="../index.html" class="back-to-journey">← BACK TO JOURNEY</a>
     </div>
   </header>
 
   <!-- Hero -->
-
   <section class="hero">
-    <p class="hero-eyebrow">Free St. Louis Real Estate Guides</p>
-    <h1>Real answers.<br><span>No agenda.</span></h1>
-    <p class="hero-sub">
-      Guides written from 13 years of St. Louis real estate transactions — not generated content, not lead-gen bait.
-      The numbers you actually need before you buy or sell.
-    </p>
+    <div class="hero-eyebrow">Free Buyer Guides</div>
+    <h1>What you need to know before <span>buying in St. Louis</span></h1>
+    <p class="hero-sub">No fluff. No lead-gen agenda. Just straight talk about what actually matters when you are buying a home.</p>
   </section>
 
-  <!-- Tabs -->
-
-  <div class="tabs-bar">
-    <button class="tab-btn active" data-tab="buyer" onclick="switchTab('buyer')">For Buyers</button>
-    <button class="tab-btn" data-tab="both" onclick="switchTab('both')">For Everyone</button>
-    <button class="tab-btn" data-tab="seller" onclick="switchTab('seller')">
-      For Sellers <span class="seller-coming-soon">Coming Soon</span>
-    </button>
-  </div>
-
-  <!-- Filter strip -->
-
-  <div class="filter-strip" id="filterStrip">
-    <span class="filter-label">Filter:</span>
-    <button class="filter-chip active" data-tag="all" onclick="filterByTag('all')">All</button>
-  </div>
-
-  <!-- Content -->
-
-  <main class="content-area">
-
-```
-<!-- Buyer / Both tabs -->
-<div id="articlesPanel">
-
-  <!-- George CTA bar -->
-  <div class="george-cta-bar">
-    <div class="george-avatar">👋</div>
-    <div class="george-text">
-      <h3>George Kindler — Licensed Missouri Realtor</h3>
-      <p>13 years · 130+ transactions · The Closing Pros LLC · St. Louis metro</p>
+  <!-- Topic 1: Finding the Right Home -->
+  <section class="topic-section" id="finding">
+    <div class="topic-header">
+      <h2 class="topic-title">Finding the Right Home</h2>
+      <p class="topic-subtitle">Zillow, neighborhood research, school districts, market data. How to search without getting played.</p>
     </div>
-    <div class="george-contact">
-      <a href="tel:3144351087" class="contact-btn btn-secondary">314.435.1087</a>
-      <a href="mailto:georgeandlizk@gmail.com" class="contact-btn btn-primary">Get in Touch</a>
+    <div class="cards-grid" id="findingGrid"></div>
+  </section>
+
+  <!-- Topic 2: Figuring Out Your Budget -->
+  <section class="topic-section" id="budget">
+    <div class="topic-header">
+      <h2 class="topic-title">Figuring Out Your Budget</h2>
+      <p class="topic-subtitle">Affordability, income requirements, down payment, loan types, credit score, closing costs, first-time buyer programs.</p>
     </div>
-  </div>
+    <div class="cards-grid" id="budgetGrid"></div>
+  </section>
 
-  <!-- Series groups render here -->
-  <div id="seriesContainer"></div>
+  <!-- Topic 3: Walking Homes -->
+  <section class="topic-section" id="walking">
+    <div class="topic-header">
+      <h2 class="topic-title">Walking Homes</h2>
+      <p class="topic-subtitle">What to look for, inspection red flags, repair costs, how condition affects offer price. The stuff you find when you show up.</p>
+    </div>
+    <div class="cards-grid" id="walkingGrid"></div>
+  </section>
 
-</div>
+  <!-- Topic 4: School District Guides -->
+  <section class="topic-section" id="schools">
+    <div class="topic-header">
+      <h2 class="topic-title">School District Guides</h2>
+      <p class="topic-subtitle">What buyers need to know about St. Louis school districts before they commit to a neighborhood. Test scores, boundaries, comparisons.</p>
+    </div>
+    <div class="cards-grid" id="schoolsGrid"></div>
+  </section>
 
-<!-- Seller coming soon panel -->
-<div class="coming-soon-panel" id="sellerPanel">
-  <div class="coming-soon-icon">🏡</div>
-  <h2>Seller Guides Coming Soon</h2>
-  <p>
-    The full St. Louis Seller Journey is in development — pricing strategy, net proceeds calculators,
-    cash offer analysis, and everything else sellers need before they list.
-    The buyer guides above are a preview of what's coming.
-  </p>
-  <a href="mailto:georgeandlizk@gmail.com" class="cta-george">
-    Get notified when it launches
-  </a>
-</div>
-```
+  <!-- Topic 5: Writing the Offer -->
+  <section class="topic-section" id="offer">
+    <div class="topic-header">
+      <h2 class="topic-title">Writing the Offer</h2>
+      <p class="topic-subtitle">Buyer representation, NAR settlement, how to interview an agent, red flags, pre-approval, getting under contract.</p>
+    </div>
+    <div class="cards-grid" id="offerGrid"></div>
+  </section>
 
-  </main>
+  <!-- George CTA -->
+  <section class="george-cta">
+    <div class="cta-box">
+      <h2>Ready to start your buyer journey?</h2>
+      <p>13 years of experience. 250+ transactions. Licensed Missouri real estate agent. No pressure, no lead-gen games. Just honest guidance.</p>
+      <a href="tel:314-435-1087" class="cta-btn">
+        <span>📞</span>
+        <span>Call George</span>
+      </a>
+      <div class="cta-phone">Direct line: <a href="tel:314-435-1087">314.435.1087</a></div>
+    </div>
+  </section>
 
-  <!-- Compliance footer -->
-
-  <footer class="compliance-footer">
-    <p>
-      George Kindler · Missouri Licensed Real Estate Agent · The Closing Pros LLC<br>
-      Office: (314) 998-4550 · georgeandlizk@gmail.com<br>
-      All content is for informational purposes only and does not constitute legal or financial advice.
-    </p>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <span class="footer-company">The Closing Pros LLC</span> | St. Louis, Missouri<br>
+      Office: <a href="tel:314-998-4550">314-998-4550</a> | George: <a href="tel:314-435-1087">314.435.1087</a><br>
+      Licensed Missouri Real Estate Agent | Consumer Protection First
+    </div>
   </footer>
 
   <script>
-    // ── State ────────────────────────────────────────────────────────────────
-    let currentTab = 'buyer';
-    let activeTag  = 'all';
-
-    // ── Tab switching ────────────────────────────────────────────────────────
-    function switchTab(tab) {
-      currentTab = tab;
-      activeTag  = 'all';
-
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
-
-      const articlesPanel = document.getElementById('articlesPanel');
-      const sellerPanel   = document.getElementById('sellerPanel');
-
-      if (tab === 'seller') {
-        articlesPanel.style.display = 'none';
-        sellerPanel.classList.add('active');
-        document.getElementById('filterStrip').style.display = 'none';
-        return;
+    // Manual topic curation - organized by buyer journey, not tags
+    const CURATED_TOPICS = {
+      finding: {
+        featured: 'truth-about-zillow-stl', // Show this one larger/first
+        articles: [
+          'truth-about-zillow-stl',
+          'how-to-use-zillow-without-getting-used',
+          'zillow-zestimate-accurate-stl',
+          'what-happens-when-you-click-zillow',
+          'zillow-pay-to-play-system',
+          'most-affordable-zip-codes-stl-2026',
+          'south-county-stl-neighborhood-guide',
+          'mehlville-vs-oakville-vs-concord-stl',
+          'lindbergh-vs-mehlville-school-district-stl'
+        ]
+      },
+      budget: {
+        featured: 'stl-affordability-by-zip-code',
+        articles: [
+          'stl-affordability-by-zip-code',
+          'how-much-income-to-buy-home-stl',
+          'first-time-buyer-programs-stl',
+          'mortgage-pre-approval-st-louis',
+          'conventional-vs-fha-loan-st-louis',
+          'down-payment-help-st-louis',
+          'renting-vs-buying-stl',
+          'how-credit-score-affects-mortgage-stl'
+        ]
+      },
+      walking: {
+        featured: 'stl-home-repair-cost-guide',
+        articles: [
+          'stl-home-repair-cost-guide',
+          'what-to-look-for-buying-house-stl',
+          'st-louis-home-price-reduction-negotiation',
+          'repair-costs-affect-offer-price-stl',
+          'home-inspection-st-louis',
+          'federal-pacific-breakers-st-louis',
+          'cast-iron-pipe-st-louis',
+          'old-home-inspection-red-flags-stl'
+        ]
+      },
+      offer: {
+        featured: 'do-i-need-a-buyers-agent-stl',
+        articles: [
+          'do-i-need-a-buyers-agent-stl',
+          'how-to-interview-buyers-agent-stl',
+          'red-flags-bad-buyer-agent-stl',
+          'nar-settlement-buyer-representation-stl',
+          'what-buyer-agent-actually-does-stl'
+        ]
       }
+    };
 
-      articlesPanel.style.display = 'block';
-      sellerPanel.classList.remove('active');
-      document.getElementById('filterStrip').style.display = 'flex';
+    function buildFeaturedCard(article) {
+      const card = document.createElement('a');
+      card.className = 'article-card featured-card';
+      card.href = `${article.slug}.html`;
+      
+      let topicBadge = 'Guide';
+      if (article.series === 'zillow') topicBadge = 'Zillow';
+      else if (article.series === 'affordability') topicBadge = 'Affordability';
+      else if (article.series === 'repair-guide') topicBadge = 'Repair Costs';
+      else if (article.series === 'representation') topicBadge = 'Representation';
+      else if (article.series === 'neighborhoods') topicBadge = 'Neighborhoods';
 
-      buildFilters(tab);
-      renderArticles(tab, 'all');
-    }
-
-    // ── Filter chips ─────────────────────────────────────────────────────────
-    function buildFilters(audience) {
-      const reg   = window.ARTICLE_REGISTRY;
-      const strip = document.getElementById('filterStrip');
-      const tags  = reg.getTagsForAudience(audience === 'both' ? 'both' : audience);
-
-      const humanTags = {
-        'affordability':   'Affordability',
-        'budget':          'Budget',
-        'zip-codes':       'Zip Codes',
-        'property-tax':    'Property Tax',
-        'tools':           'Tools',
-        'income':          'Income',
-        'first-time-buyer':'First-Time Buyers',
-        'mortgage':        'Mortgage',
-        'renting':         'Renting',
-        'decision':        'Decision',
-        'programs':        'Programs',
-        'fha':             'FHA',
-        'va':              'VA',
-        'data':            'Data',
-        'neighborhoods':   'Neighborhoods',
-        'inspection':      'Inspection',
-        'repair-costs':    'Repair Costs',
-        'negotiation':     'Negotiation',
-        'offer':           'Offer',
-        'hvac':            'HVAC',
-        'basement':        'Basement',
-        'roof':            'Roof',
-        'checklist':       'Checklist',
-        'walkthrough':     'Walkthrough',
-        'process':         'Process',
-        'zillow':          'Zillow',
-        'consumer-protection': 'Consumer Protection',
-        'agents':          'Agents',
-        'lead-gen':        'Lead Gen',
-        'valuation':       'Valuation',
-        'zestimate':       'Zestimate',
-        'strategy':        'Strategy',
-        'maris':           'MARIS Data',
-        'commissions':     'Commissions',
-      };
-
-      strip.innerHTML = '<span class="filter-label">Filter:</span>';
-
-      const allChip = document.createElement('button');
-      allChip.className = 'filter-chip active';
-      allChip.dataset.tag = 'all';
-      allChip.textContent = 'All';
-      allChip.onclick = () => filterByTag('all');
-      strip.appendChild(allChip);
-
-      tags.forEach(tag => {
-        const chip = document.createElement('button');
-        chip.className = 'filter-chip';
-        chip.dataset.tag = tag;
-        chip.textContent = humanTags[tag] || tag;
-        chip.onclick = () => filterByTag(tag);
-        strip.appendChild(chip);
-      });
-    }
-
-    function filterByTag(tag) {
-      activeTag = tag;
-      document.querySelectorAll('.filter-chip').forEach(c => c.classList.toggle('active', c.dataset.tag === tag));
-      renderArticles(currentTab, tag);
-    }
-
-    // ── Article rendering ────────────────────────────────────────────────────
-    function renderArticles(audience, tag) {
-      const reg = window.ARTICLE_REGISTRY;
-      const container = document.getElementById('seriesContainer');
-      container.innerHTML = '';
-
-      // Determine which articles to show
-      let articles;
-      if (audience === 'both') {
-        articles = reg.articles.filter(a => a.published && a.audience === 'both');
-      } else {
-        articles = reg.getByAudience(audience);
-      }
-
-      if (tag !== 'all') {
-        articles = articles.filter(a => a.tags.includes(tag));
-      }
-
-      if (articles.length === 0) {
-        container.innerHTML = '<p class="empty-state">No guides match that filter.</p>';
-        return;
-      }
-
-      // Group by series
-      const seriesSeen = new Set();
-      const grouped = {};
-      const noSeries = [];
-
-      articles.forEach(a => {
-        if (a.series) {
-          if (!grouped[a.series]) grouped[a.series] = [];
-          grouped[a.series].push(a);
-          seriesSeen.add(a.series);
-        } else {
-          noSeries.push(a);
-        }
-      });
-
-      // Render each series group
-      Object.entries(grouped).forEach(([seriesSlug, arts]) => {
-        const seriesDef = reg.series[seriesSlug];
-        const group = document.createElement('div');
-        group.className = 'series-group';
-
-        const header = document.createElement('div');
-        header.className = 'series-header';
-        header.innerHTML = `
-          <span class="series-title">${seriesDef ? seriesDef.title : seriesSlug}</span>
-          <span class="series-count">${arts.length} guide${arts.length !== 1 ? 's' : ''}</span>
-          ${seriesDef && seriesDef.toolLink ? `<a class="series-tool-link" href="${seriesDef.toolLink}" target="_blank" rel="noopener">Open Tool ↗</a>` : ''}
-        `;
-
-        const grid = document.createElement('div');
-        grid.className = 'cards-grid';
-
-        // Hubs first
-        const sorted = [...arts].sort((a, b) => (b.isHub ? 1 : 0) - (a.isHub ? 1 : 0));
-        sorted.forEach(article => grid.appendChild(buildCard(article)));
-
-        group.appendChild(header);
-        group.appendChild(grid);
-        container.appendChild(group);
-      });
-
-      // Render ungrouped
-      if (noSeries.length > 0) {
-        const group = document.createElement('div');
-        group.className = 'series-group';
-        const grid = document.createElement('div');
-        grid.className = 'cards-grid';
-        noSeries.forEach(article => grid.appendChild(buildCard(article)));
-        group.appendChild(grid);
-        container.appendChild(group);
-      }
+      card.innerHTML = `
+        <div class="card-badge featured-badge">${topicBadge} • Featured</div>
+        <div class="card-title">${article.title}</div>
+        <div class="card-desc">${article.description}</div>
+        ${article.toolLink ? '<div class="tool-indicator">🔧 Interactive tool included</div>' : ''}
+        <div class="card-footer">
+          <span class="card-arrow">→</span>
+        </div>
+      `;
+      return card;
     }
 
     function buildCard(article) {
       const card = document.createElement('a');
-      card.className = 'article-card' + (article.isHub ? ' is-hub' : '');
+      card.className = 'article-card';
       card.href = `${article.slug}.html`;
-
-      const audienceLabel = { buyer: 'Buyer', seller: 'Seller', both: 'Buyers & Sellers' };
-      const audienceClass = { buyer: 'badge-buyer', seller: 'badge-seller', both: 'badge-both' };
+      
+      let topicBadge = 'Guide';
+      if (article.series === 'zillow') topicBadge = 'Zillow';
+      else if (article.series === 'affordability') topicBadge = 'Affordability';
+      else if (article.series === 'repair-guide') topicBadge = 'Repair Costs';
+      else if (article.series === 'representation') topicBadge = 'Representation';
+      else if (article.series === 'neighborhoods') topicBadge = 'Neighborhoods';
+      else if (article.series === 'mortgage') topicBadge = 'Financing';
 
       card.innerHTML = `
-        ${article.isHub ? '<span class="hub-badge">Series Overview</span>' : ''}
+        <div class="card-badge">${topicBadge}</div>
         <div class="card-title">${article.title}</div>
         <div class="card-desc">${article.description}</div>
         <div class="card-footer">
-          <span class="audience-badge ${audienceClass[article.audience]}">${audienceLabel[article.audience]}</span>
-          ${article.toolLink ? '<span class="tool-indicator">🔧 Tool included</span>' : ''}
           <span class="card-arrow">→</span>
         </div>
       `;
-
       return card;
     }
 
-    // ── Init ─────────────────────────────────────────────────────────────────
-    buildFilters('buyer');
-    renderArticles('buyer', 'all');
+    function renderCuratedTopic(topicId, curation) {
+      const reg = window.ARTICLE_REGISTRY;
+      const grid = document.getElementById(topicId + 'Grid');
+      
+      if (!grid) {
+        console.error('Grid not found:', topicId);
+        return;
+      }
+
+      // Special handling for schools
+      if (topicId === 'schools') {
+        // Hub card
+        const hubCard = document.createElement('a');
+        hubCard.className = 'article-card featured-card';
+        hubCard.href = '../school-districts/index.html';
+        hubCard.innerHTML = `
+          <div class="card-badge featured-badge">School Districts • Hub</div>
+          <div class="card-title">St. Louis School District Guides</div>
+          <div class="card-desc">Everything buyers need to know about St. Louis school districts — test scores, boundaries, and honest comparisons.</div>
+          <div class="card-footer">
+            <span class="card-arrow">→</span>
+          </div>
+        `;
+        grid.appendChild(hubCard);
+
+        // Individual districts
+        const districts = [
+          { name: 'Lindbergh Schools', slug: 'lindbergh-schools' },
+          { name: 'Mehlville School District', slug: 'mehlville-school-district' },
+          { name: 'Rockwood School District', slug: 'rockwood-school-district' },
+          { name: 'Parkway School District', slug: 'parkway-school-district' },
+          { name: 'Ladue School District', slug: 'ladue-school-district' },
+          { name: 'Clayton School District', slug: 'clayton-school-district' },
+          { name: 'Kirkwood School District', slug: 'kirkwood-school-district' },
+          { name: 'Webster Groves School District', slug: 'webster-groves-school-district' },
+          { name: 'Affton School District', slug: 'affton-school-district' }
+        ];
+
+        districts.forEach(district => {
+          const card = document.createElement('a');
+          card.className = 'article-card';
+          card.href = `../school-districts/${district.slug}.html`;
+          card.innerHTML = `
+            <div class="card-badge">School District</div>
+            <div class="card-title">${district.name}</div>
+            <div class="card-desc">Test scores, boundaries, and what buyers need to know before committing to this district.</div>
+            <div class="card-footer">
+              <span class="card-arrow">→</span>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+        return;
+      }
+
+      // For other topics, check registry
+      if (!reg || !reg.articles) {
+        grid.innerHTML = '<p style="color:var(--text-muted);padding:24px 0;">Loading...</p>';
+        return;
+      }
+
+      // Get curated articles for this topic
+      const slugs = curation.articles;
+      const articles = [];
+      
+      slugs.forEach(slug => {
+        const article = reg.articles.find(a => a.slug === slug && a.published);
+        if (article) articles.push(article);
+      });
+
+      if (articles.length === 0) {
+        grid.innerHTML = '<p style="color:var(--text-muted);padding:24px 0;">Coming soon.</p>';
+        return;
+      }
+
+      // Render featured article first
+      const featuredSlug = curation.featured;
+      const featured = articles.find(a => a.slug === featuredSlug);
+      if (featured) {
+        grid.appendChild(buildFeaturedCard(featured));
+      }
+
+      // Render remaining articles
+      articles.forEach(article => {
+        if (article.slug !== featuredSlug) {
+          grid.appendChild(buildCard(article));
+        }
+      });
+    }
+
+    // Initialize on DOM load
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Registry loaded:', !!window.ARTICLE_REGISTRY);
+      
+      renderCuratedTopic('finding', CURATED_TOPICS.finding);
+      renderCuratedTopic('budget', CURATED_TOPICS.budget);
+      renderCuratedTopic('walking', CURATED_TOPICS.walking);
+      renderCuratedTopic('schools', null);
+      renderCuratedTopic('offer', CURATED_TOPICS.offer);
+    });
   </script>
 
 </body>
