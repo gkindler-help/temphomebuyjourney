@@ -10,6 +10,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://stlhomejourney.com/articles/">
   <link rel="canonical" href="https://stlhomejourney.com/articles/">
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -157,13 +159,33 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      transition: border-color 0.2s, background 0.2s;
+      transition: border-color 0.2s, background 0.2s, transform 0.1s;
       position: relative;
     }
     .article-card:hover {
       border-color: var(--gold-border);
       background: rgba(255,204,77,0.03);
+      transform: translateY(-2px);
     }
+    
+    /* Featured card - larger, stands out */
+    .featured-card {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, rgba(255,204,77,0.06) 0%, rgba(255,204,77,0.02) 100%);
+      border: 1px solid var(--gold-border);
+      padding: 32px;
+    }
+    .featured-card:hover {
+      background: linear-gradient(135deg, rgba(255,204,77,0.08) 0%, rgba(255,204,77,0.04) 100%);
+      border-color: var(--gold);
+    }
+    .featured-card .card-title {
+      font-size: 1.6rem;
+    }
+    .featured-card .card-desc {
+      font-size: 1rem;
+    }
+    
     .card-badge {
       display: inline-flex;
       align-items: center;
@@ -177,6 +199,12 @@
       color: var(--gold);
       width: fit-content;
     }
+    .featured-badge {
+      background: var(--gold);
+      color: #050505;
+      padding: 5px 12px;
+      font-size: 0.7rem;
+    }
     .card-title {
       font-family: 'Playfair Display', serif;
       font-size: 1.3rem;
@@ -189,6 +217,14 @@
       color: var(--text-muted);
       line-height: 1.6;
       flex: 1;
+    }
+    .tool-indicator {
+      font-size: 0.82rem;
+      color: var(--gold);
+      padding: 8px 12px;
+      background: var(--gold-dim);
+      border-radius: 4px;
+      border-left: 3px solid var(--gold);
     }
     .card-footer {
       display: flex;
@@ -386,56 +422,99 @@
   </footer>
 
   <script>
-    // Topic-to-tag mappings
-    const TOPIC_MAPPINGS = {
-      finding: [
-        'zillow', 'neighborhoods', 'data', 'zestimate', 
-        'valuation', 'consumer-protection', 'lead-gen', 'agents',
-        'south-county', 'mehlville', 'oakville', 'concord',
-        'price-comparison'
-      ],
-      budget: [
-        'affordability', 'budget', 'income', 'first-time-buyer', 
-        'mortgage', 'down-payment', 'credit', 'closing-costs',
-        'pre-approval', 'loan-types', 'renting', 'decision',
-        'property-tax', 'zip-codes', 'tools'
-      ],
-      walking: [
-        'repair-costs', 'inspection', 'condition', 'fha-203k',
-        'federal-pacific', 'cast-iron', 'foundations', 'roofing',
-        'electrical', 'plumbing', 'hvac', 'waterproofing',
-        'red-flags', 'mold', 'asbestos'
-      ],
-      schools: [
-        'schools', 'school-districts', 'lindbergh', 'mehlville',
-        'district', 'education', 'test-scores', 'boundaries'
-      ],
-      offer: [
-        'representation', 'buyer-agent', 'nar-settlement',
-        'commissions', 'contract', 'negotiation', 'strategy',
-        'pre-offer', 'earnest-money', 'financing-contingency',
-        'inspection-contingency', 'appraisal', 'title'
-      ]
+    // Manual topic curation - organized by buyer journey, not tags
+    const CURATED_TOPICS = {
+      finding: {
+        featured: 'truth-about-zillow-stl', // Show this one larger/first
+        articles: [
+          'truth-about-zillow-stl',
+          'how-to-use-zillow-without-getting-used',
+          'zillow-zestimate-accurate-stl',
+          'what-happens-when-you-click-zillow',
+          'zillow-pay-to-play-system',
+          'most-affordable-zip-codes-stl-2026',
+          'south-county-stl-neighborhood-guide',
+          'mehlville-vs-oakville-vs-concord-stl',
+          'lindbergh-vs-mehlville-school-district-stl'
+        ]
+      },
+      budget: {
+        featured: 'stl-affordability-by-zip-code',
+        articles: [
+          'stl-affordability-by-zip-code',
+          'how-much-income-to-buy-home-stl',
+          'first-time-buyer-programs-stl',
+          'mortgage-pre-approval-st-louis',
+          'conventional-vs-fha-loan-st-louis',
+          'down-payment-help-st-louis',
+          'renting-vs-buying-stl',
+          'how-credit-score-affects-mortgage-stl'
+        ]
+      },
+      walking: {
+        featured: 'stl-home-repair-cost-guide',
+        articles: [
+          'stl-home-repair-cost-guide',
+          'what-to-look-for-buying-house-stl',
+          'st-louis-home-price-reduction-negotiation',
+          'repair-costs-affect-offer-price-stl',
+          'home-inspection-st-louis',
+          'federal-pacific-breakers-st-louis',
+          'cast-iron-pipe-st-louis',
+          'old-home-inspection-red-flags-stl'
+        ]
+      },
+      offer: {
+        featured: 'do-i-need-a-buyers-agent-stl',
+        articles: [
+          'do-i-need-a-buyers-agent-stl',
+          'how-to-interview-buyers-agent-stl',
+          'red-flags-bad-buyer-agent-stl',
+          'nar-settlement-buyer-representation-stl',
+          'what-buyer-agent-actually-does-stl'
+        ]
+      }
     };
+
+    function buildFeaturedCard(article) {
+      const card = document.createElement('a');
+      card.className = 'article-card featured-card';
+      card.href = `${article.slug}.html`;
+      
+      let topicBadge = 'Guide';
+      if (article.series === 'zillow') topicBadge = 'Zillow';
+      else if (article.series === 'affordability') topicBadge = 'Affordability';
+      else if (article.series === 'repair-guide') topicBadge = 'Repair Costs';
+      else if (article.series === 'representation') topicBadge = 'Representation';
+      else if (article.series === 'neighborhoods') topicBadge = 'Neighborhoods';
+
+      card.innerHTML = `
+        <div class="card-badge featured-badge">${topicBadge} • Featured</div>
+        <div class="card-title">${article.title}</div>
+        <div class="card-desc">${article.description}</div>
+        ${article.toolLink ? '<div class="tool-indicator">🔧 Interactive tool included</div>' : ''}
+        <div class="card-footer">
+          <span class="card-arrow">→</span>
+        </div>
+      `;
+      return card;
+    }
 
     function buildCard(article) {
       const card = document.createElement('a');
       card.className = 'article-card';
       card.href = `${article.slug}.html`;
       
-      // Determine topic badge based on tags
-      let topicLabel = 'Guide';
-      if (article.tags.includes('zillow')) topicLabel = 'Zillow';
-      else if (article.tags.includes('neighborhoods')) topicLabel = 'Neighborhoods';
-      else if (article.tags.includes('affordability')) topicLabel = 'Affordability';
-      else if (article.tags.includes('mortgage')) topicLabel = 'Financing';
-      else if (article.tags.includes('repair-costs')) topicLabel = 'Repair Costs';
-      else if (article.tags.includes('inspection')) topicLabel = 'Inspection';
-      else if (article.tags.includes('representation')) topicLabel = 'Representation';
-      else if (article.tags.includes('contract')) topicLabel = 'Contract';
+      let topicBadge = 'Guide';
+      if (article.series === 'zillow') topicBadge = 'Zillow';
+      else if (article.series === 'affordability') topicBadge = 'Affordability';
+      else if (article.series === 'repair-guide') topicBadge = 'Repair Costs';
+      else if (article.series === 'representation') topicBadge = 'Representation';
+      else if (article.series === 'neighborhoods') topicBadge = 'Neighborhoods';
+      else if (article.series === 'mortgage') topicBadge = 'Financing';
 
       card.innerHTML = `
-        <div class="card-badge">${topicLabel}</div>
+        <div class="card-badge">${topicBadge}</div>
         <div class="card-title">${article.title}</div>
         <div class="card-desc">${article.description}</div>
         <div class="card-footer">
@@ -445,22 +524,23 @@
       return card;
     }
 
-    function renderTopicGrid(topicId, tags) {
+    function renderCuratedTopic(topicId, curation) {
       const reg = window.ARTICLE_REGISTRY;
       const grid = document.getElementById(topicId + 'Grid');
       
-      if (!reg || !reg.articles) {
-        grid.innerHTML = '<p style="color:var(--text-muted);padding:24px 0;">Loading articles...</p>';
+      if (!grid) {
+        console.error('Grid not found:', topicId);
         return;
       }
 
-      // Special handling for schools: add hub page first
+      // Special handling for schools
       if (topicId === 'schools') {
+        // Hub card
         const hubCard = document.createElement('a');
-        hubCard.className = 'article-card';
+        hubCard.className = 'article-card featured-card';
         hubCard.href = '../school-districts/index.html';
         hubCard.innerHTML = `
-          <div class="card-badge">School Districts</div>
+          <div class="card-badge featured-badge">School Districts • Hub</div>
           <div class="card-title">St. Louis School District Guides</div>
           <div class="card-desc">Everything buyers need to know about St. Louis school districts — test scores, boundaries, and honest comparisons.</div>
           <div class="card-footer">
@@ -469,17 +549,17 @@
         `;
         grid.appendChild(hubCard);
 
-        // Add individual district pages
+        // Individual districts
         const districts = [
-          { name: 'Affton School District', slug: 'affton-school-district' },
-          { name: 'Clayton School District', slug: 'clayton-school-district' },
-          { name: 'Kirkwood School District', slug: 'kirkwood-school-district' },
-          { name: 'Ladue School District', slug: 'ladue-school-district' },
           { name: 'Lindbergh Schools', slug: 'lindbergh-schools' },
           { name: 'Mehlville School District', slug: 'mehlville-school-district' },
-          { name: 'Parkway School District', slug: 'parkway-school-district' },
           { name: 'Rockwood School District', slug: 'rockwood-school-district' },
-          { name: 'Webster Groves School District', slug: 'webster-groves-school-district' }
+          { name: 'Parkway School District', slug: 'parkway-school-district' },
+          { name: 'Ladue School District', slug: 'ladue-school-district' },
+          { name: 'Clayton School District', slug: 'clayton-school-district' },
+          { name: 'Kirkwood School District', slug: 'kirkwood-school-district' },
+          { name: 'Webster Groves School District', slug: 'webster-groves-school-district' },
+          { name: 'Affton School District', slug: 'affton-school-district' }
         ];
 
         districts.forEach(district => {
@@ -489,7 +569,7 @@
           card.innerHTML = `
             <div class="card-badge">School District</div>
             <div class="card-title">${district.name}</div>
-            <div class="card-desc">What buyers need to know about ${district.name} — test scores, boundaries, and communities served.</div>
+            <div class="card-desc">Test scores, boundaries, and what buyers need to know before committing to this district.</div>
             <div class="card-footer">
               <span class="card-arrow">→</span>
             </div>
@@ -499,50 +579,51 @@
         return;
       }
 
-      // Get all published buyer articles
-      const articles = reg.articles.filter(a => 
-        a.published && 
-        (a.audience === 'buyer' || a.audience === 'both') &&
-        a.tags.some(tag => tags.includes(tag))
-      );
+      // For other topics, check registry
+      if (!reg || !reg.articles) {
+        grid.innerHTML = '<p style="color:var(--text-muted);padding:24px 0;">Loading...</p>';
+        return;
+      }
 
-      // Remove duplicates by slug
-      const uniqueArticles = [];
-      const seenSlugs = new Set();
-      articles.forEach(article => {
-        if (!seenSlugs.has(article.slug)) {
-          seenSlugs.add(article.slug);
-          uniqueArticles.push(article);
-        }
+      // Get curated articles for this topic
+      const slugs = curation.articles;
+      const articles = [];
+      
+      slugs.forEach(slug => {
+        const article = reg.articles.find(a => a.slug === slug && a.published);
+        if (article) articles.push(article);
       });
 
-      if (uniqueArticles.length === 0) {
+      if (articles.length === 0) {
         grid.innerHTML = '<p style="color:var(--text-muted);padding:24px 0;">Coming soon.</p>';
         return;
       }
 
-      // Sort: hubs first, then by title
-      uniqueArticles.sort((a, b) => {
-        if (a.isHub && !b.isHub) return -1;
-        if (!a.isHub && b.isHub) return 1;
-        return a.title.localeCompare(b.title);
-      });
+      // Render featured article first
+      const featuredSlug = curation.featured;
+      const featured = articles.find(a => a.slug === featuredSlug);
+      if (featured) {
+        grid.appendChild(buildFeaturedCard(featured));
+      }
 
-      uniqueArticles.forEach(article => {
-        grid.appendChild(buildCard(article));
+      // Render remaining articles
+      articles.forEach(article => {
+        if (article.slug !== featuredSlug) {
+          grid.appendChild(buildCard(article));
+        }
       });
     }
 
-    // Initialize
-    if (!window.ARTICLE_REGISTRY || !window.ARTICLE_REGISTRY.articles) {
-      document.body.innerHTML = '<div style="padding:100px 20px;text-align:center;color:rgba(255,255,255,.4);">Loading guides — if this persists, try refreshing the page.</div>';
-    } else {
-      renderTopicGrid('finding', TOPIC_MAPPINGS.finding);
-      renderTopicGrid('budget', TOPIC_MAPPINGS.budget);
-      renderTopicGrid('walking', TOPIC_MAPPINGS.walking);
-      renderTopicGrid('schools', TOPIC_MAPPINGS.schools);
-      renderTopicGrid('offer', TOPIC_MAPPINGS.offer);
-    }
+    // Initialize on DOM load
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Registry loaded:', !!window.ARTICLE_REGISTRY);
+      
+      renderCuratedTopic('finding', CURATED_TOPICS.finding);
+      renderCuratedTopic('budget', CURATED_TOPICS.budget);
+      renderCuratedTopic('walking', CURATED_TOPICS.walking);
+      renderCuratedTopic('schools', null);
+      renderCuratedTopic('offer', CURATED_TOPICS.offer);
+    });
   </script>
 
 </body>
