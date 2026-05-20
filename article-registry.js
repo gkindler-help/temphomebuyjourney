@@ -7,7 +7,7 @@
 
 window.ARTICLE_REGISTRY = {
 
-  version: "1.1.2",
+  version: "1.2.0",
 
   series: {
     "zillow": {
@@ -506,6 +506,135 @@ window.ARTICLE_REGISTRY = {
       isHub: false,
       chapters: [2, 3],
       tags: ["neighborhoods", "schools", "south-county", "lindbergh", "mehlville", "district"],
+      toolLink: null,
+      published: true
+    },
+
+    /* ── BUYER: SCHOOL DISTRICTS SERIES ── */
+
+    {
+      slug: "affton-school-district",
+      title: "Affton School District: Test Scores, Boundaries, and What Buyers Need to Know",
+      shortTitle: "Affton School District",
+      description: "What buyers need to know about Affton School District — test scores, boundaries, and communities served.",
+      pillLabel: "Affton Schools",
+      audience: "buyer",
+      series: "neighborhoods",
+      isHub: false,
+      chapters: [2, 3],
+      tags: ["schools", "school-districts", "affton", "south-county"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "clayton-school-district",
+      title: "Clayton School District: Test Scores, Boundaries, and What Buyers Need to Know",
+      shortTitle: "Clayton School District",
+      description: "What buyers need to know about Clayton School District — test scores, boundaries, and communities served.",
+      pillLabel: "Clayton Schools",
+      audience: "buyer",
+      series: "neighborhoods",
+      isHub: false,
+      chapters: [2, 3],
+      tags: ["schools", "school-districts", "clayton", "central-corridor"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "kirkwood-school-district",
+      title: "Kirkwood School District: Test Scores, Boundaries, and What Buyers Need to Know",
+      shortTitle: "Kirkwood School District",
+      description: "What buyers need to know about Kirkwood School District — test scores, boundaries, and communities served.",
+      pillLabel: "Kirkwood Schools",
+      audience: "buyer",
+      series: "neighborhoods",
+      isHub: false,
+      chapters: [2, 3],
+      tags: ["schools", "school-districts", "kirkwood", "south-county"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "ladue-school-district",
+      title: "Ladue School District: Test Scores, Boundaries, and What Buyers Need to Know",
+      shortTitle: "Ladue School District",
+      description: "What buyers need to know about Ladue School District — test scores, boundaries, and communities served.",
+      pillLabel: "Ladue Schools",
+      audience: "buyer",
+      series: "neighborhoods",
+      isHub: false,
+      chapters: [2, 3],
+      tags: ["schools", "school-districts", "ladue", "west-county"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "lindbergh-schools",
+      title: "Lindbergh Schools: Test Scores, Boundaries, and What Buyers Need to Know",
+      shortTitle: "Lindbergh Schools",
+      description: "What buyers need to know about Lindbergh Schools — test scores, boundaries, and communities served.",
+      pillLabel: "Lindbergh Schools",
+      audience: "buyer",
+      series: "neighborhoods",
+      isHub: false,
+      chapters: [2, 3],
+      tags: ["schools", "school-districts", "lindbergh", "south-county"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "mehlville-school-district",
+      title: "Mehlville School District: Test Scores, Boundaries, and What Buyers Need to Know",
+      shortTitle: "Mehlville School District",
+      description: "What buyers need to know about Mehlville School District — test scores, boundaries, and communities served.",
+      pillLabel: "Mehlville Schools",
+      audience: "buyer",
+      series: "neighborhoods",
+      isHub: false,
+      chapters: [2, 3],
+      tags: ["schools", "school-districts", "mehlville", "south-county"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "parkway-school-district",
+      title: "Parkway School District: Test Scores, Boundaries, and What Buyers Need to Know",
+      shortTitle: "Parkway School District",
+      description: "What buyers need to know about Parkway School District — test scores, boundaries, and communities served.",
+      pillLabel: "Parkway Schools",
+      audience: "buyer",
+      series: "neighborhoods",
+      isHub: false,
+      chapters: [2, 3],
+      tags: ["schools", "school-districts", "parkway", "west-county"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "rockwood-school-district",
+      title: "Rockwood School District: Test Scores, Boundaries, and What Buyers Need to Know",
+      shortTitle: "Rockwood School District",
+      description: "What buyers need to know about Rockwood School District — test scores, boundaries, and communities served.",
+      pillLabel: "Rockwood Schools",
+      audience: "buyer",
+      series: "neighborhoods",
+      isHub: false,
+      chapters: [2, 3],
+      tags: ["schools", "school-districts", "rockwood", "west-county"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "webster-groves-school-district",
+      title: "Webster Groves School District: Test Scores, Boundaries, and What Buyers Need to Know",
+      shortTitle: "Webster Groves School District",
+      description: "What buyers need to know about Webster Groves School District — test scores, boundaries, and communities served.",
+      pillLabel: "Webster Groves Schools",
+      audience: "buyer",
+      series: "neighborhoods",
+      isHub: false,
+      chapters: [2, 3],
+      tags: ["schools", "school-districts", "webster-groves", "central-corridor"],
       toolLink: null,
       published: true
     },
