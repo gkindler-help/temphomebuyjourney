@@ -10,8 +10,6 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://stlhomejourney.com/articles/">
   <link rel="canonical" href="https://stlhomejourney.com/articles/">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -114,27 +112,98 @@
       margin-bottom: 28px; 
     }
 
-    /* ── Topic Sections ── */
-    .topic-section {
+    /* ── Topic Accordion ── */
+    .topics-container {
       max-width: 1100px;
       margin: 0 auto 64px;
       padding: 0 24px;
     }
-    .topic-header {
-      margin-bottom: 24px;
+    
+    .topic-accordion {
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      margin-bottom: 16px;
+      background: var(--card-bg);
+      overflow: hidden;
+      transition: border-color 0.2s;
     }
+    
+    .topic-accordion:hover {
+      border-color: var(--gold-border);
+    }
+    
+    .topic-header {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 28px 32px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      transition: background 0.2s;
+    }
+    
+    .topic-header:hover {
+      background: rgba(255,204,77,0.02);
+    }
+    
     .topic-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-size: clamp(1.4rem, 3.5vw, 1.8rem);
       font-weight: 700;
       color: #fff;
-      margin-bottom: 8px;
+      margin: 0 0 6px 0;
       line-height: 1.2;
     }
+    
     .topic-subtitle {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
       line-height: 1.5;
+      margin: 0;
+    }
+    
+    .accordion-icon {
+      font-size: 2rem;
+      color: var(--gold);
+      font-weight: 300;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+    
+    .accordion-icon.open {
+      transform: rotate(45deg);
+    }
+    
+    .topic-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+    }
+    
+    .topic-content.open {
+      max-height: 5000px;
+      transition: max-height 0.5s ease-in;
+    }
+    
+    .topic-content .cards-grid {
+      padding: 0 32px 32px;
+    }
+    
+    @media (max-width: 600px) {
+      .topic-header {
+        padding: 20px 20px;
+      }
+      .topic-content .cards-grid {
+        padding: 0 20px 20px;
+      }
+      .accordion-icon {
+        font-size: 1.5rem;
+      }
     }
 
     /* ── Cards Grid ── */
@@ -336,7 +405,7 @@
     <div class="header-inner">
       <a href="../index.html" class="logo-link">
         <div class="logo-ico">
-          <img src="../assets/stl-icon-gold.svg" alt="STL Home Journey">
+          <img src="../assets/STLhomebuyerjourneylogo.png" alt="STL Home Journey">
         </div>
         <div>
           <div class="logo-wordmark">STL <span>Home Journey</span></div>
@@ -354,49 +423,79 @@
     <p class="hero-sub">No fluff. No lead-gen agenda. Just straight talk about what actually matters when you are buying a home.</p>
   </section>
 
-  <!-- Topic 1: Finding the Right Home -->
-  <section class="topic-section" id="finding">
-    <div class="topic-header">
-      <h2 class="topic-title">Finding the Right Home</h2>
-      <p class="topic-subtitle">Zillow, neighborhood research, school districts, market data. How to search without getting played.</p>
+  <!-- Topic Accordion -->
+  <section class="topics-container">
+    
+    <!-- Topic 1: Finding the Right Home -->
+    <div class="topic-accordion">
+      <button class="topic-header" onclick="toggleTopic('finding')">
+        <div>
+          <h2 class="topic-title">Finding the Right Home</h2>
+          <p class="topic-subtitle">Zillow, neighborhood research, school districts, market data. How to search without getting played.</p>
+        </div>
+        <span class="accordion-icon" id="finding-icon">+</span>
+      </button>
+      <div class="topic-content" id="finding-content">
+        <div class="cards-grid" id="findingGrid"></div>
+      </div>
     </div>
-    <div class="cards-grid" id="findingGrid"></div>
-  </section>
 
-  <!-- Topic 2: Figuring Out Your Budget -->
-  <section class="topic-section" id="budget">
-    <div class="topic-header">
-      <h2 class="topic-title">Figuring Out Your Budget</h2>
-      <p class="topic-subtitle">Affordability, income requirements, down payment, loan types, credit score, closing costs, first-time buyer programs.</p>
+    <!-- Topic 2: Figuring Out Your Budget -->
+    <div class="topic-accordion">
+      <button class="topic-header" onclick="toggleTopic('budget')">
+        <div>
+          <h2 class="topic-title">Figuring Out Your Budget</h2>
+          <p class="topic-subtitle">Affordability, income requirements, down payment, loan types, credit score, closing costs, first-time buyer programs.</p>
+        </div>
+        <span class="accordion-icon" id="budget-icon">+</span>
+      </button>
+      <div class="topic-content" id="budget-content">
+        <div class="cards-grid" id="budgetGrid"></div>
+      </div>
     </div>
-    <div class="cards-grid" id="budgetGrid"></div>
-  </section>
 
-  <!-- Topic 3: Walking Homes -->
-  <section class="topic-section" id="walking">
-    <div class="topic-header">
-      <h2 class="topic-title">Walking Homes</h2>
-      <p class="topic-subtitle">What to look for, inspection red flags, repair costs, how condition affects offer price. The stuff you find when you show up.</p>
+    <!-- Topic 3: Walking Homes -->
+    <div class="topic-accordion">
+      <button class="topic-header" onclick="toggleTopic('walking')">
+        <div>
+          <h2 class="topic-title">Walking Homes</h2>
+          <p class="topic-subtitle">What to look for, inspection red flags, repair costs, how condition affects offer price. The stuff you find when you show up.</p>
+        </div>
+        <span class="accordion-icon" id="walking-icon">+</span>
+      </button>
+      <div class="topic-content" id="walking-content">
+        <div class="cards-grid" id="walkingGrid"></div>
+      </div>
     </div>
-    <div class="cards-grid" id="walkingGrid"></div>
-  </section>
 
-  <!-- Topic 4: School District Guides -->
-  <section class="topic-section" id="schools">
-    <div class="topic-header">
-      <h2 class="topic-title">School District Guides</h2>
-      <p class="topic-subtitle">What buyers need to know about St. Louis school districts before they commit to a neighborhood. Test scores, boundaries, comparisons.</p>
+    <!-- Topic 4: School District Guides -->
+    <div class="topic-accordion">
+      <button class="topic-header" onclick="toggleTopic('schools')">
+        <div>
+          <h2 class="topic-title">School District Guides</h2>
+          <p class="topic-subtitle">What buyers need to know about St. Louis school districts before they commit to a neighborhood. Test scores, boundaries, comparisons.</p>
+        </div>
+        <span class="accordion-icon" id="schools-icon">+</span>
+      </button>
+      <div class="topic-content" id="schools-content">
+        <div class="cards-grid" id="schoolsGrid"></div>
+      </div>
     </div>
-    <div class="cards-grid" id="schoolsGrid"></div>
-  </section>
 
-  <!-- Topic 5: Writing the Offer -->
-  <section class="topic-section" id="offer">
-    <div class="topic-header">
-      <h2 class="topic-title">Writing the Offer</h2>
-      <p class="topic-subtitle">Buyer representation, NAR settlement, how to interview an agent, red flags, pre-approval, getting under contract.</p>
+    <!-- Topic 5: Writing the Offer -->
+    <div class="topic-accordion">
+      <button class="topic-header" onclick="toggleTopic('offer')">
+        <div>
+          <h2 class="topic-title">Writing the Offer</h2>
+          <p class="topic-subtitle">Buyer representation, NAR settlement, how to interview an agent, red flags, pre-approval, getting under contract.</p>
+        </div>
+        <span class="accordion-icon" id="offer-icon">+</span>
+      </button>
+      <div class="topic-content" id="offer-content">
+        <div class="cards-grid" id="offerGrid"></div>
+      </div>
     </div>
-    <div class="cards-grid" id="offerGrid"></div>
+
   </section>
 
   <!-- George CTA -->
@@ -422,6 +521,24 @@
   </footer>
 
   <script>
+    // Accordion toggle function
+    function toggleTopic(topicId) {
+      const content = document.getElementById(topicId + '-content');
+      const icon = document.getElementById(topicId + '-icon');
+      
+      const isOpen = content.classList.contains('open');
+      
+      if (isOpen) {
+        content.classList.remove('open');
+        icon.classList.remove('open');
+        icon.textContent = '+';
+      } else {
+        content.classList.add('open');
+        icon.classList.add('open');
+        icon.textContent = '−';
+      }
+    }
+
     // Manual topic curation - organized by buyer journey, not tags
     const CURATED_TOPICS = {
       finding: {
