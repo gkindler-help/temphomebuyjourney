@@ -34,7 +34,14 @@
     .nbhd-hdr-nav{display:flex;align-items:center;gap:6px;flex-shrink:0;}
     .nbhd-hdr-btn{font-size:10px;font-weight:700;letter-spacing:.05em;padding:6px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);background:rgba(255,255,255,.02);text-decoration:none;white-space:nowrap;}
     .nbhd-hdr-btn.gold{border-color:rgba(255,204,77,.4);color:#ffcc4d;background:rgba(255,204,77,.06);}
-  </style>
+  
+.nbhd-breadcrumb{background:rgba(16,16,16,.96);border-bottom:1px solid var(--line,#242424);padding:0 16px;display:flex;align-items:center;overflow-x:auto;scrollbar-width:none;}
+.nbhd-breadcrumb::-webkit-scrollbar{display:none;}
+.nbhd-bc-item{font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:rgba(255,255,255,.34);padding:10px 4px;text-decoration:none;white-space:nowrap;}
+.nbhd-bc-item:hover{color:rgba(255,255,255,.7);}
+.nbhd-bc-item.active{color:#ffcc4d;}
+.nbhd-bc-sep{color:rgba(255,255,255,.2);padding:0 6px;font-size:11px;}
+</style>
 </head>
 <body class="tool-page neighborhood-page">
 <header class="nbhd-hdr">
@@ -50,6 +57,13 @@
     <a href="../index.html" class="nbhd-hdr-btn gold">Journey</a>
   </nav>
 </header>
+<nav class="nbhd-breadcrumb" aria-label="Breadcrumb">
+  <a href="../index.html" class="nbhd-bc-item">Journey</a>
+  <span class="nbhd-bc-sep">›</span>
+  <a href="index.html" class="nbhd-bc-item">Neighborhoods</a>
+  <span class="nbhd-bc-sep">›</span>
+  <span class="nbhd-bc-item active">Velda City | Neighborhood Guide | George Kindler</span>
+</nav>
 
 <main class="tool-selector" id="neighborhood-content">
     <section aria-labelledby="velda-city-hero">
