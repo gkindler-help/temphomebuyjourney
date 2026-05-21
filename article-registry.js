@@ -696,7 +696,7 @@ window.ARTICLE_REGISTRY = {
       chapters: [],
       tags: ["selling", "net-proceeds", "costs", "commissions"],
       toolLink: null,
-      published: false
+      published: true
     },
     {
       slug: "cost-to-sell-home-stl",
@@ -710,7 +710,7 @@ window.ARTICLE_REGISTRY = {
       chapters: [],
       tags: ["selling", "costs", "commissions", "closing"],
       toolLink: null,
-      published: false
+      published: true
     },
     {
       slug: "who-pays-buyer-agent-commission-stl",
@@ -724,7 +724,7 @@ window.ARTICLE_REGISTRY = {
       chapters: [],
       tags: ["selling", "commissions", "nar-settlement", "buyer-agent"],
       toolLink: null,
-      published: false
+      published: true
     },
     {
       slug: "should-you-accept-cash-offer-stl",
@@ -738,7 +738,7 @@ window.ARTICLE_REGISTRY = {
       chapters: [],
       tags: ["selling", "cash-offer", "investor", "consumer-protection"],
       toolLink: "https://gkindler-help.github.io/cashofferexposed/",
-      published: false
+      published: true
     },
     {
       slug: "how-cash-buyers-calculate-offers-stl",
@@ -752,7 +752,7 @@ window.ARTICLE_REGISTRY = {
       chapters: [],
       tags: ["selling", "cash-offer", "investor", "arv", "consumer-protection"],
       toolLink: "https://gkindler-help.github.io/cashofferexposed/",
-      published: false
+      published: true
     },
     {
       slug: "what-you-lose-with-cash-offer-stl",
@@ -766,7 +766,7 @@ window.ARTICLE_REGISTRY = {
       chapters: [],
       tags: ["selling", "cash-offer", "investor", "consumer-protection", "costs"],
       toolLink: "https://gkindler-help.github.io/cashofferexposed/",
-      published: false
+      published: true
     },
     {
       slug: "how-to-price-stl-home",
