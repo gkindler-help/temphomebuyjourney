@@ -510,7 +510,36 @@ window.ARTICLE_REGISTRY = {
       published: true
     },
 
-    /* ── BUYER: SCHOOL DISTRICTS SERIES ── */
+    {
+      slug: "buying-a-home-in-oakville-mo",
+      title: "Buying in Oakville MO: What the $318K Median Doesn't Tell You",
+      shortTitle: "Buying in Oakville MO",
+      description: "Oakville is 15.88 square miles -- and the southwest side is not the same market as the west. What buyers miss before searching South County's biggest community.",
+      pillLabel: "Buying in Oakville",
+      audience: "buyer",
+      series: "neighborhoods",
+      isHub: false,
+      chapters: [2, 3],
+      tags: ["neighborhoods", "south-county", "oakville", "buyer-guide", "market-speed"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "average-price-reduction-after-inspection-st-louis",
+      title: "How My Buyer Got $30,000 Off Before Inspections Even Started",
+      shortTitle: "$30K Off Before Inspections: Case Study",
+      description: "90 days on market. Two failed contracts. Roof and foundation issues. Real case study showing exactly how a $30K price reduction happened -- and the math behind it.",
+      pillLabel: "The $30K Case Study",
+      audience: "buyer",
+      series: "repair-guide",
+      isHub: false,
+      chapters: [3, 5],
+      tags: ["negotiation", "days-on-market", "inspection", "price-reduction", "case-study", "repair-costs"],
+      toolLink: null,
+      published: true
+    },
+
+        /* ── BUYER: SCHOOL DISTRICTS SERIES ── */
 
     {
       slug: "affton-school-district",
