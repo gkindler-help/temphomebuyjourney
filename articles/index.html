@@ -484,7 +484,21 @@
       </div>
     </div>
 
-    <!-- Topic 5: Writing the Offer -->
+    <!-- Topic 5: Neighborhood Guides -->
+    <div class="topic-accordion">
+      <button class="topic-header" onclick="toggleTopic('neighborhoods')">
+        <div>
+          <h2 class="topic-title">Neighborhood Guides</h2>
+          <p class="topic-subtitle">South County, Oakville, Mehlville, school district boundaries, and what buyers actually find when they show up. Real data, no spin.</p>
+        </div>
+        <span class="accordion-icon" id="neighborhoods-icon">+</span>
+      </button>
+      <div class="topic-content" id="neighborhoods-content">
+        <div class="cards-grid" id="neighborhoodsGrid"></div>
+      </div>
+    </div>
+
+        <!-- Topic 6: Writing the Offer -->
     <div class="topic-accordion">
       <button class="topic-header" onclick="toggleTopic('offer')">
         <div>
@@ -543,6 +557,16 @@
 
     // Manual topic curation - organized by buyer journey, not tags
     const CURATED_TOPICS = {
+      neighborhoods: {
+        featured: 'south-county-stl-neighborhood-guide',
+        articles: [
+          'south-county-stl-neighborhood-guide',
+          'south-county-stl-neighborhoods-by-price',
+          'buying-a-home-in-oakville-mo',
+          'mehlville-vs-oakville-vs-concord-stl',
+          'lindbergh-vs-mehlville-school-district-stl'
+        ]
+      },
       finding: {
         featured: 'truth-about-zillow-stl', // Show this one larger/first
         articles: [
@@ -552,10 +576,7 @@
           'what-happens-when-you-click-zillow',
           'zillow-pay-to-play-system',
           'most-affordable-zip-codes-stl-2026',
-          'south-county-stl-neighborhood-guide',
-          'buying-a-home-in-oakville-mo',
-          'mehlville-vs-oakville-vs-concord-stl',
-          'lindbergh-vs-mehlville-school-district-stl'
+          'south-county-stl-neighborhood-guide'
         ]
       },
       budget: {
@@ -737,6 +758,7 @@
       console.log('Registry loaded:', !!window.ARTICLE_REGISTRY);
       
       renderCuratedTopic('finding', CURATED_TOPICS.finding);
+      renderCuratedTopic('neighborhoods', CURATED_TOPICS.neighborhoods);
       renderCuratedTopic('budget', CURATED_TOPICS.budget);
       renderCuratedTopic('walking', CURATED_TOPICS.walking);
       renderCuratedTopic('schools', null);
