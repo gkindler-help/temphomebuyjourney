@@ -1643,7 +1643,21 @@ function closeDrawer() {
 
   function _buildNeighborhoodsPanelHTML() {
     closeDashboard();
-    openToolPanel("neighborhood-matcher");
+    /* Show a choice panel: Quiz or Browse All */
+    var panel = document.createElement('div');
+    panel.style.cssText = 'position:fixed;inset:0;z-index:400;background:rgba(5,5,5,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px;';
+    panel.innerHTML = '<div style="font-family:var(--font-serif,serif);font-size:22px;font-weight:700;color:rgba(255,255,255,.96);text-align:center;margin-bottom:8px;">Explore St. Louis Neighborhoods</div>' +
+      '<a href="neighborhoods/index.html" style="display:block;width:100%;max-width:340px;padding:16px 20px;background:rgba(255,204,77,.08);border:1px solid rgba(255,204,77,.35);border-radius:12px;text-decoration:none;text-align:left;">' +
+        '<div style="font-size:13px;font-weight:700;color:#ffcc4d;letter-spacing:.04em;">BROWSE ALL 98 NEIGHBORHOODS</div>' +
+        '<div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:4px;">Search, filter by area, and compare — all 98 St. Louis communities in one place.</div>' +
+      '</a>' +
+      '<button onclick="this.closest('[data-nbhd-chooser]').remove();window.SharedPlatform&&window.SharedPlatform.openToolPanel('neighborhood-matcher');" style="display:block;width:100%;max-width:340px;padding:16px 20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.12);border-radius:12px;text-align:left;cursor:pointer;">' +
+        '<div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.9);letter-spacing:.04em;">TAKE THE NEIGHBORHOOD QUIZ</div>' +
+        '<div style="font-size:12px;color:rgba(255,255,255,.5);margin-top:4px;">5 questions. Get matched to the areas that actually fit your budget, commute, and lifestyle.</div>' +
+      '</button>' +
+      '<button onclick="this.closest('[data-nbhd-chooser]').remove();" style="margin-top:8px;background:none;border:none;color:rgba(255,255,255,.35);font-size:12px;cursor:pointer;">Cancel</button>';
+    panel.setAttribute('data-nbhd-chooser','1');
+    document.body.appendChild(panel);
     return "";
 
     /* Build hood lookup from registry or hardcoded fallback */
