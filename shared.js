@@ -1993,9 +1993,14 @@ function closeDrawer() {
     };
     var toolUrl = toolUrls[toolId] || (toolId + ".html");
 
+    var browseAllLink = toolId === "neighborhood-matcher"
+      ? '<a href="neighborhoods/index.html" class="tool-panel-browse-all">Browse All 98 &rarr;</a>'
+      : '';
+
     _toolPanelEl.innerHTML =
       '<div class="tool-panel-header">' +
         '<div class="tool-panel-title">' + (toolTitles[toolId] || "Tool") + '</div>' +
+        browseAllLink +
         '<button class="tool-panel-close" id="tool-panel-close" type="button">&#10005;</button>' +
       '</div>' +
       '<iframe id="tool-iframe" src="' + toolUrl + '" ' +
