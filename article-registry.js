@@ -58,6 +58,14 @@ window.ARTICLE_REGISTRY = {
       hubSlug: "south-county-stl-neighborhood-guide",
       toolLink: null
     },
+    "va-buyer": {
+      title: "Why VA Deals Fall Apart in St. Louis (And How to Avoid It)",
+      slug: "va-buyer",
+      audience: "buyer",
+      description: "From a Marine veteran who's closed VA loans here -- the appraisal traps, electrical panels, and property issues that kill deals before closing.",
+      hubSlug: "va-home-loan-st-louis-what-kills-deals",
+      toolLink: null
+    },
     "seller-net": {
       title: "St. Louis Home Seller Guides",
       slug: "seller-net",
@@ -304,6 +312,80 @@ window.ARTICLE_REGISTRY = {
   toolLink: null,
   published: true
     },
+
+    /* ── BUYER: VA LOAN SERIES ── */
+
+    {
+      slug: "va-home-loan-st-louis-what-kills-deals",
+      title: "VA Home Loan in St. Louis: What Kills Deals (And How I Screen Properties)",
+      shortTitle: "VA Loans: What Kills Deals",
+      description: "From a Marine Corps veteran who's closed VA loans in St. Louis: the property issues, appraisal traps, and deal-killers I screen for before my veteran buyers make an offer.",
+      pillLabel: "What Kills VA Deals",
+      audience: "buyer",
+      series: "va-buyer",
+      isHub: true,
+      chapters: [1, 2],
+      tags: ["va-loan", "appraisal", "veteran", "inspection", "electrical", "deal-killers"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "federal-pacific-panel-va-loan-st-louis",
+      title: "Federal Pacific Panels and VA Loans in St. Louis: The $3,500 Deal-Killer",
+      shortTitle: "Federal Pacific Panels VA",
+      description: "Federal Pacific Stab-Lok panels are in thousands of St. Louis homes. VA appraisers flag them on sight. Here is what it costs to replace and why it kills VA deals.",
+      pillLabel: "The FPE Panel Deal-Killer",
+      audience: "buyer",
+      series: "va-buyer",
+      isHub: false,
+      chapters: [1, 2],
+      tags: ["va-loan", "appraisal", "electrical", "federal-pacific", "deal-killer", "south-county", "north-county"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "can-you-buy-fixer-upper-va-loan-st-louis",
+      title: "Can You Buy a Fixer-Upper with a VA Loan in St. Louis? The Honest Answer",
+      shortTitle: "Fixer-Uppers and VA Loans",
+      description: "The VA loan requires move-in ready condition. VA renovation loans are rare in St. Louis. Here is what fixer-upper actually means for VA buyers.",
+      pillLabel: "VA Loans and Fixer-Uppers",
+      audience: "buyer",
+      series: "va-buyer",
+      isHub: false,
+      chapters: [1, 3],
+      tags: ["va-loan", "fixer-upper", "renovation", "as-is", "appraisal"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "va-appraisal-failed-st-louis-what-happens-next",
+      title: "VA Appraisal Failed in St. Louis: What Happens Next (And Your 3 Options)",
+      shortTitle: "VA Appraisal Failed: Your Options",
+      description: "The VA appraisal came back with conditions. The seller will not fix them. Here are your three options and what happens to your earnest money.",
+      pillLabel: "When VA Appraisal Fails",
+      audience: "buyer",
+      series: "va-buyer",
+      isHub: false,
+      chapters: [5, 6],
+      tags: ["va-loan", "appraisal", "earnest-money", "contingency", "termination"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "how-to-screen-stl-homes-before-va-offer",
+      title: "How to Screen St. Louis Homes Before You Make a VA Offer",
+      shortTitle: "Pre-Offer VA Screening",
+      description: "The exact screening checklist I use to identify VA appraisal issues before my veteran buyers write an offer. No surprises. No failed deals.",
+      pillLabel: "VA Pre-Offer Checklist",
+      audience: "buyer",
+      series: "va-buyer",
+      isHub: false,
+      chapters: [1, 4],
+      tags: ["va-loan", "appraisal", "checklist", "screening", "inspection", "electrical", "roof", "foundation"],
+      toolLink: null,
+      published: true
+    },
+
     /* ── BUYER: REPRESENTATION SERIES ── */
 
     {
