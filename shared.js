@@ -1506,6 +1506,7 @@ function closeDrawer() {
           if (!gIsOpen) gDrawer.classList.add("open");
         });
       });
+      window.__stlGuideNav = function() { closeDashboard(); window.location.href = "articles/index.html"; };
       var guideCards = _dashPanelEl.querySelectorAll(".tool-card[data-guide-url]");
       Array.prototype.forEach.call(guideCards, function (gCard) {
         gCard.addEventListener("click", function () {
@@ -1876,13 +1877,25 @@ function closeDrawer() {
           { title: "How Repair Costs Affect Your Offer", url: "articles/repair-costs-affect-offer-price-stl.html" },
           { title: "What Happens at a Home Inspection", url: "articles/home-inspection-st-louis.html" }
         ]
+      },
+      {
+        label: "Cash Offer & Seller Guides",
+        tag: "Sellers",
+        articles: [
+          { title: "Should You Accept a Cash Offer?", url: "articles/should-you-accept-cash-offer-stl.html" },
+          { title: "How Cash Buyers Calculate Offers", url: "articles/how-cash-buyers-calculate-offers-stl.html" },
+          { title: "What You Lose With a Cash Offer", url: "articles/what-you-lose-with-cash-offer-stl.html" },
+          { title: "What Does It Cost to Sell in St. Louis?", url: "articles/cost-to-sell-home-stl.html" },
+          { title: "What Will I Net Selling My Home?", url: "articles/what-will-i-net-selling-stl.html" },
+          { title: "Who Pays the Buyer Agent Commission Now?", url: "articles/who-pays-buyer-agent-commission-stl.html" }
+        ]
       }
     ];
 
     var html =
       "<div style=\"padding:14px 16px 6px;display:flex;align-items:center;justify-content:space-between;\">" +
         "<div style=\"font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)\">St. Louis Guides</div>" +
-        "<a href=\"articles/index.html\" style=\"font-size:10px;color:var(--text-dim);text-decoration:none;border:1px solid var(--line-2);padding:4px 10px;border-radius:999px;\">View All \u203a</a>" +
+        "<button onclick=\"window.__stlGuideNav && window.__stlGuideNav();\" style=\"font-size:10px;color:var(--text-dim);background:none;border:1px solid var(--line-2);padding:4px 10px;border-radius:999px;cursor:pointer;\">View All \u203a</button>" +
       "</div>";
 
     guidesSeries.forEach(function(s) {
