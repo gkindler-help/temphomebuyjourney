@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cash Offer Decoder — STL Home Journey</title>
+<meta name="description" content="Find out what that cash offer is actually worth. Compare your net proceeds on the MLS vs accepting a wholesale offer — using real St. Louis sold data.">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="canonical" href="https://stlhomejourney.com/tools/cash-offer-decoder.html">
+<meta property="og:title" content="Cash Offer Decoder — STL Home Journey">
+<meta property="og:description" content="Enter your offer, property details, and what the investor told you. See exactly how they built the number — and what you'd net on the open market instead.">
+<meta property="og:url" content="https://stlhomejourney.com/tools/cash-offer-decoder.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EEE14BZT9P');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505;
+  --bg-elev:#0a0a0a;
+  --surface:#101010;
+  --surface-2:#161616;
+  --surface-3:#1e1e1e;
+  --line:#242424;
+  --line-2:#303030;
+  --text-strong:rgba(255,255,255,.96);
+  --text:rgba(255,255,255,.88);
+  --text-soft:rgba(255,255,255,.72);
+  --text-dim:rgba(255,255,255,.54);
+  --text-faint:rgba(255,255,255,.34);
+  --gold:#ffcc4d;
+  --gold-soft:rgba(255,204,77,.12);
+  --gold-line:rgba(255,204,77,.3);
+  --green:#5dcaa5;
+  --green-soft:rgba(93,202,165,.12);
+  --red:#e05555;
+  --red-soft:rgba(224,85,85,.12);
+  --warn:#e8a020;
+  --warn-soft:rgba(232,160,32,.12);
+  --font-serif:"Playfair Display",Georgia,serif;
+  --font-sans:"Inter",-apple-system,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:15px;line-height:1.6;overflow-x:hidden;min-height:100vh;}
+a{color:var(--gold);text-decoration:none;}
+
+/* ── HEADER ── */
+.site-header{
+  background:rgba(5,5,5,.97);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  padding:10px 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  position:sticky;top:0;z-index:100;
+}
+.brand{font-family:var(--font-serif);font-size:15px;font-weight:700;color:var(--text-strong);letter-spacing:.02em;}
+.brand span{color:var(--gold);}
+.tagline{font-size:10px;color:var(--text-faint);letter-spacing:.04em;margin-top:2px;}
+.contact-link{font-size:11px;font-weight:700;letter-spacing:.05em;padding:7px 14px;border-radius:999px;border:1px solid var(--gold-line);color:var(--gold);background:var(--gold-soft);white-space:nowrap;flex-shrink:0;}
+
+/* ── HERO ── */
+.hero{padding:32px 20px 24px;max-width:680px;margin:0 auto;}
+.hero h1{font-family:var(--font-serif);font-size:26px;font-weight:900;color:var(--text-strong);line-height:1.2;margin-bottom:10px;}
+.hero h1 span{color:var(--gold);}
+.hero p{font-size:14px;color:var(--text-soft);line-height:1.65;}
+
+/* ── CONTAINER ── */
+.container{max-width:680px;margin:0 auto;padding:0 16px 80px;}
+
+/* ── PRINT HEADER ── */
+.print-header{display:none;}
+@media print{
+  .print-header{display:block;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--gold);}
+  .ph-name{font-family:var(--font-serif);font-size:18px;font-weight:700;}
+  .ph-sub,.ph-prop{font-size:11px;color:#666;margin-top:2px;}
+  .site-header,.save-bar,.contact-link{display:none!important;}
+}
+
+/* ── SAVE BAR ── */
+.save-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 0;margin-bottom:8px;}
+.save-indicator{font-size:11px;color:var(--text-faint);letter-spacing:.03em;}
+
+/* ── CARD ── */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;overflow:hidden;}
+.card-body{padding:20px;}
+
+/* ── TABS ── */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--line);padding:0 16px;}
+.tab{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint);padding:12px 14px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:color .15s,border-color .15s;}
+.tab:hover{color:var(--text);}
+.tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+/* ── SECTION LABEL ── */
+.section-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:14px;}
+
+/* ── FORM FIELDS ── */
+.field{display:flex;flex-direction:column;gap:5px;}
+label{font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--text-dim);}
+input,select,textarea{
+  background:var(--surface-3);
+  border:1px solid var(--line-2);
+  border-radius:8px;
+  padding:9px 12px;
+  font-size:13px;
+  font-family:var(--font-sans);
+  color:var(--text-strong);
+  outline:none;
+  transition:border-color .15s;
+  width:100%;
+}
+input:focus,select:focus{border-color:var(--gold-line);}
+input::placeholder{color:var(--text-faint);}
+select option{background:var(--surface-3);color:var(--text-strong);}
+
+/* ── LAYOUT HELPERS ── */
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px;}
+@media(max-width:520px){.row2,.row3{grid-template-columns:1fr;}}
+.divider{border:none;border-top:1px solid var(--line);margin:18px 0;}
+
+/* ── ARV ENGINE ── */
+.arv-engine{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:16px;}
+.arv-engine-head{font-size:12px;font-weight:700;letter-spacing:.05em;color:var(--text-strong);margin-bottom:4px;}
+.arv-engine-sub{font-size:12px;color:var(--text-dim);margin-bottom:14px;line-height:1.5;}
+.arv-lookup-row{display:grid;gap:10px;align-items:end;grid-template-columns:1fr 1fr auto;}
+@media(max-width:520px){.arv-lookup-row{grid-template-columns:1fr;}}
+.lookup-btn{background:var(--gold);color:#050505;border:none;border-radius:8px;padding:9px 16px;font-size:12px;font-weight:700;letter-spacing:.05em;cursor:pointer;white-space:nowrap;}
+.lookup-btn:hover{background:#ffd966;}
+
+/* ── TIER CARDS ── */
+.tier-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 8px;}
+@media(max-width:480px){.tier-cards{grid-template-columns:1fr;}}
+.tier-card{background:var(--surface-3);border:2px solid var(--line-2);border-radius:10px;padding:12px;cursor:pointer;transition:border-color .15s,background .15s;}
+.tier-card:hover{border-color:var(--gold-line);}
+.tier-card.selected{border-color:var(--gold);background:var(--gold-soft);}
+.tc-label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:6px;}
+.tc-label.asis{color:var(--warn);}
+.tc-label.movein{color:var(--green);}
+.tc-label.renovated{color:var(--gold);}
+.tc-price{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--text-strong);}
+.tc-range{font-size:11px;color:var(--text-dim);margin-top:3px;}
+.tc-n{font-size:10px;color:var(--text-faint);margin-top:4px;}
+.lookup-meta{font-size:11px;color:var(--text-faint);margin-top:6px;}
+.arv-disclaimer{font-size:11px;color:var(--warn);margin-top:8px;padding:8px 12px;background:var(--warn-soft);border-radius:6px;}
+#lookupError{font-size:12px;color:var(--red);margin-top:8px;padding:8px 12px;background:var(--red-soft);border-radius:6px;}
+#crossFlag,#yearFlag{font-size:11px;margin-top:6px;}
+
+/* ── NUMBER INPUT ── */
+.num-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+@media(max-width:440px){.num-row{grid-template-columns:1fr;}}
+
+/* ── RADIO / CHECKBOX ── */
+.radio-group{display:flex;flex-direction:column;gap:6px;}
+.radio-opt{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text);cursor:pointer;}
+.radio-opt input[type=radio]{width:auto;accent-color:var(--gold);}
+
+/* ── REPAIR TABLE ── */
+.repair-table{width:100%;border-collapse:collapse;}
+.repair-table th{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);}
+.repair-table td{padding:10px 10px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:middle;}
+.repair-table tr:last-child td{border-bottom:none;}
+.repair-table input{padding:6px 10px;font-size:13px;}
+.item-name{font-weight:500;color:var(--text);}
+.item-sub{font-size:11px;color:var(--text-faint);margin-top:2px;}
+.flag-cell{text-align:center;}
+.flag-cell input[type=checkbox]{width:auto;accent-color:var(--gold);transform:scale(1.2);}
+
+/* ── RESULTS ── */
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+@media(max-width:440px){.results-grid{grid-template-columns:1fr;}}
+.result-box{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px;}
+.result-box.highlight{border-color:var(--gold-line);background:var(--gold-soft);}
+.result-box.danger{border-color:rgba(224,85,85,.3);background:var(--red-soft);}
+.rb-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:6px;}
+.rb-value{font-family:var(--font-serif);font-size:24px;font-weight:700;color:var(--text-strong);}
+.rb-value.gold{color:var(--gold);}
+.rb-value.red{color:var(--red);}
+.rb-sub{font-size:11px;color:var(--text-dim);margin-top:4px;}
+
+/* ── LINE ITEMS ── */
+.line-items{margin:16px 0;}
+.li-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;}
+.li-row:last-child{border-bottom:none;}
+.li-label{color:var(--text-soft);}
+.li-value{font-weight:600;color:var(--text-strong);}
+.li-value.neg{color:var(--red);}
+.li-value.pos{color:var(--green);}
+.li-row.total{padding-top:12px;margin-top:4px;border-top:2px solid var(--line-2);}
+.li-row.total .li-label{font-weight:700;color:var(--text-strong);}
+.li-row.total .li-value{font-family:var(--font-serif);font-size:18px;}
+
+/* ── REPAIR COST SUMMARY ── */
+.rc-box{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:12px;}
+.rc-title{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:4px;}
+.rc-value{font-family:var(--font-serif);font-size:20px;font-weight:700;color:var(--text-strong);}
+.rc-sub{font-size:11px;color:var(--text-dim);margin-top:3px;}
+
+/* ── CONTEXT INSIGHT ── */
+.context-insight{padding:14px 16px;border-radius:10px;font-size:13px;line-height:1.6;margin:14px 0;border-left:3px solid var(--gold);background:var(--gold-soft);}
+.context-insight strong{color:var(--text-strong);}
+.ci-seller{border-left-color:var(--warn);background:var(--warn-soft);}
+
+/* ── BUTTONS ── */
+.btn-primary{background:var(--gold);color:#050505;border:none;border-radius:8px;padding:11px 20px;font-size:13px;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .15s;}
+.btn-primary:hover{background:#ffd966;}
+.btn-secondary{background:transparent;color:var(--text-soft);border:1px solid var(--line-2);border-radius:8px;padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer;transition:border-color .15s,color .15s;}
+.btn-secondary:hover{border-color:var(--gold-line);color:var(--gold);}
+.btn-danger{background:transparent;color:var(--red);border:1px solid rgba(224,85,85,.3);border-radius:6px;padding:6px 12px;font-size:11px;cursor:pointer;}
+.btn-danger:hover{background:var(--red-soft);}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+
+/* ── PANE VISIBILITY ── */
+.pane{display:none;}
+.pane.active{display:block;}
+
+/* ── NOTICE / FLAG ── */
+.notice{padding:10px 14px;border-radius:8px;font-size:12px;line-height:1.55;margin:10px 0;}
+.notice.warn{background:var(--warn-soft);border:1px solid rgba(232,160,32,.25);color:var(--warn);}
+.notice.info{background:var(--gold-soft);border:1px solid var(--gold-line);color:var(--text-soft);}
+.notice.danger{background:var(--red-soft);border:1px solid rgba(224,85,85,.25);color:var(--red);}
+
+/* ── REPAIR SUMMARY BOXES ── */
+.rc-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+@media(max-width:440px){.rc-summary{grid-template-columns:1fr;}}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--line);padding:20px 16px;text-align:center;font-size:11px;color:var(--text-faint);line-height:1.7;}
+footer a{color:var(--text-dim);}
+
+/* ── COMPARISON BAR ── */
+.compare-bar{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:16px;margin:16px 0;}
+.cb-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:12px;}
+.cb-track{height:8px;background:var(--surface-3);border-radius:999px;overflow:hidden;margin-bottom:8px;}
+.cb-fill{height:100%;background:var(--gold);border-radius:999px;transition:width .4s ease;}
+.cb-legend{display:flex;justify-content:space-between;font-size:11px;color:var(--text-dim);}
+
+/* ── PROFIT EXPOSURE ── */
+.exposure-box{background:var(--surface-2);border:1px solid rgba(224,85,85,.25);border-radius:10px;padding:14px;margin:12px 0;}
+.eb-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.eb-value{font-family:var(--font-serif);font-size:22px;font-weight:700;color:var(--red);}
+.eb-sub{font-size:11px;color:var(--text-dim);margin-top:4px;}
+
+/* ── STEP NAV ── */
+.step-nav{display:flex;justify-content:flex-end;gap:8px;padding:16px 0 4px;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div>
+    <div class="brand">George Kindler <span>· St. Louis Real Estate</span></div>
+    <div class="tagline">The Closing Pros · Licensed Missouri Real Estate Agent · 13 Years</div>
+  </div>
+  <a class="contact-link" href="https://m.me/georgekindler" target="_blank">Message George</a>
+</header>
+
+<div class="hero">
+  <h1>Find out what that <span>cash offer</span> is actually worth</h1>
+  <p>Enter your offer, property details, and what the investor told you. See exactly how they built the number — and what you'd net on the open market instead.</p>
+</div>
+
+<div class="container">
+
+  <div class="print-header" id="printHeader">
+    <div class="ph-name">George Kindler — St. Louis Real Estate</div>
+    <div class="ph-sub">Cash Offer Analysis Report · The Closing Pros · Licensed Missouri Real Estate Agent</div>
+    <div class="ph-prop" id="printPropLine"></div>
+  </div>
+
+  <div class="save-bar">
+    <div class="save-indicator" id="saveIndicator">Loading...</div>
+    <button class="btn-danger" onclick="clearSaved()">Clear saved data</button>
+  </div>
+
+  <div class="card">
+    <div class="card-body" style="padding:0;">
+      <div class="tabs" style="margin:0;padding:0 20px;">
+        <div class="tab active" onclick="showTab('inputs')">1. Offer &amp; property</div>
+        <div class="tab" onclick="showTab('repairs')">2. Repair claims</div>
+        <div class="tab" onclick="showTab('results')">3. Full breakdown</div>
+      </div>
+
+      <!-- TAB 1 -->
+      <div class="pane active" id="pane-inputs" style="padding:20px;">
+        <div class="section-label">Property details</div>
+        <div class="row2">
+          <div class="field"><label>Property address</label><input id="address" placeholder="123 Main St, St. Louis, MO 63119"></div>
+          <div class="field"><label>Investor / company name</label><input id="investorName" placeholder="ABC Home Buyers LLC"></div>
+        </div>
+        <div class="row3">
+          <div class="field"><label>Year built</label><input id="yearBuilt" placeholder="1958"><div id="yearFlag"></div></div>
+          <div class="field"><label>Square footage</label><input id="sqft" placeholder="1,450"></div>
+          <div class="field"><label>Bedrooms / baths</label><input id="beds" placeholder="3 bed / 2 bath"></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="arv-engine">
+          <div class="arv-engine-head">Market value ranges — St. Louis sold data</div>
+          <div class="arv-engine-sub">Enter your zip code and home size to see what homes in your area actually sold for, broken down by condition. Select the range that matches your home — or skip this and enter your own number below.</div>
+          <div class="arv-lookup-row" style="grid-template-columns:1fr 1fr auto;">
+            <div class="field"><label>Zip code</label><input id="lookupZip" placeholder="63119" maxlength="5"></div>
+            <div class="field"><label>Home size (sq ft)</label>
+              <select id="lookupSqft">
+                <option value="">Select size</option>
+                <option value="u1000">Under 1,000</option>
+                <option value="1000">1,000–1,400</option>
+                <option value="1400">1,400–1,800</option>
+                <option value="1800">1,800–2,400</option>
+                <option value="o2400">Over 2,400</option>
+              </select>
+            </div>
+            <button class="lookup-btn" onclick="runLookup()">Run estimate</button>
+          </div>
+          <div id="tierCards" style="display:none;">
+            <div class="tier-cards" id="tierCardGrid"></div>
+            <div id="lookupMeta" class="lookup-meta"></div>
+            <div class="arv-disclaimer" id="arvDisclaimer" style="display:none;"></div>
+            <div id="crossFlag"></div>
+          </div>
+          <div id="lookupError" style="display:none;"></div>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label>Your estimated market value (ARV)</label>
+            <input id="arv" placeholder="Select a range above or enter your own">
+            <span class="info-note" id="arvSource">Enter manually or select a condition tier above.</span>
+          </div>
+          <div class="field"><label>Cash offer received</label><input id="cashOffer" placeholder="$180,000"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Outstanding mortgage balance</label><input id="mortgage" placeholder="$110,000"></div>
+          <div class="field"><label>Offer format</label>
+            <select id="hasWritten">
+              <option value="verbal">Verbal only</option>
+              <option value="written">Written — itemized repair list</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="section-label">What the investor told you</div>
+        <div class="row2">
+          <div class="field">
+            <label>Investor's stated "as-is" value</label>
+            <input id="investorArv" placeholder="$210,000 — leave blank if not stated">
+            <span class="info-note">First compression point — ARV anchor before repairs start.</span>
+          </div>
+          <div class="field">
+            <label>Investor's total stated repair deductions</label>
+            <input id="investorRepairTotal" placeholder="$40,000 — leave blank if unknown">
+            <span class="info-note">Second compression point — compare to actual costs in step 2.</span>
+          </div>
+        </div>
+        <div id="compression-preview"></div>
+
+        <div class="divider"></div>
+        <div class="section-label">MLS sale assumptions</div>
+        <div class="row3">
+          <div class="field"><label>Agent commission (%)</label><input id="commission" value="6"></div>
+          <div class="field"><label>Seller concessions (%)</label><input id="concessions" value="2"></div>
+          <div class="field"><label>Title &amp; closing costs ($)</label><input id="closingFixed" value="2500"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>List-to-sale ratio (%)</label><input id="listRatio" value="99"></div>
+          <div class="field"><label>Occupancy inspection buffer ($)</label><input id="occBuffer" value="1500"></div>
+        </div>
+        <button class="btn-nav" onclick="showTab('repairs')">Next: enter investor's repair claims →</button>
+      </div>
+
+      <!-- TAB 2 -->
+      <div class="pane" id="pane-repairs" style="padding:20px;">
+        <div class="section-label">Check each item the investor cited as a reason for the low offer</div>
+        <div id="repairCards"></div>
+        <button class="btn-nav" onclick="showTab('results');calcResults()">See the full breakdown →</button>
+      </div>
+
+      <!-- TAB 3 -->
+      <div class="pane" id="pane-results" style="padding:20px;">
+        <div id="results-content"><div class="placeholder">Complete steps 1 and 2 first.</div></div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <p>Built by <strong style="color:white;">George Kindler</strong> · Licensed Missouri Real Estate Agent · The Closing Pros · St. Louis<br>
+  This tool is for educational purposes only. Market ranges are derived from aggregated sold data and are not an appraisal or guaranteed value.<br>
+  <a href="https://m.me/georgekindler" target="_blank">Message George on Facebook</a></p>
+</footer>
+
+<script>
+
+const STORAGE_KEY='cod_v7';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MARKET DATA — PLACEHOLDER
+// Replace MARKET_DATA.data with your real MARIS export each month.
+//
+// HOW TO UPDATE:
+// 1. Export last 12 months residential sales from MARIS as CSV
+// 2. In your Google Sheet, aggregate by zip_beds (and zip_beds_sqftband)
+//    - low  = PERCENTILE of close price where DOM > 45 (25th pct)
+//    - mid  = MEDIAN of all close prices
+//    - high = PERCENTILE of close price where DOM < 14 AND SP/LP > 1.0 (75th pct)
+//    - n    = COUNT of sales in that group
+// 3. Export the summary tab as market-data.json
+// 4. Replace the data object below with the contents of that file
+// 5. Update the "updated" field to the current month
+//
+// KEY FORMAT: "zipcode_beds" or "zipcode_beds_sqftband"
+// SQFT BANDS: u1000 | 1000 | 1400 | 1800 | o2400
+// MIN SAMPLE: 5 sales required to show a tier (tool falls back to zip_beds if sqft band < 5)
+// ─────────────────────────────────────────────────────────────────────────────
+const MARKET_DATA={
+  updated:"2025 (St. Louis County, St. Louis City, Jefferson County, St. Charles County — 7,006 sales)",
+  data:{
+    "63005"  :{low:631500,mid:800000,high:1247000,n:70},
+    "63005_o2400"  :{low:650000,mid:850000,high:1325000,n:63},
+    "63010"  :{low:255000,mid:280000,high:350000,n:121},
+    "63010_1000"  :{low:230000,mid:256800,high:285000,n:46},
+    "63010_1400"  :{low:275000,mid:315000,high:350000,n:29},
+    "63010_1800"  :{low:349900,mid:392500,high:515000,n:16},
+    "63010_o2400"  :{low:403900,mid:439000,high:474100,n:10},
+    "63010_u1000"  :{low:211600,mid:230000,high:256000,n:20},
+    "63011"  :{low:365000,mid:455000,high:552000,n:169},
+    "63011_1000"  :{low:277000,mid:320000,high:367000,n:21},
+    "63011_1400"  :{low:344900,mid:396800,high:459900,n:30},
+    "63011_1800"  :{low:420400,mid:457000,high:539000,n:61},
+    "63011_o2400"  :{low:500000,mid:577500,high:640000,n:50},
+    "63012"  :{low:234900,mid:292500,high:384000,n:42},
+    "63012_1000"  :{low:230000,mid:279000,high:310000,n:14},
+    "63012_1400"  :{low:250000,mid:337500,high:380000,n:14},
+    "63016"  :{low:270000,mid:326100,high:525000,n:26},
+    "63016_1000"  :{low:213000,mid:265200,high:332500,n:10},
+    "63017"  :{low:480000,mid:575000,high:755000,n:129},
+    "63017_1400"  :{low:375000,mid:409500,high:521000,n:8},
+    "63017_1800"  :{low:425000,mid:496000,high:630000,n:38},
+    "63017_o2400"  :{low:520000,mid:655000,high:1000000,n:79},
+    "63019"  :{low:185000,mid:230000,high:290000,n:27},
+    "63019_1000"  :{low:211600,mid:230000,high:260000,n:11},
+    "63019_u1000"  :{low:125000,mid:187500,high:249000,n:8},
+    "63020"  :{low:185000,mid:219500,high:255000,n:126},
+    "63020_1000"  :{low:190000,mid:214900,high:255000,n:47},
+    "63020_1400"  :{low:220000,mid:295000,high:399900,n:25},
+    "63020_1800"  :{low:210000,mid:242000,high:342500,n:13},
+    "63020_o2400"  :{low:435000,mid:537500,high:600000,n:8},
+    "63020_u1000"  :{low:132000,mid:160000,high:190000,n:33},
+    "63021"  :{low:375000,mid:414200,high:530000,n:192},
+    "63021_1000"  :{low:285000,mid:335000,high:361800,n:54},
+    "63021_1400"  :{low:355000,mid:389500,high:456000,n:34},
+    "63021_1800"  :{low:403000,mid:452000,high:540000,n:48},
+    "63021_o2400"  :{low:579600,mid:630000,high:800000,n:48},
+    "63021_u1000"  :{low:232500,mid:292500,high:330000,n:8},
+    "63023"  :{low:305900,mid:332500,high:460000,n:24},
+    "63023_1000"  :{low:165000,mid:265000,high:290000,n:9},
+    "63025"  :{low:359000,mid:442500,high:705000,n:108},
+    "63025_1000"  :{low:287000,mid:316200,high:364900,n:12},
+    "63025_1400"  :{low:295000,mid:377500,high:418000,n:24},
+    "63025_1800"  :{low:389000,mid:445000,high:510000,n:25},
+    "63025_o2400"  :{low:485000,mid:542500,high:850000,n:42},
+    "63026"  :{low:340000,mid:387400,high:490000,n:224},
+    "63026_1000"  :{low:251000,mid:301000,high:340000,n:47},
+    "63026_1400"  :{low:321600,mid:362000,high:419900,n:43},
+    "63026_1800"  :{low:437000,mid:475000,high:520000,n:57},
+    "63026_o2400"  :{low:400700,mid:553000,high:720000,n:44},
+    "63026_u1000"  :{low:200000,mid:261000,high:285000,n:33},
+    "63028"  :{low:255000,mid:320000,high:385000,n:149},
+    "63028_1000"  :{low:210000,mid:245000,high:280000,n:38},
+    "63028_1400"  :{low:255000,mid:340000,high:385000,n:37},
+    "63028_1800"  :{low:364300,mid:396000,high:427700,n:27},
+    "63028_o2400"  :{low:474900,mid:532400,high:685000,n:26},
+    "63028_u1000"  :{low:150000,mid:184800,high:199600,n:21},
+    "63031"  :{low:147000,mid:180000,high:234900,n:217},
+    "63031_1000"  :{low:152500,mid:181000,high:217000,n:118},
+    "63031_1400"  :{low:180000,mid:225000,high:265000,n:25},
+    "63031_1800"  :{low:276700,mid:300800,high:358200,n:10},
+    "63031_u1000"  :{low:134000,mid:159200,high:189000,n:58},
+    "63033"  :{low:172500,mid:220000,high:270000,n:151},
+    "63033_1000"  :{low:170000,mid:199900,high:235000,n:63},
+    "63033_1400"  :{low:180000,mid:250000,high:275000,n:50},
+    "63033_1800"  :{low:207000,mid:260000,high:280800,n:21},
+    "63033_u1000"  :{low:118000,mid:156000,high:168500,n:13},
+    "63034"  :{low:220000,mid:289000,high:330000,n:71},
+    "63034_1000"  :{low:102000,mid:212200,high:267000,n:14},
+    "63034_1400"  :{low:220000,mid:265000,high:295900,n:23},
+    "63034_1800"  :{low:295000,mid:335000,high:361800,n:20},
+    "63034_o2400"  :{low:335000,mid:415000,high:449000,n:13},
+    "63038"  :{low:490000,mid:626200,high:700000,n:34},
+    "63038_1800"  :{low:501000,mid:575000,high:650000,n:9},
+    "63038_o2400"  :{low:625000,mid:782500,high:920000,n:18},
+    "63040"  :{low:460000,mid:525000,high:608000,n:45},
+    "63040_1800"  :{low:415000,mid:480000,high:535800,n:11},
+    "63040_o2400"  :{low:507000,mid:562500,high:675000,n:26},
+    "63042"  :{low:152000,mid:195000,high:225000,n:64},
+    "63042_1000"  :{low:147000,mid:195000,high:225000,n:32},
+    "63042_1400"  :{low:175000,mid:255000,high:280000,n:11},
+    "63042_u1000"  :{low:146000,mid:171000,high:195000,n:18},
+    "63043"  :{low:255000,mid:295000,high:318600,n:83},
+    "63043_1000"  :{low:272500,mid:300100,high:324100,n:36},
+    "63043_1400"  :{low:235000,mid:325000,high:351000,n:11},
+    "63043_1800"  :{low:326000,mid:375000,high:430000,n:9},
+    "63043_u1000"  :{low:245000,mid:268500,high:290000,n:26},
+    "63044"  :{low:195000,mid:267500,high:360000,n:40},
+    "63044_1000"  :{low:215000,mid:260000,high:285000,n:15},
+    "63044_1400"  :{low:305000,mid:340000,high:367200,n:10},
+    "63044_1800"  :{low:148000,mid:400000,high:432000,n:9},
+    "63048"  :{low:285000,mid:319900,high:355000,n:25},
+    "63048_1000"  :{low:223500,mid:292500,high:325000,n:10},
+    "63048_1400"  :{low:310000,mid:339800,high:367000,n:12},
+    "63049"  :{low:273700,mid:297500,high:395000,n:82},
+    "63049_1000"  :{low:212500,mid:255000,high:275400,n:35},
+    "63049_1400"  :{low:285000,mid:328200,high:380000,n:14},
+    "63049_1800"  :{low:300000,mid:377500,high:500000,n:12},
+    "63049_o2400"  :{low:425000,mid:490000,high:741200,n:13},
+    "63049_u1000"  :{low:207500,mid:230200,high:248600,n:8},
+    "63050"  :{low:284900,mid:328500,high:405100,n:90},
+    "63050_1000"  :{low:222800,mid:275000,high:310000,n:23},
+    "63050_1400"  :{low:285000,mid:320000,high:410000,n:27},
+    "63050_1800"  :{low:384100,mid:417500,high:450900,n:25},
+    "63050_o2400"  :{low:386500,mid:515000,high:799900,n:11},
+    "63051"  :{low:200000,mid:290000,high:340000,n:61},
+    "63051_1000"  :{low:200000,mid:278000,high:300200,n:24},
+    "63051_1400"  :{low:194000,mid:305000,high:340000,n:11},
+    "63051_1800"  :{low:306000,mid:420000,high:453600,n:11},
+    "63051_u1000"  :{low:150000,mid:200000,high:257000,n:9},
+    "63052"  :{low:269900,mid:331500,high:375000,n:132},
+    "63052_1000"  :{low:250000,mid:273000,high:300000,n:34},
+    "63052_1400"  :{low:297000,mid:350000,high:393000,n:46},
+    "63052_1800"  :{low:350000,mid:425000,high:492500,n:19},
+    "63052_o2400"  :{low:374900,mid:420500,high:535000,n:16},
+    "63052_u1000"  :{low:198500,mid:217000,high:259800,n:17},
+    "63069"  :{low:489900,mid:532500,high:750000,n:22},
+    "63069_o2400"  :{low:544000,mid:812500,high:1100000,n:8},
+    "63070"  :{low:258500,mid:281000,high:355000,n:37},
+    "63070_1000"  :{low:226500,mid:275000,high:299200,n:11},
+    "63070_1400"  :{low:235000,mid:286500,high:323400,n:8},
+    "63070_u1000"  :{low:184000,mid:223800,high:259900,n:8},
+    "63074"  :{low:125900,mid:166500,high:214900,n:61},
+    "63074_1000"  :{low:110100,mid:170000,high:225000,n:27},
+    "63074_u1000"  :{low:125900,mid:150800,high:195000,n:28},
+    "63088"  :{low:219900,mid:320000,high:460000,n:37},
+    "63088_1000"  :{low:200000,mid:304000,high:335000,n:23},
+    "63088_1400"  :{low:236000,mid:440000,high:519000,n:9},
+    "63104"  :{low:245000,mid:445000,high:575000,n:63},
+    "63104_1400"  :{low:209000,mid:257400,high:308300,n:14},
+    "63104_1800"  :{low:349400,mid:391000,high:575000,n:16},
+    "63104_o2400"  :{low:495000,mid:575000,high:625000,n:29},
+    "63105"  :{low:629000,mid:850000,high:1050000,n:21},
+    "63105_o2400"  :{low:923700,mid:1004000,high:1225000,n:11},
+    "63108"  :{low:370000,mid:581000,high:850000,n:17},
+    "63108_o2400"  :{low:289000,mid:635000,high:850000,n:11},
+    "63109"  :{low:244000,mid:301800,high:395000,n:152},
+    "63109_1000"  :{low:250000,mid:273700,high:317000,n:55},
+    "63109_1400"  :{low:305000,mid:342500,high:395000,n:44},
+    "63109_1800"  :{low:360000,mid:450000,high:625000,n:23},
+    "63109_u1000"  :{low:170000,mid:214000,high:257000,n:24},
+    "63110"  :{low:245200,mid:349700,high:550000,n:54},
+    "63110_1000"  :{low:230000,mid:259500,high:420000,n:8},
+    "63110_1400"  :{low:270000,mid:325000,high:380000,n:12},
+    "63110_1800"  :{low:309900,mid:501400,high:595000,n:13},
+    "63110_o2400"  :{low:415000,mid:512500,high:650000,n:14},
+    "63111"  :{low:116000,mid:165000,high:198900,n:66},
+    "63111_1000"  :{low:140000,mid:156000,high:185600,n:24},
+    "63111_1400"  :{low:170000,mid:210800,high:255000,n:12},
+    "63111_1800"  :{low:210000,mid:241400,high:290000,n:10},
+    "63111_u1000"  :{low:65000,mid:123500,high:152000,n:16},
+    "63112"  :{low:122400,mid:275000,high:406000,n:19},
+    "63112_o2400"  :{low:134000,mid:247500,high:470000,n:8},
+    "63114"  :{low:145000,mid:164400,high:225000,n:136},
+    "63114_1000"  :{low:149000,mid:177500,high:220000,n:58},
+    "63114_1400"  :{low:135000,mid:198500,high:238000,n:18},
+    "63114_1800"  :{low:248200,mid:269800,high:315500,n:8},
+    "63114_u1000"  :{low:123700,mid:134500,high:150000,n:51},
+    "63115"  :{low:42000,mid:74700,high:125000,n:9},
+    "63115_1000"  :{low:42000,mid:72800,high:113000,n:8},
+    "63116"  :{low:155000,mid:221600,high:300000,n:201},
+    "63116_1000"  :{low:190000,mid:218300,high:255000,n:69},
+    "63116_1400"  :{low:195000,mid:272500,high:340000,n:39},
+    "63116_1800"  :{low:200000,mid:318800,high:500000,n:26},
+    "63116_o2400"  :{low:395000,mid:480000,high:518400,n:11},
+    "63116_u1000"  :{low:123000,mid:165000,high:215500,n:56},
+    "63117"  :{low:263000,mid:355000,high:585000,n:31},
+    "63117_1000"  :{low:250000,mid:282500,high:355000,n:8},
+    "63117_1400"  :{low:265000,mid:351500,high:415000,n:10},
+    "63118"  :{low:164000,mid:263400,high:432000,n:80},
+    "63118_1000"  :{low:69000,mid:135000,high:171700,n:8},
+    "63118_1400"  :{low:173000,mid:238200,high:313800,n:16},
+    "63118_1800"  :{low:185000,mid:290000,high:380000,n:23},
+    "63118_o2400"  :{low:350900,mid:435000,high:530000,n:21},
+    "63118_u1000"  :{low:55300,mid:102500,high:130000,n:12},
+    "63119"  :{low:285000,mid:393000,high:560000,n:164},
+    "63119_1000"  :{low:285000,mid:336000,high:427500,n:51},
+    "63119_1400"  :{low:345000,mid:390000,high:500000,n:31},
+    "63119_1800"  :{low:399000,mid:567500,high:667000,n:26},
+    "63119_o2400"  :{low:629900,mid:805500,high:1040000,n:29},
+    "63119_u1000"  :{low:221200,mid:264000,high:330000,n:27},
+    "63121"  :{low:77000,mid:116000,high:184900,n:63},
+    "63121_1000"  :{low:114000,mid:136000,high:165000,n:23},
+    "63121_1800"  :{low:180000,mid:235300,high:254100,n:8},
+    "63121_u1000"  :{low:65000,mid:85000,high:106100,n:23},
+    "63122"  :{low:400000,mid:600000,high:800000,n:239},
+    "63122_1000"  :{low:310000,mid:380000,high:506500,n:44},
+    "63122_1400"  :{low:392500,mid:464000,high:614000,n:42},
+    "63122_1800"  :{low:540000,mid:645000,high:750000,n:49},
+    "63122_o2400"  :{low:690000,mid:868600,high:1050000,n:86},
+    "63122_u1000"  :{low:272000,mid:302500,high:342500,n:18},
+    "63123"  :{low:235000,mid:259500,high:340000,n:236},
+    "63123_1000"  :{low:225000,mid:254500,high:285000,n:93},
+    "63123_1400"  :{low:289800,mid:315000,high:405000,n:38},
+    "63123_1800"  :{low:322500,mid:502000,high:625000,n:19},
+    "63123_o2400"  :{low:560000,mid:699100,high:774400,n:21},
+    "63123_u1000"  :{low:185000,mid:215000,high:255000,n:65},
+    "63124"  :{low:499900,mid:787500,high:1125000,n:30},
+    "63124_o2400"  :{low:840000,mid:1120000,high:1275000,n:16},
+    "63125"  :{low:125000,mid:219000,high:286300,n:122},
+    "63125_1000"  :{low:125000,mid:229200,high:285300,n:54},
+    "63125_1400"  :{low:235000,mid:295000,high:318600,n:17},
+    "63125_u1000"  :{low:90000,mid:164900,high:220000,n:43},
+    "63126"  :{low:290000,mid:330000,high:415000,n:80},
+    "63126_1000"  :{low:261000,mid:310000,high:338000,n:33},
+    "63126_1400"  :{low:325000,mid:365000,high:420000,n:29},
+    "63126_1800"  :{low:410000,mid:472400,high:682500,n:8},
+    "63127"  :{low:317000,mid:739000,high:970000,n:20},
+    "63127_o2400"  :{low:700000,mid:915500,high:988700,n:12},
+    "63128"  :{low:290000,mid:421900,high:550000,n:107},
+    "63128_1000"  :{low:240000,mid:276200,high:300000,n:12},
+    "63128_1400"  :{low:290000,mid:340000,high:421900,n:29},
+    "63128_1800"  :{low:375000,mid:417500,high:520000,n:34},
+    "63128_o2400"  :{low:495000,mid:550000,high:630000,n:30},
+    "63129"  :{low:311000,mid:360000,high:427500,n:198},
+    "63129_1000"  :{low:266000,mid:305500,high:329900,n:48},
+    "63129_1400"  :{low:300000,mid:340000,high:387000,n:36},
+    "63129_1800"  :{low:345000,mid:400000,high:443000,n:55},
+    "63129_o2400"  :{low:420000,mid:520000,high:600000,n:45},
+    "63129_u1000"  :{low:201000,mid:250500,high:270500,n:14},
+    "63130"  :{low:155000,mid:458000,high:688000,n:127},
+    "63130_1000"  :{low:150000,mid:220000,high:249000,n:21},
+    "63130_1400"  :{low:245000,mid:390000,high:502000,n:33},
+    "63130_1800"  :{low:470000,mid:542800,high:675000,n:30},
+    "63130_o2400"  :{low:685000,mid:821000,high:1125000,n:31},
+    "63130_u1000"  :{low:80000,mid:117500,high:127000,n:12},
+    "63131"  :{low:400000,mid:832500,high:1100000,n:58},
+    "63131_1800"  :{low:535000,mid:581500,high:815000,n:9},
+    "63131_o2400"  :{low:625000,mid:962000,high:1200000,n:40},
+    "63132"  :{low:260000,mid:475000,high:625000,n:43},
+    "63132_1400"  :{low:260000,mid:475000,high:638000,n:8},
+    "63132_1800"  :{low:475000,mid:546000,high:715000,n:12},
+    "63132_o2400"  :{low:590000,mid:812500,high:1400000,n:10},
+    "63133"  :{low:60000,mid:85000,high:155000,n:13},
+    "63133_u1000"  :{low:60000,mid:85000,high:148000,n:9},
+    "63134"  :{low:96000,mid:120000,high:165000,n:53},
+    "63134_1000"  :{low:96000,mid:135000,high:170000,n:21},
+    "63134_u1000"  :{low:60000,mid:101000,high:124500,n:25},
+    "63135"  :{low:73000,mid:115700,high:205000,n:84},
+    "63135_1000"  :{low:77200,mid:111500,high:163000,n:34},
+    "63135_1400"  :{low:127500,mid:183500,high:213000,n:18},
+    "63135_u1000"  :{low:65000,mid:73000,high:110000,n:25},
+    "63136"  :{low:78000,mid:95000,high:123000,n:135},
+    "63136_1000"  :{low:78000,mid:115000,high:130000,n:73},
+    "63136_1400"  :{low:50000,mid:87900,high:167000,n:9},
+    "63136_u1000"  :{low:70700,mid:85000,high:110000,n:52},
+    "63137"  :{low:80000,mid:110000,high:140000,n:59},
+    "63137_1000"  :{low:90000,mid:134000,high:148200,n:21},
+    "63137_u1000"  :{low:67000,mid:97500,high:115000,n:32},
+    "63138"  :{low:110000,mid:161600,high:235000,n:58},
+    "63138_1000"  :{low:102000,mid:130000,high:180000,n:18},
+    "63138_1400"  :{low:118000,mid:179900,high:239900,n:19},
+    "63138_1800"  :{low:195000,mid:233700,high:295000,n:8},
+    "63138_u1000"  :{low:60500,mid:110000,high:118800,n:9},
+    "63139"  :{low:190000,mid:256000,high:310000,n:117},
+    "63139_1000"  :{low:202000,mid:250000,high:300000,n:47},
+    "63139_1400"  :{low:265000,mid:308500,high:375000,n:20},
+    "63139_1800"  :{low:290000,mid:390000,high:445000,n:17},
+    "63139_u1000"  :{low:178000,mid:218200,high:235700,n:30},
+    "63141"  :{low:545000,mid:637000,high:845000,n:76},
+    "63141_1400"  :{low:330000,mid:400000,high:500000,n:11},
+    "63141_1800"  :{low:458000,mid:525000,high:567000,n:20},
+    "63141_o2400"  :{low:575000,mid:875000,high:951000,n:43},
+    "63143"  :{low:229000,mid:290000,high:323800,n:35},
+    "63143_1000"  :{low:224900,mid:290000,high:323000,n:12},
+    "63143_1400"  :{low:240000,mid:310000,high:360000,n:9},
+    "63144"  :{low:370300,mid:402500,high:525000,n:44},
+    "63144_1000"  :{low:305000,mid:347200,high:375500,n:17},
+    "63144_1800"  :{low:611000,mid:692500,high:785000,n:10},
+    "63146"  :{low:315000,mid:355000,high:425000,n:97},
+    "63146_1000"  :{low:250000,mid:315800,high:351000,n:22},
+    "63146_1400"  :{low:315000,mid:350000,high:393000,n:45},
+    "63146_1800"  :{low:315000,mid:407500,high:457000,n:22},
+    "63146_o2400"  :{low:556600,mid:605000,high:725000,n:8},
+    "63147"  :{low:51000,mid:114500,high:168000,n:18},
+    "63147_1000"  :{low:98000,mid:159500,high:172300,n:8},
+    "63301"  :{low:294400,mid:320000,high:349000,n:209},
+    "63301_1000"  :{low:260500,mid:283200,high:325000,n:74},
+    "63301_1400"  :{low:300000,mid:347500,high:375300,n:81},
+    "63301_1800"  :{low:339900,mid:380000,high:410400,n:27},
+    "63301_o2400"  :{low:355000,mid:386600,high:417500,n:8},
+    "63301_u1000"  :{low:185000,mid:250000,high:270000,n:19},
+    "63303"  :{low:295000,mid:333000,high:381000,n:93},
+    "63303_1000"  :{low:259000,mid:293000,high:325000,n:32},
+    "63303_1400"  :{low:317400,mid:345000,high:375100,n:34},
+    "63303_1800"  :{low:350000,mid:390000,high:421200,n:18},
+    "63304"  :{low:322000,mid:350000,high:378000,n:116},
+    "63304_1000"  :{low:294000,mid:331000,high:357500,n:37},
+    "63304_1400"  :{low:322000,mid:350000,high:404000,n:45},
+    "63304_1800"  :{low:366000,mid:399000,high:430900,n:25},
+    "63304_u1000"  :{low:224500,mid:263000,high:284000,n:8},
+    "63348"  :{low:285200,mid:310000,high:349900,n:13},
+    "63366"  :{low:301900,mid:328200,high:365000,n:138},
+    "63366_1000"  :{low:255000,mid:280000,high:316500,n:57},
+    "63366_1400"  :{low:327500,mid:356000,high:384500,n:36},
+    "63366_1800"  :{low:354200,mid:385000,high:415800,n:25},
+    "63366_u1000"  :{low:220800,mid:240000,high:269900,n:14},
+    "63367"  :{low:317400,mid:345000,high:372600,n:65},
+    "63367_1000"  :{low:290000,mid:322500,high:348300,n:18},
+    "63367_1400"  :{low:318000,mid:350500,high:378500,n:26},
+    "63367_1800"  :{low:335000,mid:372400,high:402200,n:16},
+    "63368"  :{low:331200,mid:360000,high:388800,n:83},
+    "63368_1000"  :{low:286600,mid:325000,high:369000,n:15},
+    "63368_1400"  :{low:315000,mid:362500,high:391500,n:36},
+    "63368_1800"  :{low:327500,mid:385000,high:415800,n:23},
+    "63376"  :{low:303600,mid:330000,high:359900,n:272},
+    "63376_1000"  :{low:278000,mid:315000,high:340200,n:125},
+    "63376_1400"  :{low:322000,mid:350000,high:378000,n:85},
+    "63376_1800"  :{low:335800,mid:365000,high:394200,n:45},
+    "63376_u1000"  :{low:215000,mid:242500,high:276000,n:10},
+    "63385"  :{low:300000,mid:340000,high:375000,n:197},
+    "63385_1000"  :{low:240000,mid:300000,high:328000,n:67},
+    "63385_1400"  :{low:322000,mid:350000,high:385000,n:71},
+    "63385_1800"  :{low:349600,mid:380000,high:410400,n:41},
+    "63385_o2400"  :{low:363400,mid:395000,high:426600,n:13},
+  }
+};
+
+const SPREAD=0.08;
+function getRange(val){return{lo:Math.round(val*(1-SPREAD)),hi:Math.round(val*(1+SPREAD))};}
+function fmtRange(val){const r=getRange(val);return fmt(r.lo)+'–'+fmt(r.hi);}
+
+const REPAIRS=[
+  {id:'floors',name:'Hardwood floors',conditions:[
+    {label:'Full replacement — holes, warping, buckling',investorCost:9000,actualCost:5200,valueAdd:7000,condTier:'low',note:'Full hardwood replacement: $4–6/sqft installed. A 1,200 sqft main floor runs $4,800–$6,200. Investors quote $10K–$15K.'},
+    {label:'Heavy wear — full refinishing needed',investorCost:4500,actualCost:1600,valueAdd:4000,condTier:'low',note:'Refinishing: $1.50–$3/sqft. Full main floor: $1,800–$3,200. Investors call refinishing as replacement — not the same cost.'},
+    {label:'Moderate wear — buff and seal only',investorCost:2500,actualCost:700,valueAdd:2500,condTier:'mid',note:'Buff and seal: $0.75–$1.25/sqft. 1,200 sqft = $900–$1,500. A $2,500+ deduction for this condition is not justified.'},
+    {label:'Presentable — minor cosmetic touch-up',investorCost:800,actualCost:200,valueAdd:500,condTier:'high',note:'Touch-up and cleaning only. No meaningful deduction warranted.'}
+  ]},
+  {id:'carpet',name:'Carpet',conditions:[
+    {label:'Full replacement — all carpeted areas',investorCost:6500,actualCost:2800,valueAdd:4000,condTier:'low',note:'Carpet replacement: $2–4/sqft installed with pad. 1,000 sqft = $2,000–$4,000. One of the most overstated line items in wholesale offers.'},
+    {label:'Partial replacement — bedrooms only',investorCost:3500,actualCost:1400,valueAdd:2000,condTier:'mid',note:'Two bedroom carpet: $800–$2,000. A $3,500+ deduction for bedroom carpet only is overstated.'},
+    {label:'Cleaning only — stained but intact',investorCost:1500,actualCost:300,valueAdd:800,condTier:'mid',note:'Professional carpet cleaning: $150–$400 whole house. Investors citing $1,500+ are using replacement math for a cleaning job.'}
+  ]},
+  {id:'roof',name:'Roof',conditions:[
+    {label:'Full replacement — 15+ years, failure imminent',investorCost:18000,actualCost:10500,valueAdd:10000,condTier:'low',note:'St. Louis roof replacement: $8,000–$14,000 for a standard home with architectural shingles. Investors routinely quote $18K–$22K.'},
+    {label:'5–10 years remaining — aging but functional',investorCost:10000,actualCost:2500,valueAdd:2500,condTier:'mid',note:'A functioning roof with years of life remaining is not a full replacement deduction. A $2,000–$3,500 MLS credit is appropriate.'},
+    {label:'Minor repairs — isolated shingles or flashing',investorCost:4000,actualCost:900,valueAdd:1000,condTier:'mid',note:'Spot repairs: $400–$1,500. Investors deducting $4,000–$6,000 for minor repair needs are padding the number.'}
+  ]},
+  {id:'hvac',name:'HVAC system',conditions:[
+    {label:'Full system replacement — both units',investorCost:15000,actualCost:9000,valueAdd:8000,condTier:'low',note:'Full HVAC (furnace + AC): $7,000–$12,000. Investors quote $15K–$20K. Get one real bid from a licensed contractor.'},
+    {label:'Furnace only — end of life',investorCost:7500,actualCost:4000,valueAdd:4000,condTier:'low',note:'Furnace replacement: $2,800–$5,500. Investor deducting $7,000–$10,000 for furnace only is overstated.'},
+    {label:'AC unit only — end of life',investorCost:6500,actualCost:4500,valueAdd:4000,condTier:'mid',note:'AC replacement: $3,500–$6,000 installed. Watch for investors quoting full system when only one unit needs replacing.'},
+    {label:'Aging (10–15 yrs) but fully functional',investorCost:9000,actualCost:600,valueAdd:0,condTier:'mid',note:'A working HVAC is not a replacement deduction. A $500–$700 home warranty covers this. Deducting $8,000+ for a functional system is unjustified.'}
+  ]},
+  {id:'electrical',name:'Electrical panel',conditions:[
+    {label:'Federal Pacific / Stab-Lok — must replace',investorCost:8000,actualCost:3500,valueAdd:3000,condTier:'low',note:'Federal Pacific replacement: $2,500–$5,000. Investors quote $8,000–$12,000. The actual cost is well-documented — get a real bid.'},
+    {label:'100A service — upgrade to 200A needed',investorCost:5500,actualCost:2500,valueAdd:2500,condTier:'low',note:'100A to 200A upgrade: $1,800–$3,500 in St. Louis. Investors frequently overstate at $5,000–$8,000.'},
+    {label:'Knob and tube wiring present',investorCost:20000,actualCost:14000,valueAdd:10000,condTier:'low',note:'Full rewire: $8,000–$20,000 depending on home size. One case where investor cost may be close. Verify with a licensed electrician.'},
+    {label:'Panel functional — minor issues only',investorCost:3000,actualCost:500,valueAdd:500,condTier:'mid',note:'Minor panel work — breaker replacement, double-tapping: $200–$800. Not a significant deduction.'}
+  ]},
+  {id:'foundation',name:'Foundation / basement water',conditions:[
+    {label:'Active intrusion — full waterproofing system',investorCost:20000,actualCost:11000,valueAdd:8000,condTier:'low',note:'Interior waterproofing (drain tile + sump): $8,000–$15,000. Investors quote $20,000–$30,000. Get 2–3 bids from licensed waterproofing companies.'},
+    {label:'Cracks present — epoxy injection needed',investorCost:8000,actualCost:2500,valueAdd:3000,condTier:'low',note:'Epoxy crack injection: $400–$800 per crack. Most foundations: $1,500–$4,000 total. Investors deducting $8,000–$12,000 are dramatically overstating.'},
+    {label:'Minor seepage — grading or downspout issue',investorCost:5000,actualCost:1200,valueAdd:1500,condTier:'mid',note:'Grading correction and downspout extensions: $500–$2,000. This is landscaping — not waterproofing. Investors conflate these to inflate perceived cost.'}
+  ]},
+  {id:'kitchen',name:'Kitchen',conditions:[
+    {label:'Full gut renovation needed',investorCost:38000,actualCost:23000,valueAdd:25000,condTier:'low',note:'Full kitchen remodel: $18,000–$28,000. Investors quote $35,000–$50,000. Cabinet refacing + countertops = $6,000–$10,000 achieves 85% of the visual result.'},
+    {label:'Cabinets and countertops only',investorCost:16000,actualCost:7500,valueAdd:12000,condTier:'mid',note:'Cabinet refacing: $3,000–$6,000. New countertops: $2,000–$4,000. Investors quote full replacement when a reface is the right call.'},
+    {label:'Cosmetic — paint, hardware, appliances',investorCost:8000,actualCost:3000,valueAdd:5000,condTier:'mid',note:'Paint, hardware, appliances: $2,000–$4,500. Not an $8,000–$12,000 deduction.'}
+  ]},
+  {id:'bathrooms',name:'Bathrooms',conditions:[
+    {label:'Full renovation — both baths',investorCost:22000,actualCost:13000,valueAdd:14000,condTier:'low',note:'Full bath remodel: $5,000–$9,000 per bath. Two baths: $10,000–$18,000. Investors quote $20,000–$30,000.'},
+    {label:'One full bath update',investorCost:11000,actualCost:6500,valueAdd:7000,condTier:'mid',note:'Single full bath remodel: $5,000–$8,000. Investor deducting $10,000+ for one bath is overstated.'},
+    {label:'Cosmetic — fixtures, vanity, tile clean',investorCost:5000,actualCost:1800,valueAdd:3000,condTier:'high',note:'Vanity, fixtures, recaulk: $1,200–$2,500 per bath. Not a $5,000–$8,000 deduction.'}
+  ]},
+  {id:'popcorn',name:'Popcorn ceiling removal',conditions:[
+    {label:'Asbestos confirmed — abatement required',investorCost:12000,actualCost:7500,valueAdd:5000,condTier:'low',note:'Asbestos abatement: $5–$10/sqft. 1,500 sqft = $7,500–$15,000. Demand an actual asbestos test result before accepting this deduction.'},
+    {label:'No asbestos — standard removal and skim coat',investorCost:8000,actualCost:3500,valueAdd:4000,condTier:'low',note:'Non-asbestos removal + skim coat: $2–$3/sqft. 1,500 sqft = $3,000–$4,500. Investors quote $8,000–$12,000.'},
+    {label:'Partial rooms only',investorCost:3500,actualCost:1200,valueAdd:1500,condTier:'mid',note:'Partial removal (2–3 rooms): $800–$1,800. Not a $3,500–$5,000 deduction.'}
+  ]},
+  {id:'deck',name:'Deck',conditions:[
+    {label:'Full replacement needed',investorCost:18000,actualCost:10000,valueAdd:8000,condTier:'low',note:'Deck replacement: $8,000–$14,000 for a standard 300–400 sqft deck. Investors quote $18,000–$25,000.'},
+    {label:'Structural repairs needed',investorCost:8000,actualCost:3500,valueAdd:4000,condTier:'mid',note:'Structural deck repairs (joists, posts, ledger): $2,500–$5,000. Investors quoting $8,000–$12,000 are overstating.'},
+    {label:'Cosmetic — boards, railings, staining',investorCost:4000,actualCost:1500,valueAdd:2000,condTier:'high',note:'Board replacement, railing repair, restaining: $1,000–$2,500. Not a $4,000–$6,000 deduction.'}
+  ]},
+  {id:'windows',name:'Windows',conditions:[
+    {label:'Full replacement — all windows',investorCost:20000,actualCost:10500,valueAdd:8000,condTier:'low',note:'Window replacement: $400–$700 per window installed. 12–18 windows: $5,000–$12,000. Investors quote $18,000–$25,000.'},
+    {label:'Partial — several failed units',investorCost:8000,actualCost:3500,valueAdd:3000,condTier:'mid',note:'4–6 window replacements: $1,800–$4,200. Investors quoting $8,000–$12,000 for partial work are padding.'},
+    {label:'Cosmetic — hardware, caulking, weatherstrip',investorCost:3000,actualCost:500,valueAdd:500,condTier:'high',note:'Hardware and weatherstrip replacement: $200–$600. Not a meaningful cash offer deduction.'}
+  ]},
+  {id:'garage',name:'Garage door',conditions:[
+    {label:'Full replacement — door and opener',investorCost:4500,actualCost:1800,valueAdd:2000,condTier:'mid',note:'Single garage door + opener: $1,200–$2,500 installed. Double door: $1,800–$3,500. Investors citing $4,500–$6,000 are overstating a commodity item.'},
+    {label:'Opener replacement only',investorCost:1500,actualCost:400,valueAdd:500,condTier:'high',note:'Opener replacement: $250–$600 installed. Not a $1,500 deduction.'},
+    {label:'Cosmetic — dents, paint, weatherstrip',investorCost:1000,actualCost:200,valueAdd:300,condTier:'high',note:'Cosmetic door repairs: $100–$400. Not a meaningful deduction.'}
+  ]},
+  {id:'plumbing',name:'Plumbing / sewer',conditions:[
+    {label:'Sewer lateral replacement needed',investorCost:15000,actualCost:8000,valueAdd:7000,condTier:'low',note:'St. Louis sewer lateral: $5,000–$12,000 depending on depth and distance. Investors quote $15,000–$20,000. Demand the sewer scope video before accepting sewer as a deduction justification.'},
+    {label:'Full repipe — galvanized or lead supply lines',investorCost:14000,actualCost:8000,valueAdd:6000,condTier:'low',note:'Full repipe to PEX: $5,000–$10,000 in St. Louis. Investors quote $12,000–$18,000.'},
+    {label:'Minor leaks and fixture replacement',investorCost:4000,actualCost:900,valueAdd:1000,condTier:'mid',note:'Faucet replacements, shutoff valves, minor leaks: $500–$1,500. A $4,000–$6,000 deduction is not warranted.'}
+  ]},
+  {id:'paint',name:'Interior paint',conditions:[
+    {label:'Full interior repaint needed',investorCost:9000,actualCost:3500,valueAdd:5000,condTier:'mid',note:'Professional full interior paint on a 1,500 sqft home: $2,500–$4,500. DIY: $600–$1,000. Investors quoting $8,000–$12,000 are significantly overstating.'},
+    {label:'Partial repaint — high-traffic areas only',investorCost:3500,actualCost:1200,valueAdd:2000,condTier:'high',note:'Partial repaint: $1,000–$2,000 professionally. Not a $3,000–$5,000 deduction.'}
+  ]},
+];
+
+let repairState={};
+REPAIRS.forEach(r=>{repairState[r.id]={included:false,conditionIdx:0,investorOverride:''};});
+let selectedTier=null,arvSource='manual',lastEntry=null,usedFallback=false,saveTimer=null;
+
+const TEXT_IDS=['address','investorName','yearBuilt','sqft','beds','arv','cashOffer','mortgage','investorArv','investorRepairTotal','commission','concessions','closingFixed','listRatio','occBuffer','lookupZip'];
+const SELECT_IDS=['hasWritten','lookupSqft'];
+
+function fmt(n){return '$'+Math.round(n).toLocaleString();}
+function fmtPct(n){return n.toFixed(1)+'%';}
+function pn(id){const el=document.getElementById(id);if(!el)return 0;return parseFloat(el.value.replace(/[$,%\s,]/g,''))||0;}
+function gv(id){const el=document.getElementById(id);return el?el.value:'';}
+function showSaved(msg){const i=document.getElementById('saveIndicator');i.textContent=msg;i.className=msg==='Saved'||msg.includes('restored')?'save-indicator saved':'save-indicator';}
+function scheduleSave(){clearTimeout(saveTimer);saveTimer=setTimeout(saveToStorage,600);showSaved('Auto-saving...');}
+
+function saveToStorage(){
+  const data={repairState,selectedTier,arvSource,usedFallback,inputs:{}};
+  TEXT_IDS.forEach(id=>{const el=document.getElementById(id);if(el)data.inputs[id]=el.value;});
+  SELECT_IDS.forEach(id=>{const el=document.getElementById(id);if(el)data.inputs[id]=el.value;});
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(data));}catch(e){}
+  showSaved('Saved');clearTimeout(saveTimer);saveTimer=setTimeout(()=>showSaved('Auto-saving as you type'),2500);
+}
+
+function loadFromStorage(){
+  try{
+    const raw=localStorage.getItem(STORAGE_KEY);
+    if(!raw){showSaved('Enter your information below');return;}
+    const data=JSON.parse(raw);
+    if(data.inputs){
+      TEXT_IDS.forEach(id=>{const el=document.getElementById(id);if(el&&data.inputs[id]!==undefined)el.value=data.inputs[id];});
+      SELECT_IDS.forEach(id=>{const el=document.getElementById(id);if(el&&data.inputs[id]!==undefined)el.value=data.inputs[id];});
+    }
+    if(data.repairState) Object.keys(data.repairState).forEach(k=>{if(repairState[k])repairState[k]=data.repairState[k];});
+    if(data.selectedTier) selectedTier=data.selectedTier;
+    if(data.arvSource) arvSource=data.arvSource;
+    if(data.usedFallback) usedFallback=data.usedFallback;
+    showSaved('Data restored from last session');
+    setTimeout(()=>showSaved('Auto-saving as you type'),3000);
+    if(data.inputs&&data.inputs.lookupZip&&data.inputs.lookupSqft) runLookup(true);
+  }catch(e){showSaved('Auto-saving as you type');}
+  checkYear();buildRepairCards();calcCompressionPreview();updatePrint();
+}
+
+function clearSaved(){
+  if(!confirm('Clear all saved data and start fresh?')) return;
+  try{localStorage.removeItem(STORAGE_KEY);}catch(e){}
+  TEXT_IDS.forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  const def={commission:'6',concessions:'2',closingFixed:'2500',listRatio:'99',occBuffer:'1500'};
+  Object.keys(def).forEach(id=>{const el=document.getElementById(id);if(el)el.value=def[id];});
+  REPAIRS.forEach(r=>{repairState[r.id]={included:false,conditionIdx:0,investorOverride:''};});
+  selectedTier=null;arvSource='manual';lastEntry=null;usedFallback=false;
+  document.getElementById('tierCards').style.display='none';
+  document.getElementById('lookupError').style.display='none';
+  document.getElementById('yearFlag').innerHTML='';
+  document.getElementById('compression-preview').innerHTML='';
+  document.getElementById('results-content').innerHTML='<div class="placeholder">Complete steps 1 and 2 first.</div>';
+  buildRepairCards();showSaved('Cleared — start fresh');
+}
+
+function attachListeners(){
+  TEXT_IDS.forEach(id=>{
+    const el=document.getElementById(id);if(!el)return;
+    el.addEventListener('input',()=>{
+      if(id==='yearBuilt') checkYear();
+      if(id==='arv'){arvSource='manual';selectedTier=null;updateArvNote();}
+      calcCompressionPreview();updatePrint();scheduleSave();
+    });
+  });
+  SELECT_IDS.forEach(id=>{const el=document.getElementById(id);if(!el)return;el.addEventListener('change',()=>scheduleSave());});
+}
+
+function runLookup(silent){
+  const zip=gv('lookupZip').trim(),sqft=gv('lookupSqft');
+  const errEl=document.getElementById('lookupError'),tierEl=document.getElementById('tierCards');
+  if(!zip||zip.length!==5||!sqft){
+    if(!silent){errEl.innerHTML='<div class="lookup-error">Enter a 5-digit zip code and select a home size to run the estimate.</div>';errEl.style.display='block';}
+    return;
+  }
+  errEl.style.display='none';
+  let key=zip+'_'+sqft,entry=MARKET_DATA.data[key];
+  usedFallback=false;
+  if(!entry){key=zip;entry=MARKET_DATA.data[key];if(entry)usedFallback=true;}
+  if(!entry||entry.n<5){
+    errEl.innerHTML=`<div class="lookup-error">No data found for zip ${zip} in that size range. Try an adjacent zip code, or enter your ARV manually below.</div>`;
+    errEl.style.display='block';tierEl.style.display='none';return;
+  }
+  lastEntry=entry;tierEl.style.display='block';
+  renderTierCards(entry,zip,sqft,silent);
+}
+
+function renderTierCards(entry,zip,sqft,silent){
+  const tiers=[
+    {id:'low',label:'As-is',range:fmtRange(entry.low),midpoint:entry.low,
+      desc:'Homes that sold slow — bottom of market. Major deferred maintenance or investor/cash buyer pool.',
+      qualifier:'Select this if: investor is citing multiple major systems, or the home has significant deferred maintenance.'},
+    {id:'mid',label:'Move-in ready',range:fmtRange(entry.mid),midpoint:entry.mid,
+      desc:'Clean, functional, cosmetically dated. Sold at normal market pace to retail buyers.',
+      qualifier:'Select this if: home is livable and clean but has not been recently renovated.'},
+    {id:'high',label:'Renovated',range:fmtRange(entry.high),midpoint:entry.high,
+      desc:'Updated kitchen or baths, fresh finishes. First-weekend buyer. Sold fast, at or above list.',
+      qualifier:'Select this if: home has significant recent updates competing with new listings.'},
+  ];
+  document.getElementById('tierCardGrid').innerHTML=tiers.map(t=>`
+    <div class="tier-card ${t.id} ${selectedTier===t.id?'selected '+t.id:''}" onclick="selectTier('${t.id}',${t.midpoint})">
+      <div class="tc-badge ${t.id}">${t.label}</div>
+      <div class="tc-label">${t.label}</div>
+      <div class="tc-range ${t.id}">${t.range}</div>
+      <div class="tc-midpoint">Midpoint ${fmt(t.midpoint)}</div>
+      <div class="tc-desc">${t.desc}</div>
+      <div class="tc-qualifier">${t.qualifier}</div>
+      ${selectedTier===t.id?`<div class="tc-selected-note ${t.id}">✓ Selected — midpoint used as ARV</div>`:''}
+    </div>`).join('');
+  const conf=entry.n>=20?'strong':entry.n>=10?'moderate':'low';
+  const sqftLabels={'u1000':'under 1,000 sqft','1000':'1,000–1,400 sqft','1400':'1,400–1,800 sqft','1800':'1,800–2,400 sqft','o2400':'over 2,400 sqft'};
+  const sqftLabel=sqftLabels[sqft]||'all sizes';
+  const fb=usedFallback?' · Size band insufficient — showing zip-level range':'';
+  document.getElementById('lookupMeta').textContent=`St. Louis sold data · Zip ${zip} · ${sqftLabel} · ${entry.n} sales (${conf} sample)${fb} · Updated: ${MARKET_DATA.updated}`;
+  document.getElementById('lookupMeta').className=`lookup-meta${conf==='low'?' warn':''}`;
+  const discEl=document.getElementById('arvDisclaimer');
+  discEl.style.display='block';
+  discEl.innerHTML=`These ranges are derived from actual St. Louis sales filtered by condition — not an automated estimate. Your home's position within a range depends on specific features, updates, lot, and condition that only an in-person walkthrough can assess. <strong>If an agent's valuation comes in lower than the range you selected, ask them to show you the specific comparable sales that support that number. A lower value isn't automatically wrong — but it should always be explained with data.</strong>`;
+  if(!silent) checkCrossValidation();
+}
+
+function selectTier(tier,midpoint){
+  selectedTier=tier;arvSource='market';
+  document.getElementById('arv').value=midpoint;
+  updateArvNote();
+  const zip=gv('lookupZip'),sqft=gv('lookupSqft');
+  if(lastEntry) renderTierCards(lastEntry,zip,sqft,false);
+  checkCrossValidation();calcCompressionPreview();updatePrint();scheduleSave();
+}
+
+function updateArvNote(){
+  const note=document.getElementById('arvSource');
+  if(arvSource==='market'&&selectedTier){
+    const labels={low:'As-is range midpoint selected',mid:'Move-in ready range midpoint selected',high:'Renovated range midpoint selected'};
+    note.textContent=labels[selectedTier]+' from St. Louis sold data. Adjust manually if your estimate differs.';
+    note.style.color='#185FA5';
+  } else {note.textContent='Manually entered. Or select a condition range above.';note.style.color='';}
+}
+
+function checkCrossValidation(){
+  const flagEl=document.getElementById('crossFlag');
+  if(!selectedTier){flagEl.innerHTML='';return;}
+  const activeTiers=REPAIRS.flatMap(r=>{const s=repairState[r.id];if(!s.included)return[];return[r.conditions[s.conditionIdx].condTier];});
+  const hasLow=activeTiers.includes('low');
+  if(selectedTier==='high'&&hasLow)
+    flagEl.innerHTML='<div class="cross-flag warn">Condition mismatch: you selected "Renovated" but the investor is citing major repair items. A renovated home should not have these issues — the tier, the repair claims, or both need a second look.</div>';
+  else if(selectedTier==='low'&&activeTiers.length>0&&!hasLow)
+    flagEl.innerHTML='<div class="cross-flag warn">Condition check: you selected "As-is" but the investor\'s repair claims are mostly cosmetic. Either the tier is conservative or the investor is overstating the condition.</div>';
+  else if(activeTiers.length>0)
+    flagEl.innerHTML='<div class="cross-flag ok">Condition selection and repair claims are consistent.</div>';
+  else flagEl.innerHTML='';
+}
+
+function checkYear(){
+  const y=parseInt(document.getElementById('yearBuilt').value)||0;
+  const flag=document.getElementById('yearFlag');
+  if(!y){flag.innerHTML='';return;}
+  if(y<1978) flag.innerHTML=`<span class="year-flag warn">Pre-1978 — potential lead paint. Require itemized proof for every investor deduction.</span>`;
+  else if(y<1990) flag.innerHTML=`<span class="year-flag warn">Pre-1990 — verify knob-and-tube, asbestos popcorn, and galvanized plumbing before accepting any wholesale offer.</span>`;
+  else flag.innerHTML=`<span class="year-flag ok">Post-1990 — age-based blanket deductions are harder to justify on this home.</span>`;
+}
+
+function updatePrint(){
+  const addr=gv('address'),yr=gv('yearBuilt'),inv=gv('investorName');
+  const parts=[];
+  if(addr) parts.push(addr);if(yr) parts.push('Built '+yr);if(inv) parts.push('Offer from: '+inv);
+  if(selectedTier){const l={low:'Condition: As-is',mid:'Condition: Move-in ready',high:'Condition: Renovated'};parts.push(l[selectedTier]);}
+  document.getElementById('printPropLine').textContent=parts.join(' · ');
+}
+
+function buildRepairCards(){
+  document.getElementById('repairCards').innerHTML=REPAIRS.map(r=>{
+    const s=repairState[r.id];
+    const opts=r.conditions.map((c,i)=>`<option value="${i}"${i===s.conditionIdx?' selected':''}>${c.label}</option>`).join('');
+    const cond=r.conditions[s.conditionIdx];
+    let reb='';
+    if(s.included){const rb=getRebuttal(r,s);reb=`<div class="rebuttal-inline ${rb.cls}">${rb.text}</div>`;}
+    return `<div class="repair-card">
+      <div class="repair-card-head">
+        <span class="repair-name">${r.name}</span>
+        <div class="repair-toggle">
+          <span class="toggle-label">${s.included?'Investor cited':'Not cited'}</span>
+          <input type="checkbox" ${s.included?'checked':''} onchange="toggleRepair('${r.id}',this.checked)">
+        </div>
+      </div>
+      ${s.included?`<div class="condition-row">
+        <div class="inv-input"><label>Condition investor described</label>
+          <select onchange="setCondition('${r.id}',this.value)">${opts}</select></div>
+        <div class="inv-input"><label>Their stated deduction ($) if known</label>
+          <input type="text" placeholder="${fmt(cond.investorCost)}" value="${s.investorOverride}" oninput="setOverride('${r.id}',this.value)"></div>
+      </div>${reb}`:''}
+    </div>`;
+  }).join('');
+  checkCrossValidation();
+}
+
+function getRebuttal(r,s){
+  const cond=r.conditions[s.conditionIdx];
+  const inv=s.investorOverride?parseFloat(s.investorOverride.replace(/[$,]/g,''))||cond.investorCost:cond.investorCost;
+  const over=inv-cond.actualCost,pct=Math.round((over/cond.actualCost)*100);
+  if(over>cond.actualCost*0.3) return{cls:'over',text:`Overstatement detected: investor implies ${fmt(inv)} — actual St. Louis cost is ${fmt(cond.actualCost)} (${pct}% overstated). ${cond.note}`};
+  if(over>0) return{cls:'fair',text:`Near market: investor implies ${fmt(inv)}, actual is ${fmt(cond.actualCost)}. ${cond.note}`};
+  return{cls:'under',text:`Investor may be understating this item. Actual cost: ${fmt(cond.actualCost)}. ${cond.note}`};
+}
+
+function toggleRepair(id,val){repairState[id].included=val;buildRepairCards();calcCompressionPreview();saveToStorage();}
+function setCondition(id,val){repairState[id].conditionIdx=parseInt(val);buildRepairCards();calcCompressionPreview();saveToStorage();}
+function setOverride(id,val){repairState[id].investorOverride=val;calcCompressionPreview();scheduleSave();}
+
+function showTab(t){
+  document.querySelectorAll('.tab').forEach((el,i)=>el.classList.toggle('active',['inputs','repairs','results'][i]===t));
+  document.querySelectorAll('.pane').forEach((el,i)=>el.classList.toggle('active',['pane-inputs','pane-repairs','pane-results'][i]==='pane-'+t));
+  if(t==='results') calcResults();
+}
+
+function calcCompressionPreview(){
+  const arv=pn('arv'),cashOffer=pn('cashOffer'),investorArv=pn('investorArv'),investorRepairTotal=pn('investorRepairTotal');
+  if(!arv||!cashOffer){document.getElementById('compression-preview').innerHTML='';return;}
+  const arvSupp=investorArv>0?(arv-investorArv):0;
+  let totInv=0,totActual=0;
+  REPAIRS.forEach(r=>{const s=repairState[r.id];if(!s.included)return;const cond=r.conditions[s.conditionIdx];const inv=s.investorOverride?parseFloat(s.investorOverride.replace(/[$,]/g,''))||cond.investorCost:cond.investorCost;totInv+=inv;totActual+=cond.actualCost;});
+  const repOver=Math.max(0,totInv-totActual),invRepUsed=investorRepairTotal||totInv,totMfg=arvSupp+repOver,trueMargin=arv-cashOffer;
+  if(!investorArv&&!investorRepairTotal&&totInv===0){document.getElementById('compression-preview').innerHTML='';return;}
+  const tierLabel=selectedTier?{low:'as-is range',mid:'move-in ready range',high:'renovated range'}[selectedTier]:'manually entered';
+  document.getElementById('compression-preview').innerHTML=`
+    <div class="compression-box">
+      <div class="cb-head">Double-compression mechanism — how the offer was engineered</div>
+      <div class="mech-row">
+        <div class="mech-step"><div class="ms-label">Your ARV (${tierLabel})</div><div class="ms-value">${fmt(arv)}</div><div class="ms-sub">${arvSource==='market'?'St. Louis sold data':'Manually entered'}</div></div>
+        <div class="mech-arrow">→</div>
+        <div class="mech-step bad"><div class="ms-label bad">Step 1: ARV anchor</div><div class="ms-value bad">${investorArv>0?fmt(investorArv):'Not stated'}</div><div class="ms-sub bad">${investorArv>0?fmt(arvSupp)+' removed first':'Enter above'}</div></div>
+        <div class="mech-arrow">→</div>
+        <div class="mech-step bad"><div class="ms-label bad">Step 2: Repair deductions</div><div class="ms-value bad">(${fmt(invRepUsed||totInv)})</div><div class="ms-sub bad">${repOver>0?fmt(repOver)+' overstated':'Check step 2'}</div></div>
+        <div class="mech-arrow">→</div>
+        <div class="mech-step bad"><div class="ms-label bad">Cash offer</div><div class="ms-value bad">${fmt(cashOffer)}</div><div class="ms-sub bad">${fmtPct((trueMargin/arv)*100)} below your ARV</div></div>
+      </div>
+      ${totMfg>0?`<div class="mfg-note">Manufactured justification: <strong>${fmt(totMfg)}</strong>${arvSupp>0?' — '+fmt(arvSupp)+' ARV suppression':''}${arvSupp>0&&repOver>0?' + ':''}${repOver>0?fmt(repOver)+' repair overstatement':''}. Actual margin on your equity: <strong>${fmt(trueMargin)}</strong>.</div>`:''}
+    </div>`;
+}
+
+function calcResults(){
+  const cashOffer=pn('cashOffer'),arv=pn('arv');
+  if(!cashOffer||!arv){document.getElementById('results-content').innerHTML='<div class="placeholder">Enter a cash offer and market value in step 1.</div>';return;}
+  const mortgage=pn('mortgage'),commPct=pn('commission')/100,concPct=pn('concessions')/100;
+  const closingFixed=pn('closingFixed'),listRatio=(pn('listRatio')||99)/100,occBuffer=pn('occBuffer');
+  const investorArv=pn('investorArv'),investorRepairTotal=pn('investorRepairTotal');
+  const addr=gv('address'),investorName=gv('investorName');
+  let totInv=0,totActual=0,totValueAdd=0,totOver=0;
+  const activeRepairs=[];
+  REPAIRS.forEach(r=>{
+    const s=repairState[r.id];if(!s.included)return;
+    const cond=r.conditions[s.conditionIdx];
+    const inv=s.investorOverride?parseFloat(s.investorOverride.replace(/[$,]/g,''))||cond.investorCost:cond.investorCost;
+    const over=Math.max(0,inv-cond.actualCost);
+    totInv+=inv;totActual+=cond.actualCost;totOver+=over;totValueAdd+=cond.valueAdd;
+    activeRepairs.push({name:r.name,condition:cond.label,investorAmt:inv,actual:cond.actualCost,over,valueAdd:cond.valueAdd});
+  });
+  const arvSupp=investorArv>0?(arv-investorArv):0,invRepUsed=investorRepairTotal||totInv,totMfg=arvSupp+totOver,trueMargin=arv-cashOffer;
+  const salePrice=arv*listRatio,commission=salePrice*commPct,concessions=salePrice*concPct;
+  const mlsRepairCost=totActual||5500;
+  const mlsNet=salePrice-commission-concessions-closingFixed-mlsRepairCost-occBuffer-mortgage;
+  const cashNetAM=cashOffer-mortgage,gap=mlsNet-cashNetAM,discPct=(trueMargin/arv)*100;
+  const tierLabels={low:'as-is',mid:'move-in ready',high:'renovated'};
+  const arvLabel=arvSource==='market'&&selectedTier?`St. Louis sold data — ${tierLabels[selectedTier]} range midpoint`:'Manually entered';
+  const arvRange=arvSource==='market'&&selectedTier&&lastEntry?` (market range: ${fmtRange(lastEntry[selectedTier])})` :'';
+
+  document.getElementById('results-content').innerHTML=`
+    <div class="results-disclaimer">
+      These figures use the midpoint of the condition range you selected${arvRange}. Your home's actual value within that range depends on specific features, updates, and condition that only an in-person walkthrough can assess. <strong>A no-cost agent walkthrough is the most accurate way to refine this number.</strong> If an agent's valuation comes in lower than your selected range, ask them to show you the specific comparable sales that support it — a lower value isn't automatically wrong, but it should always be explained with data.
+    </div>
+    <div class="metric-grid">
+      <div class="metric-card"><div class="mc-label">Investor discount off ARV</div><div class="mc-value red">${fmtPct(discPct)} below</div></div>
+      <div class="metric-card"><div class="mc-label">MLS net after all costs</div><div class="mc-value blue">${fmt(mlsNet)}</div></div>
+      <div class="metric-card"><div class="mc-label">Cash offer net</div><div class="mc-value ${gap>0?'green':'red'}">${fmt(cashNetAM)}</div></div>
+    </div>
+    ${totMfg>0||arvSupp>0?`<div class="metric-grid two">
+      <div class="metric-card hl"><div class="mc-label">Step 1 — ARV suppression</div><div class="mc-value red">${fmt(arvSupp)}</div><div class="mc-sub red">Removed before repairs start</div></div>
+      <div class="metric-card hl"><div class="mc-label">Step 2 — Repair overstatement</div><div class="mc-value red">${fmt(totOver)}</div><div class="mc-sub red">Inflated vs St. Louis actuals</div></div>
+    </div>
+    <div class="metric-grid two">
+      <div class="metric-card hl"><div class="mc-label">Total manufactured justification</div><div class="mc-value red">${fmt(totMfg)}</div><div class="mc-sub red">Combined suppression + overstatement</div></div>
+      <div class="metric-card hl"><div class="mc-label">Actual investor margin on your equity</div><div class="mc-value red">${fmt(trueMargin)}</div><div class="mc-sub red">${fmtPct(discPct)} of your home's value</div></div>
+    </div>`:''}
+    <div class="verdict ${gap>0?'win':'warn'}">
+      <div class="verdict-title ${gap>0?'win':'warn'}">${gap>0?`MLS puts ${fmt(gap)} more in your pocket`:`Review your market value estimate`}</div>
+      <div class="verdict-sub ${gap>0?'win':'warn'}">${gap>0
+        ?`Even after commissions, repairs, concessions, and closing costs, the MLS nets you ${fmt(gap)} more than this cash offer${addr?' for '+addr:''}.${arvSupp>0?' The investor suppressed your ARV by '+fmt(arvSupp)+' before repair deductions even started.':''}${totOver>0?' Then overstated repair costs by '+fmt(totOver)+' to manufacture justification.':''} These figures are based on market data and your inputs — a full listing consultation will refine them.`
+        :`The numbers are close. Verify your market value — investors anchor ARV low first, then compound with inflated repair deductions. A no-cost agent walkthrough gives you a precise number.`
+      }</div>
+    </div>
+    ${activeRepairs.length>0?`<div class="breakdown-box">
+      <div class="breakdown-head">Per-item rebuttal — claimed vs. actual St. Louis cost</div>
+      <table class="rebuttal-table">
+        <thead><tr><th style="width:30%;">Item</th><th>Claimed</th><th>Actual</th><th>Overstated by</th><th>MLS value add</th><th></th></tr></thead>
+        <tbody>
+          ${activeRepairs.map(r=>{
+            const tag=r.over>r.actual*0.3?'<span class="over-tag">Overstated</span>':r.over>0?'<span class="fair-tag">Near market</span>':'<span class="under-tag">Check</span>';
+            return `<tr><td>${r.name}<br><span style="font-size:10px;color:#888;">${r.condition.substring(0,50)}${r.condition.length>50?'…':''}</span></td>
+              <td>${fmt(r.investorAmt)}</td><td>${fmt(r.actual)}</td>
+              <td style="color:${r.over>0?'#C0392B':'#0F6E56'};">${r.over>0?fmt(r.over):'—'}</td>
+              <td style="color:#185FA5;">${fmt(r.valueAdd)}</td><td>${tag}</td></tr>`;
+          }).join('')}
+          <tr style="border-top:2px solid #E5E5E0;">
+            <td style="font-weight:700;padding-top:9px;">Totals</td>
+            <td style="font-weight:700;padding-top:9px;">${fmt(totInv)}</td>
+            <td style="font-weight:700;padding-top:9px;">${fmt(totActual)}</td>
+            <td style="font-weight:700;padding-top:9px;color:#C0392B;">${fmt(totOver)}</td>
+            <td style="font-weight:700;padding-top:9px;color:#185FA5;">${fmt(totValueAdd)}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>`:''}
+    ${arvSupp>0||totMfg>0?`<div class="breakdown-box">
+      <div class="breakdown-head">Double-compression breakdown</div>
+      <table class="bt">
+        <tr><td>Your ARV — ${arvLabel}${arvRange}</td><td>${fmt(arv)}</td></tr>
+        <tr><td>Investor's stated as-is value</td><td class="neg">${investorArv>0?fmt(investorArv):'Not stated'}</td></tr>
+        <tr><td style="padding-left:14px;font-size:11px;">→ ARV suppression (step 1)</td><td class="neg">${arvSupp>0?'('+fmt(arvSupp)+')':'—'}</td></tr>
+        <tr><td style="padding-left:14px;font-size:11px;">→ Investor repair deductions (step 2)</td><td class="neg">${invRepUsed>0?'('+fmt(invRepUsed)+')':'—'}</td></tr>
+        <tr><td style="padding-left:14px;font-size:11px;">→ Actual repair cost (St. Louis market)</td><td>${fmt(totActual||mlsRepairCost)}</td></tr>
+        <tr><td style="padding-left:14px;font-size:11px;">→ Repair overstatement</td><td class="neg">${totOver>0?'('+fmt(totOver)+')':'—'}</td></tr>
+        <tr class="tot"><td>Total manufactured justification</td><td>${fmt(totMfg)}</td></tr>
+        <tr class="tot"><td>Actual investor margin on your equity</td><td class="neg">${fmt(trueMargin)}</td></tr>
+      </table>
+    </div>`:''}
+    <div class="breakdown-box">
+      <div class="breakdown-head">MLS sale — what you actually net</div>
+      <table class="bt">
+        <tr><td>Expected sale price (${fmtPct(listRatio*100)} of ARV)</td><td>${fmt(salePrice)}</td></tr>
+        <tr><td>Less: agent commission (${fmtPct(commPct*100)})</td><td class="neg">(${fmt(commission)})</td></tr>
+        <tr><td>Less: seller concessions (${fmtPct(concPct*100)})</td><td class="neg">(${fmt(concessions)})</td></tr>
+        <tr><td>Less: title &amp; closing costs</td><td class="neg">(${fmt(closingFixed)})</td></tr>
+        <tr><td>Less: actual repairs (real St. Louis cost)</td><td class="neg">(${fmt(mlsRepairCost)})</td></tr>
+        <tr><td>Less: occupancy inspection buffer</td><td class="neg">(${fmt(occBuffer)})</td></tr>
+        <tr><td>Less: mortgage payoff</td><td class="neg">(${fmt(mortgage)})</td></tr>
+        <tr class="tot"><td>Your net proceeds</td><td>${fmt(mlsNet)}</td></tr>
+      </table>
+    </div>
+    <div class="breakdown-box">
+      <div class="breakdown-head">The equity gap</div>
+      <table class="bt">
+        <tr><td>MLS net proceeds</td><td>${fmt(mlsNet)}</td></tr>
+        <tr><td>Cash offer net proceeds</td><td>${fmt(cashNetAM)}</td></tr>
+        <tr><td>Total MLS transaction costs</td><td class="neg">${fmt(commission+concessions+closingFixed+mlsRepairCost+occBuffer)}</td></tr>
+        <tr><td>Investor margin absorbed from your equity</td><td class="neg">${fmt(trueMargin)}</td></tr>
+        ${totMfg>0?`<tr><td style="padding-left:14px;font-size:11px;">Of which manufactured</td><td class="neg">${fmt(totMfg)}</td></tr>`:''}
+        <tr class="tot"><td>You keep more by going MLS</td><td>${fmt(gap)}</td></tr>
+      </table>
+    </div>
+    <div class="cta-box">
+      <div class="cta-title">Get a precise number — at no cost to you</div>
+      <div class="cta-sub">The most accurate value for your home comes from an experienced agent walking the property the same way the investor did — and seeing what they either missed or chose not to tell you. A walkthrough takes 30 minutes, costs nothing, and puts an actual comparable sales analysis in your hands. That's the number that holds up. <strong>Message George on Facebook to schedule yours.</strong></div>
+    </div>
+    <div class="action-row">
+      <button class="btn-primary" onclick="window.print()">Save as PDF</button>
+      <button class="btn-sec" onclick="copyResults(${gap},${mlsNet},${cashNetAM},${trueMargin},${totMfg})">Copy summary</button>
+    </div>
+    <div class="pdf-footer" style="font-size:10px;color:#555;margin-top:20px;padding-top:12px;border-top:1px solid #ddd;line-height:1.7;">
+      Market ranges derived from aggregated St. Louis sold data filtered by condition tier. These figures are not an appraisal, a guaranteed value, or a binding estimate. Your home's actual market value depends on specific condition, features, lot, and comparable sales that require an in-person professional assessment. For a no-cost valuation contact George Kindler, Licensed Missouri Real Estate Agent, The Closing Pros, St. Louis, MO. Analysis generated ${new Date().toLocaleDateString()}.
+    </div>
+    ${investorName?`<div style="font-size:11px;color:#888;margin-top:10px;text-align:center;">Offer from: ${investorName} · Analysis by George Kindler, Licensed Missouri Real Estate Agent</div>`:''}
+  `;
+}
+
+function copyResults(gap,mlsNet,cashNet,margin,mfg){
+  const addr=gv('address'),inv=gv('investorName'),arv=pn('arv'),offer=pn('cashOffer');
+  const tierLabels={low:'as-is',mid:'move-in ready',high:'renovated'};
+  const tierStr=selectedTier?' ('+tierLabels[selectedTier]+' condition range)':'';
+  const rangeStr=arvSource==='market'&&selectedTier&&lastEntry?' — market range: '+fmtRange(lastEntry[selectedTier]):'';
+  const txt=`CASH OFFER ANALYSIS\n${addr?addr+'\n':''}${inv?'Offer from: '+inv+'\n':''}\nCash offer: ${fmt(offer)}\nYour market value: ${fmt(arv)}${tierStr}${rangeStr}\nDiscount off market: ${fmtPct(((arv-offer)/arv)*100)}\n\nMLS net proceeds: ${fmt(mlsNet)}\nCash offer net: ${fmt(cashNet)}\nYou keep more going MLS: ${fmt(gap)}\n\nInvestor margin: ${fmt(margin)}${mfg>0?'\nManufactured justification: '+fmt(mfg):''}\n\nMarket ranges derived from aggregated sold data — not an appraisal. A no-cost agent walkthrough is the most accurate way to confirm value.\n\nAnalysis by George Kindler, Licensed Missouri Real Estate Agent, The Closing Pros, St. Louis MO`;
+  navigator.clipboard.writeText(txt).then(()=>alert('Copied to clipboard.')).catch(()=>alert('Use the PDF button instead.'));
+}
+
+attachListeners();
+loadFromStorage();
+
+</script>
+</body>
+</html>

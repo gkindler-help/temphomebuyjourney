@@ -1549,6 +1549,10 @@ function closeDrawer() {
       { id:"neighborhood-matcher", ico:"🗺", title:"STL Neighborhood Matcher", sub:"5 questions. Ranked area matches with 98 neighborhoods to explore." }
     ];
 
+    var sellerTools = [
+      { id:"cash-offer-decoder", ico:"🔍", title:"Cash Offer Decoder", sub:"Enter the offer, run the numbers. See what the investor is making — and what you'd net on the MLS instead." }
+    ];
+
     var strip =
       '<div class="tool-data-strip" style="margin:16px 16px 0;">' +
         '<div class="tool-data-stat"><div class="tool-data-num">7,006</div><div class="tool-data-lbl">MLS Sales</div></div>' +
@@ -1569,7 +1573,24 @@ function closeDrawer() {
       );
     }).join("");
 
-    return strip + '<div class="tool-selector">' + cards + '</div>';
+    var sellerCards = sellerTools.map(function (t) {
+      return (
+        '<div class="tool-card" data-tool="' + t.id + '">' +
+          '<div class="tool-card-ico">' + t.ico + '</div>' +
+          '<div class="tool-card-copy">' +
+            '<div class="tool-card-title">' + t.title + '</div>' +
+            '<div class="tool-card-sub">' + t.sub + '</div>' +
+          '</div>' +
+          '<div class="tool-card-arr">›</div>' +
+        '</div>'
+      );
+    }).join("");
+
+    var sellerSection =
+      '<div style="padding:12px 16px 4px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,204,77,.5);">Seller Tools</div>' +
+      '<div class="tool-selector">' + sellerCards + '</div>';
+
+    return strip + '<div style="padding:12px 16px 4px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);">Buyer Tools</div><div class="tool-selector">' + cards + '</div>' + sellerSection;
   }
 
   function _buildResourcesPanelHTML(chNum) {
@@ -1979,7 +2000,8 @@ function closeDrawer() {
       "home-cost": "STL Home Cost Survival Guide",
       "compare":   "Compare STL Properties",
       "fails":     "STL Common Home Failures",
-      "neighborhood-matcher": "STL Neighborhood Matcher"
+      "neighborhood-matcher": "STL Neighborhood Matcher",
+      "cash-offer-decoder": "Cash Offer Decoder"
     };
 
     /* Tool URL map — each tool is a standalone HTML page loaded in an iframe */
@@ -1989,7 +2011,8 @@ function closeDrawer() {
       "home-cost": "home-cost.html",
       "compare":   "compare.html",
       "fails":     "fails.html",
-      "neighborhood-matcher": "neighborhood-matcher.html"
+      "neighborhood-matcher": "neighborhood-matcher.html",
+      "cash-offer-decoder": "tools/cash-offer-decoder.html"
     };
     var toolUrl = toolUrls[toolId] || (toolId + ".html");
 
