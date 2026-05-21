@@ -3,18 +3,3 @@ Allow: /
 
 # Sitemap
 Sitemap: https://stlhomejourney.com/sitemap.xml
-
-# Block app/chapter pages from indexing (interactive app screens, not content pages)
-Disallow: /01-preapproval.html
-Disallow: /02-affordability.html
-Disallow: /03-interior.html
-Disallow: /03c-renovated.html
-Disallow: /05-pre-offer.html
-Disallow: /06-under-contract.html
-Disallow: /06b-deadlines.html
-Disallow: /07-inspection.html
-Disallow: /08-walkthrough.html
-Disallow: /09-closing.html
-Disallow: /home-cost-demo.html
-Disallow: /resource-template.html
-Disallow: /pinterest-10a52.html
