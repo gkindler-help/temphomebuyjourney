@@ -423,9 +423,9 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-eyebrow">Free Buyer Guides</div>
-    <h1>What you need to know before <span>buying in St. Louis</span></h1>
-    <p class="hero-sub">No fluff. No lead-gen agenda. Just straight talk about what actually matters when you are buying a home.</p>
+    <div class="hero-eyebrow">Free Real Estate Guides</div>
+    <h1>What you need to know about <span>buying or selling in St. Louis</span></h1>
+    <p class="hero-sub">No fluff. No lead-gen agenda. Just straight talk about what actually matters when you are buying or selling a home.</p>
   </section>
 
   <!-- Topic Accordion -->
@@ -501,7 +501,7 @@
       </div>
     </div>
 
-        <!-- Topic 6: Writing the Offer -->
+    <!-- Topic 6: Writing the Offer -->
     <div class="topic-accordion">
       <button class="topic-header" onclick="toggleTopic('offer')">
         <div>
@@ -512,6 +512,20 @@
       </button>
       <div class="topic-content" id="offer-content">
         <div class="cards-grid" id="offerGrid"></div>
+      </div>
+    </div>
+
+    <!-- Topic 7: For Sellers -->
+    <div class="topic-accordion">
+      <button class="topic-header" onclick="toggleTopic('sellers')">
+        <div>
+          <h2 class="topic-title">For Sellers</h2>
+          <p class="topic-subtitle">What you'll net after closing, cash offers decoded, commission structure post-NAR settlement, and the real cost to sell in St. Louis.</p>
+        </div>
+        <span class="accordion-icon" id="sellers-icon">+</span>
+      </button>
+      <div class="topic-content" id="sellers-content">
+        <div class="cards-grid" id="sellersGrid"></div>
       </div>
     </div>
 
@@ -620,6 +634,17 @@
           'nar-settlement-buyer-representation-stl',
           'what-buyer-agent-actually-does-stl'
         ]
+      },
+      sellers: {
+        featured: 'should-you-accept-cash-offer-stl',
+        articles: [
+          'should-you-accept-cash-offer-stl',
+          'how-cash-buyers-calculate-offers-stl',
+          'what-you-lose-with-cash-offer-stl',
+          'what-will-i-net-selling-stl',
+          'cost-to-sell-home-stl',
+          'who-pays-buyer-agent-commission-stl'
+        ]
       }
     };
 
@@ -635,6 +660,8 @@
       else if (article.series === 'representation') topicBadge = 'Representation';
       else if (article.series === 'neighborhoods') topicBadge = 'Neighborhoods';
       else if (article.series === 'va-buyer') topicBadge = 'VA Buyer';
+      else if (article.series === 'seller-net') topicBadge = 'Seller Guide';
+      else if (article.series === 'cash-offer') topicBadge = 'Cash Offers';
 
       card.innerHTML = `
         <div class="card-badge featured-badge">${topicBadge} • Featured</div>
@@ -660,6 +687,8 @@
       else if (article.series === 'representation') topicBadge = 'Representation';
       else if (article.series === 'neighborhoods') topicBadge = 'Neighborhoods';
       else if (article.series === 'va-buyer') topicBadge = 'VA Buyer';
+      else if (article.series === 'seller-net') topicBadge = 'Seller Guide';
+      else if (article.series === 'cash-offer') topicBadge = 'Cash Offers';
       else if (article.series === 'mortgage') topicBadge = 'Financing';
 
       card.innerHTML = `
