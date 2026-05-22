@@ -1506,7 +1506,18 @@ function closeDrawer() {
           if (!gIsOpen) gDrawer.classList.add("open");
         });
       });
-      window.__stlGuideNav = function() { closeDashboard(); window.location.href = "articles/index.html"; };
+      window.__stlGuideNav = function() { 
+        closeDashboard(); 
+        // Check if we're already in the articles folder
+        var currentPath = window.location.pathname;
+        if (currentPath.indexOf('/articles/') !== -1) {
+          // Already in articles folder, go to index.html
+          window.location.href = "index.html";
+        } else {
+          // On main site, go to articles/index.html
+          window.location.href = "articles/index.html";
+        }
+      };
       var guideCards = _dashPanelEl.querySelectorAll(".tool-card[data-guide-url]");
       Array.prototype.forEach.call(guideCards, function (gCard) {
         gCard.addEventListener("click", function () {
