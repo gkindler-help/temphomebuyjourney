@@ -467,7 +467,21 @@
       </div>
     </div>
 
-    <!-- Topic 2: Figuring Out Your Budget -->
+    <!-- Topic 2: How Much House Can You Afford? -->
+    <div class="topic-accordion">
+      <button class="topic-header" onclick="toggleTopic('income')">
+        <div>
+          <h2 class="topic-title">How Much House Can You Afford? (By Salary)</h2>
+          <p class="topic-subtitle">Real affordability math for every salary level — $50K through $200K+. Uses actual St. Louis property taxes, insurance, and neighborhoods that fit your budget.</p>
+        </div>
+        <span class="accordion-icon" id="income-icon">+</span>
+      </button>
+      <div class="topic-content" id="income-content">
+        <div class="cards-grid" id="incomeGrid"></div>
+      </div>
+    </div>
+
+    <!-- Topic 3: Figuring Out Your Budget -->
     <div class="topic-accordion">
       <button class="topic-header" onclick="toggleTopic('budget')">
         <div>
@@ -481,7 +495,7 @@
       </div>
     </div>
 
-    <!-- Topic 3: VA Buyers -->
+    <!-- Topic 4: VA Buyers -->
     <div class="topic-accordion">
       <button class="topic-header" onclick="toggleTopic('vabuyers')">
         <div>
@@ -495,7 +509,7 @@
       </div>
     </div>
 
-    <!-- Topic 4: Walking Homes -->
+    <!-- Topic 5: Walking Homes -->
     <div class="topic-accordion">
       <button class="topic-header" onclick="toggleTopic('walking')">
         <div>
@@ -509,7 +523,7 @@
       </div>
     </div>
 
-    <!-- Topic 5: School District Guides -->
+    <!-- Topic 6: School District Guides -->
     <div class="topic-accordion">
       <button class="topic-header" onclick="toggleTopic('schools')">
         <div>
@@ -523,7 +537,7 @@
       </div>
     </div>
 
-    <!-- Topic 6: Neighborhood Guides -->
+    <!-- Topic 7: Neighborhood Guides -->
     <div class="topic-accordion">
       <button class="topic-header" onclick="toggleTopic('neighborhoods')">
         <div>
@@ -537,7 +551,7 @@
       </div>
     </div>
 
-    <!-- Topic 7: Writing the Offer -->
+    <!-- Topic 8: Writing the Offer -->
     <div class="topic-accordion">
       <button class="topic-header" onclick="toggleTopic('offer')">
         <div>
@@ -551,7 +565,7 @@
       </div>
     </div>
 
-    <!-- Topic 8: For Sellers -->
+    <!-- Topic 9: For Sellers -->
     <div class="topic-accordion">
       <button class="topic-header" onclick="toggleTopic('sellers')">
         <div>
@@ -638,8 +652,8 @@
           'south-county-stl-neighborhood-guide'
         ]
       },
-      budget: {
-        featured: 'stl-affordability-by-zip-code',
+      income: {
+        featured: 'how-much-house-afford-making-70k-st-louis',
         articles: [
           'how-much-house-afford-making-50k-st-louis',
           'how-much-house-afford-making-60k-st-louis',
@@ -648,7 +662,12 @@
           'how-much-house-afford-making-100k-st-louis',
           'how-much-house-afford-making-120k-st-louis',
           'how-much-house-afford-making-150k-st-louis',
-          'how-much-house-afford-making-200k-st-louis',
+          'how-much-house-afford-making-200k-st-louis'
+        ]
+      },
+      budget: {
+        featured: 'stl-affordability-by-zip-code',
+        articles: [
           'stl-affordability-by-zip-code',
           'how-much-income-to-buy-home-stl',
           'first-time-buyer-programs-stl',
@@ -854,8 +873,9 @@
       console.log('Registry loaded:', !!window.ARTICLE_REGISTRY);
       
       renderCuratedTopic('finding', CURATED_TOPICS.finding);
-      renderCuratedTopic('neighborhoods', CURATED_TOPICS.neighborhoods);
+      renderCuratedTopic('income', CURATED_TOPICS.income);
       renderCuratedTopic('budget', CURATED_TOPICS.budget);
+      renderCuratedTopic('neighborhoods', CURATED_TOPICS.neighborhoods);
       renderCuratedTopic('walking', CURATED_TOPICS.walking);
       renderCuratedTopic('schools', null);
       renderCuratedTopic('offer', CURATED_TOPICS.offer);
