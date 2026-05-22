@@ -904,6 +904,19 @@ window.ARTICLE_REGISTRY = {
       tags: ["selling", "repairs", "pricing", "strategy", "competition"],
       toolLink: "https://stlhomejourney.com/tools/cash-offer-decoder",
       published: true
+    },
+    {
+      slug: "selling-home-south-st-louis-county",
+      title: "Selling Your Home in South St. Louis County — The Complete Guide",
+      description: "Based on 743 South County sales across Oakville, Crestwood, Concord, Affton, and Sappington: market velocity data, school district premiums, pricing by square footage, and the first-weekend strategy that works.",
+      pillLabel: "South County Selling Guide",
+      audience: "seller",
+      series: "area-guides",
+      isHub: false,
+      chapters: [],
+      tags: ["south-county", "selling", "market-data", "oakville", "crestwood", "concord", "affton", "sappington", "pricing", "school-districts"],
+      toolLink: "https://stlhomejourney.com/tools/cash-offer-decoder",
+      published: true
     }
 
   ],
