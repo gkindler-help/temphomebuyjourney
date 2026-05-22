@@ -1506,16 +1506,27 @@ function closeDrawer() {
           if (!gIsOpen) gDrawer.classList.add("open");
         });
       });
-      window.__stlGuideNav = function() { 
-        closeDashboard(); 
-        // Check if we're already in the articles folder
+      window.__stlGuideNav = function() {
+        // Get current page
         var currentPath = window.location.pathname;
-        if (currentPath.indexOf('/articles/') !== -1) {
-          // Already in articles folder, go to index.html
-          window.location.href = "index.html";
+        var currentFile = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+        
+        // If we're already on articles/index.html, do nothing
+        if (currentPath.includes('articles/') && currentFile === 'index.html') {
+          console.log('Already on articles index, no navigation needed');
+          closeDashboard();
+          return;
+        }
+        
+        closeDashboard();
+        
+        // Navigate based on current location
+        if (currentPath.includes('articles/')) {
+          // We're in an article page, go to articles index
+          window.location.href = 'index.html';
         } else {
-          // On main site, go to articles/index.html
-          window.location.href = "articles/index.html";
+          // We're on main site, go to articles index
+          window.location.href = 'articles/index.html';
         }
       };
       var guideCards = _dashPanelEl.querySelectorAll(".tool-card[data-guide-url]");
