@@ -1933,6 +1933,7 @@ function closeDrawer() {
         label: "Cash Offer & Seller Guides",
         tag: "Sellers",
         articles: [
+          { title: "5 Repairs That Won't Help You Sell", url: "articles/what-not-to-repair-before-selling-stl-pricing-strategy.html" },
           { title: "Should You Accept a Cash Offer?", url: "articles/should-you-accept-cash-offer-stl.html" },
           { title: "How Cash Buyers Calculate Offers", url: "articles/how-cash-buyers-calculate-offers-stl.html" },
           { title: "What You Lose With a Cash Offer", url: "articles/what-you-lose-with-cash-offer-stl.html" },

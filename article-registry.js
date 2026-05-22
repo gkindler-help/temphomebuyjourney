@@ -891,6 +891,19 @@ window.ARTICLE_REGISTRY = {
       tags: ["selling", "timing", "data", "seasonal", "pricing"],
       toolLink: null,
       published: false
+    },
+    {
+      slug: "what-not-to-repair-before-selling-stl-pricing-strategy",
+      title: "5 Expensive St. Louis Home Repairs That Won't Help You Sell (Price It Right Instead)",
+      description: "Don't waste $20K on repairs hoping to sell for more. Learn the first-weekend pricing strategy that gets St. Louis homes under contract in 3 days—often over asking price, with no inspection drama.",
+      pillLabel: "What NOT to Repair Before Selling",
+      audience: "seller",
+      series: "pricing",
+      isHub: false,
+      chapters: [],
+      tags: ["selling", "repairs", "pricing", "strategy", "competition"],
+      toolLink: "https://stlhomejourney.com/tools/cash-offer-decoder",
+      published: true
     }
 
   ],
