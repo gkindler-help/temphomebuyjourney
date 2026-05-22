@@ -80,18 +80,21 @@
     .faq-item{margin-bottom:28px;}
     .faq-q{font-size:.95rem;font-weight:600;color:var(--text-strong);margin-bottom:10px;line-height:1.5;}
     .faq-a{font-size:.9rem;color:var(--text-soft);line-height:1.72;}
-    .george-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;margin:48px 0;}
-    .george-card-top{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;}
-    .george-card-avatar{font-size:2.2rem;flex-shrink:0;}
-    .george-card-name{font-size:1.05rem;font-weight:700;color:var(--text-strong);margin-bottom:4px;}
-    .george-card-creds{font-size:.78rem;color:var(--text-dim);line-height:1.5;}
-    .george-card-line{font-size:.9rem;color:var(--text-soft);line-height:1.68;margin-bottom:18px;}
+    .george-card{background:linear-gradient(135deg,rgba(255,204,77,0.04) 0%,rgba(255,204,77,0.01) 100%);border:1px solid var(--gold-line);border-radius:16px;padding:28px;margin:48px 0;display:flex;gap:24px;align-items:flex-start;}
+    .george-card-photo{width:100px;height:100px;border-radius:50%;overflow:hidden;border:2px solid var(--gold-line);flex-shrink:0;background:var(--surface);}
+    .george-card-photo img{width:100%;height:100%;object-fit:cover;}
+    .george-card-content{flex:1;min-width:0;}
+    .george-card-name{font-family:var(--font-serif);font-size:1.25rem;font-weight:700;color:var(--text-strong);margin-bottom:4px;}
+    .george-card-title{font-size:0.82rem;color:var(--text-dim);margin-bottom:14px;line-height:1.5;}
+    .george-card-line{font-size:0.92rem;color:var(--text-soft);line-height:1.68;margin-bottom:18px;}
     .george-card-btns{display:flex;gap:10px;flex-wrap:wrap;}
-    .george-btn-p{padding:10px 20px;background:var(--gold);color:var(--bg);font-size:.88rem;font-weight:700;border-radius:8px;text-decoration:none;}
-    .george-btn-s{padding:10px 20px;background:var(--surface-2);border:1px solid var(--line-2);color:var(--text);font-size:.88rem;font-weight:600;border-radius:8px;text-decoration:none;}
-    .sources{font-size:.78rem;color:var(--text-dim);line-height:1.6;padding:20px;background:var(--surface);border-radius:10px;margin:32px 0;}
-    .sources strong{display:block;color:var(--text-soft);margin-bottom:6px;font-size:.82rem;}
-    .art-footer{background:var(--surface-2);border-top:1px solid var(--line);padding:32px 20px;text-align:center;font-size:.78rem;color:var(--text-dim);line-height:1.8;}
+    .george-btn-p{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#080808;font-weight:700;font-size:13px;letter-spacing:0.03em;padding:11px 20px;border-radius:8px;text-decoration:none;transition:transform 0.1s;}
+    .george-btn-p:hover{transform:translateY(-1px);}
+    .george-btn-s{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--gold-line);color:var(--gold);font-weight:600;font-size:13px;letter-spacing:0.03em;padding:10px 19px;border-radius:8px;text-decoration:none;transition:background 0.18s;}
+    .george-btn-s:hover{background:var(--gold-soft);}
+    .george-btn-about{display:inline-flex;align-items:center;gap:6px;color:var(--text-soft);font-weight:600;font-size:13px;letter-spacing:0.03em;padding:10px 19px;border-radius:8px;text-decoration:none;transition:color 0.18s;}
+    .george-btn-about:hover{color:var(--gold);}
+    @media (max-width:600px){.george-card{flex-direction:column;align-items:center;text-align:center;}.george-card-photo{width:90px;height:90px;}.george-card-btns{flex-direction:column;width:100%;}.george-btn-p,.george-btn-s,.george-btn-about{width:100%;justify-content:center;}}.art-footer{background:var(--surface-2);border-top:1px solid var(--line);padding:32px 20px;text-align:center;font-size:.78rem;color:var(--text-dim);line-height:1.8;}
   </style>
 </head>
 <body>
@@ -352,13 +355,21 @@
       VA Minimum Property Requirements (MPRs) from U.S. Department of Veterans Affairs. St. Louis contractor cost estimates from licensed electricians and roofers in St. Louis County and St. Louis City. Federal Pacific panel information from Consumer Product Safety Commission and St. Louis building code enforcement data.
     </div>
 
-    <div class="george-card">
-      <div class="george-card-top">
-        <div class="george-card-avatar">&#128075;</div>
-        <div>
-          <div class="george-card-name">George Kindler</div>
-          <div class="george-card-creds">Marine Corps Veteran (LAV Crewman, 2007-2011) &middot; Licensed Missouri Realtor &middot; The Closing Pros LLC &middot; 13 years &middot; 250+ transactions</div>
+        <div class="george-card">
+      <div class="george-card-photo">
+        <img src="../assets/george-family.jpg" alt="George Kindler">
+      </div>
+      <div class="george-card-content">
+        <div class="george-card-name">George Kindler</div>
+        <div class="george-card-title">Marine Corps Veteran • Licensed Missouri Agent • 13 Years • 250+ Transactions</div>
+        <p class="george-card-line">Grew up in South St. Louis, lived in Dogtown for 6 years, now in South County. You'll find us at White Flag Church on Sundays. This is my city, and I know it well.</p>
+        <div class="george-card-btns">
+          <a href="tel:3144351087" class="george-btn-p">📞 314.435.1087</a>
+          <a href="mailto:georgeandlizk@gmail.com" class="george-btn-s">Send Email</a>
+          <a href="../about.html" class="george-btn-about">About George →</a>
         </div>
+      </div>
+    </div>
       </div>
       <p class="george-card-line">I have closed VA loans in St. Louis and I know what kills deals. If you are using a VA loan to buy in St. Louis, I will screen properties before you write an offer so you do not waste time on homes that will not pass the appraisal.</p>
       <div class="george-card-btns">
