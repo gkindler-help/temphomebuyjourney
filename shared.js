@@ -1948,7 +1948,7 @@ function closeDrawer() {
     var html =
       "<div style=\"padding:14px 16px 6px;display:flex;align-items:center;justify-content:space-between;\">" +
         "<div style=\"font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)\">St. Louis Guides</div>" +
-        "<a href=\"articles/index.html\" style=\"font-size:10px;color:var(--text-dim);background:none;border:1px solid var(--line-2);padding:4px 10px;border-radius:999px;cursor:pointer;text-decoration:none;display:inline-block;\">View All \u203a</a>" +
+        "<a href=\"/articles/\" style=\"font-size:10px;color:var(--text-dim);background:none;border:1px solid var(--line-2);padding:4px 10px;border-radius:999px;cursor:pointer;text-decoration:none;display:inline-block;\">View All ›</a>" +
       "</div>";
 
     guidesSeries.forEach(function(s) {
