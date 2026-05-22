@@ -459,7 +459,21 @@
       </div>
     </div>
 
-    <!-- Topic 3: Walking Homes -->
+    <!-- Topic 3: VA Buyers -->
+    <div class="topic-accordion">
+      <button class="topic-header" onclick="toggleTopic('vabuyers')">
+        <div>
+          <h2 class="topic-title">VA Buyers</h2>
+          <p class="topic-subtitle">From a Marine Corps veteran who's closed VA loans in St. Louis — appraisal traps, electrical panels, deal-killers, and how to screen properties before you write an offer.</p>
+        </div>
+        <span class="accordion-icon" id="vabuyers-icon">+</span>
+      </button>
+      <div class="topic-content" id="vabuyers-content">
+        <div class="cards-grid" id="vabuyersGrid"></div>
+      </div>
+    </div>
+
+    <!-- Topic 4: Walking Homes -->
     <div class="topic-accordion">
       <button class="topic-header" onclick="toggleTopic('walking')">
         <div>
@@ -473,7 +487,7 @@
       </div>
     </div>
 
-    <!-- Topic 4: School District Guides -->
+    <!-- Topic 5: School District Guides -->
     <div class="topic-accordion">
       <button class="topic-header" onclick="toggleTopic('schools')">
         <div>
@@ -487,7 +501,7 @@
       </div>
     </div>
 
-    <!-- Topic 5: Neighborhood Guides -->
+    <!-- Topic 6: Neighborhood Guides -->
     <div class="topic-accordion">
       <button class="topic-header" onclick="toggleTopic('neighborhoods')">
         <div>
@@ -501,7 +515,7 @@
       </div>
     </div>
 
-    <!-- Topic 6: Writing the Offer -->
+    <!-- Topic 7: Writing the Offer -->
     <div class="topic-accordion">
       <button class="topic-header" onclick="toggleTopic('offer')">
         <div>
@@ -515,7 +529,7 @@
       </div>
     </div>
 
-    <!-- Topic 7: For Sellers -->
+    <!-- Topic 8: For Sellers -->
     <div class="topic-accordion">
       <button class="topic-header" onclick="toggleTopic('sellers')">
         <div>
@@ -606,7 +620,12 @@
           'conventional-vs-fha-loan-st-louis',
           'how-much-down-payment-st-louis',
           'renting-vs-buying-stl',
-          'credit-score-buy-home-st-louis',
+          'credit-score-buy-home-st-louis'
+        ]
+      },
+      vabuyers: {
+        featured: 'va-home-loan-st-louis-what-kills-deals',
+        articles: [
           'va-home-loan-st-louis-what-kills-deals',
           'federal-pacific-panel-va-loan-st-louis',
           'can-you-buy-fixer-upper-va-loan-st-louis',
