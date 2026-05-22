@@ -1506,27 +1506,6 @@ function closeDrawer() {
           if (!gIsOpen) gDrawer.classList.add("open");
         });
       });
-      window.__stlGuideNav = function() {
-        // Get current page
-        var currentPath = window.location.pathname;
-        
-        // Navigate based on current location
-        // Don't close dashboard first - let navigation happen, next page will handle UI
-        if (currentPath.includes('articles/')) {
-          // We're in articles folder
-          var currentFile = currentPath.substring(currentPath.lastIndexOf('/') + 1);
-          if (currentFile === 'index.html') {
-            // Already on articles index, just close dashboard
-            closeDashboard();
-            return;
-          }
-          // In an article page, navigate to articles index
-          window.location.href = 'index.html';
-        } else {
-          // On main site, navigate to articles index
-          window.location.href = 'articles/index.html';
-        }
-      };
       var guideCards = _dashPanelEl.querySelectorAll(".tool-card[data-guide-url]");
       Array.prototype.forEach.call(guideCards, function (gCard) {
         gCard.addEventListener("click", function () {
@@ -1915,7 +1894,7 @@ function closeDrawer() {
     var html =
       "<div style=\"padding:14px 16px 6px;display:flex;align-items:center;justify-content:space-between;\">" +
         "<div style=\"font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)\">St. Louis Guides</div>" +
-        "<button onclick=\"window.__stlGuideNav && window.__stlGuideNav();\" style=\"font-size:10px;color:var(--text-dim);background:none;border:1px solid var(--line-2);padding:4px 10px;border-radius:999px;cursor:pointer;\">View All \u203a</button>" +
+        "<a href=\"articles/index.html\" style=\"font-size:10px;color:var(--text-dim);background:none;border:1px solid var(--line-2);padding:4px 10px;border-radius:999px;cursor:pointer;text-decoration:none;display:inline-block;\">View All \u203a</a>" +
       "</div>";
 
     guidesSeries.forEach(function(s) {
