@@ -18,6 +18,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared.css">
 <style>
+/* Header Navigation */
+.art-hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:rgba(5,5,5,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;z-index:100;}
+.art-hdr-l{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;}
+.art-hdr-ico{width:32px;height:32px;flex-shrink:0;}
+.art-hdr-ico img{width:100%;height:100%;object-fit:contain;}
+.art-hdr-t{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:rgba(255,255,255,.88);line-height:1.2;}
+.art-hdr-t span{color:#ffcc4d;}
+.art-hdr-name{font-size:10px;color:rgba(255,255,255,.54);margin-top:2px;}
+.art-hdr-tagline{font-size:9px;color:rgba(255,255,255,.38);margin-top:1px;max-width:200px;}
+.art-hdr-nav{display:flex;gap:8px;}
+.art-hdr-btn{font-size:12px;font-weight:600;padding:8px 16px;border-radius:6px;text-decoration:none;color:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.08);transition:all 0.15s;}
+.art-hdr-btn:hover{color:rgba(255,255,255,.88);border-color:rgba(255,204,77,.3);background:rgba(255,204,77,.08);}
+.art-hdr-btn.gold{background:#ffcc4d;color:#080808;border-color:#ffcc4d;}
+.art-hdr-btn.gold:hover{transform:translateY(-1px);}
+
 body{background:#050505;color:rgba(255,255,255,.88);font-family:'Inter',-apple-system,sans-serif;line-height:1.65;padding:0;margin:0;overflow-x:hidden;}
 .article-header{background:linear-gradient(180deg,rgba(5,5,5,0) 0%,#050505 100%),url('../assets/south-county-aerial.jpg') center/cover;min-height:320px;display:flex;align-items:flex-end;padding:40px 20px;position:relative;}
 .article-header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.3) 0%,rgba(5,5,5,.95) 100%);z-index:1;}
@@ -66,6 +81,21 @@ h2{font-size:24px;}
 </style>
 </head>
 <body>
+
+<header class="art-hdr">
+  <a href="../index.html" class="art-hdr-l">
+    <div class="art-hdr-ico"><img src="../assets/STLhomebuyerjourneylogo.png" alt="" onerror="this.style.display='none'"></div>
+    <div>
+      <div class="art-hdr-t"><span>STL</span> Home Journey</div>
+      <div class="art-hdr-name">George Kindler</div>
+      <div class="art-hdr-tagline">13 Years Experience At Your Fingertips</div>
+    </div>
+  </a>
+  <nav class="art-hdr-nav">
+    <a href="index.html" class="art-hdr-btn">Guides</a>
+    <a href="../index.html" class="art-hdr-btn gold">Journey</a>
+  </nav>
+</header>
 
 <div class="article-header">
   <div class="header-content">
