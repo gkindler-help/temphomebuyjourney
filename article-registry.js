@@ -917,6 +917,19 @@ window.ARTICLE_REGISTRY = {
       tags: ["south-county", "selling", "market-data", "oakville", "crestwood", "concord", "affton", "sappington", "pricing", "school-districts"],
       toolLink: "https://stlhomejourney.com/tools/cash-offer-decoder",
       published: true
+    },
+    {
+      slug: "how-much-house-afford-making-70k-st-louis",
+      title: "How Much House Can You Afford Making $70K in St. Louis? (Real Numbers)",
+      description: "On a $70K salary in St. Louis, you can afford a $230K-$260K home depending on debt and down payment. Real PITI breakdown using actual St. Louis property taxes, plus neighborhoods that fit your budget.",
+      pillLabel: "Affordability on $70K Salary",
+      audience: "buyer",
+      series: "income-guides",
+      isHub: false,
+      chapters: [2],
+      tags: ["affordability", "income", "salary", "budget", "oakville", "affton", "arnold", "first-time-buyer", "mortgage"],
+      toolLink: "https://stlhomejourney.com/afford.html",
+      published: true
     }
 
   ],

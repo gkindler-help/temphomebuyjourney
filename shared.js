@@ -1893,6 +1893,7 @@ function closeDrawer() {
         label: "St. Louis Affordability & Budget",
         tag: "Buyers",
         articles: [
+          { title: "How Much House on $70K Salary?", url: "articles/how-much-house-afford-making-70k-st-louis.html" },
           { title: "Affordability by Zip Code", url: "articles/stl-affordability-by-zip-code.html" },
           { title: "Buyer Closing Costs in St. Louis", url: "articles/buyer-closing-costs-st-louis.html" },
           { title: "Renting vs. Buying in St. Louis", url: "articles/renting-vs-buying-stl.html" },
