@@ -290,7 +290,12 @@
     .iceberg-item{font-size:.8rem;color:var(--text-soft);padding:6px 10px;background:var(--surface-2);border-radius:6px;border:1px solid var(--line);}
     .iceberg-item.highlight{border-color:var(--gold-line);color:var(--gold);}
     @media(max-width:600px){.art-layout{padding:0 16px 64px;}.art-title{font-size:1.5rem;}.art-hdr-tagline{display:none;}.concession-grid{grid-template-columns:repeat(3,1fr);}.iceberg-items{grid-template-columns:1fr;}}
-  </style>
+  .guide-nav-box{background:linear-gradient(135deg,rgba(255,204,77,0.06) 0%,rgba(255,204,77,0.02) 100%);border:1px solid var(--gold-line);border-radius:12px;padding:24px;margin:48px 0;text-align:center;}
+    .guide-nav-title{font-family:var(--font-serif);font-size:1.15rem;font-weight:700;color:var(--text-strong);margin-bottom:8px;}
+    .guide-nav-desc{font-size:0.9rem;color:var(--text-soft);margin-bottom:18px;line-height:1.65;}
+    .guide-nav-link{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--gold);color:#080808;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;transition:transform 0.1s;}
+    .guide-nav-link:hover{transform:translateY(-2px);}
+    </style>
 </head>
 <body>
 <header class="art-hdr">
@@ -665,7 +670,14 @@
         <!-- FIXED: Current article marked as active -->
         <a href="buyer-closing-costs-st-louis.html" class="series-link active-article"><span class="series-link-title">&#10003; Buyer Closing Costs in St. Louis: The Full Breakdown</span><span class="series-link-arr">You are here</span></a>
       </div>
-    </div>
+    </div>    <section aria-label="Complete Guide">
+      <div class="guide-nav-box">
+        <h3 class="guide-nav-title">See the Full Picture</h3>
+        <p class="guide-nav-desc">This is one piece of the St. Louis home buying process. See how it all fits together:</p>
+        <a href="../complete-guide.html" class="guide-nav-link">📚 Complete St. Louis Buyer Guide →</a>
+      </div>
+    </section>
+
 
         <div class="george-card">
       <div class="george-card-photo">
