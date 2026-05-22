@@ -1846,6 +1846,39 @@ function closeDrawer() {
   function _buildGuidesPanelHTML() {
     var guidesSeries = [
       {
+        label: "VA Home Loans in St. Louis",
+        tag: "VA Buyers",
+        articles: [
+          { title: "VA Loans: What Kills Deals in St. Louis", url: "articles/va-home-loan-st-louis-what-kills-deals.html" },
+          { title: "Federal Pacific Panels & VA Loans", url: "articles/federal-pacific-panel-va-loan-st-louis.html" },
+          { title: "Can You Buy a Fixer-Upper with a VA Loan?", url: "articles/can-you-buy-fixer-upper-va-loan-st-louis.html" },
+          { title: "VA Appraisal Failed: What Happens Next", url: "articles/va-appraisal-failed-st-louis-what-happens-next.html" },
+          { title: "Pre-Offer Screening Checklist for VA Buyers", url: "articles/how-to-screen-stl-homes-before-va-offer.html" }
+        ]
+      },
+      {
+        label: "Pre-Approval & Mortgage",
+        tag: "Buyers",
+        articles: [
+          { title: "Mortgage Pre-Approval in St. Louis", url: "articles/mortgage-pre-approval-st-louis.html" },
+          { title: "How Much Income Do You Need?", url: "articles/how-much-income-to-buy-home-stl.html" },
+          { title: "Credit Score Requirements", url: "articles/credit-score-buy-home-st-louis.html" },
+          { title: "Conventional vs. FHA Loans", url: "articles/conventional-vs-fha-loan-st-louis.html" },
+          { title: "How Much Down Payment?", url: "articles/how-much-down-payment-st-louis.html" }
+        ]
+      },
+      {
+        label: "Buyer Representation & NAR Settlement",
+        tag: "Buyers",
+        articles: [
+          { title: "Do You Need a Buyer's Agent?", url: "articles/do-i-need-a-buyers-agent-stl.html" },
+          { title: "What a Buyer's Agent Actually Does", url: "articles/what-buyer-agent-actually-does-stl.html" },
+          { title: "How to Interview a Buyer's Agent", url: "articles/how-to-interview-buyers-agent-stl.html" },
+          { title: "Red Flags of a Bad Buyer's Agent", url: "articles/red-flags-bad-buyer-agent-stl.html" },
+          { title: "NAR Settlement: What Changed", url: "articles/nar-settlement-buyer-representation-stl.html" }
+        ]
+      },
+      {
         label: "The Truth About Zillow",
         tag: "Buyers & Sellers",
         articles: [
@@ -1857,14 +1890,25 @@ function closeDrawer() {
         ]
       },
       {
-        label: "St. Louis Affordability by Zip Code",
+        label: "St. Louis Affordability & Budget",
         tag: "Buyers",
         articles: [
           { title: "Affordability by Zip Code", url: "articles/stl-affordability-by-zip-code.html" },
-          { title: "Income Needed to Buy in St. Louis", url: "articles/how-much-income-to-buy-home-stl.html" },
+          { title: "Buyer Closing Costs in St. Louis", url: "articles/buyer-closing-costs-st-louis.html" },
           { title: "Renting vs. Buying in St. Louis", url: "articles/renting-vs-buying-stl.html" },
-          { title: "First-Time Buyer Programs in St. Louis", url: "articles/first-time-buyer-programs-stl.html" },
+          { title: "First-Time Buyer Programs", url: "articles/first-time-buyer-programs-stl.html" },
           { title: "Most Affordable Zip Codes (2026)", url: "articles/most-affordable-zip-codes-stl-2026.html" }
+        ]
+      },
+      {
+        label: "St. Louis Neighborhoods & Schools",
+        tag: "Buyers",
+        articles: [
+          { title: "South County Neighborhood Guide", url: "articles/south-county-stl-neighborhood-guide.html" },
+          { title: "South County Neighborhoods by Price", url: "articles/south-county-stl-neighborhoods-by-price.html" },
+          { title: "Buying a Home in Oakville, MO", url: "articles/buying-a-home-in-oakville-mo.html" },
+          { title: "Lindbergh vs. Mehlville School Districts", url: "articles/lindbergh-vs-mehlville-school-district-stl.html" },
+          { title: "Mehlville vs. Oakville vs. Concord", url: "articles/mehlville-vs-oakville-vs-concord-stl.html" }
         ]
       },
       {
@@ -1878,15 +1922,23 @@ function closeDrawer() {
         ]
       },
       {
+        label: "Negotiation & Price Reductions",
+        tag: "Buyers",
+        articles: [
+          { title: "$30K Price Reduction Case Study", url: "articles/st-louis-home-price-reduction-negotiation.html" },
+          { title: "Average Price Reduction After Inspection", url: "articles/average-price-reduction-after-inspection-st-louis.html" }
+        ]
+      },
+      {
         label: "Cash Offer & Seller Guides",
         tag: "Sellers",
         articles: [
           { title: "Should You Accept a Cash Offer?", url: "articles/should-you-accept-cash-offer-stl.html" },
           { title: "How Cash Buyers Calculate Offers", url: "articles/how-cash-buyers-calculate-offers-stl.html" },
           { title: "What You Lose With a Cash Offer", url: "articles/what-you-lose-with-cash-offer-stl.html" },
-          { title: "What Does It Cost to Sell in St. Louis?", url: "articles/cost-to-sell-home-stl.html" },
           { title: "What Will I Net Selling My Home?", url: "articles/what-will-i-net-selling-stl.html" },
-          { title: "Who Pays the Buyer Agent Commission Now?", url: "articles/who-pays-buyer-agent-commission-stl.html" }
+          { title: "What Does It Cost to Sell in St. Louis?", url: "articles/cost-to-sell-home-stl.html" },
+          { title: "Who Pays the Buyer Agent Commission?", url: "articles/who-pays-buyer-agent-commission-stl.html" }
         ]
       }
     ];
