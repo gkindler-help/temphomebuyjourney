@@ -1509,23 +1509,21 @@ function closeDrawer() {
       window.__stlGuideNav = function() {
         // Get current page
         var currentPath = window.location.pathname;
-        var currentFile = currentPath.substring(currentPath.lastIndexOf('/') + 1);
-        
-        // If we're already on articles/index.html, do nothing
-        if (currentPath.includes('articles/') && currentFile === 'index.html') {
-          console.log('Already on articles index, no navigation needed');
-          closeDashboard();
-          return;
-        }
-        
-        closeDashboard();
         
         // Navigate based on current location
+        // Don't close dashboard first - let navigation happen, next page will handle UI
         if (currentPath.includes('articles/')) {
-          // We're in an article page, go to articles index
+          // We're in articles folder
+          var currentFile = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+          if (currentFile === 'index.html') {
+            // Already on articles index, just close dashboard
+            closeDashboard();
+            return;
+          }
+          // In an article page, navigate to articles index
           window.location.href = 'index.html';
         } else {
-          // We're on main site, go to articles index
+          // On main site, navigate to articles index
           window.location.href = 'articles/index.html';
         }
       };
