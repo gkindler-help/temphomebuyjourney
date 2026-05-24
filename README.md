@@ -395,8 +395,18 @@ All 171 pages have correct absolute canonical URLs without .html extension.
 1. Submit sitemap.xml to Google Search Console
 2. Request indexing on: homepage, lindbergh-vs-mehlville, crestwood, south-county-neighborhood-guide, should-you-accept-cash-offer, cash-offer-decoder
 
+**🔴 HIGH PRIORITY — Affordability Side Panel:**
+Deploy the affordability map (afford.html) as a persistent side panel across all income guide articles ($50K-$200K). Goal: dwell time. Reader is already on the page thinking about their budget — the map keeps them there exploring zip codes instead of bouncing.
+
+Implementation notes:
+- May require a new system in shared.js (or a lightweight panel system scoped to articles only — don't touch homepage shared.js nav)
+- Pattern: reader scrolls to neighborhood section → panel slides in from right or bottom → shows afford.html map filtered to their income bracket
+- Alternative: inline iframe embed within the article below the neighborhood cards — no slide mechanic needed
+- Either approach should use the existing zip-data.js data already on the page
+- Article pages already have the income bracket baked in — use it to pre-filter the map on load
+
 **Short-term (1 session):**
-1. Push staged homepage snippet
+1. Affordability side panel — income guide articles
 2. FAQPage schema deployment to ~40 articles
 3. Transaction scenario articles (5 needed — highest content ROI)
 
