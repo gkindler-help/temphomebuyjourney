@@ -12,7 +12,7 @@
 - **Purpose:** Consumer-first buyer education (not lead generation)
 - **Content:** 54 articles, 98 neighborhood guides, 6 interactive tools
 - **Tech Stack:** Vanilla HTML/CSS/JS, Phaser 3, Cloudflare Pages
-- **SEO Status:** Comprehensive JSON-LD schema on 153 pages
+- **SEO Status:** Comprehensive JSON-LD schema on 153 pages, all snippets rewritten
 - **Traffic Goal:** Organic search → authority on St. Louis real estate
 - **Monetization:** Direct buyer/seller representation (no ads, no affiliate links)
 
@@ -85,10 +85,7 @@ stlhomejourney.com/
 │
 ├── neighborhoods/                # 98 NEIGHBORHOOD GUIDES
 │   ├── index.html               # Interactive neighborhood selector
-│   ├── affton.html
-│   ├── arnold.html
-│   ├── ballwin.html
-│   └── [95 more neighborhoods across:]
+│   └── [97 neighborhood pages across:]
 │       - St. Louis City (11 neighborhoods)
 │       - South County (23 neighborhoods)
 │       - West County (18 neighborhoods)
@@ -107,6 +104,10 @@ stlhomejourney.com/
 │   ├── compare.html             # Property comparison (side-by-side analysis)
 │   ├── fails.html               # Common home failures (FPE, cast iron, etc.)
 │   └── neighborhood-matcher.html # Quiz → neighborhood recommendations
+│
+├── stl-quiz.html                # "Are You Actually From St. Louis?" quiz (STAGED - not linked yet)
+│
+├── _redirects                   # Cloudflare redirects (301s for all .html URLs)
 │
 ├── assets/
 │   ├── STLhomebuyerjourneylogo.png  # Main logo (512x512)
@@ -133,6 +134,12 @@ stlhomejourney.com/
 - **Voice:** Direct, tactical, first-person, no jargon
 - **Visual Style:** Dark mode, high contrast, data-driven
 
+### **Content Voice Rules:**
+- St. Louis City → "block by block" (accurate for city neighborhoods)
+- St. Louis County → "subdivision" or "neighborhood" (never "block by block")
+- Income guides → "maximum budget" not "you can afford"
+- Snippet formula → "[City] homes [hook] — [geographic anchor]"
+
 ### **Header Standards:**
 **DO NOT MODIFY `shared.js`** - controls homepage dashboard navigation
 
@@ -154,7 +161,7 @@ stlhomejourney.com/
 </header>
 ```
 
-**Neighborhood Header:** Same structure, `.nbhd-hdr` class
+**Neighborhood Header:** Same structure, `.nbhd-hdr` class  
 **About Page:** Simplified `.header` class with back button
 
 **Reference:** See `HEADER-NAVIGATION-STANDARDS.md`
@@ -186,36 +193,10 @@ Each tab opens a panel (via `shared.js`) with content loaded in iframe or direct
 ### **Article → Article Interlinking:**
 **Pattern:** Context-aware inline links + "Related Articles" sections
 
-**Example (from VA loan article):**
-- Link to → Inspection article (when discussing VA appraisal requirements)
-- Link to → Fixer-upper article (when VA won't finance certain homes)
-- Link to → Federal Pacific panel article (common VA appraisal killer)
-
 **Registry:** `article-registry.js` (planned - not yet implemented)
 
-### **Seller Guides → Buyer Guides:**
-**Cross-pollination strategy:**
-
-**From Seller Articles:**
-- "What Not to Repair Before Selling" → Links to "What to Look For When Buying"
-- "Cost to Sell" → Links to "Buyer Closing Costs"
-- "Pricing Strategy" → Links to "How Cash Buyers Calculate Offers"
-
-**From Buyer Articles:**
-- "Home Inspection Guide" → Links to "What Sellers Should Fix"
-- "Negotiation Tactics" → Links to "Seller Pricing Psychology"
-
-**Status:** Seller guides exist but interlinking not yet systematized
-
 ### **Tools → Articles:**
-**Current State:** Tools are standalone, minimal linking back to articles
-
-**Recommended Enhancement:**
-- Prep Tool → Link to "Open House Strategy" article
-- Affordability Map → Link to income-specific guides ($50K, $70K, etc.)
-- Cost Survival Guide → Link to "Home Inspection" and "Repair Cost Guide"
-- Compare Tool → Link to "How to Interview Buyer Agents"
-
+**Current State:** Tools are standalone, minimal linking back to articles  
 **Not Yet Implemented** - opportunity for future session
 
 ---
@@ -228,150 +209,72 @@ Each tab opens a panel (via `shared.js`) with content loaded in iframe or direct
 - ✅ Articles (54): Article + BreadcrumbList
 - ✅ Neighborhoods (98): WebPage + BreadcrumbList + FAQPage
 
-**Schema Deployment History:**
-1. **Phase 1 (May 23, 2026):** Article + BreadcrumbList schema deployed to all 54 articles
-2. **Phase 2 (May 23, 2026):** Enhanced homepage with @graph structure
-3. **Existing:** Neighborhoods already had comprehensive schema (WebPage + FAQ)
+### **Snippet Framework (Applied May 2026):**
+Psychology basis: Information Gap Theory (Loewenstein) + Loss Aversion (Kahneman)
 
-**Schema Templates:** See `SCHEMA-DEPLOYMENT-SUMMARY.md`
+**Three-layer structure:**
+1. **Title = the gap** — specific thing they don't know that matters
+2. **Description = the stake + the credential** — what they lose by not reading, why this source closes it
+3. **Curvilinear rule** — enough to confirm they're in the right place, not enough to answer the question
 
-### **Pending SEO Enhancements (High ROI):**
-**PHASE 3 (Not Yet Done):** FAQPage schema on ~40 articles
-- Impact: FAQ rich snippets, "People Also Ask" eligibility
-- Effort: 3-4 hours
-- Priority: **HIGH**
+**All 54 articles:** Individually written, gap-first, real numbers in title where possible  
+**All 97 neighborhood pages:** Individually written, "[City] homes [hook] — [geographic anchor]" formula, real MARIS data  
+**Income guides:** "Maximum budget" framing, correct price ranges, MARIS neighborhood data
 
-**PHASE 4 (Not Yet Done):** HowTo schema on ~15 process articles
-- Impact: Step-by-step rich snippets
-- Effort: 2 hours
-- Priority: **HIGH**
+### **Canonical Tags:**
+All 171 pages have correct absolute canonical URLs without .html extension.
 
-**PHASE 5 (Not Yet Done):** VideoObject schema on ~10 articles with YouTube embeds
-- Impact: Video thumbnails in search
-- Effort: 1 hour
-- Priority: **MEDIUM**
+### **_redirects file (Cloudflare):**
+```
+/neighborhoods/:page.html   /neighborhoods/:page    301
+/articles/:page.html        /articles/:page         301
+/tools/:page.html           /tools/:page            301
+/school-districts/:page.html /school-districts/:page 301
+/stl-quiz                   /stl-quiz.html          200
+```
 
-### **Technical SEO Status:**
-✅ Sitemap.xml (165 URLs) - ready for Search Console submission
-✅ All canonical tags present
-✅ Meta descriptions on all pages
-✅ Schema validation: 100% pass rate
-✅ Image optimization: Pending (~3,900 KB flagged by Lighthouse)
-
-### **Google Search Console Data (Pre-Schema):**
-- 28 days: 137 impressions, 1 click (0.7% CTR)
-- **Issue:** Pages ranking but titles/descriptions weak
-- **Expected:** CTR increase to 2-5% after schema deployment (4-6 weeks)
+### **Pending Schema Phases:**
+- 🎯 **PHASE 3:** FAQPage schema (~40 articles) - 3-4 hours — HIGH PRIORITY
+- 🎯 **PHASE 4:** HowTo schema (~15 process articles) - 2 hours
+- 🎯 **PHASE 5:** VideoObject schema (~10 articles) - 1 hour
 
 ---
 
-## 📈 **CONTENT STRATEGY**
+## 🏘️ **NEIGHBORHOOD DATA**
 
-### **Authority Timeline:**
-**Current:** 54 articles (45% of minimum authority target)
+### **Source:** Manual curation + MARIS MLS 2025-2026
+### **Stored:** `neighborhoods.js` (NEIGHBORHOODS_REGISTRY)
 
-**To Reach Authority Status:**
-- **Minimum viable:** 100 articles + 50 backlinks (6-12 months)
-- **Strong authority:** 150 articles + 100 backlinks (12-18 months)
-- **Dominant:** 200+ articles + 200+ backlinks (18-24+ months)
-
-### **Content Prioritization (Next 10 Articles):**
-
-**Category 1: Transaction Scenarios (Highest ROI - Zero Competition)**
-1. What happens if home doesn't appraise St. Louis
-2. Can you back out after inspection St. Louis
-3. What if seller won't make repairs St. Louis
-4. Buying before selling current home St. Louis
-5. Can you waive inspection on VA loan St. Louis
-
-**Category 2: Employer Commute Guides (12-15 articles)**
-- BJC Healthcare headquarters → neighborhoods within 20 min
-- Boeing Defense headquarters → commute analysis
-- Anheuser-Busch → employee-friendly areas
-- [Other major STL employers]
-
-**Category 3: Life Event Guides**
-- Buying after divorce St. Louis
-- Buying after bankruptcy St. Louis
-- What to do with inherited property St. Louis
-
-### **Content Gaps (Seller Side - Need 6 More):**
-**Existing Seller Guides:** 3 (Cost to Sell, Pricing Strategy, South County Selling)
-**Missing:** West County, North County, St. Charles County, City selling guides
+**Income bracket → neighborhood mapping (from zip-data.js):**
+- $50K ($160K-$180K): Jennings, Berkeley, Bevo Mill, Normandy
+- $60K ($200K-$220K): Hazelwood, Florissant N., Overland, St. Ann
+- $70K ($230K-$260K): Mehlville, Affton, Arnold, Maplewood
+- $80K ($265K-$300K): Oakville, Arnold, St. Charles, O'Fallon
+- $100K ($330K-$375K): Webster Groves, Crestwood, Lake St. Louis, Brentwood
+- $120K ($400K-$450K): Kirkwood, Ballwin S., Sunset Hills, Ballwin
+- $150K ($500K-$575K): Chesterfield W., Des Peres, Chesterfield E., Ballwin
+- $200K ($650K-$800K): Ladue, Chesterfield (only 2 neighborhoods in metro at this range)
 
 ---
 
-## 🛠️ **INTERACTIVE TOOLS**
+## 📊 **DATA SOURCES**
 
-### **Tool Architecture:**
-All tools load inside a **Tool Panel** (controlled by `shared.js`):
-- Opens as overlay on homepage
-- Tools load in `<iframe>` to isolate styles
-- Header displays tool name
-- Close button returns to dashboard
+### **Market Data:**
+**Source:** MARIS (Mid America Regional Information Systems)  
+**Coverage:** 7,006 residential sales (2025-2026)  
+**Stored:** `zip-data.js`
 
-### **Tool Details:**
+**Data Points per Zip:**
+- Median sale price
+- First weekend offer rate
+- Average days on market
+- % sold above list price
+- Property tax rate
 
-**1. STL Open House Prep (`prep.html`)**
-- **Purpose:** Research competition before showing
-- **Data:** 7,006 MARIS sales across 79 zip codes
-- **Features:** Days on market, first-weekend success rate, true monthly cost
-- **Tech:** Vanilla JS + zip-data.js lookup
-
-**2. STL Affordability Map (`afford.html`)**
-- **Purpose:** Visual income → zip code matching
-- **Features:** 79 zips color-coded by affordability, finance panel with PITI calc
-- **Tech:** Leaflet.js for map rendering
-
-**3. STL Home Cost Survival Guide (`home-cost.html`)**
-- **Purpose:** Walk property, flag issues, estimate repair costs
-- **Features:** Room-by-room checklist, St. Louis-specific costs (HVAC, foundation, etc.)
-- **Tech:** Interactive form with cost database
-
-**4. Compare STL Properties (`compare.html`)**
-- **Purpose:** Side-by-side property analysis
-- **Features:** True monthly cost, property taxes, 30-year difference calculator
-- **Tech:** Dual-property input with financial modeling
-
-**5. STL Common Home Failures (`fails.html`)**
-- **Purpose:** Identify deal-killers before making offer
-- **Features:** Federal Pacific panels, cast iron plumbing, foundation issues, roofing
-- **Tech:** Educational checklist
-
-**6. STL Neighborhood Matcher (`neighborhood-matcher.html`)**
-- **Purpose:** Quiz-based neighborhood recommendations
-- **Features:** 5 questions → 7 area archetypes → specific neighborhoods
-- **Tech:** Scoring algorithm + NEIGHBORHOODS_REGISTRY integration
-
-### **Tool + Content Integration (Opportunity):**
-**Current:** Tools exist in isolation
-**Recommended:** Add "Related Articles" section to each tool linking to relevant guides
-
----
-
-## 🎬 **HOMEPAGE EXPERIENCE**
-
-### **Interactive Journey (Phaser 3):**
-**File:** `index.html` (1,500+ lines)
-
-**Structure:**
-1. **Intro Phase:** George character animation + hook ("They were counting on that")
-2. **Journey Phase:** Isometric town scene with 9 buildings (chapters)
-3. **Auto-Tour:** Gold glows guide user through chapters
-4. **Dashboard:** 4-tab navigation system (Tools/Resources/Neighborhoods/Guides)
-
-**Tech Stack:**
-- Phaser 3 game engine (4000×4000 canvas scaled to viewport)
-- CSS animations for character transitions
-- LocalStorage for journey progress (`stl_journey_v1`)
-- `shared.js` for dashboard rendering (DO NOT MODIFY)
-
-**Chapter Structure:**
-- **Chapters 0-9:** Main journey (Zillow → Pre-approval → Affordability → etc.)
-- **Chapters 100+:** Resource chapters (not in main journey flow)
-- **Chapters 200+:** Sub-chapters (branches like 03a-asis.html, 03b-moveinready.html)
-
-**Critical:** Homepage uses `shared.js` for navigation - modifications should be made to articles/neighborhoods, NOT homepage nav system.
+**Condition Tiers (derived from actual behavior):**
+- **As-Is:** 25th percentile price, DOM 45+
+- **Move-In Ready:** Median price, DOM 14-45
+- **Renovated:** 75th percentile price, DOM <14, SP/LP ≥1.0
 
 ---
 
@@ -405,12 +308,14 @@ All tools load inside a **Tool Panel** (controlled by `shared.js`):
 - `resources.js` - Article + neighborhood registry
 - `zip-data.js` - 7,006 MARIS sales data + 79 zip metadata
 - `neighborhoods.js` - 98 neighborhood metadata
+- `_redirects` - Cloudflare 301 redirects for .html URLs
 
 ### **Documentation:**
 - `SCHEMA-DEPLOYMENT-SUMMARY.md` - SEO roadmap + schema templates
 - `HEADER-NAVIGATION-STANDARDS.md` - Header patterns for all page types
 - `ARTICLE-TEMPLATE.html` - Copy/paste template for new articles
 - `STANDARD-HEADER-ARTICLE.html` - Article header component
+- `QUICK-START.md` - Condensed context for new chat sessions
 
 ### **Asset Requirements:**
 - `assets/STLhomebuyerjourneylogo.png` - Primary logo (DO NOT DELETE)
@@ -418,51 +323,10 @@ All tools load inside a **Tool Panel** (controlled by `shared.js`):
 
 ---
 
-## 📊 **DATA SOURCES**
-
-### **Market Data:**
-**Source:** MARIS (Mid America Regional Information Systems)
-**Coverage:** 7,006 residential sales (2025-2026)
-**Stored:** `zip-data.js`
-
-**Data Points per Zip:**
-- Median sale price
-- First weekend offer rate
-- Average days on market
-- % sold above list price
-- Property tax rate
-
-**Condition Tiers (derived from actual behavior):**
-- **As-Is:** 25th percentile price, DOM 45+
-- **Move-In Ready:** Median price, DOM 14-45
-- **Renovated:** 75th percentile price, DOM <14, SP/LP ≥1.0
-
-### **Neighborhood Data:**
-**Source:** Manual curation + local knowledge
-**Stored:** `neighborhoods.js` (NEIGHBORHOODS_REGISTRY)
-
-**98 Neighborhoods Organized by:**
-- St. Louis City (11)
-- Central Corridor (8)
-- North County (22)
-- South County (23)
-- West County (18)
-- St. Charles County (12)
-- Jefferson County (12)
-
-**Metadata per Neighborhood:**
-- ID, name, county
-- Typical price range
-- School district
-- Character description
-- Best fit buyer profile
-
----
-
-## ✅ **RECENT CHANGES (May 22-23, 2026)**
+## ✅ **COMPLETED WORK LOG**
 
 ### **May 22, 2026:**
-1. ✅ Generated 7 income-based affordability guides ($50K-$200K) - "Order 66"
+1. ✅ Generated 8 income-based affordability guides ($50K-$200K) - "Order 66"
 2. ✅ Fixed George card floating issues across 98 neighborhood pages
 3. ✅ Created sitemap.xml with 165 URLs
 4. ✅ Added "Income Guides" section to articles page
@@ -479,49 +343,75 @@ All tools load inside a **Tool Panel** (controlled by `shared.js`):
 7. ✅ Created header standards documentation
 8. ✅ Site-wide validation - all schemas passing
 
+### **May 24, 2026:**
+1. ✅ Fixed canonical tags across 171 pages (removed .html extension)
+2. ✅ Cleaned internal .html links in 44 articles, 18 neighborhoods, 9 school-district pages
+3. ✅ Fixed neighborhood paths in neighborhoods.js registry
+4. ✅ Created _redirects file (301s for .html URLs across all sections)
+5. ✅ Built stl-quiz.html — "Are You Actually From St. Louis?" (staged, not linked)
+6. ✅ Rewrote snippets for all 54 articles (gap/stake/credential framework)
+7. ✅ Fixed income guides — correct price ranges ($50K→$160K-$180K through $200K→$650K-$800K)
+8. ✅ Rewrote income guide neighborhood sections with real MARIS zip data
+9. ✅ Reframed income guides as "maximum budget" not "you can afford"
+10. ✅ Rewrote snippets for all 97 neighborhood pages individually
+11. ✅ Homepage snippet drafted — staged for next commit
+12. ✅ Updated QUICK-START.md
+
 ---
 
 ## 🎯 **KNOWN ISSUES & OPPORTUNITIES**
 
 ### **Technical Debt:**
 - ⚠️ Image optimization needed (~3,900 KB flagged by PageSpeed Lighthouse)
-- ⚠️ WebP conversion + responsive srcset (isometric town scene)
+- ⚠️ WebP conversion + responsive srcset (isometric town scene priority)
 - ⚠️ Tool → Article interlinking not systematized
 
 ### **Content Gaps:**
-- ⚠️ Missing 6 seller area guides (West County, North County, etc.)
-- ⚠️ Missing employer commute guides (BJC, Boeing, AB, etc.)
-- ⚠️ Missing transaction scenario articles (appraisal fails, inspection conflicts)
+- ⚠️ Missing 6 seller area guides (West County, North County, St. Charles County, Jefferson County, St. Louis City, Central Corridor)
+- ⚠️ Missing employer commute guides (BJC, Boeing, AB, Centene, Express Scripts, etc.)
+- ⚠️ Missing transaction scenario articles (appraisal fails, inspection conflicts, earnest money disputes)
+- ⚠️ No South City St. Louis neighborhood page (needed for Kings Highway / Christie Park article interlinking)
+- ⚠️ School district subdivision mapping needs rewrite (currently "block by block" — should be subdivision-level)
 
-### **SEO Opportunities (High ROI):**
-- 🎯 **PHASE 3:** FAQPage schema deployment (~40 articles) - 3-4 hours
-- 🎯 **PHASE 4:** HowTo schema deployment (~15 articles) - 2 hours
-- 🎯 **PHASE 5:** VideoObject schema (~10 articles) - 1 hour
+### **SEO Opportunities (Priority Order):**
+1. 🎯 Submit sitemap.xml to Google Search Console (5 minutes, do this now)
+2. 🎯 Request indexing on top 10 impression pages in Search Console URL Inspection tool
+3. 🎯 **PHASE 3:** FAQPage schema (~40 articles) - 3-4 hours
+4. 🎯 **PHASE 4:** HowTo schema (~15 process articles) - 2 hours
+5. 🎯 **PHASE 5:** VideoObject schema (~10 articles) - 1 hour
 
 ### **Future Features:**
 - 📸 360° property tours (Insta360 X5 owned, tech stack defined, blocked on content)
 - 📊 Infographics for income guides (placeholders exist, design pending)
 - 🗺️ Interactive school district map
 - 📧 Google Sheets integration for chapter review widget
+- 🎮 STL Quiz deployment (stl-quiz.html built, needs homepage link when ready)
 
 ---
 
 ## 🚀 **NEXT SESSION PRIORITIES**
 
-**Immediate (1-2 hours):**
-1. Deploy FAQPage schema to articles with Q&A sections
-2. Test articles in Google Rich Results Test
-3. Submit sitemap to Search Console
+**Do first (under 10 minutes each):**
+1. Submit sitemap.xml to Google Search Console
+2. Request indexing on: homepage, lindbergh-vs-mehlville, crestwood, south-county-neighborhood-guide, should-you-accept-cash-offer, cash-offer-decoder
 
-**Short-term (3-5 hours):**
-1. Write 5 transaction scenario articles
-2. Add HowTo schema to process articles
-3. Create infographics for affordability guides
+**Short-term (1 session):**
+1. Push staged homepage snippet
+2. FAQPage schema deployment to ~40 articles
+3. Transaction scenario articles (5 needed — highest content ROI)
 
-**Medium-term (10-15 hours):**
-1. Complete remaining seller area guides
-2. Systematize article interlinking
-3. Add "Related Articles" sections to all tools
+**Medium-term (2-3 sessions):**
+1. Employer commute guides (BJC, Boeing, AB — high search volume, zero competition)
+2. Seller area guides (6 needed)
+3. Systematize article interlinking (article-registry.js)
+4. Image optimization — WebP conversion, responsive srcset
+
+**Longer term:**
+1. HowTo schema (15 process articles)
+2. VideoObject schema (10 articles with YouTube embeds)
+3. South City neighborhood page
+4. School district subdivision mapping rewrite
+5. STL Quiz — decide deployment strategy
 
 ---
 
@@ -552,15 +442,17 @@ All tools load inside a **Tool Panel** (controlled by `shared.js`):
 - `SCHEMA-DEPLOYMENT-SUMMARY.md` - Complete SEO roadmap
 - `HEADER-NAVIGATION-STANDARDS.md` - Header patterns
 - `ARTICLE-TEMPLATE.html` - New article template
+- `QUICK-START.md` - Condensed context for new sessions
 - `assets/infographics/README.md` - Infographic creation guide
 
 **External:**
 - Google Analytics: G-EEE14BZT9P
-- Google Search Console: (submit sitemap.xml)
+- Google Search Console: (sitemap.xml pending submission)
 - Cloudflare Pages: Auto-deploy on push
+- GitHub: github.com/gkindler-help/temphomebuyjourney
 
 ---
 
-**Last Updated:** May 23, 2026  
-**Site Status:** ✅ Production-ready with comprehensive schema  
+**Last Updated:** May 24, 2026  
+**Site Status:** ✅ Production-ready — all snippets rewritten, schema deployed, canonicals clean  
 **Total Pages:** 188 HTML files (153 with schema markup)
