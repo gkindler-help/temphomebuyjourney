@@ -405,6 +405,16 @@ Implementation notes:
 - Either approach should use the existing zip-data.js data already on the page
 - Article pages already have the income bracket baked in — use it to pre-filter the map on load
 
+**🔴 HIGH PRIORITY — Condition Tier Data in Income Guides:**
+Pull in the cash offer decoder's as-is / move-in ready / renovated pricing tiers for each zip code into the income guide neighborhood cards. This is the real comparison buyers need — not just median price, but what their budget actually buys by condition across neighborhoods.
+
+Implementation notes:
+- zip-data.js already has the condition tier data (25th percentile = as-is, median = move-in ready, 75th percentile = renovated)
+- Each neighborhood card currently shows median only — add a three-tier breakdown: as-is floor, move-in ready median, renovated ceiling
+- Example: Oakville at $80K — as-is $240K, move-in ready $285K, renovated $340K — buyer immediately understands what their budget gets by condition
+- This directly answers the question every buyer has: "can I afford a move-in ready home here or am I looking at as-is?"
+- Connects income guide content to the cash offer decoder tool — natural interlinking opportunity
+
 **Short-term (1 session):**
 1. Affordability side panel — income guide articles
 2. FAQPage schema deployment to ~40 articles
