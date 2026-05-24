@@ -1,0 +1,5 @@
+/neighborhoods/:page.html   /neighborhoods/:page    301
+/articles/:page.html        /articles/:page         301
+/tools/:page.html           /tools/:page            301
+/school-districts/:page.html /school-districts/:page 301
+/stl-quiz                   /stl-quiz.html              200

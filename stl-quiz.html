@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Are You Actually From St. Louis? | STL Home Journey</title>
+<meta name="description" content="10 questions that separate real St. Louisans from the rest. No Google. No cheating. Can you pass the test?">
+<link rel="canonical" href="https://stlhomejourney.com/stl-quiz">
+<meta property="og:title" content="Are You Actually From St. Louis?">
+<meta property="og:description" content="10 questions that separate real St. Louisans from the rest.">
+<meta property="og:url" content="https://stlhomejourney.com/stl-quiz">
+<link rel="stylesheet" href="shared.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-sans,'Inter',sans-serif);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+.quiz-wrap{
+  max-width:600px;
+  margin:0 auto;
+  padding:0 16px 80px;
+}
+
+/* HEADER */
+.art-hdr{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 16px;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  background:rgba(5,5,5,.95);
+  backdrop-filter:blur(8px);
+  z-index:100;
+}
+.art-hdr-l{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.art-hdr-ico img{width:32px;height:32px;border-radius:6px}
+.art-hdr-t{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--white);line-height:1.1}
+.art-hdr-t span{color:var(--gold)}
+.art-hdr-name{font-size:10px;color:var(--text-dim);font-weight:500;letter-spacing:.04em}
+.art-hdr-tagline{font-size:9px;color:var(--text-faint);letter-spacing:.03em}
+.art-hdr-nav{display:flex;gap:16px;align-items:center}
+.art-hdr-nav a{font-size:12px;font-weight:600;color:var(--text-soft);text-decoration:none;letter-spacing:.04em;text-transform:uppercase}
+.art-hdr-nav a.gold{color:var(--gold)}
+
+/* HERO */
+.quiz-hero{
+  padding:40px 0 32px;
+  text-align:center;
+  border-bottom:1px solid var(--line);
+}
+.quiz-badge{
+  display:inline-block;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gold);
+  border:1px solid rgba(255,204,77,.3);
+  padding:5px 14px;
+  border-radius:100px;
+  margin-bottom:20px;
+}
+.quiz-hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,7vw,44px);
+  font-weight:900;
+  color:var(--white);
+  line-height:1.1;
+  margin-bottom:16px;
+}
+.quiz-hero h1 em{
+  color:var(--gold);
+  font-style:italic;
+}
+.quiz-hero p{
+  font-size:15px;
+  color:var(--text-soft);
+  line-height:1.6;
+  max-width:440px;
+  margin:0 auto 28px;
+}
+.quiz-hero .byline{
+  font-size:12px;
+  color:var(--text-dim);
+  font-style:italic;
+}
+
+/* PROGRESS */
+.progress-bar-wrap{
+  margin:28px 0 4px;
+  height:3px;
+  background:var(--surface-3);
+  border-radius:2px;
+  overflow:hidden;
+}
+.progress-bar-fill{
+  height:100%;
+  background:var(--gold);
+  border-radius:2px;
+  transition:width .4s ease;
+  width:0%;
+}
+.progress-label{
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+  color:var(--text-faint);
+  font-weight:600;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  margin-bottom:24px;
+}
+
+/* QUESTION CARD */
+.q-card{
+  background:var(--surface);
+  border:1px solid var(--line-2);
+  border-radius:16px;
+  padding:28px 24px 24px;
+  margin-bottom:16px;
+  display:none;
+  animation:slideIn .35s ease;
+}
+.q-card.active{display:block}
+@keyframes slideIn{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.q-number{
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:12px;
+  opacity:.8;
+}
+.q-text{
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+  font-weight:700;
+  color:var(--white);
+  line-height:1.35;
+  margin-bottom:24px;
+}
+.q-note{
+  font-size:12px;
+  color:var(--text-dim);
+  font-style:italic;
+  margin-top:-16px;
+  margin-bottom:20px;
+}
+
+/* ANSWER OPTIONS */
+.answers{display:flex;flex-direction:column;gap:10px}
+.ans-btn{
+  width:100%;
+  background:var(--bg-elev);
+  border:1px solid var(--line-2);
+  border-radius:10px;
+  padding:13px 16px;
+  text-align:left;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:500;
+  color:var(--text);
+  font-family:inherit;
+  transition:all .18s ease;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  line-height:1.4;
+}
+.ans-btn:hover{
+  background:var(--surface-2);
+  border-color:rgba(255,204,77,.4);
+  color:var(--white);
+}
+.ans-btn.correct{
+  background:rgba(255,204,77,.12);
+  border-color:var(--gold);
+  color:var(--gold);
+}
+.ans-btn.wrong{
+  background:rgba(200,50,50,.1);
+  border-color:rgba(200,50,50,.4);
+  color:rgba(255,100,100,.9);
+}
+.ans-btn.reveal{
+  background:rgba(255,204,77,.06);
+  border-color:rgba(255,204,77,.2);
+  color:var(--text-soft);
+}
+.ans-letter{
+  width:26px;height:26px;
+  border-radius:6px;
+  background:var(--surface-3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;
+  color:var(--text-dim);
+  flex-shrink:0;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  transition:all .18s;
+}
+.ans-btn.correct .ans-letter{background:var(--gold);color:#050505}
+.ans-btn.wrong .ans-letter{background:rgba(200,50,50,.3);color:rgba(255,100,100,.9)}
+
+/* FEEDBACK */
+.q-feedback{
+  margin-top:16px;
+  padding:14px 16px;
+  border-radius:10px;
+  font-size:13px;
+  line-height:1.55;
+  display:none;
+  border-left:3px solid var(--gold);
+  background:rgba(255,204,77,.06);
+  color:var(--text-soft);
+}
+.q-feedback.show{display:block}
+.q-feedback strong{color:var(--gold);font-weight:700}
+
+/* NEXT BTN */
+.next-btn{
+  margin-top:20px;
+  width:100%;
+  background:var(--gold);
+  color:#050505;
+  border:none;
+  border-radius:10px;
+  padding:14px 20px;
+  font-size:14px;
+  font-weight:800;
+  font-family:inherit;
+  cursor:pointer;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  display:none;
+  transition:opacity .2s;
+}
+.next-btn:hover{opacity:.88}
+.next-btn.show{display:block}
+
+/* SKIP */
+.skip-wrap{
+  text-align:center;
+  padding:24px 0 0;
+}
+.skip-link{
+  font-size:12px;
+  color:var(--text-faint);
+  text-decoration:none;
+  cursor:pointer;
+  border-bottom:1px dashed var(--line-2);
+  background:none;
+  border-left:none;
+  border-right:none;
+  border-top:none;
+  font-family:inherit;
+  padding-bottom:2px;
+  transition:color .15s;
+}
+.skip-link:hover{color:var(--text-soft)}
+
+/* RESULTS */
+.results-card{
+  display:none;
+  text-align:center;
+  padding:40px 24px;
+  background:var(--surface);
+  border:1px solid var(--line-2);
+  border-radius:16px;
+  animation:slideIn .4s ease;
+}
+.results-card.show{display:block}
+.result-score{
+  font-family:'Playfair Display',serif;
+  font-size:72px;
+  font-weight:900;
+  color:var(--gold);
+  line-height:1;
+  margin-bottom:4px;
+}
+.result-denom{
+  font-size:20px;
+  color:var(--text-dim);
+  margin-bottom:24px;
+  font-weight:500;
+}
+.result-title{
+  font-family:'Playfair Display',serif;
+  font-size:26px;
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:12px;
+  line-height:1.25;
+}
+.result-msg{
+  font-size:14px;
+  color:var(--text-soft);
+  line-height:1.65;
+  max-width:420px;
+  margin:0 auto 28px;
+}
+.result-divider{
+  height:1px;
+  background:var(--line);
+  margin:28px 0;
+}
+.result-cta-label{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--text-dim);
+  margin-bottom:14px;
+}
+.result-cta-btn{
+  display:inline-block;
+  background:var(--gold);
+  color:#050505;
+  font-weight:800;
+  font-size:14px;
+  font-family:inherit;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:14px 28px;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  transition:opacity .2s;
+}
+.result-cta-btn:hover{opacity:.88}
+.result-secondary{
+  display:block;
+  margin-top:14px;
+  font-size:12px;
+  color:var(--text-dim);
+  text-decoration:none;
+}
+.result-secondary:hover{color:var(--text-soft)}
+.retake-btn{
+  margin-top:20px;
+  background:none;
+  border:1px solid var(--line-2);
+  border-radius:10px;
+  padding:12px 24px;
+  font-size:13px;
+  font-weight:600;
+  color:var(--text-soft);
+  font-family:inherit;
+  cursor:pointer;
+  transition:all .18s;
+}
+.retake-btn:hover{border-color:rgba(255,204,77,.4);color:var(--text)}
+
+/* SCORE ROW */
+.score-row{
+  display:flex;
+  gap:8px;
+  margin-bottom:28px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.score-pip{
+  width:28px;height:28px;
+  border-radius:6px;
+  background:var(--surface-3);
+  border:1px solid var(--line-2);
+  font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+}
+.score-pip.got{background:rgba(255,204,77,.2);border-color:rgba(255,204,77,.5)}
+.score-pip.miss{background:rgba(200,50,50,.1);border-color:rgba(200,50,50,.3)}
+
+/* COMPLIANCE */
+.compliance-footer{
+  margin-top:48px;
+  padding:16px;
+  border-top:1px solid var(--line);
+  font-size:11px;
+  color:var(--text-faint);
+  text-align:center;
+  line-height:1.6;
+}
+.compliance-footer strong{color:var(--text-dim)}
+</style>
+</head>
+<body>
+
+<header class="art-hdr">
+  <a href="index.html" class="art-hdr-l">
+    <div class="art-hdr-ico"><img src="assets/STLhomebuyerjourneylogo.png" alt="STL Home Journey"></div>
+    <div>
+      <div class="art-hdr-t"><span>STL</span> Home Journey</div>
+      <div class="art-hdr-name">George Kindler</div>
+      <div class="art-hdr-tagline">13 Years Experience At Your Fingertips</div>
+    </div>
+  </a>
+  <nav class="art-hdr-nav">
+    <a href="articles/index.html">Guides</a>
+    <a href="index.html" class="gold">Journey</a>
+  </nav>
+</header>
+
+<div class="quiz-wrap">
+
+  <!-- HERO -->
+  <div class="quiz-hero" id="quizHero">
+    <div class="quiz-badge">St. Louis Verification Test</div>
+    <h1>Are You <em>Actually</em><br>From St. Louis?</h1>
+    <p>10 questions that separate real St. Louisans from people who just saw the Arch on a layover. No Google. No cheating. Your pride is at stake.</p>
+    <p class="byline">— George Kindler, born and raised in South County</p>
+    <div style="margin-top:28px">
+      <button class="result-cta-btn" onclick="startQuiz()" style="font-size:15px;padding:16px 36px">Take the Quiz</button>
+    </div>
+    <div class="skip-wrap">
+      <button class="skip-link" onclick="skipToContent()">Skip the fun, take me to the home buying guides →</button>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div id="quizProgress" style="display:none">
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressFill"></div></div>
+    <div class="progress-label">
+      <span id="progressText">Question 1 of 10</span>
+      <span id="scoreText">0 correct</span>
+    </div>
+  </div>
+
+  <!-- QUESTIONS -->
+  <div id="questionsWrap"></div>
+
+  <!-- RESULTS -->
+  <div class="results-card" id="resultsCard"></div>
+
+  <div class="compliance-footer">
+    <strong>The Closing Pros LLC</strong><br>
+    Licensed Missouri Real Estate Brokerage<br>
+    Office: 314-998-4550 · George's Direct: 314.435.1087<br>
+    This quiz is for entertainment only. No real estate licenses were harmed in the making of this page.
+  </div>
+
+</div>
+
+<script>
+const QUESTIONS = [
+  {
+    q: "What do St. Louisans call a carbonated soft drink?",
+    note: null,
+    answers: ["Soda", "Pop", "Coke", "Soda pop"],
+    correct: 0,
+    feedback: "<strong>It's 'soda.'</strong> Say 'pop' and people will look at you like you drove in from Illinois. Which, honestly, might be worse."
+  },
+  {
+    q: "You're at a backyard cookout. Someone hands you a 'concrete.' What did you just receive?",
+    note: null,
+    answers: [
+      "A building material — you're confused",
+      "A thick frozen custard so stiff it's served upside down",
+      "A cocktail made with cement dust, a Frozen Custard specialty",
+      "A regular ice cream cone, but heavier"
+    ],
+    correct: 1,
+    feedback: "<strong>Frozen custard. Upside down.</strong> Ted Drewes on Chippewa is the OG, and if you've never had a concrete on a hot August night, I'm not sure you've lived here."
+  },
+  {
+    q: "What's the actual name of the Arch? Be specific.",
+    note: "Everyone calls it 'the Arch.' What's on the sign?",
+    answers: [
+      "The St. Louis Gateway Arch",
+      "The Jefferson National Expansion Memorial",
+      "The Gateway to the West Arch",
+      "Gateway Arch National Park"
+    ],
+    correct: 3,
+    feedback: "<strong>Gateway Arch National Park</strong> — it became a national park in 2018. Most St. Louisans don't know this because they haven't gone to the Arch since a third-grade field trip."
+  },
+  {
+    q: "What is 'toasted ravioli' and where did it come from?",
+    note: null,
+    answers: [
+      "Ravioli baked in the oven, invented in Clayton",
+      "Breaded, deep-fried ravioli — accidentally invented on The Hill",
+      "A Pizza Hut special that St. Louis adopted",
+      "Regular ravioli that's toasted golden, a Soulard tradition"
+    ],
+    correct: 1,
+    feedback: "<strong>Breaded and deep-fried, born on The Hill.</strong> Legend says a cook at Oldani's dropped ravioli in the fryer by accident. St. Louis immediately declared it a food group."
+  },
+  {
+    q: "You're heading 'south on 270.' Where are you actually going?",
+    note: "Think about what 270 South means geographically.",
+    answers: [
+      "South toward Arnold and Jefferson County",
+      "East toward Illinois",
+      "West toward Chesterfield and St. Charles",
+      "North toward the airport — 270 is confusing"
+    ],
+    correct: 1,
+    feedback: "<strong>East toward Illinois.</strong> I-270 South goes east. I-270 North goes west. It's backward. St. Louisans know this and don't question it. Newcomers lose their minds."
+  },
+  {
+    q: "What is 'Provel' cheese?",
+    note: null,
+    answers: [
+      "An Italian import used on The Hill since 1904",
+      "A processed cheese blend invented specifically for St. Louis pizza",
+      "Swiss cheese rebranded for the Midwest market",
+      "A local name for provolone"
+    ],
+    correct: 1,
+    feedback: "<strong>A processed cheese invented here, for St. Louis-style pizza.</strong> It's a blend of cheddar, Swiss, and provolone. The rest of the country considers this a crime. We consider it breakfast."
+  },
+  {
+    q: "Which St. Louis highway is locally called 'the Page Avenue Extension' even though that's not its official name?",
+    note: null,
+    answers: [
+      "Highway 370",
+      "Highway 364",
+      "Highway 40",
+      "Highway 141"
+    ],
+    correct: 1,
+    feedback: "<strong>Highway 364.</strong> Officially it's Missouri Route 364. Locally it's the Page Avenue Extension or just 'Page.' If you're looking at houses in St. Charles County, you'll hear this constantly."
+  },
+  {
+    q: "What does a St. Louisan mean when they ask 'Where did you go to high school?'",
+    note: null,
+    answers: [
+      "They're checking your education credentials",
+      "They want to figure out what part of town you're from and your family background",
+      "It's a standard icebreaker with no deeper meaning",
+      "They're recruiting for their alumni network"
+    ],
+    correct: 1,
+    feedback: "<strong>It's our social GPS.</strong> The high school question instantly tells people your neighborhood, roughly your economic background, and whether you went to public or Catholic school. It's a whole system. Visitors think it's weird. We think it's efficient."
+  },
+  {
+    q: "Forest Park is roughly the same size as which famous park?",
+    note: "Forest Park opened in 1876.",
+    answers: [
+      "Grant Park in Chicago",
+      "Millennium Park in Chicago",
+      "Central Park in New York City",
+      "Fairmount Park in Philadelphia"
+    ],
+    correct: 2,
+    feedback: "<strong>Central Park.</strong> Forest Park is 1,371 acres — Central Park is 843 acres. Forest Park is actually bigger. It also housed the 1904 World's Fair and is completely free. We don't brag about this enough."
+  },
+  {
+    q: "What's the deal with St. Louis-style pizza that makes it unique besides Provel?",
+    note: null,
+    answers: [
+      "It's baked in a cast iron skillet like Chicago deep dish",
+      "It's round with a cracker-thin crust cut into squares, not triangles",
+      "It has twice the sauce of normal pizza",
+      "The crust is made with pretzel dough"
+    ],
+    correct: 1,
+    feedback: "<strong>Cracker crust. Square cuts. Party cut.</strong> St. Louis-style pizza is thin enough to snap in half and cut into squares — called the 'party cut' or 'tavern cut.' Imo's is the institution. Whether Imo's is actually good is a debate that has ended friendships."
+  }
+];
+
+let currentQ = 0;
+let score = 0;
+let answered = [];
+let quizStarted = false;
+
+function startQuiz() {
+  quizStarted = true;
+  document.getElementById('quizHero').style.display = 'none';
+  document.getElementById('quizProgress').style.display = 'block';
+  renderQuestions();
+  showQuestion(0);
+}
+
+function skipToContent() {
+  window.location.href = 'articles/index.html';
+}
+
+function renderQuestions() {
+  const wrap = document.getElementById('questionsWrap');
+  wrap.innerHTML = '';
+  QUESTIONS.forEach((q, i) => {
+    const letters = ['A','B','C','D'];
+    const answersHTML = q.answers.map((a, j) => `
+      <button class="ans-btn" onclick="selectAnswer(${i}, ${j})" id="ans-${i}-${j}">
+        <span class="ans-letter">${letters[j]}</span>
+        <span>${a}</span>
+      </button>
+    `).join('');
+
+    wrap.innerHTML += `
+      <div class="q-card" id="q-${i}">
+        <div class="q-number">Question ${i+1} of ${QUESTIONS.length}</div>
+        <div class="q-text">${q.q}</div>
+        ${q.note ? `<div class="q-note">${q.note}</div>` : ''}
+        <div class="answers">${answersHTML}</div>
+        <div class="q-feedback" id="feedback-${i}"></div>
+        <button class="next-btn" id="next-${i}" onclick="nextQuestion(${i})">
+          ${i < QUESTIONS.length - 1 ? 'Next Question →' : 'See My Results →'}
+        </button>
+      </div>
+    `;
+  });
+}
+
+function showQuestion(idx) {
+  document.querySelectorAll('.q-card').forEach(c => c.classList.remove('active'));
+  const card = document.getElementById(`q-${idx}`);
+  if (card) card.classList.add('active');
+  updateProgress();
+  window.scrollTo({top: 120, behavior: 'smooth'});
+}
+
+function selectAnswer(qIdx, aIdx) {
+  if (answered[qIdx] !== undefined) return;
+  answered[qIdx] = aIdx;
+
+  const q = QUESTIONS[qIdx];
+  const isCorrect = aIdx === q.correct;
+  if (isCorrect) score++;
+
+  // Style all buttons
+  q.answers.forEach((_, j) => {
+    const btn = document.getElementById(`ans-${qIdx}-${j}`);
+    if (j === q.correct) btn.classList.add('correct');
+    else if (j === aIdx && !isCorrect) btn.classList.add('wrong');
+    else btn.classList.add('reveal');
+    btn.style.pointerEvents = 'none';
+  });
+
+  // Show feedback
+  const fb = document.getElementById(`feedback-${qIdx}`);
+  fb.innerHTML = q.feedback;
+  fb.classList.add('show');
+
+  // Show next
+  document.getElementById(`next-${qIdx}`).classList.add('show');
+
+  updateProgress();
+}
+
+function nextQuestion(qIdx) {
+  if (qIdx < QUESTIONS.length - 1) {
+    currentQ = qIdx + 1;
+    showQuestion(currentQ);
+  } else {
+    showResults();
+  }
+}
+
+function updateProgress() {
+  const pct = (Object.keys(answered).length / QUESTIONS.length) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = `Question ${Math.min(currentQ+1, QUESTIONS.length)} of ${QUESTIONS.length}`;
+  document.getElementById('scoreText').textContent = `${score} correct`;
+}
+
+function showResults() {
+  document.getElementById('questionsWrap').style.display = 'none';
+  document.getElementById('quizProgress').style.display = 'none';
+
+  const pct = score / QUESTIONS.length;
+  let title, msg, ctaLabel, ctaHref;
+
+  if (pct >= 0.9) {
+    title = "You Are STL Through and Through.";
+    msg = "Concrete. Toasted rav. Cardinal red. You bleed it. I'd trust you with a house in South County no problem. Now let me show you how to buy one without getting taken advantage of.";
+    ctaLabel = "Let's Find You a Home";
+    ctaHref = "index.html";
+  } else if (pct >= 0.7) {
+    title = "Legitimate St. Louisan. Respect.";
+    msg = "You know the city. A couple gaps — probably the road stuff, right? Nobody knows that 270 goes east when you're heading 'south.' Anyway, you've earned the right to look at houses here.";
+    ctaLabel = "Start the Buyer Journey";
+    ctaHref = "index.html";
+  } else if (pct >= 0.5) {
+    title = "You've Spent Time Here. That Counts.";
+    msg = "You're not a tourist, but you're not a lifer either. Maybe transplant? Maybe South County by way of somewhere else? Either way, I can work with this. Let's get you up to speed on the market.";
+    ctaLabel = "See the Neighborhood Guide";
+    ctaHref = "articles/south-county-stl-neighborhood-guide";
+  } else if (pct >= 0.3) {
+    title = "You've Driven Through St. Louis. Maybe.";
+    msg = "You got the Arch question and guessed the rest. That's okay. Honestly, more importantly — are you thinking about buying a home here? Because that's something I can actually help with.";
+    ctaLabel = "First-Time Buyer? Start Here";
+    ctaHref = "articles/index.html";
+  } else {
+    title = "Bless Your Heart.";
+    msg = "You came to the right place though. I've been helping people figure out St. Louis real estate for 13 years. The quiz stuff you can learn. The housing market I'll teach you.";
+    ctaLabel = "Let Me Show You the City";
+    ctaHref = "neighborhood-matcher";
+  }
+
+  // Build pip row
+  const pips = Object.keys(answered).map((i) => {
+    const correct = answered[i] === QUESTIONS[i].correct;
+    return `<div class="score-pip ${correct ? 'got' : 'miss'}">${correct ? '✓' : '✗'}</div>`;
+  }).join('');
+
+  const card = document.getElementById('resultsCard');
+  card.innerHTML = `
+    <div class="result-score">${score}</div>
+    <div class="result-denom">out of ${QUESTIONS.length}</div>
+    <div class="score-row">${pips}</div>
+    <div class="result-title">${title}</div>
+    <div class="result-msg">${msg}</div>
+    <div class="result-divider"></div>
+    <div class="result-cta-label">Ready to actually buy a house in St. Louis?</div>
+    <a href="${ctaHref}" class="result-cta-btn">${ctaLabel}</a>
+    <a href="articles/index.html" class="result-secondary">Or browse all 54 buyer guides →</a>
+    <br>
+    <button class="retake-btn" onclick="retakeQuiz()">Retake the Quiz</button>
+  `;
+  card.classList.add('show');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function retakeQuiz() {
+  score = 0;
+  currentQ = 0;
+  answered = [];
+  document.getElementById('resultsCard').classList.remove('show');
+  document.getElementById('quizProgress').style.display = 'block';
+  document.getElementById('questionsWrap').style.display = 'block';
+  renderQuestions();
+  showQuestion(0);
+}
+</script>
+</body>
+</html>
