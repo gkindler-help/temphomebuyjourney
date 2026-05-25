@@ -730,6 +730,33 @@ function saveState() {
 }
 
 function loadState() {
+  // Check URL parameters first (from article drawer)
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlIncome = urlParams.get('income');
+  const urlSqft = urlParams.get('sqft');
+  const urlLoanType = urlParams.get('loantype');
+  
+  // If URL params exist, use them and skip localStorage
+  if (urlIncome) {
+    document.getElementById('income').value = urlIncome;
+    if (urlSqft) document.getElementById('sqft').value = urlSqft;
+    if (urlLoanType) {
+      loanType = urlLoanType;
+      document.querySelectorAll('.ltab').forEach(b => {
+        if (b.textContent.toLowerCase().includes(loanType) || 
+            (loanType === 'conv' && b.textContent.includes('Conventional'))) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+    }
+    // Auto-run with URL params
+    runPhase1();
+    return;
+  }
+  
+  // Otherwise check localStorage
   const saved = localStorage.getItem('stl_buying_power');
   if (!saved) return;
   
