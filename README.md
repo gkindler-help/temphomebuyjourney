@@ -520,6 +520,21 @@ Implementation notes:
 
 ---
 
+**🔴 TOP PRIORITY — Tool Still Fails to Produce Results in Drawer**
+
+Root cause identified (audit May 25):
+- The drawer extracts `<body>` content only when injecting the tool via fetch()
+- The tool's `<style>` block lives in `<head>` — it never gets injected into the drawer
+- `shared.css` is also in `<head>` and not injected — CSS variables (--bg, --gold, --text etc.) are undefined
+- Result: DOM elements exist, scripts run, but layout/visibility CSS is missing so results don't display
+
+Fix required in `article-tool-drawer.js` `injectTool()` function:
+1. Extract `<style>` blocks from `<head>` (not just body) and inject them
+2. Inject the tool's own CSS variables block since shared.css isn't available in article context
+3. Alternatively: load shared.css in the drawer scope before injecting tool content
+
+The scripts ARE running (readyState fix worked). The tool IS calculating. Results just aren't visible because the CSS that controls display/visibility/layout of the results section is missing.
+
 ## 🔴 HIGH PRIORITY — Split Calculator Into Two Engagement Layers
 
 **The Problem with Current Tool:**
