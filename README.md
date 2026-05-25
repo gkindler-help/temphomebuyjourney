@@ -8,14 +8,34 @@
 
 ## 🚨 NEXT SESSION — START HERE
 
-**🔴 TOP PRIORITY 1 — Article Tool Drawer: Replace Iframe with Fetch Injection (Option A)**
+**🔴 TOP PRIORITY 1 — TIERS Data Missing Square Footage**
+Calculator results need to show actual sqft for each condition tier (As-Is, Move-In, Renovated) but TIERS data currently only has prices:
+```javascript
+"63129":{low:290000,mid:340000,high:385000,n:227} // NO SQFT
+```
+
+**Required rebuild:**
+```javascript
+"63129":{
+  low:290000, lowSqft:1200,   // As-is homes avg 1,200 sqft
+  mid:340000, midSqft:1600,   // Move-in ready avg 1,600 sqft
+  high:385000, highSqft:1800, // Renovated avg 1,800 sqft
+  n:227
+}
+```
+
+This data WAS in original build but got lost during data processing. Need to regenerate from MARIS source with sqft breakdowns per condition tier.
+
+**Impact:** Calculator currently shows "1,400-1,800 sqft" (user's filter) instead of actual neighborhood sqft stats. Users can't see how much space they're getting for their money across condition tiers.
+
+**🔴 TOP PRIORITY 2 — Article Tool Drawer: Replace Iframe with Fetch Injection (Option A)**
 Drawer opens but tool renders black / fails to load on mobile. Iframe approach is fundamentally broken — links inside iframe navigate parent window.
 
 Fix: `fetch('/fixer-upper-vs-move-in-stl')` on drawer open → strip everything outside `<body>` → inject HTML into `.atd-drawer-body` → re-execute inline `<script>` tags after injection (they don't auto-run on innerHTML) → scope tool CSS to avoid conflicts with article styles.
 
 Test on: $80K income guide, repair cost guide, VA articles. The tool pre-populates with smart defaults and auto-runs now — so once the fetch injection works, users will see results immediately.
 
-**🔴 TOP PRIORITY 2 — Session limit reached mid-session**
+**🔴 TOP PRIORITY 3 — Session limit reached mid-session**
 Confirm Guides nav links are working (absolute URLs pushed last commit). Confirm tool auto-populates and runs on load at /fixer-upper-vs-move-in-stl.
 
 ---
