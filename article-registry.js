@@ -243,6 +243,20 @@ window.ARTICLE_REGISTRY = {
     /* ── BUYER: REPAIR COST GUIDE SERIES ── */
 
     {
+      slug: "fixer-upper-vs-move-in-ready-st-louis",
+      title: "Fixer Upper vs. Move-In Ready in St. Louis: The Real Math by Neighborhood",
+      shortTitle: "Fixer Upper vs. Move-In Ready",
+      description: "St. Louis has the largest fixer upper price gap in the country — 64% below move-in ready. But renovation costs and financing change everything.",
+      pillLabel: "Fixer Upper Guide",
+      audience: "buyer",
+      series: "fixer-upper",
+      isHub: true,
+      chapters: [3, 4, 5],
+      tags: ["fixer-upper", "renovation", "financing", "fha-203k", "homestyle", "neighborhoods", "tools"],
+      toolLink: "../fixer-upper-vs-move-in",
+      published: true
+    },
+    {
       slug: "stl-home-repair-cost-guide",
       title: "St. Louis Home Repair Cost Guide for Buyers: Know Before You Offer",
       shortTitle: "Home Repair Cost Guide",
