@@ -8,6 +8,59 @@
 
 ## 🚨 NEXT SESSION — START HERE
 
+**📋 SESSION COMPLETION SUMMARY (May 25, 2026)**
+
+**✅ COMPLETED THIS SESSION:**
+1. **Two-Phase Buying Power Calculator** - Fully deployed
+   - Phase 1: Regional buying power browser (6 regions, condition tiers)
+   - Phase 2: Fixer-upper deep dive (renovation scope, financing paths)
+   - URL parameter pre-fill working from article drawers
+   - State persistence with localStorage (24hr)
+   - Replaces old fixer-upper calculators
+
+2. **Income Article Budget Corrections** - All 8 articles fixed
+   - Updated budgets to match 2.0% property tax (was 1.1%)
+   - 50K: $137K-$208K | 60K: $181K-$253K | 70K: $226K-$297K
+   - 80K: $270K-$342K | 100K: $360K-$432K | 120K: $449K-$521K
+   - 150K: $583K-$655K | 200K: $806K-$878K
+
+3. **Infographic Conditional Display** - All 8 articles
+   - JS checks if file exists before showing
+   - No placeholders if file missing
+   - Auto-displays when infographic uploaded
+
+4. **Article Tool Drawer Fixes**
+   - Pre-fills income from article context
+   - Scroll issues resolved
+   - Header nav stays visible
+
+5. **Articles Index Updated**
+   - Tool 1 (Regional Buying Power) added above fixer-upper
+   - Clear two-tool progression
+
+**⚠️ KNOWN ISSUES NOT YET FIXED:**
+1. **TIERS Data Missing Square Footage** (TOP PRIORITY)
+   - Calculator shows size band ("1,400-1,800 sqft") not actual sqft
+   - Need to rebuild data with lowSqft, midSqft, highSqft per condition tier
+   - Original data had this but was lost during processing
+
+2. **No "Copy Results" Button**
+   - Users can't save their neighborhood matches
+   - Requested: clipboard copy of regional results
+
+3. **Old Fixer-Upper Files Still in Repo**
+   - fixer-upper-vs-move-in.html (deprecated)
+   - fixer-upper-vs-move-in-stl.html (deprecated)
+   - Should delete after confirming new calculator works
+
+**📝 NOTES FOR NEXT SESSION:**
+- New calculator file: `stl-home-buying-power-calculator.html`
+- Drawer now calls this instead of old fixer-upper tools
+- All income articles accurate with calculator math
+- Regional groupings verified against CITIES data (Arnold in Jefferson County, etc.)
+
+---
+
 **🔴 TOP PRIORITY 1 — TIERS Data Missing Square Footage**
 Calculator results need to show actual sqft for each condition tier (As-Is, Move-In, Renovated) but TIERS data currently only has prices:
 ```javascript
