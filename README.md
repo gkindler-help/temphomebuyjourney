@@ -395,7 +395,33 @@ All 171 pages have correct absolute canonical URLs without .html extension.
 1. Submit sitemap.xml to Google Search Console
 2. Request indexing on: homepage, lindbergh-vs-mehlville, crestwood, south-county-neighborhood-guide, should-you-accept-cash-offer, cash-offer-decoder
 
-**🔴 HIGH PRIORITY — Affordability Side Panel:**
+**🔴 HIGH PRIORITY — Missing Neighborhood Pages (404 tracking active):**
+These pages are linked from the Fixer Upper vs. Move-In Ready tool and will 404 until built. GA4 is tracking which ones get hit via `neighborhood_404` event — use that data to prioritize build order.
+
+South City St. Louis (most urgent — multiple zip codes point here):
+- `princeton-heights.html` (63109)
+- `lindenwood-park.html` (63109)
+- `willmore-park.html` (63109)
+- `carondelet.html` (63111/63118)
+- `holly-hills.html` (63111)
+- `dutchtown.html` (63116)
+- `bevo-mill.html` (63116/63118)
+- `clifton-heights.html` (63139)
+- `southampton.html` (63139)
+- `hi-pointe.html` (63139)
+- `franz-park.html` (63110/63139)
+
+St. Louis County missing:
+- `eureka.html` (63025)
+- `fenton.html` (63026)
+- `valley-park.html` (63088)
+- `richmond-heights.html` (63117)
+- `brentwood.html` (63144)
+- `creve-coeur.html` (63146)
+- `des-peres.html` (63131)
+- `ladue.html` (63124)
+
+Custom 404 page (`404.html`) is live — shows neighborhood description, back-to-tool button, and neighborhood matcher link. Tracks slug via GA4 `neighborhood_404` event.
 Deploy the affordability map (afford.html) as a persistent side panel across all income guide articles ($50K-$200K). Goal: dwell time. Reader is already on the page thinking about their budget — the map keeps them there exploring zip codes instead of bouncing.
 
 Implementation notes:

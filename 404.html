@@ -1,436 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found | STL Home Journey</title>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
-<link rel="apple-touch-icon" sizes="512x512" href="/assets/favicon-512.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page Not Found | STL Home Journey</title>
-  <meta name="description" content="This page doesn't exist — but the information you need does. Find St. Louis neighborhood guides, buyer chapters, and real estate articles at STL Home Journey.">
-  <meta name="robots" content="noindex, follow">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #050505;
-      --surface: #0f0f0f;
-      --surface2: #181818;
-      --border: #2a2a2a;
-      --gold: #ffcc4d;
-      --gold-dim: rgba(255,204,77,0.10);
-      --gold-mid: rgba(255,204,77,0.22);
-      --text: #e8e8e8;
-      --text-dim: #8a8a8a;
-      --text-muted: #454545;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* ── HEADER ── */
-    .site-header {
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .header-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 15px;
-      color: var(--gold);
-      text-decoration: none;
-    }
-    .header-phone {
-      font-size: 13px;
-      color: var(--text-muted);
-      text-decoration: none;
-    }
-    .header-phone:hover { color: var(--gold); }
-
-    /* ── MAIN ── */
-    main {
-      flex: 1;
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 64px 20px 56px;
-      width: 100%;
-    }
-
-    /* ── 404 HERO ── */
-    .error-block {
-      margin-bottom: 52px;
-    }
-
-    .four-oh-four {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(72px, 18vw, 130px);
-      font-weight: 900;
-      line-height: 1;
-      color: var(--surface2);
-      letter-spacing: -0.02em;
-      user-select: none;
-      margin-bottom: 4px;
-      position: relative;
-    }
-    /* Gold accent on first digit */
-    .four-oh-four span { color: var(--gold); }
-
-    .error-headline {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(22px, 4vw, 30px);
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.2;
-      margin-bottom: 14px;
-    }
-
-    .error-sub {
-      font-size: 15px;
-      color: var(--text-dim);
-      max-width: 480px;
-      line-height: 1.7;
-      margin-bottom: 28px;
-    }
-
-    /* ── SEARCH BAR ── */
-    .search-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 48px;
-      max-width: 480px;
-    }
-    .search-input {
-      flex: 1;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      padding: 11px 14px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .search-input:focus { border-color: var(--gold); }
-    .search-input::placeholder { color: var(--text-muted); }
-    .search-btn {
-      background: var(--gold);
-      color: #000;
-      border: none;
-      border-radius: 7px;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 11px 18px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background 0.15s;
-    }
-    .search-btn:hover { background: #ffd966; }
-
-    /* ── SECTION LABEL ── */
-    .sec-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    /* ── RECOVERY LINKS ── */
-    .recovery-section { margin-bottom: 40px; }
-
-    .recovery-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .rec-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 9px;
-      padding: 16px;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      transition: border-color 0.18s, background 0.18s;
-    }
-    .rec-card:hover {
-      border-color: var(--gold);
-      background: var(--gold-dim);
-    }
-    .rec-card.full-width {
-      grid-column: 1 / -1;
-    }
-
-    .rec-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 7px;
-      background: var(--gold-dim);
-      border: 1px solid var(--gold-mid);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 17px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .rec-text { display: flex; flex-direction: column; gap: 3px; }
-    .rec-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.3;
-    }
-    .rec-desc {
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
-
-    /* ── CHAPTER QUICK-NAV ── */
-    .chapters-section { margin-bottom: 40px; }
-    .chapters-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-    .ch-chip {
-      font-size: 12px;
-      padding: 6px 13px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--text-dim);
-      text-decoration: none;
-      transition: all 0.15s;
-      white-space: nowrap;
-    }
-    .ch-chip:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-      background: var(--gold-dim);
-    }
-
-    /* ── GEORGE BLOCK ── */
-    .george-block {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 2px solid var(--gold);
-      border-radius: 0 9px 9px 0;
-      padding: 18px 20px;
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-    .george-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-    }
-    .george-text { flex: 1; }
-    .george-name {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 3px;
-    }
-    .george-quote {
-      font-size: 13px;
-      color: var(--text-dim);
-      line-height: 1.6;
-    }
-    .george-quote a {
-      color: var(--gold);
-      text-decoration: none;
-    }
-    .george-quote a:hover { text-decoration: underline; }
-
-    /* ── FOOTER ── */
-    .compliance-footer {
-      border-top: 1px solid var(--border);
-      padding: 18px 20px;
-      text-align: center;
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    @media (max-width: 480px) {
-      .recovery-grid { grid-template-columns: 1fr; }
-      .rec-card.full-width { grid-column: auto; }
-      .four-oh-four { font-size: 80px; }
-      .search-row { flex-direction: column; }
-    }
-  </style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/shared.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EEE14BZT9P');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;display:flex;flex-direction:column}
+.art-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line);background:rgba(5,5,5,.96)}
+.art-hdr-l{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.art-hdr-ico img{width:32px;height:32px;border-radius:6px}
+.art-hdr-t{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--white);line-height:1.1}
+.art-hdr-t span{color:var(--gold)}
+.art-hdr-name{font-size:10px;color:var(--text-dim);font-weight:500;letter-spacing:.04em}
+.art-hdr-nav{display:flex;gap:16px}
+.art-hdr-nav a{font-size:12px;font-weight:600;color:var(--text-soft);text-decoration:none;letter-spacing:.04em;text-transform:uppercase}
+.art-hdr-nav a.gold{color:var(--gold)}
+.main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 16px}
+.card{max-width:520px;width:100%;text-align:center}
+.badge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(255,204,77,.3);padding:4px 12px;border-radius:100px;margin-bottom:20px}
+h1{font-family:'Playfair Display',serif;font-size:clamp(28px,7vw,44px);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:12px}
+.sub{font-size:15px;color:var(--text-soft);line-height:1.65;margin-bottom:32px}
+.sub strong{color:var(--gold)}
+.actions{display:flex;flex-direction:column;gap:10px;align-items:center}
+.btn-primary{display:inline-block;background:var(--gold);color:#050505;font-weight:800;font-size:14px;font-family:'Inter',sans-serif;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:10px;border:none;cursor:pointer;transition:opacity .2s;width:100%;max-width:320px;text-align:center}
+.btn-primary:hover{opacity:.88}
+.btn-secondary{display:inline-block;background:none;border:1px solid var(--line-2);color:var(--text-soft);font-weight:600;font-size:13px;font-family:'Inter',sans-serif;text-decoration:none;padding:12px 24px;border-radius:10px;transition:all .18s;width:100%;max-width:320px;text-align:center}
+.btn-secondary:hover{border-color:rgba(255,204,77,.4);color:var(--text)}
+.neighborhood-note{margin-top:28px;padding:16px 20px;background:var(--surface);border:1px solid var(--line-2);border-radius:12px;text-align:left}
+.nn-label{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.nn-text{font-size:13px;color:var(--text-soft);line-height:1.6}
+.compliance-footer{padding:14px;border-top:1px solid var(--line);font-size:11px;color:var(--text-faint);text-align:center;line-height:1.6}
+.compliance-footer strong{color:var(--text-dim)}
+</style>
 </head>
 <body>
-
-<header class="site-header">
-  <a href="https://stlhomejourney.com" class="header-logo">STL Home Journey</a>
-  <a href="tel:3144351087" class="header-phone">314.435.1087</a>
+<header class="art-hdr">
+  <a href="/" class="art-hdr-l">
+    <div class="art-hdr-ico"><img src="/assets/STLhomebuyerjourneylogo.png" alt="STL Home Journey"></div>
+    <div>
+      <div class="art-hdr-t"><span>STL</span> Home Journey</div>
+      <div class="art-hdr-name">George Kindler</div>
+    </div>
+  </a>
+  <nav class="art-hdr-nav">
+    <a href="/articles/">Guides</a>
+    <a href="/" class="gold">Journey</a>
+  </nav>
 </header>
-
-<main>
-
-  <!-- 404 HERO -->
-  <div class="error-block">
-    <div class="four-oh-four"><span>4</span>04</div>
-    <h1 class="error-headline">This page doesn't exist.<br>The information you need does.</h1>
-    <p class="error-sub">
-      The link you followed is broken, moved, or hasn't been built yet.
-      If you were looking for a specific neighborhood or school district
-      page that's still in progress — it's coming. In the meantime,
-      everything below will get you where you need to go.
-    </p>
-
-    <div class="search-row">
-      <input
-        class="search-input"
-        type="text"
-        id="siteSearch"
-        placeholder="Try searching a neighborhood or topic…"
-        onkeydown="if(event.key==='Enter') doSearch()"
-        autocomplete="off"
-      >
-      <button class="search-btn" onclick="doSearch()">Search Site</button>
+<div class="main">
+  <div class="card">
+    <div class="badge">Page Not Found</div>
+    <h1>This neighborhood<br>guide is coming.</h1>
+    <p class="sub">We're building out every St. Louis neighborhood — this one isn't live yet. <strong>Check back soon</strong>, or head back to the tool that brought you here.</p>
+    <div class="actions">
+      <a href="#" class="btn-primary" id="backBtn">← Back to the Tool</a>
+      <a href="/neighborhood-matcher" class="btn-secondary">Find a Neighborhood That Fits →</a>
+      <a href="/articles/" class="btn-secondary">Browse All 54 Guides →</a>
+    </div>
+    <div class="neighborhood-note" id="neighborhoodNote" style="display:none">
+      <div class="nn-label">About This Area</div>
+      <div class="nn-text" id="neighborhoodText"></div>
     </div>
   </div>
-
-  <!-- WHERE TO GO -->
-  <div class="recovery-section">
-    <p class="sec-label">Where you probably need to go</p>
-    <div class="recovery-grid">
-
-      <a href="/neighborhoods/" class="rec-card">
-        <div class="rec-icon">🗺️</div>
-        <div class="rec-text">
-          <span class="rec-title">All 98 Neighborhoods</span>
-          <span class="rec-desc">Every STL metro area — city, county, St. Charles, Jefferson</span>
-        </div>
-      </a>
-
-      <a href="/school-districts.html" class="rec-card">
-        <div class="rec-icon">🏫</div>
-        <div class="rec-text">
-          <span class="rec-title">School Districts Guide</span>
-          <span class="rec-desc">How districts affect your offer, taxes, and resale</span>
-        </div>
-      </a>
-
-      <a href="/articles/index.html" class="rec-card">
-        <div class="rec-icon">📄</div>
-        <div class="rec-text">
-          <span class="rec-title">All Articles</span>
-          <span class="rec-desc">Real transactions, real numbers — search, offer, negotiate</span>
-        </div>
-      </a>
-
-      <a href="/neighborhood-matcher.html" class="rec-card">
-        <div class="rec-icon">🎯</div>
-        <div class="rec-text">
-          <span class="rec-title">Neighborhood Matcher</span>
-          <span class="rec-desc">5 questions — get your matched St. Louis area</span>
-        </div>
-      </a>
-
-      <a href="https://stlhomejourney.com" class="rec-card full-width">
-        <div class="rec-icon">🏠</div>
-        <div class="rec-text">
-          <span class="rec-title">Start the Full Buyer Journey</span>
-          <span class="rec-desc">Pre-approval through closing — every chapter, no email required</span>
-        </div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- CHAPTER QUICK-NAV -->
-  <div class="chapters-section">
-    <p class="sec-label">Jump to a chapter</p>
-    <div class="chapters-row">
-      <a href="/ch-01-preapproval.html" class="ch-chip">Ch.1 · Pre-Approval</a>
-      <a href="/ch-02-affordability.html" class="ch-chip">Ch.2 · Affordability</a>
-      <a href="/ch-03a-asis.html" class="ch-chip">Ch.3 · Interior Walk</a>
-      <a href="/ch-04-pre-offer.html" class="ch-chip">Ch.4 · Pre-Offer</a>
-      <a href="/ch-05-under-contract.html" class="ch-chip">Ch.5 · Under Contract</a>
-      <a href="/ch-06b-deadlines.html" class="ch-chip">Ch.6 · Deadlines</a>
-      <a href="/ch-07-inspection.html" class="ch-chip">Ch.7 · Inspection</a>
-      <a href="/ch-08-walkthrough.html" class="ch-chip">Ch.8 · Walk-Through</a>
-      <a href="/ch-09-closing.html" class="ch-chip">Ch.9 · Closing</a>
-    </div>
-  </div>
-
-  <!-- GEORGE -->
-  <div class="george-block">
-    <div class="george-avatar">
-      <img src="/assets/george-serious.png" alt="George Kindler" width="44" height="44" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
-      <span style="display:none;" id="avatarFallback">GK</span>
-    </div>
-    <div class="george-text">
-      <p class="george-name">George Kindler — 13 years, 250+ St. Louis transactions</p>
-      <p class="george-quote">
-        If you were looking for a neighborhood or district page that isn't built yet,
-        I'm still adding them. The
-        <a href="/neighborhoods/">full neighborhood index</a>
-        is the best place to start — or reach me directly at
-        <a href="tel:3144351087">314.435.1087</a> and I can point you to the right information.
-      </p>
-    </div>
-  </div>
-
-</main>
-
-<footer class="compliance-footer">
-  <p>The Closing Pros LLC &nbsp;·&nbsp; 314-998-4550 &nbsp;·&nbsp; George Kindler, Licensed Missouri Real Estate Agent</p>
-</footer>
-
+</div>
+<div class="compliance-footer">
+  <strong>The Closing Pros LLC</strong> · Licensed Missouri Real Estate Brokerage<br>
+  Office: 314-998-4550 · George's Direct: 314.435.1087
+</div>
 <script>
-  // Avatar fallback
-  document.querySelector('.george-avatar img').addEventListener('error', function() {
-    this.style.display = 'none';
-    document.getElementById('avatarFallback').style.display = 'inline';
-  });
+const NEIGHBORHOOD_NOTES = {
+  'princeton-heights':'Princeton Heights is a South St. Louis City neighborhood (63109). Established brick bungalows, tree-lined streets, close access to Carondelet Park. One of South City\'s more stable entry-level markets.',
+  'lindenwood-park':'Lindenwood Park sits in South St. Louis City (63109), known for its proximity to Lindenwood Park and well-maintained mid-century housing stock.',
+  'willmore-park':'Willmore Park is a small South St. Louis City neighborhood (63109) adjacent to Carondelet Park — one of the largest parks in the city.',
+  'carondelet':'Carondelet is one of St. Louis\'s oldest neighborhoods, anchored by Carondelet Park. South St. Louis City, 63111/63118. Mix of brick bungalows and larger homes.',
+  'holly-hills':'Holly Hills sits in South St. Louis City (63111), known for large brick homes on generous lots — one of the city\'s more upscale residential neighborhoods.',
+  'dutchtown':'Dutchtown is one of South St. Louis City\'s largest and most diverse neighborhoods (63116). Strong community identity, mix of housing types and price points.',
+  'bevo-mill':'Bevo Mill is a South St. Louis City neighborhood (63116/63118) named for the iconic windmill on Gravois. Brick bungalows, close-knit community feel.',
+  'clifton-heights':'Clifton Heights is a South St. Louis City neighborhood (63139) in the Hi-Pointe/Franz Park area. Adjacent to Forest Park, walkable character.',
+  'southampton':'Southampton is a highly sought-after South St. Louis City neighborhood (63139) — brick homes, well-maintained streets, and strong resale history.',
+  'hi-pointe':'Hi-Pointe sits at the edge of Forest Park in South St. Louis City (63139). One of the city\'s most desirable small neighborhoods — limited inventory, strong demand.',
+  'franz-park':'Franz Park is a small South St. Louis City neighborhood (63110/63139) adjacent to Forest Park. Distinct character, brick construction, walkable to the park.',
+  'eureka':'Eureka is a growing St. Louis County community (63025). Suburban character with access to Six Flags and the Allenton Road corridor.',
+  'fenton':'Fenton sits in south St. Louis County (63026) along the Meramec River. Established neighborhoods, wide price range, good highway access.',
+  'richmond-heights':'Richmond Heights (63117) is an inner-ring St. Louis County suburb with convenient access to Clayton, the Galleria, and I-64.',
+  'brentwood':'Brentwood (63144) is a compact, well-located inner-ring suburb adjacent to Clayton and Maplewood. Strong schools, walkable downtown strip.',
+  'creve-coeur':'Creve Coeur (63146) is an established West County suburb with newer development along Olive and a mix of price points.',
+  'des-peres':'Des Peres (63131) is a quiet, established West County community. Low density, large lots, adjacent to Kirkwood and Webster Groves.',
+  'ladue':'Ladue (63124) is St. Louis\'s most prestigious established suburb. Large lots, top-ranked schools, one of the highest median home values in the metro.',
+  'valley-park':'Valley Park (63088) sits along the Meramec River in south St. Louis County. Smaller community, distinct character, access to Meramec Greenway.',
+};
 
-  // Site search — sends to Google site: search as fallback until native search is built
-  function doSearch() {
-    const q = document.getElementById('siteSearch').value.trim();
-    if (!q) return;
-    window.location.href = 'https://www.google.com/search?q=site:stlhomejourney.com+' + encodeURIComponent(q);
-  }
+const path = window.location.pathname;
+const slug = path.split('/').filter(Boolean).pop();
+const ref = document.referrer;
+const backBtn = document.getElementById('backBtn');
+
+if (ref && ref.includes('fixer-upper-vs-move-in')) {
+  backBtn.href = ref;
+  backBtn.textContent = '← Back to Fixer Upper vs. Move-In Tool';
+} else if (ref && ref.includes('stlhomejourney.com')) {
+  backBtn.href = ref;
+  backBtn.textContent = '← Go Back';
+} else {
+  backBtn.href = '/fixer-upper-vs-move-in';
+  backBtn.textContent = '← Back to the Comparison Tool';
+}
+
+if (slug && NEIGHBORHOOD_NOTES[slug]) {
+  document.getElementById('neighborhoodNote').style.display = 'block';
+  document.getElementById('neighborhoodText').textContent = NEIGHBORHOOD_NOTES[slug];
+}
+
+if (typeof gtag !== 'undefined') {
+  gtag('event', 'neighborhood_404', {neighborhood_slug: slug, referrer: ref || 'direct'});
+}
 </script>
 </body>
 </html>

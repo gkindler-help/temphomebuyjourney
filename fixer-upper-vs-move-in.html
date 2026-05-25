@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>St. Louis Fixer Upper vs. Move-In Ready Calculator — Real Numbers by Neighborhood</title>
+<meta name="description" content="The only St. Louis tool that shows which neighborhoods fit your budget on both paths — using real MARIS sales data by zip code and square footage. FHA, VA, conventional, and renovation loan math built in.">
+<link rel="canonical" href="https://stlhomejourney.com/fixer-upper-vs-move-in">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EEE14BZT9P');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+
+/* HEADER */
+.art-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(5,5,5,.96);backdrop-filter:blur(8px);z-index:100}
+.art-hdr-l{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.art-hdr-ico img{width:32px;height:32px;border-radius:6px}
+.art-hdr-t{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--white);line-height:1.1}
+.art-hdr-t span{color:var(--gold)}
+.art-hdr-name{font-size:10px;color:var(--text-dim);font-weight:500;letter-spacing:.04em}
+.art-hdr-nav{display:flex;gap:16px}
+.art-hdr-nav a{font-size:12px;font-weight:600;color:var(--text-soft);text-decoration:none;letter-spacing:.04em;text-transform:uppercase}
+.art-hdr-nav a.gold{color:var(--gold)}
+
+/* LAYOUT */
+.tool-wrap{max-width:920px;margin:0 auto;padding:0 16px 80px}
+
+/* HERO */
+.tool-hero{padding:32px 0 24px;border-bottom:1px solid var(--line);margin-bottom:24px}
+.tool-badge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(255,204,77,.3);padding:4px 12px;border-radius:100px;margin-bottom:12px}
+.tool-hero h1{font-family:'Playfair Display',serif;font-size:clamp(22px,5vw,34px);font-weight:900;color:var(--white);line-height:1.15;margin-bottom:10px}
+.tool-hero h1 em{color:var(--gold);font-style:italic}
+.tool-hero p{font-size:14px;color:var(--text-soft);line-height:1.65;max-width:600px}
+
+/* PANELS */
+.panel{background:var(--surface);border:1px solid var(--line-2);border-radius:14px;padding:20px;margin-bottom:16px}
+.panel-title{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+
+/* INPUTS GRID */
+.ig{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text-dim)}
+.field input,.field select{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:7px;padding:9px 11px;font-size:13px;color:var(--white);font-family:'Inter',sans-serif;outline:none;transition:border-color .15s}
+.field input:focus,.field select:focus{border-color:rgba(255,204,77,.5)}
+.field select option{background:#111}
+.field-note{font-size:10px;color:var(--text-faint);margin-top:3px}
+
+/* LOAN TYPE TABS */
+.loan-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0}
+.ltab{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:700;color:var(--text-soft);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;letter-spacing:.02em}
+.ltab:hover{border-color:rgba(255,204,77,.4);color:var(--text)}
+.ltab.active{border-color:var(--gold);background:rgba(255,204,77,.1);color:var(--gold)}
+
+/* DIVIDER */
+.hdiv{height:1px;background:var(--line);margin:16px 0}
+
+/* RENO MODE TOGGLE */
+.mode-toggle{display:flex;gap:6px;margin-bottom:14px}
+.mode-btn{flex:1;background:var(--bg-elev);border:1px solid var(--line-2);border-radius:8px;padding:9px 12px;font-size:12px;font-weight:600;color:var(--text-soft);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;text-align:center}
+.mode-btn:hover{border-color:rgba(255,204,77,.35)}
+.mode-btn.active{border-color:var(--gold);background:rgba(255,204,77,.08);color:var(--gold)}
+
+/* SIMPLE MODE */
+.simple-presets{display:flex;gap:8px;flex-wrap:wrap}
+.sp-btn{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:9px;padding:10px 16px;font-size:12px;font-weight:600;color:var(--text-soft);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;text-align:left;flex:1;min-width:120px}
+.sp-btn:hover{border-color:rgba(255,204,77,.4);color:var(--text)}
+.sp-btn.active{border-color:var(--gold);background:rgba(255,204,77,.08);color:var(--gold)}
+.sp-btn .sn{display:block;font-size:13px;font-weight:700}
+.sp-btn .sr{display:block;font-size:10px;color:var(--text-dim);margin-top:2px;line-height:1.4}
+.sp-btn.active .sr{color:rgba(255,204,77,.65)}
+.custom-row{display:flex;align-items:center;gap:10px;margin-top:10px}
+.custom-row label{font-size:11px;color:var(--text-soft);white-space:nowrap}
+.custom-row input{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:7px;padding:8px 11px;font-size:13px;color:var(--white);font-family:'Inter',sans-serif;outline:none;width:130px;transition:border-color .15s}
+.custom-row input:focus{border-color:rgba(255,204,77,.5)}
+
+/* ITEMIZED MODE */
+.repair-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:560px){.repair-grid{grid-template-columns:1fr}}
+.repair-item{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:9px;padding:11px 13px;cursor:pointer;transition:all .15s;user-select:none}
+.repair-item:hover{border-color:rgba(255,204,77,.3)}
+.repair-item.checked{border-color:var(--gold);background:rgba(255,204,77,.07)}
+.ri-top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.ri-check{width:18px;height:18px;border:1.5px solid var(--line-2);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.repair-item.checked .ri-check{background:var(--gold);border-color:var(--gold)}
+.ri-name{font-size:13px;font-weight:600;color:var(--text)}
+.repair-item.checked .ri-name{color:var(--white)}
+.ri-cond{width:100%;background:var(--surface-2);border:1px solid var(--line-2);border-radius:6px;padding:6px 8px;font-size:11px;color:var(--text-soft);font-family:'Inter',sans-serif;outline:none;display:none}
+.repair-item.checked .ri-cond{display:block}
+.ri-cost{font-size:11px;color:var(--text-dim);margin-top:5px;display:none}
+.repair-item.checked .ri-cost{display:block}
+.ri-cost span{color:var(--gold);font-weight:700}
+.reno-total-bar{background:rgba(255,204,77,.08);border:1px solid rgba(255,204,77,.25);border-radius:9px;padding:12px 16px;margin-top:12px;display:flex;justify-content:space-between;align-items:center}
+.rt-label{font-size:12px;color:var(--text-soft)}
+.rt-val{font-size:20px;font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums}
+
+/* FINANCING TOGGLE */
+.fin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+.fin-btn{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:9px;padding:11px 14px;font-size:12px;font-weight:600;color:var(--text-soft);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;text-align:left}
+.fin-btn:hover{border-color:rgba(255,204,77,.4)}
+.fin-btn.active{border-color:var(--gold);background:rgba(255,204,77,.08);color:var(--gold)}
+.fin-btn.disabled{opacity:.4;cursor:not-allowed;pointer-events:none}
+.fn{display:block;font-size:12px;font-weight:700;margin-bottom:3px}
+.fd{display:block;font-size:10px;color:var(--text-dim);line-height:1.45}
+.fin-btn.active .fd{color:rgba(255,204,77,.6)}
+.fin-note{font-size:11px;color:rgba(255,140,50,.85);background:rgba(255,140,50,.07);border:1px solid rgba(255,140,50,.2);border-radius:7px;padding:9px 12px;margin-top:10px;line-height:1.5;display:none}
+
+/* RUN BTN */
+.run-btn{width:100%;background:var(--gold);color:#050505;border:none;border-radius:10px;padding:15px 20px;font-size:15px;font-weight:800;font-family:'Inter',sans-serif;cursor:pointer;letter-spacing:.04em;text-transform:uppercase;margin-top:16px;transition:opacity .2s}
+.run-btn:hover{opacity:.88}
+
+/* BUYING POWER BAR */
+.bp-bar{background:var(--surface);border:1px solid var(--line-2);border-radius:12px;padding:16px 20px;margin-bottom:20px;display:none}
+.bp-bar.show{display:block}
+.bp-title{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.bp-items{display:flex;flex-direction:column;gap:6px}
+.bp-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5}
+.bp-icon{flex-shrink:0;margin-top:1px}
+.bp-item.warn{color:rgba(255,140,50,.9)}
+.bp-item.info{color:var(--text-soft)}
+.bp-item.good{color:rgba(93,202,165,.9)}
+.bp-item.flag{color:rgba(255,100,100,.9)}
+.bp-strong{color:var(--gold);font-weight:700}
+
+/* RESULTS */
+.results-wrap{display:none}
+.results-wrap.show{display:block}
+.col-headers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.col-hdr{padding:10px 14px;border-radius:9px;text-align:center}
+.col-hdr-mi{background:rgba(93,202,165,.08);border:1px solid rgba(93,202,165,.22)}
+.col-hdr-fx{background:rgba(255,140,50,.08);border:1px solid rgba(255,140,50,.22)}
+.col-label{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.col-label.mi{color:#5dcaa5}
+.col-label.fx{color:#ff8c32}
+.col-sub{font-size:10px;color:var(--text-dim);margin-top:2px}
+.cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.cards-grid{grid-template-columns:1fr}.col-headers{grid-template-columns:1fr}}
+
+/* RESULT CARD */
+.result-card{background:var(--surface);border:1px solid var(--line-2);border-radius:11px;padding:14px}
+.result-card:hover{border-color:rgba(255,204,77,.2)}
+.card-zip{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--text-faint);margin-bottom:2px}
+.card-city{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:2px}
+.card-county{font-size:10px;color:var(--text-dim);margin-bottom:8px}
+.mbadge{display:inline-block;font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;padding:2px 7px;border-radius:4px;margin-bottom:7px}
+.mb-strong{background:rgba(93,202,165,.14);color:#5dcaa5;border:1px solid rgba(93,202,165,.28)}
+.mb-close{background:rgba(255,204,77,.1);color:var(--gold);border:1px solid rgba(255,204,77,.22)}
+.mb-edge{background:rgba(255,100,100,.08);color:rgba(255,120,120,.9);border:1px solid rgba(255,100,100,.18)}
+.sqft-tag{display:inline-block;font-size:9px;padding:2px 7px;border-radius:4px;background:rgba(255,255,255,.05);color:var(--text-dim);margin-bottom:8px;margin-left:4px}
+.price-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+.pr-label{font-size:11px;color:var(--text-dim)}
+.pr-val{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}
+.pr-val.mi{color:#5dcaa5}
+.pr-val.fx{color:#ff8c32}
+.card-div{height:1px;background:var(--line);margin:9px 0}
+.stat-row{display:flex;justify-content:space-between;align-items:center;padding:2px 0}
+.stat-label{font-size:11px;color:var(--text-dim)}
+.stat-val{font-size:11px;font-weight:600;color:var(--text-soft)}
+.reno-note{margin-top:9px;padding:8px 10px;background:rgba(255,140,50,.06);border:1px solid rgba(255,140,50,.18);border-radius:6px;font-size:10px;color:rgba(255,140,50,.85);line-height:1.5}
+.mip-note{margin-top:6px;padding:7px 10px;background:rgba(255,100,100,.06);border:1px solid rgba(255,100,100,.15);border-radius:6px;font-size:10px;color:rgba(255,120,120,.85);line-height:1.5}
+.payment-box{background:var(--surface-3);border-radius:7px;padding:9px 11px;margin-top:9px;display:flex;justify-content:space-between;align-items:center}
+.pay-label{font-size:11px;color:var(--text-dim)}
+.pay-val{font-size:17px;font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums}
+.empty-col{display:flex;align-items:center;justify-content:center;min-height:140px;font-size:11px;color:var(--text-faint);border:1px dashed var(--line-2);border-radius:11px;padding:16px;text-align:center;line-height:1.5}
+.no-matches{grid-column:1/-1;text-align:center;padding:36px;color:var(--text-dim);font-size:13px;line-height:1.65}
+.no-matches strong{display:block;color:var(--text-soft);font-size:15px;margin-bottom:8px}
+
+/* ARTICLE PLACEHOLDER */
+.article-placeholder{margin-top:28px;padding:20px 22px;background:var(--surface);border:1px dashed var(--line-2);border-radius:12px;display:none}
+.ap-badge{display:inline-block;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);border:1px solid var(--line-2);padding:2px 9px;border-radius:100px;margin-bottom:8px}
+.ap-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--white);margin-bottom:6px}
+.ap-body{font-size:12px;color:var(--text-soft);line-height:1.6;max-width:520px}
+
+.nbhd-link{display:block;margin-top:10px;font-size:12px;font-weight:700;color:var(--gold);text-decoration:none;letter-spacing:.03em;transition:opacity .15s}
+.nbhd-link:hover{opacity:.75}
+.nbhd-multi{margin-top:10px}
+.nbhd-multi-label{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:6px}
+.nbhd-pills{display:flex;flex-wrap:wrap;gap:5px}
+.nbhd-pill{font-size:11px;font-weight:600;color:var(--gold);text-decoration:none;background:rgba(255,204,77,.08);border:1px solid rgba(255,204,77,.2);border-radius:5px;padding:3px 8px;transition:all .15s}
+.nbhd-pill:hover{background:rgba(255,204,77,.15)}
+
+/* COMPLIANCE */
+.compliance-footer{margin-top:44px;padding:14px;border-top:1px solid var(--line);font-size:11px;color:var(--text-faint);text-align:center;line-height:1.7}
+.compliance-footer strong{color:var(--text-dim)}
+</style>
+</head>
+<body>
+
+<header class="art-hdr">
+  <a href="index.html" class="art-hdr-l">
+    <div class="art-hdr-ico"><img src="assets/STLhomebuyerjourneylogo.png" alt="STL Home Journey"></div>
+    <div>
+      <div class="art-hdr-t"><span>STL</span> Home Journey</div>
+      <div class="art-hdr-name">George Kindler</div>
+    </div>
+  </a>
+  <nav class="art-hdr-nav">
+    <a href="articles/index.html">Guides</a>
+    <a href="index.html" class="gold">Journey</a>
+  </nav>
+</header>
+
+<div class="tool-wrap">
+  <div class="tool-hero">
+    <div class="tool-badge">True Cost Comparison</div>
+    <h1>Fixer Upper vs.<br><em>Move-In Ready</em><br>St. Louis</h1>
+    <p>Enter your income, home size, and renovation scope. See which St. Louis neighborhoods offer you a genuinely equivalent home on both paths — within 5% of the same total cost. Real MARIS data by zip code and square footage. FHA, VA, and conventional math built in.</p>
+  </div>
+
+  <!-- STEP 1: YOUR SITUATION -->
+  <div class="panel">
+    <div class="panel-title">Step 1 — Your Situation</div>
+    <div class="ig">
+      <div class="field">
+        <label>Annual Income</label>
+        <input type="number" id="income" placeholder="80000">
+      </div>
+      <div class="field">
+        <label>Down Payment ($)</label>
+        <input type="number" id="down" value="20000">
+      </div>
+      <div class="field">
+        <label>Interest Rate (%)</label>
+        <input type="number" id="rate" value="7.00" step="0.125">
+        <div class="field-note">Base rate — renovation loans add premium</div>
+      </div>
+      <div class="field">
+        <label>Monthly Debts ($)</label>
+        <input type="number" id="debts" value="400" placeholder="car, student loans">
+      </div>
+      <div class="field">
+        <label>Target Home Size</label>
+        <select id="sqft">
+          <option value="">Any size (base data)</option>
+          <option value="u1000">Under 1,000 sq ft</option>
+          <option value="1000">1,000 – 1,400 sq ft</option>
+          <option value="1400">1,400 – 1,800 sq ft</option>
+          <option value="1800">1,800 – 2,400 sq ft</option>
+          <option value="o2400">Over 2,400 sq ft</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="hdiv"></div>
+    <div class="panel-title">Loan Type</div>
+    <div class="loan-tabs">
+      <button class="ltab active" onclick="setLoanType('conv',this)">Conventional</button>
+      <button class="ltab" onclick="setLoanType('fha',this)">FHA</button>
+      <button class="ltab" onclick="setLoanType('va',this)">VA</button>
+    </div>
+    <div id="loanTypeNote" style="font-size:11px;color:var(--text-dim);margin-top:8px;line-height:1.5"></div>
+  </div>
+
+  <!-- STEP 2: RENOVATION SCOPE -->
+  <div class="panel">
+    <div class="panel-title">Step 2 — Renovation Scope (Fixer Upper Path)</div>
+    <div class="mode-toggle">
+      <button class="mode-btn active" onclick="setMode('simple',this)">Quick Estimate</button>
+      <button class="mode-btn" onclick="setMode('itemized',this)">Itemized (What Does It Actually Need?)</button>
+    </div>
+
+    <!-- SIMPLE MODE -->
+    <div id="simpleMode">
+      <div class="simple-presets">
+        <button class="sp-btn" onclick="setSimpleReno(20000,this)">
+          <span class="sn">General Refresh</span>
+          <span class="sr">Paint, floors, landscaping, deck, fixtures. Move-in but dated.</span>
+        </button>
+        <button class="sp-btn active" onclick="setSimpleReno(45000,this)">
+          <span class="sn">Moderate Renovation</span>
+          <span class="sr">Kitchen or bathrooms, cosmetics, some systems work.</span>
+        </button>
+        <button class="sp-btn" onclick="setSimpleReno(90000,this)">
+          <span class="sn">Full Renovation</span>
+          <span class="sr">Kitchen, baths, roof, HVAC, or structural — major scope.</span>
+        </button>
+      </div>
+      <div class="custom-row">
+        <label>Or enter your own:</label>
+        <input type="number" id="simpleCustom" value="45000" oninput="onSimpleCustom()">
+      </div>
+    </div>
+
+    <!-- ITEMIZED MODE -->
+    <div id="itemizedMode" style="display:none">
+      <div class="repair-grid" id="repairGrid"></div>
+      <div class="reno-total-bar">
+        <span class="rt-label">Estimated Renovation Budget</span>
+        <span class="rt-val" id="renoTotalDisplay">$0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: FINANCING PATH -->
+  <div class="panel" id="finPanel">
+    <div class="panel-title">Step 3 — Fixer Upper Financing Path</div>
+    <div class="fin-grid" id="finGrid"></div>
+    <div class="fin-note" id="finNote"></div>
+  </div>
+
+  <button class="run-btn" onclick="runTool()">Show Me My Matches →</button>
+
+  <!-- BUYING POWER BAR -->
+  <div class="bp-bar" id="bpBar">
+    <div class="bp-title">📊 What This Financing Decision Actually Costs You</div>
+    <div class="bp-items" id="bpItems"></div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results-wrap" id="resultsWrap">
+    <div class="col-headers">
+      <div class="col-hdr col-hdr-mi">
+        <div class="col-label mi">Move-In Ready</div>
+        <div class="col-sub">Buy it. Live in it.</div>
+      </div>
+      <div class="col-hdr col-hdr-fx">
+        <div class="col-label fx">Fixer Upper</div>
+        <div class="col-sub" id="fxColSub">Same total cost, different path</div>
+      </div>
+    </div>
+    <div class="cards-grid" id="cardsGrid"></div>
+  </div>
+
+  <!-- ARTICLE PLACEHOLDER -->
+  <div class="article-placeholder" id="articlePlaceholder">
+    <div class="ap-badge">Guide Coming Soon</div>
+    <div class="ap-title">Renovation Loans in St. Louis: FHA 203k vs. HomeStyle — What Actually Works Here</div>
+    <div class="ap-body">FHA 203k Streamlined (cosmetic, max $35K), FHA 203k Standard (structural, any scope), and Fannie Mae HomeStyle (conventional, 5% down, no MIP) — written from personal experience using a renovation loan to buy our first home. What lenders actually require, what the draw schedule looks like, and the mistake most buyers make on renovation scope before they close.</div>
+  </div>
+
+  <div class="compliance-footer">
+    <strong>The Closing Pros LLC</strong> · Licensed Missouri Real Estate Brokerage<br>
+    Office: 314-998-4550 · George's Direct: 314.435.1087<br>
+    Prices from 2025–2026 MARIS sales (7,006 transactions). Tiers: Fixer Upper = 25th percentile (DOM 45+), Move-In Ready = median, Renovated = 75th percentile. FHA limit Missouri 2026: $541,287. FHA MIP: 1.75% upfront + 0.55%/yr. Monthly estimates only — consult a licensed lender for actual approval.
+  </div>
+</div>
+
+<script>
+
+// CONSTANTS
+// ============================================================
+const FHA_LIMIT_MO = 541287;
+const FHA_MIP_UPFRONT = 0.0175;
+const FHA_MIP_ANNUAL = 0.0055;
+const MATCH_WINDOW = 0.05;
+
+const SQFT_LABELS = {
+  "":"All sizes","u1000":"Under 1,000 sq ft","1000":"1,000–1,400 sq ft",
+  "1400":"1,400–1,800 sq ft","1800":"1,800–2,400 sq ft","o2400":"Over 2,400 sq ft"
+};
+
+// ============================================================
+// REPAIR LINE ITEMS (from cash offer decoder — actual St. Louis costs)
+// ============================================================
+const REPAIRS = [
+  {id:'kitchen',name:'Kitchen',icon:'🍳',conditions:[
+    {label:'Full gut renovation',actualCost:23000,condTier:'low'},
+    {label:'Cabinets & countertops only',actualCost:7500,condTier:'mid'},
+    {label:'Cosmetic — paint, hardware, appliances',actualCost:3000,condTier:'high'},
+  ]},
+  {id:'bathrooms',name:'Bathrooms',icon:'🚿',conditions:[
+    {label:'Full renovation — both baths',actualCost:13000,condTier:'low'},
+    {label:'One full bath update',actualCost:6500,condTier:'mid'},
+    {label:'Cosmetic — fixtures, vanity, tile',actualCost:1800,condTier:'high'},
+  ]},
+  {id:'roof',name:'Roof',icon:'🏠',conditions:[
+    {label:'Full replacement — failure imminent',actualCost:10500,condTier:'low'},
+    {label:'5–10 years remaining',actualCost:2500,condTier:'mid'},
+    {label:'Minor repairs — shingles/flashing',actualCost:900,condTier:'mid'},
+  ]},
+  {id:'hvac',name:'HVAC',icon:'❄️',conditions:[
+    {label:'Full system replacement — both units',actualCost:9000,condTier:'low'},
+    {label:'Furnace only',actualCost:4000,condTier:'low'},
+    {label:'AC unit only',actualCost:4500,condTier:'mid'},
+  ]},
+  {id:'electrical',name:'Electrical',icon:'⚡',conditions:[
+    {label:'Federal Pacific / must replace',actualCost:3500,condTier:'low'},
+    {label:'100A → 200A upgrade needed',actualCost:2500,condTier:'low'},
+    {label:'Knob and tube wiring',actualCost:14000,condTier:'low'},
+  ]},
+  {id:'foundation',name:'Foundation / Basement',icon:'🏗️',conditions:[
+    {label:'Active intrusion — full waterproofing',actualCost:11000,condTier:'low'},
+    {label:'Cracks — epoxy injection',actualCost:2500,condTier:'low'},
+    {label:'Minor seepage — grading issue',actualCost:1200,condTier:'mid'},
+  ]},
+  {id:'floors',name:'Floors',icon:'🪵',conditions:[
+    {label:'Full hardwood replacement',actualCost:5200,condTier:'low'},
+    {label:'Full refinishing needed',actualCost:1600,condTier:'low'},
+    {label:'Buff and seal only',actualCost:700,condTier:'mid'},
+  ]},
+  {id:'carpet',name:'Carpet',icon:'🛋️',conditions:[
+    {label:'Full replacement — all areas',actualCost:2800,condTier:'low'},
+    {label:'Bedrooms only',actualCost:1400,condTier:'mid'},
+    {label:'Cleaning only',actualCost:300,condTier:'mid'},
+  ]},
+  {id:'paint',name:'Interior Paint',icon:'🖌️',conditions:[
+    {label:'Full interior repaint',actualCost:3500,condTier:'mid'},
+    {label:'Partial — high-traffic areas',actualCost:1200,condTier:'high'},
+  ]},
+  {id:'plumbing',name:'Plumbing / Sewer',icon:'🔧',conditions:[
+    {label:'Sewer lateral replacement',actualCost:8000,condTier:'low'},
+    {label:'Full repipe — galvanized/lead',actualCost:8000,condTier:'low'},
+    {label:'Minor leaks and fixtures',actualCost:900,condTier:'mid'},
+  ]},
+  {id:'windows',name:'Windows',icon:'🪟',conditions:[
+    {label:'Full replacement — all windows',actualCost:10500,condTier:'low'},
+    {label:'Partial — several failed units',actualCost:3500,condTier:'mid'},
+    {label:'Cosmetic — hardware/caulk',actualCost:500,condTier:'high'},
+  ]},
+  {id:'deck',name:'Deck',icon:'🌿',conditions:[
+    {label:'Full replacement',actualCost:10000,condTier:'low'},
+    {label:'Structural repairs',actualCost:3500,condTier:'mid'},
+    {label:'Cosmetic — boards, staining',actualCost:1500,condTier:'high'},
+  ]},
+];
+
+// State
+let loanType = 'conv';
+let renoMode = 'simple';
+let simpleRenoAmt = 45000;
+let finType = 'cash';
+let repairState = {};
+
+REPAIRS.forEach(r => { repairState[r.id] = {checked: false, condIdx: 0}; });
+
+// ============================================================
+// TIER DATA (284 entries — base + size-banded)
+// ============================================================
+PYEOF
+const TIERS = {
+  "63005":{low:631500,mid:800000,high:1247000,n:70},
+  "63010":{low:255000,mid:280000,high:350000,n:121},
+  "63011":{low:365000,mid:455000,high:552000,n:169},
+  "63012":{low:234900,mid:292500,high:384000,n:42},
+  "63016":{low:270000,mid:326100,high:525000,n:26},
+  "63017":{low:480000,mid:575000,high:755000,n:129},
+  "63019":{low:185000,mid:230000,high:290000,n:27},
+  "63020":{low:185000,mid:219500,high:255000,n:126},
+  "63021":{low:375000,mid:414200,high:530000,n:192},
+  "63025":{low:359000,mid:442500,high:705000,n:108},
+  "63026":{low:340000,mid:387400,high:490000,n:224},
+  "63028":{low:255000,mid:320000,high:385000,n:149},
+  "63031":{low:147000,mid:180000,high:234900,n:217},
+  "63033":{low:172500,mid:220000,high:270000,n:151},
+  "63034":{low:220000,mid:289000,high:330000,n:71},
+  "63042":{low:152000,mid:195000,high:225000,n:64},
+  "63043":{low:255000,mid:295000,high:318600,n:83},
+  "63044":{low:195000,mid:267500,high:360000,n:40},
+  "63049":{low:273700,mid:297500,high:395000,n:82},
+  "63050":{low:284900,mid:328500,high:405100,n:90},
+  "63051":{low:200000,mid:290000,high:340000,n:61},
+  "63052":{low:269900,mid:331500,high:375000,n:132},
+  "63074":{low:125900,mid:166500,high:214900,n:61},
+  "63088":{low:219900,mid:320000,high:460000,n:37},
+  "63104":{low:245000,mid:445000,high:575000,n:63},
+  "63108":{low:370000,mid:581000,high:850000,n:17},
+  "63109":{low:244000,mid:301800,high:395000,n:152},
+  "63110":{low:245200,mid:349700,high:550000,n:54},
+  "63111":{low:116000,mid:165000,high:198900,n:66},
+  "63112":{low:122400,mid:275000,high:406000,n:19},
+  "63114":{low:145000,mid:164400,high:225000,n:136},
+  "63116":{low:155000,mid:221600,high:300000,n:201},
+  "63117":{low:263000,mid:355000,high:585000,n:31},
+  "63118":{low:164000,mid:263400,high:432000,n:80},
+  "63119":{low:285000,mid:393000,high:560000,n:164},
+  "63121":{low:77000,mid:116000,high:184900,n:63},
+  "63122":{low:400000,mid:600000,high:800000,n:239},
+  "63123":{low:235000,mid:259500,high:340000,n:236},
+  "63124":{low:499900,mid:787500,high:1125000,n:30},
+  "63125":{low:125000,mid:219000,high:286300,n:122},
+  "63126":{low:290000,mid:330000,high:415000,n:80},
+  "63127":{low:317000,mid:739000,high:970000,n:20},
+  "63128":{low:290000,mid:421900,high:550000,n:107},
+  "63129":{low:311000,mid:360000,high:427500,n:198},
+  "63130":{low:155000,mid:458000,high:688000,n:127},
+  "63131":{low:400000,mid:832500,high:1100000,n:58},
+  "63132":{low:260000,mid:475000,high:625000,n:43},
+  "63133":{low:60000,mid:85000,high:155000,n:13},
+  "63134":{low:96000,mid:120000,high:165000,n:53},
+  "63135":{low:73000,mid:115700,high:205000,n:84},
+  "63136":{low:78000,mid:95000,high:123000,n:135},
+  "63137":{low:80000,mid:110000,high:140000,n:59},
+  "63138":{low:110000,mid:161600,high:235000,n:58},
+  "63139":{low:190000,mid:256000,high:310000,n:117},
+  "63141":{low:545000,mid:637000,high:845000,n:76},
+  "63143":{low:229000,mid:290000,high:323800,n:35},
+  "63144":{low:370300,mid:402500,high:525000,n:44},
+  "63146":{low:315000,mid:355000,high:425000,n:97},
+  "63301":{low:294400,mid:320000,high:349000,n:209},
+  "63303":{low:295000,mid:333000,high:381000,n:93},
+  "63304":{low:322000,mid:350000,high:378000,n:116},
+  "63366":{low:301900,mid:328200,high:365000,n:138},
+  "63367":{low:317400,mid:345000,high:372600,n:65},
+  "63368":{low:331200,mid:360000,high:388800,n:83},
+  "63376":{low:303600,mid:330000,high:359900,n:272},
+  "63385":{low:300000,mid:340000,high:375000,n:197},
+  "63005_o2400":{low:650000,mid:850000,high:1325000,n:63},
+  "63010_1000":{low:230000,mid:256800,high:285000,n:46},
+  "63010_1400":{low:275000,mid:315000,high:350000,n:29},
+  "63010_1800":{low:349900,mid:392500,high:515000,n:16},
+  "63010_o2400":{low:403900,mid:439000,high:474100,n:10},
+  "63010_u1000":{low:211600,mid:230000,high:256000,n:20},
+  "63011_1000":{low:277000,mid:320000,high:367000,n:21},
+  "63011_1400":{low:344900,mid:396800,high:459900,n:30},
+  "63011_1800":{low:420400,mid:457000,high:539000,n:61},
+  "63011_o2400":{low:500000,mid:577500,high:640000,n:50},
+  "63012_1000":{low:230000,mid:279000,high:310000,n:14},
+  "63012_1400":{low:250000,mid:337500,high:380000,n:14},
+  "63016_1000":{low:213000,mid:265200,high:332500,n:10},
+  "63017_1400":{low:375000,mid:409500,high:521000,n:8},
+  "63017_1800":{low:425000,mid:496000,high:630000,n:38},
+  "63017_o2400":{low:520000,mid:655000,high:1000000,n:79},
+  "63019_1000":{low:211600,mid:230000,high:260000,n:11},
+  "63019_u1000":{low:125000,mid:187500,high:249000,n:8},
+  "63020_1000":{low:190000,mid:214900,high:255000,n:47},
+  "63020_1400":{low:220000,mid:295000,high:399900,n:25},
+  "63020_1800":{low:210000,mid:242000,high:342500,n:13},
+  "63020_o2400":{low:435000,mid:537500,high:600000,n:8},
+  "63020_u1000":{low:132000,mid:160000,high:190000,n:33},
+  "63021_1000":{low:285000,mid:335000,high:361800,n:54},
+  "63021_1400":{low:355000,mid:389500,high:456000,n:34},
+  "63021_1800":{low:403000,mid:452000,high:540000,n:48},
+  "63021_o2400":{low:579600,mid:630000,high:800000,n:48},
+  "63021_u1000":{low:232500,mid:292500,high:330000,n:8},
+  "63025_1000":{low:287000,mid:316200,high:364900,n:12},
+  "63025_1400":{low:295000,mid:377500,high:418000,n:24},
+  "63025_1800":{low:389000,mid:445000,high:510000,n:25},
+  "63025_o2400":{low:485000,mid:542500,high:850000,n:42},
+  "63026_1000":{low:251000,mid:301000,high:340000,n:47},
+  "63026_1400":{low:321600,mid:362000,high:419900,n:43},
+  "63026_1800":{low:437000,mid:475000,high:520000,n:57},
+  "63026_o2400":{low:400700,mid:553000,high:720000,n:44},
+  "63026_u1000":{low:200000,mid:261000,high:285000,n:33},
+  "63028_1000":{low:210000,mid:245000,high:280000,n:38},
+  "63028_1400":{low:255000,mid:340000,high:385000,n:37},
+  "63028_1800":{low:364300,mid:396000,high:427700,n:27},
+  "63028_o2400":{low:474900,mid:532400,high:685000,n:26},
+  "63028_u1000":{low:150000,mid:184800,high:199600,n:21},
+  "63031_1000":{low:152500,mid:181000,high:217000,n:118},
+  "63031_1400":{low:180000,mid:225000,high:265000,n:25},
+  "63031_1800":{low:276700,mid:300800,high:358200,n:10},
+  "63031_u1000":{low:134000,mid:159200,high:189000,n:58},
+  "63033_1000":{low:170000,mid:199900,high:235000,n:63},
+  "63033_1400":{low:180000,mid:250000,high:275000,n:50},
+  "63033_1800":{low:207000,mid:260000,high:280800,n:21},
+  "63033_u1000":{low:118000,mid:156000,high:168500,n:13},
+  "63034_1000":{low:102000,mid:212200,high:267000,n:14},
+  "63034_1400":{low:220000,mid:265000,high:295900,n:23},
+  "63034_1800":{low:295000,mid:335000,high:361800,n:20},
+  "63034_o2400":{low:335000,mid:415000,high:449000,n:13},
+  "63042_1000":{low:147000,mid:195000,high:225000,n:32},
+  "63042_1400":{low:175000,mid:255000,high:280000,n:11},
+  "63042_u1000":{low:146000,mid:171000,high:195000,n:18},
+  "63043_1000":{low:272500,mid:300100,high:324100,n:36},
+  "63043_1400":{low:235000,mid:325000,high:351000,n:11},
+  "63043_1800":{low:326000,mid:375000,high:430000,n:9},
+  "63043_u1000":{low:245000,mid:268500,high:290000,n:26},
+  "63044_1000":{low:215000,mid:260000,high:285000,n:15},
+  "63044_1400":{low:305000,mid:340000,high:367200,n:10},
+  "63049_1000":{low:212500,mid:255000,high:275400,n:35},
+  "63049_1400":{low:285000,mid:328200,high:380000,n:14},
+  "63049_1800":{low:300000,mid:377500,high:500000,n:12},
+  "63049_o2400":{low:425000,mid:490000,high:741200,n:13},
+  "63049_u1000":{low:207500,mid:230200,high:248600,n:8},
+  "63050_1000":{low:222800,mid:275000,high:310000,n:23},
+  "63050_1400":{low:285000,mid:320000,high:410000,n:27},
+  "63050_1800":{low:384100,mid:417500,high:450900,n:25},
+  "63050_o2400":{low:386500,mid:515000,high:799900,n:11},
+  "63051_1000":{low:200000,mid:278000,high:300200,n:24},
+  "63051_1400":{low:194000,mid:305000,high:340000,n:11},
+  "63051_1800":{low:306000,mid:420000,high:453600,n:11},
+  "63051_u1000":{low:150000,mid:200000,high:257000,n:9},
+  "63052_1000":{low:250000,mid:273000,high:300000,n:34},
+  "63052_1400":{low:297000,mid:350000,high:393000,n:46},
+  "63052_1800":{low:350000,mid:425000,high:492500,n:19},
+  "63052_o2400":{low:374900,mid:420500,high:535000,n:16},
+  "63052_u1000":{low:198500,mid:217000,high:259800,n:17},
+  "63074_1000":{low:110100,mid:170000,high:225000,n:27},
+  "63074_u1000":{low:125900,mid:150800,high:195000,n:28},
+  "63088_1000":{low:200000,mid:304000,high:335000,n:23},
+  "63088_1400":{low:236000,mid:440000,high:519000,n:9},
+  "63104_1400":{low:209000,mid:257400,high:308300,n:14},
+  "63104_1800":{low:349400,mid:391000,high:575000,n:16},
+  "63104_o2400":{low:495000,mid:575000,high:625000,n:29},
+  "63109_1000":{low:250000,mid:273700,high:317000,n:55},
+  "63109_1400":{low:305000,mid:342500,high:395000,n:44},
+  "63109_1800":{low:360000,mid:450000,high:625000,n:23},
+  "63109_u1000":{low:170000,mid:214000,high:257000,n:24},
+  "63110_1000":{low:230000,mid:259500,high:420000,n:8},
+  "63110_1400":{low:270000,mid:325000,high:380000,n:12},
+  "63110_1800":{low:309900,mid:501400,high:595000,n:13},
+  "63110_o2400":{low:415000,mid:512500,high:650000,n:14},
+  "63111_1000":{low:140000,mid:156000,high:185600,n:24},
+  "63111_1400":{low:170000,mid:210800,high:255000,n:12},
+  "63111_1800":{low:210000,mid:241400,high:290000,n:10},
+  "63111_u1000":{low:65000,mid:123500,high:152000,n:16},
+  "63114_1000":{low:149000,mid:177500,high:220000,n:58},
+  "63114_1400":{low:135000,mid:198500,high:238000,n:18},
+  "63114_1800":{low:248200,mid:269800,high:315500,n:8},
+  "63114_u1000":{low:123700,mid:134500,high:150000,n:51},
+  "63116_1000":{low:190000,mid:218300,high:255000,n:69},
+  "63116_1400":{low:195000,mid:272500,high:340000,n:39},
+  "63116_1800":{low:200000,mid:318800,high:500000,n:26},
+  "63116_o2400":{low:395000,mid:480000,high:518400,n:11},
+  "63116_u1000":{low:123000,mid:165000,high:215500,n:56},
+  "63117_1000":{low:250000,mid:282500,high:355000,n:8},
+  "63117_1400":{low:265000,mid:351500,high:415000,n:10},
+  "63118_1000":{low:69000,mid:135000,high:171700,n:8},
+  "63118_1400":{low:173000,mid:238200,high:313800,n:16},
+  "63118_1800":{low:185000,mid:290000,high:380000,n:23},
+  "63118_o2400":{low:350900,mid:435000,high:530000,n:21},
+  "63118_u1000":{low:55300,mid:102500,high:130000,n:12},
+  "63119_1000":{low:285000,mid:336000,high:427500,n:51},
+  "63119_1400":{low:345000,mid:390000,high:500000,n:31},
+  "63119_1800":{low:399000,mid:567500,high:667000,n:26},
+  "63119_o2400":{low:629900,mid:805500,high:1040000,n:29},
+  "63119_u1000":{low:221200,mid:264000,high:330000,n:27},
+  "63121_1000":{low:114000,mid:136000,high:165000,n:23},
+  "63121_1800":{low:180000,mid:235300,high:254100,n:8},
+  "63121_u1000":{low:65000,mid:85000,high:106100,n:23},
+  "63122_1000":{low:310000,mid:380000,high:506500,n:44},
+  "63122_1400":{low:392500,mid:464000,high:614000,n:42},
+  "63122_1800":{low:540000,mid:645000,high:750000,n:49},
+  "63122_o2400":{low:690000,mid:868600,high:1050000,n:86},
+  "63122_u1000":{low:272000,mid:302500,high:342500,n:18},
+  "63123_1000":{low:225000,mid:254500,high:285000,n:93},
+  "63123_1400":{low:289800,mid:315000,high:405000,n:38},
+  "63123_1800":{low:322500,mid:502000,high:625000,n:19},
+  "63123_o2400":{low:560000,mid:699100,high:774400,n:21},
+  "63123_u1000":{low:185000,mid:215000,high:255000,n:65},
+  "63125_1000":{low:125000,mid:229200,high:285300,n:54},
+  "63125_1400":{low:235000,mid:295000,high:318600,n:17},
+  "63125_u1000":{low:90000,mid:164900,high:220000,n:43},
+  "63126_1000":{low:261000,mid:310000,high:338000,n:33},
+  "63126_1400":{low:325000,mid:365000,high:420000,n:29},
+  "63126_1800":{low:410000,mid:472400,high:682500,n:8},
+  "63128_1000":{low:240000,mid:276200,high:300000,n:12},
+  "63128_1400":{low:290000,mid:340000,high:421900,n:29},
+  "63128_1800":{low:375000,mid:417500,high:520000,n:34},
+  "63128_o2400":{low:495000,mid:550000,high:630000,n:30},
+  "63129_1000":{low:266000,mid:305500,high:329900,n:48},
+  "63129_1400":{low:300000,mid:340000,high:387000,n:36},
+  "63129_1800":{low:345000,mid:400000,high:443000,n:55},
+  "63129_o2400":{low:420000,mid:520000,high:600000,n:45},
+  "63129_u1000":{low:201000,mid:250500,high:270500,n:14},
+  "63130_1000":{low:150000,mid:220000,high:249000,n:21},
+  "63130_1400":{low:245000,mid:390000,high:502000,n:33},
+  "63130_1800":{low:470000,mid:542800,high:675000,n:30},
+  "63130_o2400":{low:685000,mid:821000,high:1125000,n:31},
+  "63130_u1000":{low:80000,mid:117500,high:127000,n:12},
+  "63131_1800":{low:535000,mid:581500,high:815000,n:9},
+  "63131_o2400":{low:625000,mid:962000,high:1200000,n:40},
+  "63132_1400":{low:260000,mid:475000,high:638000,n:8},
+  "63132_1800":{low:475000,mid:546000,high:715000,n:12},
+  "63132_o2400":{low:590000,mid:812500,high:1400000,n:10},
+  "63134_1000":{low:96000,mid:135000,high:170000,n:21},
+  "63134_u1000":{low:60000,mid:101000,high:124500,n:25},
+  "63135_1000":{low:77200,mid:111500,high:163000,n:34},
+  "63135_1400":{low:127500,mid:183500,high:213000,n:18},
+  "63135_u1000":{low:65000,mid:73000,high:110000,n:25},
+  "63136_1000":{low:78000,mid:115000,high:130000,n:73},
+  "63136_1400":{low:50000,mid:87900,high:167000,n:9},
+  "63136_u1000":{low:70700,mid:85000,high:110000,n:52},
+  "63137_1000":{low:90000,mid:134000,high:148200,n:21},
+  "63137_u1000":{low:67000,mid:97500,high:115000,n:32},
+  "63138_1000":{low:102000,mid:130000,high:180000,n:18},
+  "63138_1400":{low:118000,mid:179900,high:239900,n:19},
+  "63138_1800":{low:195000,mid:233700,high:295000,n:8},
+  "63138_u1000":{low:60500,mid:110000,high:118800,n:9},
+  "63139_1000":{low:202000,mid:250000,high:300000,n:47},
+  "63139_1400":{low:265000,mid:308500,high:375000,n:20},
+  "63139_1800":{low:290000,mid:390000,high:445000,n:17},
+  "63139_u1000":{low:178000,mid:218200,high:235700,n:30},
+  "63141_1400":{low:330000,mid:400000,high:500000,n:11},
+  "63141_1800":{low:458000,mid:525000,high:567000,n:20},
+  "63141_o2400":{low:575000,mid:875000,high:951000,n:43},
+  "63143_1000":{low:224900,mid:290000,high:323000,n:12},
+  "63143_1400":{low:240000,mid:310000,high:360000,n:9},
+  "63144_1000":{low:305000,mid:347200,high:375500,n:17},
+  "63144_1800":{low:611000,mid:692500,high:785000,n:10},
+  "63146_1000":{low:250000,mid:315800,high:351000,n:22},
+  "63146_1400":{low:315000,mid:350000,high:393000,n:45},
+  "63146_1800":{low:315000,mid:407500,high:457000,n:22},
+  "63146_o2400":{low:556600,mid:605000,high:725000,n:8},
+  "63301_1000":{low:260500,mid:283200,high:325000,n:74},
+  "63301_1400":{low:300000,mid:347500,high:375300,n:81},
+  "63301_1800":{low:339900,mid:380000,high:410400,n:27},
+  "63301_o2400":{low:355000,mid:386600,high:417500,n:8},
+  "63301_u1000":{low:185000,mid:250000,high:270000,n:19},
+  "63303_1000":{low:259000,mid:293000,high:325000,n:32},
+  "63303_1400":{low:317400,mid:345000,high:375100,n:34},
+  "63303_1800":{low:350000,mid:390000,high:421200,n:18},
+  "63304_1000":{low:294000,mid:331000,high:357500,n:37},
+  "63304_1400":{low:322000,mid:350000,high:404000,n:45},
+  "63304_1800":{low:366000,mid:399000,high:430900,n:25},
+  "63304_u1000":{low:224500,mid:263000,high:284000,n:8},
+  "63366_1000":{low:255000,mid:280000,high:316500,n:57},
+  "63366_1400":{low:327500,mid:356000,high:384500,n:36},
+  "63366_1800":{low:354200,mid:385000,high:415800,n:25},
+  "63366_u1000":{low:220800,mid:240000,high:269900,n:14},
+  "63367_1000":{low:290000,mid:322500,high:348300,n:18},
+  "63367_1400":{low:318000,mid:350500,high:378500,n:26},
+  "63367_1800":{low:335000,mid:372400,high:402200,n:16},
+  "63368_1000":{low:286600,mid:325000,high:369000,n:15},
+  "63368_1400":{low:315000,mid:362500,high:391500,n:36},
+  "63368_1800":{low:327500,mid:385000,high:415800,n:23},
+  "63376_1000":{low:278000,mid:315000,high:340200,n:125},
+  "63376_1400":{low:322000,mid:350000,high:378000,n:85},
+  "63376_1800":{low:335800,mid:365000,high:394200,n:45},
+  "63376_u1000":{low:215000,mid:242500,high:276000,n:10},
+  "63385_1000":{low:240000,mid:300000,high:328000,n:67},
+  "63385_1400":{low:322000,mid:350000,high:385000,n:71},
+  "63385_1800":{low:349600,mid:380000,high:410400,n:41},
+  "63385_o2400":{low:363400,mid:395000,high:426600,n:13},
+};
+
+// Total entries: 284
+
+const CITIES = {
+  "63005":{city:"Chesterfield",fw:41.4,dom:7.5,county:"St. Louis County"},
+  "63010":{city:"Arnold",fw:45.9,dom:6.5,county:"Jefferson County"},
+  "63011":{city:"Ballwin",fw:47.3,dom:6,county:"St. Louis County"},
+  "63012":{city:"Barnhart",fw:39.5,dom:9,county:"Jefferson County"},
+  "63016":{city:"Cedar Hill",fw:26.9,dom:37.5,county:"Jefferson County"},
+  "63017":{city:"Chesterfield W.",fw:46.9,dom:6.0,county:"St. Louis County"},
+  "63019":{city:"Crystal City",fw:33.3,dom:25,county:"Jefferson County"},
+  "63020":{city:"DeSoto",fw:30.0,dom:20,county:"Jefferson County"},
+  "63021":{city:"Ballwin S.",fw:49.5,dom:5,county:"St. Louis County"},
+  "63025":{city:"Eureka",fw:44.9,dom:6.5,county:"St. Louis County"},
+  "63026":{city:"Fenton",fw:46.4,dom:6,county:"St. Louis County"},
+  "63028":{city:"Festus",fw:34.5,dom:14,county:"Jefferson County"},
+  "63031":{city:"Florissant N.",fw:52.6,dom:5,county:"St. Louis County"},
+  "63033":{city:"Florissant W.",fw:48.0,dom:5.5,county:"St. Louis County"},
+  "63034":{city:"Florissant E.",fw:50.6,dom:5,county:"St. Louis County"},
+  "63042":{city:"Hazelwood",fw:51.8,dom:5,county:"St. Louis County"},
+  "63043":{city:"Maryland Heights",fw:48.7,dom:5.5,county:"St. Louis County"},
+  "63044":{city:"Bridgeton",fw:45.2,dom:6,county:"St. Louis County"},
+  "63049":{city:"High Ridge",fw:38.2,dom:10,county:"Jefferson County"},
+  "63050":{city:"Hillsboro",fw:28.6,dom:28,county:"Jefferson County"},
+  "63051":{city:"House Springs",fw:32.3,dom:18,county:"Jefferson County"},
+  "63052":{city:"Imperial",fw:41.9,dom:8,county:"Jefferson County"},
+  "63074":{city:"St. Ann",fw:50.9,dom:5,county:"St. Louis County"},
+  "63088":{city:"Valley Park",fw:42.1,dom:7.5,county:"St. Louis County"},
+  "63104":{city:"Soulard",fw:35.4,dom:13,county:"St. Louis City"},
+  "63108":{city:"Central West End",fw:34.6,dom:14,county:"St. Louis City"},
+  "63109":{city:"S. St. Louis",fw:44.3,dom:7,county:"St. Louis City"},
+  "63110":{city:"Forest Park S.",fw:36.4,dom:12,county:"St. Louis City"},
+  "63111":{city:"S. St. Louis E.",fw:31.6,dom:18,county:"St. Louis City"},
+  "63112":{city:"University City S.",fw:38.1,dom:10,county:"St. Louis County"},
+  "63114":{city:"Overland",fw:50.0,dom:5,county:"St. Louis County"},
+  "63116":{city:"S. St. Louis SW",fw:46.8,dom:6,county:"St. Louis City"},
+  "63117":{city:"Richmond Heights",fw:42.5,dom:7.5,county:"St. Louis County"},
+  "63118":{city:"Bevo Mill",fw:38.2,dom:10,county:"St. Louis City"},
+  "63119":{city:"Webster Groves",fw:48.0,dom:5.5,county:"St. Louis County"},
+  "63121":{city:"Normandy",fw:45.3,dom:6.5,county:"St. Louis County"},
+  "63122":{city:"Kirkwood",fw:49.6,dom:5,county:"St. Louis County"},
+  "63123":{city:"Affton",fw:52.8,dom:4.5,county:"St. Louis County"},
+  "63124":{city:"Ladue",fw:38.9,dom:10,county:"St. Louis County"},
+  "63125":{city:"Mehlville",fw:54.4,dom:4,county:"St. Louis County"},
+  "63126":{city:"Crestwood",fw:50.0,dom:5,county:"St. Louis County"},
+  "63127":{city:"Sunset Hills",fw:44.2,dom:7,county:"St. Louis County"},
+  "63128":{city:"Concord/Tesson",fw:51.7,dom:4.5,county:"St. Louis County"},
+  "63129":{city:"Oakville",fw:53.0,dom:4,county:"St. Louis County"},
+  "63130":{city:"U. City/Olivette",fw:45.3,dom:6.5,county:"St. Louis County"},
+  "63131":{city:"Des Peres",fw:43.1,dom:7,county:"St. Louis County"},
+  "63132":{city:"Overland/Olivette",fw:48.3,dom:5.5,county:"St. Louis County"},
+  "63133":{city:"University City N.",fw:38.9,dom:10,county:"St. Louis County"},
+  "63134":{city:"Berkeley",fw:44.8,dom:6.5,county:"St. Louis County"},
+  "63135":{city:"Ferguson E.",fw:42.9,dom:7.5,county:"St. Louis County"},
+  "63136":{city:"Jennings",fw:40.0,dom:9,county:"St. Louis County"},
+  "63137":{city:"Riverview",fw:36.8,dom:12,county:"St. Louis County"},
+  "63138":{city:"Spanish Lake",fw:38.7,dom:10,county:"St. Louis County"},
+  "63139":{city:"St. Louis SW",fw:41.3,dom:8,county:"St. Louis City"},
+  "63141":{city:"Chesterfield E.",fw:44.3,dom:7,county:"St. Louis County"},
+  "63143":{city:"Maplewood",fw:43.2,dom:7.5,county:"St. Louis County"},
+  "63144":{city:"Brentwood",fw:44.7,dom:7,county:"St. Louis County"},
+  "63146":{city:"Creve Coeur",fw:43.1,dom:7,county:"St. Louis County"},
+  "63301":{city:"St. Charles",fw:46.5,dom:6,county:"St. Charles County"},
+  "63303":{city:"St. Charles S.",fw:45.5,dom:6.5,county:"St. Charles County"},
+  "63304":{city:"St. Charles W.",fw:44.9,dom:7,county:"St. Charles County"},
+  "63366":{city:"O'Fallon",fw:48.2,dom:5.5,county:"St. Charles County"},
+  "63367":{city:"Lake St. Louis",fw:46.7,dom:6,county:"St. Charles County"},
+  "63368":{city:"O'Fallon W.",fw:47.3,dom:6,county:"St. Charles County"},
+  "63376":{city:"St. Peters",fw:49.5,dom:5.5,county:"St. Charles County"},
+  "63385":{city:"Wentzville",fw:46.2,dom:6.5,county:"St. Charles County"},
+};
+
+const TAX = {
+  "63005":0.0098,"63010":0.0118,"63011":0.0102,"63012":0.0118,"63016":0.0118,
+  "63017":0.0098,"63019":0.0118,"63020":0.0118,"63021":0.0102,"63025":0.0102,
+  "63026":0.0102,"63028":0.0118,"63031":0.0112,"63033":0.0112,"63034":0.0112,
+  "63042":0.0112,"63043":0.0112,"63044":0.0112,"63049":0.0118,"63050":0.0118,
+  "63051":0.0118,"63052":0.0118,"63074":0.0112,"63088":0.0102,"63104":0.0140,
+  "63108":0.0140,"63109":0.0140,"63110":0.0140,"63111":0.0140,"63112":0.0102,
+  "63114":0.0112,"63116":0.0140,"63117":0.0112,"63118":0.0140,"63119":0.0102,
+  "63121":0.0112,"63122":0.0102,"63123":0.0112,"63124":0.0098,"63125":0.0112,
+  "63126":0.0102,"63127":0.0098,"63128":0.0112,"63129":0.0112,"63130":0.0102,
+  "63131":0.0098,"63132":0.0102,"63133":0.0102,"63134":0.0112,"63135":0.0112,
+  "63136":0.0112,"63137":0.0112,"63138":0.0112,"63139":0.0140,"63141":0.0098,
+  "63143":0.0102,"63144":0.0102,"63146":0.0102,"63301":0.0092,"63303":0.0092,
+  "63304":0.0092,"63366":0.0092,"63367":0.0092,"63368":0.0092,"63376":0.0092,
+  "63385":0.0092,
+};
+
+// ============================================================
+// UI CONTROLLERS
+// ============================================================
+function setLoanType(type, btn) {
+  loanType = type;
+  document.querySelectorAll('.ltab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  updateLoanNote();
+  updateFinGrid();
+}
+
+function updateLoanNote() {
+  const notes = {
+    conv: 'Min 3–5% down. No mortgage insurance required. Best rates for buyers with 620+ credit.',
+    fha: 'Min 3.5% down, 580+ credit. MIP adds $' + Math.round(300000 * FHA_MIP_ANNUAL / 12) + '/mo on a $300K loan — and lasts the life of the loan if less than 10% down.',
+    va: '0% down for eligible veterans and active duty. No MIP. Funding fee applies (1.25–3.3%, can be rolled in). Stricter property condition requirements.',
+  };
+  document.getElementById('loanTypeNote').textContent = notes[loanType];
+}
+
+function setMode(mode, btn) {
+  renoMode = mode;
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('simpleMode').style.display = mode === 'simple' ? 'block' : 'none';
+  document.getElementById('itemizedMode').style.display = mode === 'itemized' ? 'block' : 'none';
+}
+
+function setSimpleReno(amt, btn) {
+  simpleRenoAmt = amt;
+  document.getElementById('simpleCustom').value = amt;
+  document.querySelectorAll('.sp-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function onSimpleCustom() {
+  simpleRenoAmt = parseInt(document.getElementById('simpleCustom').value) || 0;
+  document.querySelectorAll('.sp-btn').forEach(b => b.classList.remove('active'));
+}
+
+function getRenoAmt() {
+  if (renoMode === 'simple') return simpleRenoAmt;
+  let total = 0;
+  REPAIRS.forEach(r => {
+    const s = repairState[r.id];
+    if (s.checked) total += r.conditions[s.condIdx].actualCost;
+  });
+  return total;
+}
+
+function buildRepairGrid() {
+  const grid = document.getElementById('repairGrid');
+  grid.innerHTML = REPAIRS.map(r => {
+    const s = repairState[r.id];
+    const condOptions = r.conditions.map((c, i) =>
+      `<option value="${i}" ${i === s.condIdx ? 'selected' : ''}>${c.label} — ${fmt$(c.actualCost)}</option>`
+    ).join('');
+    const currentCost = r.conditions[s.condIdx].actualCost;
+    return `<div class="repair-item ${s.checked ? 'checked' : ''}" id="ri-${r.id}" onclick="toggleRepair('${r.id}')">
+      <div class="ri-top">
+        <div class="ri-check">${s.checked ? '✓' : ''}</div>
+        <span class="ri-name">${r.icon} ${r.name}</span>
+      </div>
+      <select class="ri-cond" onclick="event.stopPropagation()" onchange="setRepairCond('${r.id}',this.value)">${condOptions}</select>
+      <div class="ri-cost">Estimated cost: <span>${fmt$(currentCost)}</span></div>
+    </div>`;
+  }).join('');
+  updateRenoTotal();
+}
+
+function toggleRepair(id) {
+  repairState[id].checked = !repairState[id].checked;
+  buildRepairGrid();
+}
+
+function setRepairCond(id, val) {
+  repairState[id].condIdx = parseInt(val);
+  buildRepairGrid();
+}
+
+function updateRenoTotal() {
+  document.getElementById('renoTotalDisplay').textContent = fmt$(getRenoAmt());
+}
+
+function updateFinGrid() {
+  const reno = getRenoAmt();
+  const finOptions = {
+    conv: [
+      {id:'cash', name:'Cash Reserves', desc:`Buy at fixer upper price. Pay ${fmt$(reno)} from reserves after closing. Lower monthly payment.`, rate_add:0, rolls_reno:false},
+      {id:'homestyle', name:'HomeStyle Renovation', desc:`Purchase + renovation in one conventional loan. Rate +1%. Min 5% down. No MIP.`, rate_add:1.0, rolls_reno:true},
+    ],
+    fha: [
+      {id:'cash', name:'Cash Reserves', desc:`Buy at fixer upper price. Pay ${fmt$(reno)} from reserves after closing.`, rate_add:0, rolls_reno:false},
+      {id:'fha203k_stream', name:'FHA 203k Streamlined', desc:`Cosmetic work only. Max $35K renovation. 3.5% down. MIP applies.`,
+        rate_add:0.5, rolls_reno:true, cap:35000, cap_label:'$35K cap'},
+      {id:'fha203k_std', name:'FHA 203k Standard', desc:`Any scope, structural work allowed. No renovation cap. 3.5% down. HUD consultant required. MIP applies.`,
+        rate_add:0.5, rolls_reno:true},
+    ],
+    va: [
+      {id:'cash', name:'Cash Reserves', desc:`Buy at fixer upper price. Pay ${fmt$(reno)} from reserves after closing. VA renovation loans are rare in St. Louis — most lenders don't offer them.`, rate_add:0, rolls_reno:false},
+    ],
+  };
+
+  const options = finOptions[loanType];
+  const grid = document.getElementById('finGrid');
+  grid.innerHTML = options.map(o => {
+    const overCap = o.cap && reno > o.cap;
+    const cls = overCap ? 'fin-btn disabled' : (o.id === finType ? 'fin-btn active' : 'fin-btn');
+    const capNote = overCap ? ` ⚠️ Your renovation budget exceeds the ${o.cap_label}` : '';
+    return `<button class="${cls}" onclick="setFin('${o.id}',this)" data-fin="${o.id}">
+      <span class="fn">${o.name}</span>
+      <span class="fd">${o.desc}${capNote}</span>
+    </button>`;
+  }).join('');
+
+  // Default to first valid option
+  const validFirst = options.find(o => !(o.cap && reno > o.cap));
+  if (validFirst && !options.find(o => o.id === finType && !(o.cap && reno > o.cap))) {
+    finType = validFirst.id;
+    document.querySelector(`[data-fin="${finType}"]`)?.classList.add('active');
+  }
+
+  // VA note
+  const finNote = document.getElementById('finNote');
+  if (loanType === 'va') {
+    finNote.style.display = 'block';
+    finNote.textContent = '⚠️ VA renovation loans exist but are rare in St. Louis — most local lenders don\'t offer them. Fixer uppers on VA loans also face stricter appraisal requirements. Some condition issues (Federal Pacific panels, roof age, foundation) will fail VA appraisal before you close.';
+  } else {
+    finNote.style.display = 'none';
+  }
+}
+
+function setFin(id, btn) {
+  finType = id;
+  document.querySelectorAll('.fin-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ============================================================
+// MATH ENGINE
+// ============================================================
+function calcPI(loan, annualRate) {
+  const r = annualRate / 100 / 12;
+  const n = 360;
+  if (r <= 0) return loan / n;
+  return loan * (r * Math.pow(1+r,n)) / (Math.pow(1+r,n)-1);
+}
+
+function calcMonthly(price, downAmt, rate, taxRate, includeMIP, loanAmt) {
+  const loan = loanAmt !== undefined ? loanAmt : Math.max(0, price - downAmt);
+  const pi = calcPI(loan, rate);
+  const tax = (price * taxRate) / 12;
+  const ins = 250; // homeowners insurance
+  let mip = 0;
+  if (includeMIP) mip = (loan * FHA_MIP_ANNUAL) / 12;
+  return Math.round(pi + tax + ins + mip);
+}
+
+function calcMaxBudget(income, down, rate, debts, loanType) {
+  // DTI limits by loan type
+  const maxDTI = loanType === 'fha' ? 0.50 : (loanType === 'va' ? 0.45 : 0.43);
+  const maxMonthly = (income / 12) * maxDTI - debts;
+  if (maxMonthly <= 0) return 0;
+
+  const insMonthly = 250;
+  const taxRateMonthly = 0.0112 / 12; // avg St. Louis
+  const mipMonthly = loanType === 'fha' ? 0.0055 / 12 : 0; // FHA MIP on loan balance
+
+  // VA funding fee (avg 2.15% for first use, roll into loan)
+  const vaFeeRate = loanType === 'va' ? 0.0215 : 0;
+
+  // Iterate to converge on price (tax and MIP are price/loan-dependent)
+  let price = 300000;
+  for (let i = 0; i < 10; i++) {
+    const loan = Math.max(0, price - down) * (1 + vaFeeRate);
+    const piAvail = maxMonthly - insMonthly - (price * taxRateMonthly * 12 / 12) - (loan * mipMonthly * 12 / 12);
+    if (piAvail <= 0) { price *= 0.9; continue; }
+    const r = rate / 100 / 12;
+    const n = 360;
+    const loanMax = r <= 0 ? piAvail * n : piAvail * (Math.pow(1+r,n)-1) / (r * Math.pow(1+r,n));
+    price = loanMax + down;
+  }
+  return Math.round(price);
+}
+
+function getFinConfig() {
+  const FIN_CONFIGS = {
+    cash:         {rate_add:0,   rolls_reno:false, mip:false, label:'Conventional + Cash Reserves'},
+    homestyle:    {rate_add:1.0, rolls_reno:true,  mip:false, label:'HomeStyle Renovation Loan'},
+    fha203k_stream:{rate_add:0.5,rolls_reno:true,  mip:true,  label:'FHA 203k Streamlined'},
+    fha203k_std:  {rate_add:0.5, rolls_reno:true,  mip:true,  label:'FHA 203k Standard'},
+  };
+  return FIN_CONFIGS[finType] || FIN_CONFIGS.cash;
+}
+
+function getTiers(zip, sqftBand) {
+  if (sqftBand) {
+    const key = zip + '_' + sqftBand;
+    if (TIERS[key] && TIERS[key].n >= 8) return {data:TIERS[key], usedBand:true};
+  }
+  if (TIERS[zip]) return {data:TIERS[zip], usedBand:false};
+  return null;
+}
+
+function fmt$(n) { return '$' + Math.round(n).toLocaleString(); }
+
+function badgePct(pct) {
+  if (pct <= 2) return {cls:'mb-strong', label:'Strong match'};
+  if (pct <= 4) return {cls:'mb-close', label:'Close match'};
+  return {cls:'mb-edge', label:'Edge of range'};
+}
+
+// ============================================================
+// MAIN TOOL RUNNER
+// ============================================================
+function runTool() {
+  const income = parseFloat(document.getElementById('income').value) || 0;
+  const down = parseFloat(document.getElementById('down').value) || 20000;
+  const rate = parseFloat(document.getElementById('rate').value) || 7.0;
+  const debts = parseFloat(document.getElementById('debts').value) || 0;
+  const sqftBand = document.getElementById('sqft').value;
+  const reno = getRenoAmt();
+  const fin = getFinConfig();
+
+  if (!income) { document.getElementById('income').focus(); return; }
+
+  const budget = calcMaxBudget(income, down, rate, debts, loanType);
+  const fixerRate = rate + fin.rate_add;
+
+  // Move-in ready: median price within 5% of budget (same loan type, no renovation)
+  // Fixer upper: depends on financing path
+  const miMatches = [], fxMatches = [];
+
+  for (const [zip, info] of Object.entries(CITIES)) {
+    const taxRate = TAX[zip] || 0.0112;
+    const tierResult = getTiers(zip, sqftBand);
+    if (!tierResult) continue;
+    const t = tierResult.data;
+    const usedBand = tierResult.usedBand;
+    const sqftLabel = usedBand ? SQFT_LABELS[sqftBand] : '';
+
+    // --- MOVE-IN READY MATCH ---
+    // FHA: check loan doesn't exceed FHA limit
+    const miLoan = Math.max(0, t.mid - down);
+    if (loanType === 'fha' && miLoan > FHA_LIMIT_MO) continue; // over FHA limit
+    const miPct = Math.abs(t.mid - budget) / budget;
+    if (miPct <= MATCH_WINDOW) {
+      const includeMIP = loanType === 'fha';
+      const monthly = calcMonthly(t.mid, down, rate, taxRate, includeMIP);
+      miMatches.push({zip, city:info.city, county:info.county, price:t.mid, pct:miPct*100, monthly, fw:info.fw, dom:info.dom, sqftLabel, usedBand, includeMIP});
+    }
+
+    // --- FIXER UPPER MATCH ---
+    let fxMatchPrice, fxLoanAmt, fxMonthly;
+
+    if (fin.rolls_reno) {
+      // Renovation rolled into loan — match on (purchase + reno) vs budget
+      fxMatchPrice = t.low + reno;
+      fxLoanAmt = fxMatchPrice - down + (loanType === 'fha' ? fxMatchPrice * FHA_MIP_UPFRONT : 0);
+      if (loanType === 'fha' && fxLoanAmt > FHA_LIMIT_MO) continue;
+      fxMonthly = calcMonthly(fxMatchPrice, down, fixerRate, taxRate, fin.mip, fxLoanAmt);
+    } else {
+      // Cash reserves — match on purchase price alone vs (budget - reno)
+      const effectiveBudget = budget - reno;
+      fxMatchPrice = t.low;
+      const fxLoan = Math.max(0, t.low - down) * (loanType === 'va' ? 1.0215 : 1);
+      fxMonthly = calcMonthly(t.low, down, rate, taxRate, loanType === 'fha', fxLoan);
+      const fxPctCheck = Math.abs(fxMatchPrice - effectiveBudget) / budget;
+      if (fxPctCheck <= MATCH_WINDOW) {
+        fxMatches.push({zip, city:info.city, county:info.county, price:t.low, matchPrice:fxMatchPrice, reno, loanAmt:fxLoan, pct:fxPctCheck*100, monthly:fxMonthly, fw:info.fw, dom:info.dom, sqftLabel, usedBand, fin, rollsReno:false});
+      }
+      continue;
+    }
+
+    const fxPct = Math.abs(fxMatchPrice - budget) / budget;
+    if (fxPct <= MATCH_WINDOW) {
+      fxMatches.push({zip, city:info.city, county:info.county, price:t.low, matchPrice:fxMatchPrice, reno, loanAmt:fxLoanAmt, pct:fxPct*100, monthly:fxMonthly, fw:info.fw, dom:info.dom, sqftLabel, usedBand, fin, rollsReno:true});
+    }
+  }
+
+  miMatches.sort((a,b) => a.pct - b.pct);
+  fxMatches.sort((a,b) => a.pct - b.pct);
+
+  // ============================================================
+  // BUYING POWER BAR
+  // ============================================================
+  const bpItems = [];
+
+  // Base budget explanation
+  bpItems.push({cls:'info', icon:'📍', text:`On <strong>${fmt$(income)}/year</strong>, ${fmt$(down)} down at ${rate}%, your maximum move-in ready budget is approximately <strong>${fmt$(budget)}</strong>.`});
+
+  // Fixer upper path explanation
+  if (fin.rolls_reno) {
+    const renoImpact = budget - (budget - reno); // simplified
+    bpItems.push({cls:'info', icon:'🔨', text:`Fixer upper path: ${fmt$(reno)} renovation rolled into your loan. You're matching on <strong>purchase + renovation = ${fmt$(budget)}</strong> — same total outlay, different neighborhoods.`});
+  } else {
+    const effectivePurchase = budget - reno;
+    bpItems.push({cls:'warn', icon:'💰', text:`Fixer upper path: ${fmt$(reno)} paid from cash reserves after closing. Your purchase budget drops to <strong>${fmt$(effectivePurchase)}</strong> — that's the price range you're shopping in.`});
+  }
+
+  // Rate premium cost
+  if (fin.rate_add > 0) {
+    const baseMonthly = calcMonthly(budget, down, rate, 0.0112, false);
+    const renoMonthly = calcMonthly(budget, down, rate + fin.rate_add, 0.0112, fin.mip);
+    const diff = renoMonthly - baseMonthly;
+    // Buying power loss from rate increase
+    const bpLoss = Math.round(diff * 360 / ((rate + fin.rate_add) / 100));
+    bpItems.push({cls:'warn', icon:'📉', text:`${fin.label} adds ${fin.rate_add}% to your rate — that costs you approximately <strong>${fmt$(Math.abs(bpLoss))} in buying power</strong> vs. conventional cash reserves at the same income.`});
+  }
+
+  // FHA MIP note
+  if (fin.mip) {
+    const mipMonthly = Math.round(Math.max(0, budget - down) * FHA_MIP_ANNUAL / 12);
+    bpItems.push({cls:'warn', icon:'🔒', text:`FHA MIP adds <strong>${fmt$(mipMonthly)}/month</strong> to your payment — and lasts the life of the loan if you put less than 10% down. To remove it you'd need to refinance into conventional once you hit 20% equity.`});
+  }
+
+  // FHA 203k Streamlined cap
+  if (finType === 'fha203k_stream') {
+    bpItems.push({cls: reno <= 35000 ? 'good' : 'flag', icon: reno <= 35000 ? '✅' : '⚠️',
+      text: reno <= 35000
+        ? `Your renovation budget of ${fmt$(reno)} is within the FHA 203k Streamlined cap of $35,000. Cosmetic work only — no structural changes.`
+        : `Your renovation budget of ${fmt$(reno)} exceeds the $35,000 Streamlined cap. You'd need FHA 203k Standard — which requires a HUD consultant and adds complexity.`
+    });
+  }
+
+  // VA property condition warning
+  if (loanType === 'va') {
+    bpItems.push({cls:'flag', icon:'🏠', text:`VA appraisal warning: fixer uppers in the price tiers shown below frequently have Federal Pacific panels, roof age, or foundation issues that fail VA appraisal. Screen the property before writing an offer.`});
+  }
+
+  // Sqft note
+  if (sqftBand) {
+    bpItems.push({cls:'info', icon:'📐', text:`Size filter: ${SQFT_LABELS[sqftBand]}. Cards showing size tag used size-specific pricing. Others fell back to base zip data.`});
+  }
+
+  const bpBar = document.getElementById('bpBar');
+  document.getElementById('bpItems').innerHTML = bpItems.map(item =>
+    `<div class="bp-item ${item.cls}"><span class="bp-icon">${item.icon}</span><span>${item.text}</span></div>`
+  ).join('');
+  bpBar.classList.add('show');
+
+  // ============================================================
+  // UPDATE COL HEADER
+  // ============================================================
+  document.getElementById('fxColSub').textContent = fin.rolls_reno
+    ? `${fmt$(reno)} reno rolled in — ${fin.label}`
+    : `Purchase price · ${fmt$(reno)} cash reserves after close`;
+
+  // ============================================================
+  // BUILD CARDS
+  // ============================================================
+  const maxRows = Math.max(miMatches.length, fxMatches.length);
+  const grid = document.getElementById('cardsGrid');
+
+  if (maxRows === 0) {
+    grid.innerHTML = `<div class="no-matches"><strong>No matches found in this range</strong>Try adjusting income, down payment, renovation budget, or home size. Switching to "Any size" usually surfaces more results.</div>`;
+  } else {
+    let html = '';
+    for (let i = 0; i < Math.min(maxRows, 8); i++) {
+      html += buildMICard(miMatches[i]);
+      html += buildFXCard(fxMatches[i]);
+    }
+    grid.innerHTML = html;
+  }
+
+  document.getElementById('resultsWrap').classList.add('show');
+  document.getElementById('articlePlaceholder').style.display = 'block';
+  bpBar.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// ============================================================
+// CARD BUILDERS
+// ============================================================
+function buildMICard(m) {
+  if (!m) return `<div class="empty-col">No move-in ready match in this range</div>`;
+  const b = badgePct(m.pct);
+  const mipNote = m.includeMIP ? `<div class="mip-note">FHA MIP included in payment estimate</div>` : '';
+  const sqftTag = m.usedBand ? `<span class="sqft-tag">📐 ${m.sqftLabel}</span>` : '';
+  return `<div class="result-card" style="border-color:rgba(93,202,165,.15)">
+    <span class="mbadge ${b.cls}">${b.label} — ${m.pct.toFixed(1)}% from budget</span>${sqftTag}
+    <div class="card-zip">${m.zip}</div>
+    <div class="card-city">${m.city}</div>
+    <div class="card-county">${m.county}</div>
+    <div class="price-row">
+      <span class="pr-label">Move-In Ready</span>
+      <span class="pr-val mi">${fmt$(m.price)}</span>
+    </div>
+    ${mipNote}
+    <div class="card-div"></div>
+    <div class="stat-row"><span class="stat-label">Days on Market</span><span class="stat-val">${m.dom} days avg</span></div>
+    <div class="stat-row"><span class="stat-label">First Weekend</span><span class="stat-val">${m.fw}% sell first weekend</span></div>
+    <div class="payment-box">
+      <span class="pay-label">Est. Monthly PITI${m.includeMIP ? ' + MIP' : ''}</span>
+      <span class="pay-val">${fmt$(m.monthly)}/mo</span>
+    </div>
+    ${getNeighborhoodLinks(m.zip)}
+  </div>`;
+}
+
+function buildFXCard(m) {
+  if (!m) return `<div class="empty-col">No fixer upper match in this range</div>`;
+  const b = badgePct(m.pct);
+  const sqftTag = m.usedBand ? `<span class="sqft-tag">📐 ${m.sqftLabel}</span>` : '';
+  const renoNote = m.rollsReno
+    ? `${fmt$(m.reno)} renovation rolled into ${m.fin.label}`
+    : `${fmt$(m.reno)} paid from cash reserves after closing`;
+  const mipNote = m.fin.mip ? `<div class="mip-note">FHA MIP included in payment estimate</div>` : '';
+  return `<div class="result-card" style="border-color:rgba(255,140,50,.15)">
+    <span class="mbadge ${b.cls}">${b.label} — ${m.pct.toFixed(1)}% from budget</span>${sqftTag}
+    <div class="card-zip">${m.zip}</div>
+    <div class="card-city">${m.city}</div>
+    <div class="card-county">${m.county}</div>
+    <div class="price-row">
+      <span class="pr-label">Fixer Upper Price</span>
+      <span class="pr-val fx">${fmt$(m.price)}</span>
+    </div>
+    ${m.rollsReno ? `<div class="price-row"><span class="pr-label">Total Loan</span><span class="pr-val" style="font-size:13px;color:var(--text-soft)">${fmt$(m.matchPrice)}</span></div>` : ''}
+    <div class="reno-note">🔧 ${renoNote}</div>
+    ${mipNote}
+    <div class="card-div"></div>
+    <div class="stat-row"><span class="stat-label">Days on Market</span><span class="stat-val">${m.dom} days avg</span></div>
+    <div class="stat-row"><span class="stat-label">First Weekend</span><span class="stat-val">${m.fw}% sell first weekend</span></div>
+    <div class="payment-box">
+      <span class="pay-label">Est. Monthly PITI${m.fin.mip ? ' + MIP' : ''}</span>
+      <span class="pay-val">${fmt$(m.monthly)}/mo</span>
+    </div>
+    ${getNeighborhoodLinks(m.zip)}
+  </div>`;
+}
+
+// ============================================================
+// ZIP → NEIGHBORHOOD PAGE MAPPING
+// ============================================================
+const ZIP_TO_SLUG = {
+  "63010":"arnold","63012":"barnhart","63016":"cedar-hill","63019":"crystal-city",
+  "63020":"de-soto","63028":"festus","63049":"high-ridge","63050":"hillsboro",
+  "63051":"house-springs","63052":"imperial",
+  "63021":"ballwin","63011":"ballwin","63005":"chesterfield","63017":"chesterfield",
+  "63141":"chesterfield","63025":"eureka","63026":"fenton","63123":"affton",
+  "63125":"mehlville","63126":"crestwood","63127":"sunset-hills","63128":"concord",
+  "63129":"oakville","63088":"valley-park","63143":"maplewood","63119":"webster-groves",
+  "63122":"kirkwood","63117":"richmond-heights","63144":"brentwood","63146":"creve-coeur",
+  "63131":"des-peres","63132":"overland","63114":"overland",
+  "63031":"florissant","63033":"florissant","63034":"florissant","63042":"hazelwood",
+  "63043":"hazelwood","63044":"bridgeton","63074":"st-ann","63121":"normandy",
+  "63112":"university-city","63130":"university-city","63133":"university-city",
+  "63134":"berkeley","63135":"ferguson","63136":"jennings","63137":"riverview",
+  "63138":"spanish-lake","63124":"ladue",
+  "63104":["soulard","benton-park"],
+  "63108":["central-west-end"],
+  "63109":["tower-grove-south","princeton-heights","lindenwood-park","willmore-park"],
+  "63110":["dogtown","st-louis-hills","franz-park"],
+  "63111":["carondelet","holly-hills","dutchtown"],
+  "63116":["tower-grove-south","dutchtown","bevo-mill"],
+  "63118":["bevo-mill","carondelet"],
+  "63139":["clifton-heights","southampton","hi-pointe","franz-park"],
+  "63301":"st-charles","63303":"st-charles","63304":"st-charles",
+  "63366":"o-fallon","63367":"lake-st-louis","63368":"o-fallon",
+  "63376":"st-peters","63385":"wentzville",
+};
+
+function getNeighborhoodLinks(zip) {
+  const val = ZIP_TO_SLUG[zip];
+  if (!val) return '';
+  const slugs = Array.isArray(val) ? val : [val];
+  if (slugs.length === 1) {
+    return `<a href="/neighborhoods/${slugs[0]}" class="nbhd-link" target="_blank">View Neighborhood Guide →</a>`;
+  }
+  // Multiple neighborhoods — show as small pills
+  const pills = slugs.map(s => {
+    const name = s.split('-').map(w => w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
+    return `<a href="/neighborhoods/${s}" class="nbhd-pill" target="_blank">${name}</a>`;
+  }).join('');
+  return `<div class="nbhd-multi"><span class="nbhd-multi-label">Neighborhoods in this zip:</span><div class="nbhd-pills">${pills}</div></div>`;
+}
+
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', function() {
+  updateLoanNote();
+  updateFinGrid();
+  buildRepairGrid();
+
+  // Pre-fill from URL
+  const p = new URLSearchParams(window.location.search);
+  if (p.get('income')) document.getElementById('income').value = p.get('income');
+  if (p.get('sqft')) document.getElementById('sqft').value = p.get('sqft');
+  if (p.get('loantype')) {
+    const lt = p.get('loantype');
+    document.querySelectorAll('.ltab').forEach(b => {
+      if (b.textContent.toLowerCase().includes(lt)) { b.click(); }
+    });
+  }
+});
+</script>
+</body>
+</html>
