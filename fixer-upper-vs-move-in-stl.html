@@ -1359,16 +1359,54 @@ document.addEventListener('DOMContentLoaded', function() {
   updateFinGrid();
   buildRepairGrid();
 
-  // Pre-fill from URL
+  // Pre-fill from URL params
   const p = new URLSearchParams(window.location.search);
-  if (p.get('income')) document.getElementById('income').value = p.get('income');
-  if (p.get('sqft')) document.getElementById('sqft').value = p.get('sqft');
-  if (p.get('loantype')) {
-    const lt = p.get('loantype');
+  const urlIncome = p.get('income');
+  const urlSqft = p.get('sqft');
+  const urlLoantype = p.get('loantype');
+
+  if (urlIncome) document.getElementById('income').value = urlIncome;
+  if (urlSqft) document.getElementById('sqft').value = urlSqft;
+  if (urlLoantype) {
     document.querySelectorAll('.ltab').forEach(b => {
-      if (b.textContent.toLowerCase().includes(lt)) { b.click(); }
+      if (b.textContent.toLowerCase().includes(urlLoantype)) { b.click(); }
     });
   }
+
+  // Smart defaults — pre-populate with realistic St. Louis buyer profile
+  // so the tool shows results immediately without requiring user input
+  const DEFAULTS = {
+    '50000':  { income: 50000,  down: 10000, rate: 7.00, debts: 300, sqft: '1000', reno: 20000 },
+    '60000':  { income: 60000,  down: 12000, rate: 7.00, debts: 350, sqft: '1000', reno: 20000 },
+    '70000':  { income: 70000,  down: 15000, rate: 7.00, debts: 400, sqft: '1000', reno: 45000 },
+    '80000':  { income: 80000,  down: 20000, rate: 7.00, debts: 400, sqft: '1400', reno: 45000 },
+    '100000': { income: 100000, down: 25000, rate: 7.00, debts: 500, sqft: '1400', reno: 45000 },
+    '120000': { income: 120000, down: 30000, rate: 7.00, debts: 600, sqft: '1800', reno: 90000 },
+    '150000': { income: 150000, down: 40000, rate: 7.00, debts: 700, sqft: '1800', reno: 90000 },
+    '200000': { income: 200000, down: 60000, rate: 7.00, debts: 800, sqft: 'o2400', reno: 90000 },
+  };
+
+  // Pick default based on URL income param, or fall back to $80K profile
+  const defaultKey = urlIncome && DEFAULTS[urlIncome] ? urlIncome : '80000';
+  const def = DEFAULTS[defaultKey];
+
+  // Only apply defaults to fields that weren't set by URL params
+  if (!urlIncome) document.getElementById('income').value = def.income;
+  if (!document.getElementById('down').value) document.getElementById('down').value = def.down;
+  if (!document.getElementById('rate').value) document.getElementById('rate').value = def.rate;
+  if (!document.getElementById('debts').value) document.getElementById('debts').value = def.debts;
+  if (!urlSqft) document.getElementById('sqft').value = def.sqft;
+
+  // Set renovation to matching preset
+  simpleRenoAmt = def.reno;
+  document.getElementById('simpleCustom').value = def.reno;
+  document.querySelectorAll('.sp-btn').forEach(b => b.classList.remove('active'));
+  if (def.reno === 20000) document.querySelectorAll('.sp-btn')[0].classList.add('active');
+  else if (def.reno === 45000) document.querySelectorAll('.sp-btn')[1].classList.add('active');
+  else if (def.reno === 90000) document.querySelectorAll('.sp-btn')[2].classList.add('active');
+
+  // Auto-run so results show immediately
+  runTool();
 });
 </script>
 </body>

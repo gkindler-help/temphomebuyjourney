@@ -6,6 +6,20 @@
 
 ---
 
+## 🚨 NEXT SESSION — START HERE
+
+**🔴 TOP PRIORITY 1 — Article Tool Drawer: Replace Iframe with Fetch Injection (Option A)**
+Drawer opens but tool renders black / fails to load on mobile. Iframe approach is fundamentally broken — links inside iframe navigate parent window.
+
+Fix: `fetch('/fixer-upper-vs-move-in-stl')` on drawer open → strip everything outside `<body>` → inject HTML into `.atd-drawer-body` → re-execute inline `<script>` tags after injection (they don't auto-run on innerHTML) → scope tool CSS to avoid conflicts with article styles.
+
+Test on: $80K income guide, repair cost guide, VA articles. The tool pre-populates with smart defaults and auto-runs now — so once the fetch injection works, users will see results immediately.
+
+**🔴 TOP PRIORITY 2 — Session limit reached mid-session**
+Confirm Guides nav links are working (absolute URLs pushed last commit). Confirm tool auto-populates and runs on load at /fixer-upper-vs-move-in-stl.
+
+---
+
 ## 📊 **TLDR - Site Overview**
 
 - **Domain:** https://stlhomejourney.com
