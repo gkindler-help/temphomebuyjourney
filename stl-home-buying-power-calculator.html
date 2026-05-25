@@ -86,8 +86,8 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
 .region-chevron{font-size:14px;color:var(--text-dim);transition:transform .2s}
 .region-card.expanded .region-chevron{transform:rotate(180deg)}
 
-.region-body{max-height:0;overflow:hidden;transition:max-height .3s ease-out}
-.region-card.expanded .region-body{max-height:2000px}
+.region-body{display:none;overflow:hidden}
+.region-card.expanded .region-body{display:block}
 
 /* NEIGHBORHOOD LIST */
 .neighborhood-list{padding:0 20px 20px}
