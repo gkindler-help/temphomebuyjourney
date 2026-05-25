@@ -210,6 +210,11 @@ select option{background:var(--surface-3);color:var(--text-strong);}
 .btn-danger{background:transparent;color:var(--red);border:1px solid rgba(224,85,85,.3);border-radius:6px;padding:6px 12px;font-size:11px;cursor:pointer;}
 .btn-danger:hover{background:var(--red-soft);}
 .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.cta-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.cta-btn-primary{background:var(--gold);color:#050505;border:none;border-radius:8px;padding:12px 20px;font-size:13px;font-weight:800;letter-spacing:.03em;cursor:pointer;transition:opacity .15s;font-family:inherit;}
+.cta-btn-primary:hover{opacity:.88;}
+.cta-btn-secondary{background:transparent;color:var(--gold);border:1px solid rgba(255,204,77,.35);border-radius:8px;padding:11px 18px;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit;}
+.cta-btn-secondary:hover{background:rgba(255,204,77,.08);}
 
 /* ── PANE VISIBILITY ── */
 .pane{display:none;}
@@ -1170,11 +1175,15 @@ function calcResults(){
     </div>
     <div class="cta-box">
       <div class="cta-title">Get a precise number — at no cost to you</div>
-      <div class="cta-sub">The most accurate value for your home comes from an experienced agent walking the property the same way the investor did — and seeing what they either missed or chose not to tell you. A walkthrough takes 30 minutes, costs nothing, and puts an actual comparable sales analysis in your hands. That's the number that holds up. <strong>Message George on Facebook to schedule yours.</strong></div>
+      <div class="cta-sub">The most accurate value for your home comes from an experienced agent walking the property the same way the investor did — and seeing what they either missed or chose not to tell you. A walkthrough takes 30 minutes, costs nothing, and puts an actual comparable sales analysis in your hands. That's the number that holds up.</div>
+      <div class="cta-actions">
+        <button class="cta-btn-primary" onclick="emailGeorge(${gap},${mlsNet},${cashNetAM},${trueMargin},${offer},${arv})">📧 Email George</button>
+        <button class="cta-btn-secondary" onclick="shareResults(${gap},${mlsNet},${cashNetAM},${trueMargin})">📤 Save / Share</button>
+      </div>
     </div>
     <div class="action-row">
       <button class="btn-primary" onclick="window.print()">Save as PDF</button>
-      <button class="btn-sec" onclick="copyResults(${gap},${mlsNet},${cashNetAM},${trueMargin},${totMfg})">Copy summary</button>
+      <button class="btn-sec" onclick="copyResults(${gap},${mlsNet},${cashNetAM},${trueMargin},${totMfg})">Copy Summary</button>
     </div>
     <div class="pdf-footer" style="font-size:10px;color:#555;margin-top:20px;padding-top:12px;border-top:1px solid #ddd;line-height:1.7;">
       Market ranges derived from aggregated St. Louis sold data filtered by condition tier. These figures are not an appraisal, a guaranteed value, or a binding estimate. Your home's actual market value depends on specific condition, features, lot, and comparable sales that require an in-person professional assessment. For a no-cost valuation contact George Kindler, Licensed Missouri Real Estate Agent, The Closing Pros, St. Louis, MO. Analysis generated ${new Date().toLocaleDateString()}.

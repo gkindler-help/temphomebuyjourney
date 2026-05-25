@@ -182,6 +182,8 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
 .nbhd-pill{font-size:11px;font-weight:600;color:var(--gold);text-decoration:none;background:rgba(255,204,77,.08);border:1px solid rgba(255,204,77,.2);border-radius:5px;padding:3px 8px;transition:all .15s}
 .nbhd-pill:hover{background:rgba(255,204,77,.15)}
 
+.tool-cta-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);margin-bottom:14px}
+
 /* COMPLIANCE */
 .compliance-footer{margin-top:44px;padding:14px;border-top:1px solid var(--line);font-size:11px;color:var(--text-faint);text-align:center;line-height:1.7}
 .compliance-footer strong{color:var(--text-dim)}
@@ -329,6 +331,12 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
     <div class="ap-badge">Guide Coming Soon</div>
     <div class="ap-title">Renovation Loans in St. Louis: FHA 203k vs. HomeStyle — What Actually Works Here</div>
     <div class="ap-body">FHA 203k Streamlined (cosmetic, max $35K), FHA 203k Standard (structural, any scope), and Fannie Mae HomeStyle (conventional, 5% down, no MIP) — written from personal experience using a renovation loan to buy our first home. What lenders actually require, what the draw schedule looks like, and the mistake most buyers make on renovation scope before they close.</div>
+  </div>
+
+  <div class="tool-cta-section" id="toolCTASection" style="display:none;margin-top:28px">
+    <div class="tool-cta-label">Ready to talk through what the numbers actually mean for your situation?</div>
+    <a href="tel:3144351087" class="hc-btn-primary" style="display:block;width:100%;padding:14px;border:none;border-radius:10px;background:var(--gold,#ffcc4d);color:#080808;font-family:'Inter',sans-serif;font-size:13px;font-weight:800;letter-spacing:.04em;cursor:pointer;margin-bottom:8px;text-decoration:none;text-align:center;box-sizing:border-box">📞 Talk To George — 314.435.1087</a>
+    <button onclick="shareToolResults()" style="width:100%;padding:12px;border:1px solid rgba(255,204,77,.3);border-radius:10px;background:transparent;color:rgba(255,255,255,.72);font-family:'Inter',sans-serif;font-size:12px;font-weight:700;cursor:pointer;margin-bottom:6px;transition:border-color .18s,color .18s;letter-spacing:.02em;box-sizing:border-box">📤 Save or Email These Results →</button>
   </div>
 
   <div class="compliance-footer">
@@ -1172,6 +1180,7 @@ function runTool() {
 
   document.getElementById('resultsWrap').classList.add('show');
   document.getElementById('articlePlaceholder').style.display = 'block';
+  document.getElementById('toolCTASection').style.display = 'block';
   bpBar.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
@@ -1279,6 +1288,60 @@ function getNeighborhoodLinks(zip) {
     return `<a href="/neighborhoods/${s}" class="nbhd-pill" target="_blank">${name}</a>`;
   }).join('');
   return `<div class="nbhd-multi"><span class="nbhd-multi-label">Neighborhoods in this zip:</span><div class="nbhd-pills">${pills}</div></div>`;
+}
+
+// ============================================================
+// SHARE / EMAIL RESULTS
+// ============================================================
+function shareToolResults() {
+  const income = document.getElementById('income').value || '';
+  const down = document.getElementById('down').value || '20000';
+  const reno = getRenoAmt();
+  const sqftBand = document.getElementById('sqft').value;
+  const sqftLabel = SQFT_LABELS[sqftBand] || 'All sizes';
+  const fin = getFinConfig();
+  const budget = calcMaxBudget(
+    parseFloat(income)||0,
+    parseFloat(down)||20000,
+    parseFloat(document.getElementById('rate').value)||7.0,
+    parseFloat(document.getElementById('debts').value)||0,
+    loanType
+  );
+
+  const toolUrl = 'https://stlhomejourney.com/fixer-upper-vs-move-in';
+
+  const text = [
+    'FIXER UPPER VS. MOVE-IN READY — ST. LOUIS COMPARISON',
+    '─'.repeat(40),
+    'Income: $' + parseInt(income).toLocaleString() + '/year',
+    'Down payment: $' + parseInt(down).toLocaleString(),
+    'Loan type: ' + loanType.toUpperCase(),
+    'Renovation scope: $' + reno.toLocaleString() + ' (' + fin.label + ')',
+    'Home size: ' + sqftLabel,
+    'Max budget: ~$' + budget.toLocaleString(),
+    '',
+    'Full results and neighborhood comparison:',
+    toolUrl,
+    '',
+    '─'.repeat(40),
+    'George Kindler · The Closing Pros LLC · 314.435.1087',
+    'Licensed Missouri Real Estate Agent · 13 Years · St. Louis Market Rates',
+  ].join('\n');
+
+  // Web Share API — opens native share sheet on iOS and Android (Notes, Mail, Messages, etc.)
+  if (navigator.share) {
+    navigator.share({
+      title: 'Fixer Upper vs. Move-In Ready — St. Louis',
+      text: text,
+      url: toolUrl,
+    }).catch(function() {});
+    return;
+  }
+
+  // Fallback — mailto opens Mail app with results pre-filled
+  const subject = 'Fixer Upper vs. Move-In Ready — St. Louis Comparison';
+  const mailto = 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(text);
+  window.location.href = mailto;
 }
 
 // ============================================================
