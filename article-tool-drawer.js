@@ -204,6 +204,10 @@
       oldScript.parentNode.replaceChild(newScript, oldScript);
     });
 
+    // Tool checks document.readyState — since we're injecting after page load,
+    // readyState is 'complete' so bootTool() runs immediately inside the script.
+    // No additional call needed — the tool self-initializes.
+
     // Fix internal links — strip the shared.js header/nav that would navigate away
     var artHdr = wrapper.querySelector('.art-hdr');
     if (artHdr) artHdr.style.display = 'none';
