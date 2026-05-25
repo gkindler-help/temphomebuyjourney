@@ -472,23 +472,26 @@ function runPhase1() {
       const t = tierResult.data;
       const usedBand = tierResult.usedBand;
       
-      // Check if move-in ready price matches budget
-      const miPct = Math.abs(t.mid - budget) / budget;
-      if (miPct <= MATCH_WINDOW) {
+      // Check if ANY condition tier is affordable (within budget)
+      // Show neighborhood if move-in ready price is within budget
+      if (t.mid <= budget * 1.05) {
         regionalMatches[regionName].push({
           zip,
           city: info.city,
-          price: t.mid,
+          priceLow: t.low,
+          priceMid: t.mid,
+          priceHigh: t.high,
           dom: info.dom,
           fw: info.fw,
           sqftLabel: usedBand ? SQFT_LABELS[sqftBand] : 'All sizes',
-          usedBand
+          usedBand,
+          budget: budget
         });
       }
     }
     
-    // Sort by price (cheapest first)
-    regionalMatches[regionName].sort((a,b) => a.price - b.price);
+    // Sort by price (cheapest first - use mid price)
+    regionalMatches[regionName].sort((a,b) => a.priceMid - b.priceMid);
   }
 
   // Render results
@@ -524,8 +527,8 @@ function runPhase1() {
     const matches = regionalMatches[regionName];
     if (!matches || matches.length === 0) continue;
     
-    const cheapest = matches[0].price;
-    const mostExpensive = matches[matches.length - 1].price;
+    const cheapest = matches[0].priceMid;
+    const mostExpensive = matches[matches.length - 1].priceMid;
     
     html += `
       <div class="region-card">
@@ -543,19 +546,59 @@ function runPhase1() {
         </div>
         <div class="region-body">
           <div class="neighborhood-list">
-            ${matches.map(m => `
+            ${matches.map(m => {
+              const asIsAffordable = m.priceLow <= m.budget;
+              const moveInAffordable = m.priceMid <= m.budget;
+              const renovatedAffordable = m.priceHigh <= m.budget;
+              
+              return `
               <div class="neighborhood-item">
                 <div class="neighborhood-name">${m.city}</div>
                 <div class="neighborhood-details">
-                  <div class="detail-line">
-                    <span class="price">${fmt$(m.price)}</span>
-                    <span class="meta">• ${m.sqftLabel} • ${m.dom} DOM • ${Math.round(m.fw)}% first weekend</span>
-                  </div>
-                  ${!m.usedBand && sqftBand ? `<div class="detail-line" style="color:var(--text-dim);font-size:11px">Note: No matches in ${SQFT_LABELS[sqftBand]} range — showing all sizes</div>` : ''}
+                  ${asIsAffordable ? 
+                    `<div class="detail-line">
+                      <span style="color:#5dcaa5">✓</span>
+                      <span style="color:var(--text-dim);font-weight:600;font-size:11px">AS-IS / FIXER:</span>
+                      <span class="price">${fmt$(m.priceLow)}</span>
+                      <span class="meta">• ${m.sqftLabel} • ${m.dom} DOM</span>
+                    </div>` : 
+                    `<div class="detail-line">
+                      <span style="color:rgba(255,100,100,.7)">✗</span>
+                      <span style="color:var(--text-dim);font-weight:600;font-size:11px">AS-IS:</span>
+                      <span style="color:var(--text-dim)">Out of budget (${fmt$(m.priceLow)})</span>
+                    </div>`
+                  }
+                  ${moveInAffordable ?
+                    `<div class="detail-line">
+                      <span style="color:#5dcaa5">✓</span>
+                      <span style="color:var(--text-dim);font-weight:600;font-size:11px">MOVE-IN READY:</span>
+                      <span class="price">${fmt$(m.priceMid)}</span>
+                      <span class="meta">• ${m.sqftLabel} • ${m.dom} DOM</span>
+                    </div>` :
+                    `<div class="detail-line">
+                      <span style="color:rgba(255,100,100,.7)">✗</span>
+                      <span style="color:var(--text-dim);font-weight:600;font-size:11px">MOVE-IN READY:</span>
+                      <span style="color:var(--text-dim)">Out of budget (${fmt$(m.priceMid)})</span>
+                    </div>`
+                  }
+                  ${renovatedAffordable ?
+                    `<div class="detail-line">
+                      <span style="color:#5dcaa5">✓</span>
+                      <span style="color:var(--text-dim);font-weight:600;font-size:11px">RENOVATED:</span>
+                      <span class="price">${fmt$(m.priceHigh)}</span>
+                      <span class="meta">• ${m.sqftLabel} • ${m.dom} DOM • ${Math.round(m.fw)}% first weekend</span>
+                    </div>` :
+                    `<div class="detail-line">
+                      <span style="color:rgba(255,100,100,.7)">✗</span>
+                      <span style="color:var(--text-dim);font-weight:600;font-size:11px">RENOVATED:</span>
+                      <span style="color:var(--text-dim)">Out of budget (${fmt$(m.priceHigh)})</span>
+                    </div>`
+                  }
+                  ${!m.usedBand && sqftBand ? `<div class="detail-line" style="color:var(--text-dim);font-size:11px;margin-top:4px">Note: No matches in ${SQFT_LABELS[sqftBand]} range — showing all sizes</div>` : ''}
                 </div>
                 <a href="/neighborhoods/${m.city.toLowerCase().replace(/[^a-z0-9]+/g,'-')}" class="neighborhood-link">View Neighborhood Guide →</a>
               </div>
-            `).join('')}
+            `}).join('')}
           </div>
         </div>
       </div>
