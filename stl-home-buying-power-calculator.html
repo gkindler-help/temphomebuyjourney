@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>St. Louis Home Buying Power Calculator — See What Your Income Buys Across Every Region</title>
+<meta name="description" content="Enter your income and see exactly what you can afford in West County, South County, North County, St. Louis City, St. Charles, and Jefferson County. Real MARIS data by neighborhood and home size. FHA, VA, and conventional loan options.">
+<link rel="canonical" href="https://stlhomejourney.com/stl-home-buying-power-calculator">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EEE14BZT9P');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
+
+/* HEADER */
+.art-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(5,5,5,.96);backdrop-filter:blur(8px);z-index:100}
+.art-hdr-l{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.art-hdr-ico img{width:32px;height:32px;border-radius:6px}
+.art-hdr-t{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--white);line-height:1.1}
+.art-hdr-t span{color:var(--gold)}
+.art-hdr-name{font-size:10px;color:var(--text-dim);font-weight:500;letter-spacing:.04em}
+.art-hdr-nav{display:flex;gap:16px}
+.art-hdr-nav a{font-size:12px;font-weight:600;color:var(--text-soft);text-decoration:none;letter-spacing:.04em;text-transform:uppercase}
+.art-hdr-nav a.gold{color:var(--gold)}
+
+/* LAYOUT */
+.tool-wrap{max-width:920px;margin:0 auto;padding:0 16px 80px}
+
+/* HERO */
+.tool-hero{padding:32px 0 24px;border-bottom:1px solid var(--line);margin-bottom:24px}
+.tool-badge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(255,204,77,.3);padding:4px 12px;border-radius:100px;margin-bottom:12px}
+.tool-hero h1{font-family:'Playfair Display',serif;font-size:clamp(22px,5vw,34px);font-weight:900;color:var(--white);line-height:1.15;margin-bottom:10px}
+.tool-hero h1 em{color:var(--gold);font-style:italic}
+.tool-hero p{font-size:14px;color:var(--text-soft);line-height:1.65;max-width:600px}
+
+/* PANELS */
+.panel{background:var(--surface);border:1px solid var(--line-2);border-radius:14px;padding:20px;margin-bottom:16px}
+.panel-title{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+
+/* INPUTS GRID */
+.ig{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text-dim)}
+.field input,.field select{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:7px;padding:9px 11px;font-size:13px;color:var(--white);font-family:'Inter',sans-serif;outline:none;transition:border-color .15s}
+.field input:focus,.field select:focus{border-color:rgba(255,204,77,.5)}
+.field select option{background:#111}
+
+/* LOAN TYPE TABS */
+.loan-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0}
+.ltab{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:700;color:var(--text-soft);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;letter-spacing:.02em}
+.ltab:hover{border-color:rgba(255,204,77,.4);color:var(--text)}
+.ltab.active{border-color:var(--gold);background:rgba(255,204,77,.1);color:var(--gold)}
+
+/* DIVIDER */
+.hdiv{height:1px;background:var(--line);margin:16px 0}
+
+/* RUN BTN */
+.run-btn{width:100%;background:var(--gold);color:#050505;border:none;border-radius:10px;padding:15px 20px;font-size:15px;font-weight:800;font-family:'Inter',sans-serif;cursor:pointer;letter-spacing:.04em;text-transform:uppercase;margin-top:16px;transition:opacity .2s}
+.run-btn:hover{opacity:.88}
+
+/* PHASE CONTAINER */
+.phase{display:none}
+.phase.active{display:block}
+
+/* BACK BUTTON */
+.back-btn{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--line-2);color:var(--text-soft);padding:10px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-bottom:16px;transition:all .15s}
+.back-btn:hover{border-color:rgba(255,204,77,.4);color:var(--gold)}
+
+/* REGIONAL CARDS */
+.region-card{background:var(--surface);border:1px solid var(--line-2);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:border-color .15s}
+.region-card.expanded{border-color:rgba(255,204,77,.3)}
+
+.region-header{padding:16px 20px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:background .15s}
+.region-header:hover{background:var(--surface-2)}
+
+.region-title{display:flex;align-items:center;gap:12px}
+.region-name{font-size:16px;font-weight:700;color:var(--white)}
+.region-count{font-size:12px;color:var(--text-dim);font-weight:500}
+
+.region-preview{font-size:12px;color:var(--text-soft);margin-top:4px}
+.region-preview span{color:var(--gold);font-weight:600}
+
+.region-chevron{font-size:14px;color:var(--text-dim);transition:transform .2s}
+.region-card.expanded .region-chevron{transform:rotate(180deg)}
+
+.region-body{max-height:0;overflow:hidden;transition:max-height .3s ease-out}
+.region-card.expanded .region-body{max-height:2000px}
+
+/* NEIGHBORHOOD LIST */
+.neighborhood-list{padding:0 20px 20px}
+.neighborhood-item{padding:14px 0;border-bottom:1px solid var(--line)}
+.neighborhood-item:last-child{border-bottom:none}
+
+.neighborhood-name{font-size:14px;font-weight:700;color:var(--white);margin-bottom:8px}
+
+.neighborhood-details{display:flex;flex-direction:column;gap:6px}
+.detail-line{font-size:13px;color:var(--text-soft);display:flex;align-items:baseline;gap:8px}
+.detail-line .price{color:var(--gold);font-weight:700}
+.detail-line .meta{color:var(--text-dim);font-size:11px}
+
+.neighborhood-link{display:inline-block;margin-top:8px;font-size:12px;color:var(--gold);text-decoration:none;font-weight:600;transition:opacity .15s}
+.neighborhood-link:hover{opacity:.7}
+
+/* NO RESULTS */
+.no-results{background:var(--surface-2);border:1px solid rgba(255,140,50,.3);border-radius:12px;padding:32px 24px;text-align:center}
+.no-results-icon{font-size:48px;margin-bottom:12px}
+.no-results-title{font-size:18px;font-weight:700;color:var(--white);margin-bottom:12px}
+.no-results-text{font-size:14px;color:var(--text-soft);line-height:1.6;margin-bottom:20px}
+.no-results-cta{display:inline-block;padding:12px 24px;background:var(--gold);color:#050505;font-weight:700;font-size:13px;border-radius:8px;text-decoration:none;letter-spacing:.04em;transition:opacity .15s}
+.no-results-cta:hover{opacity:.88}
+
+/* PHASE 2 CTA */
+.phase2-cta{background:rgba(255,204,77,.08);border:1px solid rgba(255,204,77,.25);border-radius:12px;padding:20px;margin-top:24px;text-align:center}
+.phase2-cta-title{font-size:16px;font-weight:700;color:var(--white);margin-bottom:12px}
+.phase2-cta-text{font-size:13px;color:var(--text-soft);line-height:1.6;margin-bottom:16px}
+.phase2-cta-btn{display:inline-block;padding:14px 28px;background:var(--gold);color:#050505;font-weight:800;font-size:14px;border-radius:10px;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;transition:opacity .15s;cursor:pointer;border:none;font-family:'Inter',sans-serif}
+.phase2-cta-btn:hover{opacity:.88}
+
+/* COMPLIANCE */
+.compliance-footer{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);font-size:11px;color:var(--text-dim);line-height:1.6;text-align:center}
+.compliance-footer strong{color:var(--text-soft)}
+</style>
+</head>
+<body>
+
+<header class="art-hdr">
+  <a href="/" class="art-hdr-l">
+    <div class="art-hdr-ico"><img src="/assets/STLhomebuyerjourneylogo.png" alt="STL Home Journey"></div>
+    <div>
+      <div class="art-hdr-t"><span>STL</span> Home Journey</div>
+      <div class="art-hdr-name">George Kindler</div>
+    </div>
+  </a>
+  <nav class="art-hdr-nav">
+    <a href="/articles/">Guides</a>
+    <a href="/" class="gold">Journey</a>
+  </nav>
+</header>
+
+<div class="tool-wrap">
+  
+  <div class="tool-hero">
+    <div class="tool-badge">Buying Power Calculator</div>
+    <h1>See What Your Income Buys <em>Across St. Louis</em></h1>
+    <p>Enter your income and loan details. See your buying power across all St. Louis regions — by neighborhood and home size. Real MARIS sales data.</p>
+  </div>
+
+  <!-- PHASE 1: REGIONAL BUYING POWER -->
+  <div id="phase1" class="phase active">
+    
+    <div class="panel">
+      <div class="panel-title">Your Financial Situation</div>
+      <div class="ig">
+        <div class="field">
+          <label>Annual Income</label>
+          <input type="number" id="income" placeholder="80000" step="1000">
+        </div>
+        <div class="field">
+          <label>Down Payment ($)</label>
+          <input type="number" id="down" placeholder="20000" step="1000" value="20000">
+        </div>
+        <div class="field">
+          <label>Interest Rate (%)</label>
+          <input type="number" id="rate" placeholder="7.0" step="0.1" value="7.0">
+        </div>
+        <div class="field">
+          <label>Monthly Debts ($)</label>
+          <input type="number" id="debts" placeholder="400" step="50" value="0">
+        </div>
+        <div class="field">
+          <label>Target Home Size</label>
+          <select id="sqft">
+            <option value="">Any size</option>
+            <option value="u1000">Under 1,000 sqft</option>
+            <option value="1000">1,000-1,400 sqft</option>
+            <option value="1400">1,400-1,800 sqft</option>
+            <option value="1800">1,800-2,400 sqft</option>
+            <option value="o2400">Over 2,400 sqft</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="hdiv"></div>
+      <div class="panel-title">Loan Type</div>
+      <div class="loan-tabs">
+        <button class="ltab active" onclick="setLoanType('conv',this)">Conventional</button>
+        <button class="ltab" onclick="setLoanType('fha',this)">FHA</button>
+        <button class="ltab" onclick="setLoanType('va',this)">VA</button>
+      </div>
+    </div>
+
+    <button class="run-btn" onclick="runPhase1()">Show Me My Buying Power →</button>
+
+    <div id="phase1Results" style="margin-top:24px"></div>
+
+  </div>
+
+  <!-- PHASE 2: FIXER-UPPER DEEP DIVE -->
+  <div id="phase2" class="phase">
+    <button class="back-btn" onclick="backToPhase1()">← Back to Regional Overview</button>
+    
+    <div class="tool-hero" style="border-bottom:none;padding-top:0">
+      <div class="tool-badge">Fixer-Upper Deep Dive</div>
+      <h1>Compare <em>Fixer-Upper vs. Move-In Ready</em></h1>
+      <p>See the detailed renovation math — how financing paths change what you can afford.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Renovation Scope</div>
+      <!-- Phase 2 content will be added in future commit -->
+      <p style="color:var(--text-soft);font-size:14px">Phase 2 calculator coming soon</p>
+    </div>
+
+  </div>
+
+  <div class="compliance-footer">
+    <strong>The Closing Pros LLC</strong> · Licensed Missouri Real Estate Brokerage<br>
+    Office: 314-998-4550 · George's Direct: 314.435.1087<br>
+    Prices from 2025-2026 MARIS sales (7,006 transactions). FHA limit Missouri 2026: $541,287. Monthly estimates only — consult a licensed lender for actual approval.
+  </div>
+
+</div>
+
+<script>
+// CONSTANTS
+const FHA_LIMIT_MO = 541287;
+const FHA_MIP_UPFRONT = 0.0175;
+const FHA_MIP_ANNUAL = 0.0055;
+const MATCH_WINDOW = 0.05;
+
+const SQFT_LABELS = {
+  "":"All sizes","u1000":"Under 1,000 sqft","1000":"1,000-1,400 sqft",
+  "1400":"1,400-1,800 sqft","1800":"1,800-2,400 sqft","o2400":"Over 2,400 sqft"
+};
+
+// REGIONAL ZIP MAPPING
+const REGIONS = {
+  "St. Charles County": ["63301","63303","63304","63366","63367","63368","63376","63385"],
+  "North County": ["63031","63033","63034","63042","63043","63044","63074","63112","63114","63121","63130","63132","63133","63134","63135","63136","63137","63138"],
+  "St. Louis City": ["63104","63108","63109","63110","63111","63116","63118","63139"],
+  "West County": ["63005","63011","63017","63021","63025","63026","63088","63117","63119","63122","63124","63131","63141","63143","63144","63146"],
+  "South County": ["63123","63125","63126","63127","63128","63129"],
+  "Jefferson County": ["63010","63012","63016","63019","63020","63028","63049","63050","63051","63052"]
+};
+
+// STATE
+let loanType = 'conv';
+let currentPhase = 1;
+
+// TIER DATA
+const TIERS = {
+  "63005":{low:631500,mid:800000,high:1247000,n:70},
+  "63010":{low:255000,mid:280000,high:350000,n:121},
+  "63011":{low:365000,mid:455000,high:552000,n:169},
+  "63012":{low:234900,mid:292500,high:384000,n:42},
+  "63016":{low:270000,mid:326100,high:525000,n:26},
+  "63017":{low:480000,mid:575000,high:755000,n:129},
+  "63019":{low:185000,mid:230000,high:290000,n:27},
+  "63020":{low:185000,mid:219500,high:255000,n:126},
+  "63021":{low:375000,mid:414200,high:530000,n:192},
+  "63025":{low:359000,mid:442500,high:705000,n:108},
+  "63026":{low:340000,mid:387400,high:490000,n:224},
+  "63028":{low:255000,mid:320000,high:385000,n:149},
+  "63031":{low:147000,mid:180000,high:234900,n:217},
+  "63033":{low:172500,mid:220000,high:270000,n:151},
+  "63034":{low:220000,mid:289000,high:330000,n:71},
+  "63042":{low:152000,mid:195000,high:225000,n:64},
+  "63043":{low:255000,mid:295000,high:318600,n:83},
+  "63044":{low:195000,mid:267500,high:360000,n:40},
+  "63049":{low:273700,mid:297500,high:395000,n:82},
+  "63050":{low:284900,mid:328500,high:405100,n:90},
+  "63051":{low:200000,mid:290000,high:340000,n:61},
+  "63052":{low:269900,mid:331500,high:375000,n:132},
+  "63074":{low:125900,mid:166500,high:214900,n:61},
+  "63088":{low:219900,mid:320000,high:460000,n:37},
+  "63104":{low:245000,mid:445000,high:575000,n:63},
+  "63108":{low:370000,mid:581000,high:850000,n:17},
+  "63109":{low:244000,mid:301800,high:395000,n:152},
+  "63110":{low:245200,mid:349700,high:550000,n:54},
+  "63111":{low:116000,mid:165000,high:198900,n:66},
+  "63112":{low:122400,mid:275000,high:406000,n:19},
+  "63114":{low:145000,mid:164400,high:225000,n:136},
+  "63116":{low:155000,mid:221600,high:300000,n:201},
+  "63117":{low:263000,mid:355000,high:585000,n:31},
+  "63118":{low:164000,mid:263400,high:432000,n:80},
+  "63119":{low:285000,mid:393000,high:560000,n:164},
+  "63121":{low:77000,mid:116000,high:184900,n:63},
+  "63122":{low:400000,mid:600000,high:800000,n:239},
+  "63123":{low:235000,mid:259500,high:340000,n:236},
+  "63124":{low:499900,mid:787500,high:1125000,n:30},
+  "63125":{low:243000,mid:268000,high:310000,n:242},
+  "63126":{low:272000,mid:319000,high:381000,n:182},
+  "63127":{low:298000,mid:358000,high:430000,n:182},
+  "63128":{low:279000,mid:320000,high:361000,n:223},
+  "63129":{low:290000,mid:340000,high:385000,n:227},
+  "63130":{low:171000,mid:282000,high:399000,n:69},
+  "63131":{low:340000,mid:420000,high:575000,n:70},
+  "63132":{low:152000,mid:220000,high:290000,n:73},
+  "63133":{low:117000,mid:167000,high:235000,n:52},
+  "63134":{low:147000,mid:180000,high:239000,n:96},
+  "63135":{low:115000,mid:157000,high:216000,n:103},
+  "63136":{low:50000,mid:92500,high:127000,n:118},
+  "63137":{low:69900,mid:115000,high:154900,n:71},
+  "63138":{low:103000,mid:140000,high:180000,n:119},
+  "63139":{low:170000,mid:280000,high:401600,n:113},
+  "63141":{low:389900,mid:544900,high:750000,n:78},
+  "63143":{low:234900,mid:318000,high:430000,n:94},
+  "63144":{low:320000,mid:445000,high:635000,n:79},
+  "63146":{low:297000,mid:370000,high:449900,n:77},
+  "63301":{low:301900,mid:328200,high:365000,n:138},
+  "63303":{low:317400,mid:345000,high:372600,n:65},
+  "63304":{low:331200,mid:360000,high:388800,n:83},
+  "63366":{low:301900,mid:328200,high:365000,n:138},
+  "63367":{low:317400,mid:345000,high:372600,n:65},
+  "63368":{low:331200,mid:360000,high:388800,n:83},
+  "63376":{low:303600,mid:330000,high:359900,n:272},
+  "63385":{low:300000,mid:340000,high:375000,n:197}
+};
+
+const CITIES = {
+  "63005":{city:"Chesterfield",fw:41.4,dom:7.5,county:"St. Louis County"},
+  "63010":{city:"Arnold",fw:45.9,dom:6.5,county:"Jefferson County"},
+  "63011":{city:"Ballwin",fw:47.3,dom:6,county:"St. Louis County"},
+  "63012":{city:"Barnhart",fw:39.5,dom:9,county:"Jefferson County"},
+  "63016":{city:"Cedar Hill",fw:26.9,dom:37.5,county:"Jefferson County"},
+  "63017":{city:"Chesterfield W.",fw:46.9,dom:6.0,county:"St. Louis County"},
+  "63019":{city:"Crystal City",fw:33.3,dom:25,county:"Jefferson County"},
+  "63020":{city:"DeSoto",fw:30.0,dom:20,county:"Jefferson County"},
+  "63021":{city:"Ballwin S.",fw:49.5,dom:5,county:"St. Louis County"},
+  "63025":{city:"Eureka",fw:44.9,dom:6.5,county:"St. Louis County"},
+  "63026":{city:"Fenton",fw:46.4,dom:6,county:"St. Louis County"},
+  "63028":{city:"Festus",fw:34.5,dom:14,county:"Jefferson County"},
+  "63031":{city:"Florissant N.",fw:52.6,dom:5,county:"St. Louis County"},
+  "63033":{city:"Florissant W.",fw:48.0,dom:5.5,county:"St. Louis County"},
+  "63034":{city:"Florissant E.",fw:50.6,dom:5,county:"St. Louis County"},
+  "63042":{city:"Hazelwood",fw:51.8,dom:5,county:"St. Louis County"},
+  "63043":{city:"Maryland Heights",fw:48.7,dom:5.5,county:"St. Louis County"},
+  "63044":{city:"Bridgeton",fw:45.2,dom:6,county:"St. Louis County"},
+  "63049":{city:"High Ridge",fw:38.2,dom:10,county:"Jefferson County"},
+  "63050":{city:"Hillsboro",fw:28.6,dom:28,county:"Jefferson County"},
+  "63051":{city:"House Springs",fw:32.3,dom:18,county:"Jefferson County"},
+  "63052":{city:"Imperial",fw:41.9,dom:8,county:"Jefferson County"},
+  "63074":{city:"St. Ann",fw:50.9,dom:5,county:"St. Louis County"},
+  "63088":{city:"Valley Park",fw:42.1,dom:7.5,county:"St. Louis County"},
+  "63104":{city:"Soulard",fw:35.4,dom:13,county:"St. Louis City"},
+  "63108":{city:"Central West End",fw:34.6,dom:14,county:"St. Louis City"},
+  "63109":{city:"S. St. Louis",fw:44.3,dom:7,county:"St. Louis City"},
+  "63110":{city:"Forest Park S.",fw:36.4,dom:12,county:"St. Louis City"},
+  "63111":{city:"S. St. Louis E.",fw:31.6,dom:18,county:"St. Louis City"},
+  "63112":{city:"University City S.",fw:38.1,dom:10,county:"St. Louis County"},
+  "63114":{city:"Overland",fw:50.0,dom:5,county:"St. Louis County"},
+  "63116":{city:"S. St. Louis SW",fw:46.8,dom:6,county:"St. Louis City"},
+  "63117":{city:"Richmond Heights",fw:42.5,dom:7.5,county:"St. Louis County"},
+  "63118":{city:"Bevo Mill",fw:38.2,dom:10,county:"St. Louis City"},
+  "63119":{city:"Webster Groves",fw:48.0,dom:5.5,county:"St. Louis County"},
+  "63121":{city:"Normandy",fw:45.3,dom:6.5,county:"St. Louis County"},
+  "63122":{city:"Kirkwood",fw:49.6,dom:5,county:"St. Louis County"},
+  "63123":{city:"Affton",fw:52.8,dom:4.5,county:"St. Louis County"},
+  "63124":{city:"Ladue",fw:38.9,dom:10,county:"St. Louis County"},
+  "63125":{city:"Mehlville",fw:54.4,dom:4,county:"St. Louis County"},
+  "63126":{city:"Crestwood",fw:50.0,dom:5,county:"St. Louis County"},
+  "63127":{city:"Sunset Hills",fw:44.2,dom:7,county:"St. Louis County"},
+  "63128":{city:"Concord/Tesson",fw:51.7,dom:4.5,county:"St. Louis County"},
+  "63129":{city:"Oakville",fw:53.0,dom:4,county:"St. Louis County"},
+  "63130":{city:"U. City/Olivette",fw:45.3,dom:6.5,county:"St. Louis County"},
+  "63131":{city:"Des Peres",fw:43.1,dom:7,county:"St. Louis County"},
+  "63132":{city:"Overland/Olivette",fw:48.3,dom:5.5,county:"St. Louis County"},
+  "63133":{city:"University City N.",fw:38.9,dom:10,county:"St. Louis County"},
+  "63134":{city:"Berkeley",fw:44.8,dom:6.5,county:"St. Louis County"},
+  "63135":{city:"Ferguson E.",fw:42.9,dom:7.5,county:"St. Louis County"},
+  "63136":{city:"Jennings",fw:40.0,dom:9,county:"St. Louis County"},
+  "63137":{city:"Riverview",fw:36.8,dom:12,county:"St. Louis County"},
+  "63138":{city:"Spanish Lake",fw:38.7,dom:10,county:"St. Louis County"},
+  "63139":{city:"St. Louis SW",fw:41.3,dom:8,county:"St. Louis City"},
+  "63141":{city:"Chesterfield E.",fw:44.3,dom:7,county:"St. Louis County"},
+  "63143":{city:"Maplewood",fw:43.2,dom:7.5,county:"St. Louis County"},
+  "63144":{city:"Brentwood",fw:44.7,dom:7,county:"St. Louis County"},
+  "63146":{city:"Creve Coeur",fw:43.1,dom:7,county:"St. Louis County"},
+  "63301":{city:"St. Charles",fw:46.5,dom:6,county:"St. Charles County"},
+  "63303":{city:"St. Charles S.",fw:45.5,dom:6.5,county:"St. Charles County"},
+  "63304":{city:"St. Charles W.",fw:44.9,dom:7,county:"St. Charles County"},
+  "63366":{city:"O'Fallon",fw:48.2,dom:5.5,county:"St. Charles County"},
+  "63367":{city:"Lake St. Louis",fw:46.7,dom:6,county:"St. Charles County"},
+  "63368":{city:"O'Fallon W.",fw:47.3,dom:6,county:"St. Charles County"},
+  "63376":{city:"St. Peters",fw:49.5,dom:5.5,county:"St. Charles County"},
+  "63385":{city:"Wentzville",fw:46.2,dom:6.5,county:"St. Charles County"}
+};
+
+// LOAN TYPE
+function setLoanType(type, btn) {
+  loanType = type;
+  document.querySelectorAll('.ltab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// MATH ENGINE
+function calcPI(loan, annualRate) {
+  const r = annualRate / 100 / 12;
+  const n = 360;
+  if (r <= 0) return loan / n;
+  return loan * (r * Math.pow(1+r,n)) / (Math.pow(1+r,n)-1);
+}
+
+function calcMaxBudget(income, down, rate, debts, loanType) {
+  const maxDTI = loanType === 'fha' ? 0.50 : (loanType === 'va' ? 0.41 : 0.43);
+  const maxMonthly = (income / 12) * maxDTI - debts;
+  if (maxMonthly <= 0) return 0;
+
+  const insMonthly = 125;
+  const taxRateMonthly = 0.020 / 12;
+  const mipMonthly = loanType === 'fha' ? 0.0055 / 12 : 0;
+  const vaFeeRate = loanType === 'va' ? 0.0215 : 0;
+
+  let price = 300000;
+  for (let i = 0; i < 10; i++) {
+    const loan = Math.max(0, price - down) * (1 + vaFeeRate);
+    const piAvail = maxMonthly - insMonthly - (price * taxRateMonthly * 12 / 12) - (loan * mipMonthly * 12 / 12);
+    if (piAvail <= 0) { price *= 0.9; continue; }
+    const r = rate / 100 / 12;
+    const n = 360;
+    const loanMax = r <= 0 ? piAvail * n : piAvail * (Math.pow(1+r,n)-1) / (r * Math.pow(1+r,n));
+    price = loanMax + down;
+  }
+  return Math.round(price);
+}
+
+function getTiers(zip, sqftBand) {
+  if (sqftBand) {
+    const key = zip + '_' + sqftBand;
+    if (TIERS[key] && TIERS[key].n >= 8) return {data:TIERS[key], usedBand:true};
+  }
+  if (TIERS[zip]) return {data:TIERS[zip], usedBand:false};
+  return null;
+}
+
+function fmt$(n) { return '$' + Math.round(n).toLocaleString(); }
+
+// PHASE 1 RUNNER
+function runPhase1() {
+  const income = parseFloat(document.getElementById('income').value) || 0;
+  const down = parseFloat(document.getElementById('down').value) || 20000;
+  const rate = parseFloat(document.getElementById('rate').value) || 7.0;
+  const debts = parseFloat(document.getElementById('debts').value) || 0;
+  const sqftBand = document.getElementById('sqft').value;
+
+  if (!income) { 
+    alert('Please enter your annual income');
+    document.getElementById('income').focus(); 
+    return; 
+  }
+
+  saveState();
+
+  const budget = calcMaxBudget(income, down, rate, debts, loanType);
+  
+  // Group matches by region
+  const regionalMatches = {};
+  
+  for (const [regionName, zips] of Object.entries(REGIONS)) {
+    regionalMatches[regionName] = [];
+    
+    for (const zip of zips) {
+      const info = CITIES[zip];
+      if (!info) continue;
+      
+      const tierResult = getTiers(zip, sqftBand);
+      if (!tierResult) continue;
+      
+      const t = tierResult.data;
+      const usedBand = tierResult.usedBand;
+      
+      // Check if move-in ready price matches budget
+      const miPct = Math.abs(t.mid - budget) / budget;
+      if (miPct <= MATCH_WINDOW) {
+        regionalMatches[regionName].push({
+          zip,
+          city: info.city,
+          price: t.mid,
+          dom: info.dom,
+          fw: info.fw,
+          sqftLabel: usedBand ? SQFT_LABELS[sqftBand] : 'All sizes',
+          usedBand
+        });
+      }
+    }
+    
+    // Sort by price (cheapest first)
+    regionalMatches[regionName].sort((a,b) => a.price - b.price);
+  }
+
+  // Render results
+  const resultsDiv = document.getElementById('phase1Results');
+  
+  // Check if any matches
+  const totalMatches = Object.values(regionalMatches).reduce((sum, arr) => sum + arr.length, 0);
+  
+  if (totalMatches === 0) {
+    resultsDiv.innerHTML = `
+      <div class="no-results">
+        <div class="no-results-icon">🔍</div>
+        <div class="no-results-title">No neighborhoods match your current settings</div>
+        <div class="no-results-text">
+          At <strong>${fmt$(income)}/year</strong> income and <strong>${fmt$(down)}</strong> down payment, try:<br>
+          • Increase your down payment to ${fmt$(income * 0.10)}+<br>
+          • Reduce monthly debts to under ${fmt$(income * 0.05)}/month<br>
+          • Consider FHA loan (3.5% down) if you haven't<br>
+          • Try "Any size" to see smaller homes
+        </div>
+        <a href="tel:3144351087" class="no-results-cta">Call George — 314.435.1087</a>
+      </div>
+    `;
+    return;
+  }
+
+  let html = '';
+  
+  // Render regional cards in geographic order
+  const regionOrder = ["St. Charles County", "North County", "St. Louis City", "West County", "South County", "Jefferson County"];
+  
+  for (const regionName of regionOrder) {
+    const matches = regionalMatches[regionName];
+    if (!matches || matches.length === 0) continue;
+    
+    const cheapest = matches[0].price;
+    const mostExpensive = matches[matches.length - 1].price;
+    
+    html += `
+      <div class="region-card">
+        <div class="region-header" onclick="toggleRegion(this)">
+          <div>
+            <div class="region-title">
+              <span class="region-name">${regionName}</span>
+              <span class="region-count">(${matches.length} ${matches.length === 1 ? 'neighborhood' : 'neighborhoods'})</span>
+            </div>
+            <div class="region-preview">
+              Cheapest: <span>${fmt$(cheapest)}</span> | Most expensive: <span>${fmt$(mostExpensive)}</span>
+            </div>
+          </div>
+          <div class="region-chevron">▼</div>
+        </div>
+        <div class="region-body">
+          <div class="neighborhood-list">
+            ${matches.map(m => `
+              <div class="neighborhood-item">
+                <div class="neighborhood-name">${m.city}</div>
+                <div class="neighborhood-details">
+                  <div class="detail-line">
+                    <span class="price">${fmt$(m.price)}</span>
+                    <span class="meta">• ${m.sqftLabel} • ${m.dom} DOM • ${Math.round(m.fw)}% first weekend</span>
+                  </div>
+                  ${!m.usedBand && sqftBand ? `<div class="detail-line" style="color:var(--text-dim);font-size:11px">Note: No matches in ${SQFT_LABELS[sqftBand]} range — showing all sizes</div>` : ''}
+                </div>
+                <a href="/neighborhoods/${m.city.toLowerCase().replace(/[^a-z0-9]+/g,'-')}" class="neighborhood-link">View Neighborhood Guide →</a>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Add Phase 2 CTA
+  html += `
+    <div class="phase2-cta">
+      <div class="phase2-cta-title">Want to see the fixer-upper math in detail?</div>
+      <div class="phase2-cta-text">Compare fixer-upper renovation paths vs. move-in ready — see how financing options change what you can afford</div>
+      <button class="phase2-cta-btn" onclick="goToPhase2()">Compare Fixer-Upper Options →</button>
+    </div>
+  `;
+
+  resultsDiv.innerHTML = html;
+}
+
+function toggleRegion(header) {
+  const card = header.closest('.region-card');
+  card.classList.toggle('expanded');
+}
+
+// PHASE NAVIGATION
+function goToPhase2() {
+  document.getElementById('phase1').classList.remove('active');
+  document.getElementById('phase2').classList.add('active');
+  currentPhase = 2;
+  saveState();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function backToPhase1() {
+  document.getElementById('phase2').classList.remove('active');
+  document.getElementById('phase1').classList.add('active');
+  currentPhase = 1;
+  saveState();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// STATE PERSISTENCE
+function saveState() {
+  const state = {
+    income: document.getElementById('income').value,
+    down: document.getElementById('down').value,
+    rate: document.getElementById('rate').value,
+    debts: document.getElementById('debts').value,
+    loanType: loanType,
+    sqft: document.getElementById('sqft').value,
+    currentPhase: currentPhase,
+    timestamp: Date.now()
+  };
+  localStorage.setItem('stl_buying_power', JSON.stringify(state));
+}
+
+function loadState() {
+  const saved = localStorage.getItem('stl_buying_power');
+  if (!saved) return;
+  
+  const state = JSON.parse(saved);
+  const age = Date.now() - state.timestamp;
+  
+  // Expire after 24 hours
+  if (age > 86400000) {
+    localStorage.removeItem('stl_buying_power');
+    return;
+  }
+  
+  // Restore inputs
+  document.getElementById('income').value = state.income || '';
+  document.getElementById('down').value = state.down || 20000;
+  document.getElementById('rate').value = state.rate || 7.0;
+  document.getElementById('debts').value = state.debts || 0;
+  document.getElementById('sqft').value = state.sqft || '';
+  loanType = state.loanType || 'conv';
+  
+  // Set loan type button
+  document.querySelectorAll('.ltab').forEach(b => {
+    if (b.textContent.toLowerCase().includes(loanType) || 
+        (loanType === 'conv' && b.textContent.includes('Conventional'))) {
+      b.classList.add('active');
+    } else {
+      b.classList.remove('active');
+    }
+  });
+  
+  // Auto-run if has income
+  if (state.income && state.currentPhase === 1) {
+    runPhase1();
+  }
+}
+
+// INIT
+window.addEventListener('DOMContentLoaded', loadState);
+</script>
+
+</body>
+</html>
