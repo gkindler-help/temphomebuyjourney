@@ -274,7 +274,7 @@
     _isOpen = true;
     _drawerEl.style.transform = '';
     _drawerEl.classList.add('atd-open');
-    document.body.style.overflow = 'hidden';
+    // Don't lock body scroll - let article scroll behind drawer
     if (_triggerEl) { _triggerEl.style.opacity = '0'; _triggerEl.style.pointerEvents = 'none'; }
     loadTool();
   }
@@ -284,7 +284,7 @@
     _isOpen = false;
     _drawerEl.classList.remove('atd-open');
     _drawerEl.style.transform = '';
-    document.body.style.overflow = '';
+    // Restore body scroll (though we never locked it)
     if (_triggerEl) { _triggerEl.style.opacity = '1'; _triggerEl.style.pointerEvents = ''; }
   }
 
@@ -356,7 +356,11 @@
 
       '.atd-tool-scope{padding-bottom:40px;}' +
       '.atd-tool-scope .art-hdr{display:none!important;}' +
-      '.atd-tool-scope .compliance-footer{font-size:10px;}';
+      '.atd-tool-scope .compliance-footer{font-size:10px;}' +
+      
+      // Hide header nav elements when drawer is open
+      'body:has(.atd-drawer.atd-open) .art-hdr-nav{opacity:0;pointer-events:none;}' +
+      'body:has(.atd-drawer.atd-open) .art-hdr-nav a{opacity:0;}';
 
     document.head.appendChild(s);
   }
