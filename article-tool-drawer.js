@@ -34,7 +34,7 @@
      ============================================================ */
   var TOOL_CONFIGS = {
     'fixer-upper': {
-      url: '/fixer-upper-vs-move-in',
+      url: '/fixer-upper-vs-move-in-stl',
       title: 'Fixer Upper vs. Move-In Ready',
       subtitle: 'True cost comparison by neighborhood',
       params: ['income', 'sqft', 'loantype'],
@@ -115,7 +115,7 @@
           '<div style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:16px;line-height:1.6">' +
             'Open the tool in a new tab to use it.' +
           '</div>' +
-          '<a href="' + (_iframeEl.getAttribute('data-src') || '/fixer-upper-vs-move-in') + '" ' +
+          '<a href="' + (_iframeEl.getAttribute('data-src') || '/fixer-upper-vs-move-in-stl') + '" ' +
              'target="_blank" ' +
              'style="display:inline-flex;align-items:center;gap:8px;background:#ffcc4d;color:#050505;' +
              'font-weight:800;font-size:13px;padding:13px 24px;border-radius:9px;text-decoration:none;' +
@@ -262,11 +262,9 @@
     _drawerEl.style.transform = '';
     _drawerEl.classList.add('atd-open');
 
-    // Lock background scroll without touching overflow (prevents iOS iframe scroll kill)
-    _scrollY = window.scrollY || window.pageYOffset;
-    document.body.style.position = 'fixed';
-    document.body.style.top = '-' + _scrollY + 'px';
-    document.body.style.width = '100%';
+    // Prevent background scroll using pointer-events only — doesn't affect iframe
+    document.body.style.pointerEvents = 'none';
+    _drawerEl.style.pointerEvents = 'all';
 
     // Hide trigger while drawer is open
     if (_triggerEl) _triggerEl.style.opacity = '0';
@@ -286,11 +284,9 @@
     _drawerEl.classList.remove('atd-open');
     _drawerEl.style.transform = '';
 
-    // Restore background scroll and position
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.width = '';
-    window.scrollTo(0, _scrollY);
+    // Restore pointer events
+    document.body.style.pointerEvents = '';
+    _drawerEl.style.pointerEvents = '';
 
     if (_triggerEl) {
       _triggerEl.style.opacity = '1';

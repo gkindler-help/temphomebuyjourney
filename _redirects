@@ -3,3 +3,5 @@
 /tools/:page.html           /tools/:page            301
 /school-districts/:page.html /school-districts/:page 301
 /stl-quiz                   /stl-quiz.html              200
+/fixer-upper-vs-move-in    /fixer-upper-vs-move-in-stl    301
+/fixer-upper-vs-move-in.html    /fixer-upper-vs-move-in-stl    301
