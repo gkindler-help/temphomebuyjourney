@@ -70,8 +70,9 @@
   var _iframeEl = null;
   var _triggerEl = null;
   var _isOpen = false;
-  var _scrollThreshold = 300; // px before trigger appears
+  var _scrollThreshold = 300;
   var _scrollListenerAdded = false;
+  var _scrollY = 0;
 
   /* ============================================================
      INIT — runs after DOM ready
@@ -104,6 +105,27 @@
     buildTrigger(label, toolId);
     buildDrawer(url, toolCfg);
     addScrollListener();
+  }
+
+  function showFallback() {
+    var loading = _drawerEl.querySelector('.atd-loading');
+    if (loading) {
+      loading.innerHTML =
+        '<div style="text-align:center;padding:32px 24px">' +
+          '<div style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:16px;line-height:1.6">' +
+            'Open the tool in a new tab to use it.' +
+          '</div>' +
+          '<a href="' + (_iframeEl.getAttribute('data-src') || '/fixer-upper-vs-move-in') + '" ' +
+             'target="_blank" ' +
+             'style="display:inline-flex;align-items:center;gap:8px;background:#ffcc4d;color:#050505;' +
+             'font-weight:800;font-size:13px;padding:13px 24px;border-radius:9px;text-decoration:none;' +
+             'letter-spacing:.04em;text-transform:uppercase">' +
+            'Open Tool →' +
+          '</a>' +
+        '</div>';
+      loading.style.display = 'flex';
+    }
+    _iframeEl.style.display = 'none';
   }
 
   /* ============================================================
@@ -149,7 +171,7 @@
           '<div class="atd-spinner"></div>' +
           '<span>Loading tool…</span>' +
         '</div>' +
-        '<iframe class="atd-iframe" src="" frameborder="0" allowtransparency="true"></iframe>' +
+        '<iframe class="atd-iframe" src="" frameborder="0" scrolling="yes" allowtransparency="true"></iframe>' +
       '</div>';
 
     _drawerEl.querySelector('.atd-drawer-close').addEventListener('click', closeDrawer);
@@ -170,7 +192,26 @@
       var loading = _drawerEl.querySelector('.atd-loading');
       if (loading) loading.style.display = 'none';
       _iframeEl.style.opacity = '1';
+
+      // Check if iframe actually rendered content (black screen detection)
+      // If contentDocument is blocked, show fallback link instead
+      try {
+        var doc = _iframeEl.contentDocument || _iframeEl.contentWindow.document;
+        if (!doc || !doc.body || doc.body.innerHTML === '') {
+          showFallback();
+        }
+      } catch(e) {
+        // Cross-origin access blocked — iframe may still work visually
+        // Show fallback after a delay if still black
+        setTimeout(function() {
+          if (_iframeEl.style.opacity === '1') return; // loaded fine
+          showFallback();
+        }, 3000);
+      }
     });
+
+    // Fallback if iframe fails to load at all
+    _iframeEl.addEventListener('error', showFallback);
 
     document.body.appendChild(_drawerEl);
   }
@@ -220,7 +261,12 @@
 
     _drawerEl.style.transform = '';
     _drawerEl.classList.add('atd-open');
-    document.body.classList.add('atd-body-lock');
+
+    // Lock background scroll without touching overflow (prevents iOS iframe scroll kill)
+    _scrollY = window.scrollY || window.pageYOffset;
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + _scrollY + 'px';
+    document.body.style.width = '100%';
 
     // Hide trigger while drawer is open
     if (_triggerEl) _triggerEl.style.opacity = '0';
@@ -239,7 +285,12 @@
 
     _drawerEl.classList.remove('atd-open');
     _drawerEl.style.transform = '';
-    document.body.classList.remove('atd-body-lock');
+
+    // Restore background scroll and position
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, _scrollY);
 
     if (_triggerEl) {
       _triggerEl.style.opacity = '1';
@@ -303,9 +354,6 @@
       '}',
       '.atd-trigger-icon{font-size:16px;line-height:1}',
       '.atd-trigger-label{font-size:13px}',
-
-      /* BODY LOCK */
-      '.atd-body-lock{overflow:hidden}',
 
       /* DRAWER */
       '.atd-drawer{',
@@ -373,7 +421,8 @@
       '.atd-drawer-body{',
         'flex:1;',
         'position:relative;',
-        'overflow:hidden;',
+        'overflow:auto;',
+        '-webkit-overflow-scrolling:touch;',
         'min-height:0;',
       '}',
       '.atd-loading{',
@@ -400,6 +449,8 @@
         'opacity:0;',
         'transition:opacity .3s ease;',
         'background:var(--bg,#050505);',
+        'overflow-y:auto;',
+        '-webkit-overflow-scrolling:touch;',
       '}',
     ].join('');
 
