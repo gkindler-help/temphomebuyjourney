@@ -517,3 +517,54 @@ Implementation notes:
 **Last Updated:** May 24, 2026  
 **Site Status:** ✅ Production-ready — all snippets rewritten, schema deployed, canonicals clean  
 **Total Pages:** 188 HTML files (153 with schema markup)
+
+---
+
+## 🔴 HIGH PRIORITY — Split Calculator Into Two Engagement Layers
+
+**The Problem with Current Tool:**
+The fixer upper vs. move-in ready calculator asks too much upfront — loan type, renovation scope, financing path, square footage. Users bounce before they see value. The engagement funnel is backwards.
+
+**The Right Architecture — Two Tools, One Flow:**
+
+### Tool 1: Income → Neighborhood Match (Entry Point)
+Simple. Fast. Shows results in under 10 seconds.
+- Input: Annual income only (one field)
+- Output: Here's what your income buys in St. Louis — by neighborhood and condition tier
+  - As-Is / Fixer Upper | Move-In Ready | Renovated
+  - Each neighborhood shows price range, days on market, first weekend rate
+  - Size of home included in each tier (sq ft range at that price point)
+- No loan type. No renovation budget. No financing path. Just income → what you can afford → where.
+- This lives at the TOP of every income guide article ($50K-$200K)
+- URL: `/what-can-i-afford-stl` or inline widget on income guides
+
+### Tool 2: Fixer Upper Deep Dive (Follow-Up Engagement)
+After Tool 1 shows results, a CTA appears:
+> "Oakville has a fixer upper option at $311K. Want to see how it compares to a move-in ready home at the same total cost?"
+
+That CTA opens the full fixer upper vs. move-in ready calculator (current tool) — pre-filled with the user's income and the neighborhood they were just looking at.
+
+**Why This Works:**
+- Tool 1 gets immediate value — user sees their neighborhoods in 10 seconds flat
+- Tool 1 creates the question Tool 2 answers — "what's the fixer upper actually cost me?"
+- Each tool drives deeper into the site: Tool 1 → neighborhood pages → Tool 2 → article → consultation
+- Session depth increases because the user is following a natural decision path, not filling out a form
+
+**Implementation Notes:**
+- Tool 1 uses zip-data.js condition tiers already built (low/mid/high = fixer upper/move-in ready/renovated)
+- Tool 1 should show 3-5 neighborhood matches, not 20 — keep it scannable
+- The CTA between Tool 1 and Tool 2 is the conversion moment — design it carefully
+- Tool 2 pre-fills income from Tool 1 result so user never re-enters data
+- Tool 1 can live as a drawer widget OR inline on income guide articles
+- Tool 2 stays at /fixer-upper-vs-move-in-stl — Tool 1 links to it with ?income= param
+
+**Content Architecture:**
+- Income guide articles ($50K-$200K) → Tool 1 inline → Tool 2 CTA → fixer upper article → consultation
+- Neighborhood pages → Tool 1 filtered to that zip → Tool 2 CTA
+- This is the affordability side panel we discussed — Tool 1 IS that panel
+
+**Build Order:**
+1. Build Tool 1 as standalone HTML (`income-to-neighborhood-stl.html`)
+2. Wire Tool 1 into income guide articles inline (not drawer — above the fold)
+3. Add the Tool 2 CTA at the bottom of Tool 1 results
+4. Test full funnel: income guide → Tool 1 → neighborhood page → Tool 2 → article
