@@ -122,6 +122,39 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
 /* COMPLIANCE */
 .compliance-footer{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);font-size:11px;color:var(--text-dim);line-height:1.6;text-align:center}
 .compliance-footer strong{color:var(--text-soft)}
+
+/* PHASE 2 STYLES */
+.mode-toggle{display:flex;gap:8px;margin-bottom:16px}
+.mode-btn{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:8px;padding:10px 16px;font-size:13px;font-weight:600;color:var(--text-soft);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;flex:1}
+.mode-btn:hover{border-color:rgba(255,204,77,.4);color:var(--text)}
+.mode-btn.active{border-color:var(--gold);background:rgba(255,204,77,.1);color:var(--gold)}
+
+.simple-presets{display:grid;gap:12px;margin-bottom:16px}
+.sp-btn{background:var(--surface-2);border:1px solid var(--line-2);border-radius:10px;padding:14px 16px;text-align:left;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
+.sp-btn:hover{border-color:rgba(255,204,77,.4)}
+.sp-btn.active{border-color:var(--gold);background:rgba(255,204,77,.08)}
+.sn{display:block;font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px}
+.sr{display:block;font-size:12px;color:var(--text-soft);line-height:1.5}
+
+.custom-row{display:flex;align-items:center;gap:12px}
+.custom-row label{font-size:13px;color:var(--text-soft);font-weight:600}
+.custom-row input{flex:1;max-width:200px}
+
+.repair-grid{display:grid;gap:10px;margin-bottom:16px;max-height:400px;overflow-y:auto}
+.repair-item{display:flex;align-items:center;gap:12px;background:var(--surface-2);border:1px solid var(--line-2);border-radius:8px;padding:12px;font-size:13px}
+.repair-item input[type="checkbox"]{width:18px;height:18px;cursor:pointer}
+.repair-name{flex:1;color:var(--text-soft);font-weight:500}
+.repair-cost{color:var(--gold);font-weight:700;min-width:80px;text-align:right}
+.repair-total{font-size:15px;font-weight:700;color:var(--white);text-align:right;padding:12px 0;border-top:1px solid var(--line)}
+
+.fin-grid{display:grid;gap:10px}
+.fin-btn{background:var(--surface-2);border:1px solid var(--line-2);border-radius:10px;padding:14px 16px;text-align:left;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;position:relative}
+.fin-btn:hover{border-color:rgba(255,204,77,.4)}
+.fin-btn.active{border-color:var(--gold);background:rgba(255,204,77,.08)}
+.fin-btn.disabled{opacity:.4;cursor:not-allowed;pointer-events:none}
+.fin-name{display:block;font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px}
+.fin-desc{display:block;font-size:12px;color:var(--text-soft);line-height:1.5}
+.fin-badge{position:absolute;top:12px;right:12px;font-size:10px;font-weight:700;color:var(--gold);background:rgba(255,204,77,.15);padding:3px 8px;border-radius:4px;letter-spacing:.04em}
 </style>
 </head>
 <body>
@@ -210,9 +243,51 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
 
     <div class="panel">
       <div class="panel-title">Renovation Scope</div>
-      <!-- Phase 2 content will be added in future commit -->
-      <p style="color:var(--text-soft);font-size:14px">Phase 2 calculator coming soon</p>
+      <div class="mode-toggle">
+        <button class="mode-btn active" onclick="setMode('simple',this)">Quick Estimate</button>
+        <button class="mode-btn" onclick="setMode('itemized',this)">Itemized Build</button>
+      </div>
+
+      <!-- SIMPLE MODE -->
+      <div id="simpleMode">
+        <div class="simple-presets">
+          <button class="sp-btn" onclick="setSimpleReno(20000,this)">
+            <span class="sn">General Refresh</span>
+            <span class="sr">$20K — Paint, floors, landscaping, cosmetic updates</span>
+          </button>
+          <button class="sp-btn active" onclick="setSimpleReno(45000,this)">
+            <span class="sn">Moderate Renovation</span>
+            <span class="sr">$45K — Kitchen or bathroom, some systems work</span>
+          </button>
+          <button class="sp-btn" onclick="setSimpleReno(90000,this)">
+            <span class="sn">Full Renovation</span>
+            <span class="sr">$90K — Kitchen, baths, roof, HVAC, major scope</span>
+          </button>
+        </div>
+        <div class="custom-row">
+          <label>Or enter custom amount:</label>
+          <input type="number" id="simpleCustom" value="45000" oninput="onSimpleCustom()" style="background:var(--bg-elev);border:1px solid var(--line-2);border-radius:7px;padding:9px 11px;font-size:13px;color:var(--white);font-family:'Inter',sans-serif">
+        </div>
+      </div>
+
+      <!-- ITEMIZED MODE -->
+      <div id="itemizedMode" style="display:none">
+        <div class="repair-grid" id="repairGrid"></div>
+        <div class="repair-total">
+          Total Renovation Budget: <span id="itemizedTotal" style="color:var(--gold);font-weight:700">$0</span>
+        </div>
+      </div>
     </div>
+
+    <div class="panel">
+      <div class="panel-title">Financing Path</div>
+      <div class="fin-grid" id="finGrid"></div>
+      <div class="fin-note" id="finNote" style="font-size:12px;color:var(--text-soft);margin-top:12px;line-height:1.6"></div>
+    </div>
+
+    <button class="run-btn" onclick="runPhase2()">Compare Fixer vs. Move-In Ready →</button>
+
+    <div id="phase2Results" style="margin-top:24px"></div>
 
   </div>
 
@@ -690,6 +765,316 @@ function loadState() {
     runPhase1();
   }
 }
+
+// ============================================================
+// PHASE 2: RENOVATION & FINANCING
+// ============================================================
+
+// STATE
+let renovationMode = 'simple';
+let renovationAmount = 45000;
+let financingType = 'cash';
+
+// REPAIR ITEMS (for itemized mode)
+const REPAIR_ITEMS = [
+  {name:'Roof Replacement',cost:15000},
+  {name:'HVAC System',cost:10000},
+  {name:'Kitchen Remodel',cost:25000},
+  {name:'Bathroom Remodel',cost:15000},
+  {name:'Flooring (whole house)',cost:8000},
+  {name:'Interior Paint',cost:5000},
+  {name:'Exterior Paint/Siding',cost:7000},
+  {name:'Windows Replacement',cost:12000},
+  {name:'Electrical Panel Upgrade',cost:3000},
+  {name:'Plumbing Updates',cost:6000},
+  {name:'Foundation Repair',cost:20000},
+  {name:'Deck/Patio',cost:8000},
+  {name:'Landscaping',cost:5000},
+  {name:'Driveway/Walkway',cost:6000},
+  {name:'Insulation/Energy Upgrades',cost:4000}
+];
+
+// FINANCING OPTIONS
+const FINANCING_OPTIONS = {
+  cash: {
+    name: 'Cash Out of Pocket',
+    desc: 'Pay for renovations from savings after closing. Doesn\'t affect loan approval.',
+    rollsReno: false,
+    badge: null
+  },
+  fha203k: {
+    name: 'FHA 203(k) Rehab Loan',
+    desc: 'Lender pre-qualifies you for purchase + renovation combined. One loan, one closing.',
+    rollsReno: true,
+    badge: 'FHA ONLY'
+  },
+  fannie: {
+    name: 'Fannie Mae HomeStyle',
+    desc: 'Conventional renovation financing. Roll renovation into mortgage amount.',
+    rollsReno: true,
+    badge: 'CONV ONLY'
+  },
+  heloc: {
+    name: 'Conventional + HELOC After',
+    desc: 'Buy with conventional loan, open HELOC post-closing for renovations.',
+    rollsReno: false,
+    badge: null
+  }
+};
+
+// MODE TOGGLE
+function setMode(mode, btn) {
+  renovationMode = mode;
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  
+  if (mode === 'simple') {
+    document.getElementById('simpleMode').style.display = 'block';
+    document.getElementById('itemizedMode').style.display = 'none';
+  } else {
+    document.getElementById('simpleMode').style.display = 'none';
+    document.getElementById('itemizedMode').style.display = 'block';
+    buildRepairGrid();
+  }
+}
+
+// SIMPLE RENOVATION
+function setSimpleReno(amount, btn) {
+  renovationAmount = amount;
+  document.querySelectorAll('.sp-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('simpleCustom').value = amount;
+}
+
+function onSimpleCustom() {
+  const val = parseFloat(document.getElementById('simpleCustom').value) || 0;
+  renovationAmount = val;
+  document.querySelectorAll('.sp-btn').forEach(b => b.classList.remove('active'));
+}
+
+// ITEMIZED REPAIR GRID
+function buildRepairGrid() {
+  const grid = document.getElementById('repairGrid');
+  grid.innerHTML = REPAIR_ITEMS.map((item,i) => `
+    <div class="repair-item">
+      <input type="checkbox" id="repair${i}" onchange="updateItemizedTotal()">
+      <label class="repair-name" for="repair${i}">${item.name}</label>
+      <span class="repair-cost">${fmt$(item.cost)}</span>
+    </div>
+  `).join('');
+  updateItemizedTotal();
+}
+
+function updateItemizedTotal() {
+  let total = 0;
+  REPAIR_ITEMS.forEach((item,i) => {
+    if (document.getElementById('repair'+i)?.checked) {
+      total += item.cost;
+    }
+  });
+  renovationAmount = total;
+  document.getElementById('itemizedTotal').textContent = fmt$(total);
+}
+
+// FINANCING GRID
+function buildFinancingGrid() {
+  const grid = document.getElementById('finGrid');
+  const income = parseFloat(document.getElementById('income').value) || 0;
+  const budget = calcMaxBudget(income, parseFloat(document.getElementById('down').value) || 20000, parseFloat(document.getElementById('rate').value) || 7.0, parseFloat(document.getElementById('debts').value) || 0, loanType);
+  
+  let html = '';
+  
+  for (const [key, opt] of Object.entries(FINANCING_OPTIONS)) {
+    // Check if option is compatible with loan type
+    let disabled = false;
+    if (key === 'fha203k' && loanType !== 'fha') disabled = true;
+    if (key === 'fannie' && loanType !== 'conv') disabled = true;
+    
+    html += `
+      <button class="fin-btn ${key === financingType ? 'active' : ''} ${disabled ? 'disabled' : ''}" onclick="selectFinancing('${key}')">
+        ${opt.badge ? `<span class="fin-badge">${opt.badge}</span>` : ''}
+        <span class="fin-name">${opt.name}</span>
+        <span class="fin-desc">${opt.desc}</span>
+      </button>
+    `;
+  }
+  
+  grid.innerHTML = html;
+  
+  // Update note
+  const selectedOpt = FINANCING_OPTIONS[financingType];
+  let note = '';
+  
+  if (financingType === 'cash') {
+    note = `Your purchase budget stays at ${fmt$(budget)}. Renovation paid from savings after closing.`;
+  } else if (financingType === 'fha203k' || financingType === 'fannie') {
+    const combinedBudget = budget + renovationAmount;
+    note = `Your combined purchase + renovation budget: ${fmt$(combinedBudget)}. Lender approves both upfront.`;
+  } else if (financingType === 'heloc') {
+    note = `Purchase budget: ${fmt$(budget)}. HELOC opened after closing for renovation funds.`;
+  }
+  
+  document.getElementById('finNote').textContent = note;
+}
+
+function selectFinancing(type) {
+  financingType = type;
+  buildFinancingGrid();
+}
+
+// PHASE 2 RUNNER
+function runPhase2() {
+  const income = parseFloat(document.getElementById('income').value) || 0;
+  const down = parseFloat(document.getElementById('down').value) || 20000;
+  const rate = parseFloat(document.getElementById('rate').value) || 7.0;
+  const debts = parseFloat(document.getElementById('debts').value) || 0;
+  const sqftBand = document.getElementById('sqft').value;
+  
+  if (!income) {
+    alert('Please enter your annual income');
+    backToPhase1();
+    document.getElementById('income').focus();
+    return;
+  }
+  
+  const budget = calcMaxBudget(income, down, rate, debts, loanType);
+  const fin = FINANCING_OPTIONS[financingType];
+  
+  // Calculate effective budgets
+  let fxBudget = budget;
+  let miBudget = budget;
+  
+  if (fin.rollsReno) {
+    // Renovation loan: can spend more on fixer because reno is financed
+    fxBudget = budget; // They shop in same price range but renovation is rolled in
+  } else {
+    // Cash or HELOC: renovation comes from pocket, reduces purchase budget
+    fxBudget = budget - renovationAmount;
+  }
+  
+  // Get matches
+  const fxMatches = [];
+  const miMatches = [];
+  
+  for (const [regionName, zips] of Object.entries(REGIONS)) {
+    for (const zip of zips) {
+      const info = CITIES[zip];
+      if (!info) continue;
+      
+      const tierResult = getTiers(zip, sqftBand);
+      if (!tierResult) continue;
+      
+      const t = tierResult.data;
+      
+      // Fixer-upper matches (as-is/low tier)
+      if (t.low <= fxBudget * 1.05) {
+        fxMatches.push({
+          zip,
+          city: info.city,
+          region: regionName,
+          price: t.low,
+          dom: info.dom,
+          fw: info.fw,
+          sqftLabel: tierResult.usedBand ? SQFT_LABELS[sqftBand] : 'All sizes'
+        });
+      }
+      
+      // Move-in ready matches (mid tier)
+      if (t.mid <= miBudget * 1.05) {
+        miMatches.push({
+          zip,
+          city: info.city,
+          region: regionName,
+          price: t.mid,
+          dom: info.dom,
+          fw: info.fw,
+          sqftLabel: tierResult.usedBand ? SQFT_LABELS[sqftBand] : 'All sizes'
+        });
+      }
+    }
+  }
+  
+  // Sort by price
+  fxMatches.sort((a,b) => a.price - b.price);
+  miMatches.sort((a,b) => a.price - b.price);
+  
+  // Render comparison
+  const resultsDiv = document.getElementById('phase2Results');
+  
+  if (fxMatches.length === 0 && miMatches.length === 0) {
+    resultsDiv.innerHTML = `
+      <div class="no-results">
+        <div class="no-results-icon">🔍</div>
+        <div class="no-results-title">No neighborhoods match this scenario</div>
+        <div class="no-results-text">Try adjusting your renovation budget or financing path</div>
+        <button class="no-results-cta" onclick="backToPhase1()">Back to Overview</button>
+      </div>
+    `;
+    return;
+  }
+  
+  let html = `
+    <div style="background:rgba(255,204,77,.08);border:1px solid rgba(255,204,77,.25);border-radius:12px;padding:20px;margin-bottom:24px">
+      <div style="font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px">Your Buying Power Comparison</div>
+      <div style="font-size:13px;color:var(--text-soft);line-height:1.6">
+        <strong style="color:var(--gold)">Fixer-Upper Path:</strong> ${fmt$(fxBudget)} purchase budget + ${fmt$(renovationAmount)} renovation = ${fmt$(fxBudget + renovationAmount)} total<br>
+        <strong style="color:var(--gold)">Move-In Ready Path:</strong> ${fmt$(miBudget)} purchase budget<br>
+        <strong style="color:var(--gold)">Financing:</strong> ${fin.name}
+      </div>
+    </div>
+    
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+      <div style="background:rgba(100,255,180,.08);border:1px solid rgba(100,255,180,.25);border-radius:8px;padding:12px">
+        <div style="font-size:12px;font-weight:700;color:#5dcaa5;margin-bottom:4px">FIXER-UPPER OPTIONS</div>
+        <div style="font-size:11px;color:var(--text-dim)">${fxMatches.length} neighborhoods</div>
+      </div>
+      <div style="background:rgba(100,180,255,.08);border:1px solid rgba(100,180,255,.25);border-radius:8px;padding:12px">
+        <div style="font-size:12px;font-weight:700;color:#5cb3ff;margin-bottom:4px">MOVE-IN READY OPTIONS</div>
+        <div style="font-size:11px;color:var(--text-dim)">${miMatches.length} neighborhoods</div>
+      </div>
+    </div>
+    
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        ${fxMatches.slice(0,10).map(m => `
+          <div style="background:var(--surface-2);border:1px solid rgba(100,255,180,.2);border-radius:8px;padding:12px;margin-bottom:10px">
+            <div style="font-size:14px;font-weight:700;color:var(--white)">${m.city}</div>
+            <div style="font-size:12px;color:var(--text-soft);margin-top:4px">
+              ${fmt$(m.price)} • ${m.sqftLabel}<br>
+              ${m.dom} DOM • ${Math.round(m.fw)}% first weekend
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <div>
+        ${miMatches.slice(0,10).map(m => `
+          <div style="background:var(--surface-2);border:1px solid rgba(100,180,255,.2);border-radius:8px;padding:12px;margin-bottom:10px">
+            <div style="font-size:14px;font-weight:700;color:var(--white)">${m.city}</div>
+            <div style="font-size:12px;color:var(--text-soft);margin-top:4px">
+              ${fmt$(m.price)} • ${m.sqftLabel}<br>
+              ${m.dom} DOM • ${Math.round(m.fw)}% first weekend
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+  
+  resultsDiv.innerHTML = html;
+  resultsDiv.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// INIT PHASE 2
+function initPhase2() {
+  buildFinancingGrid();
+}
+
+// Update goToPhase2 to init Phase 2
+const originalGoToPhase2 = goToPhase2;
+goToPhase2 = function() {
+  originalGoToPhase2();
+  initPhase2();
+};
 
 // INIT
 window.addEventListener('DOMContentLoaded', loadState);
