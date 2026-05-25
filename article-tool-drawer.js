@@ -19,11 +19,11 @@
 
   var TOOL_CONFIGS = {
     'fixer-upper': {
-      url: '/fixer-upper-vs-move-in-stl',
-      title: 'Fixer Upper vs. Move-In Ready',
-      subtitle: 'True cost comparison by neighborhood',
+      url: '/stl-home-buying-power-calculator',
+      title: 'St. Louis Buying Power Calculator',
+      subtitle: 'See what your income buys across all regions',
       params: ['income', 'sqft', 'loantype'],
-      defaultLabel: 'Compare Fixer Upper vs. Move-In Ready →',
+      defaultLabel: 'See Your Buying Power →',
     },
     'cash-decoder': {
       url: '/tools/cash-offer-decoder',
