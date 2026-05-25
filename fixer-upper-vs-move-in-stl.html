@@ -980,12 +980,12 @@ function calcMonthly(price, downAmt, rate, taxRate, includeMIP, loanAmt) {
 
 function calcMaxBudget(income, down, rate, debts, loanType) {
   // DTI limits by loan type
-  const maxDTI = loanType === 'fha' ? 0.50 : (loanType === 'va' ? 0.45 : 0.43);
+  const maxDTI = loanType === 'fha' ? 0.50 : (loanType === 'va' ? 0.41 : 0.43);
   const maxMonthly = (income / 12) * maxDTI - debts;
   if (maxMonthly <= 0) return 0;
 
   const insMonthly = 250;
-  const taxRateMonthly = 0.0112 / 12; // avg St. Louis
+  const taxRateMonthly = 0.020 / 12; // 2.0% annual — St. Louis metro average (conservative)
   const mipMonthly = loanType === 'fha' ? 0.0055 / 12 : 0; // FHA MIP on loan balance
 
   // VA funding fee (avg 2.15% for first use, roll into loan)
@@ -1054,7 +1054,7 @@ function runTool() {
   const miMatches = [], fxMatches = [];
 
   for (const [zip, info] of Object.entries(CITIES)) {
-    const taxRate = TAX[zip] || 0.0112;
+    const taxRate = TAX[zip] || 0.020; // 2.0% default — St. Louis metro average
     const tierResult = getTiers(zip, sqftBand);
     if (!tierResult) continue;
     const t = tierResult.data;
@@ -1175,7 +1175,20 @@ function runTool() {
   const grid = document.getElementById('cardsGrid');
 
   if (maxRows === 0) {
-    grid.innerHTML = `<div class="no-matches"><strong>No matches found in this range</strong>Try adjusting income, down payment, renovation budget, or home size. Switching to "Any size" usually surfaces more results.</div>`;
+    grid.innerHTML = `<div class="no-matches" style="grid-column:1/-1;background:var(--surface-2);border:1px solid rgba(255,140,50,.3);border-radius:12px;padding:24px;text-align:center">
+      <div style="font-size:32px;margin-bottom:12px">🔍</div>
+      <div style="font-size:16px;font-weight:700;color:var(--white);margin-bottom:10px">No neighborhoods match your current settings</div>
+      <div style="font-size:13px;color:var(--text-soft);line-height:1.6;margin-bottom:16px">
+        At <strong>${fmt$(income)}/year</strong> income and <strong>${fmt$(down)}</strong> down payment, try:
+      </div>
+      <ul style="text-align:left;font-size:13px;color:var(--text-soft);line-height:1.8;max-width:420px;margin:0 auto 16px;list-style:none;padding:0">
+        <li style="padding-left:20px">→ Increase your down payment to $${Math.round(income * 0.10).toLocaleString()}+</li>
+        <li style="padding-left:20px">→ Reduce monthly debts to under $${Math.round(income * 0.05).toLocaleString()}/month</li>
+        <li style="padding-left:20px">→ Consider FHA loan (3.5% down) if you haven't</li>
+        <li style="padding-left:20px">→ Try "Any size" to see smaller homes</li>
+      </ul>
+      <a href="tel:3144351087" style="display:inline-block;padding:11px 20px;background:var(--gold);color:#050505;font-weight:700;font-size:13px;border-radius:8px;text-decoration:none;letter-spacing:.04em">Call George — 314.435.1087</a>
+    </div>`;
   } else {
     let html = '';
     for (let i = 0; i < Math.min(maxRows, 8); i++) {
@@ -1188,7 +1201,15 @@ function runTool() {
   document.getElementById('resultsWrap').classList.add('show');
   document.getElementById('articlePlaceholder').style.display = 'block';
   document.getElementById('toolCTASection').style.display = 'block';
-  bpBar.scrollIntoView({behavior:'smooth', block:'start'});
+  
+  // Auto-scroll to results - mobile gets different behavior
+  if (window.innerWidth < 768) {
+    setTimeout(() => {
+      document.getElementById('bpBar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 150);
+  } else {
+    bpBar.scrollIntoView({behavior:'smooth', block:'start'});
+  }
 }
 
 // ============================================================
@@ -1287,12 +1308,12 @@ function getNeighborhoodLinks(zip) {
   if (!val) return '';
   const slugs = Array.isArray(val) ? val : [val];
   if (slugs.length === 1) {
-    return `<a href="/neighborhoods/${slugs[0]}" class="nbhd-link" target="_blank">View Neighborhood Guide →</a>`;
+    return `<a href="/neighborhoods/${slugs[0]}" class="nbhd-link">View Neighborhood Guide →</a>`;
   }
   // Multiple neighborhoods — show as small pills
   const pills = slugs.map(s => {
     const name = s.split('-').map(w => w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
-    return `<a href="/neighborhoods/${s}" class="nbhd-pill" target="_blank">${name}</a>`;
+    return `<a href="/neighborhoods/${s}" class="nbhd-pill">${name}</a>`;
   }).join('');
   return `<div class="nbhd-multi"><span class="nbhd-multi-label">Neighborhoods in this zip:</span><div class="nbhd-pills">${pills}</div></div>`;
 }
