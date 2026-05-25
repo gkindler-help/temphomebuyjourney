@@ -139,6 +139,7 @@ stlhomejourney.com/
 - St. Louis County → "subdivision" or "neighborhood" (never "block by block")
 - Income guides → "maximum budget" not "you can afford"
 - Snippet formula → "[City] homes [hook] — [geographic anchor]"
+- **"Read the Full Guide" / "View Full Guide" links** → always use the full absolute URL: `https://stlhomejourney.com/articles/[slug]` — never relative paths. This applies everywhere these CTAs appear: neighborhood pages, articles index, tool CTAs, drawer fallback links, and README documentation.
 
 ### **Header Standards:**
 **DO NOT MODIFY `shared.js`** - controls homepage dashboard navigation
