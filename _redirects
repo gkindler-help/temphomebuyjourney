@@ -1,7 +1,15 @@
-/neighborhoods/:page.html   /neighborhoods/:page    301
-/articles/:page.html        /articles/:page         301
-/tools/:page.html           /tools/:page            301
-/school-districts/:page.html /school-districts/:page 301
-/stl-quiz                   /stl-quiz.html              200
-/fixer-upper-vs-move-in    /fixer-upper-vs-move-in-stl    301
-/fixer-upper-vs-move-in.html    /fixer-upper-vs-move-in-stl    301
+# Clean URLs — strip .html sitewide (redirect .html → clean)
+/neighborhoods/:page.html       /neighborhoods/:page        301
+/articles/:page.html            /articles/:page             301
+/tools/:page.html               /tools/:page                301
+/school-districts/:page.html    /school-districts/:page     301
+/zip-codes/:page.html           /zip-codes/:page            301
+
+# Root-level pages: .html → clean URL (404.html excluded — Cloudflare error page)
+/404.html                       /404.html                   200
+/:page.html                     /:page                      301
+
+# Legacy short URLs
+/fixer-upper-vs-move-in         /fixer-upper-vs-move-in-stl 301
+/fixer-upper-vs-move-in.html    /fixer-upper-vs-move-in-stl 301
+/stl-quiz                       /stl-quiz.html              200
