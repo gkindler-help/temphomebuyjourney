@@ -57,6 +57,78 @@
 .district-table th{font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,.54);}
 .district-table td{font-size:0.9rem;color:rgba(255,255,255,.88);}
 </style>
+<script>
+/* GA4 Event Tracking — STL Home Journey */
+(function(){
+  if(typeof gtag!=='function')return;
+  var T=document.title,P=window.location.pathname;
+
+  /* 1. Phone clicks */
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(el){
+    el.addEventListener('click',function(){
+      gtag('event','phone_click',{page_title:T,page_path:P,
+        button_text:this.textContent.trim().slice(0,80),
+        button_class:this.className});
+    });
+  });
+
+  /* 2. Primary / secondary CTA buttons */
+  document.querySelectorAll('.tool-btn-primary,.tool-btn-secondary,.george-btn-p,.george-btn-s,.art-hdr-btn,.nbhd-hdr-btn').forEach(function(el){
+    el.addEventListener('click',function(){
+      if((this.href||'').indexOf('tel:')!==-1)return;
+      gtag('event','cta_click',{page_title:T,page_path:P,
+        button_text:this.textContent.trim().slice(0,80),
+        destination:(this.href||'').slice(0,200)});
+    });
+  });
+
+  /* 3. Content / navigation link clicks */
+  document.querySelectorAll('.int-link,.series-link,.icon-card,.article-card').forEach(function(el){
+    el.addEventListener('click',function(){
+      var dest=(this.href||(this.querySelector('a')||{}).href||'');
+      var type='internal';
+      if(dest.indexOf('/articles/')!==-1)type='article';
+      else if(dest.indexOf('/neighborhoods/')!==-1)type='neighborhood';
+      else if(dest.indexOf('/zip-codes/')!==-1)type='zip_code';
+      else if(dest.indexOf('/school-districts/')!==-1)type='school_district';
+      gtag('event','navigation_click',{page_title:T,page_path:P,
+        link_type:type,link_text:this.textContent.trim().slice(0,80),
+        destination:dest.slice(0,200)});
+    });
+  });
+
+  /* 4. Accordion toggles (articles/index.html) */
+  document.querySelectorAll('.topic-header').forEach(function(el){
+    el.addEventListener('click',function(){
+      gtag('event','accordion_toggle',{page_title:T,page_path:P,
+        topic_name:this.textContent.trim().slice(0,80),
+        state:this.getAttribute('aria-expanded')==='true'?'expanded':'collapsed'});
+    });
+  });
+
+  /* 5. FAQ item clicks */
+  document.querySelectorAll('.faq-item').forEach(function(el){
+    el.addEventListener('click',function(){
+      var q=this.querySelector('.faq-q');
+      gtag('event','faq_click',{page_title:T,page_path:P,
+        question:(q?q.textContent.trim():'').slice(0,120)});
+    });
+  });
+
+  /* 6. Scroll depth — fires once per milestone */
+  var fired={};
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(h<=0)return;
+    var pct=Math.round(window.scrollY/h*100);
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m&&!fired[m]){fired[m]=true;
+        gtag('event','scroll_milestone',{page_title:T,page_path:P,milestone:m+'%'});}
+    });
+  },{passive:true});
+
+})();
+</script>
 </head>
 <body class="tool-page neighborhood-page">
 <header class="nbhd-hdr">

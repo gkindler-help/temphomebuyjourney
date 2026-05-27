@@ -129,6 +129,78 @@
     </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"STL Home Journey","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"Buyer Guides","item":"https://stlhomejourney.com/articles/"},{"@type":"ListItem","position":3,"name":"Renting vs Buying in St. Louis: What the Numbers Actually Show","item":"https://stlhomejourney.com/articles/renting-vs-buying-stl.html"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it cheaper to rent or buy in St. Louis right now?","acceptedAnswer":{"@type":"Answer","text":"In the short term under 2 years, renting is typically cheaper. Over a 4 to 5 year horizon, buying is almost always financially superior in St. Louis due to equity accumulation and the favorable price-to-rent ratio."}},{"@type":"Question","name":"How long do you need to stay in a house in St. Louis to make buying worth it?","acceptedAnswer":{"@type":"Answer","text":"The general break-even horizon in St. Louis is 3 to 5 years. If your timeline is under 2 years, renting is almost always the better financial choice."}},{"@type":"Question","name":"What is a good price-to-rent ratio in St. Louis?","acceptedAnswer":{"@type":"Answer","text":"A price-to-rent ratio under 15 generally favors buying. St. Louis has one of the lowest price-to-rent ratios among major metros, with many neighborhoods in the 10 to 14 range."}},{"@type":"Question","name":"What are the upfront costs of buying a home in St. Louis?","acceptedAnswer":{"@type":"Answer","text":"Plan for total upfront costs of approximately 5 to 8 percent of the purchase price, including down payment, closing costs ($5,000 to $12,000), inspection fees, and moving costs."}}]}</script>
+<script>
+/* GA4 Event Tracking — STL Home Journey */
+(function(){
+  if(typeof gtag!=='function')return;
+  var T=document.title,P=window.location.pathname;
+
+  /* 1. Phone clicks */
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(el){
+    el.addEventListener('click',function(){
+      gtag('event','phone_click',{page_title:T,page_path:P,
+        button_text:this.textContent.trim().slice(0,80),
+        button_class:this.className});
+    });
+  });
+
+  /* 2. Primary / secondary CTA buttons */
+  document.querySelectorAll('.tool-btn-primary,.tool-btn-secondary,.george-btn-p,.george-btn-s,.art-hdr-btn,.nbhd-hdr-btn').forEach(function(el){
+    el.addEventListener('click',function(){
+      if((this.href||'').indexOf('tel:')!==-1)return;
+      gtag('event','cta_click',{page_title:T,page_path:P,
+        button_text:this.textContent.trim().slice(0,80),
+        destination:(this.href||'').slice(0,200)});
+    });
+  });
+
+  /* 3. Content / navigation link clicks */
+  document.querySelectorAll('.int-link,.series-link,.icon-card,.article-card').forEach(function(el){
+    el.addEventListener('click',function(){
+      var dest=(this.href||(this.querySelector('a')||{}).href||'');
+      var type='internal';
+      if(dest.indexOf('/articles/')!==-1)type='article';
+      else if(dest.indexOf('/neighborhoods/')!==-1)type='neighborhood';
+      else if(dest.indexOf('/zip-codes/')!==-1)type='zip_code';
+      else if(dest.indexOf('/school-districts/')!==-1)type='school_district';
+      gtag('event','navigation_click',{page_title:T,page_path:P,
+        link_type:type,link_text:this.textContent.trim().slice(0,80),
+        destination:dest.slice(0,200)});
+    });
+  });
+
+  /* 4. Accordion toggles (articles/index.html) */
+  document.querySelectorAll('.topic-header').forEach(function(el){
+    el.addEventListener('click',function(){
+      gtag('event','accordion_toggle',{page_title:T,page_path:P,
+        topic_name:this.textContent.trim().slice(0,80),
+        state:this.getAttribute('aria-expanded')==='true'?'expanded':'collapsed'});
+    });
+  });
+
+  /* 5. FAQ item clicks */
+  document.querySelectorAll('.faq-item').forEach(function(el){
+    el.addEventListener('click',function(){
+      var q=this.querySelector('.faq-q');
+      gtag('event','faq_click',{page_title:T,page_path:P,
+        question:(q?q.textContent.trim():'').slice(0,120)});
+    });
+  });
+
+  /* 6. Scroll depth — fires once per milestone */
+  var fired={};
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(h<=0)return;
+    var pct=Math.round(window.scrollY/h*100);
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m&&!fired[m]){fired[m]=true;
+        gtag('event','scroll_milestone',{page_title:T,page_path:P,milestone:m+'%'});}
+    });
+  },{passive:true});
+
+})();
+</script>
 </head>
 <body>
 <header class="art-hdr">

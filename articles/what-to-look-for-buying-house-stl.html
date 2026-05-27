@@ -129,6 +129,78 @@
     </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"STL Home Journey","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"Buyer Guides","item":"https://stlhomejourney.com/articles/"},{"@type":"ListItem","position":3,"name":"What to Look For When Buying a House in St. Louis","item":"https://stlhomejourney.com/articles/what-to-look-for-buying-house-stl.html"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the most common expensive problem in St. Louis homes?","acceptedAnswer":{"@type":"Answer","text":"Sewer lateral failure in pre-1980 homes is the most common five-figure surprise. Clay tile laterals crack, offset, and get infiltrated by tree roots. A camera inspection before closing costs $150 to $300. Replacement costs $4,000 to $12,000."}},{"@type":"Question","name":"How do I know if a house has a Federal Pacific panel?","acceptedAnswer":{"@type":"Answer","text":"Look at the electrical panel door -- the label will say Federal Pacific Electric or Stab-Lok. These were common in St. Louis homes built between 1950 and 1985. Replacement typically runs $2,000 to $4,000."}},{"@type":"Question","name":"Should I get a sewer scope on every older St. Louis home?","acceptedAnswer":{"@type":"Answer","text":"Yes, on any home built before 1980. Clay tile sewer laterals are endemic in St. Louis older housing stock. The camera inspection costs $150 to $300 and tells you the condition of the pipe before you are committed to the purchase."}},{"@type":"Question","name":"What does negative grading mean and why does it matter?","acceptedAnswer":{"@type":"Answer","text":"Negative grading means the ground slopes toward the foundation instead of away from it, channeling rain and snowmelt directly against the foundation and into the basement."}},{"@type":"Question","name":"Is tuckpointing always a dealbreaker on a St. Louis brick home?","acceptedAnswer":{"@type":"Answer","text":"No. Most older St. Louis brick homes have tuckpointing at various stages of wear. A single failing facade is a $1,500 to $4,000 repair. A full house that has not been touched in 30 years is a $5,000 to $15,000 project."}}]}</script>
+<script>
+/* GA4 Event Tracking — STL Home Journey */
+(function(){
+  if(typeof gtag!=='function')return;
+  var T=document.title,P=window.location.pathname;
+
+  /* 1. Phone clicks */
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(el){
+    el.addEventListener('click',function(){
+      gtag('event','phone_click',{page_title:T,page_path:P,
+        button_text:this.textContent.trim().slice(0,80),
+        button_class:this.className});
+    });
+  });
+
+  /* 2. Primary / secondary CTA buttons */
+  document.querySelectorAll('.tool-btn-primary,.tool-btn-secondary,.george-btn-p,.george-btn-s,.art-hdr-btn,.nbhd-hdr-btn').forEach(function(el){
+    el.addEventListener('click',function(){
+      if((this.href||'').indexOf('tel:')!==-1)return;
+      gtag('event','cta_click',{page_title:T,page_path:P,
+        button_text:this.textContent.trim().slice(0,80),
+        destination:(this.href||'').slice(0,200)});
+    });
+  });
+
+  /* 3. Content / navigation link clicks */
+  document.querySelectorAll('.int-link,.series-link,.icon-card,.article-card').forEach(function(el){
+    el.addEventListener('click',function(){
+      var dest=(this.href||(this.querySelector('a')||{}).href||'');
+      var type='internal';
+      if(dest.indexOf('/articles/')!==-1)type='article';
+      else if(dest.indexOf('/neighborhoods/')!==-1)type='neighborhood';
+      else if(dest.indexOf('/zip-codes/')!==-1)type='zip_code';
+      else if(dest.indexOf('/school-districts/')!==-1)type='school_district';
+      gtag('event','navigation_click',{page_title:T,page_path:P,
+        link_type:type,link_text:this.textContent.trim().slice(0,80),
+        destination:dest.slice(0,200)});
+    });
+  });
+
+  /* 4. Accordion toggles (articles/index.html) */
+  document.querySelectorAll('.topic-header').forEach(function(el){
+    el.addEventListener('click',function(){
+      gtag('event','accordion_toggle',{page_title:T,page_path:P,
+        topic_name:this.textContent.trim().slice(0,80),
+        state:this.getAttribute('aria-expanded')==='true'?'expanded':'collapsed'});
+    });
+  });
+
+  /* 5. FAQ item clicks */
+  document.querySelectorAll('.faq-item').forEach(function(el){
+    el.addEventListener('click',function(){
+      var q=this.querySelector('.faq-q');
+      gtag('event','faq_click',{page_title:T,page_path:P,
+        question:(q?q.textContent.trim():'').slice(0,120)});
+    });
+  });
+
+  /* 6. Scroll depth — fires once per milestone */
+  var fired={};
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(h<=0)return;
+    var pct=Math.round(window.scrollY/h*100);
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m&&!fired[m]){fired[m]=true;
+        gtag('event','scroll_milestone',{page_title:T,page_path:P,milestone:m+'%'});}
+    });
+  },{passive:true});
+
+})();
+</script>
 </head>
 <body>
 <header class="art-hdr">
