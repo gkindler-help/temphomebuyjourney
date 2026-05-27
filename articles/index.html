@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="512x512" href="/assets/favicon-512.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>St. Louis Real Estate Guides — Local Intelligence for Buyers &amp; Sellers | STL Home Journey</title>
-  <meta name="description" content="Browse buyer strategy, seller pricing, cash offers, neighborhoods, schools, inspections, repair risks, VA loans, and interactive tools — organized like a discovery platform instead of a blog dump.">
+  <meta name="description" content="Browse buyer strategy, cash offers, neighborhoods, schools, inspections, repair risks, VA loans, and interactive tools — organized like a discovery platform instead of a blog dump.">
   <link rel="canonical" href="https://stlhomejourney.com/articles/">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EEE14BZT9P');</script>
@@ -75,6 +75,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .mode-label{
   font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
   color:var(--text-dim);margin-bottom:14px;text-align:center;
+  animation:selectPulse 2.4s ease-in-out infinite;
+}
+@keyframes selectPulse{
+  0%,100%{color:var(--text-dim);text-shadow:none;}
+  50%{color:rgba(255,204,77,.7);text-shadow:0 0 12px rgba(255,204,77,.35);}
 }
 .mode-tabs{
   display:flex;
@@ -85,15 +90,23 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   padding:14px 0 16px;
   font-family:var(--serif);font-size:1.45rem;font-weight:700;
   text-align:center;cursor:pointer;
-  background:none;border:none;font-family:var(--serif);
+  background:none;border:none;
   color:var(--text-dim);
   border-bottom:3px solid transparent;
   margin-bottom:-1px;
-  transition:color .18s,border-color .18s;
+  transition:color .18s,border-color .18s,text-shadow .18s;
   letter-spacing:.01em;
 }
 .mode-tab:hover{color:var(--text-soft);}
-.mode-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.mode-tab.active{
+  color:var(--gold);
+  border-bottom-color:var(--gold);
+  animation:tabGlow 2s ease-in-out infinite;
+}
+@keyframes tabGlow{
+  0%,100%{text-shadow:0 0 12px rgba(255,204,77,.25);}
+  50%{text-shadow:0 0 28px rgba(255,204,77,.55),0 0 8px rgba(255,204,77,.3);}
+}
 .mode-tab span{display:block;font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:3px;}
 
 /* ── TOPIC NAV STRIP ─────────────────────────────────── */
@@ -157,8 +170,77 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .section-link:hover{opacity:.7;}
 
 /* ── CARDS ───────────────────────────────────────────── */
-.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:11px;}
-@media(max-width:500px){.cards-grid{grid-template-columns:1fr;}}
+/* ── NETFLIX CAROUSEL ────────────────────────────────── */
+.section{margin-bottom:44px;}
+.carousel-outer{position:relative;}
+.cards-grid{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  overflow-y:visible;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  padding:8px 0 16px;
+  cursor:grab;
+}
+.cards-grid::-webkit-scrollbar{display:none;}
+.cards-grid.dragging{cursor:grabbing;scroll-snap-type:none;}
+
+/* Fade edges */
+.carousel-outer::before,.carousel-outer::after{
+  content:'';position:absolute;top:0;bottom:16px;width:60px;
+  pointer-events:none;z-index:10;
+}
+.carousel-outer::before{left:0;background:linear-gradient(to right,var(--bg) 0%,transparent 100%);}
+.carousel-outer::after{right:0;background:linear-gradient(to left,var(--bg) 0%,transparent 100%);}
+
+/* Chevron buttons */
+.carousel-btn{
+  display:none;
+  position:absolute;top:50%;transform:translateY(-60%);
+  z-index:20;width:40px;height:40px;border-radius:50%;
+  background:rgba(15,15,15,.9);border:1px solid var(--border-2);
+  color:var(--text);font-size:1rem;cursor:pointer;
+  align-items:center;justify-content:center;
+  transition:background .15s,border-color .15s;
+}
+.carousel-btn:hover{background:rgba(30,30,30,.95);border-color:var(--gold-border);color:var(--gold);}
+.carousel-outer:hover .carousel-btn{display:flex;}
+.carousel-btn.prev{left:-16px;}
+.carousel-btn.next{right:-16px;}
+
+/* Cards — Netflix scale effect */
+.article-card{
+  display:block;text-decoration:none;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:17px;
+  flex:0 0 240px;
+  scroll-snap-align:start;
+  transition:transform .22s cubic-bezier(.25,.46,.45,.94),
+             border-color .22s,
+             opacity .22s,
+             box-shadow .22s;
+  transform-origin:left center;
+  opacity:.7;
+}
+.article-card:first-child{margin-left:2px;}
+.cards-grid .article-card:first-child,
+.cards-grid .article-card.in-view-first{
+  transform:scale(1.06);
+  opacity:1;
+  border-color:var(--gold-border);
+  box-shadow:0 8px 32px rgba(0,0,0,.5),0 0 0 1px var(--gold-border);
+  z-index:2;
+}
+.article-card:hover{
+  transform:scale(1.06);
+  opacity:1;
+  border-color:var(--gold-border);
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
+  z-index:2;
+}
+@media(max-width:500px){.article-card{flex:0 0 200px;}}
 .article-card{
   display:block;text-decoration:none;background:var(--surface);border:1px solid var(--border);
   border-radius:10px;padding:17px;transition:border-color .15s,background .15s;
@@ -705,10 +787,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 <!-- Compliance Footer -->
 <footer class="compliance-footer">
   <p class="compliance-text">
-    STL Home Journey is a buyer and seller education platform produced by George Kindler, a licensed Missouri real estate agent with
-    <a href="https://theclosingpros.com" target="_blank" rel="noopener">The Closing Pros LLC</a> (License #2013033985).
+    STL Home Journey is a buyer and seller education platform produced by George Kindler (License #2013033985), a licensed Missouri real estate agent with
+    <a href="https://theclosingpros.com" target="_blank" rel="noopener">The Closing Pros LLC</a>.
     Content is educational and does not constitute legal, financial, or real estate advice for your specific situation.
-    George's direct line: <a href="tel:3144351087">314.435.1087</a> ·
+    George's direct line: <a href="tel:3144351087" style="color:var(--gold);">314.435.1087</a> ·
     Brokerage: <a href="tel:3149984550">314.998.4550</a>
   </p>
 </footer>
@@ -745,7 +827,69 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   },{passive:true});
 })();
 
-/* Mode switch */
+/* Carousel init */
+(function initCarousels(){
+  document.querySelectorAll('.cards-grid').forEach(function(grid){
+    // Wrap in outer
+    var outer = document.createElement('div');
+    outer.className = 'carousel-outer';
+    grid.parentNode.insertBefore(outer, grid);
+    outer.appendChild(grid);
+
+    // Chevrons
+    var prev = document.createElement('button');
+    prev.className = 'carousel-btn prev';
+    prev.innerHTML = '‹';
+    prev.setAttribute('aria-label','Scroll left');
+    var next = document.createElement('button');
+    next.className = 'carousel-btn next';
+    next.innerHTML = '›';
+    next.setAttribute('aria-label','Scroll right');
+    outer.appendChild(prev);
+    outer.appendChild(next);
+
+    var cardW = function(){ return (grid.querySelector('.article-card')||{offsetWidth:252}).offsetWidth + 12; };
+
+    prev.addEventListener('click', function(e){
+      e.preventDefault();
+      grid.scrollBy({left: -cardW() * 3, behavior:'smooth'});
+    });
+    next.addEventListener('click', function(e){
+      e.preventDefault();
+      grid.scrollBy({left: cardW() * 3, behavior:'smooth'});
+    });
+
+    // Drag to scroll
+    var isDown = false, startX, scrollLeft;
+    grid.addEventListener('mousedown', function(e){
+      isDown = true;
+      grid.classList.add('dragging');
+      startX = e.pageX - grid.offsetLeft;
+      scrollLeft = grid.scrollLeft;
+    });
+    window.addEventListener('mouseup', function(){ isDown = false; grid.classList.remove('dragging'); });
+    grid.addEventListener('mousemove', function(e){
+      if(!isDown) return;
+      e.preventDefault();
+      var x = e.pageX - grid.offsetLeft;
+      grid.scrollLeft = scrollLeft - (x - startX);
+    });
+
+    // First-in-view highlight
+    function updateFirstInView(){
+      var cards = grid.querySelectorAll('.article-card');
+      var scrollLeft = grid.scrollLeft;
+      var firstVisible = null;
+      cards.forEach(function(c){ c.classList.remove('in-view-first'); });
+      cards.forEach(function(c){
+        if(!firstVisible && c.offsetLeft >= scrollLeft - 10){ firstVisible = c; }
+      });
+      if(firstVisible) firstVisible.classList.add('in-view-first');
+    }
+    grid.addEventListener('scroll', updateFirstInView, {passive:true});
+    updateFirstInView();
+  });
+})();
 var currentMode = 'buying';
 function setMode(mode) {
   currentMode = mode;
@@ -753,6 +897,10 @@ function setMode(mode) {
   document.getElementById('panel-selling').classList.toggle('active', mode === 'selling');
   document.getElementById('tab-buying').classList.toggle('active', mode === 'buying');
   document.getElementById('tab-selling').classList.toggle('active', mode === 'selling');
+  // Stop animations once user has made a choice
+  document.querySelector('.mode-label').style.animation = 'none';
+  document.querySelectorAll('.mode-tab').forEach(function(t){ t.style.animation = 'none'; });
+  document.getElementById('tab-' + mode).style.color = 'var(--gold)';
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
