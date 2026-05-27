@@ -2,1071 +2,873 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
-<link rel="apple-touch-icon" sizes="512x512" href="/assets/favicon-512.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="/assets/favicon-512.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>St. Louis Home Buying Guides — Real Numbers, No Fluff | STL Home Journey</title>
-  <meta name="description" content="54 free guides covering affordability, VA loans, inspections, cash offers, school districts, and St. Louis neighborhoods. Written by a licensed agent with 13 years and 250+ transactions.">
-  <meta property="og:title" content="St. Louis Home Buying Guides — Real Numbers, No Fluff">
-  <meta property="og:description" content="54 free guides covering affordability, VA loans, inspections, cash offers, and St. Louis neighborhoods. Written by a licensed agent with 250+ transactions.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://stlhomejourney.com/articles/">
+  <title>St. Louis Real Estate Guides — Local Intelligence for Buyers &amp; Sellers | STL Home Journey</title>
+  <meta name="description" content="Browse buyer strategy, seller pricing, cash offers, neighborhoods, schools, inspections, repair risks, VA loans, and interactive tools — organized like a discovery platform instead of a blog dump.">
   <link rel="canonical" href="https://stlhomejourney.com/articles/">
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EEE14BZT9P');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="../article-registry.js"></script>
-  <style>
-    :root {
-      --bg: #050505;
-      --gold: #ffcc4d;
-      --gold-dim: rgba(255,204,77,0.12);
-      --gold-border: rgba(255,204,77,0.25);
-      --text: #e8e2d9;
-      --text-muted: #8a8070;
-      --card-bg: #0f0f0f;
-      --card-border: rgba(255,255,255,0.07);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      min-height: 100vh;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    /* ── Header ── */
-    .page-header {
-      background: rgba(5,5,5,.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--card-border);
-      padding: 10px 16px;
-      position: sticky;
-      top: 0;
-      z-index: 200;
-    }
-    .header-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-    .logo-link {
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-    }
-    .logo-ico { width: 32px; height: 32px; flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .logo-ico img { width: 100%; height: 100%; object-fit: contain; }
-    .logo-wordmark { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; letter-spacing: .03em; color: rgba(255,255,255,.96); line-height: 1.05; }
-    .logo-wordmark span { color: var(--gold); }
-    .logo-name { font-size: 10px; font-weight: 600; color: rgba(255,255,255,.72); letter-spacing: .04em; margin-top: 2px; }
-    .back-to-journey {
-      font-size: 10px; font-weight: 700; letter-spacing: .05em;
-      padding: 6px 11px; border-radius: 999px;
-      border: 1px solid var(--card-border);
-      color: rgba(255,255,255,.72);
-      background: rgba(255,255,255,.02);
-      text-decoration: none; white-space: nowrap; flex-shrink: 0;
-      transition: border-color .18s, color .18s;
-    }
-    .back-to-journey:hover { border-color: var(--gold-border); color: rgba(255,255,255,.96); }
-
-    /* ── Hero ── */
-    .hero {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 52px 24px 36px;
-    }
-    .hero-eyebrow { 
-      font-size: 0.72rem; 
-      font-weight: 600; 
-      letter-spacing: 0.15em; 
-      text-transform: uppercase; 
-      color: var(--gold); 
-      margin-bottom: 14px; 
-    }
-    .hero h1 { 
-      font-family: 'Playfair Display', serif; 
-      font-size: clamp(1.8rem, 5vw, 2.8rem); 
-      font-weight: 900; 
-      line-height: 1.1; 
-      color: #fff; 
-      margin-bottom: 16px; 
-      max-width: 700px; 
-    }
-    .hero h1 span { color: var(--gold); }
-    .hero-sub { 
-      font-size: 1rem; 
-      color: var(--text-muted); 
-      max-width: 520px; 
-      line-height: 1.7; 
-      margin-bottom: 28px; 
-    }
-
-    /* ── Topic Accordion ── */
-    .topics-container {
-      max-width: 1100px;
-      margin: 0 auto 64px;
-      padding: 0 24px;
-    }
-    
-    .topic-accordion {
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      margin-bottom: 16px;
-      background: var(--card-bg);
-      overflow: hidden;
-      transition: border-color 0.2s;
-    }
-    
-    .topic-accordion:hover {
-      border-color: var(--gold-border);
-    }
-    
-    .topic-header {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 28px 32px;
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      transition: background 0.2s;
-    }
-    
-    .topic-header:hover {
-      background: rgba(255,204,77,0.02);
-    }
-    
-    .topic-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.4rem, 3.5vw, 1.8rem);
-      font-weight: 700;
-      color: #fff;
-      margin: 0 0 6px 0;
-      line-height: 1.2;
-    }
-    
-    .topic-subtitle {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-      margin: 0;
-    }
-    
-    .accordion-icon {
-      font-size: 2rem;
-      color: var(--gold);
-      font-weight: 300;
-      line-height: 1;
-      flex-shrink: 0;
-      transition: transform 0.3s;
-    }
-    
-    .accordion-icon.open {
-      transform: rotate(45deg);
-    }
-    
-    .topic-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease-out;
-    }
-    
-    .topic-content.open {
-      max-height: 5000px;
-      transition: max-height 0.5s ease-in;
-    }
-    
-    .topic-content .cards-grid {
-      padding: 0 32px 32px;
-    }
-    
-    @media (max-width: 600px) {
-      .topic-header {
-        padding: 20px 20px;
-      }
-      .topic-content .cards-grid {
-        padding: 0 20px 20px;
-      }
-      .accordion-icon {
-        font-size: 1.5rem;
-      }
-    }
-
-    /* ── Cards Grid ── */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 20px;
-    }
-    @media (max-width: 600px) {
-      .cards-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ── Article Card ── */
-    .article-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 24px;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: border-color 0.2s, background 0.2s, transform 0.1s;
-      position: relative;
-    }
-    .article-card:hover {
-      border-color: var(--gold-border);
-      background: rgba(255,204,77,0.03);
-      transform: translateY(-2px);
-    }
-    
-    /* Featured card - larger, stands out */
-    .featured-card {
-      grid-column: 1 / -1;
-      background: linear-gradient(135deg, rgba(255,204,77,0.06) 0%, rgba(255,204,77,0.02) 100%);
-      border: 1px solid var(--gold-border);
-      padding: 32px;
-    }
-    .featured-card:hover {
-      background: linear-gradient(135deg, rgba(255,204,77,0.08) 0%, rgba(255,204,77,0.04) 100%);
-      border-color: var(--gold);
-    }
-    .featured-card .card-title {
-      font-size: 1.6rem;
-    }
-    .featured-card .card-desc {
-      font-size: 1rem;
-    }
-    
-    .card-badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 4px 10px;
-      border-radius: 4px;
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      background: var(--gold-dim);
-      color: var(--gold);
-      width: fit-content;
-    }
-    .featured-badge {
-      background: var(--gold);
-      color: #050505;
-      padding: 5px 12px;
-      font-size: 0.7rem;
-    }
-    .card-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      line-height: 1.3;
-      color: #fff;
-    }
-    .card-desc {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      flex: 1;
-    }
-    .tool-indicator {
-      font-size: 0.82rem;
-      color: var(--gold);
-      padding: 8px 12px;
-      background: var(--gold-dim);
-      border-radius: 4px;
-      border-left: 3px solid var(--gold);
-    }
-    .card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 10px;
-      margin-top: 8px;
-    }
-    .card-arrow {
-      font-size: 1.2rem;
-      color: var(--gold);
-      transition: transform 0.2s;
-    }
-    .article-card:hover .card-arrow {
-      transform: translateX(4px);
-    }
-
-    /* ── George CTA ── */
-    .george-cta {
-      max-width: 1100px;
-      margin: 80px auto 64px;
-      padding: 0 24px;
-    }
-    .cta-box {
-      background: linear-gradient(135deg, rgba(255,204,77,0.08) 0%, rgba(255,204,77,0.02) 100%);
-      border: 1px solid var(--gold-border);
-      border-radius: 12px;
-      padding: 40px 32px;
-      text-align: center;
-    }
-    .cta-box h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 12px;
-    }
-    .cta-box p {
-      font-size: 1rem;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-      max-width: 560px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      background: var(--gold);
-      color: #050505;
-      font-size: 0.95rem;
-      font-weight: 600;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.1s;
-    }
-    .cta-btn:hover {
-      background: #ffd666;
-      transform: translateY(-1px);
-    }
-    .cta-phone {
-      display: block;
-      margin-top: 16px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    .cta-phone a {
-      color: var(--gold);
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .cta-phone a:hover {
-      text-decoration: underline;
-    }
-
-    /* ── Footer ── */
-    .footer {
-      border-top: 1px solid var(--card-border);
-      padding: 32px 24px;
-      text-align: center;
-      background: rgba(5,5,5,0.98);
-    }
-    .footer-content {
-      max-width: 1100px;
-      margin: 0 auto;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-    .footer-content a {
-      color: var(--gold);
-      text-decoration: none;
-    }
-    .footer-content a:hover {
-      text-decoration: underline;
-    }
-    .footer-company {
-      font-weight: 600;
-      color: var(--text);
-    }
-    
-    /* George Card */
-    .george-card{background:linear-gradient(135deg,rgba(255,204,77,0.04) 0%,rgba(255,204,77,0.01) 100%);border:1px solid var(--gold-border);border-radius:16px;padding:28px;margin:48px auto;display:flex;gap:24px;align-items:flex-start;max-width:800px;}
-    .george-card-photo{width:100px;height:100px;border-radius:50%;overflow:hidden;border:2px solid var(--gold-border);flex-shrink:0;background:var(--card-bg);}
-    .george-card-photo img{width:100%;height:100%;object-fit:cover;}
-    .george-card-content{flex:1;min-width:0;}
-    .george-card-name{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--text);margin-bottom:4px;}
-    .george-card-title{font-size:0.82rem;color:var(--text-muted);margin-bottom:14px;line-height:1.5;}
-    .george-card-line{font-size:0.92rem;color:var(--text);line-height:1.68;margin-bottom:18px;}
-    .george-card-btns{display:flex;gap:10px;flex-wrap:wrap;}
-    .george-btn-p{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#080808;font-weight:700;font-size:13px;letter-spacing:0.03em;padding:11px 20px;border-radius:8px;text-decoration:none;transition:transform 0.1s;}
-    .george-btn-p:hover{transform:translateY(-1px);}
-    .george-btn-s{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--gold-border);color:var(--gold);font-weight:600;font-size:13px;letter-spacing:0.03em;padding:10px 19px;border-radius:8px;text-decoration:none;transition:background 0.18s;}
-    .george-btn-s:hover{background:var(--gold-dim);}
-    .george-btn-about{display:inline-flex;align-items:center;gap:6px;color:var(--text-muted);font-weight:600;font-size:13px;letter-spacing:0.03em;padding:10px 19px;border-radius:8px;text-decoration:none;transition:color 0.18s;}
-    .george-btn-about:hover{color:var(--gold);}
-    @media (max-width:600px){.george-card{flex-direction:column;align-items:center;text-align:center;padding:24px;}.george-card-photo{width:90px;height:90px;}.george-card-btns{flex-direction:column;width:100%;}.george-btn-p,.george-btn-s,.george-btn-about{width:100%;justify-content:center;}}
-  </style>
-
-<!-- JSON-LD Schema Markup -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Article",
-      "headline": "St. Louis Real Estate Guides",
-      "description": "54 free guides covering affordability, VA loans, inspections, cash offers, and St. Louis neighborhoods. Written by a licensed agent with 250+ transactions.",
-      "url": "https://stlhomejourney.com/articles/",
-      "datePublished": "2025-01-15",
-      "dateModified": "2026-05-23",
-      "author": {
-        "@type": "Person",
-        "@id": "https://stlhomejourney.com/#george-kindler",
-        "name": "George Kindler",
-        "url": "https://stlhomejourney.com/about.html",
-        "jobTitle": "Licensed Real Estate Agent",
-        "image": "https://stlhomejourney.com/assets/george-family.jpg",
-        "sameAs": [
-          "https://www.youtube.com/@Stlhomejourney",
-          "https://www.facebook.com/gksellsstl"
-        ]
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "The Closing Pros LLC",
-        "@id": "https://stlhomejourney.com/#organization",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://stlhomejourney.com/assets/STLhomebuyerjourneylogo.png",
-          "width": 512,
-          "height": 512
-        }
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://stlhomejourney.com/articles/"
-      },
-      "articleSection": "Real Estate Guide",
-      "isPartOf": {
-        "@type": "WebSite",
-        "@id": "https://stlhomejourney.com/#website",
-        "name": "STL Home Journey"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://stlhomejourney.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Guides",
-          "item": "https://stlhomejourney.com/articles/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "St. Louis Real Estate Guides",
-          "item": "https://stlhomejourney.com/articles/"
-        }
-      ]
-    }
-  ]
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#050505;
+  --gold:#ffcc4d;
+  --gold-dim:rgba(255,204,77,.1);
+  --gold-border:rgba(255,204,77,.22);
+  --surface:#0d0d0d;
+  --surface-2:#141414;
+  --border:rgba(255,255,255,.07);
+  --border-2:rgba(255,255,255,.11);
+  --text:#e8e2d9;
+  --text-soft:#9a9080;
+  --text-dim:#5a5248;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --max:1200px;
+  --gutter:20px;
 }
-</script>
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+
+/* ── HEADER ─────────────────────────────────────────── */
+.hdr{
+  position:sticky;top:0;z-index:200;
+  background:rgba(5,5,5,.94);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.hdr-inner{
+  max-width:var(--max);margin:0 auto;padding:0 var(--gutter);
+  height:56px;display:flex;align-items:center;gap:16px;
+}
+.hdr-logo{
+  font-family:var(--serif);font-size:1rem;font-weight:700;
+  color:var(--gold);text-decoration:none;white-space:nowrap;flex-shrink:0;
+}
+.hdr-logo span{color:var(--text-soft);font-weight:400;}
+.search-wrap{flex:1;position:relative;max-width:500px;}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:.85rem;pointer-events:none;}
+#search{
+  width:100%;background:var(--surface-2);border:1px solid var(--border-2);
+  border-radius:8px;padding:9px 12px 9px 34px;
+  font-size:.82rem;font-family:var(--sans);color:var(--text);outline:none;transition:border-color .15s;
+}
+#search::placeholder{color:var(--text-dim);}
+#search:focus{border-color:var(--gold-border);}
+.hdr-back{font-size:.75rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--text-soft);text-decoration:none;white-space:nowrap;transition:color .15s;}
+.hdr-back:hover{color:var(--gold);}
+
+/* ── MODE SWITCHER ───────────────────────────────────── */
+.mode-strip{
+  background:var(--bg);
+  border-bottom:1px solid var(--border);
+  padding:28px var(--gutter) 0;
+}
+.mode-strip-inner{max-width:var(--max);margin:0 auto;}
+.mode-label{
+  font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--text-dim);margin-bottom:14px;text-align:center;
+}
+.mode-tabs{
+  display:flex;
+  border-bottom:1px solid var(--border);
+}
+.mode-tab{
+  flex:1;
+  padding:14px 0 16px;
+  font-family:var(--serif);font-size:1.45rem;font-weight:700;
+  text-align:center;cursor:pointer;
+  background:none;border:none;font-family:var(--serif);
+  color:var(--text-dim);
+  border-bottom:3px solid transparent;
+  margin-bottom:-1px;
+  transition:color .18s,border-color .18s;
+  letter-spacing:.01em;
+}
+.mode-tab:hover{color:var(--text-soft);}
+.mode-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.mode-tab span{display:block;font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:3px;}
+
+/* ── TOPIC NAV STRIP ─────────────────────────────────── */
+.topic-nav{
+  background:var(--surface);border-bottom:1px solid var(--border);
+  overflow-x:auto;scrollbar-width:none;
+}
+.topic-nav::-webkit-scrollbar{display:none;}
+.topic-nav-inner{
+  max-width:var(--max);margin:0 auto;padding:0 var(--gutter);
+  display:flex;white-space:nowrap;
+}
+.topic-nav-item{
+  display:inline-flex;align-items:center;padding:13px 16px;
+  font-size:.75rem;font-weight:600;letter-spacing:.04em;
+  color:var(--text-soft);background:none;border:none;border-bottom:2px solid transparent;
+  font-family:var(--sans);cursor:pointer;white-space:nowrap;
+  transition:color .15s,border-color .15s;
+}
+.topic-nav-item:hover{color:var(--text);}
+.topic-nav-item.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+/* ── PAGE LAYOUT ─────────────────────────────────────── */
+.page{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);}
+
+/* ── HERO ────────────────────────────────────────────── */
+.hero{padding:48px 0 36px;border-bottom:1px solid var(--border);margin-bottom:44px;}
+.hero-eyebrow{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.hero-title{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.3rem);font-weight:900;line-height:1.2;color:var(--text);max-width:660px;margin-bottom:12px;}
+.hero-sub{font-size:.92rem;color:var(--text-soft);line-height:1.7;max-width:560px;}
+
+/* ── FEATURED ROW ────────────────────────────────────── */
+.featured-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:52px;}
+@media(max-width:860px){.featured-row{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.featured-row{grid-template-columns:1fr;}}
+.feat-card{
+  display:block;text-decoration:none;background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:22px;transition:border-color .18s,background .18s;
+}
+.feat-card:hover{background:var(--surface-2);border-color:var(--border-2);}
+.feat-card.gold-card{border-color:var(--gold-border);background:rgba(255,204,77,.03);}
+.feat-card.gold-card:hover{background:rgba(255,204,77,.06);}
+.feat-badge{
+  display:inline-block;font-size:.63rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 9px;border-radius:999px;margin-bottom:12px;
+}
+.feat-badge.investigation{background:rgba(255,204,77,.12);color:var(--gold);border:1px solid var(--gold-border);}
+.feat-badge.tool{background:rgba(255,255,255,.06);color:var(--text-soft);border:1px solid var(--border-2);}
+.feat-badge.trending{background:rgba(255,100,100,.1);color:#ff8080;border:1px solid rgba(255,100,100,.2);}
+.feat-badge.new{background:rgba(128,255,176,.08);color:#80ffb0;border:1px solid rgba(128,255,176,.2);}
+.feat-title{font-family:var(--serif);font-size:1.02rem;font-weight:700;color:var(--text);line-height:1.35;margin-bottom:9px;}
+.feat-desc{font-size:.78rem;color:var(--text-soft);line-height:1.6;}
+.feat-arrow{display:inline-flex;align-items:center;gap:5px;margin-top:14px;font-size:.72rem;font-weight:700;letter-spacing:.04em;color:var(--gold);text-transform:uppercase;}
+
+/* ── SECTION ─────────────────────────────────────────── */
+.section{margin-bottom:52px;}
+.section-hdr{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px;border-bottom:1px solid var(--border);padding-bottom:12px;}
+.section-title{font-family:var(--serif);font-size:1.18rem;font-weight:700;color:var(--text);}
+.section-sub{font-size:.76rem;color:var(--text-soft);margin-top:3px;}
+.section-link{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--gold);text-decoration:none;white-space:nowrap;flex-shrink:0;margin-left:16px;}
+.section-link:hover{opacity:.7;}
+
+/* ── CARDS ───────────────────────────────────────────── */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:11px;}
+@media(max-width:500px){.cards-grid{grid-template-columns:1fr;}}
+.article-card{
+  display:block;text-decoration:none;background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:17px;transition:border-color .15s,background .15s;
+}
+.article-card:hover{background:var(--surface-2);border-color:var(--border-2);}
+.card-badge{font-size:.63rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.card-badge.new-badge{color:#80ffb0;}
+.card-title{font-size:.86rem;font-weight:700;color:var(--text);line-height:1.35;margin-bottom:5px;}
+.card-desc{font-size:.74rem;color:var(--text-soft);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:11px;padding-top:9px;border-top:1px solid var(--border);}
+.card-arrow{font-size:.78rem;color:var(--gold);}
+.card-tag-label{font-size:.63rem;font-weight:600;letter-spacing:.04em;color:var(--text-dim);text-transform:uppercase;}
+
+/* ── BUYER JOURNEY ───────────────────────────────────── */
+.journey-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:52px;}
+.journey-toggle{width:100%;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;background:none;border:none;cursor:pointer;font-family:var(--sans);text-align:left;}
+.journey-toggle-left{display:flex;flex-direction:column;gap:3px;}
+.journey-toggle-eyebrow{font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);}
+.journey-toggle-title{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--text);}
+.journey-toggle-sub{font-size:.76rem;color:var(--text-soft);}
+.journey-expand-btn{font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--gold);white-space:nowrap;padding:8px 15px;border:1px solid var(--gold-border);border-radius:8px;background:var(--gold-dim);flex-shrink:0;margin-left:16px;}
+.journey-stages{display:none;border-top:1px solid var(--border);}
+.journey-stages.open{display:grid;grid-template-columns:repeat(5,1fr);}
+@media(max-width:700px){.journey-stages.open{grid-template-columns:1fr 1fr;}}
+@media(max-width:400px){.journey-stages.open{grid-template-columns:1fr;}}
+.journey-stage{padding:18px;border-right:1px solid var(--border);display:block;text-decoration:none;transition:background .15s;}
+.journey-stage:last-child{border-right:none;}
+.journey-stage:hover{background:var(--surface-2);}
+.stage-num{font-size:.63rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.stage-name{font-size:.86rem;font-weight:700;color:var(--text);margin-bottom:4px;line-height:1.3;}
+.stage-desc{font-size:.71rem;color:var(--text-soft);line-height:1.5;}
+
+/* ── SEARCH ──────────────────────────────────────────── */
+#search-results{display:none;}
+#search-results.active{display:block;}
+.search-results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:11px;margin-top:14px;}
+.no-results{padding:32px;text-align:center;color:var(--text-soft);font-size:.88rem;}
+#main-content.hidden{display:none;}
+
+/* ── MODE PANELS ─────────────────────────────────────── */
+.mode-panel{display:none;}
+.mode-panel.active{display:block;}
+
+/* ── COMPLIANCE ──────────────────────────────────────── */
+.compliance-footer{border-top:1px solid var(--border);padding:24px var(--gutter) 40px;text-align:center;max-width:var(--max);margin:40px auto 0;}
+.compliance-text{font-size:.7rem;color:var(--text-dim);line-height:1.7;}
+.compliance-text a{color:var(--text-soft);text-decoration:none;}
+.compliance-text a:hover{color:var(--text);}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="hdr">
+  <div class="hdr-inner">
+    <a href="../index.html" class="hdr-logo">STL <span>Home Journey</span></a>
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input type="text" id="search" placeholder="Search STL real estate guides, tools, neighborhoods, schools, repairs..." autocomplete="off">
+    </div>
+    <a href="../index.html" class="hdr-back">← Journey</a>
+  </div>
+</header>
+
+<!-- Mode Switcher -->
+<div class="mode-strip">
+  <div class="mode-strip-inner">
+    <div class="mode-label">Select</div>
+    <div class="mode-tabs">
+      <button class="mode-tab active" id="tab-buying" onclick="setMode('buying')">
+        Buying
+        <span>Guides, tools &amp; strategy</span>
+      </button>
+      <button class="mode-tab" id="tab-selling" onclick="setMode('selling')">
+        Selling
+        <span>Net proceeds, pricing &amp; cash offers</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Search Results -->
+<div class="page">
+  <div id="search-results">
+    <div style="padding:32px 0 14px;">
+      <div class="hero-eyebrow">Search Results</div>
+      <div id="search-query-label" style="font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--text);margin-top:5px;"></div>
+    </div>
+    <div class="search-results-grid" id="search-results-grid"></div>
+    <div class="no-results" id="no-results" style="display:none;">No guides found. Try a different search.</div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div id="main-content">
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- BUYING MODE                                            -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div id="panel-buying" class="mode-panel active">
+
+    <!-- Topic Nav -->
+    <nav class="topic-nav">
+      <div class="topic-nav-inner">
+        <button class="topic-nav-item active" onclick="scrollTo2('b-neighborhoods',this)">Neighborhoods</button>
+        <button class="topic-nav-item" onclick="scrollTo2('b-schools',this)">School Districts</button>
+        <button class="topic-nav-item" onclick="scrollTo2('b-inspection',this)">Inspection Red Flags</button>
+        <button class="topic-nav-item" onclick="scrollTo2('b-tools',this)">Interactive Tools</button>
+        <button class="topic-nav-item" onclick="scrollTo2('b-va',this)">VA Buyers</button>
+      </div>
+    </nav>
+
+    <div class="page">
+
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-eyebrow">Local Real Estate Intelligence</div>
+        <h1 class="hero-title">Everything St. Louis Buyers Wish They Knew Earlier</h1>
+        <p class="hero-sub">Browse buyer strategy, cash offers, neighborhoods, schools, inspections, repair risks, VA loans, and interactive tools — organized like a discovery platform instead of a blog dump.</p>
+      </section>
+
+      <!-- Featured 3-up -->
+      <section class="section">
+        <div class="featured-row">
+          <a href="stl-home-repair-cost-guide.html" class="feat-card gold-card">
+            <div class="feat-badge investigation">Featured Guide</div>
+            <div class="feat-title">What St. Louis Homes Actually Cost to Fix</div>
+            <div class="feat-desc">Roofs, sewer laterals, foundations, Federal Pacific panels, HVAC — the repair ranges buyers need before they make an offer, not after.</div>
+            <div class="feat-arrow">See Real Numbers →</div>
+          </a>
+          <a href="../fixer-upper-vs-move-in-stl.html" class="feat-card">
+            <div class="feat-badge tool">Interactive Tool</div>
+            <div class="feat-title">Fixer Upper vs. Move-In Ready</div>
+            <div class="feat-desc">Break down repair math, condition tradeoffs, and true cost of ownership before making an offer.</div>
+            <div class="feat-arrow">Launch Tool →</div>
+          </a>
+          <a href="lindbergh-vs-mehlville-school-district-stl.html" class="feat-card">
+            <div class="feat-badge trending">Trending Guide</div>
+            <div class="feat-title">Lindbergh vs Mehlville</div>
+            <div class="feat-desc">The school district comparison shaping price, competition, and resale in South County.</div>
+            <div class="feat-arrow">Compare Districts →</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Buyer Journey -->
+      <div class="journey-wrap">
+        <button class="journey-toggle" onclick="toggleJourney(this)">
+          <div class="journey-toggle-left">
+            <div class="journey-toggle-eyebrow">The Buyer Journey</div>
+            <div class="journey-toggle-title">One clean path for new buyers.</div>
+            <div class="journey-toggle-sub">Click once to expand the full journey, then jump into the stage you need.</div>
+          </div>
+          <div class="journey-expand-btn" id="journey-btn-label">Expand Journey ↓</div>
+        </button>
+        <div class="journey-stages" id="journey-stages">
+          <a href="../01-preapproval.html" class="journey-stage">
+            <div class="stage-num">Stage 1</div>
+            <div class="stage-name">Getting Ready</div>
+            <div class="stage-desc">Budget, payment, income, loan type, and true affordability.</div>
+          </a>
+          <a href="../02-affordability.html" class="journey-stage">
+            <div class="stage-num">Stage 2</div>
+            <div class="stage-name">Finding Homes</div>
+            <div class="stage-desc">Zillow, neighborhoods, schools, zip codes, and search strategy.</div>
+          </a>
+          <a href="../03-interior.html" class="journey-stage">
+            <div class="stage-num">Stage 3</div>
+            <div class="stage-name">Evaluating Homes</div>
+            <div class="stage-desc">Inspections, repairs, red flags, fixer math, and condition risk.</div>
+          </a>
+          <a href="../05-pre-offer.html" class="journey-stage">
+            <div class="stage-num">Stage 4</div>
+            <div class="stage-name">Making Offers</div>
+            <div class="stage-desc">Agents, contracts, contingencies, leverage, and offer strategy.</div>
+          </a>
+          <a href="../09-closing.html" class="journey-stage">
+            <div class="stage-num">Stage 5</div>
+            <div class="stage-name">Closing</div>
+            <div class="stage-desc">Timeline, closing costs, walkthroughs, keys, and first 30 days.</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Neighborhoods -->
+      <section class="section" id="b-neighborhoods">
+        <div class="section-hdr">
+          <div>
+            <div class="section-title">Neighborhoods &amp; Schools</div>
+            <div class="section-sub">Hyperlocal buyer intelligence for South County, JeffCo, Oakville, Arnold, school districts, taxes, and resale positioning.</div>
+          </div>
+          <a href="../south-county-st-louis.html" class="section-link">Browse Areas →</a>
+        </div>
+        <div class="cards-grid">
+          <a href="south-county-stl-neighborhoods-by-price.html" class="article-card">
+            <div class="card-badge">South County</div>
+            <div class="card-title">Best Areas Under $350K</div>
+            <div class="card-desc">Where buyers are finding the best balance between schools, condition, and monthly payment.</div>
+            <div class="card-footer"><span class="card-tag-label">Explore Areas</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="lindbergh-vs-mehlville-school-district-stl.html" class="article-card">
+            <div class="card-badge">Popular · Schools</div>
+            <div class="card-title">Lindbergh vs Mehlville</div>
+            <div class="card-desc">The district comparison driving some of the largest pricing differences in South County.</div>
+            <div class="card-footer"><span class="card-tag-label">Compare Districts</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="buying-a-home-in-oakville-mo.html" class="article-card">
+            <div class="card-badge">Neighborhood Guide</div>
+            <div class="card-title">Oakville Buyer Guide</div>
+            <div class="card-desc">What buyers actually experience once they start touring homes in Oakville.</div>
+            <div class="card-footer"><span class="card-tag-label">View Guide</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="south-county-stl-neighborhoods-by-price.html" class="article-card">
+            <div class="card-badge">Affordability</div>
+            <div class="card-title">South County Price Tiers</div>
+            <div class="card-desc">See how far different income levels stretch across South County neighborhoods.</div>
+            <div class="card-footer"><span class="card-tag-label">See Pricing</span><span class="card-arrow">→</span></div>
+          </a>
+        </div>
+      </section>
+
+      <!-- School Districts -->
+      <section class="section" id="b-schools">
+        <div class="section-hdr">
+          <div>
+            <div class="section-title">School District Guides</div>
+            <div class="section-sub">What buyers need to know about St. Louis school districts before committing to a neighborhood.</div>
+          </div>
+          <a href="../school-districts.html" class="section-link">All Districts →</a>
+        </div>
+        <div class="cards-grid" id="schoolsGrid-buying"></div>
+      </section>
+
+      <!-- Inspection -->
+      <section class="section" id="b-inspection">
+        <div class="section-hdr">
+          <div>
+            <div class="section-title">Inspection &amp; Repair Red Flags</div>
+            <div class="section-sub">The systems and defects that create financing, insurance, negotiation, and resale problems in St. Louis homes.</div>
+          </div>
+          <a href="stl-home-repair-cost-guide.html" class="section-link">Explore Repairs →</a>
+        </div>
+        <div class="cards-grid">
+          <a href="federal-pacific-panel-va-loan-st-louis.html" class="article-card">
+            <div class="card-badge">Electrical</div>
+            <div class="card-title">Federal Pacific Panels</div>
+            <div class="card-desc">Why lenders, insurers, and inspectors treat these panels differently than normal electrical systems.</div>
+            <div class="card-footer"><span class="card-tag-label">Learn More</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="what-to-look-for-buying-house-stl.html" class="article-card">
+            <div class="card-badge">Foundation</div>
+            <div class="card-title">When Cracks Become Serious</div>
+            <div class="card-desc">The difference between normal settling and structural movement in older STL homes.</div>
+            <div class="card-footer"><span class="card-tag-label">View Signs</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="stl-home-repair-cost-guide.html" class="article-card">
+            <div class="card-badge">Trending · Costs</div>
+            <div class="card-title">STL Repair Cost Guide</div>
+            <div class="card-desc">Roofs, sewer laterals, HVAC systems, tuckpointing, foundations, and common repair ranges.</div>
+            <div class="card-footer"><span class="card-tag-label">See Costs</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="average-price-reduction-after-inspection-st-louis.html" class="article-card">
+            <div class="card-badge">Case Study</div>
+            <div class="card-title">Average Price Reductions After Inspection</div>
+            <div class="card-desc">What buyers actually recover after inspection — and how to ask right.</div>
+            <div class="card-footer"><span class="card-tag-label">Real Numbers</span><span class="card-arrow">→</span></div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Tools -->
+      <section class="section" id="b-tools">
+        <div class="section-hdr">
+          <div>
+            <div class="section-title">Interactive Tools</div>
+            <div class="section-sub">Calculators and visual tools turning STL Home Journey into a decision platform instead of just another blog.</div>
+          </div>
+          <a href="../stl-home-buying-power-calculator.html" class="section-link">View All Tools →</a>
+        </div>
+        <div class="cards-grid">
+          <a href="../stl-home-buying-power-calculator.html" class="article-card">
+            <div class="card-badge">Calculator</div>
+            <div class="card-title">Affordability Heatmap</div>
+            <div class="card-desc">Visualize what your income can buy across St. Louis neighborhoods and school districts.</div>
+            <div class="card-footer"><span class="card-tag-label">Launch Tool</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="../fixer-upper-vs-move-in-stl.html" class="article-card">
+            <div class="card-badge">Tool</div>
+            <div class="card-title">Fixer Upper vs. Move-In Ready</div>
+            <div class="card-desc">The real math behind condition. Repair estimates, price gaps, and break-even analysis.</div>
+            <div class="card-footer"><span class="card-tag-label">Run Numbers</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="../neighborhood-matcher.html" class="article-card">
+            <div class="card-badge new-badge">New</div>
+            <div class="card-title">Neighborhood Matcher</div>
+            <div class="card-desc">5 questions. Your top South County neighborhoods ranked by budget, schools, and lifestyle.</div>
+            <div class="card-footer"><span class="card-tag-label">Find Your Area</span><span class="card-arrow">→</span></div>
+          </a>
+        </div>
+      </section>
+
+      <!-- VA Buyers -->
+      <section class="section" id="b-va">
+        <div class="section-hdr">
+          <div>
+            <div class="section-title">VA Buyers</div>
+            <div class="section-sub">VA loan education for St. Louis veterans, including appraisal myths, property requirements, and offer strategy.</div>
+          </div>
+          <a href="va-home-loan-st-louis-what-kills-deals.html" class="section-link">VA Hub →</a>
+        </div>
+        <div class="cards-grid">
+          <a href="va-home-loan-st-louis-what-kills-deals.html" class="article-card">
+            <div class="card-badge">VA Loan</div>
+            <div class="card-title">First-Time VA Buyer Guide</div>
+            <div class="card-desc">What veterans should understand before touring homes with a VA loan in St. Louis.</div>
+            <div class="card-footer"><span class="card-tag-label">Start Here</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="va-appraisal-failed-st-louis-what-happens-next.html" class="article-card">
+            <div class="card-badge">Appraisal</div>
+            <div class="card-title">VA Appraisal Myths</div>
+            <div class="card-desc">Appraisal is not inspection. Here's what VA buyers actually need to know.</div>
+            <div class="card-footer"><span class="card-tag-label">Learn More</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="federal-pacific-panel-va-loan-st-louis.html" class="article-card">
+            <div class="card-badge">Deal-Killers</div>
+            <div class="card-title">Federal Pacific Panels &amp; VA Loans</div>
+            <div class="card-desc">The $3,500 issue that kills VA deals in thousands of St. Louis homes.</div>
+            <div class="card-footer"><span class="card-tag-label">Read Guide</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="how-to-screen-stl-homes-before-va-offer.html" class="article-card">
+            <div class="card-badge">Strategy</div>
+            <div class="card-title">VA Pre-Offer Screening Checklist</div>
+            <div class="card-desc">The exact items to check before writing a VA offer — before the appraisal catches them.</div>
+            <div class="card-footer"><span class="card-tag-label">Get Checklist</span><span class="card-arrow">→</span></div>
+          </a>
+        </div>
+      </section>
+
+    </div><!-- /page buying -->
+  </div><!-- /panel-buying -->
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SELLING MODE                                           -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div id="panel-selling" class="mode-panel">
+
+    <!-- Topic Nav -->
+    <nav class="topic-nav">
+      <div class="topic-nav-inner">
+        <button class="topic-nav-item active" onclick="scrollTo2('s-net',this)">Net Proceeds</button>
+        <button class="topic-nav-item" onclick="scrollTo2('s-cash',this)">Cash Offers</button>
+        <button class="topic-nav-item" onclick="scrollTo2('s-pricing',this)">Pricing &amp; Prep</button>
+        <button class="topic-nav-item" onclick="scrollTo2('s-schools',this)">School Districts</button>
+        <button class="topic-nav-item" onclick="scrollTo2('s-tools',this)">Tools</button>
+      </div>
+    </nav>
+
+    <div class="page">
+
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-eyebrow">Seller Intelligence</div>
+        <h1 class="hero-title">Everything St. Louis Sellers Wish They Knew Before Listing</h1>
+        <p class="hero-sub">Net proceeds, cash offer math, pricing strategy, what not to fix, and the real cost of selling — organized so you can make decisions instead of guess.</p>
+      </section>
+
+      <!-- Featured 3-up -->
+      <section class="section">
+        <div class="featured-row">
+          <a href="what-will-i-net-selling-stl.html" class="feat-card gold-card">
+            <div class="feat-badge investigation">Featured Guide</div>
+            <div class="feat-title">What Will I Actually Walk Away With?</div>
+            <div class="feat-desc">Commissions, closing costs, concessions, taxes, and the real number sellers need before they decide to list.</div>
+            <div class="feat-arrow">Calculate Net →</div>
+          </a>
+          <a href="should-you-accept-cash-offer-stl.html" class="feat-card">
+            <div class="feat-badge trending">Trending</div>
+            <div class="feat-title">Should You Accept the Cash Offer?</div>
+            <div class="feat-desc">The convenience pitch is real. So is the discount. Here's how to decide which matters more.</div>
+            <div class="feat-arrow">Read Investigation →</div>
+          </a>
+          <a href="who-pays-buyer-agent-commission-stl.html" class="feat-card">
+            <div class="feat-badge new">New · NAR Settlement</div>
+            <div class="feat-title">Who Pays the Buyer's Agent Now?</div>
+            <div class="feat-desc">What actually changed after August 2024 — and what St. Louis sellers are doing about it.</div>
+            <div class="feat-arrow">Read the Breakdown →</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Net Proceeds -->
+      <section class="section" id="s-net">
+        <div class="section-hdr">
+          <div>
+            <div class="section-title">Your Net Proceeds</div>
+            <div class="section-sub">The number that actually matters. Every cost sellers pay, broken down before you commit.</div>
+          </div>
+          <a href="what-will-i-net-selling-stl.html" class="section-link">Seller Hub →</a>
+        </div>
+        <div class="cards-grid">
+          <a href="what-will-i-net-selling-stl.html" class="article-card">
+            <div class="card-badge">Net Sheet</div>
+            <div class="card-title">What Will I Net Selling My St. Louis Home?</div>
+            <div class="card-desc">The line-item breakdown: commissions, title, taxes, concessions, carrying costs.</div>
+            <div class="card-footer"><span class="card-tag-label">Full Breakdown</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="cost-to-sell-home-stl.html" class="article-card">
+            <div class="card-badge">Costs</div>
+            <div class="card-title">How Much Does It Cost to Sell in St. Louis?</div>
+            <div class="card-desc">Every cost sellers pay — commissions, title, repairs, carrying costs, concessions.</div>
+            <div class="card-footer"><span class="card-tag-label">See All Costs</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="who-pays-buyer-agent-commission-stl.html" class="article-card">
+            <div class="card-badge">NAR Settlement</div>
+            <div class="card-title">Who Pays Buyer's Agent Commission Now?</div>
+            <div class="card-desc">What the August 2024 NAR settlement changed and what sellers are doing differently.</div>
+            <div class="card-footer"><span class="card-tag-label">Read the Rules</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="selling-home-south-st-louis-county.html" class="article-card">
+            <div class="card-badge">South County</div>
+            <div class="card-title">Selling in South St. Louis County</div>
+            <div class="card-desc">What sellers in Mehlville, Oakville, Crestwood, and Sunset Hills actually need to know.</div>
+            <div class="card-footer"><span class="card-tag-label">South County Guide</span><span class="card-arrow">→</span></div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Cash Offers (Seller POV) -->
+      <section class="section" id="s-cash">
+        <div class="section-hdr">
+          <div>
+            <div class="section-title">Cash Offers — What They Don't Tell You</div>
+            <div class="section-sub">Investor math, convenience tradeoffs, assignment contracts, and the real cost of saying yes.</div>
+          </div>
+          <a href="should-you-accept-cash-offer-stl.html" class="section-link">All Cash Offer Guides →</a>
+        </div>
+        <div class="cards-grid">
+          <a href="should-you-accept-cash-offer-stl.html" class="article-card">
+            <div class="card-badge">Decision Guide</div>
+            <div class="card-title">Should You Accept a Cash Offer?</div>
+            <div class="card-desc">The framework for weighing convenience against the discount you're giving up.</div>
+            <div class="card-footer"><span class="card-tag-label">Read Guide</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="how-cash-buyers-calculate-offers-stl.html" class="article-card">
+            <div class="card-badge">Investor Math</div>
+            <div class="card-title">How Cash Buyers Calculate Their Offers</div>
+            <div class="card-desc">ARV, repair deductions, holding costs, risk margins — and why 70% of ARV is just a starting point.</div>
+            <div class="card-footer"><span class="card-tag-label">See the Math</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="what-you-lose-with-cash-offer-stl.html" class="article-card">
+            <div class="card-badge">Real Cost</div>
+            <div class="card-title">What You Actually Lose on a Cash Offer</div>
+            <div class="card-desc">The discount is real. Here's exactly how much it costs in St. Louis — with real numbers.</div>
+            <div class="card-footer"><span class="card-tag-label">See the Numbers</span><span class="card-arrow">→</span></div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Pricing & Prep -->
+      <section class="section" id="s-pricing">
+        <div class="section-hdr">
+          <div>
+            <div class="section-title">Pricing &amp; Prep</div>
+            <div class="section-sub">The repairs that don't move the needle and the pricing decisions that do.</div>
+          </div>
+          <a href="what-not-to-repair-before-selling-stl-pricing-strategy.html" class="section-link">Pricing Strategy →</a>
+        </div>
+        <div class="cards-grid">
+          <a href="what-not-to-repair-before-selling-stl-pricing-strategy.html" class="article-card">
+            <div class="card-badge">Pricing</div>
+            <div class="card-title">No Regrets Pricing Strategy</div>
+            <div class="card-desc">How pricing creates urgency without underpricing, using buyer psychology and timing.</div>
+            <div class="card-footer"><span class="card-tag-label">Read Strategy</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="what-not-to-repair-before-selling-stl-pricing-strategy.html" class="article-card">
+            <div class="card-badge">Prep</div>
+            <div class="card-title">What Not to Fix Before Selling</div>
+            <div class="card-desc">The repairs that cost you money without recovering value. Price it instead.</div>
+            <div class="card-footer"><span class="card-tag-label">See the List</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="fixer-upper-vs-move-in-ready-st-louis.html" class="article-card">
+            <div class="card-badge">Condition</div>
+            <div class="card-title">Fixer Upper vs. Move-In Ready: What Sellers Need to Know</div>
+            <div class="card-desc">The 64% price gap between conditions in St. Louis — and how it affects your listing decision.</div>
+            <div class="card-footer"><span class="card-tag-label">See the Gap</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="st-louis-home-price-reduction-negotiation.html" class="article-card">
+            <div class="card-badge">Case Study</div>
+            <div class="card-title">How Buyers Negotiate Price Reductions</div>
+            <div class="card-desc">A $30K reduction before inspections. What buyers use as leverage — and how sellers can anticipate it.</div>
+            <div class="card-footer"><span class="card-tag-label">Read Case Study</span><span class="card-arrow">→</span></div>
+          </a>
+        </div>
+      </section>
+
+      <!-- School Districts (Resale Positioning) -->
+      <section class="section" id="s-schools">
+        <div class="section-hdr">
+          <div>
+            <div class="section-title">School Districts &amp; Resale Positioning</div>
+            <div class="section-sub">Which district your home sits in determines your buyer pool, your price ceiling, and how fast it moves.</div>
+          </div>
+          <a href="../school-districts.html" class="section-link">All Districts →</a>
+        </div>
+        <div class="cards-grid" id="schoolsGrid-selling"></div>
+      </section>
+
+      <!-- Tools -->
+      <section class="section" id="s-tools">
+        <div class="section-hdr">
+          <div>
+            <div class="section-title">Tools for Sellers</div>
+            <div class="section-sub">Run your numbers before you commit to anything.</div>
+          </div>
+        </div>
+        <div class="cards-grid">
+          <a href="what-will-i-net-selling-stl.html" class="article-card">
+            <div class="card-badge">Seller Tool</div>
+            <div class="card-title">Seller Net Proceeds Calculator</div>
+            <div class="card-desc">See exactly what you walk away with after commissions, taxes, and concessions.</div>
+            <div class="card-footer"><span class="card-tag-label">Calculate Net</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="../fixer-upper-vs-move-in-stl.html" class="article-card">
+            <div class="card-badge">Tool</div>
+            <div class="card-title">Cash Offer Decoder</div>
+            <div class="card-desc">Break down investor math, repair deductions, convenience tradeoffs, and likely resale spreads.</div>
+            <div class="card-footer"><span class="card-tag-label">Decode Offer</span><span class="card-arrow">→</span></div>
+          </a>
+          <a href="../stl-home-buying-power-calculator.html" class="article-card">
+            <div class="card-badge">Market Data</div>
+            <div class="card-title">Affordability Heatmap</div>
+            <div class="card-desc">See what buyers at different income levels can actually afford in your neighborhood.</div>
+            <div class="card-footer"><span class="card-tag-label">See Buyer Pool</span><span class="card-arrow">→</span></div>
+          </a>
+        </div>
+      </section>
+
+    </div><!-- /page selling -->
+  </div><!-- /panel-selling -->
+
+</div><!-- /main-content -->
+
+<!-- Compliance Footer -->
+<footer class="compliance-footer">
+  <p class="compliance-text">
+    STL Home Journey is a buyer and seller education platform produced by George Kindler, a licensed Missouri real estate agent with
+    <a href="https://theclosingpros.com" target="_blank" rel="noopener">The Closing Pros LLC</a> (License #2013033985).
+    Content is educational and does not constitute legal, financial, or real estate advice for your specific situation.
+    George's direct line: <a href="tel:3144351087">314.435.1087</a> ·
+    Brokerage: <a href="tel:3149984550">314.998.4550</a>
+  </p>
+</footer>
+
 <script>
 /* GA4 Event Tracking — STL Home Journey */
 (function(){
   if(typeof gtag!=='function')return;
   var T=document.title,P=window.location.pathname;
-
-  /* 1. Phone clicks */
   document.querySelectorAll('a[href^="tel:"]').forEach(function(el){
     el.addEventListener('click',function(){
-      gtag('event','phone_click',{page_title:T,page_path:P,
-        button_text:this.textContent.trim().slice(0,80),
-        button_class:this.className});
+      gtag('event','phone_click',{page_title:T,page_path:P,button_text:this.textContent.trim().slice(0,80)});
     });
   });
-
-  /* 2. Primary / secondary CTA buttons */
-  document.querySelectorAll('.tool-btn-primary,.tool-btn-secondary,.george-btn-p,.george-btn-s,.art-hdr-btn,.nbhd-hdr-btn').forEach(function(el){
+  document.querySelectorAll('.feat-card,.article-card').forEach(function(el){
     el.addEventListener('click',function(){
-      if((this.href||'').indexOf('tel:')!==-1)return;
-      gtag('event','cta_click',{page_title:T,page_path:P,
-        button_text:this.textContent.trim().slice(0,80),
-        destination:(this.href||'').slice(0,200)});
+      var ttl=(this.querySelector('.feat-title,.card-title')||{}).textContent||'';
+      gtag('event','article_card_click',{page_title:T,page_path:P,card_title:ttl,destination:this.href||''});
     });
   });
-
-  /* 3. Content / navigation link clicks */
-  document.querySelectorAll('.int-link,.series-link,.icon-card,.article-card').forEach(function(el){
+  document.querySelectorAll('.mode-tab').forEach(function(el){
     el.addEventListener('click',function(){
-      var dest=(this.href||(this.querySelector('a')||{}).href||'');
-      var type='internal';
-      if(dest.indexOf('/articles/')!==-1)type='article';
-      else if(dest.indexOf('/neighborhoods/')!==-1)type='neighborhood';
-      else if(dest.indexOf('/zip-codes/')!==-1)type='zip_code';
-      else if(dest.indexOf('/school-districts/')!==-1)type='school_district';
-      gtag('event','navigation_click',{page_title:T,page_path:P,
-        link_type:type,link_text:this.textContent.trim().slice(0,80),
-        destination:dest.slice(0,200)});
+      gtag('event','mode_switch',{page_title:T,mode:this.id.replace('tab-','')});
     });
   });
-
-  /* 4. Accordion toggles (articles/index.html) */
-  document.querySelectorAll('.topic-header').forEach(function(el){
-    el.addEventListener('click',function(){
-      gtag('event','accordion_toggle',{page_title:T,page_path:P,
-        topic_name:this.textContent.trim().slice(0,80),
-        state:this.getAttribute('aria-expanded')==='true'?'expanded':'collapsed'});
-    });
-  });
-
-  /* 5. FAQ item clicks */
-  document.querySelectorAll('.faq-item').forEach(function(el){
-    el.addEventListener('click',function(){
-      var q=this.querySelector('.faq-q');
-      gtag('event','faq_click',{page_title:T,page_path:P,
-        question:(q?q.textContent.trim():'').slice(0,120)});
-    });
-  });
-
-  /* 6. Scroll depth — fires once per milestone */
   var fired={};
   window.addEventListener('scroll',function(){
     var h=document.documentElement.scrollHeight-window.innerHeight;
     if(h<=0)return;
     var pct=Math.round(window.scrollY/h*100);
     [25,50,75,100].forEach(function(m){
-      if(pct>=m&&!fired[m]){fired[m]=true;
-        gtag('event','scroll_milestone',{page_title:T,page_path:P,milestone:m+'%'});}
+      if(pct>=m&&!fired[m]){fired[m]=true;gtag('event','scroll_milestone',{page_title:T,page_path:P,milestone:m+'%'});}
     });
   },{passive:true});
+})();
 
+/* Mode switch */
+var currentMode = 'buying';
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById('panel-buying').classList.toggle('active', mode === 'buying');
+  document.getElementById('panel-selling').classList.toggle('active', mode === 'selling');
+  document.getElementById('tab-buying').classList.toggle('active', mode === 'buying');
+  document.getElementById('tab-selling').classList.toggle('active', mode === 'selling');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+/* Journey toggle */
+function toggleJourney(btn) {
+  var stages = document.getElementById('journey-stages');
+  var label = document.getElementById('journey-btn-label');
+  var open = stages.classList.toggle('open');
+  label.textContent = open ? 'Collapse Journey ↑' : 'Expand Journey ↓';
+}
+
+/* Section scroll (works across both panels) */
+function scrollTo2(id, btn) {
+  var el = document.getElementById(id);
+  if (el) window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - 110, behavior: 'smooth'});
+  if (btn) {
+    btn.closest('.topic-nav-inner').querySelectorAll('.topic-nav-item').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+  }
+}
+
+/* School districts grid (shared data, rendered in both panels) */
+var DISTRICTS = [
+  {name:'Lindbergh Schools',       slug:'lindbergh-schools',             sub:'Top-rated South County district. Price premium applies.'},
+  {name:'Mehlville School District',slug:'mehlville-school-district',    sub:'Serving Mehlville, Oakville, Concord, and Green Park.'},
+  {name:'Affton School District',  slug:'affton-school-district',        sub:'Compact district serving Affton and surrounding neighborhoods.'},
+  {name:'Kirkwood School District',slug:'kirkwood-school-district',      sub:'High-performing district with strong resale value.'},
+  {name:'Webster Groves School District',slug:'webster-groves-school-district',sub:'Urban district with strong academics and community identity.'},
+  {name:'Clayton School District', slug:'clayton-school-district',       sub:'Top-ranked district driving significant price premiums.'},
+  {name:'Rockwood School District',slug:'rockwood-school-district',      sub:'Large West County district with strong test scores.'},
+  {name:'Parkway School District', slug:'parkway-school-district',       sub:'One of St. Louis County\'s largest and most recognized districts.'},
+  {name:'Ladue School District',   slug:'ladue-school-district',         sub:'Highest-income district in Missouri with significant price premium.'}
+];
+
+function buildDistrictsGrid(gridId) {
+  var grid = document.getElementById(gridId);
+  if (!grid) return;
+  DISTRICTS.forEach(function(d) {
+    var card = document.createElement('a');
+    card.className = 'article-card';
+    card.href = '../school-districts/' + d.slug + '.html';
+    card.innerHTML = '<div class="card-badge">School District</div>' +
+      '<div class="card-title">' + d.name + '</div>' +
+      '<div class="card-desc">' + d.sub + '</div>' +
+      '<div class="card-footer"><span class="card-tag-label">District Guide</span><span class="card-arrow">→</span></div>';
+    grid.appendChild(card);
+  });
+}
+buildDistrictsGrid('schoolsGrid-buying');
+buildDistrictsGrid('schoolsGrid-selling');
+
+/* Search */
+(function initSearch() {
+  var input = document.getElementById('search');
+  var resultsWrap = document.getElementById('search-results');
+  var mainContent = document.getElementById('main-content');
+  var resultsGrid = document.getElementById('search-results-grid');
+  var noResults = document.getElementById('no-results');
+  var queryLabel = document.getElementById('search-query-label');
+  var allArticles = [];
+
+  function buildIndex() {
+    var reg = window.ARTICLE_REGISTRY;
+    if (!reg || !reg.articles) return;
+    reg.articles.forEach(function(a) {
+      if (!a.published) return;
+      var path = a.path === 'school-districts'
+        ? '../school-districts/' + a.slug + '.html'
+        : a.slug + '.html';
+      allArticles.push({
+        shortTitle: a.shortTitle || a.title,
+        desc: a.description || '',
+        tag: a.pillLabel || a.series || '',
+        href: path,
+        search: (a.title+' '+(a.description||'')+' '+(a.tags||[]).join(' ')).toLowerCase()
+      });
+    });
+  }
+
+  function renderResults(query) {
+    var q = query.toLowerCase().trim();
+    resultsGrid.innerHTML = '';
+    noResults.style.display = 'none';
+    if (!q) {
+      resultsWrap.style.display = 'none';
+      mainContent.classList.remove('hidden');
+      return;
+    }
+    resultsWrap.style.display = 'block';
+    mainContent.classList.add('hidden');
+    queryLabel.textContent = '"' + query + '"';
+    var matches = allArticles.filter(function(a){ return a.search.indexOf(q) !== -1; });
+    if (!matches.length) { noResults.style.display = 'block'; return; }
+    matches.forEach(function(a) {
+      var card = document.createElement('a');
+      card.className = 'article-card';
+      card.href = a.href;
+      card.innerHTML = '<div class="card-badge">' + a.tag + '</div>' +
+        '<div class="card-title">' + a.shortTitle + '</div>' +
+        '<div class="card-desc">' + a.desc + '</div>' +
+        '<div class="card-footer"><span class="card-tag-label">Read Guide</span><span class="card-arrow">→</span></div>';
+      resultsGrid.appendChild(card);
+    });
+  }
+
+  buildIndex();
+  var debounce;
+  input.addEventListener('input', function() {
+    clearTimeout(debounce);
+    debounce = setTimeout(function() {
+      renderResults(input.value);
+      if (typeof gtag === 'function' && input.value.length > 2)
+        gtag('event','search',{search_term:input.value,mode:currentMode});
+    }, 220);
+  });
 })();
 </script>
-</head>
-<body>
-
-  <!-- Header -->
-  <header class="page-header">
-    <div class="header-inner">
-      <a href="../index.html" class="logo-link">
-        <div class="logo-ico">
-          <img src="../assets/STLhomebuyerjourneylogo.png" alt="STL Home Journey">
-        </div>
-        <div>
-          <div class="logo-wordmark">STL <span>Home Journey</span></div>
-          <div class="logo-name">by George Kindler</div>
-        </div>
-      </a>
-      <a href="../index.html" class="back-to-journey">← BACK TO JOURNEY</a>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-eyebrow">Free Real Estate Guides</div>
-    <h1>What you need to know about <span>buying or selling in St. Louis</span></h1>
-    <p class="hero-sub">No fluff. No lead-gen agenda. Just straight talk about what actually matters when you are buying or selling a home.</p>
-    <div style="margin-top:24px;text-align:center;">
-      <a href="../complete-guide.html" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--gold);color:#080808;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;transition:transform 0.1s;">
-        📚 View Complete Buyer Guide
-      </a>
-    </div>
-  </section>
-
-  <!-- Topic Accordion -->
-  <section class="topics-container">
-    
-    <!-- Topic 1: Finding the Right Home -->
-    <div class="topic-accordion">
-      <button class="topic-header" onclick="toggleTopic('finding')">
-        <div>
-          <h2 class="topic-title">Finding the Right Home</h2>
-          <p class="topic-subtitle">Zillow, neighborhood research, school districts, market data. How to search without getting played.</p>
-        </div>
-        <span class="accordion-icon" id="finding-icon">+</span>
-      </button>
-      <div class="topic-content" id="finding-content">
-        <div class="cards-grid" id="findingGrid"></div>
-      </div>
-    </div>
-
-    <!-- Topic 2: How Much House Can You Afford? -->
-    <div class="topic-accordion">
-      <button class="topic-header" onclick="toggleTopic('income')">
-        <div>
-          <h2 class="topic-title">How Much House Can You Afford? (By Salary)</h2>
-          <p class="topic-subtitle">Real affordability math for every salary level — $50K through $200K+. Uses actual St. Louis property taxes, insurance, and neighborhoods that fit your budget.</p>
-        </div>
-        <span class="accordion-icon" id="income-icon">+</span>
-      </button>
-      <div class="topic-content" id="income-content">
-        <div class="cards-grid" id="incomeGrid"></div>
-      </div>
-    </div>
-
-    <!-- Topic 3: Figuring Out Your Budget -->
-    <div class="topic-accordion">
-      <button class="topic-header" onclick="toggleTopic('budget')">
-        <div>
-          <h2 class="topic-title">Figuring Out Your Budget</h2>
-          <p class="topic-subtitle">Affordability, income requirements, down payment, loan types, credit score, closing costs, first-time buyer programs.</p>
-        </div>
-        <span class="accordion-icon" id="budget-icon">+</span>
-      </button>
-      <div class="topic-content" id="budget-content">
-        <div class="cards-grid" id="budgetGrid"></div>
-      </div>
-    </div>
-
-    <!-- Topic 4: VA Buyers -->
-    <div class="topic-accordion">
-      <button class="topic-header" onclick="toggleTopic('vabuyers')">
-        <div>
-          <h2 class="topic-title">VA Buyers</h2>
-          <p class="topic-subtitle">From a Marine Corps veteran who's closed VA loans in St. Louis — appraisal traps, electrical panels, deal-killers, and how to screen properties before you write an offer.</p>
-        </div>
-        <span class="accordion-icon" id="vabuyers-icon">+</span>
-      </button>
-      <div class="topic-content" id="vabuyers-content">
-        <div class="cards-grid" id="vabuyersGrid"></div>
-      </div>
-    </div>
-
-    <!-- Topic 5: Fixer Upper vs. Move-In Ready -->
-    <div class="topic-accordion">
-      <button class="topic-header" onclick="toggleTopic('fixerupper')">
-        <div>
-          <h2 class="topic-title">Fixer Upper vs. Move-In Ready</h2>
-          <p class="topic-subtitle">St. Louis has the largest fixer upper price gap in the country. But renovation costs, financing choice, and neighborhood shift change the comparison completely. Real math, real neighborhoods.</p>
-        </div>
-        <span class="accordion-icon" id="fixerupper-icon">+</span>
-      </button>
-      <div class="topic-content" id="fixerupper-content">
-        <!-- Tool 1: Regional Buying Power -->
-        <div style="background:var(--surface);border:1px solid var(--line-2);border-radius:12px;padding:20px;margin-bottom:16px">
-          <div style="font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Income-Based Calculator</div>
-          <div style="font-family:var(--font-serif);font-size:1.05rem;font-weight:700;color:var(--text-strong);margin-bottom:6px">St. Louis Regional Buying Power Browser</div>
-          <div style="font-size:.85rem;color:var(--text-soft);line-height:1.6;margin-bottom:14px">Enter your income and see your buying power across all St. Louis regions — by neighborhood and condition tier. Shows what you can afford in West County, South County, North County, St. Louis City, St. Charles, and Jefferson County.</div>
-          <a href="../stl-home-buying-power-calculator" style="display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#050505;font-weight:800;font-size:12px;padding:10px 20px;border-radius:8px;text-decoration:none;letter-spacing:.04em;text-transform:uppercase">See Your Buying Power →</a>
-        </div>
-        
-        <!-- Tool 2: Fixer-Upper Deep Dive -->
-        <div style="background:var(--surface);border:1px solid var(--line-2);border-radius:12px;padding:20px;margin-bottom:16px">
-          <div style="font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Advanced Calculator</div>
-          <div style="font-family:var(--font-serif);font-size:1.05rem;font-weight:700;color:var(--text-strong);margin-bottom:6px">Fixer-Upper vs. Move-In Ready Deep Dive</div>
-          <div style="font-size:.85rem;color:var(--text-soft);line-height:1.6;margin-bottom:14px">Compare renovation financing paths (FHA 203k, HomeStyle, cash) and see side-by-side neighborhood matches. Shows exact renovation scope options and total cost impact.</div>
-          <a href="../stl-home-buying-power-calculator#phase2" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,204,77,.15);border:1px solid rgba(255,204,77,.3);color:var(--gold);font-weight:700;font-size:12px;padding:10px 20px;border-radius:8px;text-decoration:none;letter-spacing:.04em;text-transform:uppercase">Compare Fixer Options →</a>
-        </div>
-        
-        <div style="background:var(--surface);border:1px solid var(--line-2);border-radius:12px;padding:20px">
-          <div style="font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px">The Full Guide</div>
-          <a href="https://stlhomejourney.com/articles/fixer-upper-vs-move-in-ready-st-louis" style="display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none">
-            <div>
-              <div style="font-size:.95rem;font-weight:600;color:var(--text-strong);margin-bottom:4px">Fixer Upper vs. Move-In Ready in St. Louis: The Real Math by Neighborhood</div>
-              <div style="font-size:.8rem;color:var(--text-dim);line-height:1.5">Renovation costs, financing paths (HomeStyle, FHA 203k, conventional), neighborhood comparison. When the math works — and when it doesn't.</div>
-            </div>
-            <span style="color:var(--gold);flex-shrink:0;font-size:1.1rem">→</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Topic 6: Walking Homes -->
-    <div class="topic-accordion">
-      <button class="topic-header" onclick="toggleTopic('walking')">
-        <div>
-          <h2 class="topic-title">Walking Homes</h2>
-          <p class="topic-subtitle">What to look for, inspection red flags, repair costs, how condition affects offer price. The stuff you find when you show up.</p>
-        </div>
-        <span class="accordion-icon" id="walking-icon">+</span>
-      </button>
-      <div class="topic-content" id="walking-content">
-        <div class="cards-grid" id="walkingGrid"></div>
-      </div>
-    </div>
-
-    <!-- Topic 6: School District Guides -->
-    <div class="topic-accordion">
-      <button class="topic-header" onclick="toggleTopic('schools')">
-        <div>
-          <h2 class="topic-title">School District Guides</h2>
-          <p class="topic-subtitle">What buyers need to know about St. Louis school districts before they commit to a neighborhood. Test scores, boundaries, comparisons.</p>
-        </div>
-        <span class="accordion-icon" id="schools-icon">+</span>
-      </button>
-      <div class="topic-content" id="schools-content">
-        <div class="cards-grid" id="schoolsGrid"></div>
-      </div>
-    </div>
-
-    <!-- Topic 7: Neighborhood Guides -->
-    <div class="topic-accordion">
-      <button class="topic-header" onclick="toggleTopic('neighborhoods')">
-        <div>
-          <h2 class="topic-title">Neighborhood Guides</h2>
-          <p class="topic-subtitle">South County, Oakville, Mehlville, school district boundaries, and what buyers actually find when they show up. Real data, no spin.</p>
-        </div>
-        <span class="accordion-icon" id="neighborhoods-icon">+</span>
-      </button>
-      <div class="topic-content" id="neighborhoods-content">
-        <div class="cards-grid" id="neighborhoodsGrid"></div>
-      </div>
-    </div>
-
-    <!-- Topic 8: Writing the Offer -->
-    <div class="topic-accordion">
-      <button class="topic-header" onclick="toggleTopic('offer')">
-        <div>
-          <h2 class="topic-title">Writing the Offer</h2>
-          <p class="topic-subtitle">Buyer representation, NAR settlement, how to interview an agent, red flags, pre-approval, getting under contract.</p>
-        </div>
-        <span class="accordion-icon" id="offer-icon">+</span>
-      </button>
-      <div class="topic-content" id="offer-content">
-        <div class="cards-grid" id="offerGrid"></div>
-      </div>
-    </div>
-
-    <!-- Topic 9: For Sellers -->
-    <div class="topic-accordion">
-      <button class="topic-header" onclick="toggleTopic('sellers')">
-        <div>
-          <h2 class="topic-title">For Sellers</h2>
-          <p class="topic-subtitle">What you'll net after closing, cash offers decoded, commission structure post-NAR settlement, and the real cost to sell in St. Louis.</p>
-        </div>
-        <span class="accordion-icon" id="sellers-icon">+</span>
-      </button>
-      <div class="topic-content" id="sellers-content">
-        <div class="cards-grid" id="sellersGrid"></div>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- George CTA -->
-  <section class="george-cta">
-    <div class="george-card">
-      <div class="george-card-photo">
-        <img src="../assets/george-family.jpg" alt="George Kindler">
-      </div>
-      <div class="george-card-content">
-        <div class="george-card-name">George Kindler</div>
-        <div class="george-card-title">Marine Corps Veteran • Licensed Missouri Agent • 13 Years • 250+ Transactions</div>
-        <p class="george-card-line">Grew up in South St. Louis, lived in Dogtown for 6 years, now in South County. You'll find us at White Flag Church on Sundays. This is my city, and I know it well.</p>
-        <div class="george-card-btns">
-          <a href="tel:3144351087" class="george-btn-p">📞 314.435.1087</a>
-          <a href="mailto:georgeandlizk@gmail.com" class="george-btn-s">Send Email</a>
-          <a href="../about.html" class="george-btn-about">About George →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <span class="footer-company">The Closing Pros LLC</span> | St. Louis, Missouri<br>
-      Office: <a href="tel:314-998-4550">314-998-4550</a> | George: <a href="tel:314-435-1087">314.435.1087</a><br>
-      Licensed Missouri Real Estate Agent | Consumer Protection First
-    </div>
-  </footer>
-
-  <script>
-    // Accordion toggle function
-    function toggleTopic(topicId) {
-      const content = document.getElementById(topicId + '-content');
-      const icon = document.getElementById(topicId + '-icon');
-      
-      const isOpen = content.classList.contains('open');
-      
-      if (isOpen) {
-        content.classList.remove('open');
-        icon.classList.remove('open');
-        icon.textContent = '+';
-      } else {
-        content.classList.add('open');
-        icon.classList.add('open');
-        icon.textContent = '−';
-      }
-    }
-
-    // Manual topic curation - organized by buyer journey, not tags
-    const CURATED_TOPICS = {
-      neighborhoods: {
-        featured: 'south-county-stl-neighborhood-guide',
-        articles: [
-          'south-county-stl-neighborhood-guide',
-          'south-county-stl-neighborhoods-by-price',
-          'buying-a-home-in-oakville-mo',
-          'mehlville-vs-oakville-vs-concord-stl',
-          'lindbergh-vs-mehlville-school-district-stl'
-        ]
-      },
-      finding: {
-        featured: 'truth-about-zillow-stl', // Show this one larger/first
-        articles: [
-          'truth-about-zillow-stl',
-          'how-to-use-zillow-without-getting-used',
-          'zillow-zestimate-accurate-stl',
-          'what-happens-when-you-click-zillow',
-          'zillow-pay-to-play-system',
-          'most-affordable-zip-codes-stl-2026',
-          'south-county-stl-neighborhood-guide'
-        ]
-      },
-      income: {
-        featured: 'how-much-house-afford-making-70k-st-louis',
-        articles: [
-          'how-much-house-afford-making-50k-st-louis',
-          'how-much-house-afford-making-60k-st-louis',
-          'how-much-house-afford-making-70k-st-louis',
-          'how-much-house-afford-making-80k-st-louis',
-          'how-much-house-afford-making-100k-st-louis',
-          'how-much-house-afford-making-120k-st-louis',
-          'how-much-house-afford-making-150k-st-louis',
-          'how-much-house-afford-making-200k-st-louis'
-        ]
-      },
-      budget: {
-        featured: 'stl-affordability-by-zip-code',
-        articles: [
-          'stl-affordability-by-zip-code',
-          'how-much-income-to-buy-home-stl',
-          'first-time-buyer-programs-stl',
-          'mortgage-pre-approval-st-louis',
-          'conventional-vs-fha-loan-st-louis',
-          'how-much-down-payment-st-louis',
-          'renting-vs-buying-stl',
-          'credit-score-buy-home-st-louis'
-        ]
-      },
-      vabuyers: {
-        featured: 'va-home-loan-st-louis-what-kills-deals',
-        articles: [
-          'va-home-loan-st-louis-what-kills-deals',
-          'federal-pacific-panel-va-loan-st-louis',
-          'can-you-buy-fixer-upper-va-loan-st-louis',
-          'va-appraisal-failed-st-louis-what-happens-next',
-          'how-to-screen-stl-homes-before-va-offer'
-        ]
-      },
-      walking: {
-        featured: 'stl-home-repair-cost-guide',
-        articles: [
-          'stl-home-repair-cost-guide',
-          'what-to-look-for-buying-house-stl',
-          'home-inspection-st-louis',
-          'average-price-reduction-after-inspection-st-louis',
-          'repair-costs-affect-offer-price-stl',
-          'st-louis-home-price-reduction-negotiation'
-        ]
-      },
-      offer: {
-        featured: 'do-i-need-a-buyers-agent-stl',
-        articles: [
-          'do-i-need-a-buyers-agent-stl',
-          'how-to-interview-buyers-agent-stl',
-          'red-flags-bad-buyer-agent-stl',
-          'nar-settlement-buyer-representation-stl',
-          'what-buyer-agent-actually-does-stl'
-        ]
-      },
-      sellers: {
-        featured: 'what-not-to-repair-before-selling-stl-pricing-strategy',
-        articles: [
-          'what-not-to-repair-before-selling-stl-pricing-strategy',
-          'selling-home-south-st-louis-county',
-          'should-you-accept-cash-offer-stl',
-          'how-cash-buyers-calculate-offers-stl',
-          'what-you-lose-with-cash-offer-stl',
-          'what-will-i-net-selling-stl',
-          'cost-to-sell-home-stl',
-          'who-pays-buyer-agent-commission-stl'
-        ]
-      }
-    };
-
-    function buildFeaturedCard(article) {
-      const card = document.createElement('a');
-      card.className = 'article-card featured-card';
-      card.href = `${article.slug}.html`;
-      
-      let topicBadge = 'Guide';
-      if (article.series === 'zillow') topicBadge = 'Zillow';
-      else if (article.series === 'affordability') topicBadge = 'Affordability';
-      else if (article.series === 'repair-guide') topicBadge = 'Repair Costs';
-      else if (article.series === 'representation') topicBadge = 'Representation';
-      else if (article.series === 'neighborhoods') topicBadge = 'Neighborhoods';
-      else if (article.series === 'va-buyer') topicBadge = 'VA Buyer';
-      else if (article.series === 'seller-net') topicBadge = 'Seller Guide';
-      else if (article.series === 'cash-offer') topicBadge = 'Cash Offers';
-
-      card.innerHTML = `
-        <div class="card-badge featured-badge">${topicBadge} • Featured</div>
-        <div class="card-title">${article.title}</div>
-        <div class="card-desc">${article.description}</div>
-        ${article.toolLink ? '<div class="tool-indicator">🔧 Interactive tool included</div>' : ''}
-        <div class="card-footer">
-          <span class="card-arrow">→</span>
-        </div>
-      `;
-      return card;
-    }
-
-    function buildCard(article) {
-      const card = document.createElement('a');
-      card.className = 'article-card';
-      card.href = `${article.slug}.html`;
-      
-      let topicBadge = 'Guide';
-      if (article.series === 'zillow') topicBadge = 'Zillow';
-      else if (article.series === 'affordability') topicBadge = 'Affordability';
-      else if (article.series === 'repair-guide') topicBadge = 'Repair Costs';
-      else if (article.series === 'representation') topicBadge = 'Representation';
-      else if (article.series === 'neighborhoods') topicBadge = 'Neighborhoods';
-      else if (article.series === 'va-buyer') topicBadge = 'VA Buyer';
-      else if (article.series === 'seller-net') topicBadge = 'Seller Guide';
-      else if (article.series === 'cash-offer') topicBadge = 'Cash Offers';
-      else if (article.series === 'mortgage') topicBadge = 'Financing';
-
-      card.innerHTML = `
-        <div class="card-badge">${topicBadge}</div>
-        <div class="card-title">${article.title}</div>
-        <div class="card-desc">${article.description}</div>
-        <div class="card-footer">
-          <span class="card-arrow">→</span>
-        </div>
-      `;
-      return card;
-    }
-
-    function renderCuratedTopic(topicId, curation) {
-      const reg = window.ARTICLE_REGISTRY;
-      const grid = document.getElementById(topicId + 'Grid');
-      
-      if (!grid) {
-        console.error('Grid not found:', topicId);
-        return;
-      }
-
-      // Special handling for schools
-      if (topicId === 'schools') {
-        // Hub card
-        const hubCard = document.createElement('a');
-        hubCard.className = 'article-card featured-card';
-        hubCard.href = '../school-districts';
-        hubCard.innerHTML = `
-          <div class="card-badge featured-badge">School Districts • Hub</div>
-          <div class="card-title">St. Louis School District Guides</div>
-          <div class="card-desc">Everything buyers need to know about St. Louis school districts — test scores, boundaries, and honest comparisons.</div>
-          <div class="card-footer">
-            <span class="card-arrow">→</span>
-          </div>
-        `;
-        grid.appendChild(hubCard);
-
-        // Individual districts
-        const districts = [
-          { name: 'Lindbergh Schools', slug: 'lindbergh-schools' },
-          { name: 'Mehlville School District', slug: 'mehlville-school-district' },
-          { name: 'Rockwood School District', slug: 'rockwood-school-district' },
-          { name: 'Parkway School District', slug: 'parkway-school-district' },
-          { name: 'Ladue School District', slug: 'ladue-school-district' },
-          { name: 'Clayton School District', slug: 'clayton-school-district' },
-          { name: 'Kirkwood School District', slug: 'kirkwood-school-district' },
-          { name: 'Webster Groves School District', slug: 'webster-groves-school-district' },
-          { name: 'Affton School District', slug: 'affton-school-district' }
-        ];
-
-        districts.forEach(district => {
-          const card = document.createElement('a');
-          card.className = 'article-card';
-          card.href = `../school-districts/${district.slug}.html`;
-          card.innerHTML = `
-            <div class="card-badge">School District</div>
-            <div class="card-title">${district.name}</div>
-            <div class="card-desc">Test scores, boundaries, and what buyers need to know before committing to this district.</div>
-            <div class="card-footer">
-              <span class="card-arrow">→</span>
-            </div>
-          `;
-          grid.appendChild(card);
-        });
-        return;
-      }
-
-      // For other topics, check registry
-      if (!reg || !reg.articles) {
-        grid.innerHTML = '<p style="color:var(--text-muted);padding:24px 0;">Loading...</p>';
-        return;
-      }
-
-      // Get curated articles for this topic
-      const slugs = curation.articles;
-      const articles = [];
-      
-      slugs.forEach(slug => {
-        const article = reg.articles.find(a => a.slug === slug && a.published);
-        if (article) articles.push(article);
-      });
-
-      if (articles.length === 0) {
-        grid.innerHTML = '<p style="color:var(--text-muted);padding:24px 0;">Coming soon.</p>';
-        return;
-      }
-
-      // Render featured article first
-      const featuredSlug = curation.featured;
-      const featured = articles.find(a => a.slug === featuredSlug);
-      if (featured) {
-        grid.appendChild(buildFeaturedCard(featured));
-      }
-
-      // Render remaining articles
-      articles.forEach(article => {
-        if (article.slug !== featuredSlug) {
-          grid.appendChild(buildCard(article));
-        }
-      });
-    }
-
-    // Initialize on DOM load
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('Registry loaded:', !!window.ARTICLE_REGISTRY);
-      
-      renderCuratedTopic('finding', CURATED_TOPICS.finding);
-      renderCuratedTopic('income', CURATED_TOPICS.income);
-      renderCuratedTopic('budget', CURATED_TOPICS.budget);
-      renderCuratedTopic('neighborhoods', CURATED_TOPICS.neighborhoods);
-      renderCuratedTopic('vabuyers', CURATED_TOPICS.vabuyers);
-      renderCuratedTopic('walking', CURATED_TOPICS.walking);
-      renderCuratedTopic('schools', null);
-      renderCuratedTopic('offer', CURATED_TOPICS.offer);
-      renderCuratedTopic('sellers', CURATED_TOPICS.sellers);
-    });
-  </script>
-
 </body>
 </html>
