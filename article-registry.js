@@ -272,20 +272,6 @@ window.ARTICLE_REGISTRY = {
       published: true
     },
 
-    {
-      slug: "what-300k-450k-600k-buys-st-louis",
-      title: "What $300K, $450K, and $600K Actually Buy You in St. Louis",
-      shortTitle: "What Your Budget Buys in St. Louis",
-      description: "Real sold data showing exactly what each budget buys in South County, St. Charles, South City, and West County — by ZIP code, condition tier, and tradeoff.",
-      pillLabel: "Market Pricing",
-      audience: "buyer",
-      series: "fixer-upper",
-      isHub: false,
-      chapters: [2, 3, 4],
-      tags: ["move-in-ready", "pricing", "neighborhoods", "south-county", "st-charles", "relocation", "first-time-buyer", "budget"],
-      published: true
-    },
-
     /* ── BUYER: REPAIR COST GUIDE SERIES ── */
 
     {
