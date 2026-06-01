@@ -345,6 +345,209 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 <li><strong>Property taxes:</strong> South County (1.14%) costs more monthly than St. Charles County (0.92%)</li>
 </ul>
 
+<!-- ════════════════════════════════════════════════════════════════
+     STL HOME JOURNEY — "The Real Cost of Waiting"
+     Single-screen. Animated line graph. Real St. Louis FHFA data
+     (past) + conservative 2.5%/yr projection (future).
+     ════════════════════════════════════════════════════════════════ -->
+<div id="bvw" style="margin:32px 0;background:#070707;border:1px solid #1e1e1e;border-radius:16px;overflow:hidden;font-family:'Inter',-apple-system,sans-serif;">
+  <style>
+    #bvw *{box-sizing:border-box;}
+    #bvw .g{color:#ffcc4d;}
+    #bvw .trk{-webkit-appearance:none;appearance:none;width:100%;height:3px;border-radius:99px;
+      background:linear-gradient(90deg,rgba(255,204,77,.5),rgba(255,204,77,.12));outline:none;}
+    #bvw .trk::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;
+      background:#ffcc4d;border:3px solid #070707;box-shadow:0 0 0 1px rgba(255,204,77,.5),0 0 20px rgba(255,204,77,.6);cursor:grab;}
+    #bvw .trk::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#ffcc4d;border:3px solid #070707;box-shadow:0 0 20px rgba(255,204,77,.6);cursor:grab;}
+    #bvw .seg{display:flex;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:11px;padding:3px;gap:3px;}
+    #bvw .seg button{flex:1;padding:8px 6px;border-radius:8px;border:none;background:transparent;color:rgba(255,255,255,.5);font-size:12px;font-weight:700;cursor:pointer;transition:all .25s;font-family:inherit;}
+    #bvw .seg button.on{background:rgba(255,204,77,.14);color:#ffcc4d;}
+    #bvw .stat{text-align:center;flex:1;}
+    #bvw .stat .lbl{font-size:8.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:3px;}
+    #bvw .stat .val{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:800;font-variant-numeric:tabular-nums;transition:color .4s,text-shadow .4s;}
+    #bvw .stat.pulse .val{text-shadow:0 0 16px currentColor;}
+    @media(max-width:560px){#bvw .stat .val{font-size:.95rem;}}
+  </style>
+
+  <!-- Header -->
+  <div style="background:#0e0e0e;border-bottom:1px solid #1e1e1e;padding:10px 16px;display:flex;align-items:center;gap:8px;">
+    <div style="width:6px;height:6px;border-radius:50%;background:#ffcc4d;box-shadow:0 0 9px rgba(255,204,77,.7);"></div>
+    <span style="font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);">STL Home Journey · Decision Model</span>
+  </div>
+
+  <!-- Title + headline number -->
+  <div style="padding:16px 18px 6px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;">
+    <div style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.1rem,4vw,1.45rem);font-weight:700;color:rgba(255,255,255,.97);line-height:1.15;">
+      The real cost of<br>waiting to buy
+    </div>
+    <div style="text-align:right;">
+      <div id="bvw-hl-lbl" style="font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);">Equity built</div>
+      <div id="bvw-hl" class="g" style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:800;line-height:1;">$163,100</div>
+    </div>
+  </div>
+
+  <!-- Mode switch -->
+  <div style="padding:8px 18px 4px;">
+    <div class="seg">
+      <button id="bvw-mode-past" class="on">Last 5 years (actual)</button>
+      <button id="bvw-mode-future">Next 5 years (2.5%/yr)</button>
+    </div>
+  </div>
+
+  <!-- GRAPH -->
+  <div style="padding:8px 14px 0;">
+    <svg id="bvw-svg" viewBox="0 0 340 180" style="width:100%;height:auto;display:block;overflow:visible;">
+      <defs>
+        <linearGradient id="bvw-fill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(255,204,77,.30)"/><stop offset="100%" stop-color="rgba(255,204,77,0)"/>
+        </linearGradient>
+      </defs>
+      <g id="bvw-grid"></g>
+      <line x1="40" y1="150" x2="332" y2="150" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+      <path id="bvw-area" fill="url(#bvw-fill)" d=""/>
+      <path id="bvw-line" fill="none" stroke="#ffcc4d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="" style="filter:drop-shadow(0 0 5px rgba(255,204,77,.5));"/>
+      <!-- baseline (purchase price) dashed -->
+      <line id="bvw-base" x1="40" y1="150" x2="332" y2="150" stroke="rgba(255,255,255,.25)" stroke-width="1" stroke-dasharray="3 3"/>
+      <g id="bvw-dots"></g>
+      <!-- floating value tag at endpoint -->
+      <g id="bvw-tag" opacity="0"><rect x="0" y="0" width="62" height="18" rx="5" fill="rgba(255,204,77,.16)" stroke="rgba(255,204,77,.5)" stroke-width=".8"/><text x="31" y="12.5" text-anchor="middle" fill="#ffcc4d" font-size="9" font-weight="800" font-family="Inter,sans-serif"></text></g>
+      <!-- x labels -->
+      <g id="bvw-xlabels"></g>
+    </svg>
+  </div>
+
+  <!-- Stat row -->
+  <div style="display:flex;padding:10px 14px 12px;gap:6px;">
+    <div class="stat" id="bvw-s-buy"><div class="lbl">Bought at</div><div class="val" style="color:rgba(255,255,255,.9)">$350,000</div></div>
+    <div class="stat" id="bvw-s-worth"><div class="lbl">Worth now</div><div class="val" style="color:rgba(255,255,255,.9)">$513,100</div></div>
+    <div class="stat" id="bvw-s-eq"><div class="lbl">Equity built</div><div class="val g">$163,100</div></div>
+    <div class="stat" id="bvw-s-pct"><div class="lbl">Total growth</div><div class="val" style="color:#5dcaa5">+46.6%</div></div>
+  </div>
+
+  <!-- verdict -->
+  <div style="margin:0 16px 16px;background:linear-gradient(135deg,rgba(255,204,77,.07),rgba(255,204,77,.02));border:1px solid rgba(255,204,77,.2);border-radius:12px;padding:14px 16px;">
+    <div id="bvw-verdict" style="font-size:12.5px;color:rgba(255,255,255,.78);line-height:1.6;"></div>
+  </div>
+
+  <!-- cta -->
+  <div style="border-top:1px solid #1e1e1e;padding:13px 18px;text-align:center;">
+    <a href="tel:3144351087" style="display:inline-block;padding:9px 20px;border-radius:999px;background:#ffcc4d;color:#070707;font-weight:800;font-size:12px;text-decoration:none;">Run your real numbers — 314.435.1087</a>
+    <div style="margin-top:10px;font-size:8.5px;color:rgba(255,255,255,.22);line-height:1.55;">
+      Past data: FHFA All-Transactions House Price Index, St. Louis MO-IL MSA, via FRED (Federal Reserve Bank of St. Louis). Future projection uses a conservative 2.5%/yr assumption and is illustrative, not a forecast. Not financial advice.
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ---- Real St. Louis MSA index (FHFA ATNHPIUS41180Q, Q1 each year) ----
+  var IDX={2021:218.39,2022:248.86,2023:267.59,2024:286.75,2025:305.73,2026:320.16};
+  var BUY=350000, FUT_RATE=0.025;
+  var mode='past';  // 'past' | 'future'
+
+  var $=function(i){return document.getElementById(i);};
+  function fmt(n){return '$'+Math.round(n).toLocaleString();}
+  var X0=40,X1=332,Y0=150,YT=20;
+
+  // build the 6-point series for current mode → [{label, val, equity}]
+  function series(){
+    var pts=[];
+    if(mode==='past'){
+      var base=IDX[2021];
+      for(var y=2021;y<=2026;y++){
+        var val=BUY*(IDX[y]/base);
+        pts.push({label:"'"+String(y).slice(2), val:val, eq:val-BUY});
+      }
+    } else {
+      for(var n=0;n<=5;n++){
+        var val=BUY*Math.pow(1+FUT_RATE,n);
+        pts.push({label:(n===0?'Now':'+'+n+'y'), val:val, eq:val-BUY});
+      }
+    }
+    return pts;
+  }
+
+  function px(i,n){return X0+(X1-X0)*(i/(n-1));}
+  function py(val,maxVal){return Y0-((val-BUY)/(maxVal-BUY))*(Y0-YT);}
+
+  // grid
+  (function(){var g=$('bvw-grid'),h='';for(var i=0;i<=3;i++){var y=YT+(Y0-YT)*i/3;
+    h+='<line x1="'+X0+'" y1="'+y.toFixed(1)+'" x2="'+X1+'" y2="'+y.toFixed(1)+'" stroke="rgba(255,255,255,.05)" stroke-width="1"/>';}g.innerHTML=h;})();
+
+  function lpath(pts,maxVal){var d='';pts.forEach(function(p,i){var x=px(i,pts.length),y=py(p.val,maxVal);
+    d+=(i?' L':'M')+x.toFixed(1)+','+y.toFixed(1);});return d;}
+  function apath(pts,maxVal){return lpath(pts,maxVal)+' L'+px(pts.length-1,pts.length).toFixed(1)+','+Y0+' L'+X0+','+Y0+' Z';}
+
+  function render(animate){
+    var pts=series();
+    var maxVal=pts[pts.length-1].val*1.04;
+    var end=pts[pts.length-1];
+
+    $('bvw-line').setAttribute('d',lpath(pts,maxVal));
+    $('bvw-area').setAttribute('d',apath(pts,maxVal));
+
+    // baseline at purchase price
+    $('bvw-base').setAttribute('y1',py(BUY,maxVal));$('bvw-base').setAttribute('y2',py(BUY,maxVal));
+
+    // dots + x labels
+    var dh='',xl='';
+    pts.forEach(function(p,i){
+      var x=px(i,pts.length),y=py(p.val,maxVal);
+      dh+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(i===pts.length-1?4:2.5)+'" fill="#ffcc4d"'+(i===pts.length-1?' style="filter:drop-shadow(0 0 8px rgba(255,204,77,.9));"':' opacity="0.6"')+'/>';
+      xl+='<text x="'+x.toFixed(1)+'" y="166" text-anchor="middle" fill="rgba(255,255,255,.35)" font-size="8" font-family="Inter,sans-serif" font-weight="600">'+p.label+'</text>';
+    });
+    $('bvw-dots').innerHTML=dh;
+    $('bvw-xlabels').innerHTML=xl;
+
+    // headline + stats
+    var pct=(end.val/BUY-1)*100;
+    $('bvw-hl').textContent=fmt(end.eq);
+    $('bvw-hl-lbl').textContent= mode==='past'?'Equity a 2021 buyer built':'Equity you could build';
+    $('bvw-s-buy').querySelector('.val').textContent=fmt(BUY);
+    $('bvw-s-worth').querySelector('.val').textContent=fmt(end.val);
+    $('bvw-s-worth').querySelector('.lbl').textContent= mode==='past'?'Worth now':'Worth in 5 yrs';
+    $('bvw-s-eq').querySelector('.val').textContent=fmt(end.eq);
+    $('bvw-s-pct').querySelector('.val').textContent='+'+pct.toFixed(1)+'%';
+
+    // floating tag
+    var tag=$('bvw-tag');tag.setAttribute('opacity','0');
+    clearTimeout(window._bvwT);
+    window._bvwT=setTimeout(function(){
+      var ex=px(pts.length-1,pts.length),ey=py(end.val,maxVal);
+      var tx=Math.min(Math.max(ex-31,X0-4),X1-58);
+      tag.querySelector('rect').setAttribute('x',tx);tag.querySelector('rect').setAttribute('y',ey-26);
+      var t=tag.querySelector('text');t.setAttribute('x',tx+31);t.setAttribute('y',ey-13.5);t.textContent=fmt(end.val);
+      tag.setAttribute('opacity','1');tag.style.transition='opacity .35s';
+      $('bvw-s-eq').classList.add('pulse');setTimeout(function(){$('bvw-s-eq').classList.remove('pulse');},700);
+    }, animate?550:0);
+
+    // verdict
+    var v;
+    if(mode==='past'){
+      v="A $350,000 St. Louis home bought in 2021 would be worth about <strong class='g'>"+fmt(end.val)+"</strong> today — <strong class='g'>"+fmt(end.eq)+"</strong> in equity, a "+pct.toFixed(0)+"% gain in five years. Every year a buyer waited, that head start belonged to someone else. <span style='color:rgba(255,255,255,.5)'>Source: FHFA House Price Index, St. Louis MSA.</span>";
+    } else {
+      v="Even at a deliberately conservative <strong>2.5%/yr</strong> — well below St. Louis's actual recent pace — buying a $350,000 home today builds about <strong class='g'>"+fmt(end.eq)+"</strong> in equity over five years. <strong class='g'>Waiting doesn't pause the clock — it just hands that head start to the next buyer.</strong>";
+    }
+    $('bvw-verdict').innerHTML=v;
+  }
+
+  // mode switch
+  $('bvw-mode-past').addEventListener('click',function(){
+    mode='past';this.classList.add('on');$('bvw-mode-future').classList.remove('on');render(true);
+  });
+  $('bvw-mode-future').addEventListener('click',function(){
+    mode='future';this.classList.add('on');$('bvw-mode-past').classList.remove('on');render(true);
+  });
+
+  // animate line transitions
+  ['bvw-line','bvw-area'].forEach(function(id){$(id).style.transition='d .65s cubic-bezier(.22,1,.36,1)';});
+  $('bvw-base').style.transition='y1 .65s cubic-bezier(.22,1,.36,1),y2 .65s cubic-bezier(.22,1,.36,1)';
+
+  render(true);
+})();
+</script>
+
+
 <h2>What Your Monthly Payment Actually Looks Like</h2>
 
 <p>Here's the full PITI breakdown (Principal, Interest, Taxes, Insurance) for a <strong>$250,000 home in South County</strong> with a 3.5% down payment (FHA loan):</p>
