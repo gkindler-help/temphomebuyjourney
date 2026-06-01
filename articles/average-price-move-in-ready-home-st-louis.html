@@ -223,8 +223,8 @@
       <div style="font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#ffcc4d;margin-bottom:8px;">STL Home Journey · Real Sold Data</div>
       <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:rgba(255,255,255,.96);margin-bottom:4px;">Where Are Move-In Ready Homes Under $350K?</div>
       <div style="font-size:10px;color:rgba(255,255,255,.35);margin-bottom:16px;">1,760 qualifying sales · 10 ZIP codes · MARIS data · Tap a slice to explore</div>
-      <svg id="stl-donut" width="100%" viewBox="0 0 520 460" style="max-width:520px;overflow:visible;display:block;margin:0 auto;"></svg>
-      <div id="stl-legend" style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:12px;"></div>
+      <svg id="stl-donut" width="100%" viewBox="0 0 400 400" style="max-width:400px;overflow:visible;display:block;margin:0 auto;"></svg>
+      <div id="stl-legend" style="display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;margin-top:16px;text-align:left;max-width:420px;margin-left:auto;margin-right:auto;"></div>
       <div style="margin-top:14px;font-size:9px;color:rgba(255,255,255,.2);line-height:1.7;">
         Move-in ready = DOM &lt;14 days, SP/LP ≥1.0, 75th percentile tier. MARIS data, 7,006 residential sales.
       </div>
@@ -246,95 +246,47 @@
       const total=AREAS.reduce((s,a)=>s+a.n,0);
       const svg=document.getElementById('stl-donut');
       const ns='http://www.w3.org/2000/svg';
-      const cx=260,cy=230,outerR=150,innerR=76;
+      const cx=200,cy=200,outerR=170,innerR=90;
 
-      function polar(cx,cy,r,deg){
-        const rad=((deg-90)*Math.PI/180);
-        return{x:cx+r*Math.cos(rad),y:cy+r*Math.sin(rad)};
-      }
-      function arc(cx,cy,r,s,e,ir){
-        const S=polar(cx,cy,r,s),E=polar(cx,cy,r,e);
-        const Si=polar(cx,cy,ir,s),Ei=polar(cx,cy,ir,e);
+      function polar(r,deg){const rad=((deg-90)*Math.PI/180);return{x:cx+r*Math.cos(rad),y:cy+r*Math.sin(rad)};}
+      function arc(r,s,e,ir){
+        const S=polar(r,s),E=polar(r,e),Si=polar(ir,s),Ei=polar(ir,e);
         const lg=e-s>180?1:0;
         return`M${S.x} ${S.y}A${r} ${r} 0 ${lg} 1 ${E.x} ${E.y}L${Ei.x} ${Ei.y}A${ir} ${ir} 0 ${lg} 0 ${Si.x} ${Si.y}Z`;
       }
-      function el(tag,attrs){
-        const e=document.createElementNS(ns,tag);
-        Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));
-        return e;
-      }
-      function txt(x,y,content,attrs){
-        const t=document.createElementNS(ns,'text');
-        t.setAttribute('x',x);t.setAttribute('y',y);
-        t.setAttribute('font-family',"Inter,sans-serif");
-        Object.entries(attrs).forEach(([k,v])=>t.setAttribute(k,v));
-        t.textContent=content;
-        return t;
-      }
+      function el(tag,attrs){const e=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));return e;}
+      function txt(x,y,content,attrs){const t=document.createElementNS(ns,'text');t.setAttribute('x',x);t.setAttribute('y',y);t.setAttribute('font-family',"Inter,sans-serif");Object.entries(attrs).forEach(([k,v])=>t.setAttribute(k,v));t.textContent=content;return t;}
 
-      // Glow
       svg.appendChild(el('circle',{cx,cy,r:outerR+5,fill:'none',stroke:'rgba(255,204,77,0.06)','stroke-width':10}));
 
-      let cum=0;
-      let active=null;
+      let cum=0,active=null;
       const groups=[];
 
       AREAS.forEach((a,i)=>{
-        const pct=a.n/total;
-        const sweep=pct*360;
-        const start=cum,end=cum+sweep;
-        const mid=start+sweep/2;
-        const isRight=polar(cx,cy,1,mid).x>=0;
-        const lp=polar(cx,cy,outerR+28,mid);
-        const ll=polar(cx,cy,outerR+6,mid);
-        const lh=polar(cx,cy,outerR+22,mid);
+        const pct=a.n/total,sweep=pct*360,start=cum,end=cum+sweep;
         cum+=sweep;
-
         const g=document.createElementNS(ns,'g');
         g.style.cursor='pointer';
-
-        // Slice
-        const path=el('path',{d:arc(cx,cy,outerR,start,end,innerR),fill:a.color,stroke:'#0a0a0a','stroke-width':2.5,opacity:1});
+        const path=el('path',{d:arc(outerR,start,end,innerR),fill:a.color,stroke:'#0a0a0a','stroke-width':2.5,opacity:1});
         g.appendChild(path);
-
-        // Leader line
-        const line1=el('line',{x1:ll.x,y1:ll.y,x2:lh.x,y2:lh.y,stroke:a.color,'stroke-width':1,opacity:0.6});
-        const line2=el('line',{x1:lh.x,y1:lh.y,x2:isRight?lh.x+16:lh.x-16,y2:lh.y,stroke:a.color,'stroke-width':1,opacity:0.6});
-        g.appendChild(line1);g.appendChild(line2);
-
-        // Labels
-        const tx=isRight?lh.x+20:lh.x-20;
-        const anchor=isRight?'start':'end';
-        if(sweep>10){
-          g.appendChild(txt(tx,lh.y-4,a.label,{'text-anchor':anchor,fill:'rgba(255,255,255,.88)','font-size':10,'font-weight':700}));
-          g.appendChild(txt(tx,lh.y+8,`$${Math.round(a.mid/1000)}K · ${Math.round(pct*100)}%`,{'text-anchor':anchor,fill:a.color,'font-size':9,'font-weight':600}));
-        }
-
         g.addEventListener('mouseenter',()=>setActive(i));
         g.addEventListener('mouseleave',()=>setActive(null));
         g.addEventListener('click',()=>setActive(active===i?null:i));
         svg.appendChild(g);
-        groups.push({g,path,a,start,end});
+        groups.push({path,a});
       });
 
-      // Center hole
       svg.appendChild(el('circle',{cx,cy,r:innerR,fill:'#0a0a0a'}));
       svg.appendChild(el('circle',{cx,cy,r:innerR,fill:'none',stroke:'rgba(255,204,77,0.15)','stroke-width':1}));
 
-      // Center text group
-      const ctg=document.createElementNS(ns,'g');
-      const ct1=txt(cx,cy-18,'TOTAL SALES',{'text-anchor':'middle',fill:'rgba(255,255,255,.35)','font-size':8,'font-weight':700,'letter-spacing':2});
-      const ct2=txt(cx,cy+8,total.toLocaleString(),{'text-anchor':'middle',fill:'#ffcc4d','font-size':28,'font-weight':800,'font-family':'Georgia,serif'});
-      const ct3=txt(cx,cy+24,'tap a slice',{'text-anchor':'middle',fill:'rgba(255,255,255,.25)','font-size':8});
-      ctg.appendChild(ct1);ctg.appendChild(ct2);ctg.appendChild(ct3);
-      svg.appendChild(ctg);
+      const ct1=txt(cx,cy-18,'TOTAL SALES',{'text-anchor':'middle',fill:'rgba(255,255,255,.35)','font-size':9,'font-weight':700,'letter-spacing':2});
+      const ct2=txt(cx,cy+8,total.toLocaleString(),{'text-anchor':'middle',fill:'#ffcc4d','font-size':30,'font-weight':800,'font-family':'Georgia,serif'});
+      const ct3=txt(cx,cy+26,'tap a slice',{'text-anchor':'middle',fill:'rgba(255,255,255,.25)','font-size':9});
+      svg.appendChild(ct1);svg.appendChild(ct2);svg.appendChild(ct3);
 
       function setActive(idx){
         active=idx;
-        groups.forEach(({path,a},i)=>{
-          path.setAttribute('opacity',idx===null||i===idx?1:0.3);
-        });
-        // Update center
+        groups.forEach(({path},i)=>path.setAttribute('opacity',idx===null||i===idx?1:0.3));
         if(idx!==null){
           const a=AREAS[idx];
           ct1.textContent='MOVE-IN READY MID';
@@ -349,12 +301,14 @@
         }
       }
 
-      // Legend
+      // Legend grid
       const leg=document.getElementById('stl-legend');
-      [{label:"South County",color:"#ffcc4d"},{label:"South City",color:"#e8890c"},{label:"St. Charles Co.",color:"#5dcaa5"}].forEach(r=>{
+      AREAS.forEach((a,i)=>{
         const d=document.createElement('div');
-        d.style.cssText='display:flex;align-items:center;gap:6px;';
-        d.innerHTML=`<div style="width:8px;height:8px;border-radius:50%;background:${r.color};flex-shrink:0;"></div><span style="font-size:10px;color:rgba(255,255,255,.4);font-weight:600;">${r.label}</span>`;
+        d.style.cssText='display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);cursor:pointer;';
+        d.innerHTML=`<div style="width:10px;height:10px;border-radius:50%;background:${a.color};flex-shrink:0;"></div><div><div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.88);line-height:1.2;">${a.label}</div><div style="font-size:10px;color:rgba(255,255,255,.4);line-height:1.2;">Mid $${Math.round(a.mid/1000)}K · ${Math.round(a.n/total*100)}%</div></div>`;
+        d.addEventListener('mouseenter',()=>setActive(i));
+        d.addEventListener('mouseleave',()=>setActive(null));
         leg.appendChild(d);
       });
     })();
