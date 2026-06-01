@@ -256,6 +256,22 @@ window.ARTICLE_REGISTRY = {
       published: true
     },
 
+    /* ── BUYER: MOVE-IN READY PRICING ── */
+
+    {
+      slug: "average-price-move-in-ready-home-st-louis",
+      title: "What's the Average Price of a Move-In Ready Home in St. Louis? (And What Buyers Usually Get Wrong)",
+      shortTitle: "Move-In Ready Home Prices in St. Louis",
+      description: "Real sold data by area — South County, St. Charles, South City, West County. What move-in ready actually costs and the tradeoffs buyers learn too late.",
+      pillLabel: "Market Pricing",
+      audience: "buyer",
+      series: "fixer-upper",
+      isHub: false,
+      chapters: [2, 3, 4],
+      tags: ["move-in-ready", "pricing", "neighborhoods", "south-county", "st-charles", "relocation", "first-time-buyer", "va-buyer"],
+      published: true
+    },
+
     /* ── BUYER: REPAIR COST GUIDE SERIES ── */
 
     {
