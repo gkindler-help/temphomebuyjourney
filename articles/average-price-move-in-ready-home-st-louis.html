@@ -214,6 +214,176 @@
 
     <p>Premium move-in ready homes at $600K+ combine condition and location. In St. Louis, those two premiums stack quickly — especially in <a href="../neighborhoods/kirkwood">Kirkwood</a> (63122 median: $600K), Ladue (63124 median: $787K), and <a href="../neighborhoods/chesterfield">Chesterfield</a> (63005 median: $800K).</p>
 
+    <!-- Floor plan widget -->
+    <div id="fp-widget" style="margin:32px 0;background:#0d0d1a;border:1px solid rgba(255,204,77,.2);border-radius:14px;overflow:hidden;">
+      <!-- Header bar -->
+      <div style="background:#1e2a4a;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:7px;height:7px;border-radius:50%;background:#5a7aee;"></div>
+          <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:.06em;">FLOOR PLAN</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span id="fp-price" style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:800;color:#ffcc4d;">$150K</span>
+          <span id="fp-sqft" style="padding:3px 10px;border-radius:999px;background:rgba(255,204,77,0.15);border:1px solid rgba(255,204,77,0.3);font-size:11px;font-weight:700;color:#ffcc4d;">900 sqft</span>
+        </div>
+      </div>
+      <!-- Title -->
+      <div style="text-align:center;padding:14px 16px 8px;">
+        <div style="font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#ffcc4d;margin-bottom:6px;">STL Home Journey · Real Market Data</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:rgba(255,255,255,.96);line-height:1.2;margin-bottom:4px;">What Does Your Budget Buy in St. Louis?</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.3);">Tap a price — floor plan updates</div>
+      </div>
+      <!-- Price buttons -->
+      <div id="fp-btns" style="display:flex;gap:6px;padding:0 16px 12px;justify-content:center;flex-wrap:wrap;"></div>
+      <!-- Plan display -->
+      <div id="fp-plan" style="padding:0 14px 12px;overflow-x:auto;"></div>
+      <!-- Stats row -->
+      <div id="fp-stats" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 14px 12px;"></div>
+      <!-- Desc -->
+      <div id="fp-desc" style="margin:0 14px 14px;background:rgba(255,204,77,0.04);border:1px solid rgba(255,204,77,0.12);border-radius:10px;padding:12px 14px;font-size:12px;color:rgba(255,255,255,0.65);line-height:1.65;"></div>
+      <!-- Dots -->
+      <div id="fp-dots" style="display:flex;justify-content:center;gap:8px;padding-bottom:14px;"></div>
+      <!-- Footer -->
+      <div style="text-align:center;padding-bottom:14px;font-size:9px;color:rgba(255,255,255,0.18);line-height:1.7;">
+        stlhomejourney.com · George Kindler · 314.435.1087<br>
+        MARIS data, 7,006 residential sales. Floor plans are representative only.
+      </div>
+    </div>
+
+    <script>
+    (function(){
+      var GOLD='#ffcc4d';
+      var WALL='#2a3a7a';
+      var RBGN='#eef1fc';
+      var RNEW='#d8e8ff';
+      var LC='#1a2a5e';
+      var LN='#1a4aaa';
+      var WC='#2a3a7a';
+
+      var PLANS=[
+        {price:'$150K',area:'Lemay · 63125',sqft:900,garage:0,school:'Mehlville R-9',score:2,competition:3,
+         kitchen:'Original 1970s',image:'../assets/floorplan-150k.png',
+         desc:'Starter or investment. Budget for deferred maintenance — roof, HVAC, and cosmetics all likely needed within 2 years.'},
+        {price:'$250K',area:'Affton · 63123',sqft:1100,garage:1,school:'Affton District',score:3,competition:5,
+         kitchen:'Partially Updated',image:'../assets/floorplan-250k.png',
+         desc:'Solid starter home. Updated kitchen and bath, decent systems. Expect multiple offers when priced right.'},
+        {price:'$350K',area:'Oakville/Mehlville · 63129',sqft:1450,garage:1,school:'Mehlville R-9',score:3,competition:7,
+         kitchen:'Updated — Granite/SS',image:'../assets/floorplan-350k.png',
+         desc:'South County sweet spot. Larger ranch, updated systems, finished basement. Goes under contract within days when priced right.'},
+        {price:'$500K',area:'Ballwin · 63021',sqft:2000,garage:2,school:'Rockwood R-6',score:4,competition:6,
+         kitchen:'Renovated — Quartz/SS',image:'../assets/floorplan-500k.png',
+         desc:'Rockwood schools, finished basement, 2-car garage. The budget where compromise starts to disappear.'},
+        {price:'$700K',area:'Kirkwood · 63122',sqft:2600,garage:2,school:'Kirkwood R-7',score:5,competition:8,
+         kitchen:'Designer — Custom Cabinetry',image:'../assets/floorplan-700k.png',
+         desc:'Premium Kirkwood inventory. Custom finishes, larger lot, top school district. At the move-in ready midpoint — real competition.'}
+      ];
+
+      var ns='http://www.w3.org/2000/svg';
+      var cur=0;
+
+      function statCard(label,val){
+        return '<div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px 14px;">'+
+          '<div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:5px;">'+label+'</div>'+
+          '<div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.85);">'+val+'</div></div>';
+      }
+
+      function stars(score){
+        var s='<div style="display:flex;gap:3px;">';
+        for(var i=1;i<=5;i++) s+='<div style="width:14px;height:14px;border-radius:3px;background:'+(i<=score?GOLD:'rgba(255,255,255,0.1)')+'"></div>';
+        return s+'</div>';
+      }
+
+      function meter(val){
+        var s='<div style="display:flex;gap:2px;">';
+        for(var i=1;i<=10;i++){
+          var bg=i<=val?(val>=7?'#e05555':val>=5?GOLD:'#5dcaa5'):'rgba(255,255,255,0.08)';
+          s+='<div style="flex:1;height:8px;border-radius:2px;background:'+bg+'"></div>';
+        }
+        return s+'</div>';
+      }
+
+      function render(idx){
+        cur=idx;
+        var p=PLANS[idx];
+        document.getElementById('fp-price').textContent=p.price;
+        document.getElementById('fp-sqft').textContent=p.sqft.toLocaleString()+' sqft';
+
+        // Plan
+        var planEl=document.getElementById('fp-plan');
+        planEl.innerHTML='';
+        planEl.style.background='#1a1a2a';
+        var testImg=new Image();
+        (function(plan,container){
+          var im=new Image();
+          im.onload=function(){
+            container.innerHTML='';
+            im.alt='Floor plan '+plan.price;
+            im.style.cssText='width:100%;border-radius:8px;display:block;';
+            container.appendChild(im);
+          };
+          im.onerror=function(){
+            container.innerHTML='<div style="aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px dashed rgba(255,204,77,0.3);border-radius:8px;background:rgba(255,204,77,0.03);">'+
+              '<div style="font-size:32px;margin-bottom:10px;opacity:0.4;">🏠</div>'+
+              '<div style="font-size:13px;font-weight:700;color:#ffcc4d;">'+plan.price+' Floor Plan</div>'+
+              '<div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px;">Coming soon</div></div>';
+          };
+          im.src=plan.image;
+        })(p,planEl);
+
+        // Buttons
+        document.querySelectorAll('.fp-btn').forEach(function(b,i){
+          b.style.borderColor=i===idx?GOLD:'rgba(255,255,255,0.1)';
+          b.style.background=i===idx?'rgba(255,204,77,0.14)':'transparent';
+          b.style.color=i===idx?GOLD:'rgba(255,255,255,0.45)';
+        });
+
+        // Stats
+        var garageLabel=p.garage===0?'No Garage':p.garage===1?'1-Car Garage':'2-Car Garage';
+        document.getElementById('fp-stats').innerHTML=
+          statCard('Kitchen',p.kitchen)+
+          statCard('Garage',garageLabel)+
+          '<div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px 14px;">'+
+          '<div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:6px;">School District</div>'+
+          '<div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.8);margin-bottom:5px;">'+p.school+'</div>'+
+          stars(p.score)+'</div>'+
+          '<div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px 14px;">'+
+          '<div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:6px;">Competition</div>'+
+          meter(p.competition)+
+          '<div style="font-size:9px;color:rgba(255,255,255,0.35);margin-top:5px;">'+(p.competition>=7?'🔴 Intense':p.competition>=5?'🟡 High':'🟢 Moderate')+'</div></div>';
+
+        // Desc
+        document.getElementById('fp-desc').textContent=p.desc;
+
+        // Dots
+        document.querySelectorAll('.fp-dot').forEach(function(d,i){
+          d.style.width=i===idx?'28px':'8px';
+          d.style.background=i===idx?GOLD:'rgba(255,255,255,0.15)';
+        });
+      }
+
+      // Build buttons and dots
+      var btns=document.getElementById('fp-btns');
+      var dots=document.getElementById('fp-dots');
+      PLANS.forEach(function(p,i){
+        var b=document.createElement('button');
+        b.className='fp-btn';
+        b.textContent=p.price;
+        b.style.cssText='padding:9px 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,0.1);background:transparent;color:rgba(255,255,255,0.45);font-size:13px;font-weight:700;cursor:pointer;font-family:Inter,Arial,sans-serif;';
+        b.onclick=function(){render(i);};
+        btns.appendChild(b);
+
+        var d=document.createElement('div');
+        d.className='fp-dot';
+        d.style.cssText='width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,0.15);cursor:pointer;transition:all 0.3s;';
+        d.onclick=function(){render(i);};
+        dots.appendChild(d);
+      });
+
+      render(0);
+    })();
+    </script>
+
+
     <h2 id="by-area">Move-In Ready Prices by Area — Real Sold Data</h2>
 
     <p>Here's where the generic median falls apart. The same budget buys completely different things depending on where you're looking. These figures are move-in ready tier midpoints from actual St. Louis sold data.</p>
@@ -579,325 +749,6 @@
 
     <h3>For Character and Walkability</h3>
     <p><a href="../neighborhoods/soulard">South City</a> (63109, 63116, 63118) offers the most character per dollar in the metro — but requires buyers to understand what they're actually buying structurally. A fully renovated South City brick home commands a real premium for good reason.</p>
-
-    <!-- Floor plan widget -->
-    <div id="fp-widget" style="margin:32px 0;background:#0d0d1a;border:1px solid rgba(255,204,77,.2);border-radius:14px;overflow:hidden;">
-      <!-- Header bar -->
-      <div style="background:#1e2a4a;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;">
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div style="width:7px;height:7px;border-radius:50%;background:#5a7aee;"></div>
-          <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:.06em;">FLOOR PLAN</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          <span id="fp-price" style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:800;color:#ffcc4d;">$150K</span>
-          <span id="fp-sqft" style="padding:3px 10px;border-radius:999px;background:rgba(255,204,77,0.15);border:1px solid rgba(255,204,77,0.3);font-size:11px;font-weight:700;color:#ffcc4d;">900 sqft</span>
-        </div>
-      </div>
-      <!-- Title -->
-      <div style="text-align:center;padding:14px 16px 8px;">
-        <div style="font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#ffcc4d;margin-bottom:6px;">STL Home Journey · Real Market Data</div>
-        <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:rgba(255,255,255,.96);line-height:1.2;margin-bottom:4px;">What Does Your Budget Buy in St. Louis?</div>
-        <div style="font-size:11px;color:rgba(255,255,255,.3);">Tap a price — floor plan updates</div>
-      </div>
-      <!-- Price buttons -->
-      <div id="fp-btns" style="display:flex;gap:6px;padding:0 16px 12px;justify-content:center;flex-wrap:wrap;"></div>
-      <!-- Plan display -->
-      <div id="fp-plan" style="padding:0 14px 12px;overflow-x:auto;"></div>
-      <!-- Stats row -->
-      <div id="fp-stats" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 14px 12px;"></div>
-      <!-- Desc -->
-      <div id="fp-desc" style="margin:0 14px 14px;background:rgba(255,204,77,0.04);border:1px solid rgba(255,204,77,0.12);border-radius:10px;padding:12px 14px;font-size:12px;color:rgba(255,255,255,0.65);line-height:1.65;"></div>
-      <!-- Dots -->
-      <div id="fp-dots" style="display:flex;justify-content:center;gap:8px;padding-bottom:14px;"></div>
-      <!-- Footer -->
-      <div style="text-align:center;padding-bottom:14px;font-size:9px;color:rgba(255,255,255,0.18);line-height:1.7;">
-        stlhomejourney.com · George Kindler · 314.435.1087<br>
-        MARIS data, 7,006 residential sales. Floor plans are representative only.
-      </div>
-    </div>
-
-    <script>
-    (function(){
-      var GOLD='#ffcc4d';
-      var WALL='#2a3a7a';
-      var RBGN='#eef1fc';
-      var RNEW='#d8e8ff';
-      var LC='#1a2a5e';
-      var LN='#1a4aaa';
-      var WC='#2a3a7a';
-
-      var PLANS=[
-        {price:'$150K',area:'Lemay · 63125',sqft:900,garage:0,school:'Mehlville R-9',score:2,competition:3,
-         kitchen:'Original 1970s',image:'../assets/floorplan-150k.png',
-         desc:'Starter or investment. Budget for deferred maintenance — roof, HVAC, and cosmetics all likely needed within 2 years.'},
-        {price:'$250K',area:'Affton · 63123',sqft:1100,garage:1,school:'Affton District',score:3,competition:5,
-         kitchen:'Partially Updated',image:'../assets/floorplan-250k.png',
-         desc:'Solid starter home. Updated kitchen and bath, decent systems. Expect multiple offers when priced right.',
-         W:530,H:290,hasBasement:false,
-         rooms:[
-           {x:10,y:10,w:135,h:125,label:'Bedroom',n:false},{x:10,y:145,w:68,h:135,label:'Bedroom',n:false},
-           {x:83,y:145,w:67,h:135,label:'Bedroom',n:true},{x:155,y:10,w:40,h:60,label:'½ Bath',n:false},
-           {x:155,y:75,w:40,h:200,label:'Bath',n:false},{x:200,y:10,w:150,h:180,label:'Living Room',n:false},
-           {x:200,y:195,w:65,h:85,label:'Foyer',n:false},{x:355,y:10,w:100,h:130,label:'Kitchen',n:false},
-           {x:355,y:145,w:100,h:135,label:'Dining Room',n:true},{x:460,y:10,w:60,h:270,label:'Garage',n:true}
-         ],
-         walls:[[150,10,150,280],[195,10,195,280],[350,10,350,280],[455,10,455,280],[10,140,150,140],[78,140,78,280],[150,70,195,70],[195,190,350,190],[350,140,455,140]],
-         wins:[[40,10,115,10],[40,280,78,280],[10,35,10,90],[10,140,10,190],[215,10,305,10],[365,10,430,10],[515,35,515,110],[515,165,515,240],[215,280,270,280]],
-         doors:[{x:150,y:45,r:18,a1:270,a2:360},{x:150,y:160,r:18,a1:270,a2:360},{x:195,y:220,r:18,a1:90,a2:180},{x:350,y:75,r:20,a1:180,a2:270},{x:350,y:210,r:18,a1:180,a2:270},{x:455,y:140,r:18,a1:90,a2:180},{x:240,y:280,r:22,a1:180,a2:270}],
-         entry:{x:240,y:280}},
-        {price:'$350K',area:'Oakville/Mehlville · 63129',sqft:1450,garage:1,school:'Mehlville R-9',score:3,competition:7,
-         kitchen:'Updated — Granite/SS',hasBasement:true,
-         desc:'South County sweet spot. Larger ranch, updated systems, finished basement. Goes under contract within days when priced right.',
-         W:570,H:300,
-         basementRooms:['Rec Room','Storage','Utility'],
-         rooms:[
-           {x:10,y:10,w:145,h:130,label:'Bedroom',n:false},{x:10,y:150,w:73,h:140,label:'Bedroom',n:false},
-           {x:88,y:150,w:72,h:140,label:'Bedroom',n:false},{x:165,y:10,w:45,h:60,label:'½ Bath',n:false},
-           {x:165,y:75,w:45,h:215,label:'Bath',n:true},{x:215,y:205,w:70,h:85,label:'Foyer',n:false},
-           {x:215,y:10,w:160,h:190,label:'Living Room',n:false},{x:380,y:10,w:110,h:135,label:'Kitchen',n:false},
-           {x:380,y:150,w:110,h:140,label:'Dining Room',n:false},{x:495,y:10,w:65,h:280,label:'Garage',n:false}
-         ],
-         walls:[[160,10,160,290],[210,10,210,290],[375,10,375,290],[490,10,490,290],[10,145,160,145],[83,145,83,290],[160,70,210,70],[210,200,375,200],[375,145,490,145]],
-         wins:[[35,10,125,10],[35,290,83,290],[10,30,10,115],[10,175,10,260],[230,10,330,10],[390,10,460,10],[555,30,555,110],[555,175,555,250],[230,290,290,290]],
-         doors:[{x:160,y:50,r:18,a1:270,a2:360},{x:160,y:190,r:18,a1:270,a2:360},{x:210,y:230,r:18,a1:90,a2:180},{x:375,y:80,r:22,a1:180,a2:270},{x:375,y:220,r:20,a1:180,a2:270},{x:490,y:150,r:18,a1:90,a2:180},{x:255,y:290,r:22,a1:180,a2:270}],
-         entry:{x:255,y:290}},
-        {price:'$500K',area:'Ballwin · 63021',sqft:2000,garage:2,school:'Rockwood R-6',score:4,competition:6,
-         kitchen:'Renovated — Quartz/SS',hasBasement:true,
-         desc:'Rockwood schools, finished basement, 2-car garage. The budget where compromise starts to disappear.',
-         W:650,H:310,
-         basementRooms:['Rec Room','Home Theater','Wet Bar','Storage'],
-         rooms:[
-           {x:10,y:10,w:150,h:135,label:'Bedroom',n:false},{x:10,y:155,w:75,h:145,label:'Bedroom',n:false},
-           {x:90,y:155,w:75,h:145,label:'Bedroom',n:false},{x:215,y:10,w:90,h:100,label:'Bedroom',n:true},
-           {x:170,y:10,w:40,h:65,label:'½ Bath',n:false},{x:170,y:80,w:40,h:220,label:'Bath',n:false},
-           {x:215,y:220,w:75,h:80,label:'Foyer',n:false},{x:215,y:115,w:155,h:100,label:'Living Room',n:false},
-           {x:310,y:10,w:115,h:100,label:'Family Room',n:true},{x:430,y:10,w:110,h:135,label:'Kitchen',n:false},
-           {x:430,y:150,w:70,h:80,label:'Mudroom',n:true},{x:430,y:235,w:110,h:65,label:'Dining',n:false},
-           {x:545,y:10,w:95,h:290,label:'Garage',n:false}
-         ],
-         walls:[[165,10,165,300],[210,10,210,300],[305,10,305,300],[425,10,425,300],[540,10,540,300],[10,150,165,150],[85,150,85,300],[165,75,210,75],[210,110,305,110],[210,215,425,215],[305,105,425,105],[425,145,540,145],[425,230,540,230],[500,145,500,230]],
-         wins:[[35,10,130,10],[35,300,85,300],[10,40,10,120],[10,180,10,265],[225,10,290,10],[320,10,400,10],[440,10,510,10],[630,30,630,110],[630,175,630,255],[230,300,285,300]],
-         doors:[{x:165,y:50,r:18,a1:270,a2:360},{x:165,y:195,r:18,a1:270,a2:360},{x:210,y:240,r:18,a1:90,a2:180},{x:210,y:115,r:18,a1:90,a2:180},{x:305,y:55,r:20,a1:90,a2:180},{x:425,y:75,r:22,a1:180,a2:270},{x:425,y:200,r:18,a1:180,a2:270},{x:425,y:255,r:18,a1:180,a2:270},{x:540,y:160,r:18,a1:90,a2:180},{x:250,y:300,r:22,a1:180,a2:270}],
-         entry:{x:250,y:300}},
-        {price:'$700K',area:'Kirkwood · 63122',sqft:2600,garage:2,school:'Kirkwood R-7',score:5,competition:8,
-         kitchen:'Designer — Custom Cabinetry',hasBasement:true,
-         desc:'Premium Kirkwood inventory. Custom finishes, larger lot, top school district. At the move-in ready midpoint — real competition.',
-         W:730,H:330,
-         basementRooms:['Rec Room','Home Theater','Wet Bar','Gym','Storage'],
-         rooms:[
-           {x:10,y:10,w:165,h:145,label:'Primary Suite',n:true},{x:10,y:165,w:83,h:155,label:'Bedroom',n:false},
-           {x:98,y:165,w:82,h:155,label:'Bedroom',n:false},{x:240,y:10,w:95,h:105,label:'Bedroom',n:false},
-           {x:185,y:10,w:50,h:80,label:'Primary Bath',n:true},{x:185,y:95,w:50,h:80,label:'Bath',n:false},
-           {x:185,y:180,w:50,h:140,label:'Bath',n:false},{x:240,y:120,w:95,h:95,label:'Office',n:true},
-           {x:240,y:225,w:80,h:95,label:'Foyer',n:false},{x:340,y:115,w:155,h:100,label:'Living Room',n:false},
-           {x:340,y:10,w:155,h:100,label:'Family Room',n:false},{x:500,y:10,w:120,h:140,label:'Kitchen',n:false},
-           {x:500,y:155,w:80,h:80,label:'Mudroom',n:false},{x:500,y:240,w:120,h:80,label:'Dining',n:false},
-           {x:625,y:10,w:95,h:310,label:'Garage',n:false}
-         ],
-         walls:[[180,10,180,320],[235,10,235,320],[335,10,335,320],[495,10,495,320],[620,10,620,320],[10,160,180,160],[93,160,93,320],[180,85,235,85],[180,175,235,175],[235,115,335,115],[235,220,495,220],[335,110,495,110],[495,150,620,150],[495,235,620,235],[580,150,580,235]],
-         wins:[[35,10,145,10],[35,320,93,320],[10,40,10,120],[10,185,10,260],[255,10,315,10],[350,10,450,10],[510,10,595,10],[715,40,715,120],[715,185,715,275],[255,320,310,320]],
-         doors:[{x:180,y:50,r:20,a1:270,a2:360},{x:180,y:140,r:18,a1:270,a2:360},{x:180,y:250,r:18,a1:270,a2:360},{x:235,y:250,r:18,a1:90,a2:180},{x:235,y:120,r:18,a1:90,a2:180},{x:335,y:60,r:22,a1:90,a2:180},{x:335,y:165,r:22,a1:90,a2:180},{x:495,y:75,r:20,a1:180,a2:270},{x:495,y:200,r:18,a1:180,a2:270},{x:495,y:260,r:18,a1:180,a2:270},{x:620,y:170,r:18,a1:90,a2:180},{x:265,y:320,r:22,a1:180,a2:270}],
-         entry:{x:265,y:320}}
-      ];
-
-      var ns='http://www.w3.org/2000/svg';
-      var cur=0;
-
-      function aPath(cx,cy,r,a1,a2){
-        var R=function(d){return d*Math.PI/180;};
-        var x1=cx+r*Math.cos(R(a1)),y1=cy+r*Math.sin(R(a1));
-        var x2=cx+r*Math.cos(R(a2)),y2=cy+r*Math.sin(R(a2));
-        return 'M'+cx+','+cy+' L'+x1+','+y1+' A'+r+','+r+' 0 '+(a2-a1>180?1:0)+' 1 '+x2+','+y2+' Z';
-      }
-
-      function el(tag,attrs){
-        var e=document.createElementNS(ns,tag);
-        Object.keys(attrs).forEach(function(k){e.setAttribute(k,attrs[k]);});
-        return e;
-      }
-
-      function txt(x,y,content,attrs){
-        var t=document.createElementNS(ns,'text');
-        t.setAttribute('x',x);t.setAttribute('y',y);
-        t.setAttribute('font-family','Inter,Arial,sans-serif');
-        Object.keys(attrs).forEach(function(k){t.setAttribute(k,attrs[k]);});
-        t.textContent=content;
-        return t;
-      }
-
-      function buildSVG(p){
-        var WT=6,BSH=60,GAP=20;
-        var totalH=p.hasBasement?p.H+GAP+BSH+22:p.H+22;
-        var svg=el('svg',{width:'100%',viewBox:'0 0 '+p.W+' '+totalH,style:'display:block;max-width:100%;'});
-
-        svg.appendChild(el('rect',{width:p.W,height:p.H,fill:RBGN}));
-
-        p.rooms.forEach(function(r){
-          svg.appendChild(el('rect',{x:r.x,y:r.y,width:r.w,height:r.h,fill:r.n?RNEW:RBGN,stroke:'none'}));
-        });
-
-        p.walls.forEach(function(w){
-          svg.appendChild(el('line',{x1:w[0],y1:w[1],x2:w[2],y2:w[3],stroke:WALL,'stroke-width':WT,'stroke-linecap':'square'}));
-        });
-
-        svg.appendChild(el('rect',{x:0,y:0,width:p.W,height:p.H,fill:'none',stroke:WALL,'stroke-width':WT*2.8}));
-
-        p.wins.forEach(function(w){
-          var isH=w[1]===w[3];
-          svg.appendChild(el('line',{x1:w[0],y1:w[1],x2:w[2],y2:w[3],stroke:RBGN,'stroke-width':18}));
-          svg.appendChild(el('line',{x1:w[0],y1:w[1],x2:w[2],y2:w[3],stroke:WC,'stroke-width':3.5}));
-          if(isH){
-            svg.appendChild(el('line',{x1:w[0],y1:w[1]-5,x2:w[0],y2:w[1]+5,stroke:WC,'stroke-width':2}));
-            svg.appendChild(el('line',{x1:w[2],y1:w[3]-5,x2:w[2],y2:w[3]+5,stroke:WC,'stroke-width':2}));
-          } else {
-            svg.appendChild(el('line',{x1:w[0]-5,y1:w[1],x2:w[0]+5,y2:w[1],stroke:WC,'stroke-width':2}));
-            svg.appendChild(el('line',{x1:w[2]-5,y1:w[3],x2:w[2]+5,y2:w[3],stroke:WC,'stroke-width':2}));
-          }
-        });
-
-        p.doors.forEach(function(d){
-          var R=Math.PI/180;
-          var x1=d.x+d.r*Math.cos(d.a1*R),y1=d.y+d.r*Math.sin(d.a1*R);
-          var x2=d.x+d.r*Math.cos(d.a2*R),y2=d.y+d.r*Math.sin(d.a2*R);
-          svg.appendChild(el('line',{x1:x1,y1:y1,x2:x2,y2:y2,stroke:RBGN,'stroke-width':WT+4}));
-          var path=el('path',{d:aPath(d.x,d.y,d.r,d.a1,d.a2),fill:'rgba(42,58,122,0.06)',stroke:WC,'stroke-width':1.2,'stroke-dasharray':'3 2'});
-          svg.appendChild(path);
-          svg.appendChild(el('line',{x1:d.x,y1:d.y,x2:x1,y2:y1,stroke:WC,'stroke-width':2.5}));
-        });
-
-        p.rooms.forEach(function(r){
-          var lx=r.x+r.w/2,ly=r.y+r.h/2;
-          var fs=r.w>120?11:r.w>85?10:r.w>60?9:r.w>40?7.5:6.5;
-          svg.appendChild(txt(lx,ly+(r.n&&r.h>50?-8:4),r.label,{'text-anchor':'middle','dominant-baseline':'middle',fill:r.n?LN:LC,'font-size':fs,'font-weight':700}));
-          if(r.n&&r.h>40){
-            svg.appendChild(el('rect',{x:lx-18,y:ly+3,width:36,height:13,rx:4,fill:'#4a7aee'}));
-            svg.appendChild(txt(lx,ly+11,'NEW',{'text-anchor':'middle','dominant-baseline':'middle',fill:'white','font-size':7,'font-weight':800}));
-          }
-        });
-
-        if(p.entry){
-          var ex=p.entry.x;
-          var poly=el('polygon',{points:ex+','+(p.H+3)+' '+(ex-9)+','+(p.H-10)+' '+(ex+9)+','+(p.H-10),fill:'#4a7aee'});
-          svg.appendChild(poly);
-          svg.appendChild(txt(ex,p.H+18,'ENTRY',{'text-anchor':'middle',fill:'#4a7aee','font-size':8,'font-weight':800}));
-        }
-
-        if(p.hasBasement&&p.basementRooms){
-          var gy=p.H+GAP;
-          var bg=el('g',{transform:'translate(0,'+gy+')'});
-          bg.appendChild(el('rect',{x:10,y:0,width:p.W-20,height:BSH,rx:4,fill:'rgba(42,58,122,0.04)',stroke:'#6080cc','stroke-width':1.5,'stroke-dasharray':'6 4'}));
-          var lt=txt(p.W/2,14,'▼  FINISHED LOWER LEVEL  ▼',{'text-anchor':'middle',fill:'#6080cc','font-size':8,'font-weight':800,'letter-spacing':1});
-          bg.appendChild(lt);
-          var cols=p.basementRooms.length,cw=(p.W-20)/cols;
-          p.basementRooms.forEach(function(rm,i){
-            bg.appendChild(el('rect',{x:10+cw*i+4,y:20,width:cw-8,height:BSH-26,rx:3,fill:'rgba(42,58,122,0.06)',stroke:'#6080cc','stroke-width':0.8,'stroke-dasharray':'3 2'}));
-            bg.appendChild(txt(10+cw*i+cw/2,BSH-10,rm,{'text-anchor':'middle',fill:'#6080cc','font-size':7.5,'font-weight':600}));
-          });
-          svg.appendChild(bg);
-        }
-
-        var cg=el('g',{transform:'translate('+(p.W-18)+',18)'});
-        cg.appendChild(el('circle',{cx:0,cy:0,r:13,fill:'#dde3f0',stroke:WALL,'stroke-width':1.5}));
-        cg.appendChild(txt(0,5,'N',{'text-anchor':'middle',fill:'#1a2a5e','font-size':10,'font-weight':800}));
-        svg.appendChild(cg);
-
-        return svg;
-      }
-
-      function statCard(label,val){
-        return '<div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px 14px;">'+
-          '<div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:5px;">'+label+'</div>'+
-          '<div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.85);">'+val+'</div></div>';
-      }
-
-      function stars(score){
-        var s='<div style="display:flex;gap:3px;">';
-        for(var i=1;i<=5;i++) s+='<div style="width:14px;height:14px;border-radius:3px;background:'+(i<=score?GOLD:'rgba(255,255,255,0.1)')+'"></div>';
-        return s+'</div>';
-      }
-
-      function meter(val){
-        var s='<div style="display:flex;gap:2px;">';
-        for(var i=1;i<=10;i++){
-          var bg=i<=val?(val>=7?'#e05555':val>=5?GOLD:'#5dcaa5'):'rgba(255,255,255,0.08)';
-          s+='<div style="flex:1;height:8px;border-radius:2px;background:'+bg+'"></div>';
-        }
-        return s+'</div>';
-      }
-
-      function render(idx){
-        cur=idx;
-        var p=PLANS[idx];
-        document.getElementById('fp-price').textContent=p.price;
-        document.getElementById('fp-sqft').textContent=p.sqft.toLocaleString()+' sqft';
-
-        // Plan
-        var planEl=document.getElementById('fp-plan');
-        planEl.innerHTML='';
-        if(p.image){
-          planEl.style.background='#1a1a2a';
-          var img=document.createElement('img');
-          img.src=p.image;
-          img.alt='Floor plan '+p.price;
-          img.style.cssText='width:100%;border-radius:8px;display:block;';
-          planEl.appendChild(img);
-        } else {
-          planEl.style.background='#f0f3fc';
-          planEl.appendChild(buildSVG(p));
-        }
-
-        // Buttons
-        document.querySelectorAll('.fp-btn').forEach(function(b,i){
-          b.style.borderColor=i===idx?GOLD:'rgba(255,255,255,0.1)';
-          b.style.background=i===idx?'rgba(255,204,77,0.14)':'transparent';
-          b.style.color=i===idx?GOLD:'rgba(255,255,255,0.45)';
-        });
-
-        // Stats
-        var garageLabel=p.garage===0?'No Garage':p.garage===1?'1-Car Garage':'2-Car Garage';
-        document.getElementById('fp-stats').innerHTML=
-          statCard('Kitchen',p.kitchen)+
-          statCard('Garage',garageLabel)+
-          '<div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px 14px;">'+
-          '<div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:6px;">School District</div>'+
-          '<div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.8);margin-bottom:5px;">'+p.school+'</div>'+
-          stars(p.score)+'</div>'+
-          '<div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:12px 14px;">'+
-          '<div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:6px;">Competition</div>'+
-          meter(p.competition)+
-          '<div style="font-size:9px;color:rgba(255,255,255,0.35);margin-top:5px;">'+(p.competition>=7?'🔴 Intense':p.competition>=5?'🟡 High':'🟢 Moderate')+'</div></div>';
-
-        // Desc
-        document.getElementById('fp-desc').textContent=p.desc;
-
-        // Dots
-        document.querySelectorAll('.fp-dot').forEach(function(d,i){
-          d.style.width=i===idx?'28px':'8px';
-          d.style.background=i===idx?GOLD:'rgba(255,255,255,0.15)';
-        });
-      }
-
-      // Build buttons and dots
-      var btns=document.getElementById('fp-btns');
-      var dots=document.getElementById('fp-dots');
-      PLANS.forEach(function(p,i){
-        var b=document.createElement('button');
-        b.className='fp-btn';
-        b.textContent=p.price;
-        b.style.cssText='padding:9px 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,0.1);background:transparent;color:rgba(255,255,255,0.45);font-size:13px;font-weight:700;cursor:pointer;font-family:Inter,Arial,sans-serif;';
-        b.onclick=function(){render(i);};
-        btns.appendChild(b);
-
-        var d=document.createElement('div');
-        d.className='fp-dot';
-        d.style.cssText='width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,0.15);cursor:pointer;transition:all 0.3s;';
-        d.onclick=function(){render(i);};
-        dots.appendChild(d);
-      });
-
-      render(0);
-    })();
-    </script>
 
     <div class="cta-box">
       <h3>What Does Your Budget Actually Buy Right Now?</h3>
