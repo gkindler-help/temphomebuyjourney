@@ -1,5 +1,35 @@
 User-agent: *
 Allow: /
 
+# Chapter files — not standalone content, part of the Journey app
+Disallow: /01-preapproval
+Disallow: /01-preapproval.html
+Disallow: /02-affordability
+Disallow: /02-affordability.html
+Disallow: /03-interior
+Disallow: /03-interior.html
+Disallow: /03c-renovated
+Disallow: /03c-renovated.html
+Disallow: /05-pre-offer
+Disallow: /05-pre-offer.html
+Disallow: /06-under-contract
+Disallow: /06-under-contract.html
+Disallow: /06b-deadlines
+Disallow: /06b-deadlines.html
+Disallow: /07-inspection
+Disallow: /07-inspection.html
+Disallow: /08-walkthrough
+Disallow: /08-walkthrough.html
+Disallow: /09-closing
+Disallow: /09-closing.html
+
+# Demo and test pages
+Disallow: /home-cost-demo
+Disallow: /home-cost-demo.html
+
+# Pinterest verification — not content
+Disallow: /pinterest-10a52
+Disallow: /pinterest-10a52.html
+
 # Sitemap
 Sitemap: https://stlhomejourney.com/sitemap.xml
