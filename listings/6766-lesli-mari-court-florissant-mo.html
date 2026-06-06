@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EEE14BZT9P');</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"RealEstateListing","name":"6766 Lesli Mari Court","description":"Cul-de-sac home on Lesli Mari Court in the 63033 corridor — a quieter, less-trafficked setting than typical neighborhood streets. Cul-de-sac lots in t","url":"https://stlhomejourney.com/listings/6766-lesli-mari-court-florissant-mo","numberOfRooms":3,"address":{"@type":"PostalAddress","streetAddress":"6766 Lesli Mari Court","addressLocality":"St. Louis","addressRegion":"MO","postalCode":"63033"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"STL Home Journey","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"Listings","item":"https://stlhomejourney.com/listings/"},{"@type":"ListItem","position":3,"name":"6766 Lesli Mari Court","item":"https://stlhomejourney.com/listings/6766-lesli-mari-court-florissant-mo"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"RealEstateListing","name":"6766 Lesli Mari Court","url":"https://stlhomejourney.com/listings/6766-lesli-mari-court-florissant-mo","numberOfRooms":3,"address":{"@type":"PostalAddress","streetAddress":"6766 Lesli Mari Court","addressLocality":"St. Louis","addressRegion":"MO","postalCode":"63033"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"Listings","item":"https://stlhomejourney.com/listings/"},{"@type":"ListItem","position":3,"name":"6766 Lesli Mari Court","item":"https://stlhomejourney.com/listings/6766-lesli-mari-court-florissant-mo"}]}]}</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Inter',-apple-system,sans-serif;background:#050505;color:rgba(255,255,255,.88);overflow-x:hidden;}
@@ -22,9 +22,10 @@ body{font-family:'Inter',-apple-system,sans-serif;background:#050505;color:rgba(
 .hdr-t span{color:#ffcc4d;}
 .hdr-sub{font-size:9px;color:rgba(255,255,255,.4);}
 .hdr-cta{background:#ffcc4d;color:#070707;font-weight:800;font-size:12px;padding:8px 16px;border-radius:8px;text-decoration:none;white-space:nowrap;}
-.hero{position:relative;height:65vh;min-height:420px;background:#111;overflow:hidden;}
+.hero{position:relative;height:65vh;min-height:420px;background:#111;overflow:hidden;cursor:pointer;}
 .hero img{width:100%;height:100%;object-fit:cover;opacity:.8;}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,.97) 0%,rgba(5,5,5,.25) 60%,transparent 100%);}
+.hero-expand{position:absolute;top:16px;left:16px;background:rgba(0,0,0,.6);color:#fff;font-size:11px;font-weight:700;padding:6px 12px;border-radius:6px;display:flex;align-items:center;gap:6px;}
 .hero-content{position:absolute;bottom:0;left:0;right:0;padding:28px 24px 32px;}
 .badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 12px;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;}
 .badge-dot{width:6px;height:6px;border-radius:50%;animation:pulse 2s infinite;}
@@ -36,11 +37,13 @@ body{font-family:'Inter',-apple-system,sans-serif;background:#050505;color:rgba(
 .hstat-n{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;color:#ffcc4d;line-height:1;}
 .hstat-l{font-size:9px;color:rgba(255,255,255,.38);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:2px;}
 .pgrid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:190px 190px;gap:3px;background:#000;}
-.pgrid-item{overflow:hidden;background:#111;position:relative;}
+.pgrid-item{overflow:hidden;background:#111;position:relative;cursor:pointer;}
 .pgrid-item:first-child{grid-row:1/3;}
 .pgrid-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s;}
 .pgrid-item:hover img{transform:scale(1.04);}
 .photo-ct{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.7);color:#fff;font-size:10px;font-weight:700;padding:4px 9px;border-radius:6px;}
+.expand-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);opacity:0;transition:opacity .2s;font-size:22px;}
+.pgrid-item:hover .expand-hint{opacity:1;}
 .main{max-width:1080px;margin:0 auto;padding:36px 20px;display:grid;grid-template-columns:1fr 340px;gap:36px;}
 .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0;}
 .fact{background:#0a0a0a;border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px;}
@@ -78,10 +81,53 @@ body{font-family:'Inter',-apple-system,sans-serif;background:#050505;color:rgba(
 .more-status{font-size:11px;font-weight:800;}
 .footer{border-top:1px solid rgba(255,255,255,.07);padding:24px;text-align:center;font-size:9px;color:rgba(255,255,255,.2);line-height:1.8;}
 .sticky-card{position:sticky;top:76px;}
+
+/* LIGHTBOX */
+.lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:999;align-items:center;justify-content:center;}
+.lb.open{display:flex;}
+.lb-img{max-width:92vw;max-height:88vh;object-fit:contain;border-radius:6px;}
+.lb-close{position:absolute;top:16px;right:20px;color:#fff;font-size:28px;cursor:pointer;background:rgba(255,255,255,.1);border:none;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;line-height:1;}
+.lb-close:hover{background:rgba(255,255,255,.2);}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);border:none;color:#fff;font-size:22px;width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.lb-prev{left:16px;}.lb-next{right:16px;}
+.lb-prev:hover,.lb-next:hover{background:rgba(255,204,77,.3);}
+.lb-counter{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.5);font-size:12px;font-weight:700;letter-spacing:.06em;}
+.lb-thumbs{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);display:flex;gap:6px;max-width:90vw;overflow-x:auto;padding:4px;}
+.lb-thumb{width:48px;height:36px;object-fit:cover;border-radius:4px;cursor:pointer;opacity:.5;border:2px solid transparent;transition:all .2s;flex-shrink:0;}
+.lb-thumb.active{opacity:1;border-color:#ffcc4d;}
+.pgrid-item{cursor:pointer;}
+.pgrid-item::after{content:"⤢";position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;}
+.pgrid-item:hover::after{opacity:1;}
+
+
+.ctx-section{background:#0a0a0a;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:28px;margin-bottom:32px;}
+.ctx-label{font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#ffcc4d;margin-bottom:8px;}
+.ctx-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:20px;line-height:1.2;}
+.ctx-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.ctx-col-lbl{font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px;}
+.ctx-links{display:flex;flex-direction:column;gap:7px;}
+.ctx-link{font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;padding:7px 10px;border-radius:7px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);transition:all .18s;display:block;}
+.ctx-link:hover{color:#ffcc4d;border-color:rgba(255,204,77,.25);background:rgba(255,204,77,.05);}
+.ctx-link-primary{display:inline-block;background:rgba(255,204,77,.1);border:1px solid rgba(255,204,77,.3);color:#ffcc4d;font-size:13px;font-weight:700;padding:10px 16px;border-radius:8px;text-decoration:none;}
+.ctx-link-primary:hover{background:rgba(255,204,77,.18);}
+@media(max-width:600px){.ctx-grid{grid-template-columns:1fr;}}
+
 @media(max-width:800px){.main{grid-template-columns:1fr;}.sticky-card{position:static;}.pgrid{grid-template-columns:1fr 1fr;grid-template-rows:150px 150px 150px;}.pgrid-item:first-child{grid-row:1;grid-column:1/3;}.facts{grid-template-columns:1fr 1fr;}.hero{height:55vw;min-height:280px;}.feats{grid-template-columns:1fr;}.mkt{grid-template-columns:repeat(2,1fr);}}
 </style>
 </head>
 <body>
+
+
+<div class="lb" id="lb">
+  <button class="lb-close" onclick="lbClose()">✕</button>
+  <button class="lb-prev" onclick="lbNav(-1)">‹</button>
+  <img class="lb-img" id="lb-img" src="" alt="">
+  <button class="lb-next" onclick="lbNav(1)">›</button>
+  <div class="lb-counter" id="lb-counter"></div>
+  <div class="lb-thumbs" id="lb-thumbs"></div>
+</div>
+
+
 <header class="hdr">
   <a class="hdr-l" href="/">
     <div class="hdr-logo"><img src="../assets/STLhomebuyerjourneylogo.webp" alt="STL Home Journey"></div>
@@ -90,9 +136,10 @@ body{font-family:'Inter',-apple-system,sans-serif;background:#050505;color:rgba(
   <a class="hdr-cta" href="tel:3144351087">📞 Call George</a>
 </header>
 
-<div class="hero">
+<div class="hero" onclick="lbOpen(["../assets/listings/6766-lesli-mari/photo-01.webp","../assets/listings/6766-lesli-mari/photo-02.webp","../assets/listings/6766-lesli-mari/photo-03.webp","../assets/listings/6766-lesli-mari/photo-04.webp","../assets/listings/6766-lesli-mari/photo-05.webp","../assets/listings/6766-lesli-mari/photo-06.webp","../assets/listings/6766-lesli-mari/photo-07.webp","../assets/listings/6766-lesli-mari/photo-08.webp","../assets/listings/6766-lesli-mari/photo-09.webp"],0)">
   <img src="../assets/listings/6766-lesli-mari/photo-01.webp" alt="6766 Lesli Mari Court — St. Louis, Missouri 63033" loading="eager">
   <div class="hero-overlay"></div>
+  <div class="hero-expand">⤢ View All 23 Photos</div>
   <div class="hero-content">
     <div class="badge" style="background:rgba(255,255,255,.1);border:1px solid #5dcaa544;color:#5dcaa5;">
       <span class="badge-dot" style="background:#5dcaa5;"></span>Active
@@ -109,7 +156,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:#050505;color:rgba(
 </div>
 
 <div class="pgrid">
-  <div class="pgrid-item"><img src="../assets/listings/6766-lesli-mari/photo-02.webp" alt="6766 Lesli Mari Court photo 2" loading="eager"></div><div class="pgrid-item"><img src="../assets/listings/6766-lesli-mari/photo-03.webp" alt="6766 Lesli Mari Court photo 3" loading="lazy"></div><div class="pgrid-item"><img src="../assets/listings/6766-lesli-mari/photo-04.webp" alt="6766 Lesli Mari Court photo 4" loading="lazy"></div><div class="pgrid-item"><img src="../assets/listings/6766-lesli-mari/photo-05.webp" alt="6766 Lesli Mari Court photo 5" loading="lazy"></div><div class="pgrid-item"><img src="../assets/listings/6766-lesli-mari/photo-06.webp" alt="6766 Lesli Mari Court photo 6" loading="lazy"><div class="photo-ct">+23 Photos</div></div>
+  <div class="pgrid-item" onclick="lbOpen(["../assets/listings/6766-lesli-mari/photo-01.webp","../assets/listings/6766-lesli-mari/photo-02.webp","../assets/listings/6766-lesli-mari/photo-03.webp","../assets/listings/6766-lesli-mari/photo-04.webp","../assets/listings/6766-lesli-mari/photo-05.webp","../assets/listings/6766-lesli-mari/photo-06.webp","../assets/listings/6766-lesli-mari/photo-07.webp","../assets/listings/6766-lesli-mari/photo-08.webp","../assets/listings/6766-lesli-mari/photo-09.webp"],0)"><img src="../assets/listings/6766-lesli-mari/photo-01.webp" alt="6766 Lesli Mari Court photo 1" loading="eager"></div><div class="pgrid-item" onclick="lbOpen(["../assets/listings/6766-lesli-mari/photo-01.webp","../assets/listings/6766-lesli-mari/photo-02.webp","../assets/listings/6766-lesli-mari/photo-03.webp","../assets/listings/6766-lesli-mari/photo-04.webp","../assets/listings/6766-lesli-mari/photo-05.webp","../assets/listings/6766-lesli-mari/photo-06.webp","../assets/listings/6766-lesli-mari/photo-07.webp","../assets/listings/6766-lesli-mari/photo-08.webp","../assets/listings/6766-lesli-mari/photo-09.webp"],1)"><img src="../assets/listings/6766-lesli-mari/photo-02.webp" alt="6766 Lesli Mari Court photo 2" loading="lazy"></div><div class="pgrid-item" onclick="lbOpen(["../assets/listings/6766-lesli-mari/photo-01.webp","../assets/listings/6766-lesli-mari/photo-02.webp","../assets/listings/6766-lesli-mari/photo-03.webp","../assets/listings/6766-lesli-mari/photo-04.webp","../assets/listings/6766-lesli-mari/photo-05.webp","../assets/listings/6766-lesli-mari/photo-06.webp","../assets/listings/6766-lesli-mari/photo-07.webp","../assets/listings/6766-lesli-mari/photo-08.webp","../assets/listings/6766-lesli-mari/photo-09.webp"],2)"><img src="../assets/listings/6766-lesli-mari/photo-03.webp" alt="6766 Lesli Mari Court photo 3" loading="lazy"></div><div class="pgrid-item" onclick="lbOpen(["../assets/listings/6766-lesli-mari/photo-01.webp","../assets/listings/6766-lesli-mari/photo-02.webp","../assets/listings/6766-lesli-mari/photo-03.webp","../assets/listings/6766-lesli-mari/photo-04.webp","../assets/listings/6766-lesli-mari/photo-05.webp","../assets/listings/6766-lesli-mari/photo-06.webp","../assets/listings/6766-lesli-mari/photo-07.webp","../assets/listings/6766-lesli-mari/photo-08.webp","../assets/listings/6766-lesli-mari/photo-09.webp"],3)"><img src="../assets/listings/6766-lesli-mari/photo-04.webp" alt="6766 Lesli Mari Court photo 4" loading="lazy"></div><div class="pgrid-item" onclick="lbOpen(["../assets/listings/6766-lesli-mari/photo-01.webp","../assets/listings/6766-lesli-mari/photo-02.webp","../assets/listings/6766-lesli-mari/photo-03.webp","../assets/listings/6766-lesli-mari/photo-04.webp","../assets/listings/6766-lesli-mari/photo-05.webp","../assets/listings/6766-lesli-mari/photo-06.webp","../assets/listings/6766-lesli-mari/photo-07.webp","../assets/listings/6766-lesli-mari/photo-08.webp","../assets/listings/6766-lesli-mari/photo-09.webp"],4)"><img src="../assets/listings/6766-lesli-mari/photo-05.webp" alt="6766 Lesli Mari Court photo 5" loading="lazy"><div class="photo-ct">+23 Photos</div></div>
 </div>
 
 <div class="main">
@@ -129,23 +176,40 @@ body{font-family:'Inter',-apple-system,sans-serif;background:#050505;color:rgba(
     <div class="sec">
       <div class="sec-lbl">About This Home</div>
       <div class="sec-ttl">3-Bedroom Home in St. Louis</div>
-      <div class="sec-body">Cul-de-sac home on Lesli Mari Court in the 63033 corridor — a quieter, less-trafficked setting than typical neighborhood streets. Cul-de-sac lots in this price range attract families and buyers who prioritize lower through-traffic and slightly more private settings. Strong position for buyers evaluating the Florissant/Black Jack corridor.</div>
+      <div class="sec-body">Cul-de-sac home on Lesli Mari Court in the 63033 corridor — a quieter, less-trafficked setting than typical neighborhood streets. Cul-de-sac lots at this price range attract families and buyers who prioritize lower through-traffic. Strong position for buyers evaluating the Florissant/Black Jack corridor.</div>
       <div class="feats"><div class="feat">Cul-de-Sac Location</div><div class="feat">Garage</div><div class="feat">63033 ZIP</div><div class="feat">Ferguson-Florissant Schools</div><div class="feat">Quiet Setting</div><div class="feat">Established Area</div></div>
     </div>
 
     <div class="sec">
-      <div class="sec-lbl">Florissant 63033 Market Context</div>
+      <div class="sec-lbl">Florissant Market Context</div>
       <div class="sec-ttl">What Buyers Need to Know</div>
       <div class="mkt">
         <div class="ms"><div class="ms-n">$214K</div><div class="ms-l">Median Price</div></div>
         <div class="ms"><div class="ms-n">38 days</div><div class="ms-l">Avg Days on Mkt</div></div>
         <div class="ms"><div class="ms-n">198</div><div class="ms-l">Active Listings</div></div>
       </div>
-      <div class="sec-body">Florissant's 63033 ZIP is one of north St. Louis County's most active corridors. 58 homes sold last month. The market moves — well-priced homes at this bedroom count and square footage typically generate multiple inquiries within the first week. If this home fits your criteria, moving quickly matters.</div>
+      <div class="sec-body">Florissant's 63033 ZIP is one of north St. Louis County's most active corridors. 58 homes sold last month. Well-priced homes at this bedroom count typically generate multiple inquiries within the first week. If this home fits your criteria, moving quickly matters.</div>
+    </div>
+
+    
+    <div class="ctx-section">
+      <div class="ctx-label">Before You Make an Offer</div>
+      <div class="ctx-title">Resources for Buyers Looking at This Home</div>
+      <div class="ctx-grid">
+        <div class="ctx-col">
+          <div class="ctx-col-lbl">Affordability Calculators</div>
+          <div class="ctx-links"><a href="../articles/how-much-house-afford-making-50k-st-louis.html" class="ctx-link">Buying on a $50K Income</a><a href="../articles/how-much-house-afford-making-60k-st-louis.html" class="ctx-link">Buying on a $60K Income</a><a href="../articles/how-much-house-afford-making-70k-st-louis.html" class="ctx-link">Buying on a $70K Income</a><a href="../articles/how-much-house-afford-making-80k-st-louis.html" class="ctx-link">Buying on a $80K Income</a></div>
+        </div>
+        <div class="ctx-col">
+          <div class="ctx-col-lbl">Buyer Education</div>
+          <div class="ctx-links"><a href="../articles/average-price-move-in-ready-home-st-louis.html" class="ctx-link">Move-In Ready Price Guide</a><a href="../articles/home-inspection-st-louis.html" class="ctx-link">Home Inspection Guide</a><a href="../articles/what-buyers-regret-cheap-house-st-louis.html" class="ctx-link">What Buyers Regret</a><a href="../articles/renting-vs-buying-stl.html" class="ctx-link">Renting vs Buying in STL</a><a href="../articles/buyer-closing-costs-st-louis.html" class="ctx-link">Closing Costs Explained</a><a href="../articles/how-much-down-payment-st-louis.html" class="ctx-link">How Much Down Payment?</a><a href="../articles/va-home-loan-st-louis-what-kills-deals.html" class="ctx-link">VA Loan Guide</a><a href="../articles/first-time-buyer-programs-stl.html" class="ctx-link">First-Time Buyer Programs</a><a href="../articles/mortgage-pre-approval-st-louis.html" class="ctx-link">Get Pre-Approved</a><a href="../articles/fixer-upper-vs-move-in-ready-st-louis.html" class="ctx-link">Fixer Upper vs Move-In Ready</a></div>
+        </div>
+      </div>
+      <div style="margin-top:16px;"><a href="../zip-codes/63033-florissant-mo.html" class="ctx-link-primary">📍 63033 ZIP Code Guide →</a></div>
     </div>
 
     <div class="disc">
-      <strong style="color:rgba(255,255,255,.5);">Co-Marketing Disclosure:</strong> This property is listed with Joe Archambault, Broker-Agent. George Kindler of The Closing Pros LLC is an authorized co-marketing agent. George represents buyers — not the seller — in any transaction involving this property. MLS# Contact Agent. All information deemed reliable but not guaranteed. Verify all details independently before making any offer.
+      <strong style="color:rgba(255,255,255,.5);">Co-Marketing Disclosure:</strong> This property is listed with Joe Archambault, Broker-Agent. George Kindler of The Closing Pros LLC is an authorized co-marketing agent. George represents buyers — not the seller — in any transaction. MLS# Contact Agent. All information deemed reliable but not guaranteed. Verify all details independently before making any offer.
     </div>
   </div>
 
@@ -166,25 +230,55 @@ body{font-family:'Inter',-apple-system,sans-serif;background:#050505;color:rgba(
     <div class="more-list">
       <div class="more-lbl">More Listings</div>
       <a class="more-item" href="/listings/12053-la-padera-lane-florissant-mo">
-          <div><div class="more-addr">12053 La Padera Lane</div><div class="more-det">3 BD · 2 BA · Florissant</div></div>
-          <div class="more-status" style="color:#5dcaa5">Active</div>
-        </a><a class="more-item" href="/listings/3410-brunswick-drive-florissant-mo">
-          <div><div class="more-addr">3410 Brunswick Drive</div><div class="more-det">4 BD · 2 BA · Florissant</div></div>
-          <div class="more-status" style="color:#ffcc4d">Coming Soon</div>
-        </a><a class="more-item" href="/listings/12258-trailoaks-court-black-jack-mo">
-          <div><div class="more-addr">12258 Trailoaks Court</div><div class="more-det">3 BD · 2 BA · Black Jack</div></div>
-          <div class="more-status" style="color:#5dcaa5">Active</div>
-        </a><a class="more-item" href="/listings/101-florwood-court-st-louis-mo">
-          <div><div class="more-addr">101 Florwood Court</div><div class="more-det">3 BD · 2 BA · St. Louis</div></div>
-          <div class="more-status" style="color:#5dcaa5">Active</div>
-        </a>
+      <div><div class="more-addr">12053 La Padera Lane</div><div class="more-det">3 BD · 2 BA</div></div>
+      <div class="more-status" style="color:#5dcaa5">Active</div>
+    </a><a class="more-item" href="/listings/3410-brunswick-drive-florissant-mo">
+      <div><div class="more-addr">3410 Brunswick Drive</div><div class="more-det">4 BD · 2 BA</div></div>
+      <div class="more-status" style="color:#ffcc4d">Coming Soon</div>
+    </a><a class="more-item" href="/listings/12258-trailoaks-court-black-jack-mo">
+      <div><div class="more-addr">12258 Trailoaks Court</div><div class="more-det">3 BD · 2 BA</div></div>
+      <div class="more-status" style="color:#5dcaa5">Active</div>
+    </a><a class="more-item" href="/listings/101-florwood-court-st-louis-mo">
+      <div><div class="more-addr">101 Florwood Court</div><div class="more-det">3 BD · 2 BA</div></div>
+      <div class="more-status" style="color:#5dcaa5">Active</div>
+    </a>
     </div>
   </div>
 </div>
 
 <footer class="footer">
   The Closing Pros LLC · George Kindler · Licensed Missouri Real Estate Agent · 314.435.1087<br>
-  stlhomejourney.com · Co-marketing partner for Joe Archambault, Broker-Agent · MLS listings for informational purposes only.
+  stlhomejourney.com · Co-marketing partner for Joe Archambault, Broker-Agent
 </footer>
+
+<script>
+var LB_IMGS=[], LB_IDX=0;
+function lbOpen(imgs,idx){
+  LB_IMGS=imgs; LB_IDX=idx;
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+  lbShow();
+  var t=document.getElementById('lb-thumbs');
+  t.innerHTML=imgs.map(function(s,i){return '<img class="lb-thumb'+(i===idx?' active':'')+'" src="'+s+'" onclick="lbGo('+i+')">';}).join('');
+}
+function lbClose(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
+function lbShow(){
+  document.getElementById('lb-img').src=LB_IMGS[LB_IDX];
+  document.getElementById('lb-counter').textContent=(LB_IDX+1)+' / '+LB_IMGS.length;
+  document.querySelectorAll('.lb-thumb').forEach(function(t,i){t.classList.toggle('active',i===LB_IDX);});
+  // scroll active thumb into view
+  var active=document.querySelectorAll('.lb-thumb')[LB_IDX];
+  if(active) active.scrollIntoView({block:'nearest',inline:'center'});
+}
+function lbNav(d){LB_IDX=(LB_IDX+d+LB_IMGS.length)%LB_IMGS.length;lbShow();}
+function lbGo(i){LB_IDX=i;lbShow();}
+document.addEventListener('keydown',function(e){
+  if(!document.getElementById('lb').classList.contains('open')) return;
+  if(e.key==='ArrowRight') lbNav(1);
+  if(e.key==='ArrowLeft') lbNav(-1);
+  if(e.key==='Escape') lbClose();
+});
+document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)lbClose();});
+</script>
 </body>
 </html>
