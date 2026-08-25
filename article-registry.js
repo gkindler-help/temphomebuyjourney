@@ -228,16 +228,16 @@ window.ARTICLE_REGISTRY = {
       published: true
     },
     {
-      slug: "st-louis-market-update-august-2026",
-      title: "St. Louis Housing Market Update: August 2026",
-      shortTitle: "STL Market Update Aug 2026",
-      description: "Where St. Louis housing stands in August 2026 -- rates, prices, and inventory, and what they mean for buyers.",
-      pillLabel: "Market Update Aug 2026",
+      slug: "multiple-offers-without-overpaying-st-louis",
+      title: "Multiple Offers in a Slower Market: The Weird St. Louis Reality of 2026",
+      shortTitle: "Multiple Offers Without Overpaying",
+      description: "Inventory is up but the best St. Louis homes still draw bidding wars. How to win a multiple-offer situation in 2026 without overpaying.",
+      pillLabel: "Winning Multiple Offers",
       audience: "buyer",
       series: "market",
       isHub: false,
       chapters: [1],
-      tags: ["market-update", "mortgage-rates", "inventory", "buyer", "2026"],
+      tags: ["multiple-offers", "bidding-war", "negotiation", "market-update", "buyer", "2026"],
       toolLink: null,
       published: true
     },
