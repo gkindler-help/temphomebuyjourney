@@ -7,176 +7,398 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/about.html</loc>
+    <loc>https://stlhomejourney.com/about</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/afford.html</loc>
+    <loc>https://stlhomejourney.com/afford</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/compare</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/complete-guide</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/fails</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/fixer-upper-vs-move-in-stl</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/fsbo-st-louis</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.82</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/home-cost</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhood-matcher</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/prep</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/real-estate-photography-st-louis</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/school-districts</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/south-city-st-louis</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/south-county-st-louis</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/stl-home-buying-power-calculator</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/stl-quiz</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://stlhomejourney.com/articles/</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/complete-guide.html</loc>
-    <lastmod>2026-05-28</lastmod>
+    <loc>https://stlhomejourney.com/articles/average-price-move-in-ready-home-st-louis</loc>
+    <lastmod>2026-05-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/fails.html</loc>
+    <loc>https://stlhomejourney.com/articles/average-price-reduction-after-inspection-st-louis</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/fixer-upper-vs-move-in-stl.html</loc>
+    <loc>https://stlhomejourney.com/articles/best-st-louis-neighborhoods-for-buyers</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/buyer-closing-costs-st-louis</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/buying-a-home-in-oakville-mo</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/can-you-buy-fixer-upper-va-loan-st-louis</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/conventional-vs-fha-loan-st-louis</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/cost-to-sell-home-stl</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/credit-score-buy-home-st-louis</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/do-i-need-a-buyers-agent-stl</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/federal-pacific-panel-va-loan-st-louis</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/first-time-buyer-programs-stl</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/fixer-upper-vs-move-in-ready-st-louis</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/fixer-upper-vs-move-in.html</loc>
-    <lastmod>2026-05-28</lastmod>
+    <loc>https://stlhomejourney.com/articles/flat-fee-mls-st-louis</loc>
+    <lastmod>2026-06-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhood-matcher.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/school-districts.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/school-districts/</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/sellers/</loc>
+    <loc>https://stlhomejourney.com/articles/home-inspection-st-louis</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/south-city-st-louis.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/south-county-st-louis.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/stl-home-buying-power-calculator.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/stl-quiz.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/tools/cash-offer-decoder.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/zip-codes/</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/average-price-reduction-after-inspection-st-louis.html</loc>
+    <loc>https://stlhomejourney.com/articles/how-cash-buyers-calculate-offers-stl</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/best-st-louis-neighborhoods-for-buyers.html</loc>
+    <loc>https://stlhomejourney.com/articles/how-much-down-payment-st-louis</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/buyer-closing-costs-st-louis.html</loc>
+    <loc>https://stlhomejourney.com/articles/how-much-house-afford-making-100k-st-louis</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/buying-a-home-in-oakville-mo.html</loc>
+    <loc>https://stlhomejourney.com/articles/how-much-house-afford-making-120k-st-louis</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/can-you-buy-fixer-upper-va-loan-st-louis.html</loc>
+    <loc>https://stlhomejourney.com/articles/how-much-house-afford-making-150k-st-louis</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/conventional-vs-fha-loan-st-louis.html</loc>
+    <loc>https://stlhomejourney.com/articles/how-much-house-afford-making-200k-st-louis</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/cost-to-sell-home-stl.html</loc>
+    <loc>https://stlhomejourney.com/articles/how-much-house-afford-making-50k-st-louis</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/credit-score-buy-home-st-louis.html</loc>
+    <loc>https://stlhomejourney.com/articles/how-much-house-afford-making-60k-st-louis</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/do-i-need-a-buyers-agent-stl.html</loc>
+    <loc>https://stlhomejourney.com/articles/how-much-house-afford-making-70k-st-louis</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/federal-pacific-panel-va-loan-st-louis.html</loc>
+    <loc>https://stlhomejourney.com/articles/how-much-house-afford-making-80k-st-louis</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/first-time-buyer-programs-stl.html</loc>
+    <loc>https://stlhomejourney.com/articles/how-much-income-to-buy-home-stl</loc>
     <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/how-to-interview-buyers-agent-stl</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/how-to-screen-stl-homes-before-va-offer</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/how-to-use-zillow-without-getting-used</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/lindbergh-vs-mehlville-school-district-stl</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/mehlville-vs-oakville-vs-concord-stl</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/mortgage-pre-approval-st-louis</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/most-affordable-zip-codes-stl-2026</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/nar-settlement-buyer-representation-stl</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/red-flags-bad-buyer-agent-stl</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/renting-vs-buying-stl</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/repair-costs-affect-offer-price-stl</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/selling-home-south-st-louis-county</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/should-you-accept-cash-offer-stl</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/south-county-stl-neighborhood-guide</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/south-county-stl-neighborhoods-by-price</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/st-louis-buyers-bigger-problem-than-rates</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.82</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/st-louis-home-price-reduction-negotiation</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/stl-affordability-by-zip-code</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/stl-home-repair-cost-guide</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/truth-about-zillow-stl</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/va-appraisal-failed-st-louis-what-happens-next</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/va-home-loan-st-louis-what-kills-deals</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/west-county-st-louis-neighborhoods</loc>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -187,1045 +409,913 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/average-price-move-in-ready-home-st-louis</loc>
-    <lastmod>2026-05-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/fixer-upper-vs-move-in-ready-st-louis.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/home-inspection-st-louis.html</loc>
+    <loc>https://stlhomejourney.com/articles/what-buyer-agent-actually-does-stl</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/how-cash-buyers-calculate-offers-stl.html</loc>
+    <loc>https://stlhomejourney.com/articles/what-buyers-regret-cheap-house-st-louis</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/what-happens-when-you-click-zillow</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/how-much-down-payment-st-louis.html</loc>
+    <loc>https://stlhomejourney.com/articles/what-not-to-repair-before-selling-stl-pricing-strategy</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/how-much-house-afford-making-100k-st-louis.html</loc>
+    <loc>https://stlhomejourney.com/articles/what-to-look-for-buying-house-stl</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/how-much-house-afford-making-120k-st-louis.html</loc>
+    <loc>https://stlhomejourney.com/articles/what-will-i-net-selling-stl</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/how-much-house-afford-making-150k-st-louis.html</loc>
+    <loc>https://stlhomejourney.com/articles/what-you-lose-with-cash-offer-stl</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/how-much-house-afford-making-200k-st-louis.html</loc>
+    <loc>https://stlhomejourney.com/articles/where-to-live-in-st-louis</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/who-pays-buyer-agent-commission-stl</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/how-much-house-afford-making-50k-st-louis.html</loc>
+    <loc>https://stlhomejourney.com/articles/zillow-pay-to-play-system</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/how-much-house-afford-making-60k-st-louis.html</loc>
+    <loc>https://stlhomejourney.com/articles/zillow-zestimate-accurate-stl</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/how-much-house-afford-making-70k-st-louis.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://stlhomejourney.com/listings/</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/how-much-house-afford-making-80k-st-louis.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://stlhomejourney.com/listings/101-florwood-court-st-louis-mo</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/how-much-income-to-buy-home-stl.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://stlhomejourney.com/listings/12053-la-padera-lane-florissant-mo</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/how-to-interview-buyers-agent-stl.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://stlhomejourney.com/listings/12258-trailoaks-court-black-jack-mo</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/how-to-screen-stl-homes-before-va-offer.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://stlhomejourney.com/listings/13218-wintergreen-estates-drive-fenton-mo</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/how-to-use-zillow-without-getting-used.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://stlhomejourney.com/listings/3410-brunswick-drive-florissant-mo</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/lindbergh-vs-mehlville-school-district-stl.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://stlhomejourney.com/listings/4347-varano-drive-florissant-mo</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/mehlville-vs-oakville-vs-concord-stl.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://stlhomejourney.com/listings/6766-lesli-mari-court-florissant-mo</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/mortgage-pre-approval-st-louis.html</loc>
-    <lastmod>2026-05-28</lastmod>
+    <loc>https://stlhomejourney.com/neighborhoods/</loc>
+    <lastmod>2026-06-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/most-affordable-zip-codes-stl-2026.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/nar-settlement-buyer-representation-stl.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/red-flags-bad-buyer-agent-stl.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/renting-vs-buying-stl.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/repair-costs-affect-offer-price-stl.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/selling-home-south-st-louis-county.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/should-you-accept-cash-offer-stl.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/south-county-stl-neighborhood-guide.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/south-county-stl-neighborhoods-by-price.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/st-louis-home-price-reduction-negotiation.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/stl-affordability-by-zip-code.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/stl-home-repair-cost-guide.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/truth-about-zillow-stl.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/va-appraisal-failed-st-louis-what-happens-next.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/va-home-loan-st-louis-what-kills-deals.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/what-buyer-agent-actually-does-stl.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/what-happens-when-you-click-zillow.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/what-not-to-repair-before-selling-stl-pricing-strategy.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/what-to-look-for-buying-house-stl.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/what-will-i-net-selling-stl.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/what-you-lose-with-cash-offer-stl.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/who-pays-buyer-agent-commission-stl.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/zillow-pay-to-play-system.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/zillow-zestimate-accurate-stl.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/sellers/cash-offers-st-louis.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/affton.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/affton</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/arnold.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/arnold</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/ballwin.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/ballwin</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/barnhart.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/barnhart</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/bel-nor.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/bel-nor</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/bel-ridge.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/bel-ridge</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/bellefontaine-neighbors.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/bellefontaine-neighbors</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/bellerive-acres.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/bellerive-acres</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/benton-park.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/benton-park</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/berkeley.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/berkeley</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/beverly-hills.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/beverly-hills</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/bevo.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/bevo</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/black-jack.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/black-jack</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/boulevard-heights.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/boulevard-heights</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/breckenridge-hills.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/breckenridge-hills</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/bridgeton.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/bridgeton</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/calverton-park.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/calverton-park</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/carondelet.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/carondelet</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/castle-point.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/castle-point</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/cedar-hill.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/cedar-hill</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/central-west-end.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/central-west-end</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/champ.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/champ</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/charlack.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/charlack</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/chesterfield.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/chesterfield</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/clayton.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/clayton</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/concord.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/concord</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/cool-valley.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/cool-valley</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/cottleville.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/cottleville</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/country-club-hills.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/country-club-hills</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/crestwood.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/crestwood</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/crystal-city.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/crystal-city</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/dardenne-prairie.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/de-soto.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/dellwood.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/dogtown.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/dutchtown.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/edmundson.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/ferguson.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/festus.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/flordell-hills.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/florissant.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/forest-park-southeast.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/fox-park.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/glen-echo-park.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/gravois-park.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/green-park.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/greendale.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/hanley-hills.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/hazelwood.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/high-ridge.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/hillsboro.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/hillsdale.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/house-springs.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/imperial.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/jennings.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/josephville.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/kirkwood.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/crystal-lake-park</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/lafayette-square.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/dardenne-prairie</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/lake-st-louis.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/de-soto</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/lemay.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/dellwood</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/lindenwood-park.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/dogtown</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/maplewood.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/dutchtown</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/mckinley-heights.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/edmundson</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/mehlville.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/ferguson</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/moline-acres.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/festus</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/mt-pleasant.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/flordell-hills</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/normandy-park.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/florissant</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/normandy.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/forest-park-southeast</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/northampton.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/fox-park</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/northwoods.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/glen-echo-park</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/norwood-court.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/gravois-park</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/o-fallon.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/green-park</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/oakville.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/greendale</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/hanley-hills</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/hazelwood</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/high-ridge</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/hillsboro</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/hillsdale</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/house-springs</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/imperial</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/jennings</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/josephville</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/kirkwood</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/olympian-village.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/lafayette-square</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/pagedale.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/lake-st-louis</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/parkdale.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/lemay</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/pasadena-hills.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/lindenwood-park</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/pasadena-park.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/maplewood</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/patch.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/mckinley-heights</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/peaceful-village.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/mehlville</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/pine-lawn.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/moline-acres</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/princeton-heights.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/mt-pleasant</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/riverview.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/normandy</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/sappington.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/normandy-park</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/scotsdale.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/northampton</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/shaw.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/northwoods</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/soulard.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/norwood-court</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/southampton.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/o-fallon</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/southwest-garden.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/oakville</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/olympian-village</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/spanish-lake.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/pagedale</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/st-ann.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/parkdale</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/st-charles.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/pasadena-hills</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/st-john.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/pasadena-park</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/st-louis-hills.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/patch</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/st-paul.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/peaceful-village</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/st-peters.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/pevely</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/pine-lawn</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/sunset-hills.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/princeton-heights</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/sycamore-hills.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/riverview</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/the-hill.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/sappington</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/tower-grove-east.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/scotsdale</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/tower-grove-south.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/shaw</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/university-city.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/soulard</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/uplands-park.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/southampton</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/velda-city.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/southwest-garden</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/velda-village-hills.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/spanish-lake</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/vinita-park.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/st-ann</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/vinita-terrace.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/st-charles</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/webster-groves.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/st-john</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/weldon-spring-heights.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/st-louis-hills</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/weldon-spring.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/st-paul</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/wellston.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/st-peters</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/wentzville.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/sunset-hills</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/west-alton.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/sycamore-hills</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/woodson-terrace.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/the-hill</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/zip-codes/63123.html</loc>
+    <loc>https://stlhomejourney.com/neighborhoods/tower-grove-east</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/tower-grove-south</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/university-city</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/uplands-park</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/velda-city</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/velda-village-hills</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/vinita-park</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/vinita-terrace</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/webster-groves</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/weldon-spring</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/weldon-spring-heights</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/wellston</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/wentzville</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/west-alton</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/woodson-terrace</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/school-districts/affton-school-district</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/zip-codes/63125.html</loc>
+    <loc>https://stlhomejourney.com/school-districts/clayton-school-district</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/zip-codes/63126.html</loc>
+    <loc>https://stlhomejourney.com/school-districts/kirkwood-school-district</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/zip-codes/63127.html</loc>
+    <loc>https://stlhomejourney.com/school-districts/ladue-school-district</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/zip-codes/63128.html</loc>
+    <loc>https://stlhomejourney.com/school-districts/lindbergh-schools</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/zip-codes/63129.html</loc>
+    <loc>https://stlhomejourney.com/school-districts/mehlville-school-district</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/school-districts/affton-school-district.html</loc>
+    <loc>https://stlhomejourney.com/school-districts/parkway-school-district</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/school-districts/clayton-school-district.html</loc>
+    <loc>https://stlhomejourney.com/school-districts/rockwood-school-district</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/school-districts/kirkwood-school-district.html</loc>
+    <loc>https://stlhomejourney.com/school-districts/webster-groves-school-district</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/school-districts/ladue-school-district.html</loc>
+    <loc>https://stlhomejourney.com/tools/cash-offer-decoder</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/zip-codes/63123</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/school-districts/lindbergh-schools.html</loc>
+    <loc>https://stlhomejourney.com/zip-codes/63125</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/school-districts/mehlville-school-district.html</loc>
+    <loc>https://stlhomejourney.com/zip-codes/63126</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/school-districts/parkway-school-district.html</loc>
+    <loc>https://stlhomejourney.com/zip-codes/63127</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/school-districts/rockwood-school-district.html</loc>
+    <loc>https://stlhomejourney.com/zip-codes/63128</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/school-districts/webster-groves-school-district.html</loc>
+    <loc>https://stlhomejourney.com/zip-codes/63129</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1241,6 +1331,12 @@
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/sellers/cash-offers-st-louis/</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://stlhomejourney.com/sellers/how-investors-calculate-cash-offers/</loc>
@@ -1313,119 +1409,5 @@
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/crystal-lake-park.html</loc>
-    <lastmod>2026-05-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/where-to-live-in-st-louis.html</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/west-county-st-louis-neighborhoods.html</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/what-buyers-regret-cheap-house-st-louis</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/pevely</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/listings/</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/listings/4347-varano-drive-florissant-mo</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/listings/3410-brunswick-drive-florissant-mo</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/listings/12053-la-padera-lane-florissant-mo</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/listings/6766-lesli-mari-court-florissant-mo</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/listings/101-florwood-court-st-louis-mo</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/listings/12258-trailoaks-court-black-jack-mo</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/st-louis-buyers-bigger-problem-than-rates</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.82</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/fsbo-st-louis</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.82</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/real-estate-photography-st-louis</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/articles/flat-fee-mls-st-louis</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/listings/13218-wintergreen-estates-drive-fenton-mo</loc>
-    <lastmod>2026-07-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
   </url>
 </urlset>
