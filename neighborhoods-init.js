@@ -130,6 +130,18 @@
     'prep.html':      'prep'
   };
 
+  /* Normalize an href to its bare tool slug so the map matches regardless
+     of form: "fails.html", "/fails", "../fails", "/fails?x=1#y" all -> "fails.html" */
+  function normalizeToolHref(href) {
+    var s = String(href).split('#')[0].split('?')[0];
+    s = s.replace(/^https?:\/\/[^/]+/, '');   // strip origin
+    s = s.replace(/^(\.\.\/)+/, '');          // strip ../ prefixes
+    s = s.replace(/^\.\//, '').replace(/^\//, ''); // strip ./ and leading /
+    if (!s) return '';
+    if (!/\.html$/.test(s)) s += '.html';
+    return s;
+  }
+
   /* ============================================================
      GEOJSON — embedded zip boundaries (79 zips, STL metro)
      Extracted from afford.html / heatmap tool.
@@ -340,7 +352,7 @@
     var anchors = document.querySelectorAll('a[href]');
     Array.prototype.forEach.call(anchors, function (a) {
       var href = a.getAttribute('href') || '';
-      var toolId = TOOL_MAP[href];
+      var toolId = TOOL_MAP[href] || TOOL_MAP[normalizeToolHref(href)];
       if (!toolId) return;
       a.addEventListener('click', function (e) {
         e.preventDefault();
