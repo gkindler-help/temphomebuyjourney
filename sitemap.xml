@@ -73,6 +73,12 @@
     <priority>0.80</priority>
   </url>
   <url>
+    <loc>https://stlhomejourney.com/school-district-map</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://stlhomejourney.com/school-districts</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
