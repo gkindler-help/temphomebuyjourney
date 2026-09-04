@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" class="district-page">
+<head>
+  <meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="/assets/favicon-512.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ferguson-Florissant School District Buyer Guide</title>
+  <meta name="description" content="Buying in Ferguson-Florissant? FFSD high schools, boundaries, current full accreditation, STEAM programs, and homes across North St. Louis County.">
+  <link rel="canonical" href="https://stlhomejourney.com/school-districts/ferguson-florissant-school-district">
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    /* ── District page local styles ── */
+    :root {
+      --bg: #050505;
+      --gold: #FFCC4D;
+      --gold-dim: rgba(255,204,77,0.12);
+      --gold-border: rgba(255,204,77,0.25);
+      --text: #E8E4DC;
+      --text-muted: #8C8880;
+      --surface: #0F0F0F;
+      --surface-2: #161616;
+      --radius: 8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      height: auto !important;
+      min-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto !important;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      height: auto !important;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto !important;
+      overscroll-behavior-y: auto;
+      touch-action: auto;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb {
+      padding: 18px 24px 0;
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .breadcrumb a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb span { margin: 0 6px; }
+
+    /* ── Hero ── */
+    .district-hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 40px;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .tier-elite  { background: rgba(255,204,77,.18); color: var(--gold); border: 1px solid rgba(255,204,77,.35); }
+    .tier-strong { background: rgba(120,200,120,.15); color: #7EC87E; border: 1px solid rgba(120,200,120,.3); }
+    .tier-value  { background: rgba(120,160,220,.15); color: #88B0E0; border: 1px solid rgba(120,160,220,.3); }
+    .price-range {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: .02em;
+    }
+    .price-range strong { color: var(--text); }
+
+    .district-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #fff;
+      letter-spacing: -.01em;
+    }
+    .hero-rule {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      margin-top: 20px;
+      border-radius: 2px;
+    }
+
+    /* ── Content body ── */
+    .district-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .content-section {
+      padding: 44px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .content-section:last-of-type { border-bottom: none; }
+
+    .content-section h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 18px;
+      line-height: 1.25;
+    }
+    .content-section h2 .section-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .content-section p {
+      color: #C8C4BC;
+      line-height: 1.8;
+    }
+
+    /* ── George field callout ── */
+    .george-callout {
+      background: var(--surface-2);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 24px 28px;
+      margin-top: 0;
+    }
+    .george-callout .george-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .george-callout .george-label svg {
+      width: 16px; height: 16px; flex-shrink: 0;
+    }
+    .george-callout p {
+      font-size: 15px;
+      color: #C8C4BC;
+      line-height: 1.8;
+    }
+
+    /* ── Neighborhood pills ── */
+    .neighborhood-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .nbhd-pill {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background .2s, border-color .2s;
+    }
+    .nbhd-pill:hover {
+      background: rgba(255,204,77,.22);
+      border-color: rgba(255,204,77,.5);
+    }
+
+    /* ── CTA block ── */
+    .cta-block {
+      background: var(--surface);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 44px 40px;
+      text-align: center;
+      margin-top: 56px;
+    }
+    .cta-block h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .cta-block p {
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 28px;
+      font-size: 15px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: #050505;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: .01em;
+      transition: opacity .2s, transform .15s;
+    }
+    .cta-btn:hover { opacity: .88; transform: translateY(-1px); }
+    .cta-sub {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color .2s;
+      margin-top: 40px;
+    }
+    .back-link:hover { color: var(--gold); }
+
+    /* ── Compliance footer ── */
+    .compliance-footer {
+      background: var(--surface);
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 20px 24px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .compliance-footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .district-hero, .district-body { padding-left: 16px; padding-right: 16px; }
+      .cta-block { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Ferguson-Florissant School District Buyer Guide","description":"FFSD high schools, boundaries, current full accreditation, STEAM programs, and homes across North St. Louis County.","url":"https://stlhomejourney.com/school-districts/ferguson-florissant-school-district","author":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@type":"Organization","name":"STL Home Journey","url":"https://stlhomejourney.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://stlhomejourney.com/school-districts/ferguson-florissant-school-district"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"STL Home Journey","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"School Districts","item":"https://stlhomejourney.com/school-districts"},{"@type":"ListItem","position":3,"name":"Ferguson-Florissant School District","item":"https://stlhomejourney.com/school-districts/ferguson-florissant-school-district"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many high schools does Ferguson-Florissant have?","acceptedAnswer":{"@type":"Answer","text":"Ferguson-Florissant has multiple high-school options, including McCluer High, McCluer North High and McCluer South-Berkeley / STEAM Academy. Because FFSD is a multi-high-school district, verify the exact school assignment for the property you're considering through the district's official locator."}},{"@type":"Question","name":"Is Ferguson-Florissant School District accredited?","acceptedAnswer":{"@type":"Answer","text":"Yes. Ferguson-Florissant School District is currently fully accredited by Missouri DESE. The district previously spent many years under provisional accreditation, so buyers should be careful not to rely on older sources that still describe FFSD as provisional."}},{"@type":"Question","name":"What cities are in Ferguson-Florissant School District?","acceptedAnswer":{"@type":"Answer","text":"FFSD serves all or portions of 11 municipalities in North St. Louis County, including Ferguson, Florissant, Berkeley, Cool Valley, Kinloch and parts of Hazelwood. Municipal boundaries and district boundaries don't match perfectly, so verify the exact property address instead of assuming from the city name."}},{"@type":"Question","name":"Is Ferguson-Florissant a good district for buyers?","acceptedAnswer":{"@type":"Answer","text":"FFSD is currently fully accredited and offers multiple high schools, STEAM programming and gifted opportunities, with its STEAM Academy Middle School receiving Missouri Gold Star recognition in 2025. Whether the district is the right fit for a buyer depends on the specific schools, programs, housing options, budget and location that matter to that household. I recommend researching those details rather than making the decision from one district-wide rating."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/school-districts/ferguson-florissant-school-district","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
+<body class="district-page">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">STL Home Journey</a>
+    <span>›</span>
+    <a href="/school-districts">School Districts</a>
+    <span>›</span>
+    Ferguson-Florissant School District
+  </nav>
+
+  <header class="district-hero">
+    <div class="hero-meta">
+      <span class="price-range">North St. Louis County &middot; Fully accredited</span>
+    </div>
+    <h1>Ferguson-Florissant School District: What Home Buyers Need to Know</h1>
+    <div class="hero-rule" aria-hidden="true"></div>
+  </header>
+
+  <main class="district-body">
+
+<p>Ferguson-Florissant School District is a large North St. Louis County district, and for buyers the first thing to understand is that it covers a wide area with multiple high schools. FFSD serves roughly 9,300 to 10,000+ students across about 23 schools and includes all or part of 11 municipalities, including Ferguson, Florissant, Berkeley, Cool Valley, Kinloch and portions of Hazelwood.</p>
+<p>That size matters because "Ferguson-Florissant School District" does not automatically tell you which high school a particular home feeds into. The district includes McCluer High, McCluer North High and McCluer South-Berkeley / STEAM Academy, so buyers need to verify the exact address rather than assuming based on the city name in the listing.</p>
+<p>Another important point is accreditation. Ferguson-Florissant is fully accredited by Missouri DESE. That is current. The district spent many years under provisional accreditation, but that is no longer its current status. If you find older information online saying the district is provisional, you are looking at outdated information.</p>
+<p>For buyers, I think FFSD is best evaluated the same way I approach any large St. Louis County district: look at the actual schools tied to the address, current performance data, the programs that matter to your family and what the housing budget buys in the communities you're considering.</p>
+
+    <section class="content-section">
+      <h2><span class="section-label">Who it's for</span>Who is Ferguson-Florissant School District a good fit for?</h2>
+<p>FFSD can make sense for buyers who want to keep their search in North St. Louis County while comparing a broad range of housing options and school programs. I don't think school-district shopping works well when buyers start by chasing a reputation or a rating and then try to force everything else around it. A home purchase is more complicated than that. You still have to consider the house itself, the monthly payment, lot size, age and condition, commute, location and the specific school assignment.</p>
+<p>Because Ferguson-Florissant covers such a large footprint, you'll see different kinds of housing depending on where you're looking. A buyer searching in Ferguson may be comparing different homes and price points than someone looking in Florissant or Berkeley, even though the properties may all fall inside the same school district. That can be useful when you're trying to find the best overall fit for a budget rather than assuming you have to buy in one narrow pocket of the metro.</p>
+<p>FFSD also offers more than the traditional neighborhood-school structure. The district has STEAM-focused programs and a gifted program, and its STEAM Academy Middle School was named a 2025 Missouri Gold Star School. If one of those programs is especially important to your family, I would research the program directly rather than assuming district-wide availability means every student or every school has the same access.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">What you're paying for</span>What are you paying for when you buy in Ferguson-Florissant?</h2>
+<p>North County is one of the places where buyers can sometimes find different housing options at a given price point than they see in more expensive portions of St. Louis County. The useful comparison is not "which area is better?" It's "what does my budget buy here compared with somewhere else?" Take the houses themselves and put them side by side.</p>
+<p>How many bedrooms are you getting? Is there a basement? Garage? Larger lot? Does one house need substantial updating while another is already in the condition you want? What does the monthly payment look like after taxes and insurance? Those questions are more useful than looking at a district rating in isolation.</p>
+<p>If your budget buys a house in Ferguson-Florissant that works significantly better for your family than the alternatives you're seeing elsewhere, that's information worth considering. If another district has a specific school or academic program that matters enough to justify paying more for less house, that's also worth considering. I like to start with realistic buying power and work from there.</p>
+<p>Once we know roughly what payment you're comfortable with, we can look at the actual homes available across different school districts. That's when you can make a meaningful decision about whether additional square footage, location, a particular school assignment or another factor is worth more to you. Start by knowing your <a href="../stl-home-buying-power-calculator">realistic buying power</a>.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">High schools</span>The Ferguson-Florissant high schools</h2>
+<p>Ferguson-Florissant is a multi-high-school district, so buyers need to pay attention to the specific attendance assignment for each home.</p>
+<ul>
+<li><strong>McCluer High School</strong> is located on South New Florissant Road in Florissant and was established in 1957.</li>
+<li><strong>McCluer North High School</strong> is located on Waterford Drive in Florissant and was established in 1971.</li>
+<li><strong>McCluer South-Berkeley / STEAM Academy</strong> is located in Ferguson and opened in 2004.</li>
+</ul>
+<p>I would not try to determine which high school a property feeds into based only on whether the address says Ferguson, Florissant, Berkeley or Hazelwood. School district and attendance boundaries don't simply follow municipal boundaries in St. Louis County. Different sections of the same municipality may have different school assignments, and the boundaries themselves can change over time.</p>
+<p>If a particular FFSD high school matters to your purchase, use the district's official school or boundary locator for the exact property address. If the high-school assignment is important enough that it would change whether you buy the home, verify it directly with the district before making that decision. I also recommend treating the school information shown on Zillow, Realtor.com, the MLS or another real estate platform as a starting point rather than the final authority. Those tools are helpful for searching, but the district itself is the better source for confirming the current assignment.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Performance</span>How does Ferguson-Florissant School District perform?</h2>
+<p>Ferguson-Florissant School District is fully accredited by the Missouri Department of Elementary and Secondary Education (<a href="https://dese.mo.gov" target="_blank" rel="noopener">Missouri DESE</a>).</p>
+<p>That point deserves to be stated clearly because the district has a long accreditation history and old information still shows up in search results. FFSD previously spent roughly 15 years under provisional accreditation and has since regained full accreditation. For someone researching "is Ferguson-Florissant accredited?" the current answer is yes.</p>
+<p>FFSD's current 2024-25 DESE Annual Performance Report score: [VERIFY]. I would not use an older APR number in place of the current one. Missouri's accountability system changes over time, and old percentages can create a misleading comparison if you don't know which system produced them.</p>
+<p>There are also some current positive indicators worth looking at beyond accreditation. The district's STEAM Academy Middle School was named a 2025 Missouri Gold Star School, a state recognition aligned with the National Blue Ribbon Schools program and intended to recognize schools demonstrating high achievement or strong performance while serving disadvantaged students. FFSD also operates STEAM-focused programming and a gifted program. If those opportunities matter to your family, I would look at the current district information and program requirements rather than assuming they work the same way at every school.</p>
+<p><a href="https://www.greatschools.org" target="_blank" rel="noopener">GreatSchools</a> can be useful for reviewing individual school profiles and organizing information, but I wouldn't make a home-buying decision from the headline GreatSchools rating alone. Look at what goes into the rating and compare it with Missouri DESE's official data. That distinction matters because district-level performance and individual-school performance are not the same thing. In a district with around 23 schools, the overall district number can only tell you so much about the school tied to a particular home.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Communities</span>What communities are in Ferguson-Florissant School District?</h2>
+<p>FFSD covers all or portions of 11 municipalities across North St. Louis County. That includes Ferguson, Florissant, Berkeley, Cool Valley, Kinloch and portions of Hazelwood, along with additional communities within the district's broader footprint.</p>
+<p>Because the district stretches across multiple municipalities, the city listed in the property address is not enough to confirm the school district. This is a common issue throughout St. Louis County. Municipal boundaries, ZIP codes, mailing addresses and school-district boundaries are different systems, and they don't always line up neatly.</p>
+<p>A Florissant address, for example, should not automatically be assumed to fall inside Ferguson-Florissant. Portions of the Florissant area may be served by another district, including <a href="hazelwood-school-district">Hazelwood</a>. The same kind of boundary issue can occur around other municipalities at the district's edges.</p>
+<p>If you're specifically looking for homes in Ferguson-Florissant School District, I would verify each serious property individually. My basic process would be:</p>
+<ul>
+<li>Confirm that the property is actually inside Ferguson-Florissant School District.</li>
+<li>Use FFSD's official locator to verify the assigned schools for the exact address.</li>
+<li>Research the elementary, middle and high school individually.</li>
+<li>Review current Missouri DESE information for official district and school performance.</li>
+<li>Use GreatSchools as an additional research tool rather than the only source.</li>
+<li>Verify STEAM, gifted or other specific program requirements directly with the district if those programs matter to your decision.</li>
+</ul>
+<p>It's a little more work than simply reading the school name attached to a listing, but it's worth doing before you make a major purchase based on an assumption about the schools.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Honest take</span>My honest take on buying in Ferguson-Florissant School District</h2>
+<p>I think Ferguson-Florissant should be evaluated based on where it is today, not an outdated description of where it used to be. The district is currently fully accredited. It operates multiple high schools, offers STEAM and gifted programming, and had a middle school receive Missouri Gold Star recognition in 2025.</p>
+<p>Those are useful facts. They still don't mean I would tell every buyer that FFSD is the right district for them. I don't think that's how home buying should work.</p>
+<p>If you're seriously considering a house in the district, research the actual school assignments. Look at the current Missouri DESE information. Research the programs your children would realistically use. Then compare the home itself with the alternatives available within your budget. I'd also compare Ferguson-Florissant with adjacent North County districts such as <a href="hazelwood-school-district">Hazelwood</a> rather than assuming two homes a few miles apart offer the same school situation. One address may give you a different district, different high-school assignment, different house and different monthly payment than another property nearby.</p>
+<p>After 13 years in real estate and more than 250 transactions, I've found that buyers usually make better decisions when they stop looking for one perfect district and start comparing the actual tradeoffs in front of them. Ferguson-Florissant may make sense for your household, or another district may fit your priorities better. My goal is to give you enough accurate information to make that decision for yourself.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">FAQ</span>Ferguson-Florissant School District: common buyer questions</h2>
+<h3>How many high schools does Ferguson-Florissant have?</h3>
+<p>Ferguson-Florissant has multiple high-school options, including McCluer High, McCluer North High and McCluer South-Berkeley / STEAM Academy. Because FFSD is a multi-high-school district, verify the exact school assignment for the property you're considering through the district's official locator.</p>
+<h3>Is Ferguson-Florissant School District accredited?</h3>
+<p>Yes. Ferguson-Florissant School District is currently fully accredited by Missouri DESE. The district previously spent many years under provisional accreditation, so buyers should be careful not to rely on older sources that still describe FFSD as provisional.</p>
+<h3>What cities are in Ferguson-Florissant School District?</h3>
+<p>FFSD serves all or portions of 11 municipalities in North St. Louis County, including Ferguson, Florissant, Berkeley, Cool Valley, Kinloch and parts of Hazelwood. Municipal boundaries and district boundaries don't match perfectly, so verify the exact property address instead of assuming from the city name.</p>
+<h3>Is Ferguson-Florissant a good district for buyers?</h3>
+<p>FFSD is currently fully accredited and offers multiple high schools, STEAM programming and gifted opportunities, with its STEAM Academy Middle School receiving Missouri Gold Star recognition in 2025. Whether the district is the right fit for a buyer depends on the specific schools, programs, housing options, budget and location that matter to that household. I recommend researching those details rather than making the decision from one district-wide rating.</p>
+    </section>
+
+    <a href="/school-districts" class="back-link" aria-label="All School Districts">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      All School Districts
+    </a>
+
+    <div class="cta-block">
+      <h2>Not sure if Ferguson-Florissant is the right fit?</h2>
+      <p>I've worked this market for 13 years and 250+ transactions. One call can save you months of guessing.</p>
+      <a href="tel:3144351087" class="cta-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.5 4.5h2l1 4-1.5 1.5c1.1 2.2 2.8 3.9 5 5L15.5 13l4 1v2c0 .8-.6 1.5-1.4 1.5-7 0-12.6-5.6-12.6-12.6 0-.8.7-1.4 1.5-1.4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        Call George — 314.435.1087
+      </a>
+      <p class="cta-sub">No obligation. No pressure. Just a straight conversation about your situation.</p>
+    </div>
+
+  </main>
+
+  <footer class="compliance-footer">
+    <p>George Kindler | Licensed Missouri Real Estate Agent | <strong>The Closing Pros LLC</strong> | <a href="tel:3149984550">314-998-4550</a></p>
+    <p>STL Home Journey is an educational resource. Content is for informational purposes only and does not constitute legal or financial advice. Equal Housing Opportunity.</p>
+  </footer>
+
+  <script src="/shared.js" defer></script>
+
+</body>
+</html>
