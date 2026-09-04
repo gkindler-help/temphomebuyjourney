@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" class="district-page">
+<head>
+  <meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="/assets/favicon-512.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Normandy School District: A Home Buyer's Guide</title>
+  <meta name="description" content="Buying in the Normandy school area? Normandy Schools Collaborative, boundaries, Normandy High, and its current provisional accreditation status.">
+  <link rel="canonical" href="https://stlhomejourney.com/school-districts/normandy-school-district">
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    /* ── District page local styles ── */
+    :root {
+      --bg: #050505;
+      --gold: #FFCC4D;
+      --gold-dim: rgba(255,204,77,0.12);
+      --gold-border: rgba(255,204,77,0.25);
+      --text: #E8E4DC;
+      --text-muted: #8C8880;
+      --surface: #0F0F0F;
+      --surface-2: #161616;
+      --radius: 8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      height: auto !important;
+      min-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto !important;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      height: auto !important;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto !important;
+      overscroll-behavior-y: auto;
+      touch-action: auto;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb {
+      padding: 18px 24px 0;
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .breadcrumb a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb span { margin: 0 6px; }
+
+    /* ── Hero ── */
+    .district-hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 40px;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .tier-elite  { background: rgba(255,204,77,.18); color: var(--gold); border: 1px solid rgba(255,204,77,.35); }
+    .tier-strong { background: rgba(120,200,120,.15); color: #7EC87E; border: 1px solid rgba(120,200,120,.3); }
+    .tier-value  { background: rgba(120,160,220,.15); color: #88B0E0; border: 1px solid rgba(120,160,220,.3); }
+    .price-range {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: .02em;
+    }
+    .price-range strong { color: var(--text); }
+
+    .district-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #fff;
+      letter-spacing: -.01em;
+    }
+    .hero-rule {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      margin-top: 20px;
+      border-radius: 2px;
+    }
+
+    /* ── Content body ── */
+    .district-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .content-section {
+      padding: 44px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .content-section:last-of-type { border-bottom: none; }
+
+    .content-section h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 18px;
+      line-height: 1.25;
+    }
+    .content-section h2 .section-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .content-section p {
+      color: #C8C4BC;
+      line-height: 1.8;
+    }
+
+    /* ── George field callout ── */
+    .george-callout {
+      background: var(--surface-2);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 24px 28px;
+      margin-top: 0;
+    }
+    .george-callout .george-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .george-callout .george-label svg {
+      width: 16px; height: 16px; flex-shrink: 0;
+    }
+    .george-callout p {
+      font-size: 15px;
+      color: #C8C4BC;
+      line-height: 1.8;
+    }
+
+    /* ── Neighborhood pills ── */
+    .neighborhood-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .nbhd-pill {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background .2s, border-color .2s;
+    }
+    .nbhd-pill:hover {
+      background: rgba(255,204,77,.22);
+      border-color: rgba(255,204,77,.5);
+    }
+
+    /* ── CTA block ── */
+    .cta-block {
+      background: var(--surface);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 44px 40px;
+      text-align: center;
+      margin-top: 56px;
+    }
+    .cta-block h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .cta-block p {
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 28px;
+      font-size: 15px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: #050505;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: .01em;
+      transition: opacity .2s, transform .15s;
+    }
+    .cta-btn:hover { opacity: .88; transform: translateY(-1px); }
+    .cta-sub {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color .2s;
+      margin-top: 40px;
+    }
+    .back-link:hover { color: var(--gold); }
+
+    /* ── Compliance footer ── */
+    .compliance-footer {
+      background: var(--surface);
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 20px 24px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .compliance-footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .district-hero, .district-body { padding-left: 16px; padding-right: 16px; }
+      .cta-block { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Normandy School District: A Home Buyer's Guide","description":"Normandy Schools Collaborative, boundaries, Normandy High, and its current provisional accreditation status.","url":"https://stlhomejourney.com/school-districts/normandy-school-district","author":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@type":"Organization","name":"STL Home Journey","url":"https://stlhomejourney.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://stlhomejourney.com/school-districts/normandy-school-district"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"STL Home Journey","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"School Districts","item":"https://stlhomejourney.com/school-districts"},{"@type":"ListItem","position":3,"name":"Normandy Schools Collaborative","item":"https://stlhomejourney.com/school-districts/normandy-school-district"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Normandy Schools Collaborative accredited?","acceptedAnswer":{"@type":"Answer","text":"Yes, but its current status is provisionally accredited, not fully accredited. Local governance has been restored, and Normandy Schools Collaborative is working toward full accreditation. Because the district's status has changed over time, buyers should confirm the latest information directly with Missouri DESE."}},{"@type":"Question","name":"What is the difference between Normandy School District and Normandy Schools Collaborative?","acceptedAnswer":{"@type":"Answer","text":"Normandy Schools Collaborative is the current official name of the school system operating within the former Normandy School District boundaries. The Collaborative was created on July 1, 2014, although many buyers and residents still use \"Normandy School District\" when searching for information or homes."}},{"@type":"Question","name":"How many high schools does Normandy have?","acceptedAnswer":{"@type":"Answer","text":"Normandy Schools Collaborative has one comprehensive high school: Normandy High School in Wellston. Because it's a single-high-school district, buyers don't have to determine which of several district high schools an address feeds into, although families should still verify elementary and grade 1-8 assignments for a specific property."}},{"@type":"Question","name":"What should buyers check before buying in the Normandy district?","acceptedAnswer":{"@type":"Answer","text":"Verify that the exact property is inside Normandy Schools Collaborative, confirm the assigned school and review the latest Missouri DESE information. I would pay particular attention to the current accreditation status because Normandy is presently provisionally accredited and working toward full accreditation, so older online information may no longer be accurate."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/school-districts/normandy-school-district","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
+<body class="district-page">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">STL Home Journey</a>
+    <span>›</span>
+    <a href="/school-districts">School Districts</a>
+    <span>›</span>
+    Normandy Schools Collaborative
+  </nav>
+
+  <header class="district-hero">
+    <div class="hero-meta">
+      <span class="price-range">North St. Louis County &middot; Provisionally accredited</span>
+    </div>
+    <h1>Normandy Schools Collaborative: What Home Buyers Need to Know</h1>
+    <div class="hero-rule" aria-hidden="true"></div>
+  </header>
+
+  <main class="district-body">
+
+<p>If you're searching for the Normandy School District, the first thing to know is that the district's official name today is Normandy Schools Collaborative, commonly shortened to NSC.</p>
+<p>You'll still see "Normandy School District" used in home searches, older articles and everyday conversation. That's understandable because Normandy Schools Collaborative was created on July 1, 2014 within the same boundaries as the former Normandy School District. For a buyer researching a property today, though, Normandy Schools Collaborative is the current district organization you should be looking at.</p>
+<p>The second thing I'd understand before buying is the district's current accreditation status. Normandy Schools Collaborative is <strong>provisionally accredited</strong> by the Missouri Department of Elementary and Secondary Education, or Missouri DESE. It is not currently fully accredited, but it is also not currently unaccredited or operating under state takeover. Local governance has been restored, and the district is working toward full accreditation.</p>
+<p>That distinction matters because buyers searching online are likely to run into information from several different periods in Normandy's history. My advice is simple: understand the history enough to know why those different descriptions exist, but make your home-buying decision using the district's current status and the latest information from Missouri DESE.</p>
+
+    <section class="content-section">
+      <h2><span class="section-label">Who it's for</span>Who is Normandy Schools Collaborative a good fit for?</h2>
+<p>Normandy is a smaller school system than many of the districts buyers compare around St. Louis County. It has one comprehensive high school, Normandy High School, along with about five grade 1-8 elementary schools and an early learning center.</p>
+<p>That smaller structure makes the district relatively straightforward to understand from a high-school perspective. If a property is inside Normandy Schools Collaborative, Normandy High is the district's comprehensive high school. You don't have the additional question you get in districts such as <a href="hazelwood-school-district">Hazelwood</a>, Parkway or Rockwood, where you still need to figure out which of several high schools serves the address.</p>
+<p>For a buyer, though, school structure is only one part of the decision. I would look at the specific home, what your budget buys, the individual school information available through Missouri DESE and the current direction of the district. Because Normandy's accreditation history has changed over time, I think current information matters here more than broad assumptions based on something someone remembers from years ago.</p>
+<p>Some buyers may be comfortable considering a provisionally accredited district that's working toward full accreditation. Others may decide full accreditation is a requirement for their home search. That's a decision each household has to make for itself. My role isn't to make that choice for you. It's to make sure you understand the current facts before you make it.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">What you're paying for</span>What are you paying for when you buy in the Normandy area?</h2>
+<p>When buyers compare homes across St. Louis County, school district is usually only one of several things changing at the same time. The house changes. The purchase price changes. The property taxes may change. The lot, garage, basement, square footage, condition and commute can all change too. That's why I prefer comparing actual homes rather than simply comparing district names.</p>
+<p>Parts of North St. Louis County can offer different housing stock and purchase-price options than buyers may encounter in higher-priced areas of the county. The useful question is what a specific budget actually buys. If one price range gives you a larger home, additional bedrooms, a garage or another feature that's important to you, put that into the comparison. If another school district is important enough that you're willing to spend more or accept a different house to be there, put that into the comparison too. Neither decision is automatically right.</p>
+<p>I generally recommend establishing your <a href="../stl-home-buying-power-calculator">realistic buying power</a> first. Once you understand the payment you're comfortable carrying, it becomes much easier to compare homes across several districts without losing sight of what the house itself costs you every month. I also wouldn't describe a lower purchase price as automatically meaning "better value." Value depends on what you need from the property and what matters to you. The point is to understand the options your budget creates and then make the tradeoffs intentionally.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">High school</span>Normandy High School and the single-high-school structure</h2>
+<p>Normandy Schools Collaborative has one comprehensive high school: Normandy High School in Wellston. Normandy High School was established in 1923 and currently serves approximately 750 students.</p>
+<p>From a buyer's perspective, the single-high-school structure makes one part of the school research simpler. Once you've confirmed that a property is inside Normandy Schools Collaborative, you don't have to determine whether it feeds one of several comprehensive high schools.</p>
+<p>That doesn't eliminate the need to research a specific address. The district also operates grade 1-8 schools and an early learning center, so families with younger children should still confirm the current school assignment for the exact property they're considering. I recommend doing that directly through the district or its official school information rather than relying only on the schools automatically shown on Zillow, Realtor.com, the MLS or another home-search website. Those websites are useful starting points. They're not where I would want to make the final determination if a particular school assignment affects whether you're willing to purchase the house.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Accreditation</span>Normandy's accreditation and performance: understanding the current status</h2>
+<p>This is the part of Normandy Schools Collaborative that deserves the clearest explanation. Normandy Schools Collaborative is currently <strong>provisionally accredited</strong> by <a href="https://dese.mo.gov" target="_blank" rel="noopener">Missouri DESE</a>.</p>
+<p>The district was unaccredited and under state oversight in the past. In 2014, the former Normandy School District was reorganized as Normandy Schools Collaborative. The district later regained provisional accreditation, and local governance has since been restored. Today, NSC is working toward full accreditation. Missouri's process requires additional steps, including public hearings, before full accreditation can be considered.</p>
+<p>So if you're researching "is Normandy School District accredited?" there are three different descriptions you may encounter online: unaccredited, provisionally accredited and information about the district working toward full accreditation. The current answer is <strong>provisionally accredited</strong>.</p>
+<p>Normandy Schools Collaborative's current 2024-25 DESE Annual Performance Report score: [VERIFY]. I wouldn't substitute an older score or an old accreditation description for the current information. With a district whose status has changed over time, dates matter. Missouri DESE should be your authoritative source for checking the latest accreditation and performance information. Before buying a home based partly on the district's status, I would verify it there again. Accreditation can change, and the goal of this page is to help you understand the district, not freeze a changing state designation in time.</p>
+<p>I would also separate accreditation from the performance of an individual school. Accreditation is an important district-level measure, but it isn't the only piece of information a family may want to research. Look at the individual school information available through DESE, investigate programs important to your child and contact the district directly when you have questions that could affect your decision.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Coverage</span>What area does Normandy Schools Collaborative cover?</h2>
+<p>Normandy Schools Collaborative serves Normandy and surrounding municipalities in the Normandy and Wellston area of North St. Louis County. Like other St. Louis County school districts, its boundaries should not be assumed from the municipality or mailing address alone.</p>
+<p>That's an important distinction throughout the metro. Municipal boundaries, ZIP codes, postal addresses and school-district boundaries are separate systems. A property can have a familiar city name in the mailing address without that name giving you a complete answer about its school district. If you're specifically searching for homes in the Normandy School District or Normandy Schools Collaborative, verify the exact address before relying on the school information. My basic process would be:</p>
+<ul>
+<li>Confirm that the property is actually inside Normandy Schools Collaborative.</li>
+<li>Verify the currently assigned school for the exact address.</li>
+<li>Review the latest Normandy Schools Collaborative information directly from the district.</li>
+<li>Check Missouri DESE for the district's current accreditation status and official performance information.</li>
+<li>Research the individual school rather than relying solely on district-level information.</li>
+</ul>
+<p>That last step is particularly important because Normandy's accreditation status has changed before and may change again as it continues working toward full accreditation. If the distinction between provisional and full accreditation matters to your purchase, check DESE close to the time you're making the decision rather than relying on an article, real estate page or conversation from months or years earlier.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Honest take</span>My honest take on buying in Normandy Schools Collaborative</h2>
+<p>I think the best way to approach Normandy is to deal with what is true today. The district isn't currently unaccredited. It isn't currently under state takeover. It also isn't fully accredited. It is provisionally accredited, local governance has been restored and the district is working toward full accreditation. That's the accurate middle ground, and I wouldn't try to spin it in either direction.</p>
+<p>For some buyers, provisional accreditation may be an important consideration. For someone else, the individual school, purchase price, house, location and other educational options may be more important parts of the decision. I would research all of it. Start with the home you're considering. Verify that it's actually inside the district. Research the individual school. Look at the current DESE information. Then compare that house with the alternatives your budget gives you in other school districts, such as <a href="ferguson-florissant-school-district">Ferguson-Florissant</a> or <a href="hazelwood-school-district">Hazelwood</a>.</p>
+<p>Most importantly, don't base the decision on an outdated description of Normandy. If you find information saying the district is currently unaccredited, check the date. If you find something saying Normandy is fully accredited, verify that too. As of the current information we're using for this guide, neither description is accurate.</p>
+<p>After 13 years in real estate and more than 250 transactions, that's how I prefer to handle school-district questions in general: give buyers the facts I can verify, clearly identify the things that can change and let the buyer decide how heavily each factor should influence the purchase. Normandy Schools Collaborative has been through significant structural and accreditation changes. Today, buyers have a clearer current picture: a locally governed, provisionally accredited district working toward full accreditation. What that means for your home search is ultimately something you should decide after looking at the current schools, current state information and the actual homes available within your budget.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">FAQ</span>Normandy Schools Collaborative: common buyer questions</h2>
+<h3>Is Normandy Schools Collaborative accredited?</h3>
+<p>Yes, but its current status is <strong>provisionally accredited</strong>, not fully accredited. Local governance has been restored, and Normandy Schools Collaborative is working toward full accreditation. Because the district's status has changed over time, buyers should confirm the latest information directly with Missouri DESE.</p>
+<h3>What is the difference between Normandy School District and Normandy Schools Collaborative?</h3>
+<p>Normandy Schools Collaborative is the current official name of the school system operating within the former Normandy School District boundaries. The Collaborative was created on July 1, 2014, although many buyers and residents still use "Normandy School District" when searching for information or homes.</p>
+<h3>How many high schools does Normandy have?</h3>
+<p>Normandy Schools Collaborative has one comprehensive high school: Normandy High School in Wellston. Because it's a single-high-school district, buyers don't have to determine which of several district high schools an address feeds into, although families should still verify elementary and grade 1-8 assignments for a specific property.</p>
+<h3>What should buyers check before buying in the Normandy district?</h3>
+<p>Verify that the exact property is inside Normandy Schools Collaborative, confirm the assigned school and review the latest Missouri DESE information. I would pay particular attention to the current accreditation status because Normandy is presently provisionally accredited and working toward full accreditation, so older online information may no longer be accurate.</p>
+    </section>
+
+    <a href="/school-districts" class="back-link" aria-label="All School Districts">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      All School Districts
+    </a>
+
+    <div class="cta-block">
+      <h2>Have questions about the Normandy area?</h2>
+      <p>I've worked this market for 13 years and 250+ transactions. One call can save you months of guessing.</p>
+      <a href="tel:3144351087" class="cta-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.5 4.5h2l1 4-1.5 1.5c1.1 2.2 2.8 3.9 5 5L15.5 13l4 1v2c0 .8-.6 1.5-1.4 1.5-7 0-12.6-5.6-12.6-12.6 0-.8.7-1.4 1.5-1.4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        Call George — 314.435.1087
+      </a>
+      <p class="cta-sub">No obligation. No pressure. Just a straight conversation about your situation.</p>
+    </div>
+
+  </main>
+
+  <footer class="compliance-footer">
+    <p>George Kindler | Licensed Missouri Real Estate Agent | <strong>The Closing Pros LLC</strong> | <a href="tel:3149984550">314-998-4550</a></p>
+    <p>STL Home Journey is an educational resource. Content is for informational purposes only and does not constitute legal or financial advice. Equal Housing Opportunity.</p>
+  </footer>
+
+  <script src="/shared.js" defer></script>
+
+</body>
+</html>
