@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" class="district-page">
+<head>
+  <meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="/assets/favicon-512.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Francis Howell School District: A Buyer Guide</title>
+  <meta name="description" content="Buying in Francis Howell School District? Its three high schools, accreditation, boundaries, and St. Charles County housing.">
+  <link rel="canonical" href="https://stlhomejourney.com/school-districts/francis-howell-school-district">
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    /* ── District page local styles ── */
+    :root {
+      --bg: #050505;
+      --gold: #FFCC4D;
+      --gold-dim: rgba(255,204,77,0.12);
+      --gold-border: rgba(255,204,77,0.25);
+      --text: #E8E4DC;
+      --text-muted: #8C8880;
+      --surface: #0F0F0F;
+      --surface-2: #161616;
+      --radius: 8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      height: auto !important;
+      min-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto !important;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      height: auto !important;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto !important;
+      overscroll-behavior-y: auto;
+      touch-action: auto;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb {
+      padding: 18px 24px 0;
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .breadcrumb a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb span { margin: 0 6px; }
+
+    /* ── Hero ── */
+    .district-hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 40px;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .tier-elite  { background: rgba(255,204,77,.18); color: var(--gold); border: 1px solid rgba(255,204,77,.35); }
+    .tier-strong { background: rgba(120,200,120,.15); color: #7EC87E; border: 1px solid rgba(120,200,120,.3); }
+    .tier-value  { background: rgba(120,160,220,.15); color: #88B0E0; border: 1px solid rgba(120,160,220,.3); }
+    .price-range {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: .02em;
+    }
+    .price-range strong { color: var(--text); }
+
+    .district-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #fff;
+      letter-spacing: -.01em;
+    }
+    .hero-rule {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      margin-top: 20px;
+      border-radius: 2px;
+    }
+
+    /* ── Content body ── */
+    .district-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .content-section {
+      padding: 44px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .content-section:last-of-type { border-bottom: none; }
+
+    .content-section h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 18px;
+      line-height: 1.25;
+    }
+    .content-section h2 .section-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .content-section p {
+      color: #C8C4BC;
+      line-height: 1.8;
+    }
+
+    /* ── George field callout ── */
+    .george-callout {
+      background: var(--surface-2);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 24px 28px;
+      margin-top: 0;
+    }
+    .george-callout .george-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .george-callout .george-label svg {
+      width: 16px; height: 16px; flex-shrink: 0;
+    }
+    .george-callout p {
+      font-size: 15px;
+      color: #C8C4BC;
+      line-height: 1.8;
+    }
+
+    /* ── Neighborhood pills ── */
+    .neighborhood-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .nbhd-pill {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background .2s, border-color .2s;
+    }
+    .nbhd-pill:hover {
+      background: rgba(255,204,77,.22);
+      border-color: rgba(255,204,77,.5);
+    }
+
+    /* ── CTA block ── */
+    .cta-block {
+      background: var(--surface);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 44px 40px;
+      text-align: center;
+      margin-top: 56px;
+    }
+    .cta-block h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .cta-block p {
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 28px;
+      font-size: 15px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: #050505;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: .01em;
+      transition: opacity .2s, transform .15s;
+    }
+    .cta-btn:hover { opacity: .88; transform: translateY(-1px); }
+    .cta-sub {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color .2s;
+      margin-top: 40px;
+    }
+    .back-link:hover { color: var(--gold); }
+
+    /* ── Compliance footer ── */
+    .compliance-footer {
+      background: var(--surface);
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 20px 24px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .compliance-footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .district-hero, .district-body { padding-left: 16px; padding-right: 16px; }
+      .cta-block { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Francis Howell School District: A Buyer Guide","description":"Its three high schools, accreditation, boundaries, and St. Charles County housing.","url":"https://stlhomejourney.com/school-districts/francis-howell-school-district","author":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@type":"Organization","name":"STL Home Journey","url":"https://stlhomejourney.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://stlhomejourney.com/school-districts/francis-howell-school-district"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"STL Home Journey","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"School Districts","item":"https://stlhomejourney.com/school-districts"},{"@type":"ListItem","position":3,"name":"Francis Howell School District","item":"https://stlhomejourney.com/school-districts/francis-howell-school-district"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many high schools does Francis Howell School District have?","acceptedAnswer":{"@type":"Answer","text":"Francis Howell has three comprehensive high schools: Francis Howell High School, Francis Howell North High School and Francis Howell Central High School. Because the district has multiple high schools, buyers should verify which one serves the exact property they're considering."}},{"@type":"Question","name":"Is Francis Howell School District accredited?","acceptedAnswer":{"@type":"Answer","text":"Yes. Francis Howell School District is currently fully accredited by Missouri DESE. Buyers should still review the latest DESE information for current district and individual-school performance rather than relying only on older rankings or third-party ratings."}},{"@type":"Question","name":"What cities are in Francis Howell School District?","acceptedAnswer":{"@type":"Answer","text":"Francis Howell serves portions of St. Charles, St. Peters, Cottleville, O'Fallon, Weldon Spring and surrounding St. Charles County. Because municipal and school-district boundaries don't line up perfectly, verify the exact address through the district's official locator."}},{"@type":"Question","name":"Is Francis Howell a good district for families?","acceptedAnswer":{"@type":"Answer","text":"Francis Howell is fully accredited and includes nationally recognized schools, three comprehensive high schools and a large range of programs across the district. Whether it's the right fit depends on the specific schools, housing options, purchase price, commute and priorities that matter to your household. I recommend comparing those factors instead of making the decision from a district reputation alone."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/school-districts/francis-howell-school-district","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
+<body class="district-page">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">STL Home Journey</a>
+    <span>›</span>
+    <a href="/school-districts">School Districts</a>
+    <span>›</span>
+    Francis Howell School District
+  </nav>
+
+  <header class="district-hero">
+    <div class="hero-meta">
+      <span class="price-range">St. Charles County &middot; 3 high schools</span>
+    </div>
+    <h1>Francis Howell School District: What Home Buyers Need to Know</h1>
+    <div class="hero-rule" aria-hidden="true"></div>
+  </header>
+
+  <main class="district-body">
+
+<p>Francis Howell School District, officially Francis Howell R-III, is one of the larger school districts in St. Charles County. It serves about 17,000 students across a wide western-metro footprint that includes parts of <a href="../neighborhoods/st-charles">St. Charles</a>, <a href="../neighborhoods/st-peters">St. Peters</a>, <a href="../neighborhoods/cottleville">Cottleville</a>, <a href="../neighborhoods/o-fallon">O'Fallon</a>, <a href="../neighborhoods/weldon-spring">Weldon Spring</a> and surrounding areas of St. Charles County.</p>
+<p>For buyers, Francis Howell is a district where the exact address matters. The district has three comprehensive high schools — Francis Howell High, Francis Howell North and Francis Howell Central — so confirming that a home is inside Francis Howell is only the first step. You also need to verify which high school serves that property.</p>
+<p>The district is currently fully accredited by Missouri DESE and has several strong institutional indicators, including multiple National Blue Ribbon Schools of Excellence, National Schools of Character and an AA+ financial rating.</p>
+<p>Those are useful facts, but I still wouldn't choose a home from the district name alone. I would look at the specific high school assignment, the individual schools tied to the property, the house itself and what your budget buys in St. Charles County compared with other parts of the metro.</p>
+
+    <section class="content-section">
+      <h2><span class="section-label">Who it's for</span>Who is Francis Howell School District a good fit for?</h2>
+<p>Francis Howell tends to come into the conversation for buyers who are looking farther west into St. Charles County and want access to a larger suburban school system with a broad range of neighborhoods and housing options.</p>
+<p>One of the biggest real estate differences here is the housing stock. Compared with many inner-ring St. Louis County communities, buyers in Francis Howell will often encounter more recently built subdivisions and a larger supply of homes from newer development periods. Depending on the specific community, that can mean different floor plans, larger garages, newer mechanical systems or neighborhood layouts that simply weren't built in the same way in older parts of the metro.</p>
+<p>That doesn't automatically make newer housing better. It just changes what you're comparing. Some buyers would rather have a newer two-story in St. Charles County. Someone else may prefer an older home closer to the urban core, even if the floor plan or lot looks different. Commute and purchase price can also change substantially as you move farther west.</p>
+<p>I think Francis Howell makes the most sense to evaluate when you're willing to compare the full package instead of starting with the assumption that one school district should decide everything else.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">What you're paying for</span>What are you paying for when you buy in Francis Howell?</h2>
+<p>Francis Howell is one of those districts where the school name and the housing market can become tied together in a buyer's mind. I think it's better to separate them and look at what you're actually paying for. Start with the property.</p>
+<p>How much house are you getting? How old is it? What does the lot look like? Does it have the garage, basement, bedrooms and layout you need? How much of your monthly payment is going toward principal and interest versus taxes and insurance? Then compare that with the alternatives.</p>
+<p>A home in St. Peters or Cottleville may give you a newer subdivision or a particular floor plan that is harder to find in an older St. Louis County community. At the same time, buying farther west may change your commute, your proximity to family or how much time you spend driving to the places you use regularly. That tradeoff matters.</p>
+<p>I wouldn't stretch a budget simply because a home is inside a district with strong recognition. If you're buying too much house or creating a payment that makes the rest of your finances uncomfortable, the school district doesn't erase that. On the other hand, if Francis Howell's schools, housing stock and location line up with what you want and the payment works, then paying more than you would in another part of the metro may make sense for you. This is why I like starting with <a href="../stl-home-buying-power-calculator">realistic buying power</a>. Once you know the payment range you're comfortable with, it's much easier to compare Francis Howell with another St. Charles County district or a St. Louis County option without losing sight of the actual cost of the house.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">High schools</span>The three Francis Howell high schools</h2>
+<p>Francis Howell School District has three comprehensive high schools that are most relevant to home buyers: Francis Howell High School, Francis Howell North High School and Francis Howell Central High School.</p>
+<ul>
+<li><strong>Francis Howell High School</strong> is in the St. Charles area. It dates back to 1881, serves roughly 1,843 students and has received national recognition, including National Blue Ribbon School status.</li>
+<li><strong>Francis Howell North High School</strong> is in St. Peters and began operating as a high school in 1986. It serves roughly 1,716 students.</li>
+<li><strong>Francis Howell Central High School</strong> is in Cottleville, opened in 1997 and serves roughly 1,750 students. Its attendance area includes a significant portion of the St. Peters area.</li>
+</ul>
+<p>The district also operates non-traditional or alternative options, including Francis Howell Union and Westwood Trail Academy, but the three comprehensive high schools above are generally the ones buyers are comparing when evaluating a home's traditional high-school assignment.</p>
+<p>Because this is a multi-high-school district, I would not try to determine the school assignment from the city name alone. A St. Peters address does not automatically tell you whether a student attends Francis Howell North or Francis Howell Central. The same general issue applies around other municipal boundaries throughout the district.</p>
+<p>Use Francis Howell's official school or boundary locator for the exact address you're considering. If the high-school assignment is important enough that it would change your decision about the house, verify it directly with the district before you rely on it. I also wouldn't treat the school information shown on Zillow, Realtor.com, the MLS or another real estate platform as the final authority. Those tools are useful during the search, but official district information is the better source for confirming current assignments.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Performance</span>How does Francis Howell School District perform?</h2>
+<p>Francis Howell School District is currently fully accredited by the Missouri Department of Elementary and Secondary Education (<a href="https://dese.mo.gov" target="_blank" rel="noopener">Missouri DESE</a>).</p>
+<p>The district also has several indicators that buyers researching school systems are likely to come across. Francis Howell reports five National Blue Ribbon Schools of Excellence and two National Schools of Character. The district also holds an AA+ financial rating, placing its financial rating among roughly the top 10% of school districts. Francis Howell's current 2024-25 Missouri DESE Annual Performance Report score: [VERIFY].</p>
+<p>I wouldn't insert an older APR number in place of the current one. Missouri's accountability system changes over time, and buyers are better served by looking at the current DESE information than comparing scores from different reporting systems without context. Missouri DESE should be the primary source for official district and school performance information.</p>
+<p><a href="https://www.greatschools.org" target="_blank" rel="noopener">GreatSchools</a> can be useful as a secondary research tool when you're comparing the individual schools tied to a property, but I wouldn't let one GreatSchools number make the home-buying decision for you. Look at what's behind the rating. Review the individual school, academic programs and state information. If a specific course, program or service matters to your family, verify it with the district rather than assuming district-wide recognition means the same opportunities exist at every school.</p>
+<p>That's especially important in a district this large. A district-level reputation or performance measure is helpful context, but it doesn't tell you everything about Francis Howell High versus Francis Howell North, Francis Howell Central or the specific elementary and middle schools connected to a home.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Communities</span>What communities are in Francis Howell School District?</h2>
+<p>Francis Howell covers a large portion of central and southern St. Charles County and serves parts of <a href="../neighborhoods/st-charles">St. Charles</a>, <a href="../neighborhoods/st-peters">St. Peters</a>, <a href="../neighborhoods/cottleville">Cottleville</a>, <a href="../neighborhoods/o-fallon">O'Fallon</a>, <a href="../neighborhoods/weldon-spring">Weldon Spring</a> and surrounding areas.</p>
+<p>The district headquarters is in O'Fallon, but that does not mean all O'Fallon addresses are automatically inside Francis Howell. This is the same issue buyers run into throughout the St. Louis metro: municipal boundaries, mailing addresses, ZIP codes and school-district boundaries don't always match. That's why I use city names as general location references, not as proof of school assignment.</p>
+<p>If Francis Howell is an important part of your search, my process would be:</p>
+<ul>
+<li>Confirm that the exact property is inside Francis Howell School District.</li>
+<li>Use the district's official locator to determine the assigned elementary, middle and high schools.</li>
+<li>Verify whether the home feeds Francis Howell High, Francis Howell North or Francis Howell Central.</li>
+<li>Review the latest Missouri DESE information for the district and individual schools.</li>
+<li>Use GreatSchools as an additional research tool, not the only source.</li>
+<li>Confirm any specific programs directly with the district if they matter to your purchase.</li>
+</ul>
+<p>That matters particularly in St. Peters and other communities where district and high-school boundaries can be less obvious from the mailing address.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Honest take</span>My honest take on buying in Francis Howell School District</h2>
+<p>I understand why Francis Howell gets attention from buyers. It's a large, fully accredited district with three comprehensive high schools, multiple nationally recognized schools and a strong financial rating. It also sits in a part of the metro where buyers can find a substantial amount of newer housing stock. Those are all legitimate reasons to include it in a home search.</p>
+<p>But I still wouldn't tell someone, "Buy in Francis Howell because it's a good district." That's too simple for a decision this expensive. I would ask which Francis Howell schools serve the actual house. I'd look at what the home costs, what kind of property you're getting and how the location works for your daily life. I'd also compare the numbers with other realistic options.</p>
+<p>If you're looking in St. Charles County, another St. Charles district may be part of that comparison. If you're also considering St. Louis County, you may want to compare the same budget with those districts and see how the housing stock, commute and monthly payment change. Sometimes a buyer decides the newer house farther west is worth it. Sometimes they realize they're paying a significant premium for features they don't actually care about. Sometimes the school assignment becomes the deciding factor. Those are all reasonable outcomes if they're based on actual information.</p>
+<p>After 13 years in real estate and more than 250 transactions, I've found that buyers usually make better decisions when they stop asking, "Which district is best?" and start asking, "What am I getting, what am I giving up and which tradeoffs matter to me?" Francis Howell has a lot of objective strengths to research. The next step is matching those facts with a specific house, specific school assignment and a payment that makes sense for your household.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">FAQ</span>Francis Howell School District: common buyer questions</h2>
+<h3>How many high schools does Francis Howell School District have?</h3>
+<p>Francis Howell has three comprehensive high schools: Francis Howell High School, Francis Howell North High School and Francis Howell Central High School. Because the district has multiple high schools, buyers should verify which one serves the exact property they're considering.</p>
+<h3>Is Francis Howell School District accredited?</h3>
+<p>Yes. Francis Howell School District is currently fully accredited by Missouri DESE. Buyers should still review the latest DESE information for current district and individual-school performance rather than relying only on older rankings or third-party ratings.</p>
+<h3>What cities are in Francis Howell School District?</h3>
+<p>Francis Howell serves portions of St. Charles, St. Peters, Cottleville, O'Fallon, Weldon Spring and surrounding St. Charles County. Because municipal and school-district boundaries don't line up perfectly, verify the exact address through the district's official locator.</p>
+<h3>Is Francis Howell a good district for families?</h3>
+<p>Francis Howell is fully accredited and includes nationally recognized schools, three comprehensive high schools and a large range of programs across the district. Whether it's the right fit depends on the specific schools, housing options, purchase price, commute and priorities that matter to your household. I recommend comparing those factors instead of making the decision from a district reputation alone.</p>
+    </section>
+
+    <a href="/school-districts" class="back-link" aria-label="All School Districts">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      All School Districts
+    </a>
+
+    <div class="cta-block">
+      <h2>Looking at homes in the Francis Howell area?</h2>
+      <p>I've worked this market for 13 years and 250+ transactions. One call can save you months of guessing.</p>
+      <a href="tel:3144351087" class="cta-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.5 4.5h2l1 4-1.5 1.5c1.1 2.2 2.8 3.9 5 5L15.5 13l4 1v2c0 .8-.6 1.5-1.4 1.5-7 0-12.6-5.6-12.6-12.6 0-.8.7-1.4 1.5-1.4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        Call George — 314.435.1087
+      </a>
+      <p class="cta-sub">No obligation. No pressure. Just a straight conversation about your situation.</p>
+    </div>
+
+  </main>
+
+  <footer class="compliance-footer">
+    <p>George Kindler | Licensed Missouri Real Estate Agent | <strong>The Closing Pros LLC</strong> | <a href="tel:3149984550">314-998-4550</a></p>
+    <p>STL Home Journey is an educational resource. Content is for informational purposes only and does not constitute legal or financial advice. Equal Housing Opportunity.</p>
+  </footer>
+
+  <script src="/shared.js" defer></script>
+
+</body>
+</html>
