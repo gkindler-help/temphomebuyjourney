@@ -128,6 +128,32 @@
 .lfs-fig img{width:100%;border-radius:12px;display:block;}
 .lfs-fig figcaption{font-size:.82rem;color:rgba(255,255,255,.5);margin-top:8px;line-height:1.5;font-style:italic;}
 </style>
+<style>
+.lfs-facts{background:#0d0d0d;border:1px solid rgba(255,204,77,.2);border-radius:14px;padding:18px 20px;margin:22px 0;}
+.lfs-facts-hd{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ffcc4d;margin-bottom:14px;}
+.lfs-facts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+@media(max-width:560px){.lfs-facts-grid{grid-template-columns:repeat(2,1fr);}}
+.lfs-fact{display:flex;flex-direction:column;}
+.lfs-fact .n{font-size:1.15rem;font-weight:800;color:#fff;line-height:1.2;}
+.lfs-fact .l{font-size:.72rem;color:rgba(255,255,255,.5);margin-top:3px;text-transform:uppercase;letter-spacing:.04em;}
+.lfs-more{margin:16px 0;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.02);}
+.lfs-more summary{cursor:pointer;padding:12px 16px;font-weight:700;font-size:.9rem;color:#ffcc4d;list-style:none;}
+.lfs-more summary::-webkit-details-marker{display:none;}
+.lfs-more summary:before{content:"\25BC ";font-size:.7em;color:rgba(255,204,77,.6);}
+.lfs-more[open] summary:before{content:"\25B2 ";}
+.lfs-more p{padding:0 16px;margin:0 0 12px;}
+.lfs-more p:first-of-type{padding-top:4px;}
+.lfs-compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0;}
+@media(max-width:560px){.lfs-compare{grid-template-columns:1fr;}}
+.lfs-compare-col{border-radius:10px;padding:14px 16px;font-size:.9rem;line-height:1.5;}
+.lfs-compare-col.good{background:rgba(93,202,165,.08);border:1px solid rgba(93,202,165,.35);}
+.lfs-compare-col.bad{background:rgba(224,85,85,.07);border:1px solid rgba(224,85,85,.3);}
+.lfs-compare-col .hd{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px;}
+.lfs-compare-col.good .hd{color:#5dcaa5;}
+.lfs-compare-col.bad .hd{color:#e05555;}
+.lfs-fig-img{width:100%;border-radius:12px;margin:18px 0;display:block;}
+.lfs-yourturn{background:rgba(255,204,77,.07);border-left:3px solid #ffcc4d;border-radius:0 8px 8px 0;padding:12px 16px;font-size:.94rem;line-height:1.55;color:rgba(255,255,255,.85);margin:18px 0;}
+</style>
 </head>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Lessons From a Sale: Pricing a Renovated Split-Level in Lindbergh","image":"https://stlhomejourney.com/assets/listings/13218-wintergreen/photo-01.webp","description":"A real St. Louis sale from pricing to closing: thin comps, seasonal timing, an offer deadline, and a waived-inspection offer.","url":"https://stlhomejourney.com/articles/lessons-from-a-sale-lindbergh-split-level","author":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@type":"Organization","name":"STL Home Journey","url":"https://stlhomejourney.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://stlhomejourney.com/articles/lessons-from-a-sale-lindbergh-split-level"},"isPartOf":{"@type":"CreativeWorkSeries","name":"Lessons From a Sale","url":"https://stlhomejourney.com/articles/lessons-from-a-sale"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"STL Home Journey","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"Lessons From a Sale","item":"https://stlhomejourney.com/articles/lessons-from-a-sale"},{"@type":"ListItem","position":3,"name":"Pricing a Split-Level in Lindbergh","item":"https://stlhomejourney.com/articles/lessons-from-a-sale-lindbergh-split-level"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do homes only appreciate in spring and summer?","acceptedAnswer":{"@type":"Answer","text":"No. Longer-term appreciation and seasonal movement are different things. Values can trend upward over time while buyer demand still strengthens and softens within the year. In this sale, the spring comps mattered, but I also had to account for the softer summer market we were listing into."}},{"@type":"Question","name":"What makes a home a true comparable sale?","acceptedAnswer":{"@type":"Answer","text":"A comparable sale should help explain how buyers are likely to value the home you are actually selling. Location and size matter, but so do property type, condition and buyer appeal. That is why I used the two relevant split-level sales here but would not anchor the valuation to a nearby roughly $500,000 1.5-story."}},{"@type":"Question","name":"Should I set an offer deadline when selling?","acceptedAnswer":{"@type":"Answer","text":"Sometimes. I do not think it should be automatic. My preference in this deal was to let offers come as they came, but my seller had prior success with deadlines and was leaving on vacation, which gave us a practical reason to set one. We discussed it and made the call together."}},{"@type":"Question","name":"Is a waived-inspection offer better than a higher offer with an inspection?","acceptedAnswer":{"@type":"Answer","text":"It can be. I viewed the $406,000 waived-inspection offer in this deal as effectively as strong as a somewhat higher offer around $410,000 that still carried an inspection contingency. The waived inspection removed a meaningful layer of seller risk, so the price alone did not tell the whole story."}}]}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/articles/lessons-from-a-sale-lindbergh-split-level","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
@@ -155,77 +181,81 @@
   <h1 class="art-title">Lessons From a Sale: Pricing a Renovated Split-Level in Lindbergh</h1>
   <p class="art-lede">A sold price can make a transaction look far simpler than it was. This home listed at $399,900 and sold for $406,000 &mdash; but the story worth learning from is the decisions in between. Step into my seat and make the calls yourself, then read exactly how each one played out.</p>
 
-  <img class="lfs-hero-img" src="../assets/listings/13218-wintergreen/photo-01.webp" alt="13218 Wintergreen Estates Drive, Fenton MO — renovated split-level in Lindbergh Schools" loading="eager">
   <div id="mtc-mount" class="mtc-mount"></div>
 
   <div class="art-body" id="full-story">
-<p>A sold price can make a real estate transaction look a lot simpler than it actually was.</p>
-<p>This home was listed at $399,900 and sold for $406,000 &mdash; $6,100 over asking. If that is all you saw, it would be easy to assume we priced it low, created a bidding war and picked the highest offer. That is not what happened.</p>
-<p>This was <a href="../listings/13218-wintergreen-estates-drive-fenton-mo">13218 Wintergreen Estates Drive</a>, a fully renovated split-level on the edge of the <a href="../school-districts/lindbergh-schools">Lindbergh School District</a>. It showed beautifully, had no hidden issues and was arguably the cleanest home available around the $399,000 price point.</p>
-<p>But the valuation was not obvious. We had thin comparable inventory. The best comps were from the spring. There was a nearby $500,000 sale that looked tempting until you understood why it was not really comparable. We also had a real discussion about whether to set an offer deadline. That deadline passed with no offers.</p>
-<p>Then the market started responding differently. A single buyer eventually wrote at $406,000 and waived the inspection. The appraisal came in without a problem, and the transaction closed fast.</p>
-<p>That is the part I think is worth teaching from. Not just what the home sold for, but how the decisions actually got made along the way.</p>
+<p>This home listed at $399,900 and sold for $406,000 &mdash; $6,100 over asking. Read that alone and you'd assume we priced it low, sparked a bidding war, and took the top offer. None of that is what happened.</p>
+<p>This was <a href="../listings/13218-wintergreen-estates-drive-fenton-mo">13218 Wintergreen Estates Drive</a>, a fully renovated split-level on the edge of the <a href="../school-districts/lindbergh-schools">Lindbergh School District</a> &mdash; clean, well-presented, no hidden issues, arguably the sharpest home around the $399K mark. The final number is the easy part of the story. The decisions behind it are the part worth learning from.</p>
 
-<h2>The House Was Strong. The Comp Set Wasn't.</h2>
-<figure class="lfs-fig"><img src="../assets/listings/13218-wintergreen/photo-03.webp" alt="Updated kitchen with granite island at 13218 Wintergreen Estates" loading="lazy"><figcaption>The renovation showed in every room — this was arguably the cleanest home available around the $399K price point.</figcaption></figure>
-<p>The property itself was easy to understand. It was fully renovated, clean and well presented. It also sat on the edge of the Lindbergh School District, which matters because buyers specifically trying to get into Lindbergh are often willing to pay for that district boundary. At its price point, I thought the house showed about as well as anything buyers were going to compare it against.</p>
-<p>The harder part was valuation. Split-levels are not thick inventory in Lindbergh. When I price a home, I would much rather have four or five truly comparable sales. That gives me enough information to see a pattern instead of putting too much weight on one or two transactions. Here, I really had two good ones.</p>
-<p>Both were split-levels. Both had sold in the spring. One sold for roughly $410,000 and the other for roughly $420,000. Those were the comps I cared about because they were actually competing with the same kind of buyer. But even good comparable sales need context. The biggest context here was timing.</p>
+<img class="lfs-hero-img" src="../assets/listings/13218-wintergreen/photo-01.webp" alt="13218 Wintergreen Estates Drive, Fenton MO — renovated split-level in Lindbergh Schools" loading="eager">
 
-<h2>Why Appreciation Isn't a Straight Line Up and to the Right</h2>
-<p>One of the easiest mistakes to make when looking at home values is assuming appreciation moves steadily upward every month. A home sells for a certain number in March, so by July it must be worth at least that much or more. Real markets do not move that cleanly.</p>
-<p>Over a longer period, home values can absolutely trend upward. But inside an individual year, buyer demand rises and falls. I think of it as a U-shaped seasonal movement happening inside the longer-term trend. The spring market can be particularly strong. More buyers are active, competition tends to be concentrated and some of the strongest sales of the year happen during that window.</p>
-<p>Then summer arrives. Some buyers have already purchased. Some have spent months losing out on houses and are tired. Some simply slow down. The market can soften even if the larger value trend is still healthy.</p>
-<p>That mattered here because our two best split-level comps &mdash; roughly $410,000 and $420,000 &mdash; had sold during the spring market. I did not ignore those sales. They were the best data we had. But I also was not going to pretend that a summer buyer was automatically going to behave exactly like a spring buyer. A comparable sale is not just a number. It is evidence of what a buyer paid for a certain kind of property under a certain set of market conditions. My job is to decide how much that sale tells me about the house I am pricing today.</p>
+<div class="lfs-facts">
+  <div class="lfs-facts-hd">The deal at a glance</div>
+  <div class="lfs-facts-grid">
+    <div class="lfs-fact"><span class="n">$399,900</span><span class="l">List price</span></div>
+    <div class="lfs-fact"><span class="n">$406,000</span><span class="l">Sold price (+$6,100)</span></div>
+    <div class="lfs-fact"><span class="n">5 days / 2</span><span class="l">On market / showings before the offer</span></div>
+    <div class="lfs-fact"><span class="n">Waived</span><span class="l">Inspection</span></div>
+    <div class="lfs-fact"><span class="n">Clean</span><span class="l">Appraisal (no gap)</span></div>
+    <div class="lfs-fact"><span class="n">Lindbergh</span><span class="l">School district</span></div>
+  </div>
+</div>
 
-<h2>Why the $500,000 Sale Wasn't a Comp</h2>
-<figure class="lfs-fig"><img src="../assets/listings/13218-wintergreen/photo-05.webp" alt="Living room with fireplace, 13218 Wintergreen Estates split-level" loading="lazy"><figcaption>A split-level is a love-it-or-hate-it layout — which is exactly why a nearby 1.5-story sale wasn't a fair comparable.</figcaption></figure>
-<p>There was also a nearby sale around $500,000. My seller asked about it, which was a fair question. My answer was direct: I would not even consider it as a comparable sale.</p>
-<p>It was a 1.5-story home. We were selling a split-level. Those are not the same product just because they are close to each other.</p>
-<p>This is one of the most important pricing lessons sellers can learn. The highest sale in the neighborhood is not automatically the best evidence of what your home is worth. Split-levels are especially useful for explaining this because they are a love-it-or-hate-it house style. A ranch or traditional two-story generally appeals to a wider group of buyers. A split-level has a narrower buyer pool. Some buyers like the separation of space. Others will not even consider one.</p>
-<p>That narrower buyer pool matters. It does not make the house inferior &mdash; this particular home was renovated, clean and presented extremely well. But I cannot make the buyer pool for a split-level identical to the buyer pool for a 1.5-story just because using that sale would give us a more exciting number. With only two true split-level comps, I would have liked more data. But adding a bad comp does not make a valuation more accurate.</p>
+<h2>Decision 1: Pricing with thin, seasonal comps</h2>
+<p>Split-levels aren't thick inventory in Lindbergh. I like four or five real comps to see a pattern; here I had two &mdash; both split-levels, both sold in the spring, at roughly $410,000 and $420,000.</p>
+<p>There was also a nearby $500,000 sale. My seller asked about it. My answer was direct: I wouldn't even consider it.</p>
+<details class="lfs-more" open><summary>Why the $500K sale wasn't a true comp</summary>
+<p>It was a 1.5-story. We were selling a split-level. Those aren't the same product just because they're close together, and the highest sale nearby is not automatically the best evidence of your home's value.</p>
+<p>Split-levels are a love-it-or-hate-it style with a narrower buyer pool than a ranch or two-story. I can't pretend a split's buyers behave like a 1.5-story's just because that sale would give us a bigger number. Adding a bad comp doesn't make a valuation more accurate.</p></details>
+<div class="lfs-compare">
+  <div class="lfs-compare-col good"><div class="hd">True comps</div><div>Two split-level sales, ~$410K &amp; ~$420K &mdash; same product, same buyer pool</div></div>
+  <div class="lfs-compare-col bad"><div class="hd">Tempting but invalid</div><div>Nearby 1.5-story at ~$500K &mdash; different product, different buyers</div></div>
+</div>
+<img class="lfs-fig-img" src="../assets/listings/13218-wintergreen/photo-03.webp" alt="Updated kitchen with granite island at 13218 Wintergreen Estates" loading="lazy">
+<details class="lfs-more" open><summary>Why the spring comps didn't set the price</summary>
+<p>Appreciation doesn't climb straight up every month. Over years it trends up, but inside a single year demand rises and falls &mdash; a U-shape inside the longer trend. Spring is often the peak: more buyers, concentrated competition. By summer, some have bought, some are worn out, some just slow down.</p>
+<p>Our two comps sold at that spring high. They were the best data I had, but I wasn't going to price a summer listing as if a summer buyer would behave like a spring one.</p></details>
+<p>So I recommended <strong>$399,900</strong> &mdash; not the highest number I could defend, but the right entry point for the market in front of us. The spring comps had also <em>listed</em> lower than they closed; if buyers valued the home above $399,900, their offers could show us. Start too high and you ask summer buyers to accept spring pricing with no reason to compete.</p>
+<p class="lfs-yourturn"><strong>Your turn:</strong> price near the $420K spring comp, or enter at $399,900 and let the market push? &mdash; My seller agreed with $399,900. We listed there.</p>
 
-<h2>Why I Recommended $399,900</h2>
-<p>After looking at the two relevant split-level sales, the condition of the home and the summer market we were entering, my recommendation was $399,900.</p>
-<p>The spring comps had ultimately sold higher, but they had also listed lower than where they eventually closed. That matters because list price and market value are not always the same thing. I wanted this home entering the market at a number where buyers would see enough value to act.</p>
-<p>I was not trying to find the highest price I could defend on paper. I was trying to choose the right entry point for the market actually in front of us. If buyers believed the home was worth more than $399,900, they had room to show us that through their offers. If we started too high because the spring comps had reached $410,000 and $420,000, we risked asking summer buyers to immediately accept spring pricing without giving them a reason to compete. That is why I recommended $399,900. Not because I thought the house was weak. Because I thought the position was strong.</p>
+<h2>Decision 2: Whether to set an offer deadline</h2>
+<p>My seller asked what I thought about an offer deadline. My honest answer: I'd rather take offers as they come. I tend to see a deadline as a roadblock, and my instinct is to remove roadblocks, not add a reason for a ready buyer to wait.</p>
+<p>He had a fair counter &mdash; he'd used deadlines successfully before. And there was a real reason to set one: he was leaving on vacation.</p>
+<p>This wasn't me getting overruled. My job is to lay out what I see and the risks; the seller weighs that against his own experience and timing. I reminded him we were past the spring rush and into buyer fatigue &mdash; then asked when he wanted the deadline. We set it together.</p>
+<p class="lfs-yourturn"><strong>Your turn:</strong> skip the deadline, or set it given the vacation? &mdash; We set it. Then it passed at roughly five days on market, with two showings and no offers.</p>
+<p>That's not the story people picture behind a sold-over-asking sign. But once the deadline passed with nothing under contract, showing activity picked up.</p>
 
-<h2>The Offer Deadline Conversation</h2>
-<p>Before we went too far, my seller asked what I thought about setting an offer deadline. I gave him my actual opinion. I would rather take offers as they come. I tend to see a deadline as another possible roadblock, and my natural instinct in a transaction is to remove roadblocks. If a strong buyer is ready to write, I do not necessarily want to create a reason for that buyer to wait.</p>
-<p>My seller had a reasonable response. He had used offer deadlines successfully before. So we talked it through. I reminded him that we were no longer in the spring rush. We were into the part of the year where buyer fatigue can start showing up, and I did not want us assuming the same urgency that may have existed a few months earlier. But there was also a legitimate real-world reason to use a deadline: my seller was leaving on vacation. That changed the conversation.</p>
-<p>This was not a case where I gave advice, the seller ignored me and I waited to prove I was right. That is not how I view the relationship. My job is to explain what I see, what I think could help and what I think could create risk. The seller gets to weigh that against his own experience, timing and circumstances. So after we discussed it, I asked him when he wanted the deadline. We set it together.</p>
-
-<h2>The Deadline Passed. Then the Market Woke Up.</h2>
-<p>The deadline came at roughly five days on market. We had two showings. We had no offers. That is probably not the story someone imagines when they later see that the home sold above asking.</p>
-<p>But after the deadline passed without the property going under contract, showing activity started picking up. Soon after that, one buyer wrote an offer at $406,000. The buyer also waived the inspection. That second part mattered a lot.</p>
-<p>If I am comparing a $406,000 offer with no inspection contingency against a hypothetical offer around $410,000 that still includes an inspection contingency, I do not automatically assume the $410,000 offer is stronger. The inspection contingency creates another place where the transaction can reopen. The buyer can inspect the house, identify concerns and potentially request repairs, credits or another financial concession depending on the contract.</p>
-<p>That does not mean inspections are bad. Buyers have legitimate reasons to inspect homes. But from my seller's side, removing that contingency removes risk. So the real comparison is not simply $406,000 versus $410,000. It is $406,000 with less uncertainty versus $410,000 with another negotiation still potentially ahead. That is why I viewed the $406,000 waived-inspection offer as effectively every bit as strong as a somewhat higher offer carrying an inspection contingency. If you want the deeper version of that logic, I wrote about it separately in <a href="multiple-offers-without-overpaying-st-louis">multiple offers without overpaying</a>.</p>
+<h2>Decision 3: Evaluating the $406K waived-inspection offer</h2>
+<p>Soon after, one buyer offered <strong>$406,000 and waived the inspection.</strong> That second part mattered as much as the price.</p>
+<details class="lfs-more" open><summary>Why waived-inspection ≈ a higher offer with a contingency</summary>
+<p>Put $406,000 with no inspection next to a hypothetical $410,000 that keeps an inspection contingency. I don't automatically call the $410,000 stronger. The contingency is another place the deal can reopen &mdash; the buyer can inspect, raise concerns, and ask for repairs or credits.</p>
+<p>Inspections aren't bad; buyers have every reason to do them. But from the seller's side, waiving it removes risk. So the real comparison isn't $406K vs. $410K &mdash; it's $406K with less uncertainty vs. $410K with another negotiation still ahead.</p></details>
+<p>For a deeper version of that logic, I wrote it up separately in <a href="multiple-offers-without-overpaying-st-louis">multiple offers without overpaying</a>.</p>
+<p class="lfs-yourturn"><strong>Your turn:</strong> hold out for a higher number with a contingency, or take $406K clean? &mdash; We took it.</p>
 
 <h2>Closing at $406,000</h2>
-<figure class="lfs-fig"><img src="../assets/listings/13218-wintergreen/photo-06.webp" alt="Backyard patio at 13218 Wintergreen Estates, Fenton" loading="lazy"><figcaption>Listed at $399,900, closed at $406,000 with the inspection waived and a clean appraisal.</figcaption></figure>
-<p>From there, the deal was clean. There was no inspection negotiation because the inspection had been waived. The appraisal came in without a problem. There was no appraisal gap to work through. And the transaction closed fast at $406,000. That is $6,100 above the $399,900 list price.</p>
-<p>But now you can see why I do not think &ldquo;sold over asking&rdquo; is the most useful lesson from this sale. We did not hit the market and immediately collect a pile of offers. We had two strong but seasonally older comps. We had a nearby $500,000 sale that I refused to treat as comparable. We priced at $399,900. We discussed an offer deadline honestly and set one for practical reasons. The deadline passed after roughly five days and only two showings with no offers. Then activity picked up. One buyer came forward at $406,000 and removed a meaningful layer of risk by waiving the inspection. The appraisal did not create a problem, and we closed.</p>
-<p>The final number is part of the story. The decisions behind it are the part I think sellers can actually use. If you want to know what your own budget realistically supports before you start comparing homes, run your <a href="../stl-home-buying-power-calculator">realistic buying power</a> first.</p>
+<img class="lfs-fig-img" src="../assets/listings/13218-wintergreen/photo-06.webp" alt="Backyard patio at 13218 Wintergreen Estates, Fenton" loading="lazy">
+<p>From there it was clean: no inspection negotiation, the appraisal came in without a problem, no gap to solve. Closed fast at $406,000 &mdash; $6,100 over list.</p>
+<p>But "sold over asking" isn't the useful lesson. Two seasonally-older comps, a $500K sale I refused to treat as comparable, a $399,900 entry point, a deadline that passed quiet after five days and two showings &mdash; then one buyer at $406K who removed a layer of risk by waiving the inspection, and a clean appraisal. The number is part of the story. The decisions are the part sellers can use.</p>
 
 <h2>Lessons From This Sale</h2>
-<p><strong>1. Seasonal movement matters even inside a rising market.</strong> The two best comps had sold for roughly $410,000 and $420,000 during the spring. They were real evidence, but they were not guarantees. The longer-term trend in values can be upward while buyer activity still moves up and down within the year. You have to price for the market you are entering, not the market you wish were still there.</p>
-<p><strong>2. A true comp is more valuable than a convenient comp.</strong> The nearby $500,000 1.5-story would have been easy to point at if the goal was simply to justify a bigger number. But it did not compete for the same buyer in the same way our split-level did. With thin inventory, I would rather work carefully with two good comps than create false confidence by adding sales that do not really belong in the comparison.</p>
-<p><strong>3. Offer deadlines are situational, not rules.</strong> My preference was to let offers come in without adding a deadline. My seller had used deadlines successfully before and had a practical reason to set one because he was leaving on vacation. We talked through both sides and made the decision together. The deadline passed without an offer, but that does not make the decision foolish &mdash; it shows why real estate decisions need judgment instead of rigid formulas.</p>
-<p>That is what I want this series to show. Not that every transaction was perfect. Not that I had every answer before the market gave us feedback. Just how the decisions actually got made, what happened next and what I would want another seller to understand from it.</p>
+<p><strong>1. Season matters even in a rising market.</strong> The spring comps at ~$410K and ~$420K were real evidence, not guarantees. Price for the market you're entering, not the one you wish were still here.</p>
+<p><strong>2. A true comp beats a convenient one.</strong> The $500K 1.5-story was easy to point at, but it didn't compete for the same buyer. With thin data, two good comps beat three with a bad one padding the number.</p>
+<p><strong>3. Deadlines are situational, not rules.</strong> My preference was to skip it; the vacation made setting one reasonable. We decided together. It passed without an offer &mdash; which shows why these calls need judgment, not formulas.</p>
 
 <h2>Questions This Sale Helps Answer</h2>
 <h3>Do homes only appreciate in spring and summer?</h3>
-<p>No. Longer-term appreciation and seasonal movement are different things. Values can trend upward over time while buyer demand still strengthens and softens within the year. In this sale, the spring comps mattered, but I also had to account for the softer summer market we were listing into.</p>
+<p>No. Long-term appreciation and seasonal demand are different things &mdash; values can trend up over years while buyer activity still rises and softens within a single year. Here, the spring comps mattered, but so did the softer summer market we listed into.</p>
 <h3>What makes a home a true comparable sale?</h3>
-<p>A comparable sale should help explain how buyers are likely to value the home you are actually selling. Location and size matter, but so do property type, condition and buyer appeal. That is why I used the two relevant split-level sales here but would not anchor the valuation to a nearby roughly $500,000 1.5-story.</p>
+<p>A comp should explain how buyers will value the home you're actually selling &mdash; so property type, condition, and buyer appeal matter as much as size and location. That's why I used the two split-level sales but not the nearby ~$500K 1.5-story.</p>
 <h3>Should I set an offer deadline when selling?</h3>
-<p>Sometimes. I do not think it should be automatic. My preference in this deal was to let offers come as they came, but my seller had prior success with deadlines and was leaving on vacation, which gave us a practical reason to set one. We discussed it and made the call together.</p>
+<p>Sometimes &mdash; not automatically. My preference here was to take offers as they came, but my seller's prior success and his vacation gave a practical reason to set one. We discussed it and decided together.</p>
 <h3>Is a waived-inspection offer better than a higher offer with an inspection?</h3>
-<p>It can be. I viewed the $406,000 waived-inspection offer in this deal as effectively as strong as a somewhat higher offer around $410,000 that still carried an inspection contingency. The waived inspection removed a meaningful layer of seller risk, so the price alone did not tell the whole story.</p>
+<p>It can be. I treated the $406,000 waived-inspection offer as effectively as strong as a ~$410,000 offer that kept an inspection contingency, because waiving it removed a real layer of seller risk. Price alone doesn't tell the whole story.</p>
 
-<p style="margin-top:32px;font-size:.9rem;color:rgba(255,255,255,.5);">More in this series: <a href="lessons-from-a-sale">Lessons From a Sale</a> &middot; Related: <a href="multiple-offers-without-overpaying-st-louis">Multiple offers without overpaying</a> &middot; <a href="../school-districts">St. Louis school districts</a></p>
+<p style="margin-top:32px;font-size:.9rem;color:rgba(255,255,255,.5);">More in this series: <a href="lessons-from-a-sale">Lessons From a Sale</a> &middot; Related: <a href="multiple-offers-without-overpaying-st-louis">Multiple offers without overpaying</a> &middot; <a href="../school-districts">St. Louis school districts</a> &middot; Know your number first: <a href="../stl-home-buying-power-calculator">buying power calculator</a></p>
 
-  </div>
+</div>
 
 </div>
 <footer style="border-top:1px solid rgba(255,255,255,.08);padding:32px 24px;text-align:center;background:#050505;">
