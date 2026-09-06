@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" class="district-page">
+<head>
+  <meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="/assets/favicon-512.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riverview Gardens School District Buyer Guide</title>
+  <meta name="description" content="Buying in Riverview Gardens School District? RGSD accreditation status, Riverview Gardens High, boundaries, and North County homes.">
+  <link rel="canonical" href="https://stlhomejourney.com/school-districts/riverview-gardens-school-district">
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    /* ── District page local styles ── */
+    :root {
+      --bg: #050505;
+      --gold: #FFCC4D;
+      --gold-dim: rgba(255,204,77,0.12);
+      --gold-border: rgba(255,204,77,0.25);
+      --text: #E8E4DC;
+      --text-muted: #8C8880;
+      --surface: #0F0F0F;
+      --surface-2: #161616;
+      --radius: 8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      height: auto !important;
+      min-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto !important;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      height: auto !important;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto !important;
+      overscroll-behavior-y: auto;
+      touch-action: auto;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb {
+      padding: 18px 24px 0;
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .breadcrumb a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb span { margin: 0 6px; }
+
+    /* ── Hero ── */
+    .district-hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 40px;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .tier-elite  { background: rgba(255,204,77,.18); color: var(--gold); border: 1px solid rgba(255,204,77,.35); }
+    .tier-strong { background: rgba(120,200,120,.15); color: #7EC87E; border: 1px solid rgba(120,200,120,.3); }
+    .tier-value  { background: rgba(120,160,220,.15); color: #88B0E0; border: 1px solid rgba(120,160,220,.3); }
+    .price-range {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: .02em;
+    }
+    .price-range strong { color: var(--text); }
+
+    .district-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #fff;
+      letter-spacing: -.01em;
+    }
+    .hero-rule {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      margin-top: 20px;
+      border-radius: 2px;
+    }
+
+    /* ── Content body ── */
+    .district-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .content-section {
+      padding: 44px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .content-section:last-of-type { border-bottom: none; }
+
+    .content-section h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 18px;
+      line-height: 1.25;
+    }
+    .content-section h2 .section-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .content-section p {
+      color: #C8C4BC;
+      line-height: 1.8;
+    }
+
+    /* ── George field callout ── */
+    .george-callout {
+      background: var(--surface-2);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 24px 28px;
+      margin-top: 0;
+    }
+    .george-callout .george-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .george-callout .george-label svg {
+      width: 16px; height: 16px; flex-shrink: 0;
+    }
+    .george-callout p {
+      font-size: 15px;
+      color: #C8C4BC;
+      line-height: 1.8;
+    }
+
+    /* ── Neighborhood pills ── */
+    .neighborhood-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .nbhd-pill {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background .2s, border-color .2s;
+    }
+    .nbhd-pill:hover {
+      background: rgba(255,204,77,.22);
+      border-color: rgba(255,204,77,.5);
+    }
+
+    /* ── CTA block ── */
+    .cta-block {
+      background: var(--surface);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 44px 40px;
+      text-align: center;
+      margin-top: 56px;
+    }
+    .cta-block h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .cta-block p {
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 28px;
+      font-size: 15px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: #050505;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: .01em;
+      transition: opacity .2s, transform .15s;
+    }
+    .cta-btn:hover { opacity: .88; transform: translateY(-1px); }
+    .cta-sub {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color .2s;
+      margin-top: 40px;
+    }
+    .back-link:hover { color: var(--gold); }
+
+    /* ── Compliance footer ── */
+    .compliance-footer {
+      background: var(--surface);
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 20px 24px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .compliance-footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .district-hero, .district-body { padding-left: 16px; padding-right: 16px; }
+      .cta-block { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Riverview Gardens School District Buyer Guide","description":"RGSD accreditation status, Riverview Gardens High, boundaries, and North County homes.","url":"https://stlhomejourney.com/school-districts/riverview-gardens-school-district","author":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@type":"Organization","name":"STL Home Journey","url":"https://stlhomejourney.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://stlhomejourney.com/school-districts/riverview-gardens-school-district"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"STL Home Journey","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"School Districts","item":"https://stlhomejourney.com/school-districts"},{"@type":"ListItem","position":3,"name":"Riverview Gardens School District","item":"https://stlhomejourney.com/school-districts/riverview-gardens-school-district"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Riverview Gardens School District accredited?","acceptedAnswer":{"@type":"Answer","text":"Yes, but Riverview Gardens is currently provisionally accredited, not fully accredited. Local governance has been restored, and the district recently reported finishing one point short of the full-accreditation threshold. Buyers should check Missouri DESE for the latest status because the district is approaching a classification decision for 2026-27."}},{"@type":"Question","name":"How many high schools does Riverview Gardens have?","acceptedAnswer":{"@type":"Answer","text":"Riverview Gardens School District has one comprehensive high school: Riverview Gardens High School. Because it's a single-high-school district, every address confirmed inside RGSD follows that comprehensive high-school path, although younger students' individual school assignments should still be verified."}},{"@type":"Question","name":"What is happening with Riverview Gardens accreditation?","acceptedAnswer":{"@type":"Answer","text":"RGSD is currently provisionally accredited and recently came within one point of the full-accreditation threshold. Missouri is expected to use the district's 2023-24, 2024-25 and 2025-26 APR results in determining its classification for 2026-27, so buyers should verify the latest status directly with DESE."}},{"@type":"Question","name":"What should buyers check before buying in Riverview Gardens School District?","acceptedAnswer":{"@type":"Answer","text":"Confirm that the exact property is inside the district, verify the assigned schools and review the latest Missouri DESE accreditation and performance information. Because RGSD's accreditation status is improving and could change with the upcoming classification decision, I wouldn't rely on older articles or school information attached automatically to a real estate listing."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/school-districts/riverview-gardens-school-district","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
+<body class="district-page">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">STL Home Journey</a>
+    <span>›</span>
+    <a href="/school-districts">School Districts</a>
+    <span>›</span>
+    Riverview Gardens School District
+  </nav>
+
+  <header class="district-hero">
+    <div class="hero-meta">
+      <span class="price-range">North St. Louis County &middot; Provisionally accredited</span>
+    </div>
+    <h1>Riverview Gardens School District: What Home Buyers Need to Know</h1>
+    <div class="hero-rule" aria-hidden="true"></div>
+  </header>
+
+  <main class="district-body">
+
+<p>Riverview Gardens School District is a smaller North St. Louis County district serving roughly 5,200 students across several municipalities in the northern part of the county.</p>
+<p>For a home buyer, there are two things I'd understand early in the research process. First, Riverview Gardens is a single-high-school district. Once you've confirmed that a property is actually inside the district, Riverview Gardens High School is the district's comprehensive high school. You don't have the additional high-school boundary question that comes with larger districts such as <a href="hazelwood-school-district">Hazelwood</a> or <a href="ferguson-florissant-school-district">Ferguson-Florissant</a>.</p>
+<p>Second, Riverview Gardens School District is currently <strong>provisionally accredited</strong> by the Missouri Department of Elementary and Secondary Education, or Missouri DESE. Local governance has been restored, and recent performance has brought the district close to full accreditation.</p>
+<p>That status needs some context because buyers searching online may find older information saying Riverview Gardens was unaccredited or under state oversight. That's part of the district's history, but it is not the current situation. Today, RGSD is provisionally accredited, locally governed and approaching a potentially important accreditation decision for the 2026-27 school year.</p>
+
+    <section class="content-section">
+      <h2><span class="section-label">Who it's for</span>Who is Riverview Gardens School District a good fit for?</h2>
+<p>I think Riverview Gardens is a district buyers should evaluate from current information rather than an old reputation or one number. That's especially important here because the district's status has changed over time and may change again relatively soon.</p>
+<p>If you're considering homes in Riverview Gardens School District, start by looking at what you actually need from the house and the location. Then research the school information attached to the property. Maybe your priorities are bedrooms, a basement, garage space or keeping the purchase price within a certain range. Maybe your school priorities are more specific. Maybe accreditation status itself is an important requirement for your household. All of those can be legitimate parts of the decision.</p>
+<p>I wouldn't tell a buyer that provisional accreditation automatically makes the district the wrong choice. I also wouldn't minimize it and tell someone accreditation shouldn't matter. Different buyers can reasonably place different weight on the same information. What I can do is make sure the status is described accurately so you can decide how much it matters to you.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">What you're paying for</span>What are you paying for when you buy in Riverview Gardens?</h2>
+<p>When you're comparing North County homes with homes elsewhere in St. Louis County, purchase price can create a very different housing equation. I think that conversation should stay focused on the actual housing stock. What does your budget buy?</p>
+<p>Compare the number of bedrooms, square footage, lot, garage, basement, condition and expected monthly payment. Look at how much work the home may need after closing. Compare taxes and insurance rather than looking only at the asking price. A lower purchase price doesn't automatically mean you're getting a better value. If a home needs significant repairs, that changes the equation. At the same time, paying substantially more for a home somewhere else doesn't automatically make that purchase better either.</p>
+<p>That's why I generally start with <a href="../stl-home-buying-power-calculator">buying power</a>. If we know the payment you're comfortable carrying, we can look at the homes available in Riverview Gardens and compare them with homes in <a href="normandy-school-district">Normandy</a>, Ferguson-Florissant, Hazelwood or other districts within your search. Then you can see the actual tradeoffs instead of making the decision from school-district names alone. If one option gives you substantially more of the house you need but comes with a school situation you want to research further, that's something to weigh. If another district is important enough that you're willing to buy less house or spend more to be there, that's something to weigh too.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">High school</span>Riverview Gardens High School and the single-high-school structure</h2>
+<p>Riverview Gardens School District has one comprehensive high school: Riverview Gardens High School. The school serves approximately 1,246 students based on 2024-25 information.</p>
+<p>From a real estate standpoint, having one comprehensive high school makes the district relatively easy to understand once you've established that a property is inside RGSD. Compare that with a district such as Hazelwood, where buyers have to determine whether the address feeds Hazelwood Central, East or West. In Riverview Gardens, you don't have that second comprehensive-high-school boundary question.</p>
+<p>That doesn't mean you should skip address verification. Families with younger children still need to identify the elementary and middle-school assignments associated with a property. More importantly, you should confirm that the property is actually inside Riverview Gardens School District rather than assuming from the municipality or ZIP code. St. Louis County school districts don't always line up cleanly with city boundaries or mailing addresses. If school assignment affects whether you would purchase the home, I recommend verifying the address directly through Riverview Gardens School District or its official school information rather than relying solely on Zillow, Realtor.com, the MLS or another home-search website.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Accreditation</span>Riverview Gardens accreditation and current performance</h2>
+<p>Riverview Gardens School District is currently <strong>provisionally accredited</strong> by <a href="https://dese.mo.gov" target="_blank" rel="noopener">Missouri DESE</a>. That is the correct current status.</p>
+<p>The district lost accreditation in 2007 and later regained provisional accreditation effective in January 2017. The Missouri State Board has since completed the transition back to a locally elected board of education, so the district is now locally governed. It should not be described today as unaccredited or as being under state takeover. It also should not yet be described as fully accredited.</p>
+<p>The current situation is more encouraging than either of those older descriptions suggests. On its most recent Annual Performance Report, Riverview Gardens reported that it finished just one point short of the level needed for full accreditation. That's an important current signal, but it's still not the same thing as having full accreditation today. Exact current APR percentage or points: [VERIFY].</p>
+<p>The 2025-26 school year is particularly important for RGSD. Missouri will use an average of the district's 2023-24, 2024-25 and 2025-26 Annual Performance Report results when determining the district's classification for the 2026-27 school year. So the clearest way I can describe the situation is this: Riverview Gardens is currently provisionally accredited, it recently came within one point of the full-accreditation threshold, and the district is approaching a classification decision that could affect its status for 2026-27.</p>
+<p>That makes current information especially important. If you're reading this page while considering a home in the district, I recommend checking Missouri DESE directly before making a decision based on accreditation. This is not a district where I'd want a buyer relying on something written two or three years ago — or even assuming this page will always reflect the newest classification. Missouri DESE should be the authoritative source for the district's current accreditation and official performance information. I also wouldn't use accreditation as the only measure of the individual school experience. District accreditation is an important piece of information, but families should still research individual schools, available programs and the factors that matter to their children.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Coverage</span>What area does Riverview Gardens School District cover?</h2>
+<p>Riverview Gardens School District serves several municipalities and communities in northern St. Louis County. Because the district covers portions of a broader North County area, I'd treat the exact property address as the important piece of information rather than the city name or ZIP code printed on the listing.</p>
+<p>This comes up constantly in St. Louis County real estate. Municipal boundaries, mailing addresses, ZIP codes and school-district boundaries are separate systems. A buyer can look at two homes relatively close to each other and find that they're assigned to different school districts. If you're specifically searching for homes in Riverview Gardens School District, I'd verify each serious property individually. My basic process would be:</p>
+<ul>
+<li>Confirm that the exact address is inside Riverview Gardens School District.</li>
+<li>Verify the currently assigned schools through the district.</li>
+<li>Confirm Riverview Gardens High as the comprehensive high-school path.</li>
+<li>Check Missouri DESE for the district's current accreditation classification.</li>
+<li>Review the newest Annual Performance Report information rather than relying on old performance data.</li>
+<li>Research the individual schools and programs that matter to your household.</li>
+</ul>
+<p>That final accreditation check is especially important here because RGSD is actively approaching a classification decision for the 2026-27 school year.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Honest take</span>My honest take on buying in Riverview Gardens School District</h2>
+<p>I think Riverview Gardens is a good example of why school-district pages need dates and context. If I simply told you the district lost accreditation, that would leave you with an outdated picture. If I told you it is fully accredited because it recently came within one point of the threshold, that would be inaccurate too. The truth is in the middle.</p>
+<p>Riverview Gardens is currently provisionally accredited. Local governance has been restored. The district's latest performance brought it within one point of full accreditation, and the 2025-26 results will help determine its classification for 2026-27. That's meaningful progress, but it's also a situation buyers should continue to verify. If accreditation is a major factor in your purchase, go directly to Missouri DESE and check the current classification when you're actually making the decision.</p>
+<p>Then put that information beside the rest of the home-buying picture. What house are you getting for the money? What is the monthly payment? What condition is the home in? Which individual schools serve it? How does that compare with a property in <a href="normandy-school-district">Normandy</a>, <a href="ferguson-florissant-school-district">Ferguson-Florissant</a>, <a href="hazelwood-school-district">Hazelwood</a> or another district you're considering? I wouldn't tell you what conclusion to reach from those answers.</p>
+<p>After 13 years in real estate and more than 250 transactions, I think buyers make better decisions when they understand the facts and the tradeoffs instead of being handed a school rating and told where they should or shouldn't live. With Riverview Gardens, the current trajectory is an important part of those facts. The district isn't where it was when it lost accreditation in 2007. It also hasn't reached full accreditation yet. As of now, it's a locally governed, provisionally accredited district that has moved close to the full-accreditation threshold and is heading toward an important 2026-27 classification decision.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">FAQ</span>Riverview Gardens School District: common buyer questions</h2>
+<h3>Is Riverview Gardens School District accredited?</h3>
+<p>Yes, but Riverview Gardens is currently <strong>provisionally accredited</strong>, not fully accredited. Local governance has been restored, and the district recently reported finishing one point short of the full-accreditation threshold. Buyers should check Missouri DESE for the latest status because the district is approaching a classification decision for 2026-27.</p>
+<h3>How many high schools does Riverview Gardens have?</h3>
+<p>Riverview Gardens School District has one comprehensive high school: Riverview Gardens High School. Because it's a single-high-school district, every address confirmed inside RGSD follows that comprehensive high-school path, although younger students' individual school assignments should still be verified.</p>
+<h3>What is happening with Riverview Gardens accreditation?</h3>
+<p>RGSD is currently provisionally accredited and recently came within one point of the full-accreditation threshold. Missouri is expected to use the district's 2023-24, 2024-25 and 2025-26 APR results in determining its classification for 2026-27, so buyers should verify the latest status directly with DESE.</p>
+<h3>What should buyers check before buying in Riverview Gardens School District?</h3>
+<p>Confirm that the exact property is inside the district, verify the assigned schools and review the latest Missouri DESE accreditation and performance information. Because RGSD's accreditation status is improving and could change with the upcoming classification decision, I wouldn't rely on older articles or school information attached automatically to a real estate listing.</p>
+    </section>
+
+    <a href="/school-districts" class="back-link" aria-label="All School Districts">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      All School Districts
+    </a>
+
+    <div class="cta-block">
+      <h2>Have questions about the Riverview Gardens area?</h2>
+      <p>I've worked this market for 13 years and 250+ transactions. One call can save you months of guessing.</p>
+      <a href="tel:3144351087" class="cta-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.5 4.5h2l1 4-1.5 1.5c1.1 2.2 2.8 3.9 5 5L15.5 13l4 1v2c0 .8-.6 1.5-1.4 1.5-7 0-12.6-5.6-12.6-12.6 0-.8.7-1.4 1.5-1.4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        Call George — 314.435.1087
+      </a>
+      <p class="cta-sub">No obligation. No pressure. Just a straight conversation about your situation.</p>
+    </div>
+
+  </main>
+
+  <footer class="compliance-footer">
+    <p>George Kindler | Licensed Missouri Real Estate Agent | <strong>The Closing Pros LLC</strong> | <a href="tel:3149984550">314-998-4550</a></p>
+    <p>STL Home Journey is an educational resource. Content is for informational purposes only and does not constitute legal or financial advice. Equal Housing Opportunity.</p>
+  </footer>
+
+  <script src="/shared.js" defer></script>
+
+</body>
+</html>
