@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" class="district-page">
+<head>
+  <meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="/assets/favicon-512.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>University City School District: Buyer Guide</title>
+  <meta name="description" content="Buying in University City School District? University City High, accreditation, boundaries, and inner-ring mid-county St. Louis homes.">
+  <link rel="canonical" href="https://stlhomejourney.com/school-districts/university-city-school-district">
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    /* ── District page local styles ── */
+    :root {
+      --bg: #050505;
+      --gold: #FFCC4D;
+      --gold-dim: rgba(255,204,77,0.12);
+      --gold-border: rgba(255,204,77,0.25);
+      --text: #E8E4DC;
+      --text-muted: #8C8880;
+      --surface: #0F0F0F;
+      --surface-2: #161616;
+      --radius: 8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      height: auto !important;
+      min-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto !important;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      height: auto !important;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto !important;
+      overscroll-behavior-y: auto;
+      touch-action: auto;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb {
+      padding: 18px 24px 0;
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .breadcrumb a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb span { margin: 0 6px; }
+
+    /* ── Hero ── */
+    .district-hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 40px;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .tier-elite  { background: rgba(255,204,77,.18); color: var(--gold); border: 1px solid rgba(255,204,77,.35); }
+    .tier-strong { background: rgba(120,200,120,.15); color: #7EC87E; border: 1px solid rgba(120,200,120,.3); }
+    .tier-value  { background: rgba(120,160,220,.15); color: #88B0E0; border: 1px solid rgba(120,160,220,.3); }
+    .price-range {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: .02em;
+    }
+    .price-range strong { color: var(--text); }
+
+    .district-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #fff;
+      letter-spacing: -.01em;
+    }
+    .hero-rule {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      margin-top: 20px;
+      border-radius: 2px;
+    }
+
+    /* ── Content body ── */
+    .district-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .content-section {
+      padding: 44px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .content-section:last-of-type { border-bottom: none; }
+
+    .content-section h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 18px;
+      line-height: 1.25;
+    }
+    .content-section h2 .section-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .content-section p {
+      color: #C8C4BC;
+      line-height: 1.8;
+    }
+
+    /* ── George field callout ── */
+    .george-callout {
+      background: var(--surface-2);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 24px 28px;
+      margin-top: 0;
+    }
+    .george-callout .george-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .george-callout .george-label svg {
+      width: 16px; height: 16px; flex-shrink: 0;
+    }
+    .george-callout p {
+      font-size: 15px;
+      color: #C8C4BC;
+      line-height: 1.8;
+    }
+
+    /* ── Neighborhood pills ── */
+    .neighborhood-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .nbhd-pill {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background .2s, border-color .2s;
+    }
+    .nbhd-pill:hover {
+      background: rgba(255,204,77,.22);
+      border-color: rgba(255,204,77,.5);
+    }
+
+    /* ── CTA block ── */
+    .cta-block {
+      background: var(--surface);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 44px 40px;
+      text-align: center;
+      margin-top: 56px;
+    }
+    .cta-block h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .cta-block p {
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 28px;
+      font-size: 15px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: #050505;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: .01em;
+      transition: opacity .2s, transform .15s;
+    }
+    .cta-btn:hover { opacity: .88; transform: translateY(-1px); }
+    .cta-sub {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color .2s;
+      margin-top: 40px;
+    }
+    .back-link:hover { color: var(--gold); }
+
+    /* ── Compliance footer ── */
+    .compliance-footer {
+      background: var(--surface);
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 20px 24px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .compliance-footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .district-hero, .district-body { padding-left: 16px; padding-right: 16px; }
+      .cta-block { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"University City School District: Buyer Guide","description":"University City High, accreditation, boundaries, and inner-ring mid-county St. Louis homes.","url":"https://stlhomejourney.com/school-districts/university-city-school-district","author":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@type":"Organization","name":"STL Home Journey","url":"https://stlhomejourney.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://stlhomejourney.com/school-districts/university-city-school-district"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"STL Home Journey","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"School Districts","item":"https://stlhomejourney.com/school-districts"},{"@type":"ListItem","position":3,"name":"University City School District","item":"https://stlhomejourney.com/school-districts/university-city-school-district"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is University City School District accredited?","acceptedAnswer":{"@type":"Answer","text":"Yes. The School District of University City is currently state-accredited by Missouri DESE and holds full accreditation under Missouri's current system. Buyers should confirm the latest accreditation classification and current APR directly with DESE because performance information can change over time."}},{"@type":"Question","name":"How many high schools does University City School District have?","acceptedAnswer":{"@type":"Answer","text":"The district has one comprehensive high school: University City High School. Because it is a single-high-school district, addresses confirmed inside the district feed University City High, although elementary assignments should still be verified for each property."}},{"@type":"Question","name":"What areas are in University City School District?","acceptedAnswer":{"@type":"Answer","text":"The district includes all of University City plus small portions of Overland, Vinita Park and Wellston. Buyers near the district's edges should verify the exact address because nearby municipal and school-district boundaries do not always match."}},{"@type":"Question","name":"Is University City School District a good choice for home buyers?","acceptedAnswer":{"@type":"Answer","text":"That depends on the specific home, school information, purchase price, location and priorities that matter to you. The district is currently fully accredited and has one comprehensive high school, but I would still research the individual schools and compare the actual housing options rather than choosing from the district name alone."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/school-districts/university-city-school-district","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
+<body class="district-page">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">STL Home Journey</a>
+    <span>›</span>
+    <a href="/school-districts">School Districts</a>
+    <span>›</span>
+    University City School District
+  </nav>
+
+  <header class="district-hero">
+    <div class="hero-meta">
+      <span class="price-range">Mid-County / Inner-Ring &middot; Single high school</span>
+    </div>
+    <h1>University City School District: What Home Buyers Need to Know</h1>
+    <div class="hero-rule" aria-hidden="true"></div>
+  </header>
+
+  <main class="district-body">
+
+<p>The University City School District, officially the School District of University City, is a smaller mid-county school district serving roughly 2,550 students across about seven schools. Its location is one of the first things that makes it different from many of the districts buyers compare around St. Louis County.</p>
+<p><a href="../neighborhoods/university-city">University City</a> sits directly next to the City of St. Louis and near Clayton and Washington University. That gives buyers a different housing and location equation than they get farther west in districts such as Parkway or Rockwood.</p>
+<p>The district has four K-5 elementary schools — Barbara C. Jordan, Flynn Park, Jackson Park and Pershing — followed by Brittany Woods Middle School and one comprehensive high school, University City High School. That single-high-school structure makes one part of the school search relatively simple. If an address is confirmed inside the School District of University City, University City High is the district's comprehensive high school.</p>
+<p>The district is currently state-accredited by Missouri DESE. Its exact current 2024-25 Annual Performance Report score and ranking: [VERIFY]. As with every district page I write, I recommend checking the latest DESE information when school performance or accreditation is an important part of your purchase.</p>
+
+    <section class="content-section">
+      <h2><span class="section-label">Who it's for</span>Who is University City School District a good fit for?</h2>
+<p>University City tends to come into the conversation for buyers who want to stay relatively close to the center of the St. Louis metro while still buying in St. Louis County. That's an important distinction.</p>
+<p>University City is an inner-ring community adjacent to the independent City of St. Louis. It is also near Clayton and Washington University, so buyers considering U City are often making a different location decision than someone looking farther into West County or St. Charles County. I would start with that location question before getting too focused on a school-district rating. Where do you work? Where do you spend your time? How much house do you need? How important is being closer to the central part of the metro compared with having newer housing or a different amount of space?</p>
+<p>The School District of University City is relatively small, and it has one comprehensive high school. For some buyers, that makes the district easier to research than a large multi-high-school system where two homes in the same municipality can eventually feed different high schools. That doesn't mean every U City home has the same elementary assignment or that you can skip verifying the address. It simply means the high-school path is more straightforward once you know the property is actually inside the district.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">What you're paying for</span>What are you paying for when you buy in University City?</h2>
+<p>University City is a good example of why I don't like reducing a home search to "Which school district is best?" You're buying much more than a district name. You're buying a house, a specific location, a commute, a lot, a floor plan and a monthly payment. In an established inner-ring community such as University City, you're also looking at housing stock that can be very different from what you'll find in newer parts of the metro.</p>
+<p>Instead of treating older or newer as automatically better, I would look at what the individual property gives you. How much finished space are you getting? Does it have the number of bedrooms you need? Is there a garage? What is the basement like? What updates have already been completed, and what major systems may need attention after you buy? Condition matters because two homes with similar asking prices can have very different real costs.</p>
+<p>A property that has already had significant updates may justify a different price than one where you're budgeting for the roof, HVAC, electrical work, windows or major interior renovations. I want buyers looking at that complete picture rather than assuming the list price tells them everything. Location also has value, but that value is personal. A buyer who regularly needs to reach Clayton, Washington University or the City of St. Louis may look at University City's location differently than someone whose daily routine takes them farther west.</p>
+<p>This is where <a href="../stl-home-buying-power-calculator">realistic buying power</a> becomes useful. Once you know the monthly payment you're comfortable carrying, you can compare what that budget buys in University City with what it buys in another St. Louis County district and see the actual tradeoffs.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">High school</span>University City High School and the single-high-school structure</h2>
+<p>The School District of University City has one comprehensive high school: University City High School. University City High School was established in 1930 and serves roughly 811 students. The building itself also has a distinctive piece of local history: it was listed on the National Register of Historic Places in 1985 as part of the University City Education District.</p>
+<p>For buyers, though, the most practical fact is the single-high-school structure. If you confirm that a property is inside the School District of University City, University City High is the district's comprehensive high school. You don't have to determine which of several district high schools serves the address. Compare that with Parkway, Rockwood or Fort Zumwalt, where confirming the district is only the first part of the school research. Those districts have multiple comprehensive high schools with different attendance areas. University City removes that particular layer of complexity.</p>
+<p>Families with younger children still need to verify elementary assignments. The district's four K-5 elementary schools are Barbara C. Jordan, Flynn Park, Jackson Park and Pershing, followed by Brittany Woods Middle School. I would verify the current assignment for the exact property through official district information rather than relying exclusively on the school displayed on Zillow, Realtor.com, the MLS or another real estate site. Those tools are useful during a home search. They aren't the source I would use for the final answer if school assignment could change whether you're willing to purchase the house.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Performance</span>How does University City School District perform?</h2>
+<p>The School District of University City is currently state-accredited by the Missouri Department of Elementary and Secondary Education (<a href="https://dese.mo.gov" target="_blank" rel="noopener">Missouri DESE</a>). Under Missouri's current system, the district holds full accreditation. University City's exact current 2024-25 Annual Performance Report score and any corresponding statewide ranking: [VERIFY].</p>
+<p>I wouldn't fill that blank with an older score just to have a number on the page. Missouri's accountability system has changed over time, and school-performance information can change from one reporting cycle to the next. If the current APR matters to your purchase, Missouri DESE should be the authoritative source.</p>
+<p>I would also separate district accreditation from individual-school research. Full accreditation is an important district-level fact. It doesn't mean every school has identical results, programs or strengths. The same is true in any district. Start with Missouri DESE for official information. <a href="https://www.greatschools.org" target="_blank" rel="noopener">GreatSchools</a> can be useful as a secondary research source when you're looking at an individual school, but I wouldn't make a home-buying decision from one GreatSchools number.</p>
+<p>Look at the underlying information. Research the specific elementary school connected to the property, Brittany Woods Middle School and University City High. If a particular course, program or service matters to your household, confirm that directly with the district. That's more useful than trying to turn an entire school system into one rating.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Boundaries</span>University City School District boundaries</h2>
+<p>The School District of University City includes all of University City along with small portions of Overland, Vinita Park and Wellston. That makes University City somewhat simpler than districts that divide a single municipality among several high schools, but buyers should still pay attention around the district's edges.</p>
+<p>School-district boundaries, municipal boundaries, mailing addresses and ZIP codes are not the same thing. If you're looking at a home clearly within University City, the School District of University City is the district serving the municipality. But once you're comparing properties near neighboring communities, don't assume that being close to University City means the property is inside the district. The reverse is also true. Small portions of Overland, Vinita Park and Wellston are included within the district.</p>
+<p>For a serious property, I would use a simple process:</p>
+<ul>
+<li>Confirm the exact address is inside the School District of University City.</li>
+<li>Verify the assigned elementary school through official district information.</li>
+<li>Confirm Brittany Woods Middle School and University City High as applicable to the address.</li>
+<li>Review current Missouri DESE information for the district and individual schools.</li>
+<li>Use GreatSchools as additional research rather than the final authority.</li>
+<li>Confirm any specific programs directly with the district if they affect your buying decision.</li>
+</ul>
+<p>I recommend doing that before you get too far into negotiations if the school assignment is an important reason you're considering the house.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Honest take</span>My honest take on buying in University City School District</h2>
+<p>University City is one of the districts where I think the location and the housing stock deserve just as much attention as the district-level school information. It's a smaller, fully accredited district with one comprehensive high school. It's also positioned differently within the metro than the larger suburban districts farther west. That creates a different set of tradeoffs.</p>
+<p>If being near the City of St. Louis, Clayton or Washington University matters to your daily life, University City's location may carry a lot of weight. If your priority is newer construction, a particular subdivision layout or simply getting farther west, you may end up comparing U City with very different housing options. I wouldn't tell a buyer which of those priorities should win. I would compare actual houses.</p>
+<p>Look at the purchase price. Look at the monthly payment. Look at the condition and the amount of work the property may need. Verify the elementary assignment and research the individual schools. Check the latest DESE information. Then decide whether that combination works for you. If you're weighing nearby mid-county options, <a href="clayton-school-district">Clayton</a> and <a href="ladue-school-district">Ladue</a> are natural districts to compare against.</p>
+<p>After 13 years in real estate and more than 250 transactions, I think that's a much better way to buy a home than chasing a school rating without looking at what you're giving up to get it. University City gives buyers a relatively straightforward district structure: four elementary schools, one middle school and one comprehensive high school. It is currently fully accredited, and its inner-ring location puts buyers close to a central part of the metro while still being in St. Louis County. Those are useful facts. The next step is figuring out how the specific house, specific school assignment and specific payment fit your priorities.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">FAQ</span>University City School District: common buyer questions</h2>
+<h3>Is University City School District accredited?</h3>
+<p>Yes. The School District of University City is currently state-accredited by Missouri DESE and holds full accreditation under Missouri's current system. Buyers should confirm the latest accreditation classification and current APR directly with DESE because performance information can change over time.</p>
+<h3>How many high schools does University City School District have?</h3>
+<p>The district has one comprehensive high school: University City High School. Because it is a single-high-school district, addresses confirmed inside the district feed University City High, although elementary assignments should still be verified for each property.</p>
+<h3>What areas are in University City School District?</h3>
+<p>The district includes all of University City plus small portions of Overland, Vinita Park and Wellston. Buyers near the district's edges should verify the exact address because nearby municipal and school-district boundaries do not always match.</p>
+<h3>Is University City School District a good choice for home buyers?</h3>
+<p>That depends on the specific home, school information, purchase price, location and priorities that matter to you. The district is currently fully accredited and has one comprehensive high school, but I would still research the individual schools and compare the actual housing options rather than choosing from the district name alone.</p>
+    </section>
+
+    <a href="/school-districts" class="back-link" aria-label="All School Districts">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      All School Districts
+    </a>
+
+    <div class="cta-block">
+      <h2>Looking at homes in University City?</h2>
+      <p>I've worked this market for 13 years and 250+ transactions. One call can save you months of guessing.</p>
+      <a href="tel:3144351087" class="cta-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.5 4.5h2l1 4-1.5 1.5c1.1 2.2 2.8 3.9 5 5L15.5 13l4 1v2c0 .8-.6 1.5-1.4 1.5-7 0-12.6-5.6-12.6-12.6 0-.8.7-1.4 1.5-1.4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        Call George — 314.435.1087
+      </a>
+      <p class="cta-sub">No obligation. No pressure. Just a straight conversation about your situation.</p>
+    </div>
+
+  </main>
+
+  <footer class="compliance-footer">
+    <p>George Kindler | Licensed Missouri Real Estate Agent | <strong>The Closing Pros LLC</strong> | <a href="tel:3149984550">314-998-4550</a></p>
+    <p>STL Home Journey is an educational resource. Content is for informational purposes only and does not constitute legal or financial advice. Equal Housing Opportunity.</p>
+  </footer>
+
+  <script src="/shared.js" defer></script>
+
+</body>
+</html>
