@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" class="district-page">
+<head>
+  <meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="/assets/favicon-512.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fort Zumwalt School District: A Buyer Guide</title>
+  <meta name="description" content="Buying in Fort Zumwalt School District? Its four high schools, accreditation, boundaries, and homes in O'Fallon and St. Peters.">
+  <link rel="canonical" href="https://stlhomejourney.com/school-districts/fort-zumwalt-school-district">
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    /* ── District page local styles ── */
+    :root {
+      --bg: #050505;
+      --gold: #FFCC4D;
+      --gold-dim: rgba(255,204,77,0.12);
+      --gold-border: rgba(255,204,77,0.25);
+      --text: #E8E4DC;
+      --text-muted: #8C8880;
+      --surface: #0F0F0F;
+      --surface-2: #161616;
+      --radius: 8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      height: auto !important;
+      min-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto !important;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      height: auto !important;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto !important;
+      overscroll-behavior-y: auto;
+      touch-action: auto;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb {
+      padding: 18px 24px 0;
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .breadcrumb a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb span { margin: 0 6px; }
+
+    /* ── Hero ── */
+    .district-hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 40px;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .tier-elite  { background: rgba(255,204,77,.18); color: var(--gold); border: 1px solid rgba(255,204,77,.35); }
+    .tier-strong { background: rgba(120,200,120,.15); color: #7EC87E; border: 1px solid rgba(120,200,120,.3); }
+    .tier-value  { background: rgba(120,160,220,.15); color: #88B0E0; border: 1px solid rgba(120,160,220,.3); }
+    .price-range {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: .02em;
+    }
+    .price-range strong { color: var(--text); }
+
+    .district-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #fff;
+      letter-spacing: -.01em;
+    }
+    .hero-rule {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      margin-top: 20px;
+      border-radius: 2px;
+    }
+
+    /* ── Content body ── */
+    .district-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .content-section {
+      padding: 44px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .content-section:last-of-type { border-bottom: none; }
+
+    .content-section h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 18px;
+      line-height: 1.25;
+    }
+    .content-section h2 .section-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .content-section p {
+      color: #C8C4BC;
+      line-height: 1.8;
+    }
+
+    /* ── George field callout ── */
+    .george-callout {
+      background: var(--surface-2);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 24px 28px;
+      margin-top: 0;
+    }
+    .george-callout .george-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .george-callout .george-label svg {
+      width: 16px; height: 16px; flex-shrink: 0;
+    }
+    .george-callout p {
+      font-size: 15px;
+      color: #C8C4BC;
+      line-height: 1.8;
+    }
+
+    /* ── Neighborhood pills ── */
+    .neighborhood-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .nbhd-pill {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background .2s, border-color .2s;
+    }
+    .nbhd-pill:hover {
+      background: rgba(255,204,77,.22);
+      border-color: rgba(255,204,77,.5);
+    }
+
+    /* ── CTA block ── */
+    .cta-block {
+      background: var(--surface);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 44px 40px;
+      text-align: center;
+      margin-top: 56px;
+    }
+    .cta-block h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .cta-block p {
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 28px;
+      font-size: 15px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: #050505;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: .01em;
+      transition: opacity .2s, transform .15s;
+    }
+    .cta-btn:hover { opacity: .88; transform: translateY(-1px); }
+    .cta-sub {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color .2s;
+      margin-top: 40px;
+    }
+    .back-link:hover { color: var(--gold); }
+
+    /* ── Compliance footer ── */
+    .compliance-footer {
+      background: var(--surface);
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 20px 24px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .compliance-footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .district-hero, .district-body { padding-left: 16px; padding-right: 16px; }
+      .cta-block { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Fort Zumwalt School District: A Buyer Guide","description":"Its four high schools, accreditation, boundaries, and homes in O'Fallon and St. Peters.","url":"https://stlhomejourney.com/school-districts/fort-zumwalt-school-district","author":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@type":"Organization","name":"STL Home Journey","url":"https://stlhomejourney.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://stlhomejourney.com/school-districts/fort-zumwalt-school-district"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"STL Home Journey","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"School Districts","item":"https://stlhomejourney.com/school-districts"},{"@type":"ListItem","position":3,"name":"Fort Zumwalt School District","item":"https://stlhomejourney.com/school-districts/fort-zumwalt-school-district"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many high schools does Fort Zumwalt have?","acceptedAnswer":{"@type":"Answer","text":"Fort Zumwalt has four comprehensive high schools: Fort Zumwalt North, South, West and East. The district also operates Fort Zumwalt Hope High School as a nontraditional or alternative option. Buyers should verify the exact property address because the district's comprehensive high-school attendance areas are different."}},{"@type":"Question","name":"Is Fort Zumwalt School District accredited?","acceptedAnswer":{"@type":"Answer","text":"Yes. Fort Zumwalt School District is currently fully accredited by Missouri DESE and reached the state's highest performance band in 2025. Buyers should review the latest DESE report for current performance information and the exact APR score."}},{"@type":"Question","name":"What cities are in the Fort Zumwalt School District?","acceptedAnswer":{"@type":"Answer","text":"Fort Zumwalt covers much of O'Fallon, portions of St. Peters and surrounding areas of St. Charles County. Because municipal boundaries and school-district boundaries do not line up perfectly, buyers should verify the exact address through the district's official locator."}},{"@type":"Question","name":"Fort Zumwalt vs. Francis Howell \u2014 which is better?","acceptedAnswer":{"@type":"Answer","text":"I would not pick a winner from the district names alone. Both are large St. Charles County districts, so I would compare the specific home, exact school assignments, purchase price, monthly payment and programs that matter to your household before deciding which option fits better."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/school-districts/fort-zumwalt-school-district","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
+<body class="district-page">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">STL Home Journey</a>
+    <span>›</span>
+    <a href="/school-districts">School Districts</a>
+    <span>›</span>
+    Fort Zumwalt School District
+  </nav>
+
+  <header class="district-hero">
+    <div class="hero-meta">
+      <span class="price-range">St. Charles County &middot; 4 high schools</span>
+    </div>
+    <h1>Fort Zumwalt School District: What Home Buyers Need to Know</h1>
+    <div class="hero-rule" aria-hidden="true"></div>
+  </header>
+
+  <main class="district-body">
+
+<p>Fort Zumwalt School District, officially Fort Zumwalt R-II, is one of the largest school districts in St. Charles County. It serves about 16,700 students across 27 schools and covers a wide footprint that includes much of <a href="../neighborhoods/o-fallon">O'Fallon</a>, parts of <a href="../neighborhoods/st-peters">St. Peters</a> and surrounding areas of St. Charles County.</p>
+<p>For buyers, the first thing I would understand is that Fort Zumwalt is a large multi-high-school district. It has four comprehensive high schools: Fort Zumwalt North, Fort Zumwalt South, Fort Zumwalt West and Fort Zumwalt East. That makes address verification especially important.</p>
+<p>Knowing that a home is inside Fort Zumwalt School District does not tell you which high school serves the property. You still need to verify the exact school assignment for that address through the district's official locator.</p>
+<p>The district is currently fully accredited by Missouri DESE. On the 2025 state report, Fort Zumwalt improved enough to reach Missouri's highest performance band, often described as performing "with distinction." The exact current 2024-25 APR score: [VERIFY]. That is a strong current indicator, but I still would not buy a house based on a district name or one performance measure alone. I would look at the specific school assignment, the house itself, the monthly payment and how the location fits your life.</p>
+
+    <section class="content-section">
+      <h2><span class="section-label">Who it's for</span>Who is Fort Zumwalt School District a good fit for?</h2>
+<p>Fort Zumwalt tends to come into the conversation for buyers looking in the O'Fallon and St. Peters areas who want a large St. Charles County school district and access to a broad range of newer suburban housing.</p>
+<p>One of the biggest real estate differences buyers notice when they move farther west into St. Charles County is the housing stock. Compared with many older parts of St. Louis County, you can encounter more homes built in later development periods, more subdivision-style neighborhoods, attached garages and floor plans that reflect newer construction trends. That does not automatically make the housing better. It just means you are comparing something different.</p>
+<p>An older brick ranch in St. Louis County may offer one kind of value. A larger two-story in O'Fallon may offer another. The right answer depends on what you actually want from the house and what you are willing to spend. Fort Zumwalt can make sense for buyers who want to be in St. Charles County, want a larger district with multiple high schools and are comfortable researching the exact feeder pattern tied to each property. If you are not careful about that last part, it is easy to assume two nearby O'Fallon homes feed the same schools when they may not.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">What you're paying for</span>What are you paying for when you buy in Fort Zumwalt?</h2>
+<p>When people talk about buying in O'Fallon or St. Peters, the conversation often turns quickly to schools. I think it is better to separate the school question from the housing question first, then bring them back together. Start with what the home actually gives you.</p>
+<p>How much square footage are you getting? How many bedrooms? Is there a finished basement? Two-car or three-car garage? What kind of lot? How old are the roof, HVAC and other major systems? Then look at the payment. A newer or larger home farther west may come with a higher purchase price than a similar-sized older home elsewhere in the metro. Property taxes and insurance can change too. Those numbers matter just as much as the asking price.</p>
+<p>I would not stretch the budget simply because a property is in Fort Zumwalt. If buying there gives you the house, location and school assignment you want and the payment works, that may make sense. If you are giving up too much monthly flexibility just to reach a certain district, I would want you to understand that tradeoff before you commit. This is why I like starting with <a href="../stl-home-buying-power-calculator">realistic buying power</a>. Once you know what monthly payment is comfortable, you can compare actual homes in Fort Zumwalt with homes in <a href="francis-howell-school-district">Francis Howell</a> or another area and see what changes. Maybe Fort Zumwalt gives you a newer house with the layout you want. Maybe another location gives you a shorter commute or lower monthly payment. The comparison only becomes useful when you look at the complete package.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">High schools</span>The four Fort Zumwalt high schools</h2>
+<p>Fort Zumwalt has four comprehensive high schools, and this is probably the most important practical detail for buyers to understand about the district.</p>
+<ul>
+<li><strong>Fort Zumwalt North High School</strong> is in O'Fallon. It was established in 1960, is the district's original high school and serves roughly 1,530 students.</li>
+<li><strong>Fort Zumwalt South High School</strong> is in St. Peters. It was established in 1987, serves roughly 1,245 students and received exemplary recognition from the U.S. Department of Education in 2023.</li>
+<li><strong>Fort Zumwalt West High School</strong> is in O'Fallon. It opened in 1998, serves roughly 1,700 students and has been ranked among the top 10 high schools in Missouri by U.S. News.</li>
+<li><strong>Fort Zumwalt East High School</strong> is in St. Peters. It opened in 2007 and serves roughly 1,200 students.</li>
+</ul>
+<p>The district also operates Fort Zumwalt Hope High School as a nontraditional or alternative option, but North, South, West and East are the four comprehensive high schools most buyers are comparing when they look at traditional attendance assignments.</p>
+<p>I would not try to determine the high school from the municipality alone. An O'Fallon address does not automatically mean Fort Zumwalt North or West. A St. Peters address does not automatically mean South or East. District and feeder boundaries can cross municipal and ZIP-code lines. This is one of the districts where I would be especially careful about relying on the school information attached automatically to a real estate listing.</p>
+<p>Zillow, Realtor.com, the MLS and other home-search tools are helpful starting points, but if the school assignment would affect whether you buy the property, verify it directly through Fort Zumwalt's official school locator. That applies to the elementary and middle schools too. Even if you already know the high-school area you prefer to research, you still want to confirm the complete feeder pattern tied to the exact property.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Performance</span>How does Fort Zumwalt School District perform?</h2>
+<p>Fort Zumwalt School District is currently fully accredited by the Missouri Department of Elementary and Secondary Education (<a href="https://dese.mo.gov" target="_blank" rel="noopener">Missouri DESE</a>). On Missouri's 2025 state reporting, the district improved enough to reach the state's highest performance band, commonly described as performing "with distinction." Fort Zumwalt's exact current 2024-25 APR score: [VERIFY].</p>
+<p>I would not insert a number here unless it has been checked directly against the current DESE report. Missouri's accountability system can change, and the goal should be to give buyers current information rather than recycling an older score.</p>
+<p>The district also offers Advanced Placement coursework, Project Lead the Way programs and participation in Missouri's A+ program. At the individual-school level, Fort Zumwalt South received recognition from the U.S. Department of Education in 2023, and Fort Zumwalt West has been ranked among Missouri's top 10 high schools by U.S. News. Those recognitions are useful context, but I would still research the school tied to the actual property rather than treating district-wide performance as the answer to every school question.</p>
+<p>Missouri DESE should be your main source for official district and school performance information. <a href="https://www.greatschools.org" target="_blank" rel="noopener">GreatSchools</a> can also be useful as a secondary research tool, especially when you are trying to organize information about individual schools. I would not make the home-buying decision from the headline GreatSchools score alone. Look at what is behind the rating. Look at current DESE information. If AP, Project Lead the Way, the A+ program or another specific opportunity matters to your household, verify exactly where and how that program is offered.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Communities</span>What communities are in Fort Zumwalt School District?</h2>
+<p>Fort Zumwalt covers a large area of St. Charles County, including much of <a href="../neighborhoods/o-fallon">O'Fallon</a> and portions of <a href="../neighborhoods/st-peters">St. Peters</a> along with surrounding parts of the county. The district headquarters is in O'Fallon, but an O'Fallon mailing address alone does not prove a property is inside Fort Zumwalt.</p>
+<p>This matters because St. Charles County municipalities, ZIP codes and school-district boundaries do not always follow the same lines. Buyers looking in O'Fallon can encounter different school districts depending on the exact address. The same general issue can come up in and around St. Peters. If Fort Zumwalt is important to your home search, I would verify every serious property separately. My process would be:</p>
+<ul>
+<li>Confirm that the exact address is inside Fort Zumwalt School District.</li>
+<li>Use the district's official locator to verify the assigned elementary, middle and high schools.</li>
+<li>Confirm whether the property feeds Fort Zumwalt North, South, West or East.</li>
+<li>Review current Missouri DESE information for the district and individual schools.</li>
+<li>Use GreatSchools as an additional research source rather than the only source.</li>
+<li>Verify any specific academic programs directly with the district if they matter to your decision.</li>
+</ul>
+<p>With four comprehensive high schools, I would consider this verification step mandatory if the high-school assignment is one of the reasons you are considering the property.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">Honest take</span>My honest take on buying in Fort Zumwalt School District</h2>
+<p>Fort Zumwalt has a lot of objective positives that are easy for buyers to understand. It is fully accredited. It reached Missouri's highest performance band in 2025. It has four comprehensive high schools, recognized individual schools and a large footprint in one of the metro's major western growth areas. Those are legitimate reasons to research it.</p>
+<p>But I still would not tell someone, "Fort Zumwalt is better, so buy there." That is not how I think buyers should make a housing decision. For most people seriously considering Fort Zumwalt, <a href="francis-howell-school-district">Francis Howell</a> is a natural comparison because both are large St. Charles County districts and both cover areas where buyers are likely to see newer housing stock.</p>
+<p>I would put actual homes side by side. Which house gives you the space you need? Which specific schools serve it? What is the monthly payment? How much work does the house need? What does the commute look like? Which features are you giving up or gaining? Then compare the school information. Do not compare "Fort Zumwalt versus Francis Howell" as if those district names are two identical products. Compare Fort Zumwalt West with the schools tied to the Francis Howell property you are considering. Compare the actual houses and exact school assignments.</p>
+<p>After 13 years in real estate and more than 250 transactions, I have found that buyers usually make better decisions when they understand those tradeoffs instead of looking for somebody to declare a winner. Fort Zumwalt gives buyers a large, fully accredited district with four comprehensive high schools and access to a broad section of the O'Fallon and St. Peters housing market. If that combination fits what you are looking for, it deserves a serious look. Just make sure you verify the address before assuming you know which Fort Zumwalt schools come with the house.</p>
+    </section>
+
+    <section class="content-section">
+      <h2><span class="section-label">FAQ</span>Fort Zumwalt School District: common buyer questions</h2>
+<h3>How many high schools does Fort Zumwalt have?</h3>
+<p>Fort Zumwalt has four comprehensive high schools: Fort Zumwalt North, South, West and East. The district also operates Fort Zumwalt Hope High School as a nontraditional or alternative option. Buyers should verify the exact property address because the district's comprehensive high-school attendance areas are different.</p>
+<h3>Is Fort Zumwalt School District accredited?</h3>
+<p>Yes. Fort Zumwalt School District is currently fully accredited by Missouri DESE and reached the state's highest performance band in 2025. Buyers should review the latest DESE report for current performance information and the exact APR score.</p>
+<h3>What cities are in the Fort Zumwalt School District?</h3>
+<p>Fort Zumwalt covers much of O'Fallon, portions of St. Peters and surrounding areas of St. Charles County. Because municipal boundaries and school-district boundaries do not line up perfectly, buyers should verify the exact address through the district's official locator.</p>
+<h3>Fort Zumwalt vs. Francis Howell — which is better?</h3>
+<p>I would not pick a winner from the district names alone. Both are large St. Charles County districts, so I would compare the specific home, exact school assignments, purchase price, monthly payment and programs that matter to your household before deciding which option fits better.</p>
+    </section>
+
+    <a href="/school-districts" class="back-link" aria-label="All School Districts">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      All School Districts
+    </a>
+
+    <div class="cta-block">
+      <h2>Looking at homes in O'Fallon or St. Peters?</h2>
+      <p>I've worked this market for 13 years and 250+ transactions. One call can save you months of guessing.</p>
+      <a href="tel:3144351087" class="cta-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.5 4.5h2l1 4-1.5 1.5c1.1 2.2 2.8 3.9 5 5L15.5 13l4 1v2c0 .8-.6 1.5-1.4 1.5-7 0-12.6-5.6-12.6-12.6 0-.8.7-1.4 1.5-1.4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        Call George — 314.435.1087
+      </a>
+      <p class="cta-sub">No obligation. No pressure. Just a straight conversation about your situation.</p>
+    </div>
+
+  </main>
+
+  <footer class="compliance-footer">
+    <p>George Kindler | Licensed Missouri Real Estate Agent | <strong>The Closing Pros LLC</strong> | <a href="tel:3149984550">314-998-4550</a></p>
+    <p>STL Home Journey is an educational resource. Content is for informational purposes only and does not constitute legal or financial advice. Equal Housing Opportunity.</p>
+  </footer>
+
+  <script src="/shared.js" defer></script>
+
+</body>
+</html>
