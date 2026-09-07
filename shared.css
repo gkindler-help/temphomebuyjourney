@@ -2257,3 +2257,4 @@ svg {
   border-color: var(--gold-line);
   color: var(--text-strong);
 }
+.last-updated{font-size:.78rem;color:rgba(140,136,128,.85);margin:2px 0 18px;font-style:italic;}
