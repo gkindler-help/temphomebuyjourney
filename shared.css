@@ -2258,3 +2258,13 @@ svg {
   color: var(--text-strong);
 }
 .last-updated{font-size:.78rem;color:rgba(140,136,128,.85);margin:2px 0 18px;font-style:italic;}
+
+/* Fix: shared.js auto-injects the interactive scene (#app) with a floating
+   George headshot onto EVERY page. It's only meant for the homepage app
+   (which is wrapped in .idx-app). On article/content pages there's no
+   .idx-app, so the scene + floating George leak to the page bottom and
+   overlap the footer on mobile. Hide the injected scene where it doesn't
+   belong. :has() scopes this to pages lacking the homepage app container. */
+body:not(:has(.idx-app)) > #app {
+  display: none !important;
+}
