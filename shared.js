@@ -1912,11 +1912,28 @@ function closeDrawer() {
         label: "St. Louis Neighborhoods & Schools",
         tag: "Buyers",
         articles: [
+          { title: "Explore All School Districts", url: "school-districts" },
           { title: "South County Neighborhood Guide", url: "articles/south-county-stl-neighborhood-guide" },
           { title: "South County Neighborhoods by Price", url: "articles/south-county-stl-neighborhoods-by-price" },
           { title: "Buying a Home in Oakville, MO", url: "articles/buying-a-home-in-oakville-mo" },
           { title: "Lindbergh vs. Mehlville School Districts", url: "articles/lindbergh-vs-mehlville-school-district-stl" },
           { title: "Mehlville vs. Oakville vs. Concord", url: "articles/mehlville-vs-oakville-vs-concord-stl" }
+        ]
+      },
+      {
+        label: "Market & Timing",
+        tag: "Buyers",
+        articles: [
+          { title: "How Long Does It Take to Buy a House?", url: "articles/how-long-to-buy-house-st-louis" },
+          { title: "Multiple Offers Without Overpaying", url: "articles/multiple-offers-without-overpaying-st-louis" }
+        ]
+      },
+      {
+        label: "Lessons From a Sale",
+        tag: "Real Deals",
+        articles: [
+          { title: "Lessons From a Sale (Series)", url: "articles/lessons-from-a-sale" },
+          { title: "Pricing a Split-Level in Lindbergh", url: "articles/lessons-from-a-sale-lindbergh-split-level" }
         ]
       },
       {
