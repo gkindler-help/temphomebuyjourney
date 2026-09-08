@@ -1,0 +1,50 @@
+/* Key Takeaways (TL;DR) — reusable, HTML-first, crawlable.
+   Gold-accented details boxes; open by default so all text is in raw HTML. */
+.tldr{
+  --tldr-gold:var(--gold,#ffcc4d);
+  --tldr-gold-soft:var(--gold-soft,rgba(255,204,77,.18));
+  --tldr-gold-line:var(--gold-line,rgba(255,204,77,.34));
+  --tldr-surface:var(--surface,#101010);
+  --tldr-line:var(--line,#242424);
+  --tldr-text:var(--text,rgba(255,255,255,.88));
+  --tldr-text-soft:var(--text-soft,rgba(255,255,255,.72));
+  --tldr-text-dim:var(--text-dim,rgba(255,255,255,.54));
+  background:linear-gradient(135deg,rgba(255,204,77,0.05) 0%,rgba(255,204,77,0.015) 100%);
+  border:1px solid var(--tldr-gold-line);
+  border-radius:14px;
+  padding:22px 24px 8px;
+  margin:28px 0 40px;
+}
+.tldr-head{
+  display:flex;align-items:center;gap:10px;
+  font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--tldr-gold);margin:0 0 6px;
+}
+.tldr-head::before{content:"";width:16px;height:2px;background:var(--tldr-gold);display:inline-block;border-radius:2px;}
+.tldr details{
+  border-top:1px solid var(--tldr-line);
+  padding:14px 0;
+}
+.tldr details:first-of-type{border-top:none;}
+.tldr summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:baseline;gap:10px;
+  font-size:.95rem;line-height:1.5;color:var(--tldr-text);
+  font-weight:500;
+}
+.tldr summary::-webkit-details-marker{display:none;}
+.tldr summary::after{
+  content:"+";margin-left:auto;flex-shrink:0;
+  color:var(--tldr-gold);font-size:1.1rem;line-height:1;
+  transition:transform .18s ease;transform-origin:center;
+}
+.tldr details[open] summary::after{content:"\2212";}
+.tldr .tldr-num{color:var(--tldr-gold);font-weight:700;white-space:nowrap;}
+.tldr .tldr-detail{
+  margin:10px 0 2px;padding-left:0;
+  font-size:.9rem;line-height:1.65;color:var(--tldr-text-soft);
+}
+@media (max-width:600px){
+  .tldr{padding:20px 18px 6px;}
+  .tldr summary{font-size:.9rem;}
+}
