@@ -1,0 +1,25 @@
+/* REAL DEAL — first-party transaction callout. Visually distinguishes real
+   transaction evidence from ordinary educational articles. Links into the
+   interactive "You Make the Call" experience. Brand vars with fallbacks. */
+.real-deal{
+  --rd-gold:var(--gold,#ffcc4d);
+  --rd-line:var(--gold-line,rgba(255,204,77,.34));
+  position:relative;
+  background:linear-gradient(135deg,rgba(255,204,77,.09) 0%,rgba(255,204,77,.02) 100%);
+  border:1px solid var(--rd-line);
+  border-left:3px solid var(--rd-gold);
+  border-radius:14px;
+  padding:20px 22px;
+  margin:32px 0;
+}
+.real-deal-labels{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap;}
+.real-deal-badge{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#080808;background:var(--rd-gold);padding:4px 9px;border-radius:999px;}
+.real-deal-badge.alt{color:var(--rd-gold);background:transparent;border:1px solid var(--rd-line);}
+.real-deal-headline{display:block;font-family:var(--font-serif,"Playfair Display",Georgia,serif);font-size:1.16rem;font-weight:700;line-height:1.32;color:var(--text-strong,#fff);text-decoration:none;margin-bottom:8px;}
+.real-deal-headline:hover{color:var(--rd-gold);}
+.real-deal-teaser{font-size:.92rem;line-height:1.62;color:var(--text-soft,rgba(255,255,255,.72));margin:0 0 15px;}
+.real-deal-cta{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#080808;background:var(--rd-gold);padding:10px 16px;border-radius:8px;text-decoration:none;line-height:1.25;}
+.real-deal-cta:hover{filter:brightness(1.08);}
+/* Featured card variant on the Articles hub grid */
+.article-card.real-deal-card{border-color:var(--rd-line,rgba(255,204,77,.34));background:linear-gradient(135deg,rgba(255,204,77,.08) 0%,rgba(255,204,77,.02) 100%);}
+.article-card .card-badge.rd{color:#080808;background:var(--rd-gold,#ffcc4d);}
