@@ -319,8 +319,8 @@ document.addEventListener('DOMContentLoaded',function(){
   var fab=document.getElementById('jumpToggle'), panel=document.getElementById('jumpPanel');
   if(fab&&panel){
     function setOpen(o){panel.classList.toggle('open',o);fab.setAttribute('aria-expanded',o);panel.setAttribute('aria-hidden',!o);}
-    fab.addEventListener('click',function(e){e.stopPropagation();setOpen(!panel.classList.contains('open'));});
-    panel.addEventListener('click',function(e){if(e.target.classList.contains('jump-link'))setOpen(false);});
+    fab.addEventListener('click',function(e){e.stopPropagation();var willOpen=!panel.classList.contains('open');setOpen(willOpen);if(willOpen&&typeof gtag==='function')gtag('event','section_nav_open',{page:location.pathname});});
+    panel.addEventListener('click',function(e){if(e.target.classList.contains('jump-link')){if(typeof gtag==='function')gtag('event','section_nav_jump',{section:e.target.textContent.trim(),target:e.target.getAttribute('href'),page:location.pathname});setOpen(false);}});
     document.addEventListener('click',function(e){if(!panel.contains(e.target)&&e.target!==fab&&!fab.contains(e.target))setOpen(false);});
     var links=[].slice.call(panel.querySelectorAll('.jump-link')), map={};
     links.forEach(function(l){var s=document.getElementById(l.getAttribute('href').slice(1));if(s)map[l.getAttribute('href').slice(1)]=l;});
