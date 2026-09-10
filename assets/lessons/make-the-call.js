@@ -5,6 +5,8 @@
 (function(){
   function el(tag, cls, html){ var e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; }
 
+  function track(name, params){ if(typeof gtag!=='function') return; params=params||{}; params.page=location.pathname; gtag('event', name, params); }
+
   function renderModule(root, data){
     var state = { idx:0, choices:[] };
     var total = data.length;
@@ -50,6 +52,7 @@
 
     function choose(oi, d){
       state.choices[state.idx]=oi;
+      track('make_the_call_choice', { decision_index: state.idx+1, decision_label: d.label, choice_index: oi+1, choice_label: String(d.options[oi]||'').slice(0,80), total: total });
       // disable + mark selection, then show reveal
       var buttons = stage.querySelectorAll('.mtc-opt');
       buttons.forEach(function(b,bi){ b.disabled=true; if(bi===oi) b.classList.add('picked'); });
@@ -69,6 +72,7 @@
     }
 
     function finish(){
+      track('make_the_call_complete', { total: total });
       stage.innerHTML='';
       var done = el('div','mtc-done');
       done.appendChild(el('div','mtc-done-hd','That\u2019s how the calls got made.'));
@@ -78,7 +82,7 @@
       done.appendChild(a);
       var restart = el('button','mtc-restart','\u21ba Start over');
       restart.type='button';
-      restart.addEventListener('click', function(){ state.idx=0; state.choices=[]; drawDecision(); scrollTop(); });
+      restart.addEventListener('click', function(){ track('make_the_call_restart', { total: total }); state.idx=0; state.choices=[]; drawDecision(); scrollTop(); });
       done.appendChild(restart);
       stage.appendChild(done);
       progress.innerHTML='';
@@ -87,6 +91,7 @@
     function scrollTop(){ try{ wrap.scrollIntoView({behavior:'smooth',block:'start'}); }catch(e){} }
 
     root.appendChild(wrap);
+    track('make_the_call_start', { total: total });
     drawDecision();
   }
 
