@@ -668,6 +668,7 @@
     nvSel=tier;
     var e=el('nvEst');e.style.display='block';
     e.innerHTML='Your estimated value: <b>'+nvFmt(mid)+'</b> <span>('+nvFR(mid)+' \u00b7 '+label+' condition)</span><br>Use this as your sale-price starting point in the net math below.';
+    if(window.npSetPrice)window.npSetPrice(mid);
     nvRender(nvEntry,(el('nvZip').value||'').trim(),el('nvSqft').value);
   }
   function init(){
@@ -680,6 +681,67 @@
 </script>
 
     <h2 id="the-math">Net Proceeds: The Actual Calculation</h2>
+<p>Enter your numbers (or pull a value from the estimator above) to see your estimated net at closing. Commission, title, and concession figures are pre-filled with typical St. Louis defaults &mdash; change any of them.</p>
+<style>
+.np-calc{background:rgba(255,255,255,.02);border:1px solid var(--gold-line,rgba(255,204,77,.34));border-radius:14px;padding:20px;margin:18px 0 30px;}
+.np-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:520px){.np-grid{grid-template-columns:1fr;}}
+.np-field label{display:block;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--text-soft,rgba(255,255,255,.6));margin-bottom:5px;}
+.np-field input{width:100%;background:#111;border:1px solid var(--line,#2a2a2a);border-radius:8px;padding:11px 12px;color:#fff;font-family:inherit;font-size:15px;}
+.np-out{margin-top:18px;padding:18px;background:rgba(255,204,77,.08);border:1px solid var(--gold-line,rgba(255,204,77,.4));border-radius:12px;}
+.np-out-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-soft,rgba(255,255,255,.6));}
+.np-out-num{font-family:var(--font-serif,"Playfair Display",Georgia,serif);font-size:34px;font-weight:700;color:var(--gold,#ffcc4d);margin:3px 0 2px;line-height:1.1;}
+.np-out-sub{font-size:12px;color:var(--text-soft,rgba(255,255,255,.6));line-height:1.5;}
+.np-break{margin-top:14px;border-top:1px solid var(--line,#242424);padding-top:10px;}
+.np-line{display:flex;justify-content:space-between;gap:12px;font-size:13px;padding:4px 0;color:var(--text-soft,rgba(255,255,255,.75));}
+.np-line b{color:#fff;font-weight:700;}
+.np-line.sub span{color:#F0997B;}
+.np-note{font-size:11px;color:var(--text-soft,rgba(255,255,255,.45));margin-top:12px;line-height:1.5;}
+</style>
+<div class="np-calc">
+  <div class="np-grid">
+    <div class="np-field"><label>Sale price</label><input id="npPrice" inputmode="numeric" placeholder="$300,000"></div>
+    <div class="np-field"><label>Agent commission (%)</label><input id="npComm" inputmode="decimal" value="6"></div>
+    <div class="np-field"><label>Title &amp; closing ($)</label><input id="npTitle" inputmode="numeric" value="1,350"></div>
+    <div class="np-field"><label>Prorated taxes ($)</label><input id="npTax" inputmode="numeric" placeholder="0"></div>
+    <div class="np-field"><label>Seller concessions (%)</label><input id="npConc" inputmode="decimal" placeholder="0"></div>
+    <div class="np-field"><label>Mortgage payoff ($)</label><input id="npPayoff" inputmode="numeric" placeholder="0"></div>
+  </div>
+  <div class="np-out">
+    <div class="np-out-label">Estimated net proceeds</div>
+    <div class="np-out-num" id="npNet">&mdash;</div>
+    <div class="np-out-sub" id="npSub">Enter a sale price to calculate.</div>
+    <div class="np-break" id="npBreak" style="display:none;"></div>
+  </div>
+  <div class="np-note">An estimate to prepare you &mdash; not a closing statement. Commission is negotiable and title, tax, and concession figures vary by deal and timing. Confirm exact numbers with your title company and agent.</div>
+</div>
+<script>
+(function(){
+  function el(id){return document.getElementById(id);}
+  function num(id){var e=el(id);if(!e)return 0;var v=(e.value||'').replace(/[^0-9.]/g,'');return v?parseFloat(v):0;}
+  function fmt(n){return '$'+Math.round(n).toLocaleString();}
+  function ln(a,b,cls){return '<div class="np-line'+(cls?' '+cls:'')+'">'+a+'<span>'+b+'</span></div>';}
+  function calc(){
+    var P=num('npPrice');
+    if(!P){el('npNet').innerHTML='&mdash;';el('npSub').textContent='Enter a sale price to calculate.';el('npBreak').style.display='none';return;}
+    var comm=P*(num('npComm')/100),title=num('npTitle'),tax=num('npTax'),conc=P*(num('npConc')/100),payoff=num('npPayoff');
+    var costs=comm+title+tax+conc,before=P-costs,net=before-payoff,pct=(costs/P)*100;
+    el('npNet').textContent=fmt(net);
+    el('npSub').textContent=fmt(before)+' before mortgage payoff \u00b7 total costs '+fmt(costs)+' ('+pct.toFixed(1)+'% of sale price)';
+    var b=el('npBreak');b.style.display='block';
+    b.innerHTML=ln('Sale price',fmt(P))
+      +ln('Agent commission ('+(num('npComm')||0)+'%)','-'+fmt(comm),'sub')
+      +ln('Title &amp; closing','-'+fmt(title),'sub')
+      +(tax?ln('Prorated taxes','-'+fmt(tax),'sub'):'')
+      +(conc?ln('Seller concessions','-'+fmt(conc),'sub'):'')
+      +(payoff?ln('Mortgage payoff','-'+fmt(payoff),'sub'):'')
+      +ln('<b>Net proceeds</b>','<b>'+fmt(net)+'</b>');
+  }
+  window.npSetPrice=function(v){var p=el('npPrice');if(p){p.value=Math.round(v).toLocaleString();calc();try{p.scrollIntoView({behavior:'smooth',block:'center'});}catch(e){}}};
+  function init(){['npPrice','npComm','npTitle','npTax','npConc','npPayoff'].forEach(function(id){var e=el(id);if(e)e.addEventListener('input',calc);});}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
     <p>Your net proceeds are calculated as:</p>
     <div class="callout">
       <strong>Net = Sale Price - Commission - Title/Closing Costs - Prorated Taxes - Seller Concessions - Mortgage Payoff</strong>
