@@ -36,6 +36,17 @@ h1{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:30px;l
 .foot{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--soft);line-height:1.7;}
 .foot b{color:var(--gold);font-weight:600;}
 .note{font-size:11px;color:rgba(255,255,255,.28);margin-top:10px;font-style:italic;}
+.gcard{border:1px solid var(--gold-line);border-radius:18px;padding:32px 24px;margin-top:36px;text-align:center;}
+.gcard-photo{width:148px;height:148px;border-radius:50%;overflow:hidden;margin:0 auto 22px;border:2px solid var(--gold-line);}
+.gcard-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.gcard-name{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:32px;margin-bottom:14px;}
+.gcard-title{font-size:16px;color:var(--soft);line-height:1.5;margin-bottom:22px;}
+.gcard-bio{font-size:16px;line-height:1.7;color:var(--soft);margin-bottom:26px;text-align:center;}
+.gcard-btns{display:flex;flex-direction:column;gap:13px;}
+.gcard-call{background:var(--gold);color:#0a0a0a;font-weight:700;font-size:18px;border-radius:12px;padding:16px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:9px;}
+.gcard-email{border:1px solid var(--gold-line);color:var(--gold);font-weight:700;font-size:17px;border-radius:12px;padding:15px;text-decoration:none;}
+.gcard-about{color:var(--text);font-weight:600;font-size:16px;text-decoration:none;padding:12px;display:inline-block;}
+.gcard-about:hover{color:var(--gold);}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EEE14BZT9P');</script>
@@ -87,9 +98,16 @@ h1{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:30px;l
     <button class="back" data-back>&larr; I&rsquo;m not an agent</button>
   </section>
 
-  <div class="foot">
-    <b>George Kindler</b> &middot; The Closing Pros &middot; <b>314.435.1087</b><br>
-    I&rsquo;m not selling you a house &mdash; I&rsquo;m showing you how to think about buying or selling one.
+  <div class="gcard">
+    <div class="gcard-photo"><img src="/assets/george-family.jpg" alt="George Kindler"></div>
+    <div class="gcard-name">George Kindler</div>
+    <div class="gcard-title">Marine Corps Veteran &bull; Licensed Missouri Agent &bull; 13 Years &bull; 250+ Transactions</div>
+    <p class="gcard-bio">Grew up in South St. Louis, lived in Dogtown for 6 years, now in South County. You&rsquo;ll find us at Wellspring on Lindbergh on Sundays. I&rsquo;m not selling you a house &mdash; I&rsquo;m showing you how to think about buying or selling a house.</p>
+    <div class="gcard-btns">
+      <a class="gcard-call" href="tel:+13144351087">&#128222; 314.435.1087</a>
+      <a class="gcard-email" href="mailto:georgeandlizk@gmail.com">Send Email</a>
+      <a class="gcard-about" href="/about">About George &rarr;</a>
+    </div>
   </div>
 
 </div>
