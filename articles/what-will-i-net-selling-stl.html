@@ -244,6 +244,441 @@
     <p>The sale price is not your number. The number that matters is what you walk away with after commissions, title, prorated taxes, closing credits, and your mortgage payoff. For most St. Louis sellers, that number is 8 to 11 percent lower than the sale price -- before the mortgage payoff comes out.</p>
     <p>Most agents will give you a net sheet at listing. The problem is that net sheets are often built on optimistic assumptions -- full price sale, no concessions, no last-minute credits from inspection. The real number is what you get after a realistic sale with realistic terms.</p>
 
+    <style>
+.nv-engine{background:rgba(255,255,255,.02);border:1px solid var(--gold-line,rgba(255,204,77,.34));border-radius:14px;padding:20px 20px 16px;margin:24px 0 30px;}
+.nv-eh{font-family:var(--font-serif,"Playfair Display",Georgia,serif);font-size:20px;font-weight:700;color:var(--text-strong,#fff);margin-bottom:6px;}
+.nv-es{font-size:14px;color:var(--text-soft,rgba(255,255,255,.66));line-height:1.55;margin-bottom:16px;}
+.nv-row{display:grid;gap:10px;align-items:end;grid-template-columns:1fr 1fr auto;}
+@media(max-width:520px){.nv-row{grid-template-columns:1fr;}}
+.nv-field label{display:block;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--text-soft,rgba(255,255,255,.6));margin-bottom:5px;}
+.nv-field input,.nv-field select{width:100%;background:#111;border:1px solid var(--line,#2a2a2a);border-radius:8px;padding:11px 12px;color:#fff;font-family:inherit;font-size:15px;}
+.nv-btn{background:var(--gold,#ffcc4d);color:#0a0a0a;border:none;border-radius:8px;padding:12px 18px;font-size:13px;font-weight:800;letter-spacing:.04em;cursor:pointer;white-space:nowrap;font-family:inherit;}
+.nv-btn:hover{background:#ffd966;}
+.nv-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 4px;}
+@media(max-width:560px){.nv-cards{grid-template-columns:1fr;}}
+.nv-card{background:rgba(255,255,255,.03);border:2px solid var(--line,#2a2a2a);border-radius:12px;padding:14px;cursor:pointer;transition:border-color .15s,background .15s;}
+.nv-card:hover{border-color:var(--gold-line,rgba(255,204,77,.5));}
+.nv-card.sel{border-color:var(--gold,#ffcc4d);background:rgba(255,204,77,.07);}
+.nv-badge{display:inline-block;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:999px;margin-bottom:9px;}
+.nv-badge.low{color:#412402;background:#EF9F27;}
+.nv-badge.mid{color:#173404;background:#97C459;}
+.nv-badge.high{color:#0a0a0a;background:var(--gold,#ffcc4d);}
+.nv-range{font-family:var(--font-serif,"Playfair Display",Georgia,serif);font-size:19px;font-weight:700;color:var(--text-strong,#fff);line-height:1.15;}
+.nv-mid{font-size:11px;color:var(--text-soft,rgba(255,255,255,.55));margin:3px 0 9px;}
+.nv-desc{font-size:12px;line-height:1.5;color:var(--text-soft,rgba(255,255,255,.7));margin-bottom:8px;}
+.nv-qual{font-size:11px;line-height:1.45;color:var(--text-soft,rgba(255,255,255,.5));font-style:italic;}
+.nv-selnote{margin-top:9px;font-size:11px;font-weight:700;color:var(--gold,#ffcc4d);}
+.nv-est{margin-top:14px;padding:13px 15px;background:rgba(255,204,77,.08);border:1px solid var(--gold-line,rgba(255,204,77,.34));border-radius:10px;font-size:14px;line-height:1.55;color:var(--text,#fff);}
+.nv-est b{color:var(--gold,#ffcc4d);}
+.nv-est span{color:var(--text-soft,rgba(255,255,255,.6));font-size:13px;}
+.nv-meta{font-size:11px;color:var(--text-soft,rgba(255,255,255,.45));margin-top:10px;}
+.nv-disc{font-size:11.5px;line-height:1.55;color:var(--text-soft,rgba(255,255,255,.6));margin-top:10px;padding:10px 13px;background:rgba(255,255,255,.03);border-left:2px solid var(--gold-line,rgba(255,204,77,.4));border-radius:0 6px 6px 0;}
+.nv-error{font-size:13px;color:#F09595;margin-top:10px;}
+</style>
+<h2 id="estimate-value">Start With Your Home&rsquo;s Value</h2>
+<p>You can&rsquo;t estimate your net without a realistic sale price. This pulls actual St. Louis sold data for your area, grouped by condition &mdash; pick the range that matches your home, then use it as the starting point for the net math below.</p>
+<div class="nv-engine">
+  <div class="nv-eh">Estimate your home&rsquo;s value &mdash; St. Louis sold data</div>
+  <div class="nv-es">Enter your zip code and home size to see what comparable homes actually sold for, broken down by condition. Pick the range that matches yours.</div>
+  <div class="nv-row">
+    <div class="nv-field"><label>Zip code</label><input id="nvZip" placeholder="63119" maxlength="5" inputmode="numeric"></div>
+    <div class="nv-field"><label>Home size (sq ft)</label>
+      <select id="nvSqft">
+        <option value="">Select size</option>
+        <option value="u1000">Under 1,000</option>
+        <option value="1000">1,000&ndash;1,400</option>
+        <option value="1400">1,400&ndash;1,800</option>
+        <option value="1800">1,800&ndash;2,400</option>
+        <option value="o2400">Over 2,400</option>
+      </select>
+    </div>
+    <button class="nv-btn" id="nvRun">Run estimate</button>
+  </div>
+  <div id="nvError" style="display:none;"></div>
+  <div id="nvCards" style="display:none;">
+    <div class="nv-cards" id="nvGrid"></div>
+    <div class="nv-est" id="nvEst" style="display:none;"></div>
+    <div class="nv-meta" id="nvMeta"></div>
+    <div class="nv-disc" id="nvDisc" style="display:none;"></div>
+  </div>
+</div>
+<script>
+(function(){
+  const NV_DATA={
+  updated:"2025 (St. Louis County, St. Louis City, Jefferson County, St. Charles County — 7,006 sales)",
+  data:{
+    "63005"  :{low:631500,mid:800000,high:1247000,n:70},
+    "63005_o2400"  :{low:650000,mid:850000,high:1325000,n:63},
+    "63010"  :{low:255000,mid:280000,high:350000,n:121},
+    "63010_1000"  :{low:230000,mid:256800,high:285000,n:46},
+    "63010_1400"  :{low:275000,mid:315000,high:350000,n:29},
+    "63010_1800"  :{low:349900,mid:392500,high:515000,n:16},
+    "63010_o2400"  :{low:403900,mid:439000,high:474100,n:10},
+    "63010_u1000"  :{low:211600,mid:230000,high:256000,n:20},
+    "63011"  :{low:365000,mid:455000,high:552000,n:169},
+    "63011_1000"  :{low:277000,mid:320000,high:367000,n:21},
+    "63011_1400"  :{low:344900,mid:396800,high:459900,n:30},
+    "63011_1800"  :{low:420400,mid:457000,high:539000,n:61},
+    "63011_o2400"  :{low:500000,mid:577500,high:640000,n:50},
+    "63012"  :{low:234900,mid:292500,high:384000,n:42},
+    "63012_1000"  :{low:230000,mid:279000,high:310000,n:14},
+    "63012_1400"  :{low:250000,mid:337500,high:380000,n:14},
+    "63016"  :{low:270000,mid:326100,high:525000,n:26},
+    "63016_1000"  :{low:213000,mid:265200,high:332500,n:10},
+    "63017"  :{low:480000,mid:575000,high:755000,n:129},
+    "63017_1400"  :{low:375000,mid:409500,high:521000,n:8},
+    "63017_1800"  :{low:425000,mid:496000,high:630000,n:38},
+    "63017_o2400"  :{low:520000,mid:655000,high:1000000,n:79},
+    "63019"  :{low:185000,mid:230000,high:290000,n:27},
+    "63019_1000"  :{low:211600,mid:230000,high:260000,n:11},
+    "63019_u1000"  :{low:125000,mid:187500,high:249000,n:8},
+    "63020"  :{low:185000,mid:219500,high:255000,n:126},
+    "63020_1000"  :{low:190000,mid:214900,high:255000,n:47},
+    "63020_1400"  :{low:220000,mid:295000,high:399900,n:25},
+    "63020_1800"  :{low:210000,mid:242000,high:342500,n:13},
+    "63020_o2400"  :{low:435000,mid:537500,high:600000,n:8},
+    "63020_u1000"  :{low:132000,mid:160000,high:190000,n:33},
+    "63021"  :{low:375000,mid:414200,high:530000,n:192},
+    "63021_1000"  :{low:285000,mid:335000,high:361800,n:54},
+    "63021_1400"  :{low:355000,mid:389500,high:456000,n:34},
+    "63021_1800"  :{low:403000,mid:452000,high:540000,n:48},
+    "63021_o2400"  :{low:579600,mid:630000,high:800000,n:48},
+    "63021_u1000"  :{low:232500,mid:292500,high:330000,n:8},
+    "63023"  :{low:305900,mid:332500,high:460000,n:24},
+    "63023_1000"  :{low:165000,mid:265000,high:290000,n:9},
+    "63025"  :{low:359000,mid:442500,high:705000,n:108},
+    "63025_1000"  :{low:287000,mid:316200,high:364900,n:12},
+    "63025_1400"  :{low:295000,mid:377500,high:418000,n:24},
+    "63025_1800"  :{low:389000,mid:445000,high:510000,n:25},
+    "63025_o2400"  :{low:485000,mid:542500,high:850000,n:42},
+    "63026"  :{low:340000,mid:387400,high:490000,n:224},
+    "63026_1000"  :{low:251000,mid:301000,high:340000,n:47},
+    "63026_1400"  :{low:321600,mid:362000,high:419900,n:43},
+    "63026_1800"  :{low:437000,mid:475000,high:520000,n:57},
+    "63026_o2400"  :{low:400700,mid:553000,high:720000,n:44},
+    "63026_u1000"  :{low:200000,mid:261000,high:285000,n:33},
+    "63028"  :{low:255000,mid:320000,high:385000,n:149},
+    "63028_1000"  :{low:210000,mid:245000,high:280000,n:38},
+    "63028_1400"  :{low:255000,mid:340000,high:385000,n:37},
+    "63028_1800"  :{low:364300,mid:396000,high:427700,n:27},
+    "63028_o2400"  :{low:474900,mid:532400,high:685000,n:26},
+    "63028_u1000"  :{low:150000,mid:184800,high:199600,n:21},
+    "63031"  :{low:147000,mid:180000,high:234900,n:217},
+    "63031_1000"  :{low:152500,mid:181000,high:217000,n:118},
+    "63031_1400"  :{low:180000,mid:225000,high:265000,n:25},
+    "63031_1800"  :{low:276700,mid:300800,high:358200,n:10},
+    "63031_u1000"  :{low:134000,mid:159200,high:189000,n:58},
+    "63033"  :{low:172500,mid:220000,high:270000,n:151},
+    "63033_1000"  :{low:170000,mid:199900,high:235000,n:63},
+    "63033_1400"  :{low:180000,mid:250000,high:275000,n:50},
+    "63033_1800"  :{low:207000,mid:260000,high:280800,n:21},
+    "63033_u1000"  :{low:118000,mid:156000,high:168500,n:13},
+    "63034"  :{low:220000,mid:289000,high:330000,n:71},
+    "63034_1000"  :{low:102000,mid:212200,high:267000,n:14},
+    "63034_1400"  :{low:220000,mid:265000,high:295900,n:23},
+    "63034_1800"  :{low:295000,mid:335000,high:361800,n:20},
+    "63034_o2400"  :{low:335000,mid:415000,high:449000,n:13},
+    "63038"  :{low:490000,mid:626200,high:700000,n:34},
+    "63038_1800"  :{low:501000,mid:575000,high:650000,n:9},
+    "63038_o2400"  :{low:625000,mid:782500,high:920000,n:18},
+    "63040"  :{low:460000,mid:525000,high:608000,n:45},
+    "63040_1800"  :{low:415000,mid:480000,high:535800,n:11},
+    "63040_o2400"  :{low:507000,mid:562500,high:675000,n:26},
+    "63042"  :{low:152000,mid:195000,high:225000,n:64},
+    "63042_1000"  :{low:147000,mid:195000,high:225000,n:32},
+    "63042_1400"  :{low:175000,mid:255000,high:280000,n:11},
+    "63042_u1000"  :{low:146000,mid:171000,high:195000,n:18},
+    "63043"  :{low:255000,mid:295000,high:318600,n:83},
+    "63043_1000"  :{low:272500,mid:300100,high:324100,n:36},
+    "63043_1400"  :{low:235000,mid:325000,high:351000,n:11},
+    "63043_1800"  :{low:326000,mid:375000,high:430000,n:9},
+    "63043_u1000"  :{low:245000,mid:268500,high:290000,n:26},
+    "63044"  :{low:195000,mid:267500,high:360000,n:40},
+    "63044_1000"  :{low:215000,mid:260000,high:285000,n:15},
+    "63044_1400"  :{low:305000,mid:340000,high:367200,n:10},
+    "63044_1800"  :{low:148000,mid:400000,high:432000,n:9},
+    "63048"  :{low:285000,mid:319900,high:355000,n:25},
+    "63048_1000"  :{low:223500,mid:292500,high:325000,n:10},
+    "63048_1400"  :{low:310000,mid:339800,high:367000,n:12},
+    "63049"  :{low:273700,mid:297500,high:395000,n:82},
+    "63049_1000"  :{low:212500,mid:255000,high:275400,n:35},
+    "63049_1400"  :{low:285000,mid:328200,high:380000,n:14},
+    "63049_1800"  :{low:300000,mid:377500,high:500000,n:12},
+    "63049_o2400"  :{low:425000,mid:490000,high:741200,n:13},
+    "63049_u1000"  :{low:207500,mid:230200,high:248600,n:8},
+    "63050"  :{low:284900,mid:328500,high:405100,n:90},
+    "63050_1000"  :{low:222800,mid:275000,high:310000,n:23},
+    "63050_1400"  :{low:285000,mid:320000,high:410000,n:27},
+    "63050_1800"  :{low:384100,mid:417500,high:450900,n:25},
+    "63050_o2400"  :{low:386500,mid:515000,high:799900,n:11},
+    "63051"  :{low:200000,mid:290000,high:340000,n:61},
+    "63051_1000"  :{low:200000,mid:278000,high:300200,n:24},
+    "63051_1400"  :{low:194000,mid:305000,high:340000,n:11},
+    "63051_1800"  :{low:306000,mid:420000,high:453600,n:11},
+    "63051_u1000"  :{low:150000,mid:200000,high:257000,n:9},
+    "63052"  :{low:269900,mid:331500,high:375000,n:132},
+    "63052_1000"  :{low:250000,mid:273000,high:300000,n:34},
+    "63052_1400"  :{low:297000,mid:350000,high:393000,n:46},
+    "63052_1800"  :{low:350000,mid:425000,high:492500,n:19},
+    "63052_o2400"  :{low:374900,mid:420500,high:535000,n:16},
+    "63052_u1000"  :{low:198500,mid:217000,high:259800,n:17},
+    "63069"  :{low:489900,mid:532500,high:750000,n:22},
+    "63069_o2400"  :{low:544000,mid:812500,high:1100000,n:8},
+    "63070"  :{low:258500,mid:281000,high:355000,n:37},
+    "63070_1000"  :{low:226500,mid:275000,high:299200,n:11},
+    "63070_1400"  :{low:235000,mid:286500,high:323400,n:8},
+    "63070_u1000"  :{low:184000,mid:223800,high:259900,n:8},
+    "63074"  :{low:125900,mid:166500,high:214900,n:61},
+    "63074_1000"  :{low:110100,mid:170000,high:225000,n:27},
+    "63074_u1000"  :{low:125900,mid:150800,high:195000,n:28},
+    "63088"  :{low:219900,mid:320000,high:460000,n:37},
+    "63088_1000"  :{low:200000,mid:304000,high:335000,n:23},
+    "63088_1400"  :{low:236000,mid:440000,high:519000,n:9},
+    "63104"  :{low:245000,mid:445000,high:575000,n:63},
+    "63104_1400"  :{low:209000,mid:257400,high:308300,n:14},
+    "63104_1800"  :{low:349400,mid:391000,high:575000,n:16},
+    "63104_o2400"  :{low:495000,mid:575000,high:625000,n:29},
+    "63105"  :{low:629000,mid:850000,high:1050000,n:21},
+    "63105_o2400"  :{low:923700,mid:1004000,high:1225000,n:11},
+    "63108"  :{low:370000,mid:581000,high:850000,n:17},
+    "63108_o2400"  :{low:289000,mid:635000,high:850000,n:11},
+    "63109"  :{low:244000,mid:301800,high:395000,n:152},
+    "63109_1000"  :{low:250000,mid:273700,high:317000,n:55},
+    "63109_1400"  :{low:305000,mid:342500,high:395000,n:44},
+    "63109_1800"  :{low:360000,mid:450000,high:625000,n:23},
+    "63109_u1000"  :{low:170000,mid:214000,high:257000,n:24},
+    "63110"  :{low:245200,mid:349700,high:550000,n:54},
+    "63110_1000"  :{low:230000,mid:259500,high:420000,n:8},
+    "63110_1400"  :{low:270000,mid:325000,high:380000,n:12},
+    "63110_1800"  :{low:309900,mid:501400,high:595000,n:13},
+    "63110_o2400"  :{low:415000,mid:512500,high:650000,n:14},
+    "63111"  :{low:116000,mid:165000,high:198900,n:66},
+    "63111_1000"  :{low:140000,mid:156000,high:185600,n:24},
+    "63111_1400"  :{low:170000,mid:210800,high:255000,n:12},
+    "63111_1800"  :{low:210000,mid:241400,high:290000,n:10},
+    "63111_u1000"  :{low:65000,mid:123500,high:152000,n:16},
+    "63112"  :{low:122400,mid:275000,high:406000,n:19},
+    "63112_o2400"  :{low:134000,mid:247500,high:470000,n:8},
+    "63114"  :{low:145000,mid:164400,high:225000,n:136},
+    "63114_1000"  :{low:149000,mid:177500,high:220000,n:58},
+    "63114_1400"  :{low:135000,mid:198500,high:238000,n:18},
+    "63114_1800"  :{low:248200,mid:269800,high:315500,n:8},
+    "63114_u1000"  :{low:123700,mid:134500,high:150000,n:51},
+    "63115"  :{low:42000,mid:74700,high:125000,n:9},
+    "63115_1000"  :{low:42000,mid:72800,high:113000,n:8},
+    "63116"  :{low:155000,mid:221600,high:300000,n:201},
+    "63116_1000"  :{low:190000,mid:218300,high:255000,n:69},
+    "63116_1400"  :{low:195000,mid:272500,high:340000,n:39},
+    "63116_1800"  :{low:200000,mid:318800,high:500000,n:26},
+    "63116_o2400"  :{low:395000,mid:480000,high:518400,n:11},
+    "63116_u1000"  :{low:123000,mid:165000,high:215500,n:56},
+    "63117"  :{low:263000,mid:355000,high:585000,n:31},
+    "63117_1000"  :{low:250000,mid:282500,high:355000,n:8},
+    "63117_1400"  :{low:265000,mid:351500,high:415000,n:10},
+    "63118"  :{low:164000,mid:263400,high:432000,n:80},
+    "63118_1000"  :{low:69000,mid:135000,high:171700,n:8},
+    "63118_1400"  :{low:173000,mid:238200,high:313800,n:16},
+    "63118_1800"  :{low:185000,mid:290000,high:380000,n:23},
+    "63118_o2400"  :{low:350900,mid:435000,high:530000,n:21},
+    "63118_u1000"  :{low:55300,mid:102500,high:130000,n:12},
+    "63119"  :{low:285000,mid:393000,high:560000,n:164},
+    "63119_1000"  :{low:285000,mid:336000,high:427500,n:51},
+    "63119_1400"  :{low:345000,mid:390000,high:500000,n:31},
+    "63119_1800"  :{low:399000,mid:567500,high:667000,n:26},
+    "63119_o2400"  :{low:629900,mid:805500,high:1040000,n:29},
+    "63119_u1000"  :{low:221200,mid:264000,high:330000,n:27},
+    "63121"  :{low:77000,mid:116000,high:184900,n:63},
+    "63121_1000"  :{low:114000,mid:136000,high:165000,n:23},
+    "63121_1800"  :{low:180000,mid:235300,high:254100,n:8},
+    "63121_u1000"  :{low:65000,mid:85000,high:106100,n:23},
+    "63122"  :{low:400000,mid:600000,high:800000,n:239},
+    "63122_1000"  :{low:310000,mid:380000,high:506500,n:44},
+    "63122_1400"  :{low:392500,mid:464000,high:614000,n:42},
+    "63122_1800"  :{low:540000,mid:645000,high:750000,n:49},
+    "63122_o2400"  :{low:690000,mid:868600,high:1050000,n:86},
+    "63122_u1000"  :{low:272000,mid:302500,high:342500,n:18},
+    "63123"  :{low:235000,mid:259500,high:340000,n:236},
+    "63123_1000"  :{low:225000,mid:254500,high:285000,n:93},
+    "63123_1400"  :{low:289800,mid:315000,high:405000,n:38},
+    "63123_1800"  :{low:322500,mid:502000,high:625000,n:19},
+    "63123_o2400"  :{low:560000,mid:699100,high:774400,n:21},
+    "63123_u1000"  :{low:185000,mid:215000,high:255000,n:65},
+    "63124"  :{low:499900,mid:787500,high:1125000,n:30},
+    "63124_o2400"  :{low:840000,mid:1120000,high:1275000,n:16},
+    "63125"  :{low:125000,mid:219000,high:286300,n:122},
+    "63125_1000"  :{low:125000,mid:229200,high:285300,n:54},
+    "63125_1400"  :{low:235000,mid:295000,high:318600,n:17},
+    "63125_u1000"  :{low:90000,mid:164900,high:220000,n:43},
+    "63126"  :{low:290000,mid:330000,high:415000,n:80},
+    "63126_1000"  :{low:261000,mid:310000,high:338000,n:33},
+    "63126_1400"  :{low:325000,mid:365000,high:420000,n:29},
+    "63126_1800"  :{low:410000,mid:472400,high:682500,n:8},
+    "63127"  :{low:317000,mid:739000,high:970000,n:20},
+    "63127_o2400"  :{low:700000,mid:915500,high:988700,n:12},
+    "63128"  :{low:290000,mid:421900,high:550000,n:107},
+    "63128_1000"  :{low:240000,mid:276200,high:300000,n:12},
+    "63128_1400"  :{low:290000,mid:340000,high:421900,n:29},
+    "63128_1800"  :{low:375000,mid:417500,high:520000,n:34},
+    "63128_o2400"  :{low:495000,mid:550000,high:630000,n:30},
+    "63129"  :{low:311000,mid:360000,high:427500,n:198},
+    "63129_1000"  :{low:266000,mid:305500,high:329900,n:48},
+    "63129_1400"  :{low:300000,mid:340000,high:387000,n:36},
+    "63129_1800"  :{low:345000,mid:400000,high:443000,n:55},
+    "63129_o2400"  :{low:420000,mid:520000,high:600000,n:45},
+    "63129_u1000"  :{low:201000,mid:250500,high:270500,n:14},
+    "63130"  :{low:155000,mid:458000,high:688000,n:127},
+    "63130_1000"  :{low:150000,mid:220000,high:249000,n:21},
+    "63130_1400"  :{low:245000,mid:390000,high:502000,n:33},
+    "63130_1800"  :{low:470000,mid:542800,high:675000,n:30},
+    "63130_o2400"  :{low:685000,mid:821000,high:1125000,n:31},
+    "63130_u1000"  :{low:80000,mid:117500,high:127000,n:12},
+    "63131"  :{low:400000,mid:832500,high:1100000,n:58},
+    "63131_1800"  :{low:535000,mid:581500,high:815000,n:9},
+    "63131_o2400"  :{low:625000,mid:962000,high:1200000,n:40},
+    "63132"  :{low:260000,mid:475000,high:625000,n:43},
+    "63132_1400"  :{low:260000,mid:475000,high:638000,n:8},
+    "63132_1800"  :{low:475000,mid:546000,high:715000,n:12},
+    "63132_o2400"  :{low:590000,mid:812500,high:1400000,n:10},
+    "63133"  :{low:60000,mid:85000,high:155000,n:13},
+    "63133_u1000"  :{low:60000,mid:85000,high:148000,n:9},
+    "63134"  :{low:96000,mid:120000,high:165000,n:53},
+    "63134_1000"  :{low:96000,mid:135000,high:170000,n:21},
+    "63134_u1000"  :{low:60000,mid:101000,high:124500,n:25},
+    "63135"  :{low:73000,mid:115700,high:205000,n:84},
+    "63135_1000"  :{low:77200,mid:111500,high:163000,n:34},
+    "63135_1400"  :{low:127500,mid:183500,high:213000,n:18},
+    "63135_u1000"  :{low:65000,mid:73000,high:110000,n:25},
+    "63136"  :{low:78000,mid:95000,high:123000,n:135},
+    "63136_1000"  :{low:78000,mid:115000,high:130000,n:73},
+    "63136_1400"  :{low:50000,mid:87900,high:167000,n:9},
+    "63136_u1000"  :{low:70700,mid:85000,high:110000,n:52},
+    "63137"  :{low:80000,mid:110000,high:140000,n:59},
+    "63137_1000"  :{low:90000,mid:134000,high:148200,n:21},
+    "63137_u1000"  :{low:67000,mid:97500,high:115000,n:32},
+    "63138"  :{low:110000,mid:161600,high:235000,n:58},
+    "63138_1000"  :{low:102000,mid:130000,high:180000,n:18},
+    "63138_1400"  :{low:118000,mid:179900,high:239900,n:19},
+    "63138_1800"  :{low:195000,mid:233700,high:295000,n:8},
+    "63138_u1000"  :{low:60500,mid:110000,high:118800,n:9},
+    "63139"  :{low:190000,mid:256000,high:310000,n:117},
+    "63139_1000"  :{low:202000,mid:250000,high:300000,n:47},
+    "63139_1400"  :{low:265000,mid:308500,high:375000,n:20},
+    "63139_1800"  :{low:290000,mid:390000,high:445000,n:17},
+    "63139_u1000"  :{low:178000,mid:218200,high:235700,n:30},
+    "63141"  :{low:545000,mid:637000,high:845000,n:76},
+    "63141_1400"  :{low:330000,mid:400000,high:500000,n:11},
+    "63141_1800"  :{low:458000,mid:525000,high:567000,n:20},
+    "63141_o2400"  :{low:575000,mid:875000,high:951000,n:43},
+    "63143"  :{low:229000,mid:290000,high:323800,n:35},
+    "63143_1000"  :{low:224900,mid:290000,high:323000,n:12},
+    "63143_1400"  :{low:240000,mid:310000,high:360000,n:9},
+    "63144"  :{low:370300,mid:402500,high:525000,n:44},
+    "63144_1000"  :{low:305000,mid:347200,high:375500,n:17},
+    "63144_1800"  :{low:611000,mid:692500,high:785000,n:10},
+    "63146"  :{low:315000,mid:355000,high:425000,n:97},
+    "63146_1000"  :{low:250000,mid:315800,high:351000,n:22},
+    "63146_1400"  :{low:315000,mid:350000,high:393000,n:45},
+    "63146_1800"  :{low:315000,mid:407500,high:457000,n:22},
+    "63146_o2400"  :{low:556600,mid:605000,high:725000,n:8},
+    "63147"  :{low:51000,mid:114500,high:168000,n:18},
+    "63147_1000"  :{low:98000,mid:159500,high:172300,n:8},
+    "63301"  :{low:294400,mid:320000,high:349000,n:209},
+    "63301_1000"  :{low:260500,mid:283200,high:325000,n:74},
+    "63301_1400"  :{low:300000,mid:347500,high:375300,n:81},
+    "63301_1800"  :{low:339900,mid:380000,high:410400,n:27},
+    "63301_o2400"  :{low:355000,mid:386600,high:417500,n:8},
+    "63301_u1000"  :{low:185000,mid:250000,high:270000,n:19},
+    "63303"  :{low:295000,mid:333000,high:381000,n:93},
+    "63303_1000"  :{low:259000,mid:293000,high:325000,n:32},
+    "63303_1400"  :{low:317400,mid:345000,high:375100,n:34},
+    "63303_1800"  :{low:350000,mid:390000,high:421200,n:18},
+    "63304"  :{low:322000,mid:350000,high:378000,n:116},
+    "63304_1000"  :{low:294000,mid:331000,high:357500,n:37},
+    "63304_1400"  :{low:322000,mid:350000,high:404000,n:45},
+    "63304_1800"  :{low:366000,mid:399000,high:430900,n:25},
+    "63304_u1000"  :{low:224500,mid:263000,high:284000,n:8},
+    "63348"  :{low:285200,mid:310000,high:349900,n:13},
+    "63366"  :{low:301900,mid:328200,high:365000,n:138},
+    "63366_1000"  :{low:255000,mid:280000,high:316500,n:57},
+    "63366_1400"  :{low:327500,mid:356000,high:384500,n:36},
+    "63366_1800"  :{low:354200,mid:385000,high:415800,n:25},
+    "63366_u1000"  :{low:220800,mid:240000,high:269900,n:14},
+    "63367"  :{low:317400,mid:345000,high:372600,n:65},
+    "63367_1000"  :{low:290000,mid:322500,high:348300,n:18},
+    "63367_1400"  :{low:318000,mid:350500,high:378500,n:26},
+    "63367_1800"  :{low:335000,mid:372400,high:402200,n:16},
+    "63368"  :{low:331200,mid:360000,high:388800,n:83},
+    "63368_1000"  :{low:286600,mid:325000,high:369000,n:15},
+    "63368_1400"  :{low:315000,mid:362500,high:391500,n:36},
+    "63368_1800"  :{low:327500,mid:385000,high:415800,n:23},
+    "63376"  :{low:303600,mid:330000,high:359900,n:272},
+    "63376_1000"  :{low:278000,mid:315000,high:340200,n:125},
+    "63376_1400"  :{low:322000,mid:350000,high:378000,n:85},
+    "63376_1800"  :{low:335800,mid:365000,high:394200,n:45},
+    "63376_u1000"  :{low:215000,mid:242500,high:276000,n:10},
+    "63385"  :{low:300000,mid:340000,high:375000,n:197},
+    "63385_1000"  :{low:240000,mid:300000,high:328000,n:67},
+    "63385_1400"  :{low:322000,mid:350000,high:385000,n:71},
+    "63385_1800"  :{low:349600,mid:380000,high:410400,n:41},
+    "63385_o2400"  :{low:363400,mid:395000,high:426600,n:13},
+  }
+};
+  const NV_SPREAD=0.08;
+  function nvFmt(n){return '$'+Math.round(n).toLocaleString();}
+  function nvR(v){return {lo:Math.round(v*(1-NV_SPREAD)),hi:Math.round(v*(1+NV_SPREAD))};}
+  function nvFR(v){var r=nvR(v);return nvFmt(r.lo)+'\u2013'+nvFmt(r.hi);}
+  var nvSel=null,nvEntry=null,nvFallback=false;
+  function el(id){return document.getElementById(id);}
+  function nvLookup(){
+    var zip=(el('nvZip').value||'').trim(),sqft=el('nvSqft').value;
+    var err=el('nvError'),cards=el('nvCards');
+    if(!zip||zip.length!==5||!sqft){err.innerHTML='<div class="nv-error">Enter a 5-digit zip code and select a home size.</div>';err.style.display='block';return;}
+    err.style.display='none';nvSel=null;el('nvEst').style.display='none';
+    var key=zip+'_'+sqft,entry=NV_DATA.data[key];nvFallback=false;
+    if(!entry){key=zip;entry=NV_DATA.data[key];if(entry)nvFallback=true;}
+    if(!entry||entry.n<5){err.innerHTML='<div class="nv-error">No data for zip '+zip+' in that size range. Try an adjacent zip, or ask George for a walkthrough.</div>';err.style.display='block';cards.style.display='none';return;}
+    nvEntry=entry;cards.style.display='block';nvRender(entry,zip,sqft);
+  }
+  function nvRender(entry,zip,sqft){
+    var tiers=[
+      {id:'low',label:'As-is',mid:entry.low,desc:'Sold at the bottom of the market &mdash; significant deferred maintenance or major systems needing work.',qual:'Pick this if the home needs major work or hasn\u2019t been kept up.'},
+      {id:'mid',label:'Move-in ready',mid:entry.mid,desc:'Clean and functional but cosmetically dated. Sold at a normal pace to retail buyers.',qual:'Pick this if it\u2019s livable and clean but not recently renovated.'},
+      {id:'high',label:'Renovated',mid:entry.high,desc:'Updated kitchen or baths and fresh finishes. Sold fast, at or above list.',qual:'Pick this if it has significant recent updates.'}
+    ];
+    el('nvGrid').innerHTML=tiers.map(function(t){
+      return '<div class="nv-card'+(nvSel===t.id?' sel':'')+'" data-tier="'+t.id+'" data-mid="'+t.mid+'" data-label="'+t.label+'">'
+        +'<div class="nv-badge '+t.id+'">'+t.label+'</div>'
+        +'<div class="nv-range">'+nvFR(t.mid)+'</div>'
+        +'<div class="nv-mid">Midpoint '+nvFmt(t.mid)+'</div>'
+        +'<div class="nv-desc">'+t.desc+'</div>'
+        +'<div class="nv-qual">'+t.qual+'</div>'
+        +(nvSel===t.id?'<div class="nv-selnote">\u2713 Selected</div>':'')
+      +'</div>';
+    }).join('');
+    [].slice.call(el('nvGrid').querySelectorAll('.nv-card')).forEach(function(c){
+      c.addEventListener('click',function(){nvSelect(c.getAttribute('data-tier'),+c.getAttribute('data-mid'),c.getAttribute('data-label'));});
+    });
+    var conf=entry.n>=20?'strong':entry.n>=10?'moderate':'limited';
+    var sl={'u1000':'under 1,000 sqft','1000':'1,000\u20131,400 sqft','1400':'1,400\u20131,800 sqft','1800':'1,800\u20132,400 sqft','o2400':'over 2,400 sqft'};
+    el('nvMeta').textContent='St. Louis sold data \u00b7 Zip '+zip+' \u00b7 '+(sl[sqft]||'all sizes')+' \u00b7 '+entry.n+' sales ('+conf+' sample)'+(nvFallback?' \u00b7 showing zip-level range':'')+' \u00b7 '+NV_DATA.updated;
+    var d=el('nvDisc');d.style.display='block';
+    d.innerHTML='These ranges come from actual St. Louis sales filtered by condition &mdash; not an automated estimate. Where your home lands depends on its specific updates, lot, and condition, which an in-person walkthrough pins down. Use the value you pick as the sale-price starting point for the net math below.';
+  }
+  function nvSelect(tier,mid,label){
+    nvSel=tier;
+    var e=el('nvEst');e.style.display='block';
+    e.innerHTML='Your estimated value: <b>'+nvFmt(mid)+'</b> <span>('+nvFR(mid)+' \u00b7 '+label+' condition)</span><br>Use this as your sale-price starting point in the net math below.';
+    nvRender(nvEntry,(el('nvZip').value||'').trim(),el('nvSqft').value);
+  }
+  function init(){
+    var b=el('nvRun');if(!b)return;
+    b.addEventListener('click',nvLookup);
+    el('nvZip').addEventListener('keydown',function(e){if(e.key==='Enter')nvLookup();});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+
     <h2 id="the-math">Net Proceeds: The Actual Calculation</h2>
     <p>Your net proceeds are calculated as:</p>
     <div class="callout">
