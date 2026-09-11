@@ -101,6 +101,9 @@ body{font-family:'Inter',-apple-system,sans-serif;background:#050505;color:rgba(
 .lb-prev:hover,.lb-next:hover{background:rgba(255,204,77,.3);}
 .lb-cap{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.45);font-size:11px;font-weight:600;letter-spacing:.04em;white-space:nowrap;}
 @media(max-width:800px){.main{grid-template-columns:1fr;}.sticky-card{position:static;}.pgrid{grid-template-columns:1fr 1fr;grid-template-rows:160px 160px 160px;}.pgrid-item:first-child{grid-row:1;grid-column:1/3;}.facts{grid-template-columns:1fr 1fr;}.hero{height:55vw;min-height:280px;}.feats{grid-template-columns:1fr;}.mkt{grid-template-columns:repeat(2,1fr);}}
+.vtour{position:relative;width:100%;padding-bottom:56.25%;height:0;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.08);margin-top:12px;background:#111;}
+.vtour iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+@media(max-width:800px){.vtour{padding-bottom:0;height:72vh;min-height:460px;}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/listings/12237-glenpark-drive-maryland-heights-mo","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
 </head>
@@ -191,7 +194,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:#050505;color:rgba(
     <div class="sec">
       <div class="sec-lbl">Virtual Tour</div>
       <div class="sec-ttl">Walk Through It From Your Phone</div>
-      <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.08);margin-top:12px;background:#111;">
+      <div class="vtour">
         <iframe src="https://www.zillow.com/view-imx/b82f5acd-9fd5-41ae-96e6-4f2b9137bb0a?setAttribution=mls&amp;wl=true&amp;initialViewType=pano&amp;utm_source=dashboard" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy" title="Virtual tour — 12237 Glenpark Dr, Maryland Heights"></iframe>
       </div>
     </div>
