@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Before you go&hellip; | STL Home Journey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#ffcc4d;--gold-line:rgba(255,204,77,.34);--bg:#0a0a0a;--surface:#141414;--line:#242424;--text:rgba(255,255,255,.9);--soft:rgba(255,255,255,.62);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:"Inter",system-ui,sans-serif;min-height:100vh;display:flex;justify-content:center;padding:28px 20px;}
+.wrap{width:100%;max-width:440px;display:flex;flex-direction:column;}
+.screen{display:none;animation:fade .35s ease;}
+.screen.on{display:block;}
+@keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+.shh{font-family:"Playfair Display",Georgia,serif;font-weight:900;font-size:64px;line-height:.95;color:var(--gold);margin-bottom:14px;}
+h1{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:30px;line-height:1.15;margin-bottom:12px;}
+.lede{font-size:16px;line-height:1.55;color:var(--soft);margin-bottom:28px;}
+.ask{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:14px;}
+.btn{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:12px;color:var(--text);font-family:inherit;font-size:17px;font-weight:600;cursor:pointer;text-decoration:none;transition:border-color .15s,transform .1s;}
+.btn:hover{border-color:var(--gold-line);}
+.btn:active{transform:scale(.99);}
+.btn .ico{font-size:24px;line-height:1;}
+.btn .sub{display:block;font-size:13px;font-weight:400;color:var(--soft);margin-top:3px;}
+.btn.primary{background:var(--gold);border-color:var(--gold);color:#0a0a0a;}
+.btn.primary .sub{color:rgba(10,10,10,.7);}
+.btn.chev::after{content:"→";margin-left:auto;color:var(--gold);font-weight:700;}
+.btn.primary.chev::after{color:#0a0a0a;}
+.back{background:none;border:none;color:var(--soft);font-family:inherit;font-size:14px;padding:14px 4px;cursor:pointer;margin-top:6px;}
+.back:hover{color:var(--gold);}
+.topback{background:none;border:none;color:var(--gold);font-family:inherit;font-size:14px;font-weight:600;padding:8px 4px;margin-bottom:12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;}
+.topback:hover{opacity:.8;}
+.foot{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--soft);line-height:1.7;}
+.foot b{color:var(--gold);font-weight:600;}
+.note{font-size:11px;color:rgba(255,255,255,.28);margin-top:10px;font-style:italic;}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EEE14BZT9P');</script>
+</head>
+<body>
+<div class="wrap">
+
+  <section class="screen on" id="s-hero">
+    <div class="eyebrow">You found the sign</div>
+    <div class="shh">Shhh&hellip;</div>
+    <h1>Your secret&rsquo;s safe with me.</h1>
+    <p class="lede">I won&rsquo;t tell a soul you scanned this. But now I&rsquo;m curious&hellip; who&rsquo;s behind the phone?</p>
+    <p class="ask">I&rsquo;m a&hellip;</p>
+    <button class="btn chev" data-seg="buyer"><span class="ico">🏠</span><span>Interested buyer<span class="sub">Show me this house</span></span></button>
+    <button class="btn chev" data-seg="neighbor"><span class="ico">👀</span><span>Nosy neighbor<span class="sub">Just being honest</span></span></button>
+    <button class="btn chev" data-seg="agent"><span class="ico">🕴️</span><span>Fellow agent<span class="sub">Showing &amp; commission</span></span></button>
+  </section>
+
+  <section class="screen" id="s-buyer">
+    <button class="topback" data-back>&larr; Back</button>
+    <div class="eyebrow">Between us</div>
+    <h1>A buyer. Let&rsquo;s get you inside. 🔑</h1>
+    <p class="lede">No pressure, no spam. Pick where you want to start.</p>
+    <a class="btn primary chev" href="https://stlhomejourney.com/listings/" data-opt="see_listing">See the full listing<span class="sub">Photos, price, the details</span></a>
+    <a class="btn chev" href="sms:+13144351087?&body=Hi%20George%2C%20I%20scanned%20your%20sign%20at%20______%20and%20would%20like%20to%20see%20it%20in%20person." data-opt="text_showing">Text me to see it in person<span class="sub">Opens a text you can edit &mdash; add the address</span></a>
+    <a class="btn chev" href="https://stlhomejourney.com/stl-home-buying-power-calculator" data-opt="calculator">First&mdash;what can I actually afford?<span class="sub">2-minute buying-power check</span></a>
+    <a class="btn chev" href="sms:+13144351087?&body=Hi%20George%2C%20I%20scanned%20your%20sign%20at%20______%20and%20would%20like%20a%20heads-up%20if%20the%20price%20drops.%20Thanks!" data-opt="price_alert">Ping me if the price drops<span class="sub">Opens a text you can edit &mdash; add the address</span></a>
+    <button class="back" data-back>&larr; Wait, I&rsquo;m someone else</button>
+  </section>
+
+  <section class="screen" id="s-neighbor">
+    <button class="topback" data-back>&larr; Back</button>
+    <div class="eyebrow">Your secret&rsquo;s safe</div>
+    <h1>Caught you. 👀</h1>
+    <p class="lede">Relax&mdash;I&rsquo;m not telling. But be honest: you&rsquo;ve wondered what your own place would sell for, haven&rsquo;t you?</p>
+    <a class="btn primary chev" href="https://stlhomejourney.com/articles/what-will-i-net-selling-stl" data-opt="my_home_worth">What&rsquo;s my place really worth?<span class="sub">See your actual net if you sold &mdash; not a Zestimate</span></a>
+    <a class="btn chev" href="https://stlhomejourney.com/listings/" data-opt="this_one_listed">Okay fine&mdash;what did THIS one list for?<span class="sub">See it on my active listings</span></a>
+    <a class="btn chev" href="mailto:georgeandlizk@gmail.com?subject=Recent%20sales%20near%20______&body=Hi%20George%2C%20I%20scanned%20your%20sign%20at%20______.%20I%20am%20curious%20what%20has%20been%20selling%20on%20my%20street%20lately%20-%20could%20you%20send%20me%20recent%20sales%20nearby%3F%20Thanks!" data-opt="street_sold">What&rsquo;s selling on our street?<span class="sub">Opens an email you can edit &mdash; add your street</span></a>
+    <button class="back" data-back>&larr; Actually, I&rsquo;m someone else</button>
+  </section>
+
+  <section class="screen" id="s-agent">
+    <button class="topback" data-back>&larr; Back</button>
+    <div class="eyebrow">Colleague to colleague</div>
+    <h1>A fellow agent. Let&rsquo;s keep it easy. 🤝</h1>
+    <p class="lede">Here&rsquo;s the listing &mdash; details and disclosures live on the property page.</p>
+    <a class="btn primary chev" href="https://stlhomejourney.com/listings/" data-opt="see_listing">See the full listing<span class="sub">Here are the details</span></a>
+    <a class="btn chev" href="tel:+13144351087" data-opt="call_agent">Call the listing agent<span class="sub">George &middot; 314.435.1087</span></a>
+    <button class="back" data-back>&larr; I&rsquo;m not an agent</button>
+  </section>
+
+  <div class="foot">
+    <b>George Kindler</b> &middot; The Closing Pros &middot; <b>314.435.1087</b><br>
+    I&rsquo;m not selling you a house &mdash; I&rsquo;m showing you how to think about buying or selling one.
+  </div>
+
+</div>
+<script>
+(function(){
+  function show(id){
+    document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('on');});
+    document.getElementById(id).classList.add('on');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function track(name,params){ if(typeof gtag==='function'){params=params||{};gtag('event',name,params);} }
+  document.querySelectorAll('[data-seg]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var seg=b.getAttribute('data-seg');
+      track('scan_segment_click',{segment:seg});
+      show('s-'+seg);
+    });
+  });
+  document.querySelectorAll('[data-opt]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var seg=a.closest('.screen').id.replace('s-','');
+      track('scan_option_click',{segment:seg,option:a.getAttribute('data-opt')});
+      if(a.getAttribute('href')==='#') e.preventDefault();
+    });
+  });
+  document.querySelectorAll('[data-back]').forEach(function(b){
+    b.addEventListener('click',function(){show('s-hero');});
+  });
+})();
+</script>
+</body>
+</html>
