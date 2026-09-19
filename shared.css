@@ -2264,7 +2264,8 @@ svg {
    (which is wrapped in .idx-app). On article/content pages there's no
    .idx-app, so the scene + floating George leak to the page bottom and
    overlap the footer on mobile. Hide the injected scene where it doesn't
-   belong. :has() scopes this to pages lacking the homepage app container. */
-body:not(:has(.idx-app)) > #app {
+   belong. :has() scopes this to pages lacking the homepage app container.
+   .chapter-app pages also need #app visible. */
+body:not(:has(.idx-app)) > #app:not(.chapter-app) {
   display: none !important;
 }
