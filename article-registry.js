@@ -1316,6 +1316,78 @@ window.ARTICLE_REGISTRY = {
       tags: ["selling", "cash-offer", "oakville", "south-county", "local"],
       toolLink: "/tools/cash-offer-decoder.html",
       published: true
+    },
+
+    /* ── EXPIRED LISTING CLUSTER ── */
+    {
+      slug: "why-your-st-louis-home-didnt-sell",
+      title: "20 Questions That Will Tell You Why Your St. Louis Home Didn't Sell",
+      shortTitle: "Why Your Home Didn't Sell",
+      description: "Diagnostic questionnaire and analysis for St. Louis sellers whose home failed to sell.",
+      pillLabel: "Expired Listing Diagnostic",
+      audience: "seller",
+      series: "expired-listing",
+      isHub: true,
+      chapters: [],
+      tags: ["selling", "expired-listing", "diagnostic", "price", "condition", "showings"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "how-george-works-with-sellers",
+      title: "How I Work With St. Louis Home Sellers",
+      shortTitle: "How George Works With Sellers",
+      description: "George Kindler's seller process from the first walk-through to closing.",
+      pillLabel: "How George Works",
+      audience: "seller",
+      series: "expired-listing",
+      isHub: false,
+      chapters: [],
+      tags: ["selling", "process", "listing", "pricing"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "no-showings-st-louis-home",
+      title: "Why Is My House Getting No Showings in St. Louis?",
+      shortTitle: "No Showings Diagnostic",
+      description: "Diagnostic guide for St. Louis sellers whose home is getting online views but few or no showings.",
+      pillLabel: "No Showings?",
+      audience: "seller",
+      series: "expired-listing",
+      isHub: false,
+      chapters: [],
+      tags: ["selling", "expired-listing", "showings", "price", "photography", "marketing"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "showings-but-no-offers-st-louis",
+      title: "Showings but No Offers? What St. Louis Buyers Are Really Telling You",
+      shortTitle: "Showings but No Offers",
+      description: "Guide for St. Louis sellers getting showings but no offers — how to read buyer types, feedback quality and showing velocity.",
+      pillLabel: "Showings, No Offers?",
+      audience: "seller",
+      series: "expired-listing",
+      isHub: false,
+      chapters: [],
+      tags: ["selling", "expired-listing", "showings", "offers", "feedback", "buyer-behavior"],
+      toolLink: null,
+      published: true
+    },
+    {
+      slug: "when-to-lower-house-price-st-louis",
+      title: "When Should You Lower the Price of Your House? A St. Louis Seller's Guide",
+      shortTitle: "When to Lower the Price",
+      description: "Guide for St. Louis sellers considering a price reduction — timing, buyer behavior, Imperial case study and MARIS data.",
+      pillLabel: "When to Lower Price",
+      audience: "seller",
+      series: "expired-listing",
+      isHub: false,
+      chapters: [],
+      tags: ["selling", "expired-listing", "price-reduction", "pricing", "buyer-behavior", "case-study"],
+      toolLink: null,
+      published: true
     }
 
   ],
