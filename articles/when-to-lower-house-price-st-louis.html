@@ -78,6 +78,11 @@ a{color:#ffcc4d;text-decoration:none;}
 @media(max-width:600px){
   .cta-grid{grid-template-columns:1fr;}
 }
+.art-nav{background:rgba(16,16,16,.96);border-bottom:1px solid rgba(255,255,255,.08);padding:0 16px;display:flex;overflow-x:auto;scrollbar-width:none;}
+.art-nav::-webkit-scrollbar{display:none;}
+.art-nav-item{font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:rgba(255,255,255,.34);padding:10px 14px;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;}
+.art-nav-item.active{color:#ffcc4d;border-bottom-color:#ffcc4d;}
+.art-nav-sep{color:rgba(255,255,255,.34);padding:10px 2px;}
 </style>
 </head>
 <body>
@@ -92,6 +97,13 @@ a{color:#ffcc4d;text-decoration:none;}
 <a class="art-hdr-btn gold" href="../">Journey</a>
 </div>
 </header>
+<nav class="art-nav" aria-label="Breadcrumb">
+  <a href="../" class="art-nav-item">Journey</a>
+  <span class="art-nav-sep">›</span>
+  <a href="https://stlhomejourney.com/articles/" class="art-nav-item">Guides</a>
+  <span class="art-nav-sep">›</span>
+  <span class="art-nav-item active" style="cursor:default;">When to Lower the Price</span>
+</nav>
 
 <div class="article-opening">
 
