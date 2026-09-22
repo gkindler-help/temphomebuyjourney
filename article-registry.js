@@ -1388,6 +1388,22 @@ window.ARTICLE_REGISTRY = {
       tags: ["selling", "expired-listing", "price-reduction", "pricing", "buyer-behavior", "case-study"],
       toolLink: null,
       published: true
+    },
+
+    /* ── SEASONAL SELLER STRATEGY ── */
+    {
+      slug: "sell-house-fall-winter-st-louis",
+      title: "How to Sell a House in St. Louis This Fall or Winter When You Can't Wait Until Spring",
+      shortTitle: "Sell This Fall or Winter",
+      description: "Strategy guide for St. Louis sellers who need to sell during fall or winter — pricing into the market, buyer behavior, showing access, holiday timing and Winter Park case study.",
+      pillLabel: "Selling in Winter",
+      audience: "seller",
+      series: null,
+      isHub: false,
+      chapters: [],
+      tags: ["selling", "winter", "fall", "seasonal", "pricing", "buyer-behavior", "case-study", "fenton"],
+      toolLink: null,
+      published: true
     }
 
   ],
