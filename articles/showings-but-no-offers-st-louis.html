@@ -82,9 +82,37 @@ a{color:#ffcc4d;text-decoration:none;}
 .art-nav-item{font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:rgba(255,255,255,.34);padding:10px 14px;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;}
 .art-nav-item.active{color:#ffcc4d;border-bottom-color:#ffcc4d;}
 .art-nav-sep{color:rgba(255,255,255,.34);padding:10px 2px;}
+.jump-fab{position:fixed;right:16px;bottom:20px;z-index:200;display:inline-flex;align-items:center;gap:8px;background:#ffcc4d;color:#080808;font-weight:800;font-size:12px;letter-spacing:.05em;border:none;border-radius:999px;padding:12px 17px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.55);font-family:inherit;}
+.jump-fab-ico{font-size:15px;line-height:1;}
+.jump-panel{position:fixed;right:16px;bottom:74px;z-index:200;width:min(288px,calc(100vw - 32px));background:#0d0d0d;border:1px solid rgba(255,204,77,.34);border-radius:14px;padding:8px;box-shadow:0 12px 42px rgba(0,0,0,.6);opacity:0;transform:translateY(10px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .18s ease,transform .18s ease;max-height:72vh;overflow-y:auto;}
+.jump-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+.jump-panel-hd{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ffcc4d;padding:8px 12px 8px;}
+.jump-link{display:block;padding:9px 12px;border-radius:8px;font-size:.9rem;color:rgba(255,255,255,.72);text-decoration:none;line-height:1.35;border-left:2px solid transparent;}
+.jump-link:hover{background:rgba(255,204,77,.06);color:#fff;}
+.jump-link.active{color:#ffcc4d;border-left-color:#ffcc4d;background:rgba(255,204,77,.05);}
 </style>
 </head>
 <body>
+
+<button id="jumpToggle" class="jump-fab" aria-label="Jump to a section" aria-expanded="false">
+  <span class="jump-fab-ico">&#9776;</span><span class="jump-fab-txt">Sections</span>
+</button>
+<nav id="jumpPanel" class="jump-panel" aria-hidden="true">
+  <div class="jump-panel-hd">Jump to a section</div>
+  <a href="#not-every" class="jump-link">Not Every Showing</a>
+  <a href="#buyer-pool" class="jump-link">Buyer Pool Changes</a>
+  <a href="#first-weekend" class="jump-link">First Weekend</a>
+  <a href="#velocity" class="jump-link">Showing Velocity</a>
+  <a href="#dropping-out" class="jump-link">Where Buyers Drop Out</a>
+  <a href="#feedback-want" class="jump-link">Feedback That Matters</a>
+  <a href="#feedback-doesnt" class="jump-link">Feedback That Doesn't</a>
+  <a href="#never-reach" class="jump-link">Invisible Feedback</a>
+  <a href="#start-high" class="jump-link">Start High Backfire</a>
+  <a href="#condition-price" class="jump-link">Condition vs Price</a>
+  <a href="#buy-your-house" class="jump-link">Would You Buy It?</a>
+  <a href="#why-no-offers" class="jump-link">Why No Offers?</a>
+  <a href="#failed-to-sell" class="jump-link">If It Already Failed</a>
+</nav>
 
 <header class="art-hdr">
 <a class="art-hdr-l" href="../">
@@ -122,7 +150,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <div class="article-body">
 
-<h2>Not Every Showing Means the Same Thing</h2>
+<h2 id="not-every">Not Every Showing Means the Same Thing</h2>
 
 <p>If your agent tells you, &ldquo;We had ten showings,&rdquo; that sounds like useful information. It isn&rsquo;t&mdash;not by itself.</p>
 
@@ -156,7 +184,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>These buyers matter too. But if your goal is to understand whether your listing hit the market correctly, I don&rsquo;t want to wait weeks for the benched buyer looking for an opportunity. I want to know how the actively writing buyers responded when your house was brand new.</p>
 
-<h2>Your Buyer Pool Changes Throughout the Year</h2>
+<h2 id="buyer-pool">Your Buyer Pool Changes Throughout the Year</h2>
 
 <p>The mix of those buyers isn&rsquo;t static.</p>
 
@@ -166,7 +194,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>Because <em>&ldquo;we had ten showings&rdquo;</em> means very little without knowing when those showings happened and who was most likely generating them.</p>
 
-<h2>Your First Weekend Is the Test I Care About</h2>
+<h2 id="first-weekend">Your First Weekend Is the Test I Care About</h2>
 
 <p>When your house first hits the market, there&rsquo;s already a group of buyers watching for it. They&rsquo;re checking the new inventory. They know what else is available. They know which houses they&rsquo;ve already missed. They know what their money has been buying.</p>
 
@@ -180,7 +208,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>Now they&rsquo;re coming inside to decide whether it survives the next one.</p>
 
-<h2>Stop Counting Showings. Measure How Quickly They Happened.</h2>
+<h2 id="velocity">Stop Counting Showings. Measure How Quickly They Happened.</h2>
 
 <p>Suppose two sellers both tell me: <em>&ldquo;We had ten showings.&rdquo;</em></p>
 
@@ -196,7 +224,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>The count tells me there was activity. The timing helps tell me what that activity means.</p>
 
-<h2>Now Look at Where Buyers Are Dropping Out</h2>
+<h2 id="dropping-out">Now Look at Where Buyers Are Dropping Out</h2>
 
 <p>I also think about the listing as a simple funnel:</p>
 
@@ -219,7 +247,7 @@ a{color:#ffcc4d;text-decoration:none;}
 <div class="int-link-title">Why Is My House Getting No Showings in St.&nbsp;Louis? &rarr;</div>
 </a>
 
-<h2>The Feedback I Actually Want You to Hear</h2>
+<h2 id="feedback-want">The Feedback I Actually Want You to Hear</h2>
 
 <p>This is where sellers can get distracted.</p>
 
@@ -242,7 +270,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>As a seller, that&rsquo;s far more useful to you than hearing that somebody liked the countertops.</p>
 
-<h2>The Feedback That Sounds Great&mdash;but Doesn&rsquo;t Tell You Much</h2>
+<h2 id="feedback-doesnt">The Feedback That Sounds Great&mdash;but Doesn&rsquo;t Tell You Much</h2>
 
 <p>Now compare that with:</p>
 
@@ -266,7 +294,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>If the same objection starts appearing repeatedly, that&rsquo;s different. Now we may have a pattern worth investigating. But one buyer deciding they want a ranch doesn&rsquo;t mean there&rsquo;s something wrong with your two-story.</p>
 
-<h2>The Most Important Feedback May Never Reach You</h2>
+<h2 id="never-reach">The Most Important Feedback May Never Reach You</h2>
 
 <p>Here&rsquo;s where this gets really important for you as a seller.</p>
 
@@ -286,7 +314,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>And those may be exactly the buyers you needed.</p>
 
-<h2>This Is Why &ldquo;We&rsquo;ll Start High and Negotiate Down&rdquo; Can Backfire</h2>
+<h2 id="start-high">This Is Why &ldquo;We&rsquo;ll Start High and Negotiate Down&rdquo; Can Backfire</h2>
 
 <p>I&rsquo;ve heard this at listing appointments for years: <em>&ldquo;Let&rsquo;s ask for more. A buyer can always make us a lower offer.&rdquo;</em></p>
 
@@ -307,7 +335,7 @@ a{color:#ffcc4d;text-decoration:none;}
 <div class="int-link-title">When Should You Lower the Price of Your House? A St.&nbsp;Louis Seller&rsquo;s Guide &rarr;</div>
 </a>
 
-<h2>Condition Isn&rsquo;t the Problem Until You Compare It With Price</h2>
+<h2 id="condition-price">Condition Isn&rsquo;t the Problem Until You Compare It With Price</h2>
 
 <p>A dated house can sell. A house needing repairs can sell. An unusual layout can sell. A house with a tiny backyard can sell.</p>
 
@@ -317,7 +345,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>Now we&rsquo;re getting somewhere. But remember the problem we just discussed: the actively writing buyer who already knows that from the photos may never come through the door to tell us.</p>
 
-<h2>Would You Buy Your House?</h2>
+<h2 id="buy-your-house">Would You Buy Your House?</h2>
 
 <p>Pull up the house that&rsquo;s directly competing with yours. Pretend you don&rsquo;t own yours. You have the buyer&rsquo;s budget. You can only choose one.</p>
 
@@ -331,7 +359,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>If the answer keeps being the competition, waiting for better feedback probably isn&rsquo;t going to solve the problem. You need to figure out what would make your house the better economic choice.</p>
 
-<h2>So Why Are You Getting Showings but No Offers?</h2>
+<h2 id="why-no-offers">So Why Are You Getting Showings but No Offers?</h2>
 
 <p>Now we can finally answer the question with something more useful than <em>&ldquo;maybe it&rsquo;s price.&rdquo;</em></p>
 
@@ -363,7 +391,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>That&rsquo;s how you start understanding what the market is actually telling you.</p>
 
-<h2>If Your Listing Already Failed to Sell</h2>
+<h2 id="failed-to-sell">If Your Listing Already Failed to Sell</h2>
 
 <p>If your listing expired or came off the market, you already paid for a market test. Don&rsquo;t waste the results.</p>
 
@@ -413,5 +441,21 @@ a{color:#ffcc4d;text-decoration:none;}
 
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var fab=document.getElementById('jumpToggle'),panel=document.getElementById('jumpPanel');
+  if(!fab||!panel)return;
+  function setOpen(o){panel.classList.toggle('open',o);fab.setAttribute('aria-expanded',o);panel.setAttribute('aria-hidden',!o);}
+  fab.addEventListener('click',function(e){e.stopPropagation();setOpen(!panel.classList.contains('open'));});
+  panel.addEventListener('click',function(e){if(e.target.classList.contains('jump-link'))setOpen(false);});
+  document.addEventListener('click',function(e){if(!panel.contains(e.target)&&e.target!==fab&&!fab.contains(e.target))setOpen(false);});
+  var links=[].slice.call(panel.querySelectorAll('.jump-link')),map={};
+  links.forEach(function(l){var id=l.getAttribute('href').slice(1),s=document.getElementById(id);if(s)map[id]=l;});
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(l){l.classList.remove('active');});if(map[en.target.id])map[en.target.id].classList.add('active');}});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    Object.keys(map).forEach(function(id){obs.observe(document.getElementById(id));});
+  }
+});
+</script>
 </body>
 </html>

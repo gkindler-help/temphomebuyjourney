@@ -87,11 +87,37 @@ a{color:#ffcc4d;text-decoration:none;}
 .art-nav-item{font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:rgba(255,255,255,.34);padding:10px 14px;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;}
 .art-nav-item.active{color:#ffcc4d;border-bottom-color:#ffcc4d;}
 .art-nav-sep{color:rgba(255,255,255,.34);padding:10px 2px;}
+.jump-fab{position:fixed;right:16px;bottom:20px;z-index:200;display:inline-flex;align-items:center;gap:8px;background:#ffcc4d;color:#080808;font-weight:800;font-size:12px;letter-spacing:.05em;border:none;border-radius:999px;padding:12px 17px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.55);font-family:inherit;}
+.jump-fab-ico{font-size:15px;line-height:1;}
+.jump-panel{position:fixed;right:16px;bottom:74px;z-index:200;width:min(288px,calc(100vw - 32px));background:#0d0d0d;border:1px solid rgba(255,204,77,.34);border-radius:14px;padding:8px;box-shadow:0 12px 42px rgba(0,0,0,.6);opacity:0;transform:translateY(10px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .18s ease,transform .18s ease;max-height:72vh;overflow-y:auto;}
+.jump-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+.jump-panel-hd{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ffcc4d;padding:8px 12px 8px;}
+.jump-link{display:block;padding:9px 12px;border-radius:8px;font-size:.9rem;color:rgba(255,255,255,.72);text-decoration:none;line-height:1.35;border-left:2px solid transparent;}
+.jump-link:hover{background:rgba(255,204,77,.06);color:#fff;}
+.jump-link.active{color:#ffcc4d;border-left-color:#ffcc4d;background:rgba(255,204,77,.05);}
 </style>
 </head>
 <body>
 
 <!-- Header -->
+<button id="jumpToggle" class="jump-fab" aria-label="Jump to a section" aria-expanded="false">
+  <span class="jump-fab-ico">&#9776;</span><span class="jump-fab-txt">Sections</span>
+</button>
+<nav id="jumpPanel" class="jump-panel" aria-hidden="true">
+  <div class="jump-panel-hd">Jump to a section</div>
+  <a href="#two-problems" class="jump-link">Two Different Problems</a>
+  <a href="#views-no-showings" class="jump-link">Views but No Showings</a>
+  <a href="#comparing-before" class="jump-link">Buyers Compare First</a>
+  <a href="#price-drives" class="jump-link">Price Drives Showings</a>
+  <a href="#photography" class="jump-link">Photography</a>
+  <a href="#thursday" class="jump-link">Thursday Launch</a>
+  <a href="#mls-data" class="jump-link">MLS Data</a>
+  <a href="#how-many" class="jump-link">How Many Showings?</a>
+  <a href="#lower-price" class="jump-link">Should I Lower Price?</a>
+  <a href="#expired" class="jump-link">If Your Listing Expired</a>
+  <a href="#bottom-line" class="jump-link">Bottom Line</a>
+</nav>
+
 <header class="art-hdr">
 <a class="art-hdr-l" href="../">
 <div class="art-hdr-ico"><img src="../assets/STLhomebuyerjourneylogo.webp" alt="STL Home Journey" width="32" height="32"></div>
@@ -140,7 +166,7 @@ a{color:#ffcc4d;text-decoration:none;}
 <!-- Article Body -->
 <div class="article-body">
 
-<h2>No Showings and No Offers Are Two Different Problems</h2>
+<h2 id="two-problems">No Showings and No Offers Are Two Different Problems</h2>
 
 <p>If 20 buyers walk through your house and nobody makes an offer, we have information about what happened after buyers experienced the property.</p>
 
@@ -163,7 +189,7 @@ a{color:#ffcc4d;text-decoration:none;}
 <div class="int-link-title">Showings but No Offers? What St.&nbsp;Louis Buyers Are Really Telling You &rarr;</div>
 </a>
 
-<h2>My House Is Getting Views but No Showings. What Does That Mean?</h2>
+<h2 id="views-no-showings">My House Is Getting Views but No Showings. What Does That Mean?</h2>
 
 <p>This is one of the most useful distinctions you can make.</p>
 
@@ -187,7 +213,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>Photography and presentation still matter. Showing restrictions still matter. But if motivated buyers clearly understand what you&rsquo;re offering and consistently choose other houses to see, that&rsquo;s market evidence worth paying attention to.</p>
 
-<h2>Buyers Start Comparing Your House Before They Ever See It</h2>
+<h2 id="comparing-before">Buyers Start Comparing Your House Before They Ever See It</h2>
 
 <p>Sellers don&rsquo;t get to watch this part happen.</p>
 
@@ -203,7 +229,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>That&rsquo;s why I pay attention when a listing is receiving online exposure but not producing showing requests.</p>
 
-<h2>Price Drives the Showing Too</h2>
+<h2 id="price-drives">Price Drives the Showing Too</h2>
 
 <p>Sellers tend to think about price as something that matters when an offer arrives.</p>
 
@@ -244,7 +270,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>The economic question is which one makes more sense.</p>
 
-<h2>Professional Photography Matters&mdash;but Understand Its Job</h2>
+<h2 id="photography">Professional Photography Matters&mdash;but Understand Its Job</h2>
 
 <p>I want bright, professional, wide-angle photography on my listings. That&rsquo;s part of the standard.</p>
 
@@ -286,7 +312,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>You don&rsquo;t need unlimited showing access forever. But if we&rsquo;re trying to measure buyer demand, we need to know buyers had a reasonable opportunity to see the house.</p>
 
-<h2>I Want My Listings Live on Thursday</h2>
+<h2 id="thursday">I Want My Listings Live on Thursday</h2>
 
 <p>For my listings, Thursday is launch day. That&rsquo;s not something I treat as an optional detail.</p>
 
@@ -312,7 +338,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>The numbers may look similar. The evidence isn&rsquo;t.</p>
 
-<h2>What St.&nbsp;Louis MLS Data Tells Me About Early Buyer Response</h2>
+<h2 id="mls-data">What St.&nbsp;Louis MLS Data Tells Me About Early Buyer Response</h2>
 
 <p>I wanted more than anecdotes about the importance of the opening days.</p>
 
@@ -356,7 +382,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>That&rsquo;s why I&rsquo;m less interested in some universal number for how many showings a house &ldquo;should&rdquo; receive. I&rsquo;m more interested in the pattern: <strong>are motivated buyers continuing to choose your house?</strong></p>
 
-<h2>How Many Showings Should My House Get?</h2>
+<h2 id="how-many">How Many Showings Should My House Get?</h2>
 
 <p>There isn&rsquo;t one number I would use for every St.&nbsp;Louis home.</p>
 
@@ -380,7 +406,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>I would rather understand the problem first.</p>
 
-<h2>Should I Lower My Price If I&rsquo;m Not Getting Showings?</h2>
+<h2 id="lower-price">Should I Lower My Price If I&rsquo;m Not Getting Showings?</h2>
 
 <p>Not automatically.</p>
 
@@ -427,7 +453,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>Make the change supported by the evidence. Then watch what buyers do.</p>
 
-<h2>If Your Listing Expired With Few or No Showings</h2>
+<h2 id="expired">If Your Listing Expired With Few or No Showings</h2>
 
 <p>Don&rsquo;t throw away the first listing. It gave you information.</p>
 
@@ -448,7 +474,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <p>The goal isn&rsquo;t to give your first listing a grade. <strong>The goal is to use what happened the first time to make a better economic decision the second time.</strong></p>
 
-<h2>The Bottom Line</h2>
+<h2 id="bottom-line">The Bottom Line</h2>
 
 <p>If your St.&nbsp;Louis house isn&rsquo;t getting showings, don&rsquo;t immediately blame the market. Don&rsquo;t immediately blame the photography. Don&rsquo;t immediately blame your agent. And don&rsquo;t immediately lower the price.</p>
 
@@ -497,5 +523,21 @@ a{color:#ffcc4d;text-decoration:none;}
 
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var fab=document.getElementById('jumpToggle'),panel=document.getElementById('jumpPanel');
+  if(!fab||!panel)return;
+  function setOpen(o){panel.classList.toggle('open',o);fab.setAttribute('aria-expanded',o);panel.setAttribute('aria-hidden',!o);}
+  fab.addEventListener('click',function(e){e.stopPropagation();setOpen(!panel.classList.contains('open'));});
+  panel.addEventListener('click',function(e){if(e.target.classList.contains('jump-link'))setOpen(false);});
+  document.addEventListener('click',function(e){if(!panel.contains(e.target)&&e.target!==fab&&!fab.contains(e.target))setOpen(false);});
+  var links=[].slice.call(panel.querySelectorAll('.jump-link')),map={};
+  links.forEach(function(l){var id=l.getAttribute('href').slice(1),s=document.getElementById(id);if(s)map[id]=l;});
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(l){l.classList.remove('active');});if(map[en.target.id])map[en.target.id].classList.add('active');}});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    Object.keys(map).forEach(function(id){obs.observe(document.getElementById(id));});
+  }
+});
+</script>
 </body>
 </html>
