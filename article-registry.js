@@ -1404,6 +1404,20 @@ window.ARTICLE_REGISTRY = {
       tags: ["selling", "winter", "fall", "seasonal", "pricing", "buyer-behavior", "case-study", "fenton"],
       toolLink: null,
       published: true
+    },
+    {
+      slug: "relist-house-st-louis-30-day-rule",
+      title: "How Soon Can You Relist a House in St. Louis? The 30-Day Rule Explained",
+      shortTitle: "30-Day Relist Rule",
+      description: "MARIS CDOM reset rule for St. Louis sellers — when you can relist, when the days reset, and what should actually change before the second launch.",
+      pillLabel: "Relisting / 30-Day Rule",
+      audience: "seller",
+      series: "expired-listing",
+      isHub: false,
+      chapters: [],
+      tags: ["selling", "expired-listing", "relist", "cdom", "maris", "days-on-market"],
+      toolLink: null,
+      published: true
     }
 
   ],
