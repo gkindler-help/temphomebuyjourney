@@ -105,7 +105,13 @@ a{color:#ffcc4d;text-decoration:none;}
 .hp-intent{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:520px;margin:0 auto 48px;padding:0 20px;}
 .hp-intent-card{display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(16,16,16,.7);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:28px 20px;text-decoration:none;transition:border-color .2s;}
 .hp-intent-card:hover{border-color:rgba(255,204,77,.3);}
-.hp-intent-ico{font-size:28px;margin-bottom:10px;}
+.hp-intent-card:hover .hp-intent-ico{border-color:rgba(255,204,77,.28);background:rgba(255,204,77,.1);}
+.hp-intent-card:hover .hp-intent-ico svg{opacity:1;}
+.hp-card:hover summary .hp-card-ico svg{opacity:1;}
+.hp-intent-ico svg,.hp-card-ico svg{opacity:.85;transition:opacity .15s;}
+@media(prefers-reduced-motion:reduce){.hp-intent-ico svg,.hp-card-ico svg{transition:none;}}
+.hp-intent-ico{width:48px;height:48px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,204,77,.06);border:1px solid rgba(255,204,77,.14);}
+.hp-intent-ico svg{width:26px;height:26px;color:#ffcc4d;}
 .hp-intent-t{font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;}
 .hp-intent-sub{font-size:12px;color:rgba(255,255,255,.45);}
 
@@ -130,7 +136,8 @@ a{color:#ffcc4d;text-decoration:none;}
 .hp-card summary::-webkit-details-marker{display:none;}
 .hp-card summary::after{content:'▼';font-size:9px;color:rgba(255,255,255,.25);margin-left:auto;transition:transform .2s;}
 .hp-card[open] summary::after{transform:rotate(180deg);}
-.hp-card-ico{font-size:18px;flex-shrink:0;width:28px;text-align:center;}
+.hp-card-ico{flex-shrink:0;width:22px;height:22px;display:flex;align-items:center;justify-content:center;}
+.hp-card-ico svg{width:20px;height:20px;color:#ffcc4d;}
 .hp-card-body{padding:0 18px 16px 58px;font-size:13px;line-height:1.65;color:rgba(255,255,255,.6);}
 .hp-card-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
 .hp-card-link{font-size:12px;font-weight:600;color:#ffcc4d;background:rgba(255,204,77,.06);padding:6px 12px;border-radius:6px;text-decoration:none;border:1px solid rgba(255,204,77,.12);}
@@ -186,12 +193,12 @@ a{color:#ffcc4d;text-decoration:none;}
 <!-- Intent routing -->
 <div class="hp-intent">
   <a href="/articles/#panel-buying" class="hp-intent-card">
-    <div class="hp-intent-ico">&#127968;</div>
+    <div class="hp-intent-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="M9 21v-6h6v6"/><circle cx="18.5" cy="13.5" r="1.2"/><path d="M18.5 14.7v3"/></svg></div>
     <div class="hp-intent-t">Buying</div>
     <div class="hp-intent-sub">Guides, tools &amp; data</div>
   </a>
   <a href="/articles/#panel-selling" class="hp-intent-card">
-    <div class="hp-intent-ico">&#128181;</div>
+    <div class="hp-intent-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="M9 21v-6h6v6"/><path d="M16 3l4.2 4.2a1 1 0 0 1 0 1.4l-3.5 3.5a1 1 0 0 1-1.4 0L11 7.8"/><circle cx="14.5" cy="6.3" r=".8" fill="currentColor" stroke="none"/></svg></div>
     <div class="hp-intent-t">Selling</div>
     <div class="hp-intent-sub">Strategy &amp; case studies</div>
   </a>
@@ -220,7 +227,7 @@ a{color:#ffcc4d;text-decoration:none;}
   <div class="hp-map-label">What&rsquo;s on this site</div>
 
   <details class="hp-card">
-    <summary><span class="hp-card-ico">&#127968;</span> Buying</summary>
+    <summary><span class="hp-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="M9 21v-6h6v6"/><circle cx="18.5" cy="13.5" r="1.2"/><path d="M18.5 14.7v3"/></svg></span> Buying</summary>
     <div class="hp-card-body">
       Affordability, neighborhoods, inspections, offers, contracts, closing, VA guidance.
       <div class="hp-card-links">
@@ -233,7 +240,7 @@ a{color:#ffcc4d;text-decoration:none;}
   </details>
 
   <details class="hp-card">
-    <summary><span class="hp-card-ico">&#128181;</span> Selling</summary>
+    <summary><span class="hp-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="M9 21v-6h6v6"/><path d="M16 3l4.2 4.2a1 1 0 0 1 0 1.4l-3.5 3.5a1 1 0 0 1-1.4 0L11 7.8"/><circle cx="14.5" cy="6.3" r=".8" fill="currentColor" stroke="none"/></svg></span> Selling</summary>
     <div class="hp-card-body">
       Pricing, net proceeds, cash offers, what not to repair, expired listings, seasonal strategy.
       <div class="hp-card-links">
@@ -246,7 +253,7 @@ a{color:#ffcc4d;text-decoration:none;}
   </details>
 
   <details class="hp-card">
-    <summary><span class="hp-card-ico">&#128205;</span> Neighborhoods</summary>
+    <summary><span class="hp-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/><circle cx="12" cy="9" r="2.5" fill="rgba(255,204,77,.15)" stroke="currentColor"/><path d="M12 11.5v1.5"/></svg></span> Neighborhoods</summary>
     <div class="hp-card-body">
       South County, South City, West County, Jefferson County, St.&nbsp;Charles &mdash; schools, price tiers, lifestyle fit.
       <div class="hp-card-links">
@@ -260,7 +267,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
   <!-- REVISION 5: Transactions preserved -->
   <details class="hp-card">
-    <summary><span class="hp-card-ico">&#128203;</span> Transactions</summary>
+    <summary><span class="hp-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v4h4"/><path d="M8 11l4.5-1.5L10 13l2 .5-4.5 1.5L10 11Z" fill="none"/><path d="M9 17.5l1.5 1.5 3-3"/></svg></span> Transactions</summary>
     <div class="hp-card-body">
       Real St.&nbsp;Louis case studies &mdash; pricing decisions, inspection negotiations, waived-inspection offers, actual closed numbers.
       <div class="hp-card-links">
@@ -271,7 +278,7 @@ a{color:#ffcc4d;text-decoration:none;}
   </details>
 
   <details class="hp-card">
-    <summary><span class="hp-card-ico">&#128736;</span> Tools</summary>
+    <summary><span class="hp-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="11" height="18" rx="1.5"/><rect x="5.5" y="5.5" width="6" height="3" rx=".5"/><circle cx="6.5" cy="12" r=".7" fill="currentColor" stroke="none"/><circle cx="8.5" cy="12" r=".7" fill="currentColor" stroke="none"/><circle cx="10.5" cy="12" r=".7" fill="currentColor" stroke="none"/><circle cx="6.5" cy="15" r=".7" fill="currentColor" stroke="none"/><circle cx="8.5" cy="15" r=".7" fill="currentColor" stroke="none"/><circle cx="10.5" cy="15" r=".7" fill="currentColor" stroke="none"/><path d="M17 21V11l2-2v12M20 21V13l-1.5-1.5"/><path d="M19 21h-4"/></svg></span> Tools</summary>
     <div class="hp-card-body">
       Affordability calculators, cash-offer decoder, local data tools.
       <div class="hp-card-links">
