@@ -27,14 +27,52 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<!-- Schema — preserved from original + enhanced -->
+<!-- REVISION 1: Fixed entity model — George is creator/publisher, Closing Pros is brokerage affiliation only -->
 <script type="application/ld+json">{
   "@context":"https://schema.org",
   "@graph":[
-    {"@type":"RealEstateAgent","@id":"https://stlhomejourney.com/#george-kindler","name":"George Kindler","url":"https://stlhomejourney.com","telephone":"314-435-1087","email":"georgeandlizk@gmail.com","areaServed":{"@type":"City","name":"St. Louis","address":{"@type":"PostalAddress","addressRegion":"MO","addressCountry":"US"}},"memberOf":{"@id":"https://stlhomejourney.com/#organization"},"sameAs":["https://www.youtube.com/@Stlhomejourney","https://www.facebook.com/gksellsstl"],"knowsAbout":["Real Estate","Home Buying","Home Selling","St. Louis Neighborhoods","VA Loans","FHA Loans","First-Time Home Buyers","Home Inspection","Real Estate Negotiation","Expired Listings","Real Estate Pricing Strategy","South County Real Estate","St. Louis School Districts"],"hasCredential":{"@type":"EducationalOccupationalCredential","credentialCategory":"Real Estate License","recognizedBy":{"@type":"Organization","name":"Missouri Real Estate Commission"}},"image":"https://stlhomejourney.com/assets/george-family.jpg","jobTitle":"Licensed Real Estate Agent"},
-    {"@type":"Organization","@id":"https://stlhomejourney.com/#organization","name":"The Closing Pros LLC","url":"https://stlhomejourney.com","logo":{"@type":"ImageObject","url":"https://stlhomejourney.com/assets/STLhomebuyerjourneylogo.png","width":512,"height":512},"contactPoint":{"@type":"ContactPoint","telephone":"314-998-4550","contactType":"customer service","areaServed":"US-MO","availableLanguage":"en"},"address":{"@type":"PostalAddress","addressRegion":"MO","addressCountry":"US"}},
-    {"@type":"WebSite","@id":"https://stlhomejourney.com/#website","url":"https://stlhomejourney.com","name":"STL Home Journey","description":"Independent St. Louis real estate education: neighborhoods, school districts, affordability, pricing strategy, decision tools, and real transaction lessons from George Kindler.","publisher":{"@id":"https://stlhomejourney.com/#organization"}},
-    {"@type":"WebPage","url":"https://stlhomejourney.com/","about":{"@id":"https://stlhomejourney.com/#george-kindler"},"publisher":{"@id":"https://stlhomejourney.com/#organization"}}
+    {
+      "@type":"RealEstateAgent",
+      "@id":"https://stlhomejourney.com/#george-kindler",
+      "name":"George Kindler",
+      "url":"https://stlhomejourney.com",
+      "telephone":"314-435-1087",
+      "email":"georgeandlizk@gmail.com",
+      "areaServed":{"@type":"City","name":"St. Louis","address":{"@type":"PostalAddress","addressRegion":"MO","addressCountry":"US"}},
+      "worksFor":{"@id":"https://stlhomejourney.com/#brokerage"},
+      "sameAs":["https://www.youtube.com/@Stlhomejourney","https://www.facebook.com/gksellsstl"],
+      "knowsAbout":["Real Estate","Home Buying","Home Selling","St. Louis Neighborhoods","VA Loans","FHA Loans","First-Time Home Buyers","Home Inspection","Real Estate Negotiation","Expired Listings","Real Estate Pricing Strategy","South County Real Estate","St. Louis School Districts"],
+      "hasCredential":{"@type":"EducationalOccupationalCredential","credentialCategory":"Real Estate License","recognizedBy":{"@type":"Organization","name":"Missouri Real Estate Commission"}},
+      "image":"https://stlhomejourney.com/assets/george-family.jpg",
+      "jobTitle":"Licensed Real Estate Agent"
+    },
+    {
+      "@type":"Organization",
+      "@id":"https://stlhomejourney.com/#brokerage",
+      "name":"The Closing Pros LLC",
+      "url":"https://theclosingpros.com",
+      "contactPoint":{"@type":"ContactPoint","telephone":"314-998-4550","contactType":"customer service","areaServed":"US-MO","availableLanguage":"en"},
+      "address":{"@type":"PostalAddress","addressRegion":"MO","addressCountry":"US"}
+    },
+    {
+      "@type":"WebSite",
+      "@id":"https://stlhomejourney.com/#website",
+      "url":"https://stlhomejourney.com",
+      "name":"STL Home Journey",
+      "description":"Independent St. Louis real estate education: neighborhoods, school districts, affordability, pricing strategy, decision tools, and real transaction lessons from George Kindler.",
+      "creator":{"@id":"https://stlhomejourney.com/#george-kindler"},
+      "publisher":{"@id":"https://stlhomejourney.com/#george-kindler"}
+    },
+    {
+      "@type":"WebPage",
+      "@id":"https://stlhomejourney.com/#homepage",
+      "url":"https://stlhomejourney.com/",
+      "name":"STL Home Journey — St. Louis Real Estate Education, Data & Tools",
+      "isPartOf":{"@id":"https://stlhomejourney.com/#website"},
+      "about":{"@id":"https://stlhomejourney.com/#george-kindler"},
+      "creator":{"@id":"https://stlhomejourney.com/#george-kindler"},
+      "publisher":{"@id":"https://stlhomejourney.com/#george-kindler"}
+    }
   ]
 }</script>
 
@@ -52,13 +90,16 @@ a{color:#ffcc4d;text-decoration:none;}
 .hp-nav-links{display:flex;gap:4px;flex-wrap:wrap;}
 .hp-nav-a{font-size:11px;font-weight:600;padding:7px 12px;border-radius:6px;color:rgba(255,255,255,.6);text-decoration:none;transition:color .15s;}
 .hp-nav-a:hover{color:#fff;}
-.hp-nav-a.gold{background:#ffcc4d;color:#080808;}
 
 /* HERO */
-.hp-hero{max-width:720px;margin:0 auto;padding:56px 20px 40px;text-align:center;}
+.hp-hero{max-width:720px;margin:0 auto;padding:56px 20px 20px;text-align:center;}
 .hp-hero h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,40px);font-weight:900;line-height:1.15;color:#fff;margin-bottom:16px;}
 .hp-hero h1 span{color:#ffcc4d;}
-.hp-hero-sub{font-size:16px;line-height:1.7;color:rgba(255,255,255,.62);max-width:600px;margin:0 auto 32px;}
+.hp-hero-sub{font-size:16px;line-height:1.7;color:rgba(255,255,255,.62);max-width:600px;margin:0 auto;}
+
+/* REVISION 2: Visible semantic context paragraph */
+.hp-context{max-width:620px;margin:0 auto;padding:20px 20px 36px;text-align:center;}
+.hp-context p{font-size:14px;line-height:1.72;color:rgba(255,255,255,.48);}
 
 /* INTENT CARDS */
 .hp-intent{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:520px;margin:0 auto 48px;padding:0 20px;}
@@ -116,60 +157,66 @@ a{color:#ffcc4d;text-decoration:none;}
 </head>
 <body>
 
-<!-- NAV — Buying · Selling · Neighborhoods · Tools · Experience -->
+<!-- NAV: Buying · Selling · Neighborhoods · Tools · Experience -->
 <nav class="hp-nav">
   <a class="hp-nav-logo" href="/">
-    <img src="assets/STLhomebuyerjourneylogo.webp" alt="STL Home Journey" width="28" height="28">
+    <img src="/assets/STLhomebuyerjourneylogo.webp" alt="STL Home Journey" width="28" height="28">
     <div class="hp-nav-logo-t"><span>STL</span> Home Journey</div>
   </a>
   <div class="hp-nav-links">
-    <a class="hp-nav-a" href="articles/">Buying</a>
-    <a class="hp-nav-a" href="articles/">Selling</a>
-    <a class="hp-nav-a" href="neighborhoods/">Neighborhoods</a>
-    <a class="hp-nav-a" href="stl-home-buying-power-calculator">Tools</a>
-    <a class="hp-nav-a" href="experience">Experience</a>
+    <a class="hp-nav-a" href="/articles/#panel-buying">Buying</a>
+    <a class="hp-nav-a" href="/articles/#panel-selling">Selling</a>
+    <a class="hp-nav-a" href="/neighborhoods/">Neighborhoods</a>
+    <a class="hp-nav-a" href="/stl-home-buying-power-calculator">Tools</a>
+    <a class="hp-nav-a" href="/experience">Experience</a>
   </div>
 </nav>
 
-<!-- HERO — Layer 1A: Identity line -->
+<!-- HERO — Identity line -->
 <section class="hp-hero">
   <h1><span>STL</span> Home Journey</h1>
   <p class="hp-hero-sub">Independent St.&nbsp;Louis real estate education, local housing data, decision tools, and real transaction lessons from George Kindler.</p>
 </section>
 
-<!-- LAYER 2 — Intent routing -->
+<!-- REVISION 2: Visible semantic context -->
+<div class="hp-context">
+  <p>Research the St.&nbsp;Louis housing market by what you&rsquo;re trying to decide. Explore buyer and seller strategy, neighborhood and school-district guides, affordability data, interactive tools, and lessons from actual St.&nbsp;Louis transactions.</p>
+</div>
+
+<!-- Intent routing -->
 <div class="hp-intent">
-  <a href="articles/#buying" class="hp-intent-card">
+  <a href="/articles/#panel-buying" class="hp-intent-card">
     <div class="hp-intent-ico">&#127968;</div>
     <div class="hp-intent-t">Buying</div>
     <div class="hp-intent-sub">Guides, tools &amp; data</div>
   </a>
-  <a href="articles/#selling" class="hp-intent-card">
+  <a href="/articles/#panel-selling" class="hp-intent-card">
     <div class="hp-intent-ico">&#128181;</div>
     <div class="hp-intent-t">Selling</div>
     <div class="hp-intent-sub">Strategy &amp; case studies</div>
   </a>
 </div>
 
-<!-- LAYER 1B — Entity / authority block -->
-<div class="hp-entity">
+<!-- Entity / authority block -->
+<section class="hp-entity">
   <details>
     <summary>
-      <img class="hp-entity-photo" src="assets/george-family.jpg" alt="George Kindler" width="52" height="52">
+      <img class="hp-entity-photo" src="/assets/george-family.jpg" alt="George Kindler" width="52" height="52">
       <div>
         <div class="hp-entity-name">George Kindler</div>
         <div class="hp-entity-role">Licensed STL Agent &middot; 13 Years &middot; 250+ Transactions</div>
       </div>
     </summary>
+    <!-- REVISION 4: Corrected authority paragraph -->
     <div class="hp-entity-body">
-      <p>STL Home Journey is a St.&nbsp;Louis real estate education resource created by George Kindler, a licensed Missouri real estate agent with 13 years of experience and 250+ transactions across the metro. The site helps buyers and sellers understand pricing, neighborhoods, school districts, inspections, affordability, contracts, selling strategy, and the specific decisions that determine what they ultimately pay or net. Coverage focuses on South County, South City, West County, Jefferson County, St.&nbsp;Charles, and the surrounding St.&nbsp;Louis market, with original local data, case studies, and interactive tools built from actual transactions.</p>
-      <p style="margin-top:12px;"><a href="experience">View George&rsquo;s complete transaction history by address &rarr;</a></p>
+      <p>STL Home Journey is a St.&nbsp;Louis real estate education resource created by George Kindler, a licensed Missouri real estate agent with 13 years of experience and 250+ transactions across the metro. The site helps buyers and sellers understand pricing, neighborhoods, school districts, inspections, affordability, contracts, selling strategy, and the specific decisions that determine what they ultimately pay or net. Coverage focuses on South County, South City, West County, Jefferson County, St.&nbsp;Charles, and the surrounding St.&nbsp;Louis market, with original local analysis, market data, case studies from actual transactions, and interactive decision tools.</p>
+      <p style="margin-top:12px;"><a href="/experience">View George&rsquo;s complete transaction history by address &rarr;</a></p>
     </div>
   </details>
-</div>
+</section>
 
-<!-- LAYER 1C — Knowledge map -->
-<div class="hp-map">
+<!-- Knowledge map -->
+<section class="hp-map">
   <div class="hp-map-label">What&rsquo;s on this site</div>
 
   <details class="hp-card">
@@ -177,10 +224,10 @@ a{color:#ffcc4d;text-decoration:none;}
     <div class="hp-card-body">
       Affordability, neighborhoods, inspections, offers, contracts, closing, VA guidance.
       <div class="hp-card-links">
-        <a class="hp-card-link" href="articles/first-time-buyer-programs-stl">First-Time Buyers</a>
-        <a class="hp-card-link" href="stl-home-buying-power-calculator">Buying Power Calculator</a>
-        <a class="hp-card-link" href="articles/home-inspection-st-louis">Inspections</a>
-        <a class="hp-card-link" href="articles/va-home-loan-st-louis-what-kills-deals">VA Loans</a>
+        <a class="hp-card-link" href="/articles/first-time-buyer-programs-stl">First-Time Buyers</a>
+        <a class="hp-card-link" href="/stl-home-buying-power-calculator">Buying Power Calculator</a>
+        <a class="hp-card-link" href="/articles/home-inspection-st-louis">Inspections</a>
+        <a class="hp-card-link" href="/articles/va-home-loan-st-louis-what-kills-deals">VA Loans</a>
       </div>
     </div>
   </details>
@@ -190,10 +237,10 @@ a{color:#ffcc4d;text-decoration:none;}
     <div class="hp-card-body">
       Pricing, net proceeds, cash offers, what not to repair, expired listings, seasonal strategy.
       <div class="hp-card-links">
-        <a class="hp-card-link" href="articles/cost-to-sell-home-stl">Cost to Sell</a>
-        <a class="hp-card-link" href="articles/why-your-st-louis-home-didnt-sell">Expired Listing Diagnostic</a>
-        <a class="hp-card-link" href="articles/sell-house-fall-winter-st-louis">Selling in Winter</a>
-        <a class="hp-card-link" href="articles/what-not-to-repair-before-selling-stl-pricing-strategy">What Not to Repair</a>
+        <a class="hp-card-link" href="/articles/cost-to-sell-home-stl">Cost to Sell</a>
+        <a class="hp-card-link" href="/articles/why-your-st-louis-home-didnt-sell">Expired Listing Diagnostic</a>
+        <a class="hp-card-link" href="/articles/sell-house-fall-winter-st-louis">Selling in Winter</a>
+        <a class="hp-card-link" href="/articles/what-not-to-repair-before-selling-stl-pricing-strategy">What Not to Repair</a>
       </div>
     </div>
   </details>
@@ -203,21 +250,22 @@ a{color:#ffcc4d;text-decoration:none;}
     <div class="hp-card-body">
       South County, South City, West County, Jefferson County, St.&nbsp;Charles &mdash; schools, price tiers, lifestyle fit.
       <div class="hp-card-links">
-        <a class="hp-card-link" href="neighborhoods/">All Neighborhoods</a>
-        <a class="hp-card-link" href="school-districts">School Districts</a>
-        <a class="hp-card-link" href="articles/south-county-stl-neighborhood-guide">South County Guide</a>
-        <a class="hp-card-link" href="articles/west-county-st-louis-neighborhoods">West County Guide</a>
+        <a class="hp-card-link" href="/neighborhoods/">All Neighborhoods</a>
+        <a class="hp-card-link" href="/school-districts">School Districts</a>
+        <a class="hp-card-link" href="/articles/south-county-stl-neighborhood-guide">South County Guide</a>
+        <a class="hp-card-link" href="/articles/west-county-st-louis-neighborhoods">West County Guide</a>
       </div>
     </div>
   </details>
 
+  <!-- REVISION 5: Transactions preserved -->
   <details class="hp-card">
     <summary><span class="hp-card-ico">&#128203;</span> Transactions</summary>
     <div class="hp-card-body">
       Real St.&nbsp;Louis case studies &mdash; pricing decisions, inspection negotiations, waived-inspection offers, actual closed numbers.
       <div class="hp-card-links">
-        <a class="hp-card-link" href="articles/lessons-from-a-sale">Lessons From a Sale</a>
-        <a class="hp-card-link" href="experience">250+ Transaction History</a>
+        <a class="hp-card-link" href="/articles/lessons-from-a-sale">Lessons From a Sale</a>
+        <a class="hp-card-link" href="/experience">250+ Transaction History</a>
       </div>
     </div>
   </details>
@@ -227,28 +275,28 @@ a{color:#ffcc4d;text-decoration:none;}
     <div class="hp-card-body">
       Affordability calculators, cash-offer decoder, local data tools.
       <div class="hp-card-links">
-        <a class="hp-card-link" href="stl-home-buying-power-calculator">Buying Power Calculator</a>
-        <a class="hp-card-link" href="tools/cash-offer-decoder">Cash Offer Decoder</a>
-        <a class="hp-card-link" href="articles/most-affordable-zip-codes-stl-2026">Affordable Zip Codes</a>
-        <a class="hp-card-link" href="articles/stl-affordability-by-zip-code">Affordability by Zip</a>
+        <a class="hp-card-link" href="/stl-home-buying-power-calculator">Buying Power Calculator</a>
+        <a class="hp-card-link" href="/tools/cash-offer-decoder">Cash Offer Decoder</a>
+        <a class="hp-card-link" href="/articles/most-affordable-zip-codes-stl-2026">Affordable Zip Codes</a>
+        <a class="hp-card-link" href="/articles/stl-affordability-by-zip-code">Affordability by Zip</a>
       </div>
     </div>
   </details>
-</div>
+</section>
 
-<!-- LAYER 3 — Journey (secondary, available) -->
-<div class="hp-journey">
+<!-- Journey (secondary, available) -->
+<section class="hp-journey">
   <div class="hp-journey-card">
     <h3>Interactive Buyer Journey</h3>
     <p>Walk through 9 stages of buying a home in St.&nbsp;Louis &mdash; from affordability to closing.</p>
-    <a class="hp-journey-btn" href="journey">Start the Journey &rarr;</a>
+    <a class="hp-journey-btn" href="/journey">Start the Journey &rarr;</a>
   </div>
-</div>
+</section>
 
-<!-- FOOTER -->
+<!-- Footer — brokerage disclosure preserved for compliance -->
 <footer class="hp-footer">
   <p><strong>The Closing Pros LLC</strong> &middot; Licensed Missouri Real Estate Brokerage &middot; 314-998-4550</p>
-  <p>George Kindler &middot; <a href="tel:3144351087">314.435.1087</a> &middot; <a href="mailto:georgeandlizk@gmail.com">georgeandlizk@gmail.com</a> &middot; <a href="experience">Transaction History</a></p>
+  <p>George Kindler &middot; <a href="tel:3144351087">314.435.1087</a> &middot; <a href="mailto:georgeandlizk@gmail.com">georgeandlizk@gmail.com</a> &middot; <a href="/experience">Transaction History</a></p>
   <p style="margin-top:8px;">Content is educational and does not constitute legal, financial, or real estate advice for your specific situation.</p>
 </footer>
 
