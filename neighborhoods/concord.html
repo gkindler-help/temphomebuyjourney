@@ -41,6 +41,17 @@
 .nbhd-bc-item:hover{color:rgba(255,255,255,.7);}
 .nbhd-bc-item.active{color:#ffcc4d;}
 .nbhd-bc-sep{color:rgba(255,255,255,.2);padding:0 6px;font-size:11px;}
+/* Concord section jump nav */
+.concord-jump{position:fixed;left:max(calc(50% - 530px),12px);top:120px;width:160px;z-index:50;display:flex;flex-direction:column;gap:2px;}
+.concord-jump a{font-size:11px;font-weight:600;color:rgba(255,255,255,.45);padding:7px 12px;border-left:2px solid transparent;text-decoration:none;transition:color .15s,border-color .15s;line-height:1.3;}
+.concord-jump a:hover{color:rgba(255,255,255,.8);}
+.concord-jump a.active{color:#ffcc4d;border-left-color:#ffcc4d;}
+@media(max-width:1100px){
+  .concord-jump{position:sticky;top:52px;left:0;width:100%;flex-direction:row;overflow-x:auto;scrollbar-width:none;background:rgba(5,5,5,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08);padding:0 12px;z-index:90;}
+  .concord-jump::-webkit-scrollbar{display:none;}
+  .concord-jump a{white-space:nowrap;border-left:none;border-bottom:2px solid transparent;padding:10px 12px;font-size:10px;letter-spacing:.04em;}
+  .concord-jump a.active{border-bottom-color:#ffcc4d;border-left-color:transparent;}
+}
 .george-card{position:static!important;left:auto!important;right:auto!important;bottom:auto!important;transform:none!important;width:100%!important;max-width:100%!important;background:linear-gradient(135deg,rgba(255,204,77,0.04) 0%,rgba(255,204,77,0.01) 100%);border:1px solid rgba(255,204,77,.34);border-radius:16px;padding:28px;margin:48px 0;display:flex;gap:24px;align-items:flex-start;}
 .george-card-photo{width:100px;height:100px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,204,77,.34);flex-shrink:0;background:#101010;}
 .george-card-photo img{width:100%;height:100%;object-fit:cover;}
@@ -163,18 +174,18 @@
         <p class="tool-result-sub">Established South County neighborhoods, 86% owner-occupied, and a service-rich location near the <a href="mehlville">Mehlville</a> and Lindbergh district divide.</p>
         <div class="tool-data-strip"><div class="tool-data-stat"><div class="tool-data-num">5.50 mi²</div><div class="tool-data-lbl">land area</div></div><div class="tool-data-stat"><div class="tool-data-num">86.0%</div><div class="tool-data-lbl">owner-occupied</div></div><div class="tool-data-stat"><div class="tool-data-num">$303.6K</div><div class="tool-data-lbl">median owner value</div></div><div class="tool-data-stat"><div class="tool-data-num">Mehlville</div><div class="tool-data-lbl">primary district</div></div></div>
       </div>
-      <nav class="tool-result-card" aria-label="In this Concord guide" style="padding:16px 20px;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ffcc4d;margin-bottom:10px;">In this Concord guide</div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;">
-          <a href="#concord-schools" style="font-size:13px;font-weight:600;color:rgba(255,255,255,.8);padding:6px 14px;border:1px solid rgba(255,255,255,.1);border-radius:6px;text-decoration:none;">Schools</a>
-          <a href="#concord-housing" style="font-size:13px;font-weight:600;color:rgba(255,255,255,.8);padding:6px 14px;border:1px solid rgba(255,255,255,.1);border-radius:6px;text-decoration:none;">Housing Stock</a>
-          <a href="#concord-buyers" style="font-size:13px;font-weight:600;color:rgba(255,255,255,.8);padding:6px 14px;border:1px solid rgba(255,255,255,.1);border-radius:6px;text-decoration:none;">Buyer Context</a>
-          <a href="#concord-map" style="font-size:13px;font-weight:600;color:rgba(255,255,255,.8);padding:6px 14px;border:1px solid rgba(255,255,255,.1);border-radius:6px;text-decoration:none;">Map &amp; Boundaries</a>
-          <a href="#occupancy" style="font-size:13px;font-weight:600;color:rgba(255,255,255,.8);padding:6px 14px;border:1px solid rgba(255,255,255,.1);border-radius:6px;text-decoration:none;">Occupancy Requirements</a>
-          <a href="#concord-faq" style="font-size:13px;font-weight:600;color:rgba(255,255,255,.8);padding:6px 14px;border:1px solid rgba(255,255,255,.1);border-radius:6px;text-decoration:none;">FAQ</a>
-        </div>
-      </nav>
-    </section><section aria-label="Schools in Concord">
+    </section>
+
+<nav class="concord-jump" id="concord-jump" aria-label="Section navigation">
+  <a href="#concord-schools">Schools</a>
+  <a href="#concord-housing">Housing</a>
+  <a href="#concord-buyers">Buyers</a>
+  <a href="#concord-map">Map</a>
+  <a href="#occupancy">Occupancy</a>
+  <a href="#concord-faq">FAQ</a>
+</nav>
+
+<section aria-label="Schools in Concord">
   <div class="tool-result-card">
     <div class="tool-section-hd">Schools</div>
     <h2 class="tool-result-value" id="concord-schools">Schools in Concord</h2>
@@ -329,6 +340,33 @@
 <script src="zip-data.js"></script>
 <script src="resources.js"></script>
 <script src="neighborhoods.js"></script>
+<script>
+(function(){
+  var nav=document.getElementById('concord-jump');
+  if(!nav)return;
+  var links=nav.querySelectorAll('a');
+  var ids=[];
+  links.forEach(function(a){ids.push(a.getAttribute('href').slice(1));});
+  function update(){
+    var scrollY=window.scrollY||window.pageYOffset;
+    var active=null;
+    for(var i=ids.length-1;i>=0;i--){
+      var el=document.getElementById(ids[i]);
+      if(el&&el.getBoundingClientRect().top<=120){active=ids[i];break;}
+    }
+    links.forEach(function(a){
+      var href=a.getAttribute('href').slice(1);
+      if(href===active)a.classList.add('active');
+      else a.classList.remove('active');
+    });
+  }
+  var ticking=false;
+  window.addEventListener('scroll',function(){
+    if(!ticking){requestAnimationFrame(function(){update();ticking=false;});ticking=true;}
+  });
+  update();
+})();
+</script>
 <script src="../shared.js"></script>
 <script src="neighborhoods-init.js"></script>
 </body>
