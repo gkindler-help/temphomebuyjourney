@@ -47,10 +47,11 @@
 .concord-jump a:hover{color:rgba(255,255,255,.8);}
 .concord-jump a.active{color:#ffcc4d;border-left-color:#ffcc4d;}
 @media(max-width:1100px){
-  .concord-jump{position:sticky;top:52px;left:0;width:100%;flex-direction:row;overflow-x:auto;scrollbar-width:none;background:rgba(5,5,5,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08);padding:0 12px;z-index:90;}
+  .concord-jump{position:fixed;top:52px;left:0;right:0;width:100%;flex-direction:row;overflow-x:auto;scrollbar-width:none;background:rgba(8,8,8,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,204,77,.15);padding:0 12px;z-index:90;}
   .concord-jump::-webkit-scrollbar{display:none;}
-  .concord-jump a{white-space:nowrap;border-left:none;border-bottom:2px solid transparent;padding:10px 12px;font-size:10px;letter-spacing:.04em;}
-  .concord-jump a.active{border-bottom-color:#ffcc4d;border-left-color:transparent;}
+  .concord-jump a{white-space:nowrap;border-left:none;border-bottom:2px solid transparent;padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.5);}
+  .concord-jump a.active{border-bottom-color:#ffcc4d;border-left-color:transparent;color:#ffcc4d;}
+  #neighborhood-content{padding-top:40px;}
 }
 .george-card{position:static!important;left:auto!important;right:auto!important;bottom:auto!important;transform:none!important;width:100%!important;max-width:100%!important;background:linear-gradient(135deg,rgba(255,204,77,0.04) 0%,rgba(255,204,77,0.01) 100%);border:1px solid rgba(255,204,77,.34);border-radius:16px;padding:28px;margin:48px 0;display:flex;gap:24px;align-items:flex-start;}
 .george-card-photo{width:100px;height:100px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,204,77,.34);flex-shrink:0;background:#101010;}
@@ -166,6 +167,15 @@
   <span class="nbhd-bc-item active">Concord | South County</span>
 </nav>
 
+<nav class="concord-jump" id="concord-jump" aria-label="Section navigation">
+  <a href="#concord-schools">Schools</a>
+  <a href="#concord-housing">Housing</a>
+  <a href="#concord-buyers">Buyers</a>
+  <a href="#concord-map">Map</a>
+  <a href="#occupancy">Occupancy</a>
+  <a href="#concord-faq">FAQ</a>
+</nav>
+
 <main class="tool-selector" id="neighborhood-content">
     <section aria-labelledby="concord-hero">
       <div class="tool-result-card">
@@ -175,15 +185,6 @@
         <div class="tool-data-strip"><div class="tool-data-stat"><div class="tool-data-num">5.50 mi²</div><div class="tool-data-lbl">land area</div></div><div class="tool-data-stat"><div class="tool-data-num">86.0%</div><div class="tool-data-lbl">owner-occupied</div></div><div class="tool-data-stat"><div class="tool-data-num">$303.6K</div><div class="tool-data-lbl">median owner value</div></div><div class="tool-data-stat"><div class="tool-data-num">Mehlville</div><div class="tool-data-lbl">primary district</div></div></div>
       </div>
     </section>
-
-<nav class="concord-jump" id="concord-jump" aria-label="Section navigation">
-  <a href="#concord-schools">Schools</a>
-  <a href="#concord-housing">Housing</a>
-  <a href="#concord-buyers">Buyers</a>
-  <a href="#concord-map">Map</a>
-  <a href="#occupancy">Occupancy</a>
-  <a href="#concord-faq">FAQ</a>
-</nav>
 
 <section aria-label="Schools in Concord">
   <div class="tool-result-card">
