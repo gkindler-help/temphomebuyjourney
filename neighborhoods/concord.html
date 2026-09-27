@@ -41,18 +41,15 @@
 .nbhd-bc-item:hover{color:rgba(255,255,255,.7);}
 .nbhd-bc-item.active{color:#ffcc4d;}
 .nbhd-bc-sep{color:rgba(255,255,255,.2);padding:0 6px;font-size:11px;}
-/* Concord section jump nav */
-.concord-jump{position:fixed;left:max(calc(50% - 530px),12px);top:120px;width:160px;z-index:50;display:flex;flex-direction:column;gap:2px;}
-.concord-jump a{font-size:11px;font-weight:600;color:rgba(255,255,255,.45);padding:7px 12px;border-left:2px solid transparent;text-decoration:none;transition:color .15s,border-color .15s;line-height:1.3;}
-.concord-jump a:hover{color:rgba(255,255,255,.8);}
-.concord-jump a.active{color:#ffcc4d;border-left-color:#ffcc4d;}
-@media(max-width:1100px){
-  .concord-jump{position:fixed;top:52px;left:0;right:0;width:100%;flex-direction:row;overflow-x:auto;scrollbar-width:none;background:rgba(8,8,8,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,204,77,.15);padding:0 12px;z-index:90;}
-  .concord-jump::-webkit-scrollbar{display:none;}
-  .concord-jump a{white-space:nowrap;border-left:none;border-bottom:2px solid transparent;padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.5);}
-  .concord-jump a.active{border-bottom-color:#ffcc4d;border-left-color:transparent;color:#ffcc4d;}
-  #neighborhood-content{padding-top:40px;}
-}
+/* Jump FAB + panel */
+.jump-fab{position:fixed;right:16px;bottom:20px;z-index:200;display:inline-flex;align-items:center;gap:8px;background:#ffcc4d;color:#080808;font-weight:800;font-size:12px;letter-spacing:.05em;border:none;border-radius:999px;padding:12px 17px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.55);font-family:inherit;}
+.jump-fab-ico{font-size:15px;line-height:1;}
+.jump-panel{position:fixed;right:16px;bottom:74px;z-index:200;width:min(288px,calc(100vw - 32px));background:#0d0d0d;border:1px solid rgba(255,204,77,.34);border-radius:14px;padding:8px;box-shadow:0 12px 42px rgba(0,0,0,.6);opacity:0;transform:translateY(10px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .18s ease,transform .18s ease;max-height:72vh;overflow-y:auto;}
+.jump-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+.jump-panel-hd{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ffcc4d;padding:8px 12px 8px;}
+.jump-link{display:block;padding:9px 12px;border-radius:8px;font-size:.9rem;color:rgba(255,255,255,.72);text-decoration:none;line-height:1.35;border-left:2px solid transparent;}
+.jump-link:hover{background:rgba(255,204,77,.06);color:#fff;}
+.jump-link.active{color:#ffcc4d;border-left-color:#ffcc4d;background:rgba(255,204,77,.05);}
 .george-card{position:static!important;left:auto!important;right:auto!important;bottom:auto!important;transform:none!important;width:100%!important;max-width:100%!important;background:linear-gradient(135deg,rgba(255,204,77,0.04) 0%,rgba(255,204,77,0.01) 100%);border:1px solid rgba(255,204,77,.34);border-radius:16px;padding:28px;margin:48px 0;display:flex;gap:24px;align-items:flex-start;}
 .george-card-photo{width:100px;height:100px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,204,77,.34);flex-shrink:0;background:#101010;}
 .george-card-photo img{width:100%;height:100%;object-fit:cover;}
@@ -167,13 +164,18 @@
   <span class="nbhd-bc-item active">Concord | South County</span>
 </nav>
 
-<nav class="concord-jump" id="concord-jump" aria-label="Section navigation">
-  <a href="#concord-schools">Schools</a>
-  <a href="#concord-housing">Housing</a>
-  <a href="#concord-buyers">Buyers</a>
-  <a href="#concord-map">Map</a>
-  <a href="#occupancy">Occupancy</a>
-  <a href="#concord-faq">FAQ</a>
+<button id="jumpToggle" class="jump-fab" aria-label="Jump to a section" aria-expanded="false">
+  <span class="jump-fab-ico">&#9776;</span><span class="jump-fab-txt">Sections</span>
+</button>
+<nav id="jumpPanel" class="jump-panel" aria-hidden="true">
+  <div class="jump-panel-hd">In this Concord guide</div>
+  <a href="#concord-schools" class="jump-link">Schools</a>
+  <a href="#concord-housing" class="jump-link">Housing Stock</a>
+  <a href="#concord-buyers" class="jump-link">Buyer Context</a>
+  <a href="#concord-map" class="jump-link">Map &amp; Boundaries</a>
+  <a href="#occupancy" class="jump-link">Occupancy Requirements</a>
+  <a href="#concord-faq" class="jump-link">FAQ</a>
+  <a href="#concord-actions" class="jump-link">Talk to George</a>
 </nav>
 
 <main class="tool-selector" id="neighborhood-content">
@@ -343,29 +345,18 @@
 <script src="neighborhoods.js"></script>
 <script>
 (function(){
-  var nav=document.getElementById('concord-jump');
-  if(!nav)return;
-  var links=nav.querySelectorAll('a');
-  var ids=[];
-  links.forEach(function(a){ids.push(a.getAttribute('href').slice(1));});
-  function update(){
-    var scrollY=window.scrollY||window.pageYOffset;
-    var active=null;
-    for(var i=ids.length-1;i>=0;i--){
-      var el=document.getElementById(ids[i]);
-      if(el&&el.getBoundingClientRect().top<=120){active=ids[i];break;}
-    }
-    links.forEach(function(a){
-      var href=a.getAttribute('href').slice(1);
-      if(href===active)a.classList.add('active');
-      else a.classList.remove('active');
-    });
+  var fab=document.getElementById('jumpToggle'),panel=document.getElementById('jumpPanel');
+  if(!fab||!panel)return;
+  function setOpen(o){panel.classList.toggle('open',o);fab.setAttribute('aria-expanded',o);panel.setAttribute('aria-hidden',!o);}
+  fab.addEventListener('click',function(e){e.stopPropagation();setOpen(!panel.classList.contains('open'));});
+  panel.addEventListener('click',function(e){if(e.target.classList.contains('jump-link'))setOpen(false);});
+  document.addEventListener('click',function(e){if(!panel.contains(e.target)&&e.target!==fab&&!fab.contains(e.target))setOpen(false);});
+  var links=[].slice.call(panel.querySelectorAll('.jump-link')),map={};
+  links.forEach(function(l){var id=l.getAttribute('href').slice(1),s=document.getElementById(id);if(s)map[id]=l;});
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(l){l.classList.remove('active');});if(map[en.target.id])map[en.target.id].classList.add('active');}});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    Object.keys(map).forEach(function(id){obs.observe(document.getElementById(id));});
   }
-  var ticking=false;
-  window.addEventListener('scroll',function(){
-    if(!ticking){requestAnimationFrame(function(){update();ticking=false;});ticking=true;}
-  });
-  update();
 })();
 </script>
 <script src="../shared.js"></script>
