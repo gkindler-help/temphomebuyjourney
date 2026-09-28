@@ -14,6 +14,8 @@
    Floating "Ask George" (opt-in): <div data-ask-float="KEY" hidden></div>, prompts in FLOATS.
    Plain links: <a href="/ask?about=KEY…" data-ask-link="KEY"> get context hand-off + tracking.
 
+   Live chat: CHAT config below (Tawk.to, loaded only on tap). GA4: chat_open, chat_started { page_path }
+
    GA4: ask_me_click { page_path, page_title, ask_context, ask_intent, ask_button }
         ask_george_open / ask_george_dismiss { page_path, ask_context }
    No personal information is ever sent to analytics.
@@ -342,6 +344,15 @@
   };
   var FLOAT_QUIET = 'stlhj_askfloat_quiet';
 
+  /* Live chat (Tawk.to) behind George's face. Nothing from Tawk loads until a visitor taps the
+     face, or until they return mid-conversation. Set enabled:false to turn chat off site-wide. */
+  var CHAT = {
+    enabled: true,
+    src: 'https://embed.tawk.to/6abafa7771d13c3445fe714d/1k3l64ols',
+    label: 'Chat with George',
+    flag: 'stlhj_chat_active'
+  };
+
   var AVATAR = '/assets/george-ask.webp';
   var WHO = 'George Kindler · 250+ St. Louis transactions';
   var NOTES = {
@@ -375,7 +386,7 @@
     '.askfloat.quiet .askfloat-toggle{padding-right:4px;opacity:.9;box-shadow:0 6px 18px rgba(0,0,0,.5);}' +
     '.askfloat.quiet .askfloat-label{display:none;}' +
     '.askfloat-panel{position:absolute;left:0;bottom:62px;width:min(300px,calc(100vw - 32px));background:#0d0d0d;border:1px solid rgba(255,204,77,.34);border-radius:14px;padding:18px 18px 16px;box-shadow:0 12px 42px rgba(0,0,0,.6);box-sizing:border-box;}' +
-    '.askfloat-panel[hidden]{display:none;}' +
+    '.askfloat-panel[hidden],.askfloat[hidden]{display:none;}' +
     '.askfloat-top{display:flex;align-items:center;gap:10px;margin:0 28px 12px 0;}' +
     '.askfloat-top img{width:40px;height:40px;border-radius:50%;border:2px solid #ffcc4d;object-fit:cover;flex:none;margin:0;max-width:none;}' +
     '.askfloat-name{margin:0;font:700 14px/1.2 "Inter",-apple-system,sans-serif;color:#fff;}' +
@@ -483,6 +494,74 @@
     document.body.classList.add('has-askfloat');
   }
 
+  function renderChat() {
+    if (!CHAT.enabled || window.self !== window.top) return;   // skip inside tool panels and embeds
+    if (document.querySelector('.askfloat')) return;            // one corner widget per page
+    injectCSS();
+    var root = document.createElement('div');
+    root.className = 'askfloat askchat' + (isQuiet() ? ' quiet' : '');
+    root.innerHTML =
+      '<button type="button" class="askfloat-toggle" aria-label="Chat with George Kindler">' +
+        '<img src="' + AVATAR + '" alt="" width="44" height="44" decoding="async">' +
+        '<span class="askfloat-label">' + esc(CHAT.label) + '</span>' +
+      '</button>';
+    var btn = root.querySelector('button'), label = root.querySelector('.askfloat-label');
+    var state = 'idle', openWhenReady = false;
+
+    function showFace(on) { root.hidden = !on; }
+    function T() { return window.Tawk_API || {}; }
+    function ongoing() { try { return !!(T().isChatOngoing && T().isChatOngoing()); } catch (e) { return false; } }
+    function isActive() { try { return localStorage.getItem(CHAT.flag) === '1'; } catch (e) { return false; } }
+    function setActive(on) { try { if (on) localStorage.setItem(CHAT.flag, '1'); else localStorage.removeItem(CHAT.flag); } catch (e) {} }
+    function open() { showFace(false); T().showWidget(); T().maximize(); }
+    function doneLoading() { btn.removeAttribute('aria-busy'); label.textContent = CHAT.label; }
+
+    function load(openAfter) {
+      if (state === 'ready') { if (openAfter) open(); return; }
+      openWhenReady = openWhenReady || openAfter;
+      if (openAfter) { btn.setAttribute('aria-busy', 'true'); label.textContent = 'Connecting…'; }
+      if (state === 'loading') return;
+      state = 'loading';
+      var api = window.Tawk_API = window.Tawk_API || {};
+      window.Tawk_LoadStart = new Date();
+      api.onBeforeLoad = function () { if (!openWhenReady && !isActive()) api.hideWidget(); };
+      api.onLoad = function () {
+        state = 'ready'; doneLoading();
+        if (openWhenReady) open();
+        else if (ongoing()) showFace(false);          // mid-conversation: Tawk's own bubble shows new replies
+        else { api.hideWidget(); setActive(false); showFace(true); }
+      };
+      // Closed the chat window: go back to George's face unless a conversation is still open
+      api.onChatMinimized = function () { if (!ongoing()) { api.hideWidget(); showFace(true); } };
+      api.onChatHidden = function () { showFace(true); };
+      api.onChatStarted = function () { setActive(true); track('chat_started', { page_path: location.pathname }); };
+      api.onChatEnded = function () { setActive(false); };
+      var sc = document.createElement('script');
+      sc.async = true; sc.charset = 'UTF-8'; sc.setAttribute('crossorigin', '*'); sc.src = CHAT.src;
+      document.head.appendChild(sc);
+      // If chat is blocked or down, don't leave them waiting: send them to the Ask Me page instead
+      setTimeout(function () {
+        if (state !== 'ready' && openWhenReady) {
+          doneLoading();
+          location.href = '/ask?about=general-page&from=' + encodeURIComponent(location.pathname);
+        }
+      }, 12000);
+    }
+
+    btn.addEventListener('click', function () {
+      setQuiet(root);
+      track('chat_open', { page_path: location.pathname });
+      load(true);
+    });
+    document.body.appendChild(root);
+    document.body.classList.add('has-askfloat');
+    // Returning mid-conversation: load quietly so George's replies can reach them
+    if (isActive()) {
+      showFace(false);
+      (window.requestIdleCallback || function (f) { setTimeout(f, 2000); })(function () { load(false); });
+    }
+  }
+
   function render(el) {
     var key = el.getAttribute('data-ask-me');
     var c = CONTEXTS[key];
@@ -518,6 +597,7 @@
     for (var j = 0; j < links.length; j++) wireLink(links[j]);
     var fl = document.querySelector('[data-ask-float]');
     if (fl) renderFloat(fl);
+    renderChat();
   }
 
   window.AskMe = { contexts: CONTEXTS, floats: FLOATS, store: STORE, track: track };
