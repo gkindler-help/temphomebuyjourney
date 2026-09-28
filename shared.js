@@ -2097,18 +2097,18 @@ function closeDrawer() {
 
     /* Tool URL map — each tool is a standalone HTML page loaded in an iframe */
     var toolUrls = {
-      "prep":      "prep.html",
-      "afford":    "afford.html",
-      "home-cost": "home-cost.html",
-      "compare":   "compare.html",
-      "fails":     "fails.html",
-      "neighborhood-matcher": "neighborhood-matcher.html",
-      "cash-offer-decoder": "tools/cash-offer-decoder.html"
+      "prep":      "/prep",
+      "afford":    "/afford",
+      "home-cost": "/home-cost",
+      "compare":   "/compare",
+      "fails":     "/fails",
+      "neighborhood-matcher": "/neighborhood-matcher",
+      "cash-offer-decoder": "/tools/cash-offer-decoder"
     };
-    var toolUrl = toolUrls[toolId] || (toolId + ".html");
+    var toolUrl = toolUrls[toolId] || ("/" + toolId);
 
     var browseAllLink = toolId === "neighborhood-matcher"
-      ? '<a href="neighborhoods/" class="tool-panel-browse-all">Browse All 98 &rarr;</a>'
+      ? '<a href="/neighborhoods/" class="tool-panel-browse-all">Browse All 98 &rarr;</a>'
       : '';
 
     _toolPanelEl.innerHTML =

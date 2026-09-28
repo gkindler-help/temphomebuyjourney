@@ -182,12 +182,12 @@
     wrapper.id = 'hood-map-wrapper';
     wrapper.style.cssText = 'background:#0a0a0a;border-bottom:1px solid var(--line,#1e1e1e);';
 
-    var imgSrc = 'assets/maps/' + id + '-map.svg';
+    var imgSrc = '/assets/maps/' + id + '-map.svg';
 
     wrapper.innerHTML =
       '<img src="' + imgSrc + '" alt="' + id + ' area map" ' +
         'style="width:100%;height:220px;object-fit:cover;display:block;" ' +
-        'id="hood-map-img" style="width:100%;height:220px;object-fit:cover;display:block;">' +
+        'id="hood-map-img" onerror="var w=document.getElementById(\'hood-map-wrapper\');if(w)w.parentNode.removeChild(w);">' +
       '<div style="' +
         'padding:8px 14px;' +
         'font-size:10px;' +
