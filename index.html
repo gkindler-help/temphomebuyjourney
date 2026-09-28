@@ -6,17 +6,17 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
 <link rel="apple-touch-icon" sizes="512x512" href="/assets/favicon-512.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STL Home Journey — St. Louis Real Estate Education, Data &amp; Tools | George Kindler</title>
-<meta name="description" content="Independent St. Louis real estate education, local housing data, decision tools, and real transaction lessons from George Kindler. 13 years, 250+ transactions. South County, South City, West County, Jefferson County and beyond.">
+<title>Finding a Home in St. Louis — Will It Be a Money Pit?</title>
+<meta name="description" content="Shouldn’t your agent catch that? See what could cost you after closing, what to check before you offer, and what your agent should help you spot.">
 <link rel="canonical" href="https://stlhomejourney.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="STL Home Journey — St. Louis Real Estate Education &amp; Tools">
-<meta property="og:description" content="Independent St. Louis real estate education, local housing data, decision tools, and real transaction lessons from George Kindler. 13 years, 250+ transactions.">
+<meta property="og:title" content="Finding a Home in St. Louis — Will It Be a Money Pit?">
+<meta property="og:description" content="Shouldn’t your agent catch that? See what could cost you after closing, what to check before you offer, and what your agent should help you spot.">
 <meta property="og:url" content="https://stlhomejourney.com/">
 <meta property="og:image" content="https://stlhomejourney.com/assets/stlhomejourney-og.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="STL Home Journey — St. Louis Real Estate Education &amp; Tools">
-<meta name="twitter:description" content="13 years. 250+ St. Louis transactions. Education, data, tools and real lessons for buyers and sellers.">
+<meta name="twitter:title" content="Finding a Home in St. Louis — Will It Be a Money Pit?">
+<meta name="twitter:description" content="Shouldn’t your agent catch that? See what could cost you after closing, what to check before you offer, and what your agent should help you spot.">
 
 <!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
@@ -25,9 +25,9 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<!-- REVISION 1: Fixed entity model — George is creator/publisher, Closing Pros is brokerage affiliation only -->
+<!-- Entity model preserved: George is creator/publisher, Closing Pros is brokerage affiliation only. Only the WebPage node was updated (name + description) to match the new page title. -->
 <script type="application/ld+json">{
   "@context":"https://schema.org",
   "@graph":[
@@ -67,7 +67,8 @@
       "@type":"WebPage",
       "@id":"https://stlhomejourney.com/#homepage",
       "url":"https://stlhomejourney.com/",
-      "name":"STL Home Journey — St. Louis Real Estate Education, Data & Tools",
+      "name":"Finding a Home in St. Louis — Will It Be a Money Pit?",
+      "description":"Shouldn’t your agent catch that? See what could cost you after closing, what to check before you offer, and what your agent should help you spot.",
       "isPartOf":{"@id":"https://stlhomejourney.com/#website"},
       "about":{"@id":"https://stlhomejourney.com/#george-kindler"},
       "creator":{"@id":"https://stlhomejourney.com/#george-kindler"},
@@ -78,94 +79,227 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:#050505;color:rgba(255,255,255,.88);font-family:'Inter',-apple-system,sans-serif;line-height:1.6;min-height:100vh;overflow-x:hidden;}
-a{color:#ffcc4d;text-decoration:none;}
+:root{
+  --ink:#050505;
+  --gold:#ffcc4d;
+  --gold-line:rgba(255,204,77,.32);
+  --gold-wash:rgba(255,204,77,.06);
+  --panel:rgba(16,16,16,.6);
+  --line:rgba(255,255,255,.08);
+  --text:rgba(255,255,255,.88);
+  --soft:rgba(255,255,255,.74);
+  --mute:rgba(255,255,255,.6);
+}
+html{scroll-behavior:smooth;}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+[id]{scroll-margin-top:calc(var(--navh,57px) + 64px);}
+body{background:var(--ink);color:var(--text);font-family:'Inter',-apple-system,sans-serif;line-height:1.6;min-height:100vh;overflow-x:hidden;}
+a{color:var(--gold);text-decoration:none;}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px;}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--gold);color:#080808;font-weight:700;padding:10px 16px;border-radius:6px;z-index:200;}
+.skip:focus{left:12px;}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px;}
 
-/* NAV */
+/* NAV (unchanged) */
 .hp-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(5,5,5,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);position:sticky;top:0;z-index:100;}
 .hp-nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;}
 .hp-nav-logo img{width:28px;height:28px;object-fit:contain;}
 .hp-nav-logo-t{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:rgba(255,255,255,.88);}
-.hp-nav-logo-t span{color:#ffcc4d;}
+.hp-nav-logo-t span{color:var(--gold);}
 .hp-nav-links{display:flex;gap:4px;flex-wrap:wrap;}
 .hp-nav-a{font-size:11px;font-weight:600;padding:7px 12px;border-radius:6px;color:rgba(255,255,255,.6);text-decoration:none;transition:color .15s;}
 .hp-nav-a:hover{color:#fff;}
 
 /* HERO */
-.hp-hero{max-width:720px;margin:0 auto;padding:56px 20px 20px;text-align:center;}
-.hp-hero h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,40px);font-weight:900;line-height:1.15;color:#fff;margin-bottom:16px;}
-.hp-hero h1 span{color:#ffcc4d;}
-.hp-hero-sub{font-size:16px;line-height:1.7;color:rgba(255,255,255,.62);max-width:600px;margin:0 auto;}
+.hero{padding:64px 0 56px;}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:56px;align-items:center;}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(34px,6.4vw,58px);font-weight:900;line-height:1.08;color:#fff;margin-bottom:20px;letter-spacing:-.01em;}
+.hero-sub{font-size:17px;line-height:1.7;color:var(--soft);max-width:34em;margin-bottom:28px;}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;}
+.btn{display:inline-block;font-size:14px;font-weight:700;padding:14px 26px;border-radius:8px;text-decoration:none;line-height:1.2;text-align:center;}
+.btn-primary{background:var(--gold);color:#080808;}
+.btn-primary:hover{background:#ffd76e;}
+.btn-ghost{color:#fff;border:1px solid rgba(255,255,255,.22);}
+.btn-ghost:hover{border-color:var(--gold-line);color:var(--gold);}
 
-/* REVISION 2: Visible semantic context paragraph */
-.hp-context{max-width:620px;margin:0 auto;padding:20px 20px 36px;text-align:center;}
-.hp-context p{font-size:14px;line-height:1.72;color:rgba(255,255,255,.48);}
+/* Listing vs decision panel: solid = what a listing shows, dashed gold = what's still unknown */
+.gap{position:relative;}
+.gap-known{border:1px solid var(--line);border-radius:12px 12px 0 0;padding:18px 20px;background:rgba(255,255,255,.03);}
+.gap-label{font-size:12px;font-weight:600;color:var(--mute);margin-bottom:8px;}
+.gap-known ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;}
+.gap-known li{font-size:14px;color:rgba(255,255,255,.7);padding:5px 12px;border:1px solid rgba(255,255,255,.12);border-radius:999px;}
+.gap-unknown{border:1px dashed var(--gold-line);border-top:none;border-radius:0 0 12px 12px;padding:20px 20px 8px;background:var(--gold-wash);}
+.gap-unknown .gap-label{color:var(--gold);}
+.gap-unknown ol{list-style:none;}
+.gap-unknown li{border-top:1px solid rgba(255,204,77,.14);}
+.gap-unknown li:first-child{border-top:none;}
+.gap-unknown a{display:block;padding:12px 2px;font-family:'Playfair Display',serif;font-size:18px;line-height:1.35;color:#fff;}
+.gap-unknown a:hover{color:var(--gold);}
+.gap-note{font-size:13px;line-height:1.6;color:var(--mute);margin-top:16px;}
 
-/* INTENT CARDS */
-.hp-intent{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:520px;margin:0 auto 48px;padding:0 20px;}
-.hp-intent-card{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;background:rgba(16,16,16,.7);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:28px 24px;text-decoration:none;transition:border-color .2s;}
-.hp-intent-card:hover{border-color:rgba(255,204,77,.3);}
-.hp-intent-card:hover .hp-intent-ico{border-color:rgba(255,204,77,.28);background:rgba(255,204,77,.1);}
-.hp-intent-card:hover .hp-intent-ico svg{opacity:1;}
-.hp-card:hover summary .hp-card-ico svg{opacity:1;}
-.hp-intent-ico svg,.hp-card-ico svg{opacity:.85;transition:opacity .15s;}
-@media(prefers-reduced-motion:reduce){.hp-intent-ico svg,.hp-card-ico svg{transition:none;}}
-.hp-intent-ico{width:72px;height:72px;margin:0 0 16px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,204,77,.06);border:1px solid rgba(255,204,77,.14);}
-.hp-intent-ico svg{width:44px;height:44px;color:#ffcc4d;}
-.hp-intent-t{font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;text-align:left;}
-.hp-intent-sub{font-size:12px;color:rgba(255,255,255,.45);text-align:left;}
+/* SHARED SECTION TYPE */
+.sec{padding:64px 0;border-top:1px solid rgba(255,255,255,.06);}
+.sec h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4.2vw,38px);font-weight:700;line-height:1.15;color:#fff;letter-spacing:-.005em;}
+.sec-intro{font-size:16px;line-height:1.75;color:var(--soft);max-width:38em;margin-top:14px;}
 
-/* ENTITY BLOCK */
-.hp-entity{max-width:720px;margin:0 auto;padding:0 20px 40px;}
-.hp-entity details{background:rgba(16,16,16,.6);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;}
-.hp-entity summary{display:flex;align-items:center;gap:16px;padding:16px 20px;cursor:pointer;list-style:none;}
-.hp-entity summary::-webkit-details-marker{display:none;}
-.hp-entity summary::after{content:'▼';font-size:10px;color:rgba(255,255,255,.3);margin-left:auto;transition:transform .2s;}
-.hp-entity details[open] summary::after{transform:rotate(180deg);}
-.hp-entity-photo{width:52px;height:52px;border-radius:50%;border:2px solid #ffcc4d;flex-shrink:0;object-fit:cover;}
-.hp-entity-name{font-size:15px;font-weight:700;color:#fff;}
-.hp-entity-role{font-size:11px;color:rgba(255,255,255,.45);margin-top:2px;}
-.hp-entity-body{padding:0 20px 20px;font-size:14px;line-height:1.72;color:rgba(255,255,255,.7);}
-.hp-entity-body a{color:#ffcc4d;font-weight:600;}
+/* FIVE-CHECK PATHWAY */
+.path-wrap{margin-top:44px;}
+.path{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));}
+.path li{position:relative;padding:48px 18px 0 0;}
+.path li::before{content:'';position:absolute;top:16px;left:0;right:0;height:1px;background:var(--gold-line);}
+.path li:first-child::before{left:16px;}
+.path>li:last-child::before{display:none;}
+.node{position:absolute;top:0;left:0;width:32px;height:32px;border-radius:50%;border:1px solid var(--gold);background:var(--ink);color:var(--gold);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.path h3{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;line-height:1.25;margin-bottom:10px;}
+.path h3 a{color:#fff;}
+.path h3 a:hover{color:var(--gold);}
+.path ul{list-style:none;}
+.path ul li{padding:0;font-size:13.5px;line-height:1.5;color:var(--mute);margin-bottom:4px;}
+.path ul li::before{display:none;}
+.path-end{display:flex;align-items:center;gap:14px;margin-top:36px;padding-top:24px;border-top:1px dashed var(--gold-line);}
+.path-end-dot{flex:none;width:32px;height:32px;border-radius:50%;background:var(--gold);}
+.path-end p{font-family:'Playfair Display',serif;font-size:19px;line-height:1.4;color:#fff;}
+.path-caption{font-size:14px;color:var(--mute);margin-top:22px;max-width:40em;}
 
-/* KNOWLEDGE MAP */
-.hp-map{max-width:720px;margin:0 auto;padding:0 20px 48px;}
-.hp-map-label{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,204,77,.6);margin-bottom:14px;padding-left:4px;}
-.hp-card{background:rgba(16,16,16,.6);border:1px solid rgba(255,255,255,.08);border-radius:10px;margin-bottom:8px;overflow:hidden;}
-.hp-card summary{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;list-style:none;font-size:15px;font-weight:600;color:#fff;}
-.hp-card summary::-webkit-details-marker{display:none;}
-.hp-card summary::after{content:'▼';font-size:9px;color:rgba(255,255,255,.25);margin-left:auto;transition:transform .2s;}
-.hp-card[open] summary::after{transform:rotate(180deg);}
-.hp-card-ico{flex-shrink:0;width:22px;height:22px;display:flex;align-items:center;justify-content:center;}
-.hp-card-ico svg{width:20px;height:20px;color:#ffcc4d;}
-.hp-card-body{padding:0 18px 16px 58px;font-size:13px;line-height:1.65;color:rgba(255,255,255,.6);}
-.hp-card-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
-.hp-card-link{font-size:12px;font-weight:600;color:#ffcc4d;background:rgba(255,204,77,.06);padding:6px 12px;border-radius:6px;text-decoration:none;border:1px solid rgba(255,204,77,.12);}
-.hp-card-link:hover{background:rgba(255,204,77,.12);}
+/* QUESTION SECTIONS */
+.q-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:start;}
+.q-tag{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--gold);margin-bottom:14px;}
+.q-tag::before{content:'';width:22px;height:1px;background:var(--gold);}
+.q-thought{font-family:'Playfair Display',serif;font-style:italic;font-size:19px;line-height:1.5;color:var(--soft);margin-top:14px;}
+.q-body{font-size:15.5px;line-height:1.75;color:var(--soft);margin-top:16px;max-width:36em;}
+.q-body a{font-weight:600;border-bottom:1px solid var(--gold-line);}
+.q-body a:hover{border-bottom-color:var(--gold);}
+.q-aside{margin-top:22px;font-family:'Playfair Display',serif;font-size:24px;line-height:1.3;color:#fff;}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.chips li{font-size:13px;color:rgba(255,255,255,.7);padding:5px 12px;border:1px solid rgba(255,255,255,.14);border-radius:999px;}
+.layers{list-style:none;margin-top:24px;border-left:1px solid var(--gold-line);}
+.layers li{font-size:14.5px;color:var(--soft);padding:9px 0 9px 18px;position:relative;}
+.layers li+li{border-top:1px dashed rgba(255,255,255,.1);}
+.layers li::before{content:'';position:absolute;left:-4px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--gold);}
+.seq{list-style:none;display:flex;flex-wrap:wrap;gap:0;margin-top:24px;}
+.seq li{font-size:13.5px;font-weight:600;color:#fff;padding:7px 8px 7px 0;display:flex;align-items:center;}
+.seq li+li::before{content:'';width:12px;height:1px;background:var(--gold);margin-right:8px;}
 
-/* JOURNEY SECTION */
-.hp-journey{max-width:720px;margin:0 auto;padding:0 20px 48px;}
-.hp-journey-card{background:rgba(16,16,16,.6);border:1px solid rgba(255,204,77,.12);border-radius:12px;padding:24px;text-align:center;}
-.hp-journey-card h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:8px;}
-.hp-journey-card p{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:16px;}
-.hp-journey-btn{display:inline-block;background:#ffcc4d;color:#080808;font-weight:700;font-size:13px;padding:12px 28px;border-radius:8px;text-decoration:none;}
+/* LINK LISTS (stretched-link rows: title is the anchor, description is surrounding text) */
+.grp{font-size:13px;font-weight:600;color:var(--gold);margin:0 0 4px;}
+.grp-note{font-size:14px;line-height:1.65;color:var(--mute);margin:0 0 14px;max-width:34em;}
+.grp:not(:first-child){margin-top:30px;}
+.links{list-style:none;}
+.links li{position:relative;padding:15px 0;border-top:1px solid var(--line);}
+.links li:last-child{border-bottom:1px solid var(--line);}
+.links a{font-size:15.5px;font-weight:600;color:#fff;}
+.links a::after{content:'';position:absolute;inset:0;}
+.links li:hover a{color:var(--gold);}
+.links a:focus-visible{outline-offset:-2px;}
+.links span{display:block;font-size:13.5px;line-height:1.55;color:var(--mute);margin-top:3px;}
+.links li.lead a{font-family:'Playfair Display',serif;font-size:20px;line-height:1.3;}
+.links li.lead{padding-left:16px;border-left:2px solid var(--gold);}
 
-/* FOOTER */
+/* FEATURE (MHDC) */
+.feature{position:relative;border:1px solid var(--gold-line);border-radius:12px;padding:20px 22px;background:var(--gold-wash);margin-bottom:22px;}
+.feature .f-tag{font-size:12px;font-weight:600;color:var(--gold);margin-bottom:6px;}
+.feature a{font-family:'Playfair Display',serif;font-size:21px;line-height:1.3;font-weight:700;color:#fff;}
+.feature a::after{content:'';position:absolute;inset:0;border-radius:12px;}
+.feature:hover a{color:var(--gold);}
+.feature p{font-size:14px;line-height:1.65;color:var(--soft);margin-top:8px;}
+
+/* AGENT QUESTION */
+.q-note{font-size:14px;line-height:1.7;color:var(--mute);margin-top:18px;max-width:36em;}
+.ask-h{font-family:'Playfair Display',serif;font-size:clamp(21px,3vw,26px);font-weight:700;line-height:1.25;color:#fff;}
+.ask{list-style:none;margin-top:18px;border:1px dashed var(--gold-line);border-radius:12px;background:var(--gold-wash);padding:4px 20px;}
+.ask li{font-family:'Playfair Display',serif;font-size:17px;line-height:1.4;color:#fff;padding:12px 0;border-top:1px solid rgba(255,204,77,.14);}
+.ask li:first-child{border-top:none;}
+
+/* EXPERIENCE */
+.exp-line{font-family:'Playfair Display',serif;font-size:clamp(26px,4.4vw,40px);font-weight:700;line-height:1.2;color:#fff;}
+.exp-line em{display:block;font-style:normal;color:var(--gold);margin-top:8px;}
+.who{display:flex;gap:16px;align-items:flex-start;margin-top:26px;}
+.who img{width:56px;height:56px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;flex:none;}
+.who p{font-size:14.5px;line-height:1.75;color:var(--soft);}
+.who p+p{margin-top:10px;}
+
+/* SELLERS (quieter band) */
+.sellers{background:rgba(255,255,255,.02);}
+.sellers .q-body{font-size:15px;}
+.links.two{display:grid;grid-template-columns:1fr 1fr;column-gap:32px;border-top:1px solid var(--line);}
+.links.two li{border-top:none;border-bottom:1px solid var(--line);}
+.links.two li.lead{grid-column:1/-1;}
+
+/* TOPIC DIRECTORY */
+.dir{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;margin-top:32px;}
+.dir h3{font-size:13px;font-weight:600;color:var(--gold);margin-bottom:10px;}
+.dir ul{list-style:none;}
+.dir li{margin-bottom:8px;}
+.dir a{font-size:14px;line-height:1.45;color:var(--soft);}
+.dir a:hover{color:var(--gold);}
+
+/* CLOSE */
+.close{text-align:center;padding:72px 0 64px;border-top:1px solid rgba(255,255,255,.06);}
+.close p.big{font-family:'Playfair Display',serif;font-size:clamp(24px,4.2vw,36px);font-weight:700;line-height:1.25;color:#fff;max-width:20em;margin:0 auto 24px;}
+.close .cta-row{justify-content:center;}
+
+/* FOOTER (unchanged) */
 .hp-footer{max-width:720px;margin:0 auto;padding:32px 20px;border-top:1px solid rgba(255,255,255,.06);font-size:11px;color:rgba(255,255,255,.3);line-height:1.6;}
 .hp-footer a{color:rgba(255,255,255,.45);}
 .hp-footer strong{color:rgba(255,255,255,.5);}
 
-@media(max-width:500px){
-  .hp-intent{grid-template-columns:1fr;}
+@media(min-width:901px){#address .q-grid>div:first-child{position:sticky;top:96px;}}
+
+/* JUMP NAV */
+.jump{position:sticky;top:var(--navh,57px);z-index:90;background:rgba(5,5,5,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);}
+.jump-t{display:none;}
+.jump ol{list-style:none;display:flex;gap:4px;overflow-x:auto;padding:8px 16px;scrollbar-width:none;position:relative;}
+.jump ol::-webkit-scrollbar{display:none;}
+.jump li{flex:none;}
+.jump a{display:block;font-size:12.5px;font-weight:600;color:var(--mute);padding:7px 12px;border-radius:999px;border:1px solid transparent;white-space:nowrap;}
+.jump a:hover{color:#fff;}
+.jump a.on{color:var(--gold);border-color:var(--gold-line);background:var(--gold-wash);}
+@media(min-width:1200px){
+  [id]{scroll-margin-top:calc(var(--navh,57px) + 20px);}
+  main{padding-left:200px;}
+  .hp-footer{position:relative;left:100px;}
+  .jump{position:fixed;left:32px;top:50%;transform:translateY(-50%);width:160px;background:none;backdrop-filter:none;border:none;z-index:50;max-height:calc(100vh - var(--navh,57px) - 32px);overflow-y:auto;}
+  .jump-t{display:block;font-size:12px;font-weight:600;color:var(--mute);margin:0 0 12px 24px;}
+  .jump ol{display:block;overflow:visible;padding:0;margin-left:6px;border-left:1px solid var(--gold-line);}
+  .jump li{position:relative;}
+  .jump a{padding:6px 0 6px 18px;border:none;border-radius:0;background:none;white-space:normal;font-size:13px;line-height:1.35;}
+  .jump a::before{content:'';position:absolute;left:-4px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--ink);border:1px solid var(--gold-line);}
+  .jump a.on{color:#fff;background:none;}
+  .jump a.on::before{background:var(--gold);border-color:var(--gold);}
+}
+
+/* TABLET / MOBILE */
+@media(max-width:900px){
+  .hero{padding:44px 0 40px;}
+  .hero-grid{grid-template-columns:1fr;gap:36px;}
+  .q-grid{grid-template-columns:1fr;gap:28px;}
+  .dir{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .path{grid-template-columns:1fr;}
+  .path li{padding:0 0 30px 52px;}
+  .path li::before{top:0;bottom:0;left:15.5px;right:auto;width:1px;height:auto;}
+  .path li:first-child::before{left:15.5px;top:16px;}
+  .path li:last-child{padding-bottom:0;}
+  .path li:last-child::before{bottom:auto;height:16px;}
+  .path li:last-child::before{height:16px;}
+  .node{top:0;left:0;}
+  .path-end{margin-top:26px;}
+}
+@media(max-width:600px){
+  .sec{padding:48px 0;}
+  .links.two{grid-template-columns:1fr;}
+  .cta-row .btn{flex:1 1 100%;}
+  .dir{grid-template-columns:1fr;gap:24px;}
   .hp-nav-links{gap:2px;}
   .hp-nav-a{font-size:10px;padding:6px 8px;}
 }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<!-- NAV: Buying · Selling · Neighborhoods · Tools · Experience -->
-<nav class="hp-nav">
+<!-- NAV (unchanged): Buying · Selling · Neighborhoods · Tools · Experience -->
+<nav class="hp-nav" aria-label="Primary">
   <a class="hp-nav-logo" href="/">
     <img src="/assets/STLhomebuyerjourneylogo.webp" alt="STL Home Journey" width="28" height="28">
     <div class="hp-nav-logo-t"><span>STL</span> Home Journey</div>
@@ -179,126 +313,414 @@ a{color:#ffcc4d;text-decoration:none;}
   </div>
 </nav>
 
-<!-- HERO — Identity line -->
-<section class="hp-hero">
-  <h1><span>STL</span> Home Journey</h1>
-  <p class="hp-hero-sub">Independent St.&nbsp;Louis real estate education, local housing data, decision tools, and real transaction lessons from George Kindler.</p>
-</section>
+<main id="main">
 
-<!-- REVISION 2: Visible semantic context -->
-<div class="hp-context">
-  <p>Research the St.&nbsp;Louis housing market by what you&rsquo;re trying to decide. Explore buyer and seller strategy, neighborhood and school-district guides, affordability data, interactive tools, and lessons from actual St.&nbsp;Louis transactions.</p>
-</div>
-
-<!-- Intent routing -->
-<div class="hp-intent">
-  <a href="/articles/#panel-buying" class="hp-intent-card">
-    <div class="hp-intent-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7.5" r="5"/><circle cx="9" cy="7.5" r="2" fill="none"/><path d="M12.5 12 22 21.5"/><path d="M18 17.5h4v4"/></svg></div>
-    <div class="hp-intent-t">Buying</div>
-    <div class="hp-intent-sub">Guides, tools &amp; data</div>
-  </a>
-  <a href="/articles/#panel-selling" class="hp-intent-card">
-    <div class="hp-intent-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20"/><path d="M8 2h8"/><rect x="5" y="5" width="14" height="9" rx="1"/></svg></div>
-    <div class="hp-intent-t">Selling</div>
-    <div class="hp-intent-sub">Strategy &amp; case studies</div>
-  </a>
-</div>
-
-<!-- Entity / authority block -->
-<section class="hp-entity">
-  <details>
-    <summary>
-      <img class="hp-entity-photo" src="/assets/george-family.jpg" alt="George Kindler" width="52" height="52">
-      <div>
-        <div class="hp-entity-name">George Kindler</div>
-        <div class="hp-entity-role">Licensed STL Agent &middot; 13 Years &middot; 250+ Transactions</div>
-      </div>
-    </summary>
-    <!-- REVISION 4: Corrected authority paragraph -->
-    <div class="hp-entity-body">
-      <p>STL Home Journey is a St.&nbsp;Louis real estate education resource created by George Kindler, a licensed Missouri real estate agent with 13 years of experience and 250+ transactions across the metro. The site helps buyers and sellers understand pricing, neighborhoods, school districts, inspections, affordability, contracts, selling strategy, and the specific decisions that determine what they ultimately pay or net. Coverage focuses on South County, South City, West County, Jefferson County, St.&nbsp;Charles, and the surrounding St.&nbsp;Louis market, with original local analysis, market data, case studies from actual transactions, and interactive decision tools.</p>
-      <p style="margin-top:12px;"><a href="/experience">View George&rsquo;s complete transaction history by address &rarr;</a></p>
-    </div>
-  </details>
-</section>
-
-<!-- Knowledge map -->
-<section class="hp-map">
-  <div class="hp-map-label">What&rsquo;s on this site</div>
-
-  <details class="hp-card">
-    <summary><span class="hp-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7.5" r="5"/><circle cx="9" cy="7.5" r="2" fill="none"/><path d="M12.5 12 22 21.5"/><path d="M18 17.5h4v4"/></svg></span> Buying</summary>
-    <div class="hp-card-body">
-      Affordability, neighborhoods, inspections, offers, contracts, closing, VA guidance.
-      <div class="hp-card-links">
-        <a class="hp-card-link" href="/articles/first-time-buyer-programs-stl">First-Time Buyers</a>
-        <a class="hp-card-link" href="/stl-home-buying-power-calculator">Buying Power Calculator</a>
-        <a class="hp-card-link" href="/articles/home-inspection-st-louis">Inspections</a>
-        <a class="hp-card-link" href="/articles/va-home-loan-st-louis-what-kills-deals">VA Loans</a>
+<!-- HERO: the moment after the listing -->
+<section class="hero" aria-labelledby="hero-h1">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">You found the house.</p>
+      <h1 id="hero-h1">Now find out what you&rsquo;re really buying.</h1>
+      <p class="hero-sub">You already found the house. STL Home Journey helps you understand the decision.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#before-you-buy">Before You Buy</a>
+        <a class="btn btn-ghost" href="/neighborhoods/">Explore St. Louis Neighborhoods</a>
       </div>
     </div>
-  </details>
 
-  <details class="hp-card">
-    <summary><span class="hp-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20"/><path d="M8 2h8"/><rect x="5" y="5" width="14" height="9" rx="1"/></svg></span> Selling</summary>
-    <div class="hp-card-body">
-      Pricing, net proceeds, cash offers, what not to repair, expired listings, seasonal strategy.
-      <div class="hp-card-links">
-        <a class="hp-card-link" href="/articles/cost-to-sell-home-stl">Cost to Sell</a>
-        <a class="hp-card-link" href="/articles/why-your-st-louis-home-didnt-sell">Expired Listing Diagnostic</a>
-        <a class="hp-card-link" href="/articles/sell-house-fall-winter-st-louis">Selling in Winter</a>
-        <a class="hp-card-link" href="/articles/what-not-to-repair-before-selling-stl-pricing-strategy">What Not to Repair</a>
+    <div class="gap">
+      <div class="gap-known">
+        <p class="gap-label">What the listing tells you</p>
+        <ul>
+          <li>The photos</li>
+          <li>Beds and baths</li>
+          <li>The asking price</li>
+        </ul>
       </div>
-    </div>
-  </details>
-
-  <details class="hp-card">
-    <summary><span class="hp-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/><circle cx="12" cy="9" r="2.5" fill="rgba(255,204,77,.15)" stroke="currentColor"/><path d="M12 11.5v1.5"/></svg></span> Neighborhoods</summary>
-    <div class="hp-card-body">
-      South County, South City, West County, Jefferson County, St.&nbsp;Charles &mdash; schools, price tiers, lifestyle fit.
-      <div class="hp-card-links">
-        <a class="hp-card-link" href="/neighborhoods/">All Neighborhoods</a>
-        <a class="hp-card-link" href="/school-districts">School Districts</a>
-        <a class="hp-card-link" href="/articles/south-county-stl-neighborhood-guide">South County Guide</a>
-        <a class="hp-card-link" href="/articles/west-county-st-louis-neighborhoods">West County Guide</a>
+      <div class="gap-unknown">
+        <p class="gap-label">What it can&rsquo;t tell you</p>
+        <ol>
+          <li><a href="#value">Will it appraise?</a></li>
+          <li><a href="#house">What could inspection uncover?</a></li>
+          <li><a href="#address">Is the school district what you think it is?</a></li>
+          <li><a href="#rules">Are there local occupancy or municipal requirements?</a></li>
+          <li><a href="#cost">What will it cost after closing?</a></li>
+        </ol>
       </div>
+      <p class="gap-note">Zillow, Realtor.com, your agent&rsquo;s email, a yard sign &mdash; the questions are the same wherever you found it.</p>
     </div>
-  </details>
-
-  <!-- REVISION 5: Transactions preserved -->
-  <details class="hp-card">
-    <summary><span class="hp-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v4h4"/><path d="M8 11l4.5-1.5L10 13l2 .5-4.5 1.5L10 11Z" fill="none"/><path d="M9 17.5l1.5 1.5 3-3"/></svg></span> Transactions</summary>
-    <div class="hp-card-body">
-      Real St.&nbsp;Louis case studies &mdash; pricing decisions, inspection negotiations, waived-inspection offers, actual closed numbers.
-      <div class="hp-card-links">
-        <a class="hp-card-link" href="/articles/lessons-from-a-sale">Lessons From a Sale</a>
-        <a class="hp-card-link" href="/experience">250+ Transaction History</a>
-      </div>
-    </div>
-  </details>
-
-  <details class="hp-card">
-    <summary><span class="hp-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="11" height="18" rx="1.5"/><rect x="5.5" y="5.5" width="6" height="3" rx=".5"/><circle cx="6.5" cy="12" r=".7" fill="currentColor" stroke="none"/><circle cx="8.5" cy="12" r=".7" fill="currentColor" stroke="none"/><circle cx="10.5" cy="12" r=".7" fill="currentColor" stroke="none"/><circle cx="6.5" cy="15" r=".7" fill="currentColor" stroke="none"/><circle cx="8.5" cy="15" r=".7" fill="currentColor" stroke="none"/><circle cx="10.5" cy="15" r=".7" fill="currentColor" stroke="none"/><path d="M17 21V11l2-2v12M20 21V13l-1.5-1.5"/><path d="M19 21h-4"/></svg></span> Tools</summary>
-    <div class="hp-card-body">
-      Affordability calculators, cash-offer decoder, local data tools.
-      <div class="hp-card-links">
-        <a class="hp-card-link" href="/stl-home-buying-power-calculator">Buying Power Calculator</a>
-        <a class="hp-card-link" href="/tools/cash-offer-decoder">Cash Offer Decoder</a>
-        <a class="hp-card-link" href="/articles/most-affordable-zip-codes-stl-2026">Affordable Zip Codes</a>
-        <a class="hp-card-link" href="/articles/stl-affordability-by-zip-code">Affordability by Zip</a>
-      </div>
-    </div>
-  </details>
-</section>
-
-<!-- Journey (secondary, available) -->
-<section class="hp-journey">
-  <div class="hp-journey-card">
-    <h3>Interactive Buyer Journey</h3>
-    <p>Walk through 9 stages of buying a home in St.&nbsp;Louis &mdash; from affordability to closing.</p>
-    <a class="hp-journey-btn" href="/journey">Start the Journey &rarr;</a>
   </div>
 </section>
+
+<!-- JUMP NAV: left rail >=1200px, sticky strip below -->
+<nav class="jump" aria-label="On this page">
+  <p class="jump-t">On this page</p>
+  <ol>
+    <li><a href="#before-you-buy">Before you buy</a></li>
+    <li><a href="#value">Price and appraisal</a></li>
+    <li><a href="#house">Inspection</a></li>
+    <li><a href="#address">The address</a></li>
+    <li><a href="#cost">Real cost</a></li>
+    <li><a href="#financing">Financing</a></li>
+    <li><a href="#offer">After the offer</a></li>
+    <li><a href="#agent">Your agent</a></li>
+    <li><a href="#experience">Real transactions</a></li>
+    <li><a href="#selling">Selling</a></li>
+    <li><a href="#topics">More guides</a></li>
+  </ol>
+</nav>
+
+<!-- BEFORE YOU BUY: 5 THINGS TO CHECK -->
+<section class="sec" id="before-you-buy" aria-labelledby="before-you-buy-h">
+  <div class="wrap">
+    <h2 id="before-you-buy-h">Before You Buy, Check These 5 Things</h2>
+    <p class="sec-intro">A listing tells you what the property is. These five checks tell you whether it&rsquo;s the right purchase, and each one leads to the St.&nbsp;Louis pages that answer it.</p>
+
+    <div class="path-wrap">
+      <ol class="path">
+        <li>
+          <span class="node" aria-hidden="true">1</span>
+          <h3><a href="#address">Check the address</a></h3>
+          <ul>
+            <li>Neighborhood</li>
+            <li>School district</li>
+            <li>Municipality</li>
+            <li>Local requirements</li>
+          </ul>
+        </li>
+        <li>
+          <span class="node" aria-hidden="true">2</span>
+          <h3><a href="#value">Check the price &amp; payment</a></h3>
+          <ul>
+            <li>Value</li>
+            <li>Payment</li>
+            <li>Taxes</li>
+            <li>Closing costs</li>
+            <li>Assistance</li>
+          </ul>
+        </li>
+        <li>
+          <span class="node" aria-hidden="true">3</span>
+          <h3><a href="#house">Check the house</a></h3>
+          <ul>
+            <li>Inspection</li>
+            <li>Systems</li>
+            <li>Sewer and septic</li>
+            <li>Known property risks</li>
+          </ul>
+        </li>
+        <li>
+          <span class="node" aria-hidden="true">4</span>
+          <h3><a href="#financing">Check the financing</a></h3>
+          <ul>
+            <li>Appraisal</li>
+            <li>Loan requirements</li>
+            <li>MHDC</li>
+            <li>VA, FHA and conventional considerations</li>
+          </ul>
+        </li>
+        <li>
+          <span class="node" aria-hidden="true">5</span>
+          <h3><a href="#offer">Check the deal</a></h3>
+          <ul>
+            <li>Offer</li>
+            <li>Negotiation</li>
+            <li>Inspection</li>
+            <li>Appraisal</li>
+            <li>Closing</li>
+          </ul>
+        </li>
+      </ol>
+      <div class="path-end">
+        <span class="path-end-dot" aria-hidden="true"></span>
+        <p>Then decide: make the offer, renegotiate, or walk away.</p>
+      </div>
+    </div>
+    <p class="path-caption">Zillow helps you find a house. STL Home Journey helps you understand it.</p>
+  </div>
+</section>
+
+<!-- Q1: AM I OVERPAYING? -->
+<section class="sec" id="value" aria-labelledby="value-h">
+  <div class="wrap q-grid">
+    <div>
+      <p class="q-tag">Check the price</p>
+      <h2 id="value-h">Will it appraise?</h2>
+      <p class="q-thought">&ldquo;I love it. But is it actually worth that?&rdquo;</p>
+      <p class="q-body">Asking price and value are not the same thing. Before you decide what to offer, look at what comparable homes, the condition of the house and the local market say about the price. If an appraisal comes in below the contract price, the gap has to be resolved before closing.</p>
+    </div>
+    <div>
+      <ul class="links">
+        <li class="lead"><a href="/articles/average-price-move-in-ready-home-st-louis">What a move-in-ready home actually costs in St. Louis</a><span>Sold-price examples across South County, South City, West County and St. Charles.</span></li>
+        <li><a href="/articles/south-county-stl-neighborhoods-by-price">South County neighborhoods by price</a><span>What each budget buys, neighborhood by neighborhood.</span></li>
+        <li><a href="/articles/zillow-zestimate-accurate-stl">How accurate is the Zillow Zestimate in St. Louis?</a><span>How closely automated estimates track what homes actually sell for here.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Q2: WHAT COULD BE WRONG WITH IT? -->
+<section class="sec" id="house" aria-labelledby="house-h">
+  <div class="wrap q-grid">
+    <div>
+      <p class="q-tag">Check the house</p>
+      <h2 id="house-h">Will it pass inspection?</h2>
+      <p class="q-thought">&ldquo;The pictures look great. What am I not seeing?&rdquo;</p>
+      <p class="q-body">A home inspection isn&rsquo;t technically pass or fail. What matters is what it uncovers, what those findings could cost, and whether they change what you&rsquo;re willing to pay for the house. Listing photos show finishes. They don&rsquo;t show the electrical panel, the major systems, the sewer line or septic system, or how a lender&rsquo;s appraiser will view any of them. That doesn&rsquo;t mean the house has a problem. It means these are worth checking before you&rsquo;re under contract, while you still have options.</p>
+    </div>
+    <div>
+      <ul class="links">
+        <li class="lead"><a href="/articles/home-inspection-st-louis">Home inspection in St. Louis: what most buyers get wrong</a><span>What an inspection covers, what it doesn&rsquo;t, and how to use the report.</span></li>
+        <li><a href="/fails">St. Louis inspection red flags by property type</a><span>Common failures, sorted by the kind of house you&rsquo;re looking at.</span></li>
+        <li><a href="/articles/lessons-from-a-sale-ste-genevieve-septic">Lessons From a Sale: the septic that changed who could buy the house</a><span>A real Missouri deal where a failing septic system reshaped the buyer pool.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Q3: WHAT DON'T I KNOW ABOUT THIS ADDRESS? -->
+<section class="sec" id="address" aria-labelledby="address-h">
+  <div class="wrap q-grid">
+    <div>
+      <p class="q-tag">Check the address</p>
+      <h2 id="address-h">What comes with the address?</h2>
+      <p class="q-thought">&ldquo;It&rsquo;s a great house. What don&rsquo;t I know about where it sits?&rdquo;</p>
+      <p class="q-body">Buying a house also means buying into everything attached to its address. Some of it changes across surprisingly short distances: two houses on the same block can be in different school districts, and a mailing-address city isn&rsquo;t always the municipality that sets the rules.</p>
+      <ul class="layers" aria-label="What comes with an address">
+        <li>A school boundary</li>
+        <li>A municipality, or unincorporated St.&nbsp;Louis County</li>
+        <li>Local occupancy and inspection requirements</li>
+        <li>Utilities: public sewer or septic</li>
+        <li>A neighborhood</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="grp">The place</h3>
+      <ul class="links">
+        <li class="lead"><a href="/neighborhoods/">St. Louis neighborhoods guide</a><span>Neighborhood pages covering schools, price ranges and who each area fits.</span></li>
+        <li><a href="/school-districts">St. Louis school districts compared</a><span>Boundaries, resale impact, and how to verify the district for a specific address before you write an offer.</span></li>
+        <li><a href="/south-county-st-louis">South County home buyer guide</a><span>Nine neighborhoods, the school districts and budget tiers.</span></li>
+        <li><a href="/south-city-st-louis">South City home buyer guide</a><span>Nineteen neighborhoods, SLPS and budget tiers.</span></li>
+      </ul>
+
+      <h3 class="grp" id="rules">Local rules and requirements</h3>
+      <p class="grp-note">Occupancy, municipal inspection and sewer rules depend on the exact address, not the mailing city. Before you write an offer, confirm whether the property sits in a municipality or in unincorporated St.&nbsp;Louis County, because that decides whose rules apply.</p>
+      <ul class="links">
+        <li><a href="/articles/va-home-loan-st-louis-what-kills-deals">VA loans: what kills deals in St. Louis</a><span>Property requirements that can decide whether a financed offer holds together.</span></li>
+        <li><a href="/articles/how-to-screen-stl-homes-before-va-offer">How to screen homes before a VA offer</a><span>What to check before the appraiser does.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Q4: CAN I ACTUALLY AFFORD IT? -->
+<section class="sec" id="cost" aria-labelledby="cost-h">
+  <div class="wrap q-grid">
+    <div>
+      <p class="q-tag">Check the payment</p>
+      <h2 id="cost-h">What will it really cost?</h2>
+      <p class="q-thought">&ldquo;I can afford the listing price. Can I afford owning this particular house?&rdquo;</p>
+      <p class="q-body">The purchase price tells you what it costs to buy the house. It doesn&rsquo;t tell you what it costs to own it. The real number includes the monthly payment, closing costs at the table, repairs the inspection turns up, and ongoing ownership costs like taxes, insurance and maintenance. Assistance programs can cover part of the upfront cost, if you qualify and the paperwork lines up.</p>
+      <p class="q-aside">Purchase price &ne; total decision.</p>
+      <ul class="chips" aria-label="Costs beyond the purchase price">
+        <li>Down payment</li>
+        <li>Monthly payment</li>
+        <li>Closing costs</li>
+        <li>Repairs</li>
+        <li>Ownership costs</li>
+      </ul>
+    </div>
+    <div>
+      <div class="feature">
+        <p class="f-tag">Missouri first-time buyer assistance</p>
+        <a href="/articles/mhdc-first-place-next-step-missouri-guide">MHDC First Place &amp; Next Step: how the assistance actually works</a>
+        <p>The program offers down-payment assistance, but the real transaction involves income limits, lender fees, seller documents and a reservation deadline.</p>
+      </div>
+      <ul class="links">
+        <li><a href="/stl-home-buying-power-calculator">Home buying power calculator</a><span>See what your income buys across every region.</span></li>
+        <li><a href="/articles/buyer-closing-costs-st-louis">Buyer closing costs in St. Louis</a><span>What surprises people at the table.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCING (pathway step 4) -->
+<section class="sec" id="financing" aria-labelledby="financing-h">
+  <div class="wrap q-grid">
+    <div>
+      <p class="q-tag">Check the financing</p>
+      <h2 id="financing-h">Will the loan go through?</h2>
+      <p class="q-thought">&ldquo;I&rsquo;m pre-approved. Isn&rsquo;t that the hard part?&rdquo;</p>
+      <p class="q-body">Pre-approval is about you. Before closing, the lender also has to accept the house. The appraisal has to support the price, and FHA and VA loans carry property requirements that can flag issues a conventional loan might not. If you&rsquo;re using <a href="/articles/mhdc-first-place-next-step-missouri-guide">MHDC assistance</a>, its income limits and deadlines sit on top of the loan.</p>
+    </div>
+    <div>
+      <ul class="links">
+        <li class="lead"><a href="/articles/conventional-vs-fha-loan-st-louis">Conventional vs. FHA loans in St. Louis</a><span>How the two loans differ at appraisal, what each costs over time, and which one gets offers accepted.</span></li>
+        <li><a href="/articles/va-appraisal-failed-st-louis-what-happens-next">When a VA appraisal comes back with conditions</a><span>Your three options, and what happens to earnest money under each.</span></li>
+        <li><a href="/articles/mortgage-pre-approval-st-louis">Mortgage pre-approval in St. Louis</a><span>What lenders typically request and what can change your approval.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Q5: WHAT HAPPENS IF I SAY YES? -->
+<section class="sec" id="offer" aria-labelledby="offer-h">
+  <div class="wrap q-grid">
+    <div>
+      <p class="q-tag">Check the deal</p>
+      <h2 id="offer-h">What happens after the offer?</h2>
+      <p class="q-thought">&ldquo;If I write the offer, what happens next?&rdquo;</p>
+      <p class="q-body">An accepted offer starts a sequence, and the steps affect each other. What an inspection finds changes what you negotiate, and what the appraisal says changes what the lender will fund.</p>
+      <ol class="seq" aria-label="Steps after an accepted offer">
+        <li>Offer</li>
+        <li>Negotiation</li>
+        <li>Inspection</li>
+        <li>Appraisal</li>
+        <li>Closing</li>
+      </ol>
+    </div>
+    <div>
+      <ul class="links">
+        <li class="lead"><a href="/complete-guide">The complete guide to buying a home in St. Louis</a><span>Every stage in one place, from pre-approval to closing.</span></li>
+        <li><a href="/articles/how-long-to-buy-house-st-louis">How long it takes to buy a house in St. Louis</a><span>The full timeline, loan differences, local inspections, and where delays happen.</span></li>
+        <li><a href="/articles/st-louis-home-price-reduction-negotiation">How my buyer got $30,000 off before inspections started</a><span>A real negotiation on a house that sat for 90 days.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- THE OTHER QUESTION: WHAT YOUR AGENT SHOULD HELP YOU CATCH -->
+<section class="sec" id="agent" aria-labelledby="agent-h">
+  <div class="wrap q-grid">
+    <div>
+      <p class="q-tag">The other question</p>
+      <h2 id="agent-h">Shouldn&rsquo;t your agent help you catch this?</h2>
+      <p class="q-body">Yes. Finding the listing isn&rsquo;t the hard part anymore. Buyers can find houses from their phones. An agent&rsquo;s value shows up after you find one you like:</p>
+      <ul class="layers" aria-label="What a buyer&rsquo;s agent should help with">
+        <li>Asking better questions about the house and the address</li>
+        <li>Noticing things that deserve a closer look</li>
+        <li>Weighing the asking price against appraisal risk</li>
+        <li>Understanding financing and property requirements</li>
+        <li>Verifying local details like school boundaries and occupancy rules</li>
+        <li>Structuring the offer around what you already know</li>
+        <li>Explaining what inspection findings mean for the deal</li>
+      </ul>
+      <p class="q-note">None of that replaces a licensed home inspector, an appraiser, your lender, an attorney, a contractor or an engineer. An agent&rsquo;s job is to help you recognize the questions, keep the process coordinated, understand what findings mean for the transaction, and know when you need one of those specialists.</p>
+    </div>
+    <div>
+      <h3 class="ask-h">Aren&rsquo;t all agents basically the same?</h3>
+      <p class="q-body">Don&rsquo;t judge an agent by the sales pitch. Ask what they actually do after you find a house you like:</p>
+      <ul class="ask" aria-label="Questions to ask any buyer&rsquo;s agent">
+        <li>What do you look for when we walk through a house?</li>
+        <li>How do you help me decide whether the asking price makes sense?</li>
+        <li>How do you handle appraisal risk?</li>
+        <li>How do you verify school boundaries and local requirements?</li>
+        <li>What property issues could affect my financing?</li>
+        <li>What happens if inspection changes how I feel about the house?</li>
+      </ul>
+      <p class="q-aside">The answers tell you more than a sales pitch will.</p>
+      <p class="q-note">Next: how those questions have played out in George&rsquo;s own St.&nbsp;Louis transactions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REAL TRANSACTION EXPERIENCE -->
+<section class="sec" id="experience" aria-labelledby="experience-h">
+  <div class="wrap q-grid">
+    <div>
+      <h2 class="exp-line" id="experience-h">The data tells you what usually happens. <em>Real transactions show you what can happen.</em></h2>
+      <div class="who">
+        <img src="/assets/george-family.jpg" alt="George Kindler" width="56" height="56" loading="lazy">
+        <div>
+          <p>STL Home Journey is a St.&nbsp;Louis real estate education resource created by George Kindler, a Marine Corps veteran and licensed Missouri real estate agent since 2013. It draws on 250+ transactions of real estate experience across the metro. 208 of them are individually documented from available records on the Transaction History page.</p>
+          <p>Coverage focuses on South County, South City, West County, Jefferson County, St.&nbsp;Charles and the surrounding market, with local data, case studies from actual deals and interactive decision tools.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <ul class="links">
+        <li class="lead"><a href="/articles/lessons-from-a-sale">Lessons From a Sale: real St. Louis transactions</a><span>Deals broken down from pricing to closing: the decisions, tradeoffs and lessons the final sold price never shows.</span></li>
+        <li><a href="/experience">Transaction history by address</a><span>Searchable by year, city, role and price.</span></li>
+        <li><a href="/george-kindler">About George Kindler</a><span>Background, license and how the site came together.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SELLERS -->
+<section class="sec sellers" id="selling" aria-labelledby="selling-h">
+  <div class="wrap q-grid">
+    <div>
+      <h2 id="selling-h">Buying is only half the story.</h2>
+      <p class="q-body">If you&rsquo;re selling a St.&nbsp;Louis home, the same transaction mechanics work in reverse: price, condition, timing, and what a buyer&rsquo;s inspection and appraisal do to the number.</p>
+    </div>
+    <div>
+      <ul class="links two">
+        <li class="lead"><a href="/articles/#panel-selling">All St. Louis seller guides</a><span>Pricing, net proceeds, cash offers, expired listings and seasonal strategy.</span></li>
+        <li><a href="/articles/why-your-st-louis-home-didnt-sell">Why your home didn&rsquo;t sell</a><span>The 20-question diagnostic, including no showings and no offers.</span></li>
+        <li><a href="/articles/when-to-lower-house-price-st-louis">When to lower the price</a><span>With a real case study.</span></li>
+        <li><a href="/articles/sell-house-fall-winter-st-louis">Selling in fall and winter</a><span>Seasonal strategy that works.</span></li>
+        <li><a href="/articles/how-george-works-with-sellers">How George works with sellers</a><span>The process, start to finish.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CRAWLABLE TOPIC DIRECTORY (reframed knowledge map) -->
+<section class="sec" id="topics" aria-labelledby="topics-h">
+  <div class="wrap">
+    <h2 id="topics-h">More St. Louis guides and tools, by topic</h2>
+    <p class="sec-intro">Further reading grouped by what you&rsquo;re trying to work out.</p>
+    <div class="dir">
+      <div>
+        <h3>Buying</h3>
+        <ul>
+          <li><a href="/articles/#panel-buying">All buyer guides</a></li>
+          <li><a href="/articles/first-time-buyer-programs-stl">First-time buyer programs</a></li>
+          <li><a href="/articles/mortgage-pre-approval-st-louis">Mortgage pre-approval</a></li>
+          <li><a href="/articles/federal-pacific-panel-va-loan-st-louis">Federal Pacific panels and VA loans</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Neighborhoods and schools</h3>
+        <ul>
+          <li><a href="/articles/south-county-stl-neighborhood-guide">South County neighborhood guide</a></li>
+          <li><a href="/articles/west-county-st-louis-neighborhoods">West County neighborhoods</a></li>
+          <li><a href="/school-district-map">School district map</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Money and affordability</h3>
+        <ul>
+          <li><a href="/articles/stl-affordability-by-zip-code">Affordability by ZIP code</a></li>
+          <li><a href="/articles/most-affordable-zip-codes-stl-2026">Most affordable ZIP codes</a></li>
+          <li><a href="/home-cost">True cost to own a home</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Selling</h3>
+        <ul>
+          <li><a href="/articles/cost-to-sell-home-stl">Cost to sell a home</a></li>
+          <li><a href="/articles/what-not-to-repair-before-selling-stl-pricing-strategy">What not to repair before selling</a></li>
+          <li><a href="/tools/cash-offer-decoder">Cash Offer Decoder</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section class="close" aria-labelledby="close-h">
+  <div class="wrap">
+    <p class="big" id="close-h">You found the house. Now make sure it&rsquo;s the right decision.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#before-you-buy">Before You Buy</a>
+      <a class="btn btn-ghost" href="/journey">Start the buyer journey</a>
+    </div>
+  </div>
+</section>
+
+</main>
 
 <!-- Footer — brokerage disclosure preserved for compliance -->
 <footer class="hp-footer">
@@ -307,5 +729,50 @@ a{color:#ffcc4d;text-decoration:none;}
   <p style="margin-top:8px;">Content is educational and does not constitute legal, financial, or real estate advice for your specific situation.</p>
 </footer>
 
+<script>
+/* Jump nav: tracks nav height for sticky offsets and highlights the section in view. Links work without JS. */
+(function(){
+  var root=document.documentElement, nav=document.querySelector('.hp-nav'), strip=document.querySelector('.jump ol');
+  function setNav(){ if(nav) root.style.setProperty('--navh', nav.offsetHeight+'px'); }
+  setNav(); window.addEventListener('resize', setNav);
+  if(!strip || !('IntersectionObserver' in window)) return;
+  var links=[].slice.call(strip.querySelectorAll('a')), map={}, current=null;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)]=a; });
+  function activate(id){
+    if(id===current) return; current=id;
+    links.forEach(function(a){ var on=a===map[id]; a.classList.toggle('on',on); if(on){a.setAttribute('aria-current','location');}else{a.removeAttribute('aria-current');} });
+    var a=map[id];
+    if(a && strip.scrollWidth>strip.clientWidth){ strip.scrollTo({left:Math.max(0,a.parentNode.offsetLeft-16), behavior:reduce?'auto':'smooth'}); }
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) activate(e.target.id); });
+  },{rootMargin:'-40% 0px -55% 0px'});
+  Object.keys(map).forEach(function(id){ var el=document.getElementById(id); if(el) io.observe(el); });
+})();
+</script>
+<script>
+/* GA4 section_view: fires once per section per page load, when its heading has been on screen for 1 second
+   (skips headings that only flash past during fast scrolling or jump-nav scrolling). */
+(function(){
+  if(typeof gtag!=='function' || !('IntersectionObserver' in window)) return;
+  var heads=[].slice.call(document.querySelectorAll('main section[id] h2, #close-h'));
+  var timers={};
+  function key(h){ var sec=h.closest('section[id]'); return sec ? sec.id : 'close'; }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var h=e.target, k=key(h);
+      if(e.isIntersecting){
+        if(timers[k]) return;
+        timers[k]=setTimeout(function(){
+          gtag('event','section_view',{section_id:k, section_title:h.textContent.replace(/\s+/g,' ').trim()});
+          io.unobserve(h);
+        },1000);
+      } else if(timers[k]){ clearTimeout(timers[k]); timers[k]=null; }
+    });
+  },{threshold:1});
+  heads.forEach(function(h){ io.observe(h); });
+})();
+</script>
 </body>
 </html>
