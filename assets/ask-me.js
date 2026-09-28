@@ -11,7 +11,11 @@
    Source title and URL are taken from the page itself at click time, so they
    never need to be configured per page.
 
+   Floating "Ask George" (opt-in): <div data-ask-float="KEY" hidden></div>, prompts in FLOATS.
+   Plain links: <a href="/ask?about=KEY…" data-ask-link="KEY"> get context hand-off + tracking.
+
    GA4: ask_me_click { page_path, page_title, ask_context, ask_intent, ask_button }
+        ask_george_open / ask_george_dismiss { page_path, ask_context }
    No personal information is ever sent to analytics.
    ========================================================================== */
 (function () {
@@ -255,6 +259,15 @@
     },
 
     /* ---- SELLER ---- */
+    'expired-listing': {
+      intent: 'seller', label: 'Expired listing', address: true,
+      headline: 'Not sure what happened with your listing?',
+      support: 'You don’t need another listing agreement yet. Ask me about it.',
+      button: 'Ask Me About My Expired Listing',
+      // /ask uses these instead of its generic heading and intro
+      askTitle: 'Ask me about your expired listing',
+      askIntro: 'No judgment on you or your previous agent. Tell me what happened—or just send me the address—and I’ll help you think through what the first listing is telling us.'
+    },
     'expired-review': {
       intent: 'seller', label: 'Listing that didn’t sell', address: true,
       headline: 'Want me to look at what actually happened?',
@@ -319,6 +332,16 @@
 
   var STORE = 'stlhj_ask_ctx';
 
+  /* Floating "Ask George" prompts. A page opts in with <div data-ask-float="KEY" hidden></div>.
+     'about' is the /ask context the button carries. Add a key here to support a new page type. */
+  var FLOATS = {
+    'expired-listing':    { about: 'expired-listing',    headline: 'Not sure what happened with your listing?', body: 'You don’t need another listing agreement yet. Ask me about it.' },
+    'no-showings':        { about: 'no-showings',        headline: 'Listed, and nobody’s coming to see it?',    body: 'Before you cut the price, ask me what buyers may be seeing.' },
+    'showings-no-offers': { about: 'showings-no-offers', headline: 'Getting showings but no offers?',           body: 'Ask me what the showing activity may be telling you.' },
+    'price-reduction':    { about: 'price-reduction',    headline: 'Thinking about cutting the price?',         body: 'Ask me before you reduce it. No judgment on you or your agent.' }
+  };
+  var FLOAT_QUIET = 'stlhj_askfloat_quiet';
+
   var AVATAR = '/assets/george-ask.webp';
   var WHO = 'George Kindler · 250+ St. Louis transactions';
   var NOTES = {
@@ -340,6 +363,32 @@
     '.askme a.askme-btn:hover{background:#ffd76e;color:#080808;text-decoration:none;border:0;}' +
     '.askme a.askme-btn:focus-visible{outline:2px solid #ffcc4d;outline-offset:3px;}' +
     '.askme p.askme-note{margin:12px 0 0;padding:0;font:400 13px/1.5 "Inter",-apple-system,sans-serif;color:rgba(255,255,255,.6);}' +
+    /* floating Ask George (bottom-left; the article "Sections" button owns bottom-right) */
+    'body.has-askfloat{padding-bottom:84px;}' +
+    '.askfloat{position:fixed;left:calc(16px + env(safe-area-inset-left,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:190;font-family:"Inter",-apple-system,sans-serif;}' +
+    '.askfloat-toggle{display:flex;align-items:center;gap:10px;padding:4px 16px 4px 4px;background:rgba(10,10,10,.94);border:1px solid rgba(255,204,77,.45);border-radius:999px;color:#fff;font:700 13px/1 "Inter",-apple-system,sans-serif;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.55),0 0 14px rgba(255,204,77,.18);transition:opacity .2s ease,box-shadow .2s ease;}' +
+    '.askfloat-toggle img{display:block;width:44px;height:44px;border-radius:50%;border:2px solid #ffcc4d;object-fit:cover;margin:0;max-width:none;}' +
+    '.askfloat-toggle:hover{box-shadow:0 6px 22px rgba(0,0,0,.55),0 0 20px rgba(255,204,77,.32);}' +
+    '.askfloat-toggle:focus-visible{outline:2px solid #ffcc4d;outline-offset:3px;}' +
+    '.askfloat:not(.quiet) .askfloat-toggle{animation:askfloat-glow 2.6s ease-in-out 5s 2;}' +
+    '@keyframes askfloat-glow{0%,100%{box-shadow:0 6px 22px rgba(0,0,0,.55),0 0 14px rgba(255,204,77,.18);}50%{box-shadow:0 6px 22px rgba(0,0,0,.55),0 0 26px rgba(255,204,77,.45);}}' +
+    '.askfloat.quiet .askfloat-toggle{padding-right:4px;opacity:.9;box-shadow:0 6px 18px rgba(0,0,0,.5);}' +
+    '.askfloat.quiet .askfloat-label{display:none;}' +
+    '.askfloat-panel{position:absolute;left:0;bottom:62px;width:min(300px,calc(100vw - 32px));background:#0d0d0d;border:1px solid rgba(255,204,77,.34);border-radius:14px;padding:18px 18px 16px;box-shadow:0 12px 42px rgba(0,0,0,.6);box-sizing:border-box;}' +
+    '.askfloat-panel[hidden]{display:none;}' +
+    '.askfloat-top{display:flex;align-items:center;gap:10px;margin:0 28px 12px 0;}' +
+    '.askfloat-top img{width:40px;height:40px;border-radius:50%;border:2px solid #ffcc4d;object-fit:cover;flex:none;margin:0;max-width:none;}' +
+    '.askfloat-name{margin:0;font:700 14px/1.2 "Inter",-apple-system,sans-serif;color:#fff;}' +
+    '.askfloat-who{margin:2px 0 0;font:500 12px/1.3 "Inter",-apple-system,sans-serif;color:rgba(255,255,255,.6);}' +
+    '.askfloat-h{margin:0 0 6px;font:700 19px/1.3 "Playfair Display",Georgia,serif;color:#fff;}' +
+    '.askfloat-p{margin:0 0 14px;font:400 14.5px/1.6 "Inter",-apple-system,sans-serif;color:rgba(255,255,255,.78);}' +
+    '.askfloat-btn,.askfloat-btn:visited{display:block;text-align:center;background:#ffcc4d;color:#080808;font:700 14px/1.2 "Inter",-apple-system,sans-serif;padding:13px 18px;border-radius:8px;text-decoration:none;border:0;}' +
+    '.askfloat-btn:hover{background:#ffd76e;color:#080808;}' +
+    '.askfloat-btn:focus-visible,.askfloat-x:focus-visible{outline:2px solid #ffcc4d;outline-offset:3px;}' +
+    '.askfloat-x{position:absolute;top:10px;right:10px;width:32px;height:32px;border:0;border-radius:50%;background:transparent;color:rgba(255,255,255,.7);font:400 22px/1 "Inter",-apple-system,sans-serif;cursor:pointer;}' +
+    '.askfloat-x:hover{color:#fff;background:rgba(255,255,255,.06);}' +
+    '@media(prefers-reduced-motion:reduce){.askfloat .askfloat-toggle{animation:none !important;transition:none;}}' +
+    '@media(max-width:600px){.askfloat-toggle{font-size:12.5px;}.askfloat-toggle img{width:40px;height:40px;}}' +
     '@media(max-width:600px){.askme{margin:32px 0;padding:20px 18px 22px;}body>.askme,.askme.askme-center{margin-left:auto;margin-right:auto;width:calc(100% - 32px);}.askme a.askme-btn{display:block;text-align:center;}}';
 
   var count = 0;
@@ -367,6 +416,73 @@
     document.head.appendChild(st);
   }
 
+  function remember(key, button, intent) {
+    try {
+      localStorage.setItem(STORE, JSON.stringify({
+        about: key, from: location.pathname, title: document.title, url: sourceUrl(), t: Date.now()
+      }));
+    } catch (e) {}
+    track('ask_me_click', {
+      page_path: location.pathname, page_title: document.title,
+      ask_context: key, ask_intent: intent, ask_button: button
+    });
+  }
+
+  /* Plain in-article links: <a href="/ask?about=KEY&from=..." data-ask-link="KEY"> get the same
+     context hand-off and click tracking as the component. */
+  function wireLink(a) {
+    var key = a.getAttribute('data-ask-link'), c = CONTEXTS[key];
+    if (!c) return;
+    a.addEventListener('click', function () {
+      var label = a.querySelector('strong') || a;
+      remember(key, (label.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80), c.intent);
+    });
+  }
+
+  function isQuiet() { try { return sessionStorage.getItem(FLOAT_QUIET) === '1'; } catch (e) { return false; } }
+  function setQuiet(root) { try { sessionStorage.setItem(FLOAT_QUIET, '1'); } catch (e) {} root.classList.add('quiet'); }
+
+  function renderFloat(el) {
+    var fk = el.getAttribute('data-ask-float'), f = FLOATS[fk], c = f && CONTEXTS[f.about];
+    if (!f || !c || document.querySelector('.askfloat')) return;
+    injectCSS();
+    var href = '/ask?about=' + encodeURIComponent(f.about) + '&from=' + encodeURIComponent(location.pathname);
+    var root = document.createElement('div');
+    root.className = 'askfloat' + (isQuiet() ? ' quiet' : '');
+    root.innerHTML =
+      '<div class="askfloat-panel" id="askfloat-panel" role="dialog" aria-modal="false" aria-labelledby="askfloat-h" hidden>' +
+        '<button type="button" class="askfloat-x" aria-label="Close">&times;</button>' +
+        '<div class="askfloat-top"><img src="' + AVATAR + '" alt="" width="40" height="40" decoding="async">' +
+        '<div><p class="askfloat-name">George Kindler</p><p class="askfloat-who">250+ St. Louis transactions</p></div></div>' +
+        '<p class="askfloat-h" id="askfloat-h">' + esc(f.headline) + '</p>' +
+        '<p class="askfloat-p">' + esc(f.body) + '</p>' +
+        '<a class="askfloat-btn" href="' + esc(href) + '">Ask George &rarr;</a>' +
+      '</div>' +
+      '<button type="button" class="askfloat-toggle" aria-expanded="false" aria-controls="askfloat-panel" aria-label="Ask George a question">' +
+        '<img src="' + AVATAR + '" alt="" width="44" height="44" decoding="async"><span class="askfloat-label">Ask George</span>' +
+      '</button>';
+    var panel = root.querySelector('.askfloat-panel'), toggle = root.querySelector('.askfloat-toggle');
+    function open() {
+      panel.hidden = false; toggle.setAttribute('aria-expanded', 'true');
+      root.querySelector('.askfloat-btn').focus();
+      setQuiet(root);
+      track('ask_george_open', { page_path: location.pathname, ask_context: f.about });
+    }
+    function close(returnFocus) {
+      if (panel.hidden) return;
+      panel.hidden = true; toggle.setAttribute('aria-expanded', 'false');
+      if (returnFocus) toggle.focus();
+      track('ask_george_dismiss', { page_path: location.pathname, ask_context: f.about });
+    }
+    toggle.addEventListener('click', function () { panel.hidden ? open() : close(true); });
+    root.querySelector('.askfloat-x').addEventListener('click', function () { close(true); });
+    root.querySelector('.askfloat-btn').addEventListener('click', function () { remember(f.about, 'Ask George (floating)', c.intent); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(true); });
+    document.addEventListener('click', function (e) { if (!root.contains(e.target)) close(false); });
+    document.body.appendChild(root);
+    document.body.classList.add('has-askfloat');
+  }
+
   function render(el) {
     var key = el.getAttribute('data-ask-me');
     var c = CONTEXTS[key];
@@ -387,17 +503,7 @@
       '<p class="askme-p">' + esc(fill(c.support)) + '</p>' +
       '<a class="askme-btn" href="' + esc(href) + '">' + esc(c.button) + '</a>' +
       (note ? '<p class="askme-note">' + esc(note) + '</p>' : '');
-    aside.querySelector('a').addEventListener('click', function () {
-      try {
-        localStorage.setItem(STORE, JSON.stringify({
-          about: key, from: location.pathname, title: document.title, url: sourceUrl(), t: Date.now()
-        }));
-      } catch (e) {}
-      track('ask_me_click', {
-        page_path: location.pathname, page_title: document.title,
-        ask_context: key, ask_intent: c.intent, ask_button: c.button
-      });
-    });
+    aside.querySelector('a').addEventListener('click', function () { remember(key, c.button, c.intent); });
     el.parentNode.replaceChild(aside, el);
     // Center it when the surrounding container is much wider than the component
     // or has no side padding (keeps it aligned on every page template).
@@ -408,9 +514,13 @@
   function init() {
     var els = document.querySelectorAll('[data-ask-me]');
     for (var i = 0; i < els.length; i++) render(els[i]);
+    var links = document.querySelectorAll('a[data-ask-link]');
+    for (var j = 0; j < links.length; j++) wireLink(links[j]);
+    var fl = document.querySelector('[data-ask-float]');
+    if (fl) renderFloat(fl);
   }
 
-  window.AskMe = { contexts: CONTEXTS, store: STORE, track: track };
+  window.AskMe = { contexts: CONTEXTS, floats: FLOATS, store: STORE, track: track };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();

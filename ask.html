@@ -130,8 +130,8 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 
   <p class="back" id="back" hidden><a id="back-a" href="/">&larr; Back to <span id="back-t">the article</span></a></p>
 
   <p class="eyebrow">Ask me</p>
-  <h1>What&rsquo;s going on?</h1>
-  <div class="intro">
+  <h1 id="ask-h1">What&rsquo;s going on?</h1>
+  <div class="intro" id="ask-intro">
     <p>Found a house? Have an offer? Something in an inspection report bothering you? Trying to figure out what to do with your listing?</p>
     <p>Tell me what you&rsquo;re looking at and what you&rsquo;re wondering about.</p>
   </div>
@@ -215,7 +215,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 
   <p style="margin-top:8px;">Content is educational and does not constitute legal, financial, or real estate advice for your specific situation.</p>
 </footer>
 
-<script src="/assets/ask-me.js?v=2" defer></script>
+<script src="/assets/ask-me.js?v=3" defer></script>
 <script>
 /* /ask page logic. Delivery = hand-off to the visitor's own email or text app
    (the site's existing contact pattern). No backend exists yet, so this page
@@ -256,6 +256,13 @@ document.addEventListener('DOMContentLoaded', function () {
   $('ask_context').value = about;
   $('ask_intent').value = cfg.intent;
   if (cfg.address === false) $('f-address').hidden = true;
+  // Some contexts (e.g. expired listing) carry their own heading and intro
+  if (cfg.askTitle) {
+    $('ask-h1').textContent = cfg.askTitle;
+    var intro = $('ask-intro'); intro.innerHTML = '';
+    var ip = document.createElement('p'); ip.textContent = cfg.askIntro || ''; intro.appendChild(ip);
+    document.title = cfg.askTitle.charAt(0).toUpperCase() + cfg.askTitle.slice(1) + ' | STL Home Journey';
+  }
   paint();
 
   // No stored title (new tab, cleared storage): read it from the source page itself.
