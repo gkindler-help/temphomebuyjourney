@@ -9,3 +9,9 @@
 /fixer-upper-vs-move-in.html
   X-Frame-Options: ALLOWALL
   Content-Security-Policy: frame-ancestors 'self' https://stlhomejourney.com
+
+/docs/*
+  X-Robots-Tag: noindex
+
+/ask
+  X-Robots-Tag: noindex

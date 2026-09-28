@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="/assets/favicon-512.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ask Me | STL Home Journey</title>
+<meta name="description" content="Found a house, have an offer, or wondering what to do with your listing? Tell George Kindler what you're looking at and what you're wondering about.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://stlhomejourney.com/ask">
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EEE14BZT9P');</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--ink:#050505;--gold:#ffcc4d;--gold-line:rgba(255,204,77,.32);--gold-wash:rgba(255,204,77,.06);--line:rgba(255,255,255,.08);--soft:rgba(255,255,255,.76);--mute:rgba(255,255,255,.6);--err:#ff9d8f;}
+body{background:var(--ink);color:rgba(255,255,255,.88);font-family:'Inter',-apple-system,sans-serif;line-height:1.6;min-height:100vh;overflow-x:hidden;}
+a{color:var(--gold);text-decoration:none;}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px;}
+[hidden]{display:none !important;}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--gold);color:#080808;font-weight:700;padding:10px 16px;border-radius:6px;z-index:200;}
+.skip:focus{left:12px;}
+
+/* NAV (matches homepage) */
+.hp-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(5,5,5,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);position:sticky;top:0;z-index:100;}
+.hp-nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;}
+.hp-nav-logo img{width:28px;height:28px;object-fit:contain;}
+.hp-nav-logo-t{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:rgba(255,255,255,.88);}
+.hp-nav-logo-t span{color:var(--gold);}
+.hp-nav-links{display:flex;gap:4px;flex-wrap:wrap;}
+.hp-nav-a{font-size:11px;font-weight:600;padding:7px 12px;border-radius:6px;color:rgba(255,255,255,.6);text-decoration:none;transition:color .15s;}
+.hp-nav-a:hover{color:#fff;}
+
+/* PAGE */
+.ask{max-width:640px;margin:0 auto;padding:40px 20px 64px;}
+.back{font-size:14px;font-weight:600;margin-bottom:28px;}
+.back a{color:var(--mute);}
+.back a:hover{color:var(--gold);}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+h1{font-family:'Playfair Display',serif;font-size:clamp(34px,7vw,52px);font-weight:900;line-height:1.08;color:#fff;margin-bottom:18px;}
+.intro p{font-size:17px;line-height:1.7;color:var(--soft);}
+.intro p+p{margin-top:12px;color:#fff;}
+
+.ctx{margin-top:26px;border-left:2px solid var(--gold);background:var(--gold-wash);border-radius:0 10px 10px 0;padding:14px 18px;}
+.ctx p{font-size:14px;line-height:1.55;color:var(--soft);}
+.ctx p+p{margin-top:6px;}
+.ctx .k{display:inline-block;min-width:56px;font-weight:600;color:var(--gold);}
+.ctx a{color:#fff;border-bottom:1px solid var(--gold-line);}
+.ctx a:hover{color:var(--gold);}
+
+form{margin-top:34px;}
+.err-sum{border:1px solid var(--err);border-radius:10px;padding:14px 18px;margin-bottom:24px;background:rgba(255,157,143,.06);}
+.err-sum p{font-size:14px;font-weight:600;color:#fff;margin-bottom:6px;}
+.err-sum ul{list-style:none;}
+.err-sum li{font-size:14px;line-height:1.6;}
+.err-sum a{color:var(--err);border-bottom:1px solid rgba(255,157,143,.4);}
+
+.field{margin-bottom:24px;border:0;}
+label,legend{display:block;font-size:15px;font-weight:600;color:#fff;margin-bottom:6px;}
+.opt{font-weight:400;color:var(--mute);}
+.hint{font-size:13.5px;line-height:1.55;color:var(--mute);margin:-2px 0 8px;}
+input[type=text],input[type=email],input[type=tel],textarea{display:block;width:100%;font:inherit;font-size:16px;color:#fff;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:12px 14px;line-height:1.5;}
+textarea{resize:vertical;min-height:140px;}
+input:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 2px rgba(255,204,77,.25);}
+[aria-invalid="true"]{border-color:var(--err) !important;}
+.err{font-size:13.5px;font-weight:600;color:var(--err);margin-top:6px;}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.two label{font-size:14px;font-weight:500;color:var(--soft);}
+
+.send{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;}
+.btn{display:inline-block;font:inherit;font-size:14px;font-weight:700;padding:14px 26px;border-radius:8px;cursor:pointer;line-height:1.2;text-align:center;}
+.btn-primary{background:var(--gold);color:#080808;border:1px solid var(--gold);}
+.btn-primary:hover{background:#ffd76e;}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.22);}
+.btn-ghost:hover{border-color:var(--gold-line);color:var(--gold);}
+.send-note{font-size:13.5px;line-height:1.6;color:var(--mute);margin-top:14px;}
+@media (hover:hover) and (pointer:fine){.via-text{display:none;}}
+
+.handoff{margin-top:32px;border:1px dashed var(--gold-line);border-radius:12px;background:var(--gold-wash);padding:22px 22px 24px;}
+.handoff h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;line-height:1.3;color:#fff;margin-bottom:10px;}
+.handoff p{font-size:15px;line-height:1.7;color:var(--soft);margin-bottom:10px;}
+.handoff textarea{margin:8px 0 14px;min-height:200px;font-size:14px;color:var(--soft);}
+.copied{font-size:13.5px;color:var(--gold);margin-left:10px;}
+
+/* FOOTER (matches homepage) */
+.hp-footer{max-width:720px;margin:0 auto;padding:32px 20px;border-top:1px solid rgba(255,255,255,.06);font-size:11px;color:rgba(255,255,255,.3);line-height:1.6;}
+.hp-footer a{color:rgba(255,255,255,.45);}
+.hp-footer strong{color:rgba(255,255,255,.5);}
+
+@media(max-width:600px){
+  .ask{padding-top:28px;}
+  .two{grid-template-columns:1fr;}
+  .send .btn{flex:1 1 100%;}
+  .hp-nav-links{gap:2px;}
+  .hp-nav-a{font-size:10px;padding:6px 8px;}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="hp-nav" aria-label="Primary">
+  <a class="hp-nav-logo" href="/">
+    <img src="/assets/STLhomebuyerjourneylogo.webp" alt="STL Home Journey" width="28" height="28">
+    <div class="hp-nav-logo-t"><span>STL</span> Home Journey</div>
+  </a>
+  <div class="hp-nav-links">
+    <a class="hp-nav-a" href="/articles/#panel-buying">Buying</a>
+    <a class="hp-nav-a" href="/articles/#panel-selling">Selling</a>
+    <a class="hp-nav-a" href="/neighborhoods/">Neighborhoods</a>
+    <a class="hp-nav-a" href="/stl-home-buying-power-calculator">Tools</a>
+    <a class="hp-nav-a" href="/experience">Experience</a>
+  </div>
+</nav>
+
+<main id="main" class="ask">
+  <p class="back" id="back" hidden><a id="back-a" href="/">&larr; Back to <span id="back-t">the article</span></a></p>
+
+  <p class="eyebrow">Ask me</p>
+  <h1>What&rsquo;s going on?</h1>
+  <div class="intro">
+    <p>Found a house? Have an offer? Something in an inspection report bothering you? Trying to figure out what to do with your listing?</p>
+    <p>Tell me what you&rsquo;re looking at and what you&rsquo;re wondering about.</p>
+  </div>
+
+  <div class="ctx" id="ctx" hidden>
+    <p><span class="k">About</span> <span id="ctx-label"></span></p>
+    <p id="ctx-from-row" hidden><span class="k">From</span> <a id="ctx-from" href="/"></a></p>
+  </div>
+
+  <form id="ask-form" novalidate>
+    <div class="err-sum" id="err-sum" role="alert" tabindex="-1" hidden>
+      <p>A couple of things to fix before sending:</p>
+      <ul id="err-list"></ul>
+    </div>
+
+    <div class="field" id="f-address">
+      <label for="address">Property address <span class="opt">(optional)</span></label>
+      <p class="hint" id="address-hint">A street address or a listing link works.</p>
+      <input id="address" name="address" type="text" autocomplete="street-address" aria-describedby="address-hint">
+    </div>
+
+    <div class="field">
+      <label for="question">What are you wondering about?</label>
+      <p class="hint" id="question-hint">What you&rsquo;re seeing, what&rsquo;s worrying you, or what you&rsquo;re trying to decide.</p>
+      <textarea id="question" name="question" rows="6" maxlength="2000" required aria-describedby="question-hint question-err"></textarea>
+      <p class="err" id="question-err" hidden></p>
+    </div>
+
+    <div class="field">
+      <label for="name">Your name</label>
+      <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-err">
+      <p class="err" id="name-err" hidden></p>
+    </div>
+
+    <fieldset class="field" id="f-contact">
+      <legend>How should I reach you?</legend>
+      <p class="hint" id="contact-hint">Email or phone. One is enough.</p>
+      <div class="two">
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" aria-describedby="contact-hint contact-err">
+        </div>
+        <div>
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="contact-hint contact-err">
+        </div>
+      </div>
+      <p class="err" id="contact-err" hidden></p>
+    </fieldset>
+
+    <!-- Context carried from the originating page. Ready for a server-side handler; today it is written into the message. -->
+    <input type="hidden" name="source_title" id="source_title">
+    <input type="hidden" name="source_url" id="source_url">
+    <input type="hidden" name="ask_context" id="ask_context">
+    <input type="hidden" name="ask_intent" id="ask_intent">
+
+    <div class="send">
+      <button type="submit" name="via" value="email" class="btn btn-primary">Send by email</button>
+      <button type="submit" name="via" value="text" class="btn btn-ghost via-text">Send by text</button>
+    </div>
+    <p class="send-note">This opens your own email<span class="via-text"> or messaging</span> app with your message filled in and addressed to me. Nothing is sent until you press send there.</p>
+  </form>
+
+  <section class="handoff" id="handoff" tabindex="-1" aria-labelledby="handoff-h" hidden>
+    <h2 id="handoff-h">Last step: press send in your <span id="handoff-app">email app</span>.</h2>
+    <p>Your message is written and addressed to me. It isn&rsquo;t sent until you press send.</p>
+    <p>If nothing opened, copy the message below and email it to <a href="mailto:georgeandlizk@gmail.com">georgeandlizk@gmail.com</a> or text it to <a href="sms:3144351087">314.435.1087</a>.</p>
+    <label for="msg">Your message</label>
+    <textarea id="msg" readonly rows="10"></textarea>
+    <button type="button" class="btn btn-ghost" id="copy">Copy message</button><span class="copied" id="copied" role="status"></span>
+  </section>
+</main>
+
+<footer class="hp-footer">
+  <p><strong>The Closing Pros LLC</strong> &middot; Licensed Missouri Real Estate Brokerage &middot; 314-998-4550</p>
+  <p>George Kindler &middot; <a href="tel:3144351087">314.435.1087</a> &middot; <a href="mailto:georgeandlizk@gmail.com">georgeandlizk@gmail.com</a> &middot; <a href="/experience">Transaction History</a></p>
+  <p style="margin-top:8px;">Content is educational and does not constitute legal, financial, or real estate advice for your specific situation.</p>
+</footer>
+
+<script src="/assets/ask-me.js?v=1" defer></script>
+<script>
+/* /ask page logic. Delivery = hand-off to the visitor's own email or text app
+   (the site's existing contact pattern). No backend exists yet, so this page
+   never claims a message was sent. GA4 events carry no personal information. */
+document.addEventListener('DOMContentLoaded', function () {
+  var AM = window.AskMe || { contexts: { general: { intent: 'general', label: 'General question', address: true } }, store: 'stlhj_ask_ctx', track: function () {} };
+  var TO_EMAIL = 'georgeandlizk@gmail.com', TO_SMS = '+13144351087';
+  var $ = function (id) { return document.getElementById(id); };
+
+  // ---- context from the originating page ----
+  var q = new URLSearchParams(location.search);
+  var about = q.get('about');
+  if (!about || !AM.contexts[about]) about = 'general';
+  var cfg = AM.contexts[about];
+  var from = q.get('from');
+  if (!(from && /^\/(?!\/)[^\s<>"\\]*$/.test(from))) from = null; // same-site paths only
+
+  var src = { title: null, url: from ? location.origin + from : null };
+  try {
+    var saved = JSON.parse(localStorage.getItem(AM.store) || 'null');
+    if (saved && saved.about === about && saved.from === from && Date.now() - saved.t < 6 * 3600 * 1000) {
+      src.title = saved.title; src.url = saved.url || src.url;
+    }
+  } catch (e) {}
+
+  function cleanTitle(t) { return (t || '').replace(/\s*[|–—-]\s*STL Home Journey\s*$/i, '').trim(); }
+  function paint() {
+    var t = cleanTitle(src.title);
+    if (from) {
+      $('back').hidden = false; $('back-a').href = from; if (t) $('back-t').textContent = t;
+      $('ctx-from-row').hidden = false; $('ctx-from').href = from; $('ctx-from').textContent = t || from;
+    }
+    if (about !== 'general') { $('ctx').hidden = false; $('ctx-label').textContent = cfg.label; }
+    else if (from) { $('ctx').hidden = false; $('ctx-label').textContent = cfg.label; }
+    $('source_title').value = src.title || '';
+    $('source_url').value = src.url || '';
+  }
+  $('ask_context').value = about;
+  $('ask_intent').value = cfg.intent;
+  if (cfg.address === false) $('f-address').hidden = true;
+  paint();
+
+  // No stored title (new tab, cleared storage): read it from the source page itself.
+  if (from && !src.title && window.fetch) {
+    fetch(from, { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.text() : ''; }).then(function (html) {
+      var m = html.match(/<title[^>]*>([^<]*)<\/title>/i);
+      if (m) { var d = document.createElement('textarea'); d.innerHTML = m[1]; src.title = d.value.trim(); paint(); }
+    }).catch(function () {});
+  }
+
+  // ---- analytics: form start (once), no PII ----
+  var form = $('ask-form'), started = false;
+  form.addEventListener('input', function () {
+    if (started) return; started = true;
+    AM.track('ask_me_form_start', { ask_context: about, ask_intent: cfg.intent });
+  });
+
+  // ---- validation ----
+  function setErr(input, errEl, msg) {
+    var inputs = [].concat(input);
+    inputs.forEach(function (i) { if (msg) i.setAttribute('aria-invalid', 'true'); else i.removeAttribute('aria-invalid'); });
+    errEl.textContent = msg || ''; errEl.hidden = !msg;
+  }
+  function validate() {
+    var errs = [];
+    var qv = $('question').value.trim(), nv = $('name').value.trim(), ev = $('email').value.trim(), pv = $('phone').value.trim();
+    var qm = qv ? '' : 'Tell me what you’re wondering about.';
+    var nm = nv ? '' : 'Add your name so I know who I’m answering.';
+    var cm = '';
+    if (!ev && !pv) cm = 'Add an email or a phone number so I can reply.';
+    else if (ev && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ev)) cm = 'That email address doesn’t look complete.';
+    else if (pv && pv.replace(/\D/g, '').length < 10) cm = 'That phone number looks short. Include the area code.';
+    setErr($('question'), $('question-err'), qm); if (qm) errs.push(['question', qm]);
+    setErr($('name'), $('name-err'), nm); if (nm) errs.push(['name', nm]);
+    setErr([$('email'), $('phone')], $('contact-err'), cm); if (cm) errs.push([ev && cm.indexOf('email') > -1 ? 'email' : (pv && cm.indexOf('phone') > -1 ? 'phone' : 'email'), cm]);
+    var list = $('err-list'); list.innerHTML = '';
+    errs.forEach(function (e) {
+      var li = document.createElement('li'), a = document.createElement('a');
+      a.href = '#' + e[0]; a.textContent = e[1];
+      a.addEventListener('click', function (ev2) { ev2.preventDefault(); $(e[0]).focus(); });
+      li.appendChild(a); list.appendChild(li);
+    });
+    $('err-sum').hidden = errs.length === 0;
+    return errs.length === 0;
+  }
+
+  // ---- compose + hand off ----
+  function compose() {
+    var addr = (cfg.address === false) ? '' : $('address').value.trim();
+    var lines = [
+      'ASK ME',
+      'Source: ' + (cleanTitle(src.title) || (from ? from : 'Direct visit to /ask')),
+      'Source URL: ' + (src.url || location.origin + '/ask'),
+      'Context: ' + cfg.label,
+      'Intent: ' + cfg.intent.charAt(0).toUpperCase() + cfg.intent.slice(1),
+      'Property: ' + (addr || 'Not provided'),
+      '',
+      'Question:',
+      $('question').value.trim(),
+      '',
+      'Name: ' + $('name').value.trim()
+    ];
+    if ($('email').value.trim()) lines.push('Email: ' + $('email').value.trim());
+    if ($('phone').value.trim()) lines.push('Phone: ' + $('phone').value.trim());
+    return { subject: 'Ask Me: ' + cfg.label + (addr ? ' (' + addr + ')' : ''), body: lines.join('\n') };
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!validate()) { $('err-sum').focus(); return; }
+    var via = (e.submitter && e.submitter.value === 'text') ? 'text' : 'email';
+    var m = compose();
+    var link = via === 'text'
+      ? 'sms:' + TO_SMS + '?&body=' + encodeURIComponent(m.subject + '\n\n' + m.body)
+      : 'mailto:' + TO_EMAIL + '?subject=' + encodeURIComponent(m.subject) + '&body=' + encodeURIComponent(m.body.replace(/\n/g, '\r\n'));
+    AM.track('ask_me_submit', { source_page: from || '(direct)', ask_context: about, ask_intent: cfg.intent, delivery_method: via === 'text' ? 'text_app' : 'email_app' });
+    $('msg').value = m.body;
+    $('handoff-app').textContent = via === 'text' ? 'messaging app' : 'email app';
+    $('handoff').hidden = false;
+    $('handoff').focus();
+    window.location.href = link;
+  });
+
+  $('copy').addEventListener('click', function () {
+    var t = $('msg');
+    var done = function () { $('copied').textContent = 'Copied'; };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t.value).then(done, function () { t.select(); });
+    else { t.select(); try { document.execCommand('copy'); done(); } catch (e2) {} }
+  });
+});
+</script>
+</body>
+</html>
