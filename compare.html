@@ -719,6 +719,9 @@ body {
 </head>
 <body class="tool-page">
 <div id="app"></div>
+<!-- ASK ME: component configured in /assets/ask-me.js -->
+<div data-ask-me="area-comparison"><p><a href="/ask?about=area-comparison&amp;from=/compare">Ask me about your situation</a></p></div>
+
 
 <script>
 window.SUPPRESS_DASHBOARD = true;  /* Loaded in iframe, don't render dashboard */
@@ -1735,5 +1738,6 @@ window.TOOL_MODULES['compare'] = (function () {
   else mountStandalone();
 })();
 </script>
+<script src="/assets/ask-me.js?v=2" defer></script>
 </body>
 </html>

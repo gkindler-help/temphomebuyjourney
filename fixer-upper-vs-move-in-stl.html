@@ -347,6 +347,9 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
     <button onclick="shareToolResults()" style="width:100%;padding:12px;border:1px solid rgba(255,204,77,.3);border-radius:10px;background:transparent;color:rgba(255,255,255,.72);font-family:'Inter',sans-serif;font-size:12px;font-weight:700;cursor:pointer;margin-bottom:6px;transition:border-color .18s,color .18s;letter-spacing:.02em;box-sizing:border-box">📤 Save or Email These Results →</button>
   </div>
 
+  <!-- ASK ME: component configured in /assets/ask-me.js -->
+  <div data-ask-me="fixer-upper"><p><a href="/ask?about=fixer-upper&amp;from=/fixer-upper-vs-move-in-stl">Ask me about your situation</a></p></div>
+
   <div class="compliance-footer">
     <strong>The Closing Pros LLC</strong> · Licensed Missouri Real Estate Brokerage<br>
     Office: 314-998-4550 · George's Direct: 314.435.1087<br>
@@ -1433,5 +1436,6 @@ function shareToolResults() {
     bootTool();
   }
 </script>
+<script src="/assets/ask-me.js?v=2" defer></script>
 </body>
 </html>

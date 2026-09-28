@@ -519,6 +519,9 @@ body {
 </head>
 <body>
 <div id="app"></div>
+<!-- ASK ME: component configured in /assets/ask-me.js -->
+<div data-ask-me="buyer-general"><p><a href="/ask?about=buyer-general&amp;from=/prep">Ask me about your situation</a></p></div>
+
 
 <script>
 window.SUPPRESS_DASHBOARD = true;  /* Loaded in iframe, don't render dashboard */
@@ -894,5 +897,6 @@ window.TOOL_MODULES['prep'] = {
   }
 })();
 </script>
+<script src="/assets/ask-me.js?v=2" defer></script>
 </body>
 </html>

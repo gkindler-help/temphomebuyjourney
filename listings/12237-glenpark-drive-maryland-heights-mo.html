@@ -238,6 +238,9 @@ body{font-family:'Inter',-apple-system,sans-serif;background:#050505;color:rgba(
   </div>
 
   <div class="sticky-card">
+    <!-- ASK ME: component configured in /assets/ask-me.js -->
+    <div data-ask-me="listing"><p><a href="/ask?about=listing&amp;from=/listings/12237-glenpark-drive-maryland-heights-mo">Ask me about your situation</a></p></div>
+
     <div class="cta-card">
       <div class="cta-price">$374,900</div>
       <div class="cta-sub">ACTIVE &middot; 12237 Glenpark Dr &middot; Maryland Heights, MO 63043</div>
@@ -280,5 +283,6 @@ function lbNav(d){LB_IDX=(LB_IDX+d+LB_IMGS.length)%LB_IMGS.length;lbShow();}
 document.addEventListener('keydown',function(e){if(!document.getElementById('lb').classList.contains('open'))return;if(e.key==='ArrowRight')lbNav(1);if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='Escape')lbClose();});
 document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)lbClose();});
 </script>
+<script src="/assets/ask-me.js?v=2" defer></script>
 </body>
 </html>

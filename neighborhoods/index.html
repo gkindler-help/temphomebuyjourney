@@ -842,6 +842,9 @@
 
 <!-- George Card -->
 <div style="padding:0 20px;">
+  <!-- ASK ME: component configured in /assets/ask-me.js -->
+  <div data-ask-me="area-comparison"><p><a href="/ask?about=area-comparison&amp;from=/neighborhoods/">Ask me about your situation</a></p></div>
+
   <div class="george-card">
     <div class="george-card-photo">
       <img src="../assets/george-family.jpg" alt="George Kindler">
@@ -954,5 +957,6 @@ function run() {
   document.getElementById('noResults').classList.toggle('show', !anyVisible && q !== '');
 }
 </script>
+<script src="/assets/ask-me.js?v=2" defer></script>
 </body>
 </html>
