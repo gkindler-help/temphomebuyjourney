@@ -377,7 +377,7 @@
     /* floating Ask George (bottom-left; the article "Sections" button owns bottom-right) */
     'body.has-askfloat{padding-bottom:84px;}' +
     '.askfloat{position:fixed;left:calc(16px + env(safe-area-inset-left,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:190;font-family:"Inter",-apple-system,sans-serif;}' +
-    '.askfloat-toggle{display:flex;align-items:center;gap:10px;padding:4px 16px 4px 4px;background:rgba(10,10,10,.94);border:1px solid rgba(255,204,77,.45);border-radius:999px;color:#fff;font:700 13px/1 "Inter",-apple-system,sans-serif;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.55),0 0 14px rgba(255,204,77,.18);transition:opacity .2s ease,box-shadow .2s ease;}' +
+    '.askfloat-toggle{touch-action:manipulation;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:10px;padding:4px 16px 4px 4px;background:rgba(10,10,10,.94);border:1px solid rgba(255,204,77,.45);border-radius:999px;color:#fff;font:700 13px/1 "Inter",-apple-system,sans-serif;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.55),0 0 14px rgba(255,204,77,.18);transition:opacity .2s ease,box-shadow .2s ease;}' +
     '.askfloat-toggle img{display:block;width:44px;height:44px;border-radius:50%;border:2px solid #ffcc4d;object-fit:cover;margin:0;max-width:none;}' +
     '.askfloat-toggle:hover{box-shadow:0 6px 22px rgba(0,0,0,.55),0 0 20px rgba(255,204,77,.32);}' +
     '.askfloat-toggle:focus-visible{outline:2px solid #ffcc4d;outline-offset:3px;}' +
@@ -513,7 +513,28 @@
     function ongoing() { try { return !!(T().isChatOngoing && T().isChatOngoing()); } catch (e) { return false; } }
     function isActive() { try { return localStorage.getItem(CHAT.flag) === '1'; } catch (e) { return false; } }
     function setActive(on) { try { if (on) localStorage.setItem(CHAT.flag, '1'); else localStorage.removeItem(CHAT.flag); } catch (e) {} }
-    function open() { showFace(false); T().showWidget(); T().maximize(); }
+    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    var vp = document.querySelector('meta[name="viewport"]'), vpOriginal = vp ? vp.getAttribute('content') : null;
+    // Tawk rewrites the viewport tag when it opens on phones, so keep maximum-scale=1 on it
+    // for as long as the chat is open, then put the page's own tag back.
+    var zoomWatch = null;
+    function ensureMax() {
+      var c = vp.getAttribute('content') || '';
+      if (!/maximum-scale\s*=\s*1(\.0)?\b/.test(c)) vp.setAttribute('content', c.replace(/,?\s*maximum-scale\s*=\s*[\d.]+/g, '') + ', maximum-scale=1');
+    }
+    function lockZoom() {
+      if (!isIOS || !vp || /maximum-scale/.test(vpOriginal)) return;
+      ensureMax();
+      if (!zoomWatch && window.MutationObserver) {
+        zoomWatch = new MutationObserver(ensureMax);
+        zoomWatch.observe(vp, { attributes: true, attributeFilter: ['content'] });
+      }
+    }
+    function unlockZoom() {
+      if (zoomWatch) { zoomWatch.disconnect(); zoomWatch = null; }
+      if (vp && vpOriginal !== null) vp.setAttribute('content', vpOriginal);
+    }
+    function open() { lockZoom(); showFace(false); T().showWidget(); T().maximize(); }
     function doneLoading() { btn.removeAttribute('aria-busy'); label.textContent = CHAT.label; }
 
     function load(openAfter) {
@@ -532,8 +553,9 @@
         else { api.hideWidget(); setActive(false); showFace(true); }
       };
       // Closed the chat window: go back to George's face unless a conversation is still open
-      api.onChatMinimized = function () { if (!ongoing()) { api.hideWidget(); showFace(true); } };
-      api.onChatHidden = function () { showFace(true); };
+      api.onChatMaximized = function () { lockZoom(); };
+      api.onChatMinimized = function () { unlockZoom(); if (!ongoing()) { api.hideWidget(); showFace(true); } };
+      api.onChatHidden = function () { unlockZoom(); showFace(true); };
       api.onChatStarted = function () { setActive(true); track('chat_started', { page_path: location.pathname }); };
       api.onChatEnded = function () { setActive(false); };
       var sc = document.createElement('script');
