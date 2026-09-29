@@ -850,6 +850,20 @@ window.ARTICLE_REGISTRY = {
       published: false
     },
     {
+      slug: "where-should-i-move-when-downsizing-st-louis",
+      title: "Where Should I Move When Downsizing in St. Louis?",
+      shortTitle: "Where Should I Move?",
+      description: "It is not a list of neighborhoods. Right-size the house, location and lifestyle, then build your search brief.",
+      pillLabel: "Right-Sizing",
+      audience: "seller",
+      series: "seller-net",
+      isHub: false,
+      chapters: [],
+      tags: ["downsizing", "right-sizing", "where to move", "longtime homeowner", "retirement", "ranch", "villa", "condo", "empty nesters"],
+      toolLink: null,
+      published: true
+    },
+    {
       slug: "should-i-downsize-my-house-st-louis",
       title: "Should I Downsize My House in St. Louis?",
       shortTitle: "Should I Downsize?",

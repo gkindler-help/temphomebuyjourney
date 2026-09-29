@@ -1,6 +1,6 @@
 # Ask Me — Conversion Map
 
-Source of truth for which pages carry the **Ask Me** CTA. **262 pages** carry it as of 2026-09-28. CTA copy lives in `/assets/ask-me.js` (`CONTEXTS`); this file tracks rollout.
+Source of truth for which pages carry the **Ask Me** CTA. **263 pages** carry it as of 2026-09-28. CTA copy lives in `/assets/ask-me.js` (`CONTEXTS`); this file tracks rollout.
 
 **How it works:** a page gets `<div data-ask-me="CONTEXT_KEY" [data-ask-name="Affton"]>…</div>` plus `<script src="/assets/ask-me.js?v=2" defer></script>`. The component shows George’s photo, the headline, supporting line, button and a no-pressure note. The button links to `/ask?about=CONTEXT_KEY&from=/page-path`; the source title and URL are carried automatically.
 
@@ -40,10 +40,11 @@ Source of truth for which pages carry the **Ask Me** CTA. **262 pages** carry it
 | `/south-county-st-louis` | buyer | `neighborhood` | Looking at a house in South County? | Ask Me About the House | Yes | IMPLEMENTED | 2026-09-28 | Before <section aria-label='About George Kindler'> |
 | `/stl-home-buying-power-calculator` | buyer | `buying-power` | Know your number. Not sure where to spend it? | Ask Me Where Your Budget Fits | No | IMPLEMENTED | 2026-09-28 | Before <div class='compliance-footer'> |
 
-## Articles (76)
+## Articles (77)
 
 | URL | Intent | Context | CTA headline | CTA button | Address field | Status | Implemented | Placement |
 |---|---|---|---|---|---|---|---|---|
+| `/articles/where-should-i-move-when-downsizing-st-louis` | general | `general-page` | Have a question about your own situation? | Ask Me | Yes | IMPLEMENTED | 2026-09-29 | After the next-steps box, before the fine print |
 | `/articles/should-i-downsize-my-house-st-louis` | seller | `seller-general` | Thinking about this for your own house? | Ask Me About Your House | Yes | IMPLEMENTED | 2026-09-29 | End of the closing section, before the link back to the hub |
 | `/articles/average-price-move-in-ready-home-st-louis` | buyer | `price-value` | Found a house and wondering if the price makes sense? | Ask Me About the Price | Yes | IMPLEMENTED | 2026-09-28 | Hand-placed at decision point (first batch) |
 | `/articles/average-price-reduction-after-inspection-st-louis` | buyer | `inspection-negotiation` | Got an inspection report and don’t know what to ask for? | Ask Me About the Report | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
