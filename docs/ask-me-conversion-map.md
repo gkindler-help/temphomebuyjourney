@@ -1,6 +1,6 @@
 # Ask Me — Conversion Map
 
-Source of truth for which pages carry the **Ask Me** CTA. **260 pages** carry it as of 2026-09-28. CTA copy lives in `/assets/ask-me.js` (`CONTEXTS`); this file tracks rollout.
+Source of truth for which pages carry the **Ask Me** CTA. **261 pages** carry it as of 2026-09-28. CTA copy lives in `/assets/ask-me.js` (`CONTEXTS`); this file tracks rollout.
 
 **How it works:** a page gets `<div data-ask-me="CONTEXT_KEY" [data-ask-name="Affton"]>…</div>` plus `<script src="/assets/ask-me.js?v=2" defer></script>`. The component shows George’s photo, the headline, supporting line, button and a no-pressure note. The button links to `/ask?about=CONTEXT_KEY&from=/page-path`; the source title and URL are carried automatically.
 
@@ -18,10 +18,11 @@ Source of truth for which pages carry the **Ask Me** CTA. **260 pages** carry it
 |---|---|---|---|---|---|---|---|---|
 | `/` | buyer | `home` | Found a house you’re seriously considering? | Ask Me About the House | Yes | IMPLEMENTED | 2026-09-28 | Hand-placed at decision point (first batch) |
 
-## Root pages (guides, tools, about) (16)
+## Root pages (guides, tools, about) (17)
 
 | URL | Intent | Context | CTA headline | CTA button | Address field | Status | Implemented | Placement |
 |---|---|---|---|---|---|---|---|---|
+| `/longtime-homeowners` | seller | `seller-general` | Thinking about this for your own house? | Ask Me About Your House | Yes | IMPLEMENTED | 2026-09-29 | End of page, after the closing section |
 | `/about` | buyer | `buyer-agent` | Want to know what I’d actually do for you? | Ask Me | Yes | IMPLEMENTED | 2026-09-28 | Before <footer> |
 | `/afford` | buyer | `buying-power` | Know your number. Not sure where to spend it? | Ask Me Where Your Budget Fits | No | IMPLEMENTED | 2026-09-28 | Before <div class='footer'> |
 | `/compare` | buyer | `area-comparison` | Down to two or three areas? | Ask Me to Compare Them | No | IMPLEMENTED | 2026-09-28 | Before <div id='app'></div> (after) |
