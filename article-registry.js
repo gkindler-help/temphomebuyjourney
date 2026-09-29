@@ -850,6 +850,20 @@ window.ARTICLE_REGISTRY = {
       published: false
     },
     {
+      slug: "should-i-downsize-my-house-st-louis",
+      title: "Should I Downsize My House in St. Louis?",
+      shortTitle: "Should I Downsize?",
+      description: "Why staying deserves a fair hearing, what downsizing would actually solve, and a stay-vs-downsize calculator.",
+      pillLabel: "Downsizing",
+      audience: "seller",
+      series: "seller-net",
+      isHub: false,
+      chapters: [],
+      tags: ["selling", "downsizing", "longtime homeowner", "empty nesters", "stay or sell", "calculator", "equity"],
+      toolLink: null,
+      published: true
+    },
+    {
       slug: "what-will-i-net-selling-stl",
       title: "What Will I Net Selling My St. Louis Home?",
       shortTitle: "Your Net Proceeds in STL",
