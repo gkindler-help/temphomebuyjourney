@@ -307,6 +307,40 @@ a{color:var(--gold);text-decoration:none;}
   .downsize-page .ds-result strong{color:var(--ds-gold);font-family:'Playfair Display',Georgia,serif;}
   .downsize-page .ds-comparison h3{font-size:1.5rem;margin-top:6px;}
   @media(min-width:1200px){.hp-footer{left:0;}}
+
+  /* ===== "Can You Fix the Problem Without Moving?" interactive (from the Drive asset; scoped to .fwm, site tokens) ===== */
+  .downsize-page .fwm{margin:30px 0 34px;background:rgba(255,255,255,.03);border:1px solid rgba(255,204,77,.3);border-radius:18px;padding:clamp(18px,4vw,30px);}
+  .downsize-page .fwm-eyebrow{margin:0 0 4px;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ds-gold);}
+  .downsize-page .fwm-title{margin:0 0 8px;font-size:clamp(1.5rem,4vw,2rem);}
+  .downsize-page .fwm-intro{margin:0;max-width:44em;}
+  .downsize-page .fwm-issues{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:20px 0 4px;}
+  .downsize-page .fwm-issue{position:relative;}
+  .downsize-page .fwm-issue input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none;}
+  .downsize-page .fwm-issue label{display:block;position:relative;height:100%;min-height:74px;padding:14px 14px 14px 44px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(5,5,5,.6);cursor:pointer;font-weight:700;color:#fff;line-height:1.3;-webkit-tap-highlight-color:transparent;transition:border-color .15s,background .15s;}
+  .downsize-page .fwm-issue label::before{content:'';position:absolute;left:14px;top:15px;width:18px;height:18px;border-radius:5px;border:1.5px solid rgba(255,255,255,.35);}
+  .downsize-page .fwm-issue label span{display:block;margin-top:4px;font-size:.88rem;font-weight:400;color:rgba(255,255,255,.62);}
+  .downsize-page .fwm-issue input:checked+label{border-color:var(--ds-gold);background:rgba(255,204,77,.1);box-shadow:inset 0 0 0 1px var(--ds-gold);}
+  .downsize-page .fwm-issue input:checked+label::before{border-color:var(--ds-gold);background:var(--ds-gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%23080808' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat;}
+  .downsize-page .fwm-issue input:focus-visible+label{outline:2px solid var(--ds-gold);outline-offset:2px;}
+  .downsize-page .fwm-actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0;}
+  .downsize-page .fwm-btn{appearance:none;min-height:48px;border-radius:8px;padding:12px 20px;font:700 1rem/1.2 'Inter',-apple-system,sans-serif;cursor:pointer;}
+  .downsize-page .fwm-btn-primary{background:var(--ds-gold);color:#080808;border:0;}
+  .downsize-page .fwm-btn-primary:hover{background:#ffd76e;}
+  .downsize-page .fwm-btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.22);}
+  .downsize-page .fwm-btn-secondary:hover{border-color:rgba(255,204,77,.4);color:var(--ds-gold);}
+  .downsize-page .fwm-btn:focus-visible{outline:2px solid var(--ds-gold);outline-offset:3px;}
+  .downsize-page .fwm-paths{display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px;}
+  .downsize-page .fwm-paths.show{display:grid;}
+  .downsize-page .fwm-path{border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(5,5,5,.6);overflow:hidden;}
+  .downsize-page .fwm-path h4{margin:0;padding:14px 16px 6px;font-family:'Playfair Display',Georgia,serif;font-size:1.2rem;color:#fff;}
+  .downsize-page .fwm-path ul{margin:0;padding:0 16px 16px 34px;}
+  .downsize-page .fwm-path li{margin:8px 0;font-size:.98rem;}
+  .downsize-page .fwm-adapt{border-top:4px solid #7fa36b;}
+  .downsize-page .fwm-hire{border-top:4px solid #5b8fbf;}
+  .downsize-page .fwm-move{border-top:4px solid var(--ds-gold);}
+  .downsize-page .fwm-note{margin:16px 0 0;border-left:3px solid var(--ds-gold);background:rgba(255,204,77,.06);padding:12px 15px;border-radius:0 8px 8px 0;color:rgba(255,255,255,.85);}
+  @media(max-width:760px){.downsize-page .fwm-issues{grid-template-columns:repeat(2,minmax(0,1fr));}.downsize-page .fwm-paths.show{grid-template-columns:1fr;}}
+  @media(max-width:460px){.downsize-page .fwm-issues{grid-template-columns:1fr;}.downsize-page .fwm-issue label{min-height:0;}.downsize-page .fwm-actions .fwm-btn{flex:1 1 100%;}}
 </style>
 </head>
 <body>
@@ -382,6 +416,32 @@ a{color:var(--gold);text-decoration:none;}
         <p>Those are very different problems. And not all of them require selling.</p>
         <p>If the yard is the problem, paying someone to maintain it might be considerably cheaper than moving. If maintenance is becoming overwhelming, compare the cost of hiring help with the cost of replacing the house.</p>
         <p>Even spending money modifying the house can make sense if it allows you to comfortably stay somewhere you already love.</p>
+</div>
+<!-- Interactive from Drive: 04-can-you-fix-the-problem-without-moving-interactive.html (styles/classes scoped fwm-*) -->
+<section class="fwm" id="fix-without-moving" aria-labelledby="fwm-h">
+<p class="fwm-eyebrow">Interactive</p>
+<h3 class="fwm-title" id="fwm-h">Adapt, Hire Out or Move?</h3>
+<p class="fwm-intro">Sometimes the right solution is an adjustment, not a move. Select what's frustrating about your current home to compare the paths available to you.</p>
+<div class="fwm-issues" role="group" aria-labelledby="fwm-h">
+<div class="fwm-issue"><input type="checkbox" id="fwm-stairs" value="stairs"><label for="fwm-stairs">Stairs are getting harder<span>Mobility or layout</span></label></div>
+<div class="fwm-issue"><input type="checkbox" id="fwm-maint" value="maintenance"><label for="fwm-maint">Too much maintenance<span>Time or physical work</span></label></div>
+<div class="fwm-issue"><input type="checkbox" id="fwm-space" value="space"><label for="fwm-space">More space than you need<span>Cleaning or unused rooms</span></label></div>
+<div class="fwm-issue"><input type="checkbox" id="fwm-yard" value="yard"><label for="fwm-yard">Yard work is a burden<span>Exterior upkeep</span></label></div>
+<div class="fwm-issue"><input type="checkbox" id="fwm-location" value="location"><label for="fwm-location">Location isn't as convenient<span>Family or routines changed</span></label></div>
+<div class="fwm-issue"><input type="checkbox" id="fwm-costs" value="costs"><label for="fwm-costs">Rising costs<span>Taxes, repairs or utilities</span></label></div>
+</div>
+<div class="fwm-actions">
+<button type="button" class="fwm-btn fwm-btn-primary" id="fwm-show">Show My Options →</button>
+<button type="button" class="fwm-btn fwm-btn-secondary" id="fwm-reset">Reset</button>
+</div>
+<div class="fwm-paths" id="fwm-paths">
+<div class="fwm-path fwm-adapt"><h4>Adapt Your Current Home</h4><ul id="fwm-adapt"></ul></div>
+<div class="fwm-path fwm-hire"><h4>Hire Out and Simplify</h4><ul id="fwm-hire"></ul></div>
+<div class="fwm-path fwm-move"><h4>Move to a Better Fit</h4><ul id="fwm-move"></ul></div>
+</div>
+<p class="fwm-note" id="fwm-note" aria-live="polite">There's no one-size-fits-all answer. The goal is to separate problems you can solve in your current home from problems that may require a different home or location.</p>
+</section>
+<div class="ds-copy">
         <p>But there’s another side to this. At some point, you can spend so much time, money and energy trying to make the house work that you’re really just avoiding the bigger question.</p>
         <div class="ds-callout"><p class="ds-question">Does this house still fit your life?</p></div>
         <p>That’s when downsizing deserves a serious look.</p>
@@ -651,6 +711,36 @@ a{color:var(--gold);text-decoration:none;}
     calculate();
   });
   calculate();
+})();
+
+/* "Can You Fix the Problem Without Moving?" interactive (logic and wording from the Drive asset) */
+(() => {
+  const root = document.getElementById('fix-without-moving'); if (!root) return;
+  const data = {
+    stairs: {adapt:['Explore a main-floor living setup','Price accessibility or layout changes'], hire:['Hire help for tasks that require repeated stair use'], move:['Compare one-level homes or homes with a main-floor bedroom']},
+    maintenance: {adapt:['Prioritize changes that make the home easier to own'], hire:['Price handyman or home-maintenance help','Consider recurring cleaning help'], move:['Compare lower-maintenance housing options']},
+    space: {adapt:['Repurpose, close off or simplify unused rooms'], hire:['Use periodic cleaning help instead of maintaining everything yourself'], move:['Look for a footprint that keeps the spaces you actually use']},
+    yard: {adapt:['Reduce high-maintenance landscaping'], hire:['Price lawn care or landscaping service'], move:['Compare smaller yards or maintained exterior options']},
+    location: {adapt:['The house itself cannot change its location'], hire:['Use delivery or transportation services where practical'], move:['Start the search around the people and routines you want closer']},
+    costs: {adapt:['Identify which current-home costs are actually increasing','Compare targeted changes that could reduce operating costs'], hire:['Compare predictable service costs with doing the work yourself'], move:['Compare the full replacement-home cost, not just the purchase price']}
+  };
+  const DEFAULT_NOTE = "There's no one-size-fits-all answer. The goal is to separate problems you can solve in your current home from problems that may require a different home or location.";
+  const note = root.querySelector('#fwm-note'), paths = root.querySelector('#fwm-paths');
+  const fill = (id, items) => { const ul = root.querySelector('#' + id); ul.textContent = ''; items.forEach(t => { const li = document.createElement('li'); li.textContent = t; ul.appendChild(li); }); };
+  root.querySelector('#fwm-show').addEventListener('click', () => {
+    const selected = [...root.querySelectorAll('.fwm-issue input:checked')].map(x => x.value);
+    if (!selected.length) { paths.classList.remove('show'); note.textContent = 'Select at least one challenge to compare your options.'; return; }
+    [['fwm-adapt','adapt'],['fwm-hire','hire'],['fwm-move','move']].forEach(([id,key]) => fill(id, [...new Set(selected.flatMap(v => data[v][key]))]));
+    paths.classList.add('show');
+    note.textContent = selected.includes('location')
+      ? 'Location is the hardest problem to adapt around. Compare it separately from maintenance, yard or layout problems that may be modified or hired out.'
+      : 'Price adaptation and hired-help options before assuming moving is the only solution. Then compare those choices with the full cost and lifestyle effect of moving.';
+    try { if (typeof gtag === 'function') gtag('event', 'fix_without_moving_compared', { challenges: selected.length, includes_location: selected.includes('location') ? 1 : 0 }); } catch (e) {}
+  });
+  root.querySelector('#fwm-reset').addEventListener('click', () => {
+    root.querySelectorAll('.fwm-issue input').forEach(x => { x.checked = false; });
+    paths.classList.remove('show'); note.textContent = DEFAULT_NOTE;
+  });
 })();
 </script>
 <script src="/assets/ask-me.js?v=5" defer></script>
