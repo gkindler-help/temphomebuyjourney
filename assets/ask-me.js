@@ -14,7 +14,13 @@
    Floating "Ask George" (opt-in): <div data-ask-float="KEY" hidden></div>, prompts in FLOATS.
    Plain links: <a href="/ask?about=KEY…" data-ask-link="KEY"> get context hand-off + tracking.
 
-   Live chat: CHAT config below (Tawk.to, loaded only on tap). GA4: chat_open, chat_started { page_path }
+   Live chat: CHAT config below (Tawk.to, loaded only on tap). One shared loader
+   (ensureChat, below CHAT) lazy-loads the Tawk script and tracks its ready
+   state; the floating "Chat with George" bubble (renderChat) and /ask's own
+   primary button both open chat through it rather than loading Tawk twice.
+   window.AskMe.openChat({context, intent, sourceUrl, onOpen, onTimeout}) is
+   the public entry point for a page's own chat button (used by /ask).
+   GA4: chat_open, chat_started { page_path }
 
    GA4: ask_me_click { page_path, page_title, ask_context, ask_intent, ask_button }
         ask_george_open / ask_george_dismiss { page_path, ask_context }
@@ -353,6 +359,104 @@
     flag: 'stlhj_chat_active'
   };
 
+  /* ---- shared Tawk lifecycle: the ONE lazy loader every chat entry point uses ---- */
+  var chatState = 'idle', chatOpenWhenReady = false, chatReadyQueue = [];
+  var chatIsIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var chatVp = null, chatVpOriginal = null, chatZoomWatch = null;
+
+  function chatOngoing() { try { return !!(window.Tawk_API && window.Tawk_API.isChatOngoing && window.Tawk_API.isChatOngoing()); } catch (e) { return false; } }
+  function chatIsActive() { try { return localStorage.getItem(CHAT.flag) === '1'; } catch (e) { return false; } }
+  function chatSetActive(on) { try { if (on) localStorage.setItem(CHAT.flag, '1'); else localStorage.removeItem(CHAT.flag); } catch (e) {} }
+
+  // Tawk rewrites the viewport tag when it opens on phones, so keep maximum-scale=1
+  // on it for as long as chat is open, then put the page's own tag back.
+  function chatEnsureMaxZoom() {
+    var c = chatVp.getAttribute('content') || '';
+    if (!/maximum-scale\s*=\s*1(\.0)?\b/.test(c)) chatVp.setAttribute('content', c.replace(/,?\s*maximum-scale\s*=\s*[\d.]+/g, '') + ', maximum-scale=1');
+  }
+  function chatLockZoom() {
+    if (!chatIsIOS) return;
+    chatVp = chatVp || document.querySelector('meta[name="viewport"]');
+    if (!chatVp) return;
+    if (chatVpOriginal === null) chatVpOriginal = chatVp.getAttribute('content');
+    if (/maximum-scale/.test(chatVpOriginal)) return;
+    chatEnsureMaxZoom();
+    if (!chatZoomWatch && window.MutationObserver) {
+      chatZoomWatch = new MutationObserver(chatEnsureMaxZoom);
+      chatZoomWatch.observe(chatVp, { attributes: true, attributeFilter: ['content'] });
+    }
+  }
+  function chatUnlockZoom() {
+    if (chatZoomWatch) { chatZoomWatch.disconnect(); chatZoomWatch = null; }
+    if (chatVp && chatVpOriginal !== null) chatVp.setAttribute('content', chatVpOriginal);
+  }
+  function openTawkWidget() {
+    chatLockZoom();
+    try { window.Tawk_API.showWidget(); window.Tawk_API.maximize(); } catch (e) {}
+  }
+  // Fires when chat is minimized/hidden with no conversation left open, so the
+  // floating face (if this page has one) can reappear. No-op on pages without it.
+  var chatOnIdle = null;
+
+  /* Loads Tawk at most once per page, however many entry points ask for it.
+     onReady fires once the widget is ready (immediately, if it already is).
+     onTimeout fires only when `open` is true and Tawk still isn't ready ~12s
+     later (blocked, slow network, ad blocker) -- callers decide what to do
+     (the floating widget sends visitors to /ask; /ask shows its own fallback). */
+  function ensureChat(open, onReady, onTimeout) {
+    if (!CHAT.enabled) return;
+    if (chatState === 'ready') {
+      if (open) openTawkWidget();
+      if (onReady) onReady();
+      return;
+    }
+    if (open) chatOpenWhenReady = true;
+    if (onReady) chatReadyQueue.push(onReady);
+    if (chatState === 'loading') return;
+    chatState = 'loading';
+    var api = window.Tawk_API = window.Tawk_API || {};
+    window.Tawk_LoadStart = new Date();
+    api.onBeforeLoad = function () { if (!chatOpenWhenReady && !chatIsActive()) api.hideWidget(); };
+    api.onLoad = function () {
+      chatState = 'ready';
+      if (chatOpenWhenReady) openTawkWidget();
+      var q = chatReadyQueue; chatReadyQueue = [];
+      q.forEach(function (cb) { try { cb(); } catch (e) {} });
+    };
+    api.onChatMaximized = function () { chatLockZoom(); };
+    api.onChatMinimized = function () { chatUnlockZoom(); if (!chatOngoing()) { api.hideWidget(); if (chatOnIdle) chatOnIdle(); } };
+    api.onChatHidden = function () { chatUnlockZoom(); if (chatOnIdle) chatOnIdle(); };
+    api.onChatStarted = function () { chatSetActive(true); track('chat_started', { page_path: location.pathname }); };
+    api.onChatEnded = function () { chatSetActive(false); };
+    var sc = document.createElement('script');
+    sc.async = true; sc.charset = 'UTF-8'; sc.setAttribute('crossorigin', '*'); sc.src = CHAT.src;
+    document.head.appendChild(sc);
+    if (open) {
+      setTimeout(function () {
+        if (chatState !== 'ready' && chatOpenWhenReady && onTimeout) onTimeout();
+      }, 12000);
+    }
+  }
+
+  /* Public entry point for a page's own chat button (used by /ask). Passes
+     non-PII context to Tawk as visitor tags -- never name, email or phone. */
+  function openChat(opts) {
+    opts = opts || {};
+    if (!CHAT.enabled) { if (opts.onTimeout) opts.onTimeout(); return; }
+    ensureChat(true, function () {
+      try {
+        if (window.Tawk_API && typeof window.Tawk_API.addTags === 'function') {
+          var tags = [];
+          if (opts.context) tags.push('ask_context:' + opts.context);
+          if (opts.intent) tags.push('ask_intent:' + opts.intent);
+          if (opts.sourceUrl) tags.push('source:' + opts.sourceUrl);
+          if (tags.length) window.Tawk_API.addTags(tags, function () {});
+        }
+      } catch (e) {}
+      if (opts.onOpen) opts.onOpen();
+    }, opts.onTimeout);
+  }
+
   var AVATAR = '/assets/george-ask.webp';
   var WHO = 'George Kindler · 250+ St. Louis transactions';
   var NOTES = {
@@ -506,81 +610,37 @@
         '<span class="askfloat-label">' + esc(CHAT.label) + '</span>' +
       '</button>';
     var btn = root.querySelector('button'), label = root.querySelector('.askfloat-label');
-    var state = 'idle', openWhenReady = false;
+    var onAskPage = /^\/ask\/?$/.test(location.pathname); // already on /ask: never redirect there
 
     function showFace(on) { root.hidden = !on; }
-    function T() { return window.Tawk_API || {}; }
-    function ongoing() { try { return !!(T().isChatOngoing && T().isChatOngoing()); } catch (e) { return false; } }
-    function isActive() { try { return localStorage.getItem(CHAT.flag) === '1'; } catch (e) { return false; } }
-    function setActive(on) { try { if (on) localStorage.setItem(CHAT.flag, '1'); else localStorage.removeItem(CHAT.flag); } catch (e) {} }
-    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    var vp = document.querySelector('meta[name="viewport"]'), vpOriginal = vp ? vp.getAttribute('content') : null;
-    // Tawk rewrites the viewport tag when it opens on phones, so keep maximum-scale=1 on it
-    // for as long as the chat is open, then put the page's own tag back.
-    var zoomWatch = null;
-    function ensureMax() {
-      var c = vp.getAttribute('content') || '';
-      if (!/maximum-scale\s*=\s*1(\.0)?\b/.test(c)) vp.setAttribute('content', c.replace(/,?\s*maximum-scale\s*=\s*[\d.]+/g, '') + ', maximum-scale=1');
-    }
-    function lockZoom() {
-      if (!isIOS || !vp || /maximum-scale/.test(vpOriginal)) return;
-      ensureMax();
-      if (!zoomWatch && window.MutationObserver) {
-        zoomWatch = new MutationObserver(ensureMax);
-        zoomWatch.observe(vp, { attributes: true, attributeFilter: ['content'] });
-      }
-    }
-    function unlockZoom() {
-      if (zoomWatch) { zoomWatch.disconnect(); zoomWatch = null; }
-      if (vp && vpOriginal !== null) vp.setAttribute('content', vpOriginal);
-    }
-    function open() { lockZoom(); showFace(false); T().showWidget(); T().maximize(); }
     function doneLoading() { btn.removeAttribute('aria-busy'); label.textContent = CHAT.label; }
-
-    function load(openAfter) {
-      if (state === 'ready') { if (openAfter) open(); return; }
-      openWhenReady = openWhenReady || openAfter;
-      if (openAfter) { btn.setAttribute('aria-busy', 'true'); label.textContent = 'Connecting…'; }
-      if (state === 'loading') return;
-      state = 'loading';
-      var api = window.Tawk_API = window.Tawk_API || {};
-      window.Tawk_LoadStart = new Date();
-      api.onBeforeLoad = function () { if (!openWhenReady && !isActive()) api.hideWidget(); };
-      api.onLoad = function () {
-        state = 'ready'; doneLoading();
-        if (openWhenReady) open();
-        else if (ongoing()) showFace(false);          // mid-conversation: Tawk's own bubble shows new replies
-        else { api.hideWidget(); setActive(false); showFace(true); }
-      };
-      // Closed the chat window: go back to George's face unless a conversation is still open
-      api.onChatMaximized = function () { lockZoom(); };
-      api.onChatMinimized = function () { unlockZoom(); if (!ongoing()) { api.hideWidget(); showFace(true); } };
-      api.onChatHidden = function () { unlockZoom(); showFace(true); };
-      api.onChatStarted = function () { setActive(true); track('chat_started', { page_path: location.pathname }); };
-      api.onChatEnded = function () { setActive(false); };
-      var sc = document.createElement('script');
-      sc.async = true; sc.charset = 'UTF-8'; sc.setAttribute('crossorigin', '*'); sc.src = CHAT.src;
-      document.head.appendChild(sc);
-      // If chat is blocked or down, don't leave them waiting: send them to the Ask Me page instead
-      setTimeout(function () {
-        if (state !== 'ready' && openWhenReady) {
-          doneLoading();
-          location.href = '/ask?about=general-page&from=' + encodeURIComponent(location.pathname);
-        }
-      }, 12000);
-    }
+    chatOnIdle = function () { showFace(true); };          // mid-conversation ended/hidden elsewhere on the page
 
     btn.addEventListener('click', function () {
       setQuiet(root);
       track('chat_open', { page_path: location.pathname });
-      load(true);
+      if (chatState !== 'ready') { btn.setAttribute('aria-busy', 'true'); label.textContent = 'Connecting…'; }
+      ensureChat(true, function () { doneLoading(); showFace(false); }, function () {
+        // Chat is blocked or down. On any other page, send them to /ask instead
+        // of leaving them waiting; on /ask itself, just reset -- its own
+        // text/call/email fallback is already on the page.
+        doneLoading();
+        if (onAskPage) showFace(true);
+        else location.href = '/ask?about=general-page&from=' + encodeURIComponent(location.pathname);
+      });
     });
     document.body.appendChild(root);
     document.body.classList.add('has-askfloat');
     // Returning mid-conversation: load quietly so George's replies can reach them
-    if (isActive()) {
+    if (chatIsActive()) {
       showFace(false);
-      (window.requestIdleCallback || function (f) { setTimeout(f, 2000); })(function () { load(false); });
+      (window.requestIdleCallback || function (f) { setTimeout(f, 2000); })(function () {
+        ensureChat(false, function () {
+          doneLoading();
+          if (chatOngoing()) showFace(false);            // mid-conversation: Tawk's own bubble shows new replies
+          else { try { window.Tawk_API.hideWidget(); } catch (e) {} chatSetActive(false); showFace(true); }
+        }, null);
+      });
     }
   }
 
@@ -622,7 +682,7 @@
     renderChat();
   }
 
-  window.AskMe = { contexts: CONTEXTS, floats: FLOATS, store: STORE, track: track };
+  window.AskMe = { contexts: CONTEXTS, floats: FLOATS, store: STORE, track: track, openChat: openChat };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
