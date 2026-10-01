@@ -351,18 +351,6 @@ a{color:var(--gold);text-decoration:none;}
 }
 .rs-page .rs-print-head{display:none;font-size:.9rem;color:#000;margin:0 0 10px;}
 
-/* ===== share row (shared pattern) ===== */
-.shr{margin:34px 0 8px;padding:18px 0 0;border-top:1px solid rgba(255,255,255,.1);}
-.shr .shr-t{margin:0 0 10px;font:600 13px/1.3 'Inter',-apple-system,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#ffcc4d;}
-.shr .shr-btns{display:flex;flex-wrap:wrap;gap:8px;}
-.shr .shr-b{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;font:600 14px/1.2 'Inter',-apple-system,sans-serif;text-decoration:none;cursor:pointer;}
-.shr .shr-b:hover{border-color:rgba(255,204,77,.45);color:#ffcc4d;text-decoration:none;}
-.shr .shr-b:focus-visible{outline:2px solid #ffcc4d;outline-offset:3px;}
-.shr .shr-native{background:#ffcc4d;color:#080808;border-color:#ffcc4d;}
-.shr .shr-native:hover{background:#ffd76e;color:#080808;}
-.shr .shr-done{min-height:1.2em;margin:8px 0 0;font:500 13px/1.4 'Inter',-apple-system,sans-serif;color:rgba(255,255,255,.62);}
-@media(max-width:520px){.shr .shr-b{flex:1 1 calc(50% - 8px);}}
-@media print{.shr{display:none !important;}}
 </style>
 </head>
 <body>
@@ -634,17 +622,6 @@ a{color:var(--gold);text-decoration:none;}
 <!-- Ranch vs. Villa vs. Condo is not live yet: link it here when it is. -->
 <p><a href="/longtime-homeowners">Back to Longtime St. Louis Homeowner: Should You Stay or Should You Go? →</a></p>
 </div>
-<div class="shr" role="group" aria-label="Share this guide" data-url="https://stlhomejourney.com/articles/where-should-i-move-when-downsizing-st-louis" data-title="Where Should I Move When Downsizing in St. Louis?" data-text="The answer isn't a list of neighborhoods. Build your Right-Size Profile and figure out what your next St. Louis home should actually make easier.">
-<p class="shr-t">Share this guide</p>
-<div class="shr-btns">
-<button type="button" class="shr-b shr-native" hidden>Share…</button>
-<a class="shr-b" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstlhomejourney.com%2Farticles%2Fwhere-should-i-move-when-downsizing-st-louis" target="_blank" rel="noopener" data-method="facebook">Facebook</a>
-<a class="shr-b" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fstlhomejourney.com%2Farticles%2Fwhere-should-i-move-when-downsizing-st-louis&amp;media=https%3A%2F%2Fstlhomejourney.com%2Fassets%2Farticles%2Fwhere-should-i-move%2Fstart-with-life-then-find-house.jpg&amp;description=Where%20Should%20I%20Move%20When%20Downsizing%20in%20St.%20Louis%3F" target="_blank" rel="noopener" data-method="pinterest">Pinterest</a>
-<a class="shr-b" href="mailto:?subject=Where%20Should%20I%20Move%20When%20Downsizing%20in%20St.%20Louis%3F&amp;body=Where%20Should%20I%20Move%20When%20Downsizing%20in%20St.%20Louis%3F%20%E2%80%94%20https%3A%2F%2Fstlhomejourney.com%2Farticles%2Fwhere-should-i-move-when-downsizing-st-louis" data-method="email">Email</a>
-<button type="button" class="shr-b shr-copy">Copy link</button>
-</div>
-<p class="shr-done" role="status"></p>
-</div>
 <!-- ASK ME: component configured in /assets/ask-me.js -->
 <div data-ask-me="general-page"><p><a href="/ask?about=general-page&amp;from=/articles/where-should-i-move-when-downsizing-st-louis">Ask me about your situation</a></p></div>
 <p class="rs-fine">This guide is intended to help organize a housing decision, not prescribe where anyone should live. Housing costs, taxes, association obligations, property condition and individual needs vary by property and household.</p>
@@ -699,24 +676,6 @@ form.addEventListener('submit',function(e){e.preventDefault();
 });
 form.addEventListener('reset',()=>{setTimeout(()=>{profile.style.display='none';msgEl.hidden=true;},0)});
 document.getElementById('printProfile').addEventListener('click',()=>{track('right_size_profile_print',{});window.print();});
-})();
-</script>
-<script>
-/* Share row: native share on phones, copy link, GA4 'share' events (no personal data) */
-(() => {
-  document.querySelectorAll('.shr').forEach(box => {
-    const url = box.dataset.url, title = box.dataset.title, text = box.dataset.text, done = box.querySelector('.shr-done');
-    const track = m => { try { if (typeof gtag === 'function') gtag('event', 'share', { method: m, content_type: 'article', item_id: location.pathname }); } catch (e) {} };
-    const nat = box.querySelector('.shr-native');
-    if (navigator.share && nat) { nat.hidden = false; nat.addEventListener('click', () => { navigator.share({ title, text, url }).then(() => track('native')).catch(() => {}); }); }
-    box.querySelectorAll('a.shr-b').forEach(a => a.addEventListener('click', () => track(a.dataset.method)));
-    const cp = box.querySelector('.shr-copy');
-    if (cp) cp.addEventListener('click', () => {
-      const ok = () => { done.textContent = 'Link copied.'; track('copy'); };
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(ok, () => { done.textContent = url; });
-      else { done.textContent = url; }
-    });
-  });
 })();
 </script>
 <script src="/assets/ask-me.js?v=5" defer></script>
