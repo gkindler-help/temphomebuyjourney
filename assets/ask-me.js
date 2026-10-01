@@ -397,21 +397,39 @@
   // Fires when chat is minimized/hidden with no conversation left open, so the
   // floating face (if this page has one) can reappear. No-op on pages without it.
   var chatOnIdle = null;
+  var chatTimeoutQueue = [], chatTimeoutArmed = false;
 
   /* Loads Tawk at most once per page, however many entry points ask for it.
      onReady fires once the widget is ready (immediately, if it already is).
-     onTimeout fires only when `open` is true and Tawk still isn't ready ~12s
-     later (blocked, slow network, ad blocker) -- callers decide what to do
-     (the floating widget sends visitors to /ask; /ask shows its own fallback). */
+     onTimeout fires only for callers that asked to open chat, if it still
+     isn't ready ~12s after the FIRST such request (blocked, slow network, ad
+     blocker) -- every caller's onTimeout runs, not just the first one's, so
+     a page with more than one chat entry point (/ask has both the floating
+     widget and its own button) can't leave a second caller's button stuck
+     showing "Connecting..." forever. Callers decide what "didn't come up"
+     looks like (the floating widget sends visitors to /ask; /ask shows its
+     own fallback). */
   function ensureChat(open, onReady, onTimeout) {
-    if (!CHAT.enabled) return;
+    if (!CHAT.enabled) { if (open && onTimeout) onTimeout(); return; }
     if (chatState === 'ready') {
       if (open) openTawkWidget();
       if (onReady) onReady();
       return;
     }
-    if (open) chatOpenWhenReady = true;
     if (onReady) chatReadyQueue.push(onReady);
+    if (open) {
+      chatOpenWhenReady = true;
+      if (onTimeout) chatTimeoutQueue.push(onTimeout);
+      if (!chatTimeoutArmed) {
+        chatTimeoutArmed = true;
+        setTimeout(function () {
+          if (chatState !== 'ready' && chatOpenWhenReady) {
+            var tq = chatTimeoutQueue; chatTimeoutQueue = [];
+            tq.forEach(function (cb) { try { cb(); } catch (e) {} });
+          }
+        }, 12000);
+      }
+    }
     if (chatState === 'loading') return;
     chatState = 'loading';
     var api = window.Tawk_API = window.Tawk_API || {};
@@ -431,11 +449,6 @@
     var sc = document.createElement('script');
     sc.async = true; sc.charset = 'UTF-8'; sc.setAttribute('crossorigin', '*'); sc.src = CHAT.src;
     document.head.appendChild(sc);
-    if (open) {
-      setTimeout(function () {
-        if (chatState !== 'ready' && chatOpenWhenReady && onTimeout) onTimeout();
-      }, 12000);
-    }
   }
 
   /* Public entry point for a page's own chat button (used by /ask). Passes

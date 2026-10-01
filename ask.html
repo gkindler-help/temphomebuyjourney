@@ -72,7 +72,7 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(32px,6.4vw,48px);font-we
 .btn-ghost:hover{border-color:var(--gold-line);color:var(--gold);}
 .chat-cta-note{font-size:13.5px;line-height:1.6;color:var(--mute);margin-top:12px;}
 
-.alt{margin-top:28px;border:1px solid var(--line);border-radius:12px;padding:20px 22px 22px;}
+.alt{margin-top:44px;border:1px solid var(--line);border-radius:12px;padding:20px 22px 22px;}
 .alt h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;}
 .alt>p{font-size:14.5px;line-height:1.6;color:var(--soft);margin-bottom:14px;}
 .alt-links{display:flex;flex-wrap:wrap;gap:10px;}
@@ -252,6 +252,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   btn.addEventListener('click', function () {
+    if (btn.getAttribute('aria-busy') === 'true') return; // already connecting -- ignore repeat clicks
     AM.track('ask_me_chat_click', { page_path: '/ask', ask_context: about, ask_intent: cfg.intent, source_page: from || '(direct)' });
     btn.setAttribute('aria-busy', 'true'); label.textContent = 'Connecting…';
     AM.openChat({
