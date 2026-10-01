@@ -10,7 +10,7 @@ Source of truth for which pages carry the **Ask Me** CTA. **263 pages** carry it
 
 **Status values:** `LIVE` (on main), `IMPLEMENTED` (on branch, not merged), `EXCLUDED`.
 
-**Delivery today:** `/ask` hands the message to the visitor’s own email or text app. Nothing is stored or sent by the site. See “Delivery” below.
+**Delivery today:** `/ask` opens live chat (Tawk.to) as the primary path, with call/text/email always visible as an alternative. Nothing is stored or sent by the site itself. See “Delivery” below.
 
 ## Homepage (1)
 
@@ -348,16 +348,20 @@ Source of truth for which pages carry the **Ask Me** CTA. **263 pages** carry it
 
 ## Delivery
 
-No form backend exists on the site (checked: no Pages Functions, Workers, Apps Script or form service). `/ask` composes the message (source page, URL, context, intent, property, question, name, contact) and opens the visitor’s email app (`mailto:`) or, on phones, their messaging app (`sms:`). The page says nothing is sent until they press send, and offers a copy-and-send fallback.
+As of 2026-10-01, `/ask` is a live-chat landing page, not a form. Its primary button opens Tawk.to through the single shared loader in `assets/ask-me.js` (`window.AskMe.openChat`) — the same loader the floating "Chat with George" bubble uses everywhere else, so there's one lazy-load implementation, not two. Non-PII context (source page, `ask_context`, `ask_intent`) is passed to Tawk as visitor tags, never name/email/phone.
 
-To receive submissions directly, add a free server-side handler: e.g. a Cloudflare Pages Function (`/functions/ask.js`) that emails via Cloudflare Email Routing, or a Google Apps Script web app that writes to a Sheet and emails George. Hidden fields `source_title`, `source_url`, `ask_context` and `ask_intent` are already in the form.
+A "Would rather not chat?" block with call, text and email links is always visible on the page (not JS-gated), which doubles as the fallback if chat is blocked, slow, or down — if the widget isn't ready ~12s after a click, the button resets and the page scrolls to that block. `/ask` never redirects to itself; that fallback path only applies off-`/ask`, where the floating widget sends a stalled visitor to `/ask?about=general-page` instead.
+
+If George is offline, Tawk's own offline/pre-chat form (configured in the Tawk dashboard, Administration → Chat Widget → Widget Content) is what a visitor sees inside the widget — the site doesn't replicate that separately.
+
+No form backend exists on the site (checked: no Pages Functions, Workers, Apps Script or form service), and none is needed for chat.
 
 
 ## Analytics (GA4, no PII)
 
-- `ask_me_click`: page_path, page_title, ask_context, ask_intent, ask_button
-- `ask_me_form_start`: ask_context, ask_intent
-- `ask_me_submit`: source_page, ask_context, ask_intent, delivery_method (`email_app` / `text_app`). Measures the hand-off, not a confirmed send.
+- `ask_me_click`: page_path, page_title, ask_context, ask_intent, ask_button — CTA click on the other 263 pages, before arriving at `/ask`.
+- `ask_me_chat_click` / `ask_me_chat_open`: page_path, ask_context, ask_intent, source_page — `/ask`'s own primary button: click vs. the widget actually becoming visible.
+- `chat_open` / `chat_started`: page_path — the floating "Chat with George" bubble (any page, including `/ask`).
 
-Register `ask_context`, `ask_intent`, `ask_button`, `source_page` and `delivery_method` as event-scoped custom dimensions in GA4.
+Register `ask_context`, `ask_intent`, `ask_button` and `source_page` as event-scoped custom dimensions in GA4.
 

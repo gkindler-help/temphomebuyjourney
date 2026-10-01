@@ -12,6 +12,3 @@
 
 /docs/*
   X-Robots-Tag: noindex
-
-/ask
-  X-Robots-Tag: noindex
