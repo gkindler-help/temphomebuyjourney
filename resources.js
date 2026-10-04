@@ -108,7 +108,7 @@ window.RESOURCES_REGISTRY = [
   {
     id:      'neighborhood-matcher',
     title:   'STL Neighborhood Matcher',
-    summary: '5 questions. Ranked area matches across 98 St. Louis neighborhoods — with links to individual neighborhood guides.',
+    summary: '5 questions. Ranked area matches across 116 St. Louis neighborhoods — with links to individual neighborhood guides.',
     url:     'neighborhood-matcher',
     tool:    true,
     toolId:  'neighborhood-matcher',

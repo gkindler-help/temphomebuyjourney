@@ -1546,7 +1546,7 @@ function closeDrawer() {
       { id:"home-cost", ico:"🔧", title:"STL Home Cost Survival Guide",   sub:"Walk the property, flag issues, get St. Louis repair estimates." },
       { id:"compare",   ico:"⚖️", title:"Compare STL Properties",    sub:"Two homes side by side — true monthly cost, taxes, 30-year difference." },
       { id:"fails", ico:"⚠️", title:"STL Common Home Failures", sub:"Visual guide to the most expensive defects in St. Louis housing stock." }, 
-      { id:"neighborhood-matcher", ico:"🗺", title:"STL Neighborhood Matcher", sub:"5 questions. Ranked area matches with 98 neighborhoods to explore." }
+      { id:"neighborhood-matcher", ico:"🗺", title:"STL Neighborhood Matcher", sub:"5 questions. Ranked area matches with 116 neighborhoods to explore." }
     ];
 
     var sellerTools = [
