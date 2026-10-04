@@ -702,13 +702,13 @@ window.NEIGHBORHOODS_REGISTRY = [
   {
     "id": "peaceful-village",
     "title": "Peaceful Village, Missouri",
-    "summary": "Peaceful Village neighborhood guide for buyers: location, housing character, market data, and what to know before searching this North County area.",
+    "summary": "Peaceful Village neighborhood guide for buyers: location, housing character, market data, and what to know before searching this Jefferson County area.",
     "url": "neighborhoods/peaceful-village",
     "type": "neighborhood",
     "slug": "peaceful-village",
-    "group": "North County",
-    "tag": "North County",
-    "zips": ["63136"],
+    "group": "Jefferson County",
+    "tag": "Jefferson Co.",
+    "zips": ["63049"],
     "status": "published",
     "indexable": true,
     "template": "neighborhood"

@@ -1728,7 +1728,7 @@ function closeDrawer() {
       {id:"parkdale",name:"Parkdale",zip:"63121",tag:"North County",url:"parkdale",group:"North County"},
       {id:"pasadena-hills",name:"Pasadena Hills",zip:"63121",tag:"North County",url:"pasadena-hills",group:"North County"},
       {id:"pasadena-park",name:"Pasadena Park",zip:"63121",tag:"North County",url:"pasadena-park",group:"North County"},
-      {id:"peaceful-village",name:"Peaceful Village",zip:"63136",tag:"North County",url:"peaceful-village",group:"North County"},
+      {id:"peaceful-village",name:"Peaceful Village",zip:"63049",tag:"Jefferson Co.",url:"peaceful-village",group:"Jefferson County"},
       {id:"scotsdale",name:"Scotsdale",zip:"63033",tag:"North County",url:"scotsdale",group:"North County"},
       {id:"sycamore-hills",name:"Sycamore Hills",zip:"63114",tag:"North County",url:"sycamore-hills",group:"North County"},
       {id:"uplands-park",name:"Uplands Park",zip:"63121",tag:"North County",url:"uplands-park",group:"North County"},
@@ -1781,11 +1781,11 @@ function closeDrawer() {
     var groups = [
       {label:"St. Louis City",ids:["central-west-end", "tower-grove-south", "shaw", "dogtown", "soulard", "lafayette-square", "the-hill", "benton-park", "st-louis-hills"]},
       {label:"Central Corridor",ids:["kirkwood", "webster-groves", "clayton", "university-city", "maplewood"]},
-      {label:"North County",ids:["florissant", "ferguson", "hazelwood", "jennings", "spanish-lake", "riverview", "berkeley", "bridgeton", "st-ann", "st-john", "normandy", "black-jack", "dellwood", "moline-acres", "cool-valley", "pagedale", "wellston", "pine-lawn", "bel-nor", "bel-ridge", "bellefontaine-neighbors", "calverton-park", "castle-point", "country-club-hills", "edmundson", "flordell-hills", "glen-echo-park", "greendale", "hanley-hills", "hillsdale", "norwood-court", "northwoods", "olympian-village", "parkdale", "pasadena-hills", "pasadena-park", "peaceful-village", "scotsdale", "sycamore-hills", "uplands-park", "velda-city", "velda-village-hills", "vinita-park", "vinita-terrace", "woodson-terrace", "charlack", "champ", "breckenridge-hills", "bellerive-acres", "beverly-hills", "normandy-park"]},
+      {label:"North County",ids:["florissant", "ferguson", "hazelwood", "jennings", "spanish-lake", "riverview", "berkeley", "bridgeton", "st-ann", "st-john", "normandy", "black-jack", "dellwood", "moline-acres", "cool-valley", "pagedale", "wellston", "pine-lawn", "bel-nor", "bel-ridge", "bellefontaine-neighbors", "calverton-park", "castle-point", "country-club-hills", "edmundson", "flordell-hills", "glen-echo-park", "greendale", "hanley-hills", "hillsdale", "norwood-court", "northwoods", "olympian-village", "parkdale", "pasadena-hills", "pasadena-park", "scotsdale", "sycamore-hills", "uplands-park", "velda-city", "velda-village-hills", "vinita-park", "vinita-terrace", "woodson-terrace", "charlack", "champ", "breckenridge-hills", "bellerive-acres", "beverly-hills", "normandy-park"]},
       {label:"South County",ids:["affton", "concord", "crestwood", "green-park", "lemay", "mehlville", "oakville", "sappington", "sunset-hills"]},
       {label:"West County",ids:["ballwin", "chesterfield"]},
       {label:"St. Charles County",ids:["st-charles", "o-fallon", "st-peters", "wentzville", "lake-st-louis", "cottleville", "dardenne-prairie", "weldon-spring", "weldon-spring-heights", "josephville", "st-paul", "west-alton"]},
-      {label:"Jefferson County",ids:["arnold", "festus", "crystal-city", "de-soto", "imperial", "high-ridge", "hillsboro", "house-springs", "barnhart", "cedar-hill"]}
+      {label:"Jefferson County",ids:["arnold", "festus", "crystal-city", "de-soto", "imperial", "high-ridge", "hillsboro", "house-springs", "barnhart", "cedar-hill", "peaceful-village"]}
     ];
 
     var byId = {};
