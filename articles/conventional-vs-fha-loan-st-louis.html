@@ -304,6 +304,15 @@
     .lc-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
     .lc-sub{display:block;font-size:.72rem!important;color:var(--text-dim)!important;margin-top:2px;}
     .lc-insight{font-size:.88rem!important;line-height:1.55!important;color:var(--text)!important;margin:12px 0 0!important;padding:10px 12px;border-left:3px solid var(--gold);background:var(--surface);border-radius:0 8px 8px 0;}
+    .lc-try{margin:0 0 18px;padding:14px 16px;border:1px dashed var(--gold-line);border-radius:12px;background:rgba(255,204,77,.04);}
+    .lc-try p{font-size:.9rem!important;line-height:1.6!important;margin:0 0 8px!important;color:var(--text-soft)!important;}
+    .lc-try p.lc-try-h{font-size:.68rem!important;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)!important;margin-bottom:6px!important;}
+    .lc-try p.lc-try-lead{margin-bottom:4px!important;color:var(--text-strong)!important;}
+    .lc-try-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+    .lc-try-btn{font:inherit;font-size:.8rem;font-weight:700;padding:8px 14px;min-height:36px;border-radius:999px;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;}
+    .lc-try-btn:hover{background:var(--gold-soft);}
+    .lc-try-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+    .lc-try-reset{border-color:var(--line-2);color:var(--text-dim);}
     .lc-fine{font-size:.76rem!important;color:var(--text-dim)!important;margin:10px 0 0!important;line-height:1.5!important;}
     .lc-card{scroll-margin-top:80px;}
     .lc-back{display:inline-block;margin-top:10px;font-size:.8rem;font-weight:600;}
@@ -557,6 +566,16 @@
         <h3 class="lc-sum-h">Your scenario at a glance</h3>
         <div id="lc-summary-body" aria-live="polite"><ul class="lc-take"><li><strong>Tied for lowest estimated monthly payment:</strong> Conventional and VA at $2,569/mo.</li><li><strong>Least cash for the down payment:</strong> VA and USDA at $0.</li><li><strong>Spread:</strong> payments range from $2,569 to $2,634/mo, a $65/mo difference.</li></ul><table class="lc-table"><caption class="lc-sr">Loan comparison for this scenario, sorted by estimated monthly payment</caption><thead><tr><th scope="col">Loan</th><th scope="col">Monthly payment</th><th scope="col">vs. lowest</th><th scope="col">Down payment</th><th scope="col">Starting balance</th><th scope="col">Monthly mortgage/program fee</th></tr></thead><tbody><tr class="lc-best"><th scope="row"><a href="#lc-card-conv">Conventional</a></th><td data-label="Monthly payment"><strong>$2,569</strong></td><td data-label="vs. lowest">Tied for lowest</td><td data-label="Down payment">$15,000 <span>(5%)</span></td><td data-label="Starting balance">$285,000</td><td data-label="Monthly mortgage/program fee">$143 PMI (est.)</td></tr><tr class="lc-best"><th scope="row"><a href="#lc-card-va">VA</a></th><td data-label="Monthly payment"><strong>$2,569</strong></td><td data-label="vs. lowest">Tied for lowest</td><td data-label="Down payment">$0 <span>(0%)</span></td><td data-label="Starting balance">$306,450<span class="lc-sub">Funding fee: $6,450 financed (2.15%)</span></td><td data-label="Monthly mortgage/program fee">$0 — no monthly mortgage insurance</td></tr><tr><th scope="row"><a href="#lc-card-fha">FHA</a></th><td data-label="Monthly payment"><strong>$2,622</strong></td><td data-label="vs. lowest">+$53</td><td data-label="Down payment">$10,500 <span>(3.5%)</span></td><td data-label="Starting balance">$294,566<span class="lc-sub">Upfront MIP: $5,066 financed (1.75%)</span></td><td data-label="Monthly mortgage/program fee">$132 MIP</td></tr><tr><th scope="row"><a href="#lc-card-usda">USDA</a></th><td data-label="Monthly payment"><strong>$2,634</strong></td><td data-label="vs. lowest">+$65</td><td data-label="Down payment">$0 <span>(0%)</span></td><td data-label="Starting balance">$303,000<span class="lc-sub">Guarantee fee: $3,000 financed (1%)</span></td><td data-label="Monthly mortgage/program fee">$88 annual-fee equivalent/mo</td></tr></tbody></table><p class="lc-insight">In this example, VA starts with a $21,450 larger loan balance than Conventional—but ties it for the lowest monthly payment because VA has no monthly mortgage insurance.</p></div>
         <p class="lc-fine">VA requires VA eligibility, and USDA requires an eligible household and property address. Change each loan’s down payment in the cards below; this summary updates as you go.</p>
+      </div>
+      <div class="lc-try" role="note" aria-labelledby="lc-try-h">
+        <p class="lc-try-h" id="lc-try-h">Try this next</p>
+        <p class="lc-try-lead"><strong>Now change one thing.</strong></p>
+        <p>Set Conventional and VA to 5% down. Then try VA at 10% down. Watch what happens to the starting balance, VA funding fee, mortgage insurance and monthly payment. More money down doesn’t affect every loan the same way.</p>
+        <div class="lc-try-btns">
+          <button type="button" class="lc-try-btn" data-try="both5">Set Conventional &amp; VA to 5%</button>
+          <button type="button" class="lc-try-btn" data-try="va10">Then VA at 10%</button>
+          <button type="button" class="lc-try-btn lc-try-reset" data-try="reset">Reset</button>
+        </div>
       </div>
       <div class="lc-cards">
       <article class="lc-card" id="lc-card-conv" data-loan="conv" aria-labelledby="lc-conv-h">
@@ -1305,6 +1324,13 @@ var LCS = (function () {
     var b = e.target.closest && e.target.closest('.lc-chip');
     if (!b) return;
     var k = b.dataset.loan, pe = $('lc-' + k + '-pct'); pe.value = b.dataset.pct; delete pe.dataset.exact; sync(k, 'pct'); update();
+  });
+  document.querySelectorAll('.lc-try-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var set = { both5: { conv: 5, va: 5 }, va10: { va: 10 }, reset: { conv: 5, fha: 3.5, va: 0 } }[btn.dataset.try];
+      Object.keys(set).forEach(function (k) { var pe = $('lc-' + k + '-pct'); pe.value = set[k]; delete pe.dataset.exact; sync(k, 'pct'); });
+      update();
+    });
   });
   if (window.matchMedia && window.matchMedia('(max-width:640px)').matches) {
     document.querySelectorAll('.lc-det').forEach(function (d) { d.removeAttribute('open'); });
