@@ -65,6 +65,13 @@
 .george-btn-about{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.72);font-weight:600;font-size:13px;letter-spacing:0.03em;padding:10px 19px;border-radius:8px;text-decoration:none;transition:color 0.18s;}
 .george-btn-about:hover{color:#ffcc4d;}
 @media (max-width:600px){.george-card{flex-direction:column;align-items:center;text-align:center;}.george-card-photo{width:90px;height:90px;}.george-card-btns{flex-direction:column;width:100%;}.george-btn-p,.george-btn-s,.george-btn-about{width:100%;justify-content:center;}}
+.hr-qa .hr-q{font-size:1.02rem;line-height:1.3;margin-bottom:8px;}
+section[aria-label$="Occupancy and Home Rules"] a{color:#ffcc4d;text-decoration:underline;text-underline-offset:2px;}
+.hr-list{margin:10px 0 6px;padding-left:1.1em;color:rgba(255,255,255,.72);}
+.hr-list li{margin-bottom:8px;line-height:1.55;font-size:13px;}
+.hr-list strong{color:rgba(255,255,255,.92);}
+.hr-sources{font-size:12px!important;color:rgba(255,255,255,.45)!important;margin-top:10px;}
+[id]{scroll-margin-top:84px;}
 </style>
 <script>
 /* GA4 Event Tracking — STL Home Journey */
@@ -173,7 +180,7 @@
   <a href="#concord-housing" class="jump-link">Housing Stock</a>
   <a href="#concord-buyers" class="jump-link">Buyer Context</a>
   <a href="#concord-map" class="jump-link">Map &amp; Boundaries</a>
-  <a href="#occupancy" class="jump-link">Occupancy Requirements</a>
+  <a href="#concord-home-rules" class="jump-link">Occupancy &amp; Home Rules</a>
   <a href="#concord-faq" class="jump-link">FAQ</a>
   <a href="#concord-actions" class="jump-link">Talk to George</a>
 </nav>
@@ -196,7 +203,7 @@
           <a href="#concord-housing" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Housing Stock: Fixer Upper vs. Move-In Ready</a>
           <a href="#concord-buyers" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">What Buyers Need to Understand</a>
           <a href="#concord-map" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Why the Map Matters in Concord</a>
-          <a href="#occupancy" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Occupancy Requirements</a>
+          <a href="#concord-home-rules" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Occupancy and Home Rules</a>
           <a href="#concord-faq" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;">Frequently Asked Questions</a>
         </div>
       </div>
@@ -273,21 +280,55 @@
         <h2 class="tool-result-value">The Buyer Profiles That Usually Click Here</h2>
       </div>
       <div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Move-up buyers who want more house without chasing a luxury zip code.</p></div><div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Families focused on South County access and owner-occupied neighborhood feel.</p></div><div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Buyers comparing Mehlville, <a href="oakville">Oakville</a>, and <a href="crestwood">Crestwood</a> on price-to-space tradeoffs.</p></div>
-    </section><section aria-label="Concord Occupancy Requirements">
+    </section><!-- Occupancy and Home Rules: STLHJ Home Rules workbook, verified 2026-09-25 -->
+    <section aria-label="Concord Occupancy and Home Rules">
+      <div class="tool-result-card" style="border-left:3px solid #ffcc4d;">
+        <div class="tool-section-hd">Home Rules</div>
+        <h2 class="tool-result-value" id="concord-home-rules">Concord Occupancy and Home Rules</h2>
+        <p class="tool-result-sub">Concord is an unincorporated community in St. Louis County, not a city with its own municipal government. A Concord mailing address does not by itself confirm that a property is unincorporated. County rules below apply when the property is within unincorporated St. Louis County. Check the <a href="https://gis.stlouiscountymo.gov/" rel="noopener" target="_blank">St. Louis County GIS map</a> or contact the County before relying on them.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do I need an occupancy permit when I buy or rent a home in Concord?</h3>
+        <p class="tool-result-sub">If the property is in unincorporated St. Louis County, the County requires an occupancy permit when a new occupant moves in after a sale or rental change. The County&rsquo;s application covers both sale and rental situations, and the new occupant must wait until the permit is issued before occupying the home.</p>
+        <p class="tool-result-sub">See the County&rsquo;s <a href="https://st.stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/residential-building/occupancy-forms/single-family-dwelling-occupancy/" rel="noopener" target="_blank">single-family dwelling occupancy application</a> and <a href="https://stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/permit-procedures/permits-applications/" rel="noopener" target="_blank">permits and applications</a> for current instructions.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Is there a sewer lateral repair program in Concord?</h3>
+        <p class="tool-result-sub">Unincorporated properties may be eligible for the St. Louis County Sewer Lateral Repair Program. Eligibility applies; assistance is not automatic. Check the County&rsquo;s current program requirements and <a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank">ordinance guidebook</a> before budgeting for a repair.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do I need a permit for a fence, deck, shed, or pool?</h3>
+        <p class="tool-result-sub">St. Louis County Transportation and Public Works handles applicable residential permits for unincorporated properties. The County&rsquo;s <a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank">ordinance guidebook</a> describes these general rules:</p>
+        <ul class="hr-list">
+          <li><strong>Fence:</strong> A fence 6 feet or shorter generally does not require a building permit. Zoning, sight-distance, and private subdivision or property restrictions may still apply.</li>
+          <li><strong>Deck:</strong> Permit and code review may apply, depending on the project. Confirm requirements for the specific address and work before construction.</li>
+          <li><strong>Shed:</strong> A shed larger than 120 square feet requires a building permit.</li>
+          <li><strong>Pool:</strong> Qualifying pools require a County permit and must meet applicable enclosure, setback, and electrical requirements.</li>
+        </ul>
+        <p class="tool-result-sub">Requirements can depend on the property and project details. Check with the County before work begins.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Are electrical, plumbing, or mechanical permits required?</h3>
+        <p class="tool-result-sub">County trade permits may apply to electrical, plumbing, and mechanical work. Check the County&rsquo;s <a href="https://stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/permit-procedures/permits-applications/" rel="noopener" target="_blank">permits and applications</a> for the project&rsquo;s requirements.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do Concord landlords need a rental license or registration?</h3>
+        <p class="tool-result-sub">A County occupancy permit is required when a new occupant moves in after a rental change at an unincorporated property. The available County information reviewed for this guide does not establish a separate local landlord license or registration requirement. Confirm with the County whether any additional rules apply to the property or rental arrangement.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Who handles property maintenance and code concerns?</h3>
+        <p class="tool-result-sub">For unincorporated properties, St. Louis County Neighborhood Preservation handles applicable property maintenance and code matters. Confirm that the address is in unincorporated County territory before contacting a city department.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">How much does the occupancy permit cost?</h3>
+        <p class="tool-result-sub">The County&rsquo;s downloadable occupancy application does not publish the current inspection fee. The fee must accompany the application, so confirm the current amount in the County permitting portal or with the County before submitting.</p>
+      </div>
       <div class="tool-result-card">
-        <div class="tool-section-hd">Occupancy</div>
-        <h2 class="tool-result-value" id="occupancy">Concord Occupancy Requirements</h2>
-        <p class="tool-result-sub">Concord is not an incorporated municipality. It is an unincorporated community in St. Louis County, which means Concord does not have its own city hall, its own building department, or its own occupancy inspection process.</p>
-        <p class="tool-result-sub">The authority that handles residential occupancy requirements for unincorporated Concord addresses is <strong>St. Louis County</strong>, through its Department of Transportation and Public Works.</p>
-        <p class="tool-result-sub"><strong>A re-occupancy permit is required when a new occupant moves in</strong> &mdash; whether after a sale or a rental change. The County occupancy application recognizes both SALE and RENTAL as triggers. The property cannot be legally occupied until the permit is issued.</p>
-        <p class="tool-result-sub">For buyers, this means your closing timeline should account for the County occupancy inspection and permit. For sellers, the occupancy application fee must accompany the application &mdash; confirm the current fee in the <a href="https://st.stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/residential-building/occupancy-forms/single-family-dwelling-occupancy/" rel="noopener" target="_blank">County permitting portal</a> or current fee schedule, as it is not published on the downloadable application form.</p>
+        <p class="tool-result-sub"><strong>Before you buy, rent, or start a project: verify the property&rsquo;s jurisdiction by exact address, then confirm current requirements with St. Louis County. Rules can differ for a property inside an incorporated municipality.</strong></p>
+        <p class="tool-result-sub hr-sources">Sources checked September 25, 2026: St. Louis County Transportation and Public Works <a href="https://st.stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/residential-building/occupancy-forms/single-family-dwelling-occupancy/" rel="noopener" target="_blank">occupancy</a> and <a href="https://stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/permit-procedures/permits-applications/" rel="noopener" target="_blank">permit</a> pages; St. Louis County Planning <a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank">ordinance guidebook</a>. Requirements are address- and project-dependent.</p>
       </div>
-      <div class="tool-result-card" style="border-left:3px solid #ffcc4d;margin-top:2px;">
-        <div class="tool-result-label">Important: Address controls jurisdiction</div>
-        <p class="tool-result-sub">Because Concord is a community label rather than a governmental boundary, some addresses that carry a &ldquo;Concord&rdquo; mailing address may actually sit within an adjacent incorporated municipality with its own occupancy rules. Always confirm whether a specific property is in unincorporated St. Louis County before assuming the County process applies. The <a href="https://gis.stlouiscountymo.gov/" rel="noopener" target="_blank">St. Louis County GIS system</a> can verify municipal boundaries by address.</p>
-        <p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Source: <a href="https://st.stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/residential-building/occupancy-forms/single-family-dwelling-occupancy/" rel="noopener" target="_blank" style="color:rgba(255,204,77,.6);">St. Louis County &mdash; Single Family Dwelling Occupancy</a> &middot; Verified September 2026</p>
-      </div>
-    </section><section aria-label="FAQ" id="concord-faq"><div class="tool-result-card"><div class="tool-section-hd">FAQ</div><h2 class="tool-result-value">Questions Buyers Ask Before They Commit</h2></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Where is Concord?</h3><p class="tool-result-sub">Concord is an unincorporated South St. Louis County community. The primary ZIP code is 63128; northern Concord extends into 63123.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What is Concord known for?</h3><p class="tool-result-sub">Buyers know Concord for established subdivisions, practical South County convenience, and strong owner-occupant stability.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Does Concord connect to more than one school district?</h3><p class="tool-result-sub">Yes. Mehlville School District serves Concord, and Lindbergh Schools serves Concord Village, so boundary checks matter.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Why do buyers compare Concord and Oakville?</h3><p class="tool-result-sub">Both sit in South County and draw households looking for stable owner-occupied neighborhoods, but Oakville is larger and typically pushes farther south toward the river-edge side of the market.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Who is Concord a good fit for?</h3><p class="tool-result-sub">Concord fits buyers who want useful location, stable neighborhoods, and solid suburban basics more than a lifestyle brand.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What is the median home price in Concord?</h3><p class="tool-result-sub">Census data puts the median owner-occupied home value in Concord around $303,600. Actual sale prices vary by block and condition — verify current figures with a local agent.</p></div>
+    </section>
+<section aria-label="FAQ" id="concord-faq"><div class="tool-result-card"><div class="tool-section-hd">FAQ</div><h2 class="tool-result-value">Questions Buyers Ask Before They Commit</h2></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Where is Concord?</h3><p class="tool-result-sub">Concord is an unincorporated South St. Louis County community. The primary ZIP code is 63128; northern Concord extends into 63123.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What is Concord known for?</h3><p class="tool-result-sub">Buyers know Concord for established subdivisions, practical South County convenience, and strong owner-occupant stability.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Does Concord connect to more than one school district?</h3><p class="tool-result-sub">Yes. Mehlville School District serves Concord, and Lindbergh Schools serves Concord Village, so boundary checks matter.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Why do buyers compare Concord and Oakville?</h3><p class="tool-result-sub">Both sit in South County and draw households looking for stable owner-occupied neighborhoods, but Oakville is larger and typically pushes farther south toward the river-edge side of the market.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Who is Concord a good fit for?</h3><p class="tool-result-sub">Concord fits buyers who want useful location, stable neighborhoods, and solid suburban basics more than a lifestyle brand.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What is the median home price in Concord?</h3><p class="tool-result-sub">Census data puts the median owner-occupied home value in Concord around $303,600. Actual sale prices vary by block and condition — verify current figures with a local agent.</p></div>
 <div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Which school district serves Concord?</h3><p class="tool-result-sub">Concord sits in a district overlap zone. Mehlville School District serves most of Concord; Lindbergh Schools serves Concord Village. Verify by specific address before making any school-driven decision.</p></div>
 <div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Is Concord incorporated?</h3><p class="tool-result-sub">No. Concord is an unincorporated community in South St. Louis County. The primary ZIP code is 63128; northern Concord extends into 63123.</p></div>
 </section>

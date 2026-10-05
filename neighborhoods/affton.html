@@ -56,6 +56,22 @@
 .george-btn-about{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.72);font-weight:600;font-size:13px;letter-spacing:0.03em;padding:10px 19px;border-radius:8px;text-decoration:none;transition:color 0.18s;}
 .george-btn-about:hover{color:#ffcc4d;}
 @media (max-width:600px){.george-card{flex-direction:column;align-items:center;text-align:center;}.george-card-photo{width:90px;height:90px;}.george-card-btns{flex-direction:column;width:100%;}.george-btn-p,.george-btn-s,.george-btn-about{width:100%;justify-content:center;}}
+.hr-qa .hr-q{font-size:1.02rem;line-height:1.3;margin-bottom:8px;}
+section[aria-label$="Occupancy and Home Rules"] a{color:#ffcc4d;text-decoration:underline;text-underline-offset:2px;}
+.hr-list{margin:10px 0 6px;padding-left:1.1em;color:rgba(255,255,255,.72);}
+.hr-list li{margin-bottom:8px;line-height:1.55;font-size:13px;}
+.hr-list strong{color:rgba(255,255,255,.92);}
+.hr-sources{font-size:12px!important;color:rgba(255,255,255,.45)!important;margin-top:10px;}
+[id]{scroll-margin-top:84px;}
+/* Jump FAB + panel */
+.jump-fab{position:fixed;right:16px;bottom:20px;z-index:200;display:inline-flex;align-items:center;gap:8px;background:#ffcc4d;color:#080808;font-weight:800;font-size:12px;letter-spacing:.05em;border:none;border-radius:999px;padding:12px 17px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.55);font-family:inherit;}
+.jump-fab-ico{font-size:15px;line-height:1;}
+.jump-panel{position:fixed;right:16px;bottom:74px;z-index:200;width:min(288px,calc(100vw - 32px));background:#0d0d0d;border:1px solid rgba(255,204,77,.34);border-radius:14px;padding:8px;box-shadow:0 12px 42px rgba(0,0,0,.6);opacity:0;transform:translateY(10px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .18s ease,transform .18s ease;max-height:72vh;overflow-y:auto;}
+.jump-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+.jump-panel-hd{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ffcc4d;padding:8px 12px 8px;}
+.jump-link{display:block;padding:9px 12px;border-radius:8px;font-size:.9rem;color:rgba(255,255,255,.72);text-decoration:none;line-height:1.35;border-left:2px solid transparent;}
+.jump-link:hover{background:rgba(255,204,77,.06);color:#fff;}
+.jump-link.active{color:#ffcc4d;border-left-color:#ffcc4d;background:rgba(255,204,77,.05);}
 </style>
 <script>
 /* GA4 Event Tracking — STL Home Journey */
@@ -155,6 +171,20 @@
   <span class="nbhd-bc-item active">Affton | South County</span>
 </nav>
 
+<button id="jumpToggle" class="jump-fab" aria-label="Jump to a section" aria-expanded="false">
+  <span class="jump-fab-ico">&#9776;</span><span class="jump-fab-txt">Sections</span>
+</button>
+<nav id="jumpPanel" class="jump-panel" aria-hidden="true">
+  <div class="jump-panel-hd">In this Affton guide</div>
+  <a href="#affton-schools" class="jump-link">Schools</a>
+  <a href="#affton-housing" class="jump-link">Housing Stock</a>
+  <a href="#affton-buyers" class="jump-link">Buyer Context</a>
+  <a href="#affton-map" class="jump-link">Map &amp; Boundaries</a>
+  <a href="#affton-home-rules" class="jump-link">Occupancy &amp; Home Rules</a>
+  <a href="#affton-faq" class="jump-link">FAQ</a>
+  <a href="#affton-actions" class="jump-link">Talk to George</a>
+</nav>
+
 <main class="tool-selector" id="neighborhood-content">
     <section aria-labelledby="affton-hero">
       <div class="tool-result-card">
@@ -163,10 +193,24 @@
         <p class="tool-result-sub">Practical South County access, 80.8% owner-occupied, and a price point that keeps Affton on buyer shortlists.</p>
         <div class="tool-data-strip"><div class="tool-data-stat"><div class="tool-data-num">4.57 mi²</div><div class="tool-data-lbl">land area</div></div><div class="tool-data-stat"><div class="tool-data-num">80.8%</div><div class="tool-data-lbl">owner-occupied</div></div><div class="tool-data-stat"><div class="tool-data-num">$212.4K</div><div class="tool-data-lbl">median owner value</div></div><div class="tool-data-stat"><div class="tool-data-num">23.5 min</div><div class="tool-data-lbl">mean commute</div></div></div>
       </div>
-    </section><section aria-label="Schools in Affton">
+    </section>
+    <section aria-label="In this guide">
+      <div class="tool-result-card" style="border:1px solid rgba(255,204,77,.18);background:rgba(255,204,77,.03);">
+        <div style="font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ffcc4d;margin-bottom:12px;">In this Affton guide</div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <a href="#affton-schools" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Schools &amp; District Boundaries</a>
+          <a href="#affton-housing" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Housing Stock: Fixer Upper vs. Move-In Ready</a>
+          <a href="#affton-buyers" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">What Buyers Need to Understand</a>
+          <a href="#affton-map" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Why the Map Matters Here</a>
+          <a href="#affton-home-rules" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Occupancy and Home Rules</a>
+          <a href="#affton-faq" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;">Frequently Asked Questions</a>
+        </div>
+      </div>
+    </section>
+<section aria-label="Schools in Affton">
   <div class="tool-result-card">
     <div class="tool-section-hd">Schools</div>
-    <h2 class="tool-result-value">Schools in Affton</h2>
+    <h2 class="tool-result-value" id="affton-schools">Schools in Affton</h2>
     <p class="tool-result-sub">Affton is served by the <a href="../school-districts/affton-school-district">Affton School District</a> — a smaller, independent district separate from <a href="mehlville">Mehlville</a> and Lindbergh. That distinction affects buyer demand. Buyers who specifically want Lindbergh or Mehlville will not cross into Affton, which is part of why the price point here stays more accessible. For buyers where the payment matters more than the district name, that tradeoff can make a lot of financial sense. The district is more stable than many buyers expect, but it does not carry the same resale pull as its neighbors.</p>
     <p class="tool-result-sub" style="font-size:13px;color:var(--text-muted,#8C8880);margin-top:12px;">⚠ School boundaries can vary by exact property address. Verify assigned schools directly with the district, county records, or your buyer agent before writing an offer.</p>
     <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;">
@@ -182,7 +226,7 @@
     <section aria-label="Fixer Upper vs. Move-In Ready Tool">
       <div class="tool-result-card">
         <div class="tool-section-hd">Buyer Tool</div>
-        <h2 class="tool-result-value">Fixer Upper vs. Move-In Ready</h2>
+        <h2 class="tool-result-value" id="affton-housing">Fixer Upper vs. Move-In Ready</h2>
         <p class="tool-result-sub">School district confirmed. Now the real question — what does your budget actually buy here on both paths? The comparison tool shows which St. Louis neighborhoods offer a genuinely equivalent home within 5% of the same total cost. FHA, VA, and conventional math included.</p>
         <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;">
           <a class="tool-btn-primary" href="../fixer-upper-vs-move-in-stl">Compare Fixer Upper vs. Move-In Ready →</a>
@@ -194,7 +238,7 @@
     <section aria-label="The Honest Take">
       <div class="tool-result-card">
         <div class="tool-section-hd">The Honest Take</div>
-        <h2 class="tool-result-value">Practical</h2>
+        <h2 class="tool-result-value" id="affton-buyers">Practical</h2>
         <p class="tool-result-sub">Affton is not a status-buy. That is exactly why many buyers like it. The appeal here is straightforward: you get a mature South County setting, a dense everyday-services corridor, and housing that usually makes more financial sense than trendier inner-ring names.</p>
         <p class="tool-result-sub">The Census Bureau puts Affton&#x27;s owner-occupied rate above 80%, with a median owner-occupied home value a little above $212,000. That usually translates to a market where buyers are still buying for use, not just for image.</p>
       </div>
@@ -214,7 +258,7 @@
     <section aria-label="Location & Identity">
       <div class="tool-result-card">
         <div class="tool-section-hd">Location &amp; Identity</div>
-        <h2 class="tool-result-value">Why the Map Matters Here</h2>
+        <h2 class="tool-result-value" id="affton-map">Why the Map Matters Here</h2>
         <p class="tool-result-sub">The Affton-<a href="lemay">Lemay</a> Chamber points buyers toward the same practical anchors locals use every week: Grant&#x27;s Trail, Grant&#x27;s Farm, neighborhood retail, and quick access into the larger South County service grid. This is the kind of location that works best for people who want errands to be easy rather than glamorous.</p>
       </div>
     </section>
@@ -232,10 +276,58 @@
       </div>
       <div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Budget-minded buyers who still want an established owner-occupied area.</p></div><div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Households who value Grant&#x27;s Trail, quick errands, and central South County access.</p></div><div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Buyers comparing Affton against Lemay, Mehlville, or inner-ring city neighborhoods on monthly payment rather than brand prestige.</p></div>
     </section>
+<!-- Occupancy and Home Rules: STLHJ Home Rules workbook, verified 2026-09-25 -->
+    <section aria-label="Affton Occupancy and Home Rules">
+      <div class="tool-result-card" style="border-left:3px solid #ffcc4d;">
+        <div class="tool-section-hd">Home Rules</div>
+        <h2 class="tool-result-value" id="affton-home-rules">Affton Occupancy and Home Rules</h2>
+        <p class="tool-result-sub">Affton is an unincorporated community in St. Louis County, not a city with its own municipal government. A Affton mailing address does not by itself confirm that a property is unincorporated. County rules below apply when the property is within unincorporated St. Louis County. Check the <a href="https://gis.stlouiscountymo.gov/" rel="noopener" target="_blank">St. Louis County GIS map</a> or contact the County before relying on them.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do I need an occupancy permit when I buy or rent a home in Affton?</h3>
+        <p class="tool-result-sub">If the property is in unincorporated St. Louis County, the County requires an occupancy permit when a new occupant moves in after a sale or rental change. The County&rsquo;s application covers both sale and rental situations, and the new occupant must wait until the permit is issued before occupying the home.</p>
+        <p class="tool-result-sub">See the County&rsquo;s <a href="https://st.stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/residential-building/occupancy-forms/single-family-dwelling-occupancy/" rel="noopener" target="_blank">single-family dwelling occupancy application</a> and <a href="https://stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/permit-procedures/permits-applications/" rel="noopener" target="_blank">permits and applications</a> for current instructions.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Is there a sewer lateral repair program in Affton?</h3>
+        <p class="tool-result-sub">Unincorporated properties may be eligible for the St. Louis County Sewer Lateral Repair Program. Eligibility applies; assistance is not automatic. Check the County&rsquo;s current program requirements and <a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank">ordinance guidebook</a> before budgeting for a repair.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do I need a permit for a fence, deck, shed, or pool?</h3>
+        <p class="tool-result-sub">St. Louis County Transportation and Public Works handles applicable residential permits for unincorporated properties. The County&rsquo;s <a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank">ordinance guidebook</a> describes these general rules:</p>
+        <ul class="hr-list">
+          <li><strong>Fence:</strong> A fence 6 feet or shorter generally does not require a building permit. Zoning, sight-distance, and private subdivision or property restrictions may still apply.</li>
+          <li><strong>Deck:</strong> Permit and code review may apply, depending on the project. Confirm requirements for the specific address and work before construction.</li>
+          <li><strong>Shed:</strong> A shed larger than 120 square feet requires a building permit.</li>
+          <li><strong>Pool:</strong> Qualifying pools require a County permit and must meet applicable enclosure, setback, and electrical requirements.</li>
+        </ul>
+        <p class="tool-result-sub">Requirements can depend on the property and project details. Check with the County before work begins.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Are electrical, plumbing, or mechanical permits required?</h3>
+        <p class="tool-result-sub">County trade permits may apply to electrical, plumbing, and mechanical work. Check the County&rsquo;s <a href="https://stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/permit-procedures/permits-applications/" rel="noopener" target="_blank">permits and applications</a> for the project&rsquo;s requirements.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do Affton landlords need a rental license or registration?</h3>
+        <p class="tool-result-sub">A County occupancy permit is required when a new occupant moves in after a rental change at an unincorporated property. The available County information reviewed for this guide does not establish a separate local landlord license or registration requirement. Confirm with the County whether any additional rules apply to the property or rental arrangement.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Who handles property maintenance and code concerns?</h3>
+        <p class="tool-result-sub">For unincorporated properties, St. Louis County Neighborhood Preservation handles applicable property maintenance and code matters. Confirm that the address is in unincorporated County territory before contacting a city department.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">How much does the occupancy permit cost?</h3>
+        <p class="tool-result-sub">The County&rsquo;s downloadable occupancy application does not publish the current inspection fee. The fee must accompany the application, so confirm the current amount in the County permitting portal or with the County before submitting.</p>
+      </div>
+      <div class="tool-result-card">
+        <p class="tool-result-sub"><strong>Before you buy, rent, or start a project: verify the property&rsquo;s jurisdiction by exact address, then confirm current requirements with St. Louis County. Rules can differ for a property inside an incorporated municipality.</strong></p>
+        <p class="tool-result-sub hr-sources">Sources checked September 25, 2026: St. Louis County Transportation and Public Works <a href="https://st.stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/residential-building/occupancy-forms/single-family-dwelling-occupancy/" rel="noopener" target="_blank">occupancy</a> and <a href="https://stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/permit-procedures/permits-applications/" rel="noopener" target="_blank">permit</a> pages; St. Louis County Planning <a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank">ordinance guidebook</a>. Requirements are address- and project-dependent.</p>
+      </div>
+    </section>
 <!-- ASK ME: component configured in /assets/ask-me.js -->
 <div data-ask-me="neighborhood" data-ask-name="Affton"><p><a href="/ask?about=neighborhood&amp;from=/neighborhoods/affton">Ask Me About the House</a></p></div>
 <section aria-label="Longtime homeowners"><div class="tool-result-card"><div class="tool-result-label">Own a home in Affton?</div><h3 class="tool-result-value">Wondering whether to stay or go?</h3><p class="tool-result-sub">If you&rsquo;ve been in the house for years, start with <a href="/longtime-homeowners" style="color:var(--gold);">Longtime St.&nbsp;Louis Homeowner: Should You Stay or Should You Go?</a> &mdash; what staying really costs, what you&rsquo;d walk away with, and where you&rsquo;d go next.</p></div></section>
-<section aria-label="FAQ"><div class="tool-result-card"><div class="tool-section-hd">FAQ</div><h2 class="tool-result-value">Questions Buyers Ask Before They Commit</h2></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Where is Affton?</h3><p class="tool-result-sub">Affton is an unincorporated South St. Louis County community just southwest of the City of St. Louis.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What is Affton known for?</h3><p class="tool-result-sub">Buyers usually associate Affton with practical affordability, a mature housing stock, and access to Grant&#x27;s Trail and the larger Affton-Lemay area.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Is Affton more affordable than much of South County?</h3><p class="tool-result-sub">Often yes. Affton typically draws buyers who want to stay in South County while keeping their monthly cost below many neighboring owner-occupied suburbs.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Why do buyers compare Affton and Lemay?</h3><p class="tool-result-sub">Because both can offer accessible price points, older housing stock, and quick access to South County amenities.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Who is Affton a good fit for?</h3><p class="tool-result-sub">Affton is a strong fit for buyers who value utility, location, and budget discipline over prestige branding.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What school district serves Affton?</h3><p class="tool-result-sub">Affton is served by the Affton School District, which is separate from Mehlville and Lindbergh. Buyers should verify exact boundaries by address before making any school-driven decisions.</p></div>
+<section aria-label="FAQ" id="affton-faq"><div class="tool-result-card"><div class="tool-section-hd">FAQ</div><h2 class="tool-result-value">Questions Buyers Ask Before They Commit</h2></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Where is Affton?</h3><p class="tool-result-sub">Affton is an unincorporated South St. Louis County community just southwest of the City of St. Louis.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What is Affton known for?</h3><p class="tool-result-sub">Buyers usually associate Affton with practical affordability, a mature housing stock, and access to Grant&#x27;s Trail and the larger Affton-Lemay area.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Is Affton more affordable than much of South County?</h3><p class="tool-result-sub">Often yes. Affton typically draws buyers who want to stay in South County while keeping their monthly cost below many neighboring owner-occupied suburbs.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Why do buyers compare Affton and Lemay?</h3><p class="tool-result-sub">Because both can offer accessible price points, older housing stock, and quick access to South County amenities.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Who is Affton a good fit for?</h3><p class="tool-result-sub">Affton is a strong fit for buyers who value utility, location, and budget discipline over prestige branding.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What school district serves Affton?</h3><p class="tool-result-sub">Affton is served by the Affton School District, which is separate from Mehlville and Lindbergh. Buyers should verify exact boundaries by address before making any school-driven decisions.</p></div>
 <div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What is the median home price in Affton?</h3><p class="tool-result-sub">Census data puts the median owner-occupied home value in Affton around $212,400. Actual sale prices vary by block, condition, and year — verify current data with a licensed agent before budgeting.</p></div>
 <div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Is Affton unincorporated?</h3><p class="tool-result-sub">Yes. Affton is an unincorporated community in South St. Louis County, which means it does not have its own mayor or city council. Municipal services are provided at the county level.</p></div>
 </section>
@@ -302,6 +394,22 @@
       <a href="../fixer-upper-vs-move-in-stl" style="display:inline-flex;align-items:center;gap:6px;background:#ffcc4d;color:#050505;font-weight:800;font-size:11px;padding:9px 16px;border-radius:7px;text-decoration:none;letter-spacing:.04em;text-transform:uppercase">Run the Comparison →</a>
     </div>
 </main>
+<script>
+(function(){
+  var fab=document.getElementById('jumpToggle'),panel=document.getElementById('jumpPanel');
+  if(!fab||!panel)return;
+  function setOpen(o){panel.classList.toggle('open',o);fab.setAttribute('aria-expanded',o);panel.setAttribute('aria-hidden',!o);}
+  fab.addEventListener('click',function(e){e.stopPropagation();setOpen(!panel.classList.contains('open'));});
+  panel.addEventListener('click',function(e){if(e.target.classList.contains('jump-link'))setOpen(false);});
+  document.addEventListener('click',function(e){if(!panel.contains(e.target)&&e.target!==fab&&!fab.contains(e.target))setOpen(false);});
+  var links=[].slice.call(panel.querySelectorAll('.jump-link')),map={};
+  links.forEach(function(l){var id=l.getAttribute('href').slice(1),s=document.getElementById(id);if(s)map[id]=l;});
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(l){l.classList.remove('active');});if(map[en.target.id])map[en.target.id].classList.add('active');}});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    Object.keys(map).forEach(function(id){obs.observe(document.getElementById(id));});
+  }
+})();
+</script>
 <script src="/zip-data.js"></script>
 <script src="/resources.js"></script>
 <script src="/neighborhoods.js"></script>

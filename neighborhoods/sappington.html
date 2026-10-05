@@ -56,6 +56,22 @@
 .george-btn-about{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.72);font-weight:600;font-size:13px;letter-spacing:0.03em;padding:10px 19px;border-radius:8px;text-decoration:none;transition:color 0.18s;}
 .george-btn-about:hover{color:#ffcc4d;}
 @media (max-width:600px){.george-card{flex-direction:column;align-items:center;text-align:center;}.george-card-photo{width:90px;height:90px;}.george-card-btns{flex-direction:column;width:100%;}.george-btn-p,.george-btn-s,.george-btn-about{width:100%;justify-content:center;}}
+.hr-qa .hr-q{font-size:1.02rem;line-height:1.3;margin-bottom:8px;}
+section[aria-label$="Occupancy and Home Rules"] a{color:#ffcc4d;text-decoration:underline;text-underline-offset:2px;}
+.hr-list{margin:10px 0 6px;padding-left:1.1em;color:rgba(255,255,255,.72);}
+.hr-list li{margin-bottom:8px;line-height:1.55;font-size:13px;}
+.hr-list strong{color:rgba(255,255,255,.92);}
+.hr-sources{font-size:12px!important;color:rgba(255,255,255,.45)!important;margin-top:10px;}
+[id]{scroll-margin-top:84px;}
+/* Jump FAB + panel */
+.jump-fab{position:fixed;right:16px;bottom:20px;z-index:200;display:inline-flex;align-items:center;gap:8px;background:#ffcc4d;color:#080808;font-weight:800;font-size:12px;letter-spacing:.05em;border:none;border-radius:999px;padding:12px 17px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.55);font-family:inherit;}
+.jump-fab-ico{font-size:15px;line-height:1;}
+.jump-panel{position:fixed;right:16px;bottom:74px;z-index:200;width:min(288px,calc(100vw - 32px));background:#0d0d0d;border:1px solid rgba(255,204,77,.34);border-radius:14px;padding:8px;box-shadow:0 12px 42px rgba(0,0,0,.6);opacity:0;transform:translateY(10px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .18s ease,transform .18s ease;max-height:72vh;overflow-y:auto;}
+.jump-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+.jump-panel-hd{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ffcc4d;padding:8px 12px 8px;}
+.jump-link{display:block;padding:9px 12px;border-radius:8px;font-size:.9rem;color:rgba(255,255,255,.72);text-decoration:none;line-height:1.35;border-left:2px solid transparent;}
+.jump-link:hover{background:rgba(255,204,77,.06);color:#fff;}
+.jump-link.active{color:#ffcc4d;border-left-color:#ffcc4d;background:rgba(255,204,77,.05);}
 </style>
 <script>
 /* GA4 Event Tracking — STL Home Journey */
@@ -155,6 +171,20 @@
   <span class="nbhd-bc-item active">Sappington | South County</span>
 </nav>
 
+<button id="jumpToggle" class="jump-fab" aria-label="Jump to a section" aria-expanded="false">
+  <span class="jump-fab-ico">&#9776;</span><span class="jump-fab-txt">Sections</span>
+</button>
+<nav id="jumpPanel" class="jump-panel" aria-hidden="true">
+  <div class="jump-panel-hd">In this Sappington guide</div>
+  <a href="#sappington-schools" class="jump-link">Schools</a>
+  <a href="#sappington-housing" class="jump-link">Housing Stock</a>
+  <a href="#sappington-buyers" class="jump-link">Buyer Context</a>
+  <a href="#sappington-map" class="jump-link">Map &amp; Boundaries</a>
+  <a href="#sappington-home-rules" class="jump-link">Occupancy &amp; Home Rules</a>
+  <a href="#sappington-faq" class="jump-link">FAQ</a>
+  <a href="#sappington-actions" class="jump-link">Talk to George</a>
+</nav>
+
 <main class="tool-selector" id="neighborhood-content">
     <section aria-labelledby="sappington-hero">
       <div class="tool-result-card">
@@ -164,6 +194,20 @@
         <div class="tool-data-strip"><div class="tool-data-stat"><div class="tool-data-num">2.39 mi²</div><div class="tool-data-lbl">land area</div></div><div class="tool-data-stat"><div class="tool-data-num">74.5%</div><div class="tool-data-lbl">owner-occupied</div></div><div class="tool-data-stat"><div class="tool-data-num">$297.6K</div><div class="tool-data-lbl">median owner value</div></div><div class="tool-data-stat"><div class="tool-data-num">Historic Sappington</div><div class="tool-data-lbl">local anchor</div></div></div>
       </div>
     </section>
+    <section aria-label="In this guide">
+      <div class="tool-result-card" style="border:1px solid rgba(255,204,77,.18);background:rgba(255,204,77,.03);">
+        <div style="font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ffcc4d;margin-bottom:12px;">In this Sappington guide</div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <a href="#sappington-schools" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Schools &amp; District Boundaries</a>
+          <a href="#sappington-housing" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Housing Stock: Fixer Upper vs. Move-In Ready</a>
+          <a href="#sappington-buyers" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">What Buyers Need to Understand</a>
+          <a href="#sappington-map" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Why the Map Matters Here</a>
+          <a href="#sappington-home-rules" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Occupancy and Home Rules</a>
+          <a href="#sappington-faq" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;">Frequently Asked Questions</a>
+        </div>
+      </div>
+    </section>
+
 <div style="margin:12px 16px 0;">
   <a href="../articles/where-to-live-in-st-louis" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid rgba(255,204,77,.3);border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.05em;color:#ffcc4d;text-decoration:none;background:rgba(255,204,77,.04);">📍 Comparing St. Louis areas? See the full area guide →</a>
 </div>
@@ -171,7 +215,7 @@
     <section aria-label="Schools in Sappington">
   <div class="tool-result-card">
     <div class="tool-section-hd">Schools</div>
-    <h2 class="tool-result-value">Schools in Sappington</h2>
+    <h2 class="tool-result-value" id="sappington-schools">Schools in Sappington</h2>
     <p class="tool-result-sub">Sappington sits inside <a href="../school-districts/lindbergh-schools">Lindbergh Schools</a>, which is a consistent driver of buyer interest in this area. The neighborhood has an established, family-oriented feel — ranches, split-levels, and buyers who tend to stay for a while. Lindbergh's resale pull is real in Sappington: buyers know the district name is recognized, which gives sellers some confidence and gives competing buyers a reason to move decisively. If you are shopping Sappington and schools matter, you are already in a district that delivers for long-term hold.</p>
     <p class="tool-result-sub" style="font-size:13px;color:var(--text-muted,#8C8880);margin-top:12px;">⚠ School boundaries can vary by exact property address. Verify assigned schools directly with the district, county records, or your buyer agent before writing an offer.</p>
     <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;">
@@ -184,7 +228,7 @@
     <section aria-label="Fixer Upper vs. Move-In Ready Tool">
       <div class="tool-result-card">
         <div class="tool-section-hd">Buyer Tool</div>
-        <h2 class="tool-result-value">Fixer Upper vs. Move-In Ready</h2>
+        <h2 class="tool-result-value" id="sappington-housing">Fixer Upper vs. Move-In Ready</h2>
         <p class="tool-result-sub">School district confirmed. Now the real question — what does your budget actually buy here on both paths? The comparison tool shows which St. Louis neighborhoods offer a genuinely equivalent home within 5% of the same total cost. FHA, VA, and conventional math included.</p>
         <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;">
           <a class="tool-btn-primary" href="../fixer-upper-vs-move-in-stl">Compare Fixer Upper vs. Move-In Ready →</a>
@@ -196,7 +240,7 @@
     <section aria-label="The Honest Take">
       <div class="tool-result-card">
         <div class="tool-section-hd">The Honest Take</div>
-        <h2 class="tool-result-value">What Buyers Actually Need to Understand</h2>
+        <h2 class="tool-result-value" id="sappington-buyers">What Buyers Actually Need to Understand</h2>
         <p class="tool-result-sub">Sappington is one of those South County names that buyers often discover mid-search rather than at the beginning. It is smaller, less universally recognized than <a href="crestwood">Crestwood</a> or Kirkwood, and yet it can deliver much of the same established southwest-county feel in a more targeted footprint.</p>
         <p class="tool-result-sub"><a href="../school-districts/lindbergh-schools">Lindbergh Schools</a> includes Sappington in its service area, and the Historic Sappington Houses preserve one of the older place-identity stories in this part of the county. That combination gives Sappington more depth than a simple map label might suggest.</p>
       </div>
@@ -216,7 +260,7 @@
     <section aria-label="Location & Identity">
       <div class="tool-result-card">
         <div class="tool-section-hd">Location &amp; Identity</div>
-        <h2 class="tool-result-value">Why the Map Matters Here</h2>
+        <h2 class="tool-result-value" id="sappington-map">Why the Map Matters Here</h2>
         <p class="tool-result-sub">Because Sappington is compact, buyers usually experience it less as a destination market and more as a precise fit: the right block, the right school-side location, the right access pattern to the larger Lindbergh corridor. That makes it especially useful for buyers who are already narrowing down rather than just browsing broadly.</p>
       </div>
     </section>
@@ -234,10 +278,58 @@
       </div>
       <div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Buyers targeting the Lindbergh side of South County.</p></div><div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Households comparing Crestwood, Sappington, and Sunset Hills for the best fit per dollar.</p></div><div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">People who value a compact mature community over a broad search field.</p></div>
     </section>
+<!-- Occupancy and Home Rules: STLHJ Home Rules workbook, verified 2026-09-25 -->
+    <section aria-label="Sappington Occupancy and Home Rules">
+      <div class="tool-result-card" style="border-left:3px solid #ffcc4d;">
+        <div class="tool-section-hd">Home Rules</div>
+        <h2 class="tool-result-value" id="sappington-home-rules">Sappington Occupancy and Home Rules</h2>
+        <p class="tool-result-sub">Sappington is an unincorporated community in St. Louis County, not a city with its own municipal government. A Sappington mailing address does not by itself confirm that a property is unincorporated. County rules below apply when the property is within unincorporated St. Louis County. Check the <a href="https://gis.stlouiscountymo.gov/" rel="noopener" target="_blank">St. Louis County GIS map</a> or contact the County before relying on them.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do I need an occupancy permit when I buy or rent a home in Sappington?</h3>
+        <p class="tool-result-sub">If the property is in unincorporated St. Louis County, the County requires an occupancy permit when a new occupant moves in after a sale or rental change. The County&rsquo;s application covers both sale and rental situations, and the new occupant must wait until the permit is issued before occupying the home.</p>
+        <p class="tool-result-sub">See the County&rsquo;s <a href="https://st.stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/residential-building/occupancy-forms/single-family-dwelling-occupancy/" rel="noopener" target="_blank">single-family dwelling occupancy application</a> and <a href="https://stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/permit-procedures/permits-applications/" rel="noopener" target="_blank">permits and applications</a> for current instructions.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Is there a sewer lateral repair program in Sappington?</h3>
+        <p class="tool-result-sub">Unincorporated properties may be eligible for the St. Louis County Sewer Lateral Repair Program. Eligibility applies; assistance is not automatic. Check the County&rsquo;s current program requirements and <a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank">ordinance guidebook</a> before budgeting for a repair.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do I need a permit for a fence, deck, shed, or pool?</h3>
+        <p class="tool-result-sub">St. Louis County Transportation and Public Works handles applicable residential permits for unincorporated properties. The County&rsquo;s <a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank">ordinance guidebook</a> describes these general rules:</p>
+        <ul class="hr-list">
+          <li><strong>Fence:</strong> A fence 6 feet or shorter generally does not require a building permit. Zoning, sight-distance, and private subdivision or property restrictions may still apply.</li>
+          <li><strong>Deck:</strong> Permit and code review may apply, depending on the project. Confirm requirements for the specific address and work before construction.</li>
+          <li><strong>Shed:</strong> A shed larger than 120 square feet requires a building permit.</li>
+          <li><strong>Pool:</strong> Qualifying pools require a County permit and must meet applicable enclosure, setback, and electrical requirements.</li>
+        </ul>
+        <p class="tool-result-sub">Requirements can depend on the property and project details. Check with the County before work begins.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Are electrical, plumbing, or mechanical permits required?</h3>
+        <p class="tool-result-sub">County trade permits may apply to electrical, plumbing, and mechanical work. Check the County&rsquo;s <a href="https://stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/permit-procedures/permits-applications/" rel="noopener" target="_blank">permits and applications</a> for the project&rsquo;s requirements.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do Sappington landlords need a rental license or registration?</h3>
+        <p class="tool-result-sub">A County occupancy permit is required when a new occupant moves in after a rental change at an unincorporated property. The available County information reviewed for this guide does not establish a separate local landlord license or registration requirement. Confirm with the County whether any additional rules apply to the property or rental arrangement.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Who handles property maintenance and code concerns?</h3>
+        <p class="tool-result-sub">For unincorporated properties, St. Louis County Neighborhood Preservation handles applicable property maintenance and code matters. Confirm that the address is in unincorporated County territory before contacting a city department.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">How much does the occupancy permit cost?</h3>
+        <p class="tool-result-sub">The County&rsquo;s downloadable occupancy application does not publish the current inspection fee. The fee must accompany the application, so confirm the current amount in the County permitting portal or with the County before submitting.</p>
+      </div>
+      <div class="tool-result-card">
+        <p class="tool-result-sub"><strong>Before you buy, rent, or start a project: verify the property&rsquo;s jurisdiction by exact address, then confirm current requirements with St. Louis County. Rules can differ for a property inside an incorporated municipality.</strong></p>
+        <p class="tool-result-sub hr-sources">Sources checked September 25, 2026: St. Louis County Transportation and Public Works <a href="https://st.stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/residential-building/occupancy-forms/single-family-dwelling-occupancy/" rel="noopener" target="_blank">occupancy</a> and <a href="https://stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/permit-procedures/permits-applications/" rel="noopener" target="_blank">permit</a> pages; St. Louis County Planning <a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank">ordinance guidebook</a>. Requirements are address- and project-dependent.</p>
+      </div>
+    </section>
 <!-- ASK ME: component configured in /assets/ask-me.js -->
 <div data-ask-me="neighborhood" data-ask-name="Sappington"><p><a href="/ask?about=neighborhood&amp;from=/neighborhoods/sappington">Ask Me About the House</a></p></div>
 <section aria-label="Longtime homeowners"><div class="tool-result-card"><div class="tool-result-label">Own a home in Sappington?</div><h3 class="tool-result-value">Wondering whether to stay or go?</h3><p class="tool-result-sub">If you&rsquo;ve been in the house for years, start with <a href="/longtime-homeowners" style="color:var(--gold);">Longtime St.&nbsp;Louis Homeowner: Should You Stay or Should You Go?</a> &mdash; what staying really costs, what you&rsquo;d walk away with, and where you&rsquo;d go next.</p></div></section>
-<section aria-label="FAQ"><div class="tool-result-card"><div class="tool-section-hd">FAQ</div><h2 class="tool-result-value">Questions Buyers Ask Before They Commit</h2></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Where is Sappington?</h3><p class="tool-result-sub">Sappington is an unincorporated community in South St. Louis County near the Lindbergh side of the market.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What is Sappington known for?</h3><p class="tool-result-sub">It is known for established neighborhoods, Lindbergh-area positioning, and the Historic Sappington Houses.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Why do buyers compare Sappington with Crestwood?</h3><p class="tool-result-sub">Because both can deliver a similar part of the county, but with different footprints, municipal setups, and pricing patterns.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Is Sappington a large search market?</h3><p class="tool-result-sub">No. It is a more targeted community search than <a href="oakville">Oakville</a> or <a href="concord">Concord</a>.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Who is Sappington a good fit for?</h3><p class="tool-result-sub">Buyers who want southwest-county character in a smaller, more focused search area.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What school district serves Sappington?</h3><p class="tool-result-sub">Sappington is served by Lindbergh Schools, one of the most sought-after districts in South St. Louis County. Verify exact boundaries by address.</p></div>
+<section aria-label="FAQ" id="sappington-faq"><div class="tool-result-card"><div class="tool-section-hd">FAQ</div><h2 class="tool-result-value">Questions Buyers Ask Before They Commit</h2></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Where is Sappington?</h3><p class="tool-result-sub">Sappington is an unincorporated community in South St. Louis County near the Lindbergh side of the market.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What is Sappington known for?</h3><p class="tool-result-sub">It is known for established neighborhoods, Lindbergh-area positioning, and the Historic Sappington Houses.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Why do buyers compare Sappington with Crestwood?</h3><p class="tool-result-sub">Because both can deliver a similar part of the county, but with different footprints, municipal setups, and pricing patterns.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Is Sappington a large search market?</h3><p class="tool-result-sub">No. It is a more targeted community search than <a href="oakville">Oakville</a> or <a href="concord">Concord</a>.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Who is Sappington a good fit for?</h3><p class="tool-result-sub">Buyers who want southwest-county character in a smaller, more focused search area.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What school district serves Sappington?</h3><p class="tool-result-sub">Sappington is served by Lindbergh Schools, one of the most sought-after districts in South St. Louis County. Verify exact boundaries by address.</p></div>
 <div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What is the median home price in Sappington?</h3><p class="tool-result-sub">Census data puts the median owner-occupied home value in Sappington around $297,600 — sitting between entry-level South County and premium Lindbergh-side pricing.</p></div>
 <div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What are the Historic Sappington Houses?</h3><p class="tool-result-sub">The Historic Sappington Houses are a recognized historical site in the area tied to the early settlement of this part of St. Louis County. They give Sappington a layer of place identity that many unincorporated South County communities lack.</p></div>
 </section>
@@ -298,6 +390,22 @@
       </div>
     </section>
 </main>
+<script>
+(function(){
+  var fab=document.getElementById('jumpToggle'),panel=document.getElementById('jumpPanel');
+  if(!fab||!panel)return;
+  function setOpen(o){panel.classList.toggle('open',o);fab.setAttribute('aria-expanded',o);panel.setAttribute('aria-hidden',!o);}
+  fab.addEventListener('click',function(e){e.stopPropagation();setOpen(!panel.classList.contains('open'));});
+  panel.addEventListener('click',function(e){if(e.target.classList.contains('jump-link'))setOpen(false);});
+  document.addEventListener('click',function(e){if(!panel.contains(e.target)&&e.target!==fab&&!fab.contains(e.target))setOpen(false);});
+  var links=[].slice.call(panel.querySelectorAll('.jump-link')),map={};
+  links.forEach(function(l){var id=l.getAttribute('href').slice(1),s=document.getElementById(id);if(s)map[id]=l;});
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(l){l.classList.remove('active');});if(map[en.target.id])map[en.target.id].classList.add('active');}});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    Object.keys(map).forEach(function(id){obs.observe(document.getElementById(id));});
+  }
+})();
+</script>
 <script src="/zip-data.js"></script>
 <script src="/resources.js"></script>
 <script src="/neighborhoods.js"></script>
