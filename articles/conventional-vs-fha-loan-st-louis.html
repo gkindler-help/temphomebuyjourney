@@ -280,10 +280,29 @@
     .lc-card dt{color:var(--text-dim);}
     .lc-card dd{margin:0;text-align:right;color:var(--text);font-variant-numeric:tabular-nums;}
     .lc-card dd.lc-strong,.lc-card dt.lc-strong{color:var(--text-strong);font-weight:700;border-top:1px solid var(--line);padding-top:5px;}
-    .lc-note{font-size:.78rem!important;color:var(--text-dim)!important;margin:8px 0 0!important;line-height:1.5!important;}
+    .lc-note{font-size:.78rem!important;color:var(--text-dim)!important;margin:10px 0 0!important;line-height:1.5!important;}
+    .lc-card p.lc-help{font-size:.76rem!important;line-height:1.5!important;color:var(--text-dim)!important;margin:6px 0 0!important;}
     .lc-method{font-size:.8rem!important;color:var(--text-dim)!important;line-height:1.6!important;margin-top:16px!important;padding-top:12px;border-top:1px solid var(--line);}
     .lc-sources li{font-size:.88rem;}
     @media(max-width:640px){.lc{padding:18px 14px;}.lc-sum{grid-template-columns:repeat(2,1fr);}.lc-cards{grid-template-columns:1fr;}}
+    .lc-ctrl{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+    .lc-ctrl .lc-field{margin-bottom:0;}
+    .lc-card .lc-field{margin-top:10px;}
+    .lc-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+    .lc-chip{font:inherit;font-size:.78rem;font-weight:600;padding:6px 12px;min-height:32px;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);color:var(--text-soft);cursor:pointer;}
+    .lc-chip[aria-pressed="true"]{border-color:var(--gold);color:var(--bg);background:var(--gold);}
+    .lc-chip:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+    .lc-card .lc-help{display:block;margin-top:6px;}
+    .lc-warn{color:var(--gold);font-weight:600;}
+    .lc-key{display:grid;grid-template-columns:1fr auto;gap:6px 10px;margin:14px 0 0;padding:12px;background:var(--surface);border:1px solid var(--line);border-radius:10px;font-size:.88rem;}
+    .lc-key dt{color:var(--text-soft);}
+    .lc-key dd{margin:0;text-align:right;font-weight:700;color:var(--text-strong);font-variant-numeric:tabular-nums;}
+    .lc-tier{font-size:.8rem!important;color:var(--text-soft)!important;margin:10px 0 0!important;line-height:1.5!important;}
+    .lc-tiers{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+    .lc-tiers span{font-size:.74rem;padding:5px 9px;border-radius:8px;border:1px solid var(--line);color:var(--text-dim);}
+    .lc-tiers span.on{border-color:var(--gold);color:var(--text-strong);background:var(--gold-soft);}
+    .lc-tiers.off span{opacity:.45;text-decoration:line-through;}
+    .lc-sum em{display:block;font-style:normal;font-size:.7rem;color:var(--text-dim);margin-top:2px;}
   </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"STL Home Journey","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"Buyer Guides","item":"https://stlhomejourney.com/articles/"},{"@type":"ListItem","position":3,"name":"Conventional vs FHA Loan in St. Louis: Which One Wins Offers?","item":"https://stlhomejourney.com/articles/conventional-vs-fha-loan-st-louis"}]}</script>
 <script>
@@ -437,10 +456,10 @@
 
     <section class="lc" id="loan-calculator" aria-labelledby="calc-h">
       <h2 id="calc-h">Compare the Same House Four Ways</h2>
-      <p class="lc-intro">Every number below is an estimate. Change any illustrative assumption and all four results update.</p>
+      <p class="lc-intro">Every number below is an estimate. Set the shared assumptions, then change the down payment on each loan. Down payment is a choice with consequences, not only a minimum.</p>
       <form id="lc-form" onsubmit="return false" novalidate>
       <fieldset>
-        <legend>Illustrative assumptions</legend>
+        <legend>Illustrative assumptions (shared)</legend>
         <div class="lc-grid">
           <div class="lc-field"><label for="lc-price">Purchase price ($)</label><input id="lc-price" type="number" inputmode="numeric" min="50000" max="2000000" step="1000" value="300000"></div>
           <div class="lc-field"><label for="lc-rate">Illustrative interest rate (%)</label><input id="lc-rate" type="number" inputmode="decimal" min="0" max="15" step="0.125" value="7.00" aria-describedby="lc-rate-h"><span class="lc-help" id="lc-rate-h">One shared rate for an apples-to-apples comparison. Not a current market quote.</span></div>
@@ -449,58 +468,72 @@
           <div class="lc-field"><label for="lc-ins">Annual homeowners insurance ($)</label><input id="lc-ins" type="number" inputmode="numeric" min="0" step="50" value="3000"></div>
         </div>
       </fieldset>
-      <fieldset>
-        <legend>Conventional assumptions</legend>
-        <div class="lc-grid">
-          <div class="lc-field"><label for="lc-cdown">Conventional down payment (%)</label><input id="lc-cdown" type="number" inputmode="decimal" min="3" max="50" step="0.5" value="5" aria-describedby="lc-cdown-h"><span class="lc-help" id="lc-cdown-h">Minimum 3% in this tool. PMI is removed at 20% or more.</span></div>
-          <div class="lc-field"><label for="lc-pmi">Estimated annual PMI rate (%)</label><input id="lc-pmi" type="number" inputmode="decimal" min="0" max="3" step="0.05" value="0.60" aria-describedby="lc-pmi-h"><span class="lc-help" id="lc-pmi-h">Conventional PMI varies by borrower, lender, insurer, down payment and other loan characteristics. Adjust this estimate using your lender’s quote.</span></div>
+      <div class="lc-sum" aria-hidden="true"><div><span>Conventional</span><strong data-sum="conv">$2,569</strong><em data-sumdown="conv">5% down</em></div><div><span>FHA</span><strong data-sum="fha">$2,622</strong><em data-sumdown="fha">3.5% down</em></div><div><span>VA</span><strong data-sum="va">$2,569</strong><em data-sumdown="va">0% down</em></div><div><span>USDA</span><strong data-sum="usda">$2,634</strong><em data-sumdown="usda">0% down</em></div></div>
+      <div class="lc-cards" aria-live="polite">
+      <article class="lc-card" data-loan="conv" aria-labelledby="lc-conv-h">
+        <h3 id="lc-conv-h">Conventional</h3>
+        <div class="lc-total"><span data-f="total-big">$2,569</span>/mo<small>Estimated total monthly housing payment</small></div>
+        <div class="lc-ctrl">
+          <div class="lc-field"><label for="lc-conv-pct">Down payment (%)</label><input id="lc-conv-pct" data-loan="conv" data-kind="pct" type="number" inputmode="decimal" min="3" max="95" step="0.5" value="5" aria-describedby="lc-conv-help"></div>
+          <div class="lc-field"><label for="lc-conv-amt">Down payment ($)</label><input id="lc-conv-amt" data-loan="conv" data-kind="amt" type="number" inputmode="numeric" min="0" step="500" value="15000" aria-describedby="lc-conv-help"></div>
         </div>
-      </fieldset>
-      <fieldset>
-        <legend>VA assumptions</legend>
-        <div class="lc-grid">
-          <div class="lc-field"><label for="lc-vastatus">VA funding-fee status</label><select id="lc-vastatus"><option value="first" selected>First use</option><option value="subsequent">Subsequent use</option><option value="exempt">Funding-fee exempt</option></select></div>
-          <div class="lc-field"><label for="lc-vadown">VA down payment (%)</label><input id="lc-vadown" type="number" inputmode="decimal" min="0" max="50" step="0.5" value="0" aria-describedby="lc-vadown-h"><span class="lc-help" id="lc-vadown-h">Funding-fee tier changes at 5% and 10% down.</span></div>
+        <div class="lc-chips" role="group" aria-label="Conventional down payment shortcuts"><button type="button" class="lc-chip" data-loan="conv" data-pct="3" aria-pressed="false">3%</button><button type="button" class="lc-chip" data-loan="conv" data-pct="5" aria-pressed="true">5%</button><button type="button" class="lc-chip" data-loan="conv" data-pct="10" aria-pressed="false">10%</button><button type="button" class="lc-chip" data-loan="conv" data-pct="20" aria-pressed="false">20%</button></div>
+        <p class="lc-help" id="lc-conv-help">Minimum 3% in this tool. At 20% down (80% loan-to-value) the PMI estimate is removed. <span class="lc-warn" data-f="warn" role="status"></span></p>
+        <div class="lc-field lc-pmi"><label for="lc-pmi">Estimated annual PMI rate (%)</label><input id="lc-pmi" type="number" inputmode="decimal" min="0" max="3" step="0.05" value="0.60" aria-describedby="lc-pmi-h"><span class="lc-help" id="lc-pmi-h">Conventional PMI varies by borrower, lender, insurer, down payment and other loan characteristics. Adjust this estimate using your lender’s quote.</span></div>
+        <dl class="lc-key"><dt>Down payment</dt><dd data-f="down-key">$15,000 — 5%</dd><dt>Starting loan balance</dt><dd data-f="start-key">$285,000</dd><dt data-f="mi-lab">Monthly PMI (estimate)</dt><dd data-f="mi-key">$142</dd></dl>
+        <details class="lc-det" open><summary>Full payment breakdown</summary><dl><dt>Purchase price</dt><dd data-f="price">$300,000</dd><dt>Down payment</dt><dd data-f="down">$15,000</dd><dt>Base loan</dt><dd data-f="base">$285,000</dd><dt>Loan-to-value</dt><dd data-f="ltv">95%</dd><dt>Financed program fee</dt><dd data-f="fee">$0</dd><dt>Starting loan balance</dt><dd data-f="start">$285,000</dd><dt>Principal + interest</dt><dd data-f="pi">$1,896/mo</dd><dt>Estimated PMI</dt><dd data-f="mi">$142/mo</dd><dt>Property taxes</dt><dd data-f="tax">$280/mo</dd><dt>Homeowners insurance</dt><dd data-f="ins">$250/mo</dd><dt class="lc-strong">Estimated total monthly housing payment</dt><dd class="lc-strong" data-f="total">$2,569/mo</dd></dl></details>
+        <p class="lc-note">PMI is a private estimate, not a government rate.</p>
+      </article>
+      <article class="lc-card" data-loan="fha" aria-labelledby="lc-fha-h">
+        <h3 id="lc-fha-h">FHA</h3>
+        <div class="lc-total"><span data-f="total-big">$2,622</span>/mo<small>Estimated total monthly housing payment</small></div>
+        <div class="lc-ctrl">
+          <div class="lc-field"><label for="lc-fha-pct">Down payment (%)</label><input id="lc-fha-pct" data-loan="fha" data-kind="pct" type="number" inputmode="decimal" min="3.5" max="95" step="0.5" value="3.5" aria-describedby="lc-fha-help"></div>
+          <div class="lc-field"><label for="lc-fha-amt">Down payment ($)</label><input id="lc-fha-amt" data-loan="fha" data-kind="amt" type="number" inputmode="numeric" min="0" step="500" value="10500" aria-describedby="lc-fha-help"></div>
         </div>
-      </fieldset>
+        <div class="lc-chips" role="group" aria-label="FHA down payment shortcuts"><button type="button" class="lc-chip" data-loan="fha" data-pct="3.5" aria-pressed="true">3.5%</button><button type="button" class="lc-chip" data-loan="fha" data-pct="5" aria-pressed="false">5%</button><button type="button" class="lc-chip" data-loan="fha" data-pct="10" aria-pressed="false">10%</button></div>
+        <p class="lc-help" id="lc-fha-help">FHA minimum investment is 3.5%; lower entries are not modeled. Annual MIP follows HUD’s schedule for the resulting loan-to-value. <span class="lc-warn" data-f="warn" role="status"></span></p>
+        <p class="lc-tier">Annual MIP for this scenario: <strong data-f="mip-rate">0.55%</strong> · upfront MIP 1.75%, financed</p>
+        <dl class="lc-key"><dt>Down payment</dt><dd data-f="down-key">$10,500 — 3.5%</dd><dt>Starting loan balance</dt><dd data-f="start-key">$294,566</dd><dt data-f="mi-lab">Monthly mortgage insurance (MIP)</dt><dd data-f="mi-key">$132</dd></dl>
+        <details class="lc-det" open><summary>Full payment breakdown</summary><dl><dt>Purchase price</dt><dd data-f="price">$300,000</dd><dt>Down payment</dt><dd data-f="down">$10,500</dd><dt>Base loan</dt><dd data-f="base">$289,500</dd><dt>Loan-to-value</dt><dd data-f="ltv">96.5%</dd><dt>Financed upfront MIP (1.75%)</dt><dd data-f="fee">$5,066</dd><dt>Starting loan balance</dt><dd data-f="start">$294,566</dd><dt>Principal + interest</dt><dd data-f="pi">$1,960/mo</dd><dt>Annual MIP (monthly)</dt><dd data-f="mi">$132/mo</dd><dt>Property taxes</dt><dd data-f="tax">$280/mo</dd><dt>Homeowners insurance</dt><dd data-f="ins">$250/mo</dd><dt class="lc-strong">Estimated total monthly housing payment</dt><dd class="lc-strong" data-f="total">$2,622/mo</dd></dl></details>
+        <p class="lc-note">FHA charges annual MIP at every down payment shown here; the rate depends on loan-to-value, term and loan amount.</p>
+      </article>
+      <article class="lc-card" data-loan="va" aria-labelledby="lc-va-h">
+        <h3 id="lc-va-h">VA</h3>
+        <div class="lc-total"><span data-f="total-big">$2,569</span>/mo<small>Estimated total monthly housing payment</small></div>
+        <div class="lc-field"><label for="lc-vastatus">VA funding-fee status</label><select id="lc-vastatus"><option value="first" selected>First use</option><option value="subsequent">Subsequent use</option><option value="exempt">Funding-fee exempt</option></select></div>
+        <div class="lc-ctrl">
+          <div class="lc-field"><label for="lc-va-pct">Down payment (%)</label><input id="lc-va-pct" data-loan="va" data-kind="pct" type="number" inputmode="decimal" min="0" max="95" step="0.5" value="0" aria-describedby="lc-va-help"></div>
+          <div class="lc-field"><label for="lc-va-amt">Down payment ($)</label><input id="lc-va-amt" data-loan="va" data-kind="amt" type="number" inputmode="numeric" min="0" step="500" value="0" aria-describedby="lc-va-help"></div>
+        </div>
+        <div class="lc-chips" role="group" aria-label="VA down payment shortcuts"><button type="button" class="lc-chip" data-loan="va" data-pct="0" aria-pressed="true">0%</button><button type="button" class="lc-chip" data-loan="va" data-pct="5" aria-pressed="false">5%</button><button type="button" class="lc-chip" data-loan="va" data-pct="10" aria-pressed="false">10%</button></div>
+        <p class="lc-help" id="lc-va-help">The funding fee changes at 5% and 10% down. <span class="lc-warn" data-f="warn" role="status"></span></p>
+        <div class="lc-tiers" aria-label="VA funding fee tiers"><span data-tier="0">Under 5% down: <b data-f="t0">2.15%</b></span><span data-tier="5">5%+: <b>1.50%</b></span><span data-tier="10">10%+: <b>1.25%</b></span></div>
+        <p class="lc-tier">Funding fee for this scenario: <strong data-f="va-rate">2.15%</strong> = <strong data-f="va-fee">$6,450</strong>, financed. This is a one-time fee, not mortgage insurance.</p>
+        <dl class="lc-key"><dt>Down payment</dt><dd data-f="down-key">$0 — 0%</dd><dt>Starting loan balance</dt><dd data-f="start-key">$306,450</dd><dt data-f="mi-lab">Monthly mortgage insurance</dt><dd data-f="mi-key">$0</dd></dl>
+        <details class="lc-det" open><summary>Full payment breakdown</summary><dl><dt>Purchase price</dt><dd data-f="price">$300,000</dd><dt>Down payment</dt><dd data-f="down">$0</dd><dt>Base loan</dt><dd data-f="base">$300,000</dd><dt>Loan-to-value</dt><dd data-f="ltv">100%</dd><dt>Financed VA funding fee</dt><dd data-f="fee">$6,450</dd><dt>Starting loan balance</dt><dd data-f="start">$306,450</dd><dt>Principal + interest</dt><dd data-f="pi">$2,039/mo</dd><dt>Monthly mortgage insurance</dt><dd data-f="mi">$0/mo</dd><dt>Property taxes</dt><dd data-f="tax">$280/mo</dd><dt>Homeowners insurance</dt><dd data-f="ins">$250/mo</dd><dt class="lc-strong">Estimated total monthly housing payment</dt><dd class="lc-strong" data-f="total">$2,569/mo</dd></dl></details>
+        <p class="lc-note">VA does not require monthly mortgage insurance. Some eligible borrowers are exempt from the VA funding fee.</p>
+      </article>
+      <article class="lc-card" data-loan="usda" aria-labelledby="lc-usda-h">
+        <h3 id="lc-usda-h">USDA</h3>
+        <div class="lc-total"><span data-f="total-big">$2,634</span>/mo<small>Estimated total monthly housing payment</small></div>
+        <p class="lc-tier">0% down: USDA’s standard 100%-financing structure. 1.00% upfront guarantee fee, financed; 0.35% annual fee.</p>
+        <dl class="lc-key"><dt>Down payment</dt><dd data-f="down-key">$0 — 0%</dd><dt>Starting loan balance</dt><dd data-f="start-key">$303,000</dd><dt data-f="mi-lab">Monthly program fee (annual fee)</dt><dd data-f="mi-key">$88</dd></dl>
+        <details class="lc-det" open><summary>Full payment breakdown</summary><dl><dt>Purchase price</dt><dd data-f="price">$300,000</dd><dt>Down payment</dt><dd data-f="down">$0</dd><dt>Base loan</dt><dd data-f="base">$300,000</dd><dt>Loan-to-value</dt><dd data-f="ltv">100%</dd><dt>Financed guarantee fee (1.00%)</dt><dd data-f="fee">$3,000</dd><dt>Starting loan balance</dt><dd data-f="start">$303,000</dd><dt>Principal + interest</dt><dd data-f="pi">$2,016/mo</dd><dt>Annual fee (monthly)</dt><dd data-f="mi">$88/mo</dd><dt>Property taxes</dt><dd data-f="tax">$280/mo</dd><dt>Homeowners insurance</dt><dd data-f="ins">$250/mo</dd><dt class="lc-strong">Estimated total monthly housing payment</dt><dd class="lc-strong" data-f="total">$2,634/mo</dd></dl></details>
+        <p class="lc-note">USDA eligibility depends on the borrower/household and the property’s location. This calculator does not determine USDA eligibility.</p>
+      </article>
+      </div>
       </form>
       <fieldset>
         <legend>Government program rules used</legend>
         <ul class="lc-rules">
-          <li><strong>FHA:</strong> 3.5% minimum investment; 1.75% upfront MIP, financed; annual MIP from HUD’s table for the loan term, LTV and base loan amount (currently <span id="lc-miprate">0.55%</span> for this scenario).</li>
-          <li><strong>VA:</strong> funding fee, financed: first use 2.15% (under 5% down), 1.50% (5%+), 1.25% (10%+); after first use 3.30% / 1.50% / 1.25%; exempt 0%. Currently <span id="lc-varate">2.15%</span>. No monthly mortgage insurance.</li>
+          <li><strong>FHA:</strong> 3.5% minimum investment; 1.75% upfront MIP, financed; annual MIP from HUD’s schedule by loan term, loan-to-value and base loan amount (for loans over 15 years with a base loan of $726,200 or less: 0.55% above 95% LTV, 0.50% at 95% or below).</li>
+          <li><strong>VA:</strong> funding fee, financed: first use 2.15% (under 5% down), 1.50% (5%+), 1.25% (10%+); after first use 3.30% / 1.50% / 1.25%; exempt 0%. No monthly mortgage insurance.</li>
           <li><strong>USDA Guaranteed:</strong> 1.00% upfront guarantee fee, financed; 0.35% annual fee.</li>
         </ul>
       </fieldset>
-      <div class="lc-sum" aria-hidden="true"><div><span>Conventional</span><strong data-sum="conv">$2,569</strong></div><div><span>FHA</span><strong data-sum="fha">$2,622</strong></div><div><span>VA</span><strong data-sum="va">$2,569</strong></div><div><span>USDA</span><strong data-sum="usda">$2,634</strong></div></div>
-      <div class="lc-cards" aria-live="polite">
-      <article class="lc-card" data-loan="conv" aria-labelledby="lc-conv-h">
-        <h3 id="lc-conv-h">Conventional</h3>
-        <div class="lc-total"><span data-f="total-big">$2,569</span>/mo<small data-f="sub">5% down, PMI estimate · initial down payment <span data-f="down-sm">$15,000</span></small></div>
-        <details class="lc-det" open><summary>Payment breakdown</summary><dl><dt>Purchase price</dt><dd data-f="price">$300,000</dd><dt>Down payment</dt><dd data-f="down">$15,000</dd><dt>Base loan</dt><dd data-f="base">$285,000</dd><dt>Financed program fee</dt><dd data-f="fee">$0</dd><dt>Starting loan balance</dt><dd data-f="start">$285,000</dd><dt>Principal + interest</dt><dd data-f="pi">$1,896/mo</dd><dt>Estimated PMI</dt><dd data-f="mi">$142/mo</dd><dt>Property taxes</dt><dd data-f="tax">$280/mo</dd><dt>Homeowners insurance</dt><dd data-f="ins">$250/mo</dd><dt class="lc-strong">Estimated total monthly housing payment</dt><dd class="lc-strong" data-f="total">$2,569/mo</dd></dl></details>
-        <p class="lc-note">PMI drops to $0 at 20% down or more.</p>
-      </article>
-      <article class="lc-card" data-loan="fha" aria-labelledby="lc-fha-h">
-        <h3 id="lc-fha-h">FHA</h3>
-        <div class="lc-total"><span data-f="total-big">$2,622</span>/mo<small data-f="sub">3.5% minimum down · initial down payment <span data-f="down-sm">$10,500</span></small></div>
-        <details class="lc-det" open><summary>Payment breakdown</summary><dl><dt>Purchase price</dt><dd data-f="price">$300,000</dd><dt>Down payment</dt><dd data-f="down">$10,500</dd><dt>Base loan</dt><dd data-f="base">$289,500</dd><dt>Financed upfront MIP (1.75%)</dt><dd data-f="fee">$5,066</dd><dt>Starting loan balance</dt><dd data-f="start">$294,566</dd><dt>Principal + interest</dt><dd data-f="pi">$1,960/mo</dd><dt>Annual MIP (monthly)</dt><dd data-f="mi">$132/mo</dd><dt>Property taxes</dt><dd data-f="tax">$280/mo</dd><dt>Homeowners insurance</dt><dd data-f="ins">$250/mo</dd><dt class="lc-strong">Estimated total monthly housing payment</dt><dd class="lc-strong" data-f="total">$2,622/mo</dd></dl></details>
-        <p class="lc-note">Down payment fixed at FHA’s 3.5% minimum investment.</p>
-      </article>
-      <article class="lc-card" data-loan="va" aria-labelledby="lc-va-h">
-        <h3 id="lc-va-h">VA</h3>
-        <div class="lc-total"><span data-f="total-big">$2,569</span>/mo<small data-f="sub">0% down, first use · initial down payment <span data-f="down-sm">$0</span></small></div>
-        <details class="lc-det" open><summary>Payment breakdown</summary><dl><dt>Purchase price</dt><dd data-f="price">$300,000</dd><dt>Down payment</dt><dd data-f="down">$0</dd><dt>Base loan</dt><dd data-f="base">$300,000</dd><dt>Financed VA funding fee</dt><dd data-f="fee">$6,450</dd><dt>Starting loan balance</dt><dd data-f="start">$306,450</dd><dt>Principal + interest</dt><dd data-f="pi">$2,039/mo</dd><dt>Mortgage insurance</dt><dd data-f="mi">$0/mo</dd><dt>Property taxes</dt><dd data-f="tax">$280/mo</dd><dt>Homeowners insurance</dt><dd data-f="ins">$250/mo</dd><dt class="lc-strong">Estimated total monthly housing payment</dt><dd class="lc-strong" data-f="total">$2,569/mo</dd></dl></details>
-        <p class="lc-note">No monthly mortgage insurance. Some eligible borrowers are exempt from the VA funding fee.</p>
-      </article>
-      <article class="lc-card" data-loan="usda" aria-labelledby="lc-usda-h">
-        <h3 id="lc-usda-h">USDA</h3>
-        <div class="lc-total"><span data-f="total-big">$2,634</span>/mo<small data-f="sub">0% down · initial down payment <span data-f="down-sm">$0</span></small></div>
-        <details class="lc-det" open><summary>Payment breakdown</summary><dl><dt>Purchase price</dt><dd data-f="price">$300,000</dd><dt>Down payment</dt><dd data-f="down">$0</dd><dt>Base loan</dt><dd data-f="base">$300,000</dd><dt>Financed guarantee fee (1.00%)</dt><dd data-f="fee">$3,000</dd><dt>Starting loan balance</dt><dd data-f="start">$303,000</dd><dt>Principal + interest</dt><dd data-f="pi">$2,016/mo</dd><dt>Annual fee (monthly)</dt><dd data-f="mi">$88/mo</dd><dt>Property taxes</dt><dd data-f="tax">$280/mo</dd><dt>Homeowners insurance</dt><dd data-f="ins">$250/mo</dd><dt class="lc-strong">Estimated total monthly housing payment</dt><dd class="lc-strong" data-f="total">$2,634/mo</dd></dl></details>
-        <p class="lc-note">USDA eligibility depends on the borrower/household and the property’s location. This calculator does not determine USDA eligibility.</p>
-      </article>
-      </div>
       <p class="lc-method"><strong>Calculator methodology:</strong> This tool provides illustrative estimates for comparing financing structures. It is not a Loan Estimate, lending quote, preapproval or determination of eligibility. Interest rates, PMI, taxes, homeowners insurance, closing costs and lender requirements vary. FHA, VA and USDA program rules can change. Verify your actual financing terms with a qualified lender before making a purchase decision.</p>
-      <p class="lc-method">How the estimates work: principal and interest use standard fixed-rate amortization on each loan’s starting balance, including any financed program fee. Conventional PMI is the estimated annual rate × the loan amount ÷ 12. FHA annual MIP and the USDA annual fee are first-year estimates, applied to the average scheduled balance during year one (the FHA base loan, and the full USDA loan). The FHA side is fixed at the 3.5% minimum-investment scenario. The tool does not check FHA loan limits, conforming loan limits or any program eligibility. “Initial down payment” is not cash to close.</p>
+      <p class="lc-method">How the estimates work: principal and interest use standard fixed-rate amortization on each loan’s starting balance, including any financed program fee. Conventional PMI is the estimated annual rate × the loan amount ÷ 12 and is removed at 20% down or more. FHA annual MIP and the USDA annual fee are first-year estimates, applied to the average scheduled balance during year one (the FHA base loan, and the full USDA loan). FHA down payments below the 3.5% minimum investment are not modeled; USDA is shown at 0% down only. The tool does not check FHA loan limits, conforming loan limits or any program eligibility. “Initial down payment” is not cash to close.</p>
     </section>
 
     <h2 id="why-payment-changed">Why Did the Payment Change If the House Didn’t?</h2>
@@ -917,10 +950,10 @@
 </footer>
 <script src="/assets/ask-me.js?v=6" defer></script>
 <script>
-/* Loan comparison engine — same code is inlined in the article */
+/* Loan comparison engine (STL Home Journey) */
 var LC = (function () {
-  var FHA_MIN_DOWN = 0.035, FHA_UFMIP = 0.0175, FHA_LIMIT = 726200;
-  var USDA_UPFRONT = 0.01, USDA_ANNUAL = 0.0035;
+  var MIN = { conv: 3, fha: 3.5, va: 0, usda: 0 };
+  var FHA_UFMIP = 0.0175, FHA_LIMIT = 726200, USDA_UPFRONT = 0.01, USDA_ANNUAL = 0.0035;
   function pmt(bal, rate, years) {
     var n = years * 12, r = rate / 100 / 12;
     if (bal <= 0) return 0;
@@ -930,10 +963,10 @@ var LC = (function () {
   /* average of the 12 scheduled month-start balances in year one */
   function avgYear1(bal, rate, years) {
     var r = rate / 100 / 12, p = pmt(bal, rate, years), b = bal, sum = 0;
-    for (var k = 0; k < 12; k++) { sum += b; b = b - (p - b * r); }
+    for (var k = 0; k < 12; k++) { sum += b; b -= (p - b * r); }
     return sum / 12;
   }
-  /* HUD annual MIP table (ML 2023-05), applied to the FHA minimum-down case */
+  /* HUD annual MIP schedule (Mortgagee Letter 2023-05) by term, base loan amount and LTV */
   function fhaMipRate(base, value, years) {
     var ltv = base / value;
     if (years > 15) {
@@ -943,80 +976,125 @@ var LC = (function () {
     if (base <= FHA_LIMIT) return ltv > 0.90 ? 0.0040 : 0.0015;
     return ltv > 0.90 ? 0.0065 : (ltv > 0.78 ? 0.0040 : 0.0015);
   }
+  /* VA purchase funding fee by use and down payment */
   function vaFeeRate(status, downPct) {
     if (status === 'exempt') return 0;
     if (downPct >= 10) return 0.0125;
     if (downPct >= 5) return 0.015;
     return status === 'subsequent' ? 0.033 : 0.0215;
   }
+  function clampDown(k, pct) { return Math.min(Math.max(isFinite(pct) ? pct : MIN[k], MIN[k]), 95); }
   function compute(i) {
-    var price = i.price, rate = i.rate, yrs = i.term;
-    var tax = i.taxes / 12, ins = i.insurance / 12, out = {};
-    function finish(o) { o.tax = tax; o.ins = ins; o.total = o.pi + o.mi + tax + ins; return o; }
-    // Conventional
-    var cd = price * i.convDown / 100, cb = price - cd;
-    out.conv = finish({ down: cd, base: cb, fee: 0, start: cb, pi: pmt(cb, rate, yrs),
-      mi: i.convDown >= 20 ? 0 : cb * i.pmi / 100 / 12, miRate: i.convDown >= 20 ? 0 : i.pmi / 100 });
-    // FHA (minimum required investment scenario)
-    var fd = price * FHA_MIN_DOWN, fb = price - fd, uf = fb * FHA_UFMIP, fs = fb + uf, fr = fhaMipRate(fb, price, yrs);
-    out.fha = finish({ down: fd, base: fb, fee: uf, start: fs, pi: pmt(fs, rate, yrs),
-      mi: avgYear1(fb, rate, yrs) * fr / 12, miRate: fr });
-    // VA
-    var vd = price * i.vaDown / 100, vb = price - vd, vr = vaFeeRate(i.vaStatus, i.vaDown), vf = vb * vr, vs = vb + vf;
-    out.va = finish({ down: vd, base: vb, fee: vf, start: vs, pi: pmt(vs, rate, yrs), mi: 0, miRate: 0, feeRate: vr });
-    // USDA
-    var ub = price, ug = ub * USDA_UPFRONT, us = ub + ug;
-    out.usda = finish({ down: 0, base: ub, fee: ug, start: us, pi: pmt(us, rate, yrs),
-      mi: avgYear1(us, rate, yrs) * USDA_ANNUAL / 12, miRate: USDA_ANNUAL });
+    var price = i.price, rate = i.rate, yrs = i.term, tax = i.taxes / 12, ins = i.insurance / 12, out = {};
+    function loan(k, downPct, feeRate, annual) {
+      var d = price * downPct / 100, base = price - d, fee = base * feeRate, start = base + fee;
+      var o = { downPct: downPct, down: d, base: base, ltv: base / price, feeRate: feeRate, fee: fee, start: start, pi: pmt(start, rate, yrs) };
+      o.miRate = annual.rate; o.mi = annual.amount(o); o.tax = tax; o.ins = ins; o.total = o.pi + o.mi + tax + ins;
+      return o;
+    }
+    var cp = clampDown('conv', i.convDown), fp = clampDown('fha', i.fhaDown), vp = clampDown('va', i.vaDown);
+    var pmiRate = cp >= 20 ? 0 : i.pmi / 100;            /* PMI not charged at 80% LTV or lower */
+    out.conv = loan('conv', cp, 0, { rate: pmiRate, amount: function (o) { return o.base * pmiRate / 12; } });
+    var fb = price * (1 - fp / 100), fr = fhaMipRate(fb, price, yrs);
+    out.fha = loan('fha', fp, FHA_UFMIP, { rate: fr, amount: function (o) { return avgYear1(o.base, rate, yrs) * fr / 12; } });
+    out.va = loan('va', vp, vaFeeRate(i.vaStatus, vp), { rate: 0, amount: function () { return 0; } });
+    out.usda = loan('usda', 0, USDA_UPFRONT, { rate: USDA_ANNUAL, amount: function (o) { return avgYear1(o.start, rate, yrs) * USDA_ANNUAL / 12; } });
     return out;
   }
-  return { compute: compute, pmt: pmt, fhaMipRate: fhaMipRate, vaFeeRate: vaFeeRate };
+  return { compute: compute, pmt: pmt, fhaMipRate: fhaMipRate, vaFeeRate: vaFeeRate, MIN: MIN };
 })();
 (function () {
   var form = document.getElementById('lc-form');
   if (!form) return;
-  function num(id, dflt, lo, hi) {
-    var v = parseFloat(document.getElementById(id).value);
+  var $ = function (id) { return document.getElementById(id); };
+  var LOANS = ['conv', 'fha', 'va'];
+  function val(id, dflt, lo, hi) {
+    var v = parseFloat($(id).value);
     if (!isFinite(v)) v = dflt;
     if (lo != null && v < lo) v = lo;
     if (hi != null && v > hi) v = hi;
     return v;
   }
   function money(x) { return '$' + Math.round(x).toLocaleString('en-US'); }
-  function pct(x) { return (x * 100).toFixed(2).replace(/0$/, '') + '%'; }
-  var subs = { conv: function (i) { return i.convDown + '% down' + (i.convDown >= 20 ? ', no PMI' : ', PMI estimate'); },
-               fha: function () { return '3.5% minimum down'; },
-               va: function (i) { return (i.vaDown ? i.vaDown + '% down' : '0% down') + ', ' + ({ first: 'first use', subsequent: 'subsequent use', exempt: 'fee exempt' })[i.vaStatus]; },
-               usda: function () { return '0% down'; } };
+  function pct(x) { return (Math.round(x * 100) / 100).toString() + '%'; }
+  function rate(x) { return (x * 100).toFixed(2) + '%'; }
+  function price() { return val('lc-price', 300000, 10000, 5000000); }
+  /* keep % and $ fields in step; src = 'pct' | 'amt' | 'price' */
+  function sync(k, src) {
+    var p = price(), pe = $('lc-' + k + '-pct'), ae = $('lc-' + k + '-amt');
+    if (src === 'amt') {
+      var a = parseFloat(ae.value);
+      if (isFinite(a)) { pe.value = Math.floor(a / p * 10000 + 1e-6) / 100; pe.dataset.exact = a / p * 100; pe.dataset.shown = pe.value; }
+    } else {
+      if (src === 'pct') { delete pe.dataset.exact; }
+      var q = (pe.dataset.exact && pe.value === pe.dataset.shown) ? parseFloat(pe.dataset.exact) : parseFloat(pe.value);
+      if (isFinite(q)) ae.value = Math.round(p * q / 100);
+    }
+  }
+  function downPct(k) {
+    var pe = $('lc-' + k + '-pct');
+    if (pe.dataset.exact && pe.value === pe.dataset.shown) return parseFloat(pe.dataset.exact);
+    var v = parseFloat(pe.value); return isFinite(v) ? v : LC.MIN[k];
+  }
   function update() {
     var i = {
-      price: num('lc-price', 300000, 10000, 5000000),
-      rate: num('lc-rate', 7, 0, 25),
-      term: parseInt(document.getElementById('lc-term').value, 10) || 30,
-      taxes: num('lc-tax', 0, 0),
-      insurance: num('lc-ins', 0, 0),
-      convDown: num('lc-cdown', 5, 3, 100),
-      pmi: num('lc-pmi', 0.6, 0, 5),
-      vaDown: num('lc-vadown', 0, 0, 100),
-      vaStatus: document.getElementById('lc-vastatus').value
+      price: price(), rate: val('lc-rate', 7, 0, 25),
+      term: parseInt($('lc-term').value, 10) || 30,
+      taxes: val('lc-tax', 0, 0), insurance: val('lc-ins', 0, 0),
+      convDown: downPct('conv'), pmi: val('lc-pmi', 0.6, 0, 5),
+      fhaDown: downPct('fha'), vaDown: downPct('va'), vaStatus: $('lc-vastatus').value
     };
     var o = LC.compute(i);
     ['conv', 'fha', 'va', 'usda'].forEach(function (k) {
       var r = o[k], card = document.querySelector('.lc-card[data-loan="' + k + '"]');
       var set = function (f, v) { var el = card.querySelector('[data-f="' + f + '"]'); if (el) el.textContent = v; };
-      set('price', money(i.price)); set('down', money(r.down)); set('base', money(r.base)); set('fee', money(r.fee));
-      set('start', money(r.start)); set('pi', money(r.pi) + '/mo'); set('mi', money(r.mi) + '/mo');
+      set('price', money(i.price)); set('down', money(r.down)); set('base', money(r.base)); set('ltv', pct(r.ltv * 100));
+      set('fee', money(r.fee)); set('start', money(r.start)); set('pi', money(r.pi) + '/mo'); set('mi', money(r.mi) + '/mo');
       set('tax', money(r.tax) + '/mo'); set('ins', money(r.ins) + '/mo'); set('total', money(r.total) + '/mo');
-      set('total-big', money(r.total)); set('down-sm', money(r.down));
-      var sub = card.querySelector('[data-f="sub"]');
-      if (sub) sub.firstChild.textContent = subs[k](i) + ' · initial down payment ';
+      set('total-big', money(r.total));
+      set('down-key', money(r.down) + ' — ' + pct(Math.floor(r.downPct * 100 + 1e-9) / 100)); set('start-key', money(r.start)); set('mi-key', money(r.mi));
       document.querySelector('[data-sum="' + k + '"]').textContent = money(r.total);
+      document.querySelector('[data-sumdown="' + k + '"]').textContent = pct(Math.floor(r.downPct * 100 + 1e-9) / 100) + ' down';
+      if (LOANS.indexOf(k) > -1) {
+        var typed = parseFloat($('lc-' + k + '-pct').value), w = card.querySelector('[data-f="warn"]');
+        w.textContent = (isFinite(typed) && typed < LC.MIN[k]) ? 'Below the ' + LC.MIN[k] + '% minimum; ' + LC.MIN[k] + '% is used.' : (isFinite(typed) && typed > 95 ? 'Capped at 95% in this tool.' : '');
+        card.querySelectorAll('.lc-chip').forEach(function (c) { c.setAttribute('aria-pressed', String(Math.abs(parseFloat(c.dataset.pct) - r.downPct) < 1e-9)); });
+      }
     });
-    document.getElementById('lc-miprate').textContent = pct(o.fha.miRate);
-    document.getElementById('lc-varate').textContent = pct(o.va.feeRate);
+    var conv = document.querySelector('.lc-card[data-loan="conv"] [data-f="mi-lab"]');
+    conv.textContent = o.conv.miRate ? 'Monthly PMI (estimate)' : 'Monthly PMI (removed at 20% down)';
+    document.querySelector('[data-f="mip-rate"]').textContent = rate(o.fha.miRate);
+    var va = o.va, vc = document.querySelector('.lc-card[data-loan="va"]');
+    vc.querySelector('[data-f="va-rate"]').textContent = rate(va.feeRate);
+    vc.querySelector('[data-f="va-fee"]').textContent = money(va.fee);
+    var status = i.vaStatus, t0 = vc.querySelector('[data-f="t0"]');
+    t0.textContent = status === 'subsequent' ? '3.30%' : '2.15%';
+    vc.querySelectorAll('[data-tier]').forEach(function (s) {
+      var t = +s.dataset.tier, on = status !== 'exempt' && (t === 10 ? va.downPct >= 10 : t === 5 ? va.downPct >= 5 && va.downPct < 10 : va.downPct < 5);
+      s.classList.toggle('on', on);
+    });
+    vc.querySelector('.lc-tiers').classList.toggle('off', status === 'exempt');
   }
-  form.addEventListener('input', update);
+  form.addEventListener('input', function (e) {
+    var t = e.target;
+    if (t.dataset && t.dataset.loan && t.dataset.kind) sync(t.dataset.loan, t.dataset.kind);
+    if (t.id === 'lc-price') LOANS.forEach(function (k) { sync(k, 'price'); });
+    update();
+  });
   form.addEventListener('change', update);
+  /* on leaving a field, snap an out-of-range entry to the value actually used */
+  form.addEventListener('focusout', function (e) {
+    var t = e.target;
+    if (!(t.dataset && t.dataset.loan && t.dataset.kind)) return;
+    var k = t.dataset.loan, pe = $('lc-' + k + '-pct'), v = parseFloat(pe.value);
+    var c = Math.min(Math.max(isFinite(v) ? v : LC.MIN[k], LC.MIN[k]), 95);
+    if (c !== v) { pe.value = c; sync(k, 'pct'); update(); }
+  });
+  form.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.lc-chip');
+    if (!b) return;
+    var k = b.dataset.loan, pe = $('lc-' + k + '-pct'); pe.value = b.dataset.pct; delete pe.dataset.exact; sync(k, 'pct'); update();
+  });
   if (window.matchMedia && window.matchMedia('(max-width:640px)').matches) {
     document.querySelectorAll('.lc-det').forEach(function (d) { d.removeAttribute('open'); });
   }
