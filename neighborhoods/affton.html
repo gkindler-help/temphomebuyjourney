@@ -56,12 +56,12 @@
 .george-btn-about{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.72);font-weight:600;font-size:13px;letter-spacing:0.03em;padding:10px 19px;border-radius:8px;text-decoration:none;transition:color 0.18s;}
 .george-btn-about:hover{color:#ffcc4d;}
 @media (max-width:600px){.george-card{flex-direction:column;align-items:center;text-align:center;}.george-card-photo{width:90px;height:90px;}.george-card-btns{flex-direction:column;width:100%;}.george-btn-p,.george-btn-s,.george-btn-about{width:100%;justify-content:center;}}
-.hr-list{margin:10px 0 4px;padding-left:1.1em;color:rgba(255,255,255,.72);}
+.hr-qa .hr-q{font-size:1.02rem;line-height:1.3;margin-bottom:8px;}
+section[aria-label$="Occupancy and Home Rules"] a{color:#ffcc4d;text-decoration:underline;text-underline-offset:2px;}
+.hr-list{margin:10px 0 6px;padding-left:1.1em;color:rgba(255,255,255,.72);}
 .hr-list li{margin-bottom:8px;line-height:1.55;font-size:13px;}
 .hr-list strong{color:rgba(255,255,255,.92);}
-.hr-src{font-size:.78rem;color:rgba(255,255,255,.45);}
-.hr-src a{color:rgba(255,204,77,.75);}
-.hr-flag{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#080808;background:#ffcc4d;border-radius:4px;padding:1px 6px;margin-right:4px;vertical-align:1px;}
+.hr-sources{font-size:12px!important;color:rgba(255,255,255,.45)!important;margin-top:10px;}
 [id]{scroll-margin-top:84px;}
 /* Jump FAB + panel */
 .jump-fab{position:fixed;right:16px;bottom:20px;z-index:200;display:inline-flex;align-items:center;gap:8px;background:#ffcc4d;color:#080808;font-weight:800;font-size:12px;letter-spacing:.05em;border:none;border-radius:999px;padding:12px 17px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.55);font-family:inherit;}
@@ -180,10 +180,7 @@
   <a href="#affton-housing" class="jump-link">Housing Stock</a>
   <a href="#affton-buyers" class="jump-link">Buyer Context</a>
   <a href="#affton-map" class="jump-link">Map &amp; Boundaries</a>
-  <a href="#affton-occupancy" class="jump-link">Occupancy Rules</a>
-  <a href="#affton-sewer-lateral" class="jump-link">Sewer Lateral</a>
-  <a href="#affton-permits" class="jump-link">Permits &amp; Projects</a>
-  <a href="#affton-rentals" class="jump-link">Rentals &amp; Who to Contact</a>
+  <a href="#affton-home-rules" class="jump-link">Occupancy &amp; Home Rules</a>
   <a href="#affton-faq" class="jump-link">FAQ</a>
   <a href="#affton-actions" class="jump-link">Talk to George</a>
 </nav>
@@ -205,10 +202,7 @@
           <a href="#affton-housing" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Housing Stock: Fixer Upper vs. Move-In Ready</a>
           <a href="#affton-buyers" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">What Buyers Need to Understand</a>
           <a href="#affton-map" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Why the Map Matters Here</a>
-          <a href="#affton-occupancy" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Occupancy Rules: Buying, Selling &amp; Renting</a>
-          <a href="#affton-sewer-lateral" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Sewer Lateral Coverage</a>
-          <a href="#affton-permits" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Permits for Home Projects</a>
-          <a href="#affton-rentals" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Rentals, Code &amp; Who to Contact</a>
+          <a href="#affton-home-rules" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Occupancy and Home Rules</a>
           <a href="#affton-faq" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;">Frequently Asked Questions</a>
         </div>
       </div>
@@ -282,63 +276,52 @@
       </div>
       <div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Budget-minded buyers who still want an established owner-occupied area.</p></div><div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Households who value Grant&#x27;s Trail, quick errands, and central South County access.</p></div><div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Buyers comparing Affton against Lemay, Mehlville, or inner-ring city neighborhoods on monthly payment rather than brand prestige.</p></div>
     </section>
-<!-- Home rules: from STLHJ Home Rules workbook, verified 2026-09-25 -->
-    <section aria-label="Affton Occupancy Rules">
-      <div class="tool-result-card" style="border-left:3px solid #ffcc4d;margin-top:2px;">
-        <div class="tool-result-label" style="color:#ffcc4d;">Exact address required: Affton is not a city</div>
-        <p class="tool-result-sub">This area name does not establish jurisdiction. These St. Louis County rules apply only if the exact property is unincorporated. Verify the address before relying on them.</p>
-        <p class="tool-result-sub">Check the property&rsquo;s jurisdiction by address in the <a href="https://gis.stlouiscountymo.gov/" rel="noopener" target="_blank">St. Louis County Geospatial Data Center</a> before relying on anything below.</p>
+<!-- Occupancy and Home Rules: STLHJ Home Rules workbook, verified 2026-09-25 -->
+    <section aria-label="Affton Occupancy and Home Rules">
+      <div class="tool-result-card" style="border-left:3px solid #ffcc4d;">
+        <div class="tool-section-hd">Home Rules</div>
+        <h2 class="tool-result-value" id="affton-home-rules">Affton Occupancy and Home Rules</h2>
+        <p class="tool-result-sub">Affton is an unincorporated community in St. Louis County, not a city with its own municipal government. A Affton mailing address does not by itself confirm that a property is unincorporated. County rules below apply when the property is within unincorporated St. Louis County. Check the <a href="https://gis.stlouiscountymo.gov/" rel="noopener" target="_blank">St. Louis County GIS map</a> or contact the County before relying on them.</p>
       </div>
-      <div class="tool-result-card">
-        <div class="tool-section-hd">Occupancy</div>
-        <h2 class="tool-result-value" id="affton-occupancy">Affton Occupancy Rules for Buyers, Sellers &amp; Landlords</h2>
-        <p class="tool-result-sub">Affton is a community name, not a municipality. If the property sits in unincorporated St. Louis County, the County handles occupancy, permits and code enforcement there; there is no Affton city hall.</p>
-        <p class="tool-result-sub"><strong>A re-occupancy permit is required when a new occupant moves in</strong>, after a sale or a rental change. The County occupancy application recognizes both SALE and RENTAL, and the home can&rsquo;t be occupied until the permit is issued.</p>
-        <p class="tool-result-sub">The current County occupancy inspection fee isn&rsquo;t published on the downloadable application. The fee must accompany the application, so confirm the amount in the County permitting portal or current fee schedule.</p>
-        <p class="tool-result-sub">Buyers: build the County occupancy inspection into the closing timeline. Sellers: apply early enough that the permit doesn&rsquo;t hold up closing.</p>
-<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Source: <a href="https://st.stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/residential-building/occupancy-forms/single-family-dwelling-occupancy/" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">St. Louis County Transportation &amp; Public Works &mdash; Single Family, Two-Family and Townhouse Occupancy Permit — Unincorporated St. Louis County</a> &middot; Verified September 25, 2026</p>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do I need an occupancy permit when I buy or rent a home in Affton?</h3>
+        <p class="tool-result-sub">If the property is in unincorporated St. Louis County, the County requires an occupancy permit when a new occupant moves in after a sale or rental change. The County&rsquo;s application covers both sale and rental situations, and the new occupant must wait until the permit is issued before occupying the home.</p>
+        <p class="tool-result-sub">See the County&rsquo;s <a href="https://st.stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/residential-building/occupancy-forms/single-family-dwelling-occupancy/" rel="noopener" target="_blank">single-family dwelling occupancy application</a> and <a href="https://stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/permit-procedures/permits-applications/" rel="noopener" target="_blank">permits and applications</a> for current instructions.</p>
       </div>
-    </section>
-    <section aria-label="Affton Sewer Lateral Coverage">
-      <div class="tool-result-card">
-        <div class="tool-section-hd">Sewer Lateral</div>
-        <h2 class="tool-result-value" id="affton-sewer-lateral">Sewer Lateral Coverage in Affton</h2>
-        <p class="tool-result-sub"><em>Applies only if the exact address is in unincorporated St. Louis County.</em></p>
-        <p class="tool-result-sub">If it is, the home may be covered by <strong>St. Louis County&rsquo;s Sewer Lateral Repair Program</strong>, subject to eligibility. The program covers a defective residential sewer lateral from the foundation to the sewer main, with stated exclusions.</p>
-        <p class="tool-result-sub">Read the eligibility rules and exclusions before you count on coverage, especially if an inspection or sewer scope turns up a lateral problem.</p>
-<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Source: <a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">St. Louis County Planning &mdash; Ordinance Guidebook — Sewer Lateral Repair Program</a> &middot; Verified September 25, 2026</p>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Is there a sewer lateral repair program in Affton?</h3>
+        <p class="tool-result-sub">Unincorporated properties may be eligible for the St. Louis County Sewer Lateral Repair Program. Eligibility applies; assistance is not automatic. Check the County&rsquo;s current program requirements and <a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank">ordinance guidebook</a> before budgeting for a repair.</p>
       </div>
-    </section>
-    <section aria-label="Affton Permits and Projects">
-      <div class="tool-result-card">
-        <div class="tool-section-hd">Permits</div>
-        <h2 class="tool-result-value" id="affton-permits">Permits for Home Projects in Affton</h2>
-        <p class="tool-result-sub"><em>Applies only if the exact address is in unincorporated St. Louis County.</em></p>
-        <p class="tool-result-sub">For unincorporated addresses, <strong>St. Louis County Transportation &amp; Public Works</strong> issues applicable residential permits.</p>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do I need a permit for a fence, deck, shed, or pool?</h3>
+        <p class="tool-result-sub">St. Louis County Transportation and Public Works handles applicable residential permits for unincorporated properties. The County&rsquo;s <a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank">ordinance guidebook</a> describes these general rules:</p>
         <ul class="hr-list">
-          <li><strong>Fence:</strong> a fence 6 ft or less generally doesn&rsquo;t need a building permit, but zoning, sight-distance and private subdivision restrictions still apply. <span class="hr-src">(<a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank">Ordinance Guidebook</a>)</span></li>
-          <li><strong>Shed or accessory structure:</strong> a shed over 120 sq ft requires a building permit. <span class="hr-src">(<a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank">Ordinance Guidebook</a>)</span></li>
-          <li><strong>Pool:</strong> qualifying pools need a County permit plus enclosure, setback and electrical compliance. <span class="hr-src">(<a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank">Ordinance Guidebook</a>)</span></li>
-          <li><strong>Deck:</strong> County permit and code review as applicable. <span class="hr-src">(<a href="https://stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/permit-procedures/permits-applications/" rel="noopener" target="_blank">Permits &amp; Applications</a>)</span></li>
-          <li><strong>Electrical, plumbing &amp; mechanical:</strong> St. Louis County trade permits as applicable. <span class="hr-src">(<a href="https://stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/permit-procedures/permits-applications/" rel="noopener" target="_blank">Permits &amp; Applications</a>)</span></li>
+          <li><strong>Fence:</strong> A fence 6 feet or shorter generally does not require a building permit. Zoning, sight-distance, and private subdivision or property restrictions may still apply.</li>
+          <li><strong>Deck:</strong> Permit and code review may apply, depending on the project. Confirm requirements for the specific address and work before construction.</li>
+          <li><strong>Shed:</strong> A shed larger than 120 square feet requires a building permit.</li>
+          <li><strong>Pool:</strong> Qualifying pools require a County permit and must meet applicable enclosure, setback, and electrical requirements.</li>
         </ul>
-<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Source: <a href="https://stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/permit-procedures/permits-applications/" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">St. Louis County Transportation &amp; Public Works &mdash; Permits &amp; Applications</a> &middot; Verified September 25, 2026</p>
+        <p class="tool-result-sub">Requirements can depend on the property and project details. Check with the County before work begins.</p>
       </div>
-    </section>
-    <section aria-label="Affton Rentals and Code Enforcement">
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Are electrical, plumbing, or mechanical permits required?</h3>
+        <p class="tool-result-sub">County trade permits may apply to electrical, plumbing, and mechanical work. Check the County&rsquo;s <a href="https://stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/permit-procedures/permits-applications/" rel="noopener" target="_blank">permits and applications</a> for the project&rsquo;s requirements.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do Affton landlords need a rental license or registration?</h3>
+        <p class="tool-result-sub">A County occupancy permit is required when a new occupant moves in after a rental change at an unincorporated property. The available County information reviewed for this guide does not establish a separate local landlord license or registration requirement. Confirm with the County whether any additional rules apply to the property or rental arrangement.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Who handles property maintenance and code concerns?</h3>
+        <p class="tool-result-sub">For unincorporated properties, St. Louis County Neighborhood Preservation handles applicable property maintenance and code matters. Confirm that the address is in unincorporated County territory before contacting a city department.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">How much does the occupancy permit cost?</h3>
+        <p class="tool-result-sub">The County&rsquo;s downloadable occupancy application does not publish the current inspection fee. The fee must accompany the application, so confirm the current amount in the County permitting portal or with the County before submitting.</p>
+      </div>
       <div class="tool-result-card">
-        <div class="tool-section-hd">Rentals &amp; Code</div>
-        <h2 class="tool-result-value" id="affton-rentals">Renting It Out &amp; Code Enforcement in Affton</h2>
-        <p class="tool-result-sub"><em>Applies only if the exact address is in unincorporated St. Louis County.</em></p>
-        <p class="tool-result-sub"><strong>Renting it out:</strong> the County occupancy process applies to rentals, so each tenant change triggers a re-occupancy permit. Separate landlord rules may also apply; confirm them before you list. <span class="hr-src">(<a href="https://st.stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/residential-building/occupancy-forms/single-family-dwelling-occupancy/" rel="noopener" target="_blank">Single Family, Two-Family and Townhouse Occupancy Permit — Unincorporated St. Louis County</a>)</span></p>
-        <p class="tool-result-sub"><strong>Property maintenance:</strong> code issues on unincorporated property go to St. Louis County Neighborhood Preservation. <span class="hr-src">(<a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank">Ordinance Guidebook</a>)</span></p>
-<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Sources: <a href="https://st.stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/residential-building/occupancy-forms/single-family-dwelling-occupancy/" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">St. Louis County Transportation &amp; Public Works &mdash; Single Family, Two-Family and Townhouse Occupancy Permit — Unincorporated St. Louis County</a> &middot; <a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">St. Louis County Planning &mdash; Ordinance Guidebook</a> &middot; Verified September 25, 2026</p>
-        <div class="tool-result-label" style="margin-top:14px;">Who to contact</div>
-        <ul class="hr-list">
-          <li><strong>Occupancy permits:</strong> St. Louis County Transportation &amp; Public Works (<a href="https://st.stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/residential-building/occupancy-forms/single-family-dwelling-occupancy/" rel="noopener" target="_blank">occupancy permit page</a>)</li>
-          <li><strong>Building and trade permits:</strong> St. Louis County Transportation &amp; Public Works (<a href="https://stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/permit-procedures/permits-applications/" rel="noopener" target="_blank">permits &amp; applications</a>)</li>
-          <li><strong>Is the address unincorporated?</strong> <a href="https://gis.stlouiscountymo.gov/" rel="noopener" target="_blank">St. Louis County Geospatial Data Center</a></li>
-        </ul>
+        <p class="tool-result-sub"><strong>Before you buy, rent, or start a project: verify the property&rsquo;s jurisdiction by exact address, then confirm current requirements with St. Louis County. Rules can differ for a property inside an incorporated municipality.</strong></p>
+        <p class="tool-result-sub hr-sources">Sources checked September 25, 2026: St. Louis County Transportation and Public Works <a href="https://st.stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/residential-building/occupancy-forms/single-family-dwelling-occupancy/" rel="noopener" target="_blank">occupancy</a> and <a href="https://stlouiscountymo.gov/st-louis-county-departments/transportation-and-public-works/permit-procedures/permits-applications/" rel="noopener" target="_blank">permit</a> pages; St. Louis County Planning <a href="https://su.stlouiscountymo.gov/st-louis-county-departments/planning/subdivision-trustee-resources/ordinance-guidebook/ordinance-guidebook/" rel="noopener" target="_blank">ordinance guidebook</a>. Requirements are address- and project-dependent.</p>
       </div>
     </section>
 <!-- ASK ME: component configured in /assets/ask-me.js -->

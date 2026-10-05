@@ -56,12 +56,12 @@
 .george-btn-about{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.72);font-weight:600;font-size:13px;letter-spacing:0.03em;padding:10px 19px;border-radius:8px;text-decoration:none;transition:color 0.18s;}
 .george-btn-about:hover{color:#ffcc4d;}
 @media (max-width:600px){.george-card{flex-direction:column;align-items:center;text-align:center;}.george-card-photo{width:90px;height:90px;}.george-card-btns{flex-direction:column;width:100%;}.george-btn-p,.george-btn-s,.george-btn-about{width:100%;justify-content:center;}}
-.hr-list{margin:10px 0 4px;padding-left:1.1em;color:rgba(255,255,255,.72);}
+.hr-qa .hr-q{font-size:1.02rem;line-height:1.3;margin-bottom:8px;}
+section[aria-label$="Occupancy and Home Rules"] a{color:#ffcc4d;text-decoration:underline;text-underline-offset:2px;}
+.hr-list{margin:10px 0 6px;padding-left:1.1em;color:rgba(255,255,255,.72);}
 .hr-list li{margin-bottom:8px;line-height:1.55;font-size:13px;}
 .hr-list strong{color:rgba(255,255,255,.92);}
-.hr-src{font-size:.78rem;color:rgba(255,255,255,.45);}
-.hr-src a{color:rgba(255,204,77,.75);}
-.hr-flag{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#080808;background:#ffcc4d;border-radius:4px;padding:1px 6px;margin-right:4px;vertical-align:1px;}
+.hr-sources{font-size:12px!important;color:rgba(255,255,255,.45)!important;margin-top:10px;}
 [id]{scroll-margin-top:84px;}
 /* Jump FAB + panel */
 .jump-fab{position:fixed;right:16px;bottom:20px;z-index:200;display:inline-flex;align-items:center;gap:8px;background:#ffcc4d;color:#080808;font-weight:800;font-size:12px;letter-spacing:.05em;border:none;border-radius:999px;padding:12px 17px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.55);font-family:inherit;}
@@ -180,9 +180,7 @@
   <a href="#sunset-hills-housing" class="jump-link">Housing Stock</a>
   <a href="#sunset-hills-buyers" class="jump-link">Buyer Context</a>
   <a href="#sunset-hills-map" class="jump-link">Map &amp; Boundaries</a>
-  <a href="#sunset-hills-occupancy" class="jump-link">Occupancy Rules</a>
-  <a href="#sunset-hills-permits" class="jump-link">Permits &amp; Projects</a>
-  <a href="#sunset-hills-rentals" class="jump-link">Rentals &amp; Code</a>
+  <a href="#sunset-hills-home-rules" class="jump-link">Occupancy &amp; Home Rules</a>
   <a href="#sunset-hills-faq" class="jump-link">FAQ</a>
   <a href="#sunset-hills-actions" class="jump-link">Talk to George</a>
 </nav>
@@ -204,9 +202,7 @@
           <a href="#sunset-hills-housing" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Housing Stock: Fixer Upper vs. Move-In Ready</a>
           <a href="#sunset-hills-buyers" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">What Buyers Need to Understand</a>
           <a href="#sunset-hills-map" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Why the Map Matters Here</a>
-          <a href="#sunset-hills-occupancy" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Occupancy Rules: Buying, Selling &amp; Renting</a>
-          <a href="#sunset-hills-permits" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Permits for Home Projects</a>
-          <a href="#sunset-hills-rentals" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Rentals &amp; Code Enforcement</a>
+          <a href="#sunset-hills-home-rules" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Occupancy and Home Rules</a>
           <a href="#sunset-hills-faq" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;">Frequently Asked Questions</a>
         </div>
       </div>
@@ -282,40 +278,47 @@
       </div>
       <div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Move-up and upper-tier buyers targeting southwest-county feel.</p></div><div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Households who want more land, lower density, and a more premium South County identity.</p></div><div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Buyers comparing Sunset Hills with <a href="crestwood">Crestwood</a>, Kirkwood, and Chesterfield for lifestyle fit.</p></div>
     </section>
-<!-- Home rules: from STLHJ Home Rules workbook, verified 2026-09-25 -->
-    <section aria-label="Sunset Hills Occupancy Rules">
-      <div class="tool-result-card">
-        <div class="tool-section-hd">Occupancy</div>
-        <h2 class="tool-result-value" id="sunset-hills-occupancy">Sunset Hills Occupancy Rules for Buyers, Sellers &amp; Landlords</h2>
-        <p class="tool-result-sub">These City of Sunset Hills rules apply to addresses inside Sunset Hills city limits. A Sunset Hills mailing address or ZIP code doesn&rsquo;t confirm that by itself; check the address in the <a href="https://gis.stlouiscountymo.gov/" rel="noopener" target="_blank">St. Louis County Geospatial Data Center</a>.</p>
-        <p class="tool-result-sub"><strong>Selling:</strong> a residential occupancy permit is required when occupancy changes, including a sale. The seller commonly applies before closing.</p>
-        <p class="tool-result-sub"><strong>Fees:</strong> occupancy inspection $25; the application is valid for up to 6 months.</p>
-        <p class="tool-result-sub"><strong>Rentals:</strong> the same occupancy process applies when a rental&rsquo;s occupancy changes.</p>
-<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Source: <a href="https://www.sunset-hills.com/171/Occupancy-Rental-Registry" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Sunset Hills &mdash; Occupancy &amp; Rental Registry</a> &middot; Verified September 25, 2026</p>
+<!-- Occupancy and Home Rules: STLHJ Home Rules workbook, verified 2026-09-25 -->
+    <section aria-label="Sunset Hills Occupancy and Home Rules">
+      <div class="tool-result-card" style="border-left:3px solid #ffcc4d;">
+        <div class="tool-section-hd">Home Rules</div>
+        <h2 class="tool-result-value" id="sunset-hills-home-rules">Sunset Hills Occupancy and Home Rules</h2>
+        <p class="tool-result-sub">Sunset Hills is an incorporated city in St. Louis County with its own municipal government. A Sunset Hills mailing address or ZIP code does not by itself confirm that a property is inside city limits. City rules below apply when the property is within Sunset Hills city limits. Check the <a href="https://gis.stlouiscountymo.gov/" rel="noopener" target="_blank">St. Louis County GIS map</a> or contact the City before relying on them.</p>
       </div>
-    </section>
-    <section aria-label="Sunset Hills Permits and Projects">
-      <div class="tool-result-card">
-        <div class="tool-section-hd">Permits</div>
-        <h2 class="tool-result-value" id="sunset-hills-permits">Permits for Home Projects in Sunset Hills</h2>
-        <p class="tool-result-sub"><strong>Municipal Zoning Approval comes first</strong>, then a St. Louis County building permit and review by the applicable fire district.</p>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do I need an occupancy permit when I buy or rent a home in Sunset Hills?</h3>
+        <p class="tool-result-sub">Yes. Sunset Hills requires a residential occupancy permit when occupancy changes, including after a sale, and the seller commonly applies before closing. The same occupancy process applies when a rental&rsquo;s occupancy changes. See the City&rsquo;s <a href="https://www.sunset-hills.com/171/Occupancy-Rental-Registry" rel="noopener" target="_blank">occupancy and rental registry page</a> for current instructions.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do I need a permit for a fence, deck, shed, or pool?</h3>
+        <p class="tool-result-sub">Sunset Hills requires <a href="https://www.sunset-hills.com/170/Building-Permits" rel="noopener" target="_blank">Municipal Zoning Approval</a> first, then a St. Louis County building permit and review by the applicable fire district. The City&rsquo;s <a href="https://www.sunset-hills.com/DocumentCenter/View/7950/Unified-Development-Ordinance---adopted-September-13-2022" rel="noopener" target="_blank">Unified Development Ordinance</a> regulates these projects:</p>
         <ul class="hr-list">
-          <li><strong>Fence:</strong> regulated, with project-specific standards. <span class="hr-src">(<a href="https://www.sunset-hills.com/DocumentCenter/View/7950/Unified-Development-Ordinance---adopted-September-13-2022" rel="noopener" target="_blank">Unified Development Ordinance — adopted September 13, 2022</a>)</span></li>
-          <li><strong>Deck:</strong> regulated. <span class="hr-src">(<a href="https://www.sunset-hills.com/DocumentCenter/View/7950/Unified-Development-Ordinance---adopted-September-13-2022" rel="noopener" target="_blank">Unified Development Ordinance — adopted September 13, 2022</a>)</span></li>
-          <li><strong>Shed or accessory structure:</strong> regulated. <span class="hr-src">(<a href="https://www.sunset-hills.com/DocumentCenter/View/7950/Unified-Development-Ordinance---adopted-September-13-2022" rel="noopener" target="_blank">Unified Development Ordinance — adopted September 13, 2022</a>)</span></li>
-          <li><strong>Pool:</strong> regulated. <span class="hr-src">(<a href="https://www.sunset-hills.com/170/Building-Permits" rel="noopener" target="_blank">Municipal Zoning Approval (Building Permits)</a>)</span></li>
-          <li><strong>Electrical, plumbing &amp; mechanical:</strong> County plus the applicable fire district, after City zoning. <span class="hr-src">(<a href="https://www.sunset-hills.com/170/Building-Permits" rel="noopener" target="_blank">Municipal Zoning Approval (Building Permits)</a>)</span></li>
+          <li><strong>Fence:</strong> Regulated, with project-specific standards.</li>
+          <li><strong>Deck:</strong> Regulated.</li>
+          <li><strong>Shed:</strong> Regulated.</li>
+          <li><strong>Pool:</strong> Regulated.</li>
         </ul>
-<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Source: <a href="https://www.sunset-hills.com/170/Building-Permits" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Sunset Hills &mdash; Municipal Zoning Approval (Building Permits)</a> &middot; Verified September 25, 2026</p>
+        <p class="tool-result-sub">Requirements can depend on the property and project details. Check with the City before work begins.</p>
       </div>
-    </section>
-    <section aria-label="Sunset Hills Rentals and Code Enforcement">
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Are electrical, plumbing, or mechanical permits required?</h3>
+        <p class="tool-result-sub">St. Louis County permits, plus review by the applicable fire district, apply to this work after City zoning approval. Check the City&rsquo;s <a href="https://www.sunset-hills.com/170/Building-Permits" rel="noopener" target="_blank">building permits page</a> for the project&rsquo;s requirements.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do Sunset Hills landlords need a rental license or registration?</h3>
+        <p class="tool-result-sub">Yes. Sunset Hills requires annual rental-property registration, and the City maintains an owner/responsible-party registry. An occupancy permit is also required when residential occupancy changes.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Who handles property maintenance and code concerns?</h3>
+        <p class="tool-result-sub">The City of Sunset Hills handles enforcement, with St. Louis County in contracted roles.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">How much does the occupancy permit cost?</h3>
+        <p class="tool-result-sub">The occupancy inspection is $25, and the application is valid for up to 6 months.</p>
+      </div>
       <div class="tool-result-card">
-        <div class="tool-section-hd">Rentals &amp; Code</div>
-        <h2 class="tool-result-value" id="sunset-hills-rentals">Renting It Out &amp; Code Enforcement in Sunset Hills</h2>
-        <p class="tool-result-sub"><strong>Renting it out:</strong> annual rental-property registration is required, and the City maintains an owner/responsible-party registry. An occupancy permit is also required when residential occupancy changes.</p>
-        <p class="tool-result-sub"><strong>Property maintenance:</strong> City enforcement, with St. Louis County in contracted roles.</p>
-<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Source: <a href="https://www.sunset-hills.com/171/Occupancy-Rental-Registry" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Sunset Hills &mdash; Occupancy &amp; Rental Registry</a> &middot; Verified September 25, 2026</p>
+        <p class="tool-result-sub"><strong>Before you buy, rent, or start a project: verify that the property is inside Sunset Hills city limits by exact address, then confirm current requirements with the City of Sunset Hills and St. Louis County where they apply.</strong></p>
+        <p class="tool-result-sub hr-sources">Sources checked September 25, 2026: City of Sunset Hills <a href="https://www.sunset-hills.com/171/Occupancy-Rental-Registry" rel="noopener" target="_blank">occupancy and rental registry page</a>, <a href="https://www.sunset-hills.com/170/Building-Permits" rel="noopener" target="_blank">building permits page</a>, and <a href="https://www.sunset-hills.com/DocumentCenter/View/7950/Unified-Development-Ordinance---adopted-September-13-2022" rel="noopener" target="_blank">Unified Development Ordinance</a>. Requirements are address- and project-dependent.</p>
       </div>
     </section>
 <!-- ASK ME: component configured in /assets/ask-me.js -->

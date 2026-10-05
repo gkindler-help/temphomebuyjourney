@@ -56,12 +56,12 @@
 .george-btn-about{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.72);font-weight:600;font-size:13px;letter-spacing:0.03em;padding:10px 19px;border-radius:8px;text-decoration:none;transition:color 0.18s;}
 .george-btn-about:hover{color:#ffcc4d;}
 @media (max-width:600px){.george-card{flex-direction:column;align-items:center;text-align:center;}.george-card-photo{width:90px;height:90px;}.george-card-btns{flex-direction:column;width:100%;}.george-btn-p,.george-btn-s,.george-btn-about{width:100%;justify-content:center;}}
-.hr-list{margin:10px 0 4px;padding-left:1.1em;color:rgba(255,255,255,.72);}
+.hr-qa .hr-q{font-size:1.02rem;line-height:1.3;margin-bottom:8px;}
+section[aria-label$="Occupancy and Home Rules"] a{color:#ffcc4d;text-decoration:underline;text-underline-offset:2px;}
+.hr-list{margin:10px 0 6px;padding-left:1.1em;color:rgba(255,255,255,.72);}
 .hr-list li{margin-bottom:8px;line-height:1.55;font-size:13px;}
 .hr-list strong{color:rgba(255,255,255,.92);}
-.hr-src{font-size:.78rem;color:rgba(255,255,255,.45);}
-.hr-src a{color:rgba(255,204,77,.75);}
-.hr-flag{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#080808;background:#ffcc4d;border-radius:4px;padding:1px 6px;margin-right:4px;vertical-align:1px;}
+.hr-sources{font-size:12px!important;color:rgba(255,255,255,.45)!important;margin-top:10px;}
 [id]{scroll-margin-top:84px;}
 /* Jump FAB + panel */
 .jump-fab{position:fixed;right:16px;bottom:20px;z-index:200;display:inline-flex;align-items:center;gap:8px;background:#ffcc4d;color:#080808;font-weight:800;font-size:12px;letter-spacing:.05em;border:none;border-radius:999px;padding:12px 17px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.55);font-family:inherit;}
@@ -177,10 +177,7 @@
   <a href="#webster-groves-schools" class="jump-link">Schools</a>
   <a href="#webster-groves-housing" class="jump-link">Housing Stock</a>
   <a href="#webster-groves-buyers" class="jump-link">Buyer Context</a>
-  <a href="#webster-groves-occupancy" class="jump-link">Occupancy Rules</a>
-  <a href="#webster-groves-sewer-lateral" class="jump-link">Sewer Lateral</a>
-  <a href="#webster-groves-permits" class="jump-link">Permits &amp; Projects</a>
-  <a href="#webster-groves-rentals" class="jump-link">Rentals &amp; Code</a>
+  <a href="#webster-groves-home-rules" class="jump-link">Occupancy &amp; Home Rules</a>
   <a href="#webster-groves-faq" class="jump-link">FAQ</a>
   <a href="#webster-groves-actions" class="jump-link">Talk to George</a>
 </nav>
@@ -202,10 +199,7 @@
           <a href="#webster-groves-schools" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Schools &amp; District Boundaries</a>
           <a href="#webster-groves-housing" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Housing Stock: Fixer Upper vs. Move-In Ready</a>
           <a href="#webster-groves-buyers" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">What Buyers Need to Understand</a>
-          <a href="#webster-groves-occupancy" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Occupancy Rules: Buying, Selling &amp; Renting</a>
-          <a href="#webster-groves-sewer-lateral" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Sewer Lateral Coverage</a>
-          <a href="#webster-groves-permits" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Permits for Home Projects</a>
-          <a href="#webster-groves-rentals" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Rentals &amp; Code Enforcement</a>
+          <a href="#webster-groves-home-rules" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Occupancy and Home Rules</a>
           <a href="#webster-groves-faq" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;">Frequently Asked Questions</a>
         </div>
       </div>
@@ -264,48 +258,52 @@
         </div>
       </div>
     </section>
-<!-- Home rules: from STLHJ Home Rules workbook, verified 2026-09-25 -->
-    <section aria-label="Webster Groves Occupancy Rules">
-      <div class="tool-result-card">
-        <div class="tool-section-hd">Occupancy</div>
-        <h2 class="tool-result-value" id="webster-groves-occupancy">Webster Groves Occupancy Rules for Buyers, Sellers &amp; Landlords</h2>
-        <p class="tool-result-sub">These City of Webster Groves rules apply to addresses inside Webster Groves city limits. A Webster Groves mailing address or ZIP code doesn&rsquo;t confirm that by itself; check the address in the <a href="https://gis.stlouiscountymo.gov/" rel="noopener" target="_blank">St. Louis County Geospatial Data Center</a>.</p>
-        <p class="tool-result-sub"><strong>Buying:</strong> a passed residential occupancy inspection is required before an occupancy permit, and purchase is one of the application types. <span class="hr-src">(<a href="https://www.webstergrovesmo.gov/213/Occupancy-Permits" rel="noopener" target="_blank">Residential Occupancy Permits</a>)</span></p>
-        <p class="tool-result-sub"><strong>Order of steps:</strong> after inspection the City issues a Certificate of Compliance; the new owner or tenant then separately obtains an occupancy permit before moving in. <span class="hr-src">(<a href="https://www.webstergrovesmo.gov/215/Housing-Inspections" rel="noopener" target="_blank">Housing Inspections</a>)</span></p>
-        <p class="tool-result-sub"><strong>Fees:</strong> occupancy inspection $75; occupancy permit $30. <span class="hr-src">(<a href="https://www.webstergrovesmo.gov/213/Occupancy-Permits" rel="noopener" target="_blank">Residential Occupancy Permits</a>)</span></p>
-        <p class="tool-result-sub"><strong>Condition:</strong> the City Property Maintenance Code applies, and the occupancy inspection enforces violations before occupancy. <span class="hr-src">(<a href="https://www.webstergrovesmo.gov/215/Housing-Inspections" rel="noopener" target="_blank">Housing Inspections</a>)</span></p>
-<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Sources: <a href="https://www.webstergrovesmo.gov/213/Occupancy-Permits" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Webster Groves &mdash; Residential Occupancy Permits</a> &middot; <a href="https://www.webstergrovesmo.gov/215/Housing-Inspections" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Webster Groves &mdash; Housing Inspections</a> &middot; Verified September 25, 2026</p>
+<!-- Occupancy and Home Rules: STLHJ Home Rules workbook, verified 2026-09-25 -->
+    <section aria-label="Webster Groves Occupancy and Home Rules">
+      <div class="tool-result-card" style="border-left:3px solid #ffcc4d;">
+        <div class="tool-section-hd">Home Rules</div>
+        <h2 class="tool-result-value" id="webster-groves-home-rules">Webster Groves Occupancy and Home Rules</h2>
+        <p class="tool-result-sub">Webster Groves is an incorporated city in St. Louis County with its own municipal government. A Webster Groves mailing address or ZIP code does not by itself confirm that a property is inside city limits. City rules below apply when the property is within Webster Groves city limits. Check the <a href="https://gis.stlouiscountymo.gov/" rel="noopener" target="_blank">St. Louis County GIS map</a> or contact the City before relying on them.</p>
       </div>
-    </section>
-    <section aria-label="Webster Groves Sewer Lateral">
-      <div class="tool-result-card">
-        <div class="tool-section-hd">Sewer Lateral</div>
-        <h2 class="tool-result-value" id="webster-groves-sewer-lateral">Sewer Lateral Coverage in Webster Groves</h2>
-        <p class="tool-result-sub">Webster Groves runs a <strong>City sewer-lateral program</strong> for eligible single-family homes, duplexes and apartment developments up to 6 units. The City pays 80% of the lowest approved bid, up to $3,500, or up to $8,000 if the repair is in the street.</p>
-<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Source: <a href="https://webstergrovesmo.gov/220/Sewer-Lateral-Program" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Webster Groves &mdash; Sewer Lateral Program</a> &middot; Verified September 25, 2026</p>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do I need an occupancy permit when I buy or rent a home in Webster Groves?</h3>
+        <p class="tool-result-sub">Yes. A passed residential occupancy inspection is required before an occupancy permit, and both purchase and rental are application types. See the City&rsquo;s <a href="https://www.webstergrovesmo.gov/213/Occupancy-Permits" rel="noopener" target="_blank">occupancy permits page</a>.</p>
+        <p class="tool-result-sub">After inspection, the City issues a Certificate of Compliance; the new owner or tenant then separately obtains an occupancy permit before moving in. See <a href="https://www.webstergrovesmo.gov/215/Housing-Inspections" rel="noopener" target="_blank">housing inspections</a>.</p>
       </div>
-    </section>
-    <section aria-label="Webster Groves Permits and Projects">
-      <div class="tool-result-card">
-        <div class="tool-section-hd">Permits</div>
-        <h2 class="tool-result-value" id="webster-groves-permits">Permits for Home Projects in Webster Groves</h2>
-        <p class="tool-result-sub"><strong>City Planning &amp; Development</strong> administers building permits, with plan and zoning review. Some exterior work may require Architectural Review Board approval.</p>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Is there a sewer lateral repair program in Webster Groves?</h3>
+        <p class="tool-result-sub">Yes. The City&rsquo;s <a href="https://webstergrovesmo.gov/220/Sewer-Lateral-Program" rel="noopener" target="_blank">sewer lateral program</a> covers eligible single-family homes, duplexes, and apartment developments up to 6 units. The City pays 80% of the lowest approved bid, up to $3,500, or up to $8,000 if the repair is in the street.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do I need a permit for a fence, deck, shed, or pool?</h3>
+        <p class="tool-result-sub">City Planning &amp; Development administers <a href="https://www.webstergrovesmo.gov/211/Building-Permits" rel="noopener" target="_blank">building permits</a>, with plan and zoning review. Some exterior work may require Architectural Review Board approval.</p>
         <ul class="hr-list">
-          <li><strong>Fence:</strong> a permit is required for all new and replacement fences; repairs below a defined threshold are exempt. <span class="hr-src">(<a href="https://www.webstergrovesmo.gov/221/Fence-Permits" rel="noopener" target="_blank">Fence Permits</a>)</span></li>
-          <li><strong>Deck:</strong> a building permit is required for applicable deck construction. <span class="hr-src">(<a href="https://www.webstergrovesmo.gov/211/Building-Permits" rel="noopener" target="_blank">Building Permits</a>)</span></li>
-          <li><strong>Shed or accessory structure:</strong> accessory structures and building alterations are subject to City building and zoning review. <span class="hr-src">(<a href="https://www.webstergrovesmo.gov/211/Building-Permits" rel="noopener" target="_blank">Building Permits</a>)</span></li>
-          <li><strong>Pool or hot tub:</strong> pool and hot-tub permits are available; City code requirements apply. <span class="hr-src">(<a href="https://www.webstergrovesmo.gov/838/Pool-and-Hot-Tub" rel="noopener" target="_blank">Pool and Hot Tub</a>)</span></li>
-          <li><strong>Electrical, plumbing &amp; mechanical:</strong> the City issues and administers these permits. <span class="hr-src">(<a href="https://www.webstergrovesmo.gov/211/Building-Permits" rel="noopener" target="_blank">Building Permits</a>)</span></li>
+          <li><strong>Fence:</strong> A <a href="https://www.webstergrovesmo.gov/221/Fence-Permits" rel="noopener" target="_blank">permit</a> is required for all new and replacement fences; repairs below a defined threshold are exempt.</li>
+          <li><strong>Deck:</strong> A building permit is required for applicable deck construction.</li>
+          <li><strong>Shed:</strong> Accessory structures and building alterations are subject to City building and zoning review.</li>
+          <li><strong>Pool:</strong> <a href="https://www.webstergrovesmo.gov/838/Pool-and-Hot-Tub" rel="noopener" target="_blank">Pool and hot-tub permits</a> are available; City code requirements apply.</li>
         </ul>
-<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Source: <a href="https://www.webstergrovesmo.gov/211/Building-Permits" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Webster Groves &mdash; Building Permits</a> &middot; Verified September 25, 2026</p>
+        <p class="tool-result-sub">Requirements can depend on the property and project details. Check with the City before work begins.</p>
       </div>
-    </section>
-    <section aria-label="Webster Groves Rentals and Code Enforcement">
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Are electrical, plumbing, or mechanical permits required?</h3>
+        <p class="tool-result-sub">The City of Webster Groves issues and administers electrical, plumbing, and mechanical permits. Check the City&rsquo;s <a href="https://www.webstergrovesmo.gov/211/Building-Permits" rel="noopener" target="_blank">building permits page</a> for the project&rsquo;s requirements.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do Webster Groves landlords need a rental license or registration?</h3>
+        <p class="tool-result-sub">Rental is an occupancy application type, so an occupancy permit is required before a tenant moves in. Residential occupancy rules apply, and apartments are inspected annually.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Who handles property maintenance and code concerns?</h3>
+        <p class="tool-result-sub">The City of Webster Groves. Its Property Maintenance Code applies, and the occupancy inspection enforces violations before occupancy.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">How much does the occupancy permit cost?</h3>
+        <p class="tool-result-sub">The occupancy inspection is $75, and the occupancy permit is $30.</p>
+      </div>
       <div class="tool-result-card">
-        <div class="tool-section-hd">Rentals &amp; Code</div>
-        <h2 class="tool-result-value" id="webster-groves-rentals">Renting It Out &amp; Code Enforcement in Webster Groves</h2>
-        <p class="tool-result-sub"><strong>Renting it out:</strong> rental is an occupancy application type, so an occupancy permit is required before a tenant moves in. Residential occupancy rules apply, and apartments are inspected annually.</p>
-<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Source: <a href="https://www.webstergrovesmo.gov/213/Occupancy-Permits" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Webster Groves &mdash; Residential Occupancy Permits</a> &middot; Verified September 25, 2026</p>
+        <p class="tool-result-sub"><strong>Before you buy, rent, or start a project: verify that the property is inside Webster Groves city limits by exact address, then confirm current requirements with the City of Webster Groves.</strong></p>
+        <p class="tool-result-sub hr-sources">Sources checked September 25, 2026: City of Webster Groves <a href="https://www.webstergrovesmo.gov/213/Occupancy-Permits" rel="noopener" target="_blank">occupancy permits</a>, <a href="https://www.webstergrovesmo.gov/215/Housing-Inspections" rel="noopener" target="_blank">housing inspections</a>, <a href="https://webstergrovesmo.gov/220/Sewer-Lateral-Program" rel="noopener" target="_blank">sewer lateral program</a>, <a href="https://www.webstergrovesmo.gov/211/Building-Permits" rel="noopener" target="_blank">building permits</a>, <a href="https://www.webstergrovesmo.gov/221/Fence-Permits" rel="noopener" target="_blank">fence permits</a>, and <a href="https://www.webstergrovesmo.gov/838/Pool-and-Hot-Tub" rel="noopener" target="_blank">pool and hot tub</a>. Requirements are address- and project-dependent.</p>
       </div>
     </section>
 <!-- ASK ME: component configured in /assets/ask-me.js -->

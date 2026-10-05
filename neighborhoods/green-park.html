@@ -56,12 +56,12 @@
 .george-btn-about{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.72);font-weight:600;font-size:13px;letter-spacing:0.03em;padding:10px 19px;border-radius:8px;text-decoration:none;transition:color 0.18s;}
 .george-btn-about:hover{color:#ffcc4d;}
 @media (max-width:600px){.george-card{flex-direction:column;align-items:center;text-align:center;}.george-card-photo{width:90px;height:90px;}.george-card-btns{flex-direction:column;width:100%;}.george-btn-p,.george-btn-s,.george-btn-about{width:100%;justify-content:center;}}
-.hr-list{margin:10px 0 4px;padding-left:1.1em;color:rgba(255,255,255,.72);}
+.hr-qa .hr-q{font-size:1.02rem;line-height:1.3;margin-bottom:8px;}
+section[aria-label$="Occupancy and Home Rules"] a{color:#ffcc4d;text-decoration:underline;text-underline-offset:2px;}
+.hr-list{margin:10px 0 6px;padding-left:1.1em;color:rgba(255,255,255,.72);}
 .hr-list li{margin-bottom:8px;line-height:1.55;font-size:13px;}
 .hr-list strong{color:rgba(255,255,255,.92);}
-.hr-src{font-size:.78rem;color:rgba(255,255,255,.45);}
-.hr-src a{color:rgba(255,204,77,.75);}
-.hr-flag{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#080808;background:#ffcc4d;border-radius:4px;padding:1px 6px;margin-right:4px;vertical-align:1px;}
+.hr-sources{font-size:12px!important;color:rgba(255,255,255,.45)!important;margin-top:10px;}
 [id]{scroll-margin-top:84px;}
 /* Jump FAB + panel */
 .jump-fab{position:fixed;right:16px;bottom:20px;z-index:200;display:inline-flex;align-items:center;gap:8px;background:#ffcc4d;color:#080808;font-weight:800;font-size:12px;letter-spacing:.05em;border:none;border-radius:999px;padding:12px 17px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.55);font-family:inherit;}
@@ -180,10 +180,7 @@
   <a href="#green-park-housing" class="jump-link">Housing Stock</a>
   <a href="#green-park-buyers" class="jump-link">Buyer Context</a>
   <a href="#green-park-map" class="jump-link">Map &amp; Boundaries</a>
-  <a href="#green-park-occupancy" class="jump-link">Occupancy Rules</a>
-  <a href="#green-park-sewer-lateral" class="jump-link">Sewer Lateral</a>
-  <a href="#green-park-permits" class="jump-link">Permits &amp; Projects</a>
-  <a href="#green-park-rentals" class="jump-link">Rentals &amp; Code</a>
+  <a href="#green-park-home-rules" class="jump-link">Occupancy &amp; Home Rules</a>
   <a href="#green-park-faq" class="jump-link">FAQ</a>
   <a href="#green-park-actions" class="jump-link">Talk to George</a>
 </nav>
@@ -205,10 +202,7 @@
           <a href="#green-park-housing" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Housing Stock: Fixer Upper vs. Move-In Ready</a>
           <a href="#green-park-buyers" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">What Buyers Need to Understand</a>
           <a href="#green-park-map" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Why the Map Matters Here</a>
-          <a href="#green-park-occupancy" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Occupancy Rules: Buying, Selling &amp; Renting</a>
-          <a href="#green-park-sewer-lateral" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Sewer Lateral Coverage</a>
-          <a href="#green-park-permits" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Permits for Home Projects</a>
-          <a href="#green-park-rentals" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Rentals &amp; Code Enforcement</a>
+          <a href="#green-park-home-rules" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Occupancy and Home Rules</a>
           <a href="#green-park-faq" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;">Frequently Asked Questions</a>
         </div>
       </div>
@@ -284,47 +278,51 @@
       </div>
       <div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Buyers who care about South County access more than municipal brand prestige.</p></div><div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Households looking for smaller-pocket alternatives near larger <a href="concord">Concord</a>, Mehlville, and Sunset Hills searches.</p></div><div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">People who want a mature built-out environment instead of active greenfield development.</p></div>
     </section>
-<!-- Home rules: from STLHJ Home Rules workbook, verified 2026-09-25 -->
-    <section aria-label="Green Park Occupancy Rules">
-      <div class="tool-result-card">
-        <div class="tool-section-hd">Occupancy</div>
-        <h2 class="tool-result-value" id="green-park-occupancy">Green Park Occupancy Rules for Buyers, Sellers &amp; Landlords</h2>
-        <p class="tool-result-sub">These City of Green Park rules apply to addresses inside Green Park city limits. A Green Park mailing address or ZIP code doesn&rsquo;t confirm that by itself; check the address in the <a href="https://gis.stlouiscountymo.gov/" rel="noopener" target="_blank">St. Louis County Geospatial Data Center</a>.</p>
-        <p class="tool-result-sub"><strong>Selling:</strong> an occupancy permit is required when a sale results in a change of occupant. Unlike nearby Crestwood, a normal occupant change can trigger occupancy permitting here. <span class="hr-src">(<a href="https://ecode360.com/29581438" rel="noopener" target="_blank">Chapter 500 — Technical Codes</a>)</span></p>
-        <p class="tool-result-sub"><strong>Rentals:</strong> the residential occupancy permit framework applies, and ordinary long-term rental is a permitted residential use. <span class="hr-src">(<a href="https://ecode360.com/29581438" rel="noopener" target="_blank">Chapter 500 — Technical Codes</a>)</span></p>
-        <p class="tool-result-sub"><strong>Fee:</strong> residential occupancy permit $110. <span class="hr-src">(<a href="https://ecode360.com/29578491" rel="noopener" target="_blank">Zoning Fees</a>)</span></p>
-<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Sources: <a href="https://ecode360.com/29581438" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Green Park &mdash; Chapter 500 — Technical Codes</a> &middot; <a href="https://ecode360.com/29578491" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Green Park &mdash; Zoning Fees</a> &middot; Verified September 25, 2026</p>
+<!-- Occupancy and Home Rules: STLHJ Home Rules workbook, verified 2026-09-25 -->
+    <section aria-label="Green Park Occupancy and Home Rules">
+      <div class="tool-result-card" style="border-left:3px solid #ffcc4d;">
+        <div class="tool-section-hd">Home Rules</div>
+        <h2 class="tool-result-value" id="green-park-home-rules">Green Park Occupancy and Home Rules</h2>
+        <p class="tool-result-sub">Green Park is an incorporated city in St. Louis County with its own municipal government. A Green Park mailing address or ZIP code does not by itself confirm that a property is inside city limits. City rules below apply when the property is within Green Park city limits. Check the <a href="https://gis.stlouiscountymo.gov/" rel="noopener" target="_blank">St. Louis County GIS map</a> or contact the City before relying on them.</p>
       </div>
-    </section>
-    <section aria-label="Green Park Sewer Lateral">
-      <div class="tool-result-card">
-        <div class="tool-section-hd">Sewer Lateral</div>
-        <h2 class="tool-result-value" id="green-park-sewer-lateral">Sewer Lateral Coverage in Green Park</h2>
-        <p class="tool-result-sub">Green Park has a <strong>City sewer-lateral program</strong>. The annual residential charge may be up to $50 for qualifying laterals serving six or fewer dwelling units and qualifying condominiums.</p>
-<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Source: <a href="https://ecode360.com/29581438" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Green Park &mdash; Chapter 500 — Technical Codes</a> &middot; Verified September 25, 2026</p>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do I need an occupancy permit when I buy or rent a home in Green Park?</h3>
+        <p class="tool-result-sub">Yes, when there is a change of occupant. Green Park requires an occupancy permit when a sale results in a change of occupant; unlike nearby Crestwood, a normal occupant change can trigger occupancy permitting. The residential occupancy permit framework also applies to rentals. See the City&rsquo;s <a href="https://ecode360.com/29581438" rel="noopener" target="_blank">technical codes (Chapter 500)</a>.</p>
       </div>
-    </section>
-    <section aria-label="Green Park Permits and Projects">
-      <div class="tool-result-card">
-        <div class="tool-section-hd">Permits</div>
-        <h2 class="tool-result-value" id="green-park-permits">Permits for Home Projects in Green Park</h2>
-        <p class="tool-result-sub">Green Park applies <strong>City code, with St. Louis County in inspection and contract roles</strong>. Residential building permit fee: $80. <span class="hr-src">(<a href="https://ecode360.com/29581438" rel="noopener" target="_blank">Chapter 500 — Technical Codes</a>; <a href="https://ecode360.com/29578491" rel="noopener" target="_blank">Zoning Fees</a>)</span></p>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Is there a sewer lateral repair program in Green Park?</h3>
+        <p class="tool-result-sub">Yes. Green Park has a City sewer-lateral program. The annual residential charge may be up to $50 for qualifying laterals serving six or fewer dwelling units and qualifying condominiums. See the City&rsquo;s <a href="https://ecode360.com/29581438" rel="noopener" target="_blank">technical codes</a>.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do I need a permit for a fence, deck, shed, or pool?</h3>
+        <p class="tool-result-sub">Green Park applies City code, with St. Louis County in inspection and contract roles. The City&rsquo;s <a href="https://ecode360.com/29579372" rel="noopener" target="_blank">accessory uses and fences code</a> describes these general rules:</p>
         <ul class="hr-list">
-          <li><strong>Fence:</strong> no permit for a conforming fence; zoning rules still apply. <span class="hr-src">(<a href="https://ecode360.com/29579372" rel="noopener" target="_blank">Accessory Uses and Fences</a>)</span></li>
-          <li><strong>Deck:</strong> regulated by zoning and building code. <span class="hr-src">(<a href="https://ecode360.com/29579372" rel="noopener" target="_blank">Accessory Uses and Fences</a>)</span></li>
-          <li><strong>Shed or accessory structure:</strong> regulated. <span class="hr-src">(<a href="https://ecode360.com/29579372" rel="noopener" target="_blank">Accessory Uses and Fences</a>)</span></li>
-          <li><strong>Pool:</strong> regulated, with setback and screening standards. <span class="hr-src">(<a href="https://ecode360.com/29579372" rel="noopener" target="_blank">Accessory Uses and Fences</a>)</span></li>
-          <li><strong>Electrical, plumbing &amp; mechanical:</strong> codes adopted and enforced through Chapter 500, with County roles. <span class="hr-src">(<a href="https://ecode360.com/29581438" rel="noopener" target="_blank">Chapter 500 — Technical Codes</a>)</span></li>
+          <li><strong>Fence:</strong> No permit is needed for a conforming fence; zoning rules still apply.</li>
+          <li><strong>Deck:</strong> Regulated by zoning and building code.</li>
+          <li><strong>Shed:</strong> Regulated.</li>
+          <li><strong>Pool:</strong> Regulated, with setback and screening standards.</li>
         </ul>
-<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Sources: <a href="https://ecode360.com/29581438" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Green Park &mdash; Chapter 500 — Technical Codes</a> &middot; <a href="https://ecode360.com/29578491" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Green Park &mdash; Zoning Fees</a> &middot; Verified September 25, 2026</p>
+        <p class="tool-result-sub">Requirements can depend on the property and project details. Check with the City before work begins.</p>
       </div>
-    </section>
-    <section aria-label="Green Park Rentals and Code Enforcement">
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Are electrical, plumbing, or mechanical permits required?</h3>
+        <p class="tool-result-sub">Electrical, plumbing, and mechanical codes are adopted and enforced through the City&rsquo;s <a href="https://ecode360.com/29581438" rel="noopener" target="_blank">Chapter 500 technical codes</a>, with St. Louis County roles.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Do Green Park landlords need a rental license or registration?</h3>
+        <p class="tool-result-sub">The residential occupancy permit framework applies to rentals, and ordinary long-term rental is a permitted residential use. Confirm with the City whether any additional rules apply to the property or rental arrangement.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">Who handles property maintenance and code concerns?</h3>
+        <p class="tool-result-sub">The City of Green Park; its property-maintenance code applies.</p>
+      </div>
+      <div class="tool-result-card hr-qa">
+        <h3 class="tool-result-value hr-q">How much does the occupancy permit cost?</h3>
+        <p class="tool-result-sub">The residential occupancy permit is $110. A residential building permit is $80. See the City&rsquo;s <a href="https://ecode360.com/29578491" rel="noopener" target="_blank">fee schedule</a>.</p>
+      </div>
       <div class="tool-result-card">
-        <div class="tool-section-hd">Rentals &amp; Code</div>
-        <h2 class="tool-result-value" id="green-park-rentals">Renting It Out &amp; Code Enforcement in Green Park</h2>
-        <p class="tool-result-sub"><strong>Property maintenance:</strong> the property-maintenance code applies.</p>
-<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Source: <a href="https://ecode360.com/29581438" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Green Park &mdash; Chapter 500 — Technical Codes</a> &middot; Verified September 25, 2026</p>
+        <p class="tool-result-sub"><strong>Before you buy, rent, or start a project: verify that the property is inside Green Park city limits by exact address, then confirm current requirements with the City of Green Park and St. Louis County where they apply.</strong></p>
+        <p class="tool-result-sub hr-sources">Sources checked September 25, 2026: City of Green Park <a href="https://ecode360.com/29581438" rel="noopener" target="_blank">technical codes (Chapter 500)</a>, <a href="https://ecode360.com/29579372" rel="noopener" target="_blank">accessory uses and fences code</a>, and <a href="https://ecode360.com/29578491" rel="noopener" target="_blank">fee schedule</a>. Requirements are address- and project-dependent.</p>
       </div>
     </section>
 <!-- ASK ME: component configured in /assets/ask-me.js -->
