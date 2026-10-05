@@ -262,7 +262,32 @@
     .guide-nav-desc{font-size:0.9rem;color:var(--text-soft);margin-bottom:18px;line-height:1.65;}
     .guide-nav-link{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--gold);color:#080808;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;transition:transform 0.1s;}
     .guide-nav-link:hover{transform:translateY(-2px);}
-        /* Loan comparison calculator */
+        /* Jump nav */
+    .art-body [id]{scroll-margin-top:84px;}
+    .toc{margin:26px 0 8px;padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;}
+    .toc-hd{font-size:.68rem!important;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)!important;margin:0 0 10px!important;}
+    .toc ol{list-style:none;padding:0!important;margin:0!important;display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;counter-reset:toc;}
+    .toc li{margin:0!important;counter-increment:toc;}
+    .toc li.toc-wide{grid-column:1/-1;}
+    .toc a{display:flex;gap:8px;align-items:baseline;padding:6px 8px;border-radius:8px;font-size:.88rem;color:var(--text-soft);line-height:1.35;}
+    .toc a::before{content:counter(toc,decimal-leading-zero);font-size:.7rem;font-weight:700;color:var(--text-faint);min-width:18px;}
+    .toc a:hover{background:rgba(255,204,77,.06);color:var(--text-strong);}
+    .toc a.toc-cta{background:var(--gold);color:#080808;font-weight:800;padding:10px 12px;}
+    .toc a.toc-cta::before{color:rgba(0,0,0,.55);}
+    .toc a.toc-cta::after{content:"\2192";margin-left:auto;}
+    @media(max-width:520px){.toc ol{grid-template-columns:1fr;gap:2px;}}
+    .jump-fab{position:fixed;right:16px;bottom:20px;z-index:200;display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#080808;font-weight:800;font-size:12px;letter-spacing:.05em;border:none;border-radius:999px;padding:12px 17px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.55);font-family:inherit;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .2s ease,transform .2s ease;}
+    .jump-fab.show{opacity:1;transform:none;pointer-events:auto;}
+    .jump-fab:focus-visible{outline:2px solid #fff;outline-offset:2px;}
+    .jump-fab-ico{font-size:15px;line-height:1;}
+    .jump-panel{position:fixed;right:16px;bottom:74px;z-index:200;width:min(300px,calc(100vw - 32px));background:#0d0d0d;border:1px solid var(--gold-line);border-radius:14px;padding:8px;box-shadow:0 12px 42px rgba(0,0,0,.6);opacity:0;transform:translateY(10px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .18s ease,transform .18s ease;max-height:72vh;overflow-y:auto;}
+    .jump-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+    .jump-panel-hd{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:8px 12px;}
+    .jump-link{display:block;padding:9px 12px;border-radius:8px;font-size:.85rem;color:rgba(255,255,255,.72);text-decoration:none;line-height:1.35;border-left:2px solid transparent;}
+    .jump-link:hover,.jump-link:focus-visible{background:rgba(255,204,77,.06);color:#fff;outline:none;}
+    .jump-link.active{color:var(--gold);border-left-color:var(--gold);background:rgba(255,204,77,.05);}
+    .jump-link.jump-cta{font-weight:700;color:var(--gold);}
+    /* Loan comparison calculator */
     .lc-summary{margin:18px 0 16px;padding:16px;background:var(--bg);border:1px solid var(--gold-line);border-radius:14px;scroll-margin-top:80px;}
     .lc-summary h3.lc-sum-h{margin:0 0 10px!important;font-size:1.1rem!important;color:var(--text-strong)!important;}
     .lc-take{list-style:none;padding:0!important;margin:0 0 14px!important;}
@@ -475,6 +500,27 @@
       <span class="int-link-text">Before choosing a loan, get pre-approved to understand your real options. <strong>How to Get Pre-Approved for a Mortgage in St. Louis &#8594;</strong></span>
       <span class="int-link-arr">&#8594;</span>
     </a>
+
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-hd">On this page</p>
+      <ol>
+        <li class="toc-wide"><a href="#quick-answer">Quick answer: the four loans</a></li>
+        <li class="toc-wide"><a href="#loan-calculator" class="toc-cta">Calculator: same house, four loans</a></li>
+        <li><a href="#why-payment-changed">Why the payment changes</a></li>
+        <li><a href="#cash-to-close">0% down isn’t $0 to close</a></li>
+        <li><a href="#conventional">Conventional</a></li>
+        <li><a href="#fha">FHA</a></li>
+        <li><a href="#va">VA</a></li>
+        <li><a href="#usda">USDA</a></li>
+        <li><a href="#property">Older St. Louis houses</a></li>
+        <li><a href="#appraisal-comparison">FHA vs. Conventional appraisals</a></li>
+        <li><a href="#offer">Does your loan weaken your offer?</a></li>
+        <li><a href="#assistance">Down-payment assistance</a></li>
+        <li><a href="#decision-guide">Which loan to look at first</a></li>
+        <li><a href="#sources">Sources &amp; methodology</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </nav>
 
     <h2 id="quick-answer">The Four Loans Aren’t Trying to Solve Exactly the Same Problem</h2>
     <p>Conventional financing can require as little as 3% down in certain eligible transactions. Private mortgage insurance is generally required when the buyer puts less than 20% down, but unlike FHA mortgage insurance, PMI on many conventional mortgages can eventually be canceled after the borrower meets applicable requirements.</p>
@@ -912,7 +958,7 @@
     <div data-ask-me="buyer-general"><p><a href="/ask?about=buyer-general&amp;from=/articles/conventional-vs-fha-loan-st-louis">Ask Me About the House</a></p></div>
 
     <div class="faq-section">
-      <h2>FHA vs. Conventional FAQ</h2>
+      <h2 id="faq">FHA vs. Conventional FAQ</h2>
       <div class="faq-item">
         <p class="faq-q">What credit score do I need for conventional vs. FHA in St. Louis?</p>
         <p class="faq-a">FHA requires a minimum of 580 for 3.5% down (or 500 with 10% down). Conventional typically requires 620 minimum, with 700+ giving you access to the best rates and lowest PMI costs.</p>
@@ -995,6 +1041,50 @@
   314-998-4550 &middot; georgeandlizk@gmail.com<br>
   All content is for informational purposes only and does not constitute legal or financial advice. Mortgage rates, loan limits, and program terms change frequently -- verify current figures with a licensed Missouri lender.</p>
 </footer>
+<!-- Jump nav: floating Sections button + panel -->
+<button id="jumpToggle" class="jump-fab" aria-label="Jump to section" aria-expanded="false" aria-controls="jumpPanel">
+<span class="jump-fab-ico">&#9776;</span><span>Sections</span>
+</button>
+<nav id="jumpPanel" class="jump-panel" aria-label="Sections" aria-hidden="true">
+<div class="jump-panel-hd">In this loan comparison</div>
+<a href="#quick-answer" class="jump-link" tabindex="-1">Quick answer: the four loans</a>
+<a href="#loan-calculator" class="jump-link jump-cta" tabindex="-1">Calculator: same house, four loans</a>
+<a href="#why-payment-changed" class="jump-link" tabindex="-1">Why the payment changes</a>
+<a href="#cash-to-close" class="jump-link" tabindex="-1">0% down isn’t $0 to close</a>
+<a href="#conventional" class="jump-link" tabindex="-1">Conventional</a>
+<a href="#fha" class="jump-link" tabindex="-1">FHA</a>
+<a href="#va" class="jump-link" tabindex="-1">VA</a>
+<a href="#usda" class="jump-link" tabindex="-1">USDA</a>
+<a href="#property" class="jump-link" tabindex="-1">Older St. Louis houses</a>
+<a href="#appraisal-comparison" class="jump-link" tabindex="-1">FHA vs. Conventional appraisals</a>
+<a href="#offer" class="jump-link" tabindex="-1">Does your loan weaken your offer?</a>
+<a href="#assistance" class="jump-link" tabindex="-1">Down-payment assistance</a>
+<a href="#decision-guide" class="jump-link" tabindex="-1">Which loan to look at first</a>
+<a href="#sources" class="jump-link" tabindex="-1">Sources &amp; methodology</a>
+<a href="#faq" class="jump-link" tabindex="-1">FAQ</a>
+</nav>
+<script>
+(function(){
+  var fab=document.getElementById('jumpToggle'),panel=document.getElementById('jumpPanel');
+  if(!fab||!panel)return;
+  var links=[].slice.call(panel.querySelectorAll('.jump-link'));
+  function setOpen(o){panel.classList.toggle('open',o);fab.setAttribute('aria-expanded',o);panel.setAttribute('aria-hidden',!o);links.forEach(function(l){l.tabIndex=o?0:-1;});if(o&&links[0])links[0].focus();}
+  fab.addEventListener('click',function(e){e.stopPropagation();setOpen(!panel.classList.contains('open'));});
+  panel.addEventListener('click',function(e){if(e.target.classList.contains('jump-link'))setOpen(false);});
+  document.addEventListener('click',function(e){if(!panel.contains(e.target)&&!fab.contains(e.target))setOpen(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&panel.classList.contains('open')){setOpen(false);fab.focus();}});
+  var map={};
+  links.forEach(function(l){var id=l.getAttribute('href').slice(1);if(document.getElementById(id))map[id]=l;});
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(l){l.classList.remove('active');});if(map[en.target.id])map[en.target.id].classList.add('active');}});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    Object.keys(map).forEach(function(id){obs.observe(document.getElementById(id));});
+    /* show the button once the reader has scrolled past the on-page contents */
+    var toc=document.querySelector('.toc');
+    if(toc){new IntersectionObserver(function(es){var e=es[0],past=!e.isIntersecting&&e.boundingClientRect.top<0;fab.classList.toggle('show',past);if(!past)setOpen(false);}).observe(toc);}
+    else fab.classList.add('show');
+  } else fab.classList.add('show');
+})();
+</script>
 <script src="/assets/ask-me.js?v=6" defer></script>
 <script>
 /* Loan comparison engine (STL Home Journey) */
