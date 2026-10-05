@@ -251,7 +251,40 @@
     .guide-nav-desc{font-size:0.9rem;color:var(--text-soft);margin-bottom:18px;line-height:1.65;}
     .guide-nav-link{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--gold);color:#080808;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;transition:transform 0.1s;}
     .guide-nav-link:hover{transform:translateY(-2px);}
-    </style>
+        /* Loan comparison calculator */
+    .lc{margin:28px 0 36px;padding:22px 20px;background:var(--surface);border:1px solid var(--gold-line);border-radius:16px;}
+    .lc h2{margin-top:0!important;}
+    .lc-intro{font-size:.9rem!important;color:var(--text-dim)!important;margin-bottom:18px!important;}
+    .lc fieldset{border:1px solid var(--line);border-radius:12px;padding:14px 14px 4px;margin:0 0 14px;}
+    .lc legend{padding:0 6px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);}
+    .lc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;}
+    .lc-field{display:flex;flex-direction:column;gap:5px;margin-bottom:10px;}
+    .lc-field label{font-size:.82rem;font-weight:600;color:var(--text);}
+    .lc-field input,.lc-field select{width:100%;padding:10px 12px;font:inherit;font-size:.95rem;color:var(--text-strong);background:var(--bg);border:1px solid var(--line-2);border-radius:8px;}
+    .lc-field input:focus,.lc-field select:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold);}
+    .lc-help{font-size:.76rem;color:var(--text-dim);line-height:1.5;}
+    .lc-rules{font-size:.82rem;color:var(--text-soft);line-height:1.6;margin:0 0 10px;padding-left:1.2em;}
+    .lc-rules li{margin-bottom:4px;font-size:.82rem;}
+    .lc-sum{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0 12px;}
+    .lc-sum div{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 8px;text-align:center;}
+    .lc-sum span{display:block;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);}
+    .lc-sum strong{display:block;font-family:var(--font-serif);font-size:1.15rem;color:var(--gold)!important;margin-top:2px;}
+    .lc-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+    .lc-card{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+    .lc-card h3{margin:0 0 4px!important;font-size:1rem!important;color:var(--text-strong)!important;}
+    .lc-total{font-family:var(--font-serif);font-size:1.6rem;font-weight:700;color:var(--gold);line-height:1.1;}
+    .lc-total small{display:block;font-family:var(--font-sans);font-size:.72rem;font-weight:500;color:var(--text-dim);margin-top:2px;}
+    .lc-card details{margin-top:10px;}
+    .lc-card summary{cursor:pointer;font-size:.8rem;font-weight:600;color:var(--gold);}
+    .lc-card dl{display:grid;grid-template-columns:1fr auto;gap:5px 10px;margin:10px 0 0;font-size:.82rem;}
+    .lc-card dt{color:var(--text-dim);}
+    .lc-card dd{margin:0;text-align:right;color:var(--text);font-variant-numeric:tabular-nums;}
+    .lc-card dd.lc-strong,.lc-card dt.lc-strong{color:var(--text-strong);font-weight:700;border-top:1px solid var(--line);padding-top:5px;}
+    .lc-note{font-size:.78rem!important;color:var(--text-dim)!important;margin:8px 0 0!important;line-height:1.5!important;}
+    .lc-method{font-size:.8rem!important;color:var(--text-dim)!important;line-height:1.6!important;margin-top:16px!important;padding-top:12px;border-top:1px solid var(--line);}
+    .lc-sources li{font-size:.88rem;}
+    @media(max-width:640px){.lc{padding:18px 14px;}.lc-sum{grid-template-columns:repeat(2,1fr);}.lc-cards{grid-template-columns:1fr;}}
+  </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"STL Home Journey","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"Buyer Guides","item":"https://stlhomejourney.com/articles/"},{"@type":"ListItem","position":3,"name":"Conventional vs FHA Loan in St. Louis: Which One Wins Offers?","item":"https://stlhomejourney.com/articles/conventional-vs-fha-loan-st-louis"}]}</script>
 <script>
 /* GA4 Event Tracking — STL Home Journey */
@@ -359,9 +392,8 @@
       <span>Conventional vs. FHA Loan</span>
     </div>
     <div class="art-series-tag">Mortgage & Financing Series</div>
-    <h1 class="art-title">Conventional vs. FHA Loan in St. Louis: Appraisal Requirements & Which to Choose</h1>
+    <h1 class="art-title">FHA vs. Conventional vs. VA vs. USDA: Which Home Loan Makes Sense in St. Louis?</h1>
 <p class="last-updated">Last updated July 10, 2026</p>
-    <p class="art-lede">How conventional and FHA loans compare for St. Louis buyers -- down payment, credit score, mortgage insurance, appraisal requirements, and why loan type affects your offer on older St. Louis housing stock.</p>
     <div class="art-meta">
       <span class="aud-buyer">For Buyers</span>
       <span class="art-meta-dot">•</span>
@@ -370,73 +402,214 @@
       <span>May 17, 2026</span>
     </div>
 
-    <p>The difference between an FHA and conventional loan is not just down payment size or credit score minimums. In St. Louis, where 68% of the housing stock was built before 1980, the loan type you choose affects whether your appraisal focuses only on market value or also assesses property condition and safety hazards.</p>
+    <p>There isn’t really one “first-time home buyer loan.”</p>
+    <p>If you’re buying your first house in St. Louis, you may actually be choosing between several different ways to finance the same property: Conventional, FHA, VA if you’re eligible, or USDA if both you and the property qualify.</p>
+    <p>Then there is a second decision: whether you qualify for a first-time-buyer or down-payment-assistance program that can work with that financing.</p>
+    <p>Those aren’t necessarily the same decision.</p>
+    <p>And the mortgage you choose can change more than how much you put down.</p>
+    <p>It can change how much you borrow, whether you pay mortgage insurance, whether an upfront program fee gets added to your loan, how much cash you keep after closing, and sometimes which properties are practical to pursue.</p>
+    <p>So instead of starting with four definitions, let’s start with one house.</p>
+    <p>What happens if four buyers purchase the same $300,000 St. Louis home using four different loans?</p>
+
+    <p>If you're trying to understand where financing fits into everything else, start with my <a href="/complete-guide">complete guide to buying a home in St. Louis</a>, which walks through the process from preparing your finances through closing.</p>
 
     <a href="mortgage-pre-approval-st-louis" class="int-link">
-      <span class="int-link-text">Before choosing FHA or conventional, get pre-approved to understand your real options. <strong>How to Get Pre-Approved for a Mortgage in St. Louis &#8594;</strong></span>
+      <span class="int-link-text">Before choosing a loan, get pre-approved to understand your real options. <strong>How to Get Pre-Approved for a Mortgage in St. Louis &#8594;</strong></span>
       <span class="int-link-arr">&#8594;</span>
     </a>
 
-    <p>This is the single most important distinction most national mortgage comparison articles miss -- and it is the reason sellers on older St. Louis homes sometimes prefer conventional offers over FHA offers at the same price.</p>
+    <h2 id="quick-answer">The Four Loans Aren’t Trying to Solve Exactly the Same Problem</h2>
+    <p>Conventional financing can require as little as 3% down in certain eligible transactions. Private mortgage insurance is generally required when the buyer puts less than 20% down, but unlike FHA mortgage insurance, PMI on many conventional mortgages can eventually be canceled after the borrower meets applicable requirements.</p>
+    <p>FHA financing allows a minimum required investment of 3.5% for qualifying borrowers. FHA also charges an upfront mortgage insurance premium and annual mortgage insurance.</p>
+    <p>VA financing can allow an eligible Veteran, service member or qualifying surviving spouse to purchase with no VA-required down payment and no monthly mortgage insurance. Many borrowers pay a one-time VA funding fee, although qualifying borrowers can be exempt.</p>
+    <p>USDA Guaranteed financing can provide 100% financing for eligible borrowers purchasing eligible properties. USDA charges an upfront guarantee fee and an annual fee, and eligibility depends on both household circumstances and where the property is located.</p>
+    <div class="callout">The smallest down payment does not automatically produce the smallest payment—and the smallest payment does not automatically make a loan the best choice for a particular buyer.</div>
 
-    <h2 id="loan-comparison">FHA vs. Conventional Loan: The Basics</h2>
+    <h2 id="same-house">Same House. Four Loans. Four Different Payments.</h2>
+    <p>A mortgage comparison gets confusing quickly because lenders quote different rates, buyers put different amounts down, taxes vary by property, and mortgage insurance depends on the borrower.</p>
+    <p>So the calculator below lets you control those variables yourself.</p>
+    <p>Start by holding the house and interest rate constant.</p>
+    <p>That answers a much cleaner question:</p>
+    <p><strong>If the house costs exactly the same and the interest rate is exactly the same, what does the loan structure itself change?</strong></p>
+    <p>You’ll see the down payment, starting loan balance, principal and interest, mortgage or program insurance, and estimated monthly housing payment for each option.</p>
+    <p>Then change the assumptions.</p>
+    <p>That is where the comparison becomes useful to you rather than just another mortgage chart on the internet.</p>
 
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Factor</th>
-          <th>FHA Loan</th>
-          <th>Conventional Loan</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Minimum Credit Score</td>
-          <td>580 (500 with 10% down)</td>
-          <td>620 (700+ for best rates)</td>
-        </tr>
-        <tr>
-          <td>Minimum Down Payment</td>
-          <td>3.5%</td>
-          <td>5% standard (3% options available)</td>
-        </tr>
-        <tr>
-          <td>Mortgage Insurance</td>
-          <td>Life of loan (under 10% down)</td>
-          <td>Cancels at 20% equity</td>
-        </tr>
-        <tr>
-          <td>Upfront Mortgage Insurance</td>
-          <td>1.75% of loan amount</td>
-          <td>None</td>
-        </tr>
-        <tr>
-          <td>Monthly Mortgage Insurance</td>
-          <td>0.55% - 0.85% annually</td>
-          <td>0.25% - 2.25% (credit-based)</td>
-        </tr>
-        <tr>
-          <td>Debt-to-Income Ratio Max</td>
-          <td>Up to 57%</td>
-          <td>Up to 50%</td>
-        </tr>
-        <tr class="hl">
-          <td>Appraisal Focus</td>
-          <td>Value + Condition + Safety</td>
-          <td>Value + Comparables</td>
-        </tr>
-        <tr class="hl">
-          <td>Property Condition Standards</td>
-          <td>Must meet HUD minimums</td>
-          <td>Flexible</td>
-        </tr>
-      </tbody>
-    </table>
+    <section class="lc" id="loan-calculator" aria-labelledby="calc-h">
+      <h2 id="calc-h">Compare the Same House Four Ways</h2>
+      <p class="lc-intro">Every number below is an estimate. Change any illustrative assumption and all four results update.</p>
+      <form id="lc-form" onsubmit="return false" novalidate>
+      <fieldset>
+        <legend>Illustrative assumptions</legend>
+        <div class="lc-grid">
+          <div class="lc-field"><label for="lc-price">Purchase price ($)</label><input id="lc-price" type="number" inputmode="numeric" min="50000" max="2000000" step="1000" value="300000"></div>
+          <div class="lc-field"><label for="lc-rate">Illustrative interest rate (%)</label><input id="lc-rate" type="number" inputmode="decimal" min="0" max="15" step="0.125" value="7.00" aria-describedby="lc-rate-h"><span class="lc-help" id="lc-rate-h">One shared rate for an apples-to-apples comparison. Not a current market quote.</span></div>
+          <div class="lc-field"><label for="lc-term">Loan term</label><select id="lc-term"><option value="30" selected>30 years</option><option value="15">15 years</option></select></div>
+          <div class="lc-field"><label for="lc-tax">Annual property taxes ($)</label><input id="lc-tax" type="number" inputmode="numeric" min="0" step="50" value="3360"></div>
+          <div class="lc-field"><label for="lc-ins">Annual homeowners insurance ($)</label><input id="lc-ins" type="number" inputmode="numeric" min="0" step="50" value="3000"></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Conventional assumptions</legend>
+        <div class="lc-grid">
+          <div class="lc-field"><label for="lc-cdown">Conventional down payment (%)</label><input id="lc-cdown" type="number" inputmode="decimal" min="3" max="50" step="0.5" value="5" aria-describedby="lc-cdown-h"><span class="lc-help" id="lc-cdown-h">Minimum 3% in this tool. PMI is removed at 20% or more.</span></div>
+          <div class="lc-field"><label for="lc-pmi">Estimated annual PMI rate (%)</label><input id="lc-pmi" type="number" inputmode="decimal" min="0" max="3" step="0.05" value="0.60" aria-describedby="lc-pmi-h"><span class="lc-help" id="lc-pmi-h">Conventional PMI varies by borrower, lender, insurer, down payment and other loan characteristics. Adjust this estimate using your lender’s quote.</span></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>VA assumptions</legend>
+        <div class="lc-grid">
+          <div class="lc-field"><label for="lc-vastatus">VA funding-fee status</label><select id="lc-vastatus"><option value="first" selected>First use</option><option value="subsequent">Subsequent use</option><option value="exempt">Funding-fee exempt</option></select></div>
+          <div class="lc-field"><label for="lc-vadown">VA down payment (%)</label><input id="lc-vadown" type="number" inputmode="decimal" min="0" max="50" step="0.5" value="0" aria-describedby="lc-vadown-h"><span class="lc-help" id="lc-vadown-h">Funding-fee tier changes at 5% and 10% down.</span></div>
+        </div>
+      </fieldset>
+      </form>
+      <fieldset>
+        <legend>Government program rules used</legend>
+        <ul class="lc-rules">
+          <li><strong>FHA:</strong> 3.5% minimum investment; 1.75% upfront MIP, financed; annual MIP from HUD’s table for the loan term, LTV and base loan amount (currently <span id="lc-miprate">0.55%</span> for this scenario).</li>
+          <li><strong>VA:</strong> funding fee, financed: first use 2.15% (under 5% down), 1.50% (5%+), 1.25% (10%+); after first use 3.30% / 1.50% / 1.25%; exempt 0%. Currently <span id="lc-varate">2.15%</span>. No monthly mortgage insurance.</li>
+          <li><strong>USDA Guaranteed:</strong> 1.00% upfront guarantee fee, financed; 0.35% annual fee.</li>
+        </ul>
+      </fieldset>
+      <div class="lc-sum" aria-hidden="true"><div><span>Conventional</span><strong data-sum="conv">$2,569</strong></div><div><span>FHA</span><strong data-sum="fha">$2,622</strong></div><div><span>VA</span><strong data-sum="va">$2,569</strong></div><div><span>USDA</span><strong data-sum="usda">$2,634</strong></div></div>
+      <div class="lc-cards" aria-live="polite">
+      <article class="lc-card" data-loan="conv" aria-labelledby="lc-conv-h">
+        <h3 id="lc-conv-h">Conventional</h3>
+        <div class="lc-total"><span data-f="total-big">$2,569</span>/mo<small data-f="sub">5% down, PMI estimate · initial down payment <span data-f="down-sm">$15,000</span></small></div>
+        <details class="lc-det" open><summary>Payment breakdown</summary><dl><dt>Purchase price</dt><dd data-f="price">$300,000</dd><dt>Down payment</dt><dd data-f="down">$15,000</dd><dt>Base loan</dt><dd data-f="base">$285,000</dd><dt>Financed program fee</dt><dd data-f="fee">$0</dd><dt>Starting loan balance</dt><dd data-f="start">$285,000</dd><dt>Principal + interest</dt><dd data-f="pi">$1,896/mo</dd><dt>Estimated PMI</dt><dd data-f="mi">$142/mo</dd><dt>Property taxes</dt><dd data-f="tax">$280/mo</dd><dt>Homeowners insurance</dt><dd data-f="ins">$250/mo</dd><dt class="lc-strong">Estimated total monthly housing payment</dt><dd class="lc-strong" data-f="total">$2,569/mo</dd></dl></details>
+        <p class="lc-note">PMI drops to $0 at 20% down or more.</p>
+      </article>
+      <article class="lc-card" data-loan="fha" aria-labelledby="lc-fha-h">
+        <h3 id="lc-fha-h">FHA</h3>
+        <div class="lc-total"><span data-f="total-big">$2,622</span>/mo<small data-f="sub">3.5% minimum down · initial down payment <span data-f="down-sm">$10,500</span></small></div>
+        <details class="lc-det" open><summary>Payment breakdown</summary><dl><dt>Purchase price</dt><dd data-f="price">$300,000</dd><dt>Down payment</dt><dd data-f="down">$10,500</dd><dt>Base loan</dt><dd data-f="base">$289,500</dd><dt>Financed upfront MIP (1.75%)</dt><dd data-f="fee">$5,066</dd><dt>Starting loan balance</dt><dd data-f="start">$294,566</dd><dt>Principal + interest</dt><dd data-f="pi">$1,960/mo</dd><dt>Annual MIP (monthly)</dt><dd data-f="mi">$132/mo</dd><dt>Property taxes</dt><dd data-f="tax">$280/mo</dd><dt>Homeowners insurance</dt><dd data-f="ins">$250/mo</dd><dt class="lc-strong">Estimated total monthly housing payment</dt><dd class="lc-strong" data-f="total">$2,622/mo</dd></dl></details>
+        <p class="lc-note">Down payment fixed at FHA’s 3.5% minimum investment.</p>
+      </article>
+      <article class="lc-card" data-loan="va" aria-labelledby="lc-va-h">
+        <h3 id="lc-va-h">VA</h3>
+        <div class="lc-total"><span data-f="total-big">$2,569</span>/mo<small data-f="sub">0% down, first use · initial down payment <span data-f="down-sm">$0</span></small></div>
+        <details class="lc-det" open><summary>Payment breakdown</summary><dl><dt>Purchase price</dt><dd data-f="price">$300,000</dd><dt>Down payment</dt><dd data-f="down">$0</dd><dt>Base loan</dt><dd data-f="base">$300,000</dd><dt>Financed VA funding fee</dt><dd data-f="fee">$6,450</dd><dt>Starting loan balance</dt><dd data-f="start">$306,450</dd><dt>Principal + interest</dt><dd data-f="pi">$2,039/mo</dd><dt>Mortgage insurance</dt><dd data-f="mi">$0/mo</dd><dt>Property taxes</dt><dd data-f="tax">$280/mo</dd><dt>Homeowners insurance</dt><dd data-f="ins">$250/mo</dd><dt class="lc-strong">Estimated total monthly housing payment</dt><dd class="lc-strong" data-f="total">$2,569/mo</dd></dl></details>
+        <p class="lc-note">No monthly mortgage insurance. Some eligible borrowers are exempt from the VA funding fee.</p>
+      </article>
+      <article class="lc-card" data-loan="usda" aria-labelledby="lc-usda-h">
+        <h3 id="lc-usda-h">USDA</h3>
+        <div class="lc-total"><span data-f="total-big">$2,634</span>/mo<small data-f="sub">0% down · initial down payment <span data-f="down-sm">$0</span></small></div>
+        <details class="lc-det" open><summary>Payment breakdown</summary><dl><dt>Purchase price</dt><dd data-f="price">$300,000</dd><dt>Down payment</dt><dd data-f="down">$0</dd><dt>Base loan</dt><dd data-f="base">$300,000</dd><dt>Financed guarantee fee (1.00%)</dt><dd data-f="fee">$3,000</dd><dt>Starting loan balance</dt><dd data-f="start">$303,000</dd><dt>Principal + interest</dt><dd data-f="pi">$2,016/mo</dd><dt>Annual fee (monthly)</dt><dd data-f="mi">$88/mo</dd><dt>Property taxes</dt><dd data-f="tax">$280/mo</dd><dt>Homeowners insurance</dt><dd data-f="ins">$250/mo</dd><dt class="lc-strong">Estimated total monthly housing payment</dt><dd class="lc-strong" data-f="total">$2,634/mo</dd></dl></details>
+        <p class="lc-note">USDA eligibility depends on the borrower/household and the property’s location. This calculator does not determine USDA eligibility.</p>
+      </article>
+      </div>
+      <p class="lc-method"><strong>Calculator methodology:</strong> This tool provides illustrative estimates for comparing financing structures. It is not a Loan Estimate, lending quote, preapproval or determination of eligibility. Interest rates, PMI, taxes, homeowners insurance, closing costs and lender requirements vary. FHA, VA and USDA program rules can change. Verify your actual financing terms with a qualified lender before making a purchase decision.</p>
+      <p class="lc-method">How the estimates work: principal and interest use standard fixed-rate amortization on each loan’s starting balance, including any financed program fee. Conventional PMI is the estimated annual rate × the loan amount ÷ 12. FHA annual MIP and the USDA annual fee are first-year estimates, applied to the average scheduled balance during year one (the FHA base loan, and the full USDA loan). The FHA side is fixed at the 3.5% minimum-investment scenario. The tool does not check FHA loan limits, conforming loan limits or any program eligibility. “Initial down payment” is not cash to close.</p>
+    </section>
 
-    <div class="callout">
-      <strong>St. Louis Context</strong>
-      The highlighted rows are what matter most in the St. Louis market. Appraisal requirements and property condition standards affect whether your loan can close on an older home -- and whether sellers will accept your offer.
-    </div>
+    <h2 id="why-payment-changed">Why Did the Payment Change If the House Didn’t?</h2>
+    <p>Because the price of the house is only one part of the payment.</p>
+    <p>Your down payment changes how much you borrow.</p>
+    <p>FHA can add an upfront mortgage insurance premium to the starting loan balance and then charge annual mortgage insurance.</p>
+    <p>VA can finance a funding fee into the mortgage for borrowers who aren’t exempt, but VA does not require monthly mortgage insurance.</p>
+    <p>USDA can finance its upfront guarantee fee and also charges an annual fee.</p>
+    <p>Conventional financing doesn’t have a government program fee structured the same way, but a buyer putting less than 20% down will commonly encounter private mortgage insurance. Unlike a government-set program fee, the actual cost of PMI varies.</p>
+    <p>And then there is the interest rate.</p>
+    <p>We held the rate equal in the first comparison intentionally. In the real world, FHA, VA, USDA and Conventional rates do not have to be identical.</p>
+    <p>That’s why the calculator lets you change the assumptions instead of pretending one example is a mortgage quote.</p>
+
+    <h2 id="cash-to-close">A 0% Down Loan Does Not Mean You Need $0 to Buy the House</h2>
+    <p>This distinction matters.</p>
+    <p>The <a href="how-much-down-payment-st-louis">down payment</a> is only one piece of the money involved in purchasing a home.</p>
+    <p>Depending on the transaction, a buyer may also have lender charges, title and settlement costs, prepaid homeowners insurance, tax and insurance escrow deposits, appraisal and inspection expenses, and other costs.</p>
+    <p>Credits from a seller, lender or assistance program can also change what the buyer ultimately brings to closing.</p>
+    <p>That’s why the calculator above shows initial down payment, not “cash to close.”</p>
+    <p>Your actual cash-to-close figure comes from the specific transaction and eventually appears on your Closing Disclosure.</p>
+
+    <a href="buyer-closing-costs-st-louis" class="int-link">
+      <span class="int-link-text">Beyond down payment and mortgage insurance, understand all the costs due at closing. <strong>Buyer Closing Costs in St. Louis &#8594;</strong></span>
+      <span class="int-link-arr">&#8594;</span>
+    </a>
+
+    <h2 id="conventional">Conventional: Don’t Assume You Need 20% Down</h2>
+    <p>The 20%-down rule is one of the most persistent misunderstandings in home buying.</p>
+    <p>Certain Conventional purchase transactions can reach 97% loan-to-value, meaning a qualifying buyer may put as little as 3% down.</p>
+    <p>That doesn’t mean every buyer qualifies for every low-down-payment Conventional product.</p>
+    <p>And putting less than 20% down commonly means paying private mortgage insurance.</p>
+    <p>The important distinction is that PMI is not necessarily permanent.</p>
+    <p>For many mortgages covered by federal PMI-cancellation rules, a borrower can request cancellation when the principal balance is scheduled to reach 80% of the home’s original value, provided the applicable requirements are met. In general, automatic termination occurs when the scheduled balance reaches 78% if the borrower is current.</p>
+    <p>That makes Conventional worth comparing even when FHA initially looks easier or requires a similar amount of cash.</p>
+
+    <h2 id="fha">FHA: Lower Upfront Cash Doesn’t Mean Lower Total Payment</h2>
+    <p>FHA requires a minimum investment of 3.5% of the property’s adjusted value for the standard maximum-financing scenario.</p>
+    <p>But that isn’t the whole FHA calculation.</p>
+    <p>Most FHA purchase loans also carry a 1.75% upfront mortgage insurance premium. That premium can be financed into the mortgage, which means the buyer doesn’t necessarily write a check for it at closing—but financing it increases the amount being borrowed.</p>
+    <p>Then there is annual mortgage insurance.</p>
+    <p>For the standard 30-year, minimum-down-payment example used in our calculator, the current annual MIP rate is 0.55%.</p>
+    <p>That’s why comparing FHA to Conventional solely by looking at the down payment can be misleading.</p>
+    <p>FHA may be an excellent financing option for a buyer whose financial profile fits the program. But the useful question isn’t:</p>
+    <p><em>Which loan asks me for the smallest percentage down?</em></p>
+    <p>It’s:</p>
+    <p><em>What does each loan do to my cash, my starting balance and my monthly payment?</em></p>
+    <p>FHA is also not exclusively a first-time-homebuyer loan.</p>
+
+    <h3>Credit Score Impact</h3>
+
+    <p>Your credit score matters more with conventional loans than FHA loans.</p>
+
+    <p>FHA mortgage insurance rates are relatively fixed regardless of credit score -- a 580 score and a 720 score pay nearly the same MIP rate. Conventional PMI rates are heavily influenced by credit score. A 760 credit score might pay 0.3% PMI while a 640 score pays 1.5% PMI on the same loan.</p>
+
+    <p>This means:</p>
+    <ul>
+      <li><strong>If your credit score is below 680:</strong> FHA may offer better overall pricing despite the upfront premium</li>
+      <li><strong>If your credit score is 700+:</strong> Conventional will almost always cost less over time due to lower PMI and cancellation at 20% equity</li>
+    </ul>
+
+    <h2 id="va">VA: 0% Down Is Only Part of the Story</h2>
+    <p>If you’re eligible for the VA home-loan benefit, VA deserves a real comparison—not a footnote underneath FHA and Conventional.</p>
+    <p>VA does not require a down payment when the purchase price does not exceed the property’s appraised value, although individual circumstances, lender requirements or entitlement considerations can change the transaction.</p>
+    <p>VA also does not require monthly private mortgage insurance or FHA-style mortgage insurance.</p>
+    <p>Instead, many VA borrowers pay a one-time funding fee.</p>
+    <p>For a first use with less than 5% down, the current funding fee is 2.15% of the loan amount. For a subsequent use at less than 5% down, it is 3.30%.</p>
+    <p>Some borrowers are exempt from the funding fee entirely.</p>
+    <p>That creates an interesting comparison.</p>
+    <p>A VA buyer may start with a slightly larger financed balance because of the funding fee while still avoiding the monthly mortgage-insurance charge found in other low-down-payment structures.</p>
+    <p>And an exempt VA borrower changes the comparison again.</p>
+    <p>That’s exactly why the calculator lets you switch between first use, subsequent use and funding-fee exempt.</p>
+    <p>If you're eligible for VA financing, the loan comparison is only part of the process. My <a href="va-home-loan-st-louis-what-kills-deals">St. Louis VA home-buying guidance</a> goes deeper into appraisal, property-condition and transaction issues that can matter after you find the house.</p>
+
+    <h2 id="usda">USDA: 0% Down—But the House Has to Qualify Too</h2>
+    <p>USDA is different because eligibility isn’t just about the borrower.</p>
+    <p>The property must be located in an eligible area, and the household must meet USDA’s applicable income requirements.</p>
+    <p>For the USDA Single Family Housing Guaranteed Loan Program, the current upfront guarantee fee is 1.00% of the loan amount, and the current annual fee is 0.35%.</p>
+    <p>The upfront fee can be financed.</p>
+    <p>So a qualifying buyer can potentially purchase with no down payment while beginning with a loan balance slightly above the base amount because of the financed guarantee fee.</p>
+    <p>But before comparing USDA’s payment with the other three options, you have to answer a more basic question:</p>
+    <p><strong>Is this particular house—and this particular household—eligible?</strong></p>
+    <p>That makes USDA especially interesting around the outer portions of the St. Louis region, where a buyer shouldn’t assume eligibility or ineligibility based solely on whether an area “feels rural.”</p>
+    <p>USDA maintains the <a href="https://eligibility.sc.egov.usda.gov/eligibility/welcomeAction.do?pageAction=sfp" target="_blank" rel="noopener">official eligibility tools</a>. Property eligibility should be verified by address rather than guessed.</p>
+
+    <h2 id="property">Your Mortgage Can Change Which St. Louis Houses Are Practical to Buy</h2>
+    <p>Financing isn’t only a spreadsheet decision.</p>
+    <p>St. Louis has a lot of older housing.</p>
+    <p>A buyer may be comparing a century-old South City house, an older inner-ring suburban property, a newer subdivision home, or a property farther from the urban core.</p>
+    <p>Condition matters differently from one transaction to another.</p>
+    <p>Government-backed financing has appraisal and property requirements that can create additional questions when a property has certain safety, soundness or condition issues.</p>
+    <p>That does not mean an old house automatically fails FHA or VA financing.</p>
+    <p>And it does not mean Conventional financing has no property standards.</p>
+    <p>The practical lesson is simpler:</p>
+    <p><strong>Choose the financing and the house together.</strong></p>
+    <p>If you’re pursuing a property with obvious deferred maintenance, don’t wait until after you’re under contract to ask whether your financing creates another hurdle.</p>
+    <p>That is especially important when you’re competing against other buyers and don’t have much time between contract acceptance, inspections and appraisal.</p>
+
+    <a href="home-inspection-st-louis" class="int-link">
+      <span class="int-link-text">Inspection: <strong>What Happens at a Home Inspection in St. Louis &#8594;</strong></span>
+      <span class="int-link-arr">&#8594;</span>
+    </a>
+    <a href="#appraisal-comparison" class="int-link">
+      <span class="int-link-text">Appraisal: <strong>FHA Appraisal vs. Conventional Appraisal: What’s Different &#8595;</strong></span>
+      <span class="int-link-arr">&#8595;</span>
+    </a>
+    <a href="va-appraisal-failed-st-louis-what-happens-next" class="int-link">
+      <span class="int-link-text">VA appraisal and property condition: <strong>What Happens When a VA Appraisal Fails in St. Louis &#8594;</strong></span>
+      <span class="int-link-arr">&#8594;</span>
+    </a>
 
     <h2 id="appraisal-comparison">FHA Appraisal vs. Conventional Appraisal: What's Different</h2>
 
@@ -554,11 +727,6 @@
 
     <p><strong>Peeling exterior paint</strong> on homes built before 1978 triggers FHA lead paint protocols. All peeling paint must be scraped, primed, and repainted by a lead-certified contractor. This can add $3,000 to $8,000 to the seller's cost -- or kill the deal if the seller refuses to address it.</p>
 
-    <a href="home-inspection-st-louis" class="int-link">
-      <span class="int-link-text">What to expect during a St. Louis home inspection and what happens with the results. <strong>What Happens at a Home Inspection in St. Louis &#8594;</strong></span>
-      <span class="int-link-arr">&#8594;</span>
-    </a>
-
     <p><strong>Negative grading</strong> (ground sloping toward the foundation instead of away) is common on older St. Louis lots. FHA appraisers flag this as a drainage issue. Fixing it requires regrading, which can cost $2,000 to $6,000 depending on the severity.</p>
 
     <a href="stl-home-repair-cost-guide" class="int-link">
@@ -574,127 +742,91 @@
 
     <p>This does not mean FHA buyers cannot compete. It means your agent needs to acknowledge the appraisal risk in your offer and potentially offer a higher price, faster timeline, or stronger earnest money to compensate for that risk. (More on competing on terms in our guide to <a href="multiple-offers-without-overpaying-st-louis">winning multiple offers without overpaying</a>.)</p>
 
-    <h2 id="decision-guide">Conventional vs. FHA: Which One Should You Use?</h2>
-
-    <h3>Use FHA If:</h3>
+    <h2 id="offer">Does FHA, VA or USDA Make Your Offer Weaker?</h2>
+    <p>Not automatically.</p>
+    <p>A seller isn’t really choosing a loan program. They’re choosing an offer and evaluating whether they believe that offer will close.</p>
+    <p>Financing can be part of that evaluation, but so can:</p>
     <ul>
-      <li>Your credit score is between 580 and 680</li>
-      <li>You have 3.5% to 5% saved for down payment</li>
-      <li>You are buying a <strong>newer home</strong> (built after 2000) or a home in move-in ready condition</li>
-      <li>The home has no obvious deferred maintenance or cosmetic issues</li>
-      <li>You need more flexible debt-to-income approval (up to 57%)</li>
+      <li>purchase price</li>
+      <li>buyer qualification</li>
+      <li>lender quality</li>
+      <li>appraisal risk</li>
+      <li>property condition</li>
+      <li>requested seller concessions</li>
+      <li>inspection terms</li>
+      <li>closing timeline</li>
+      <li>competing offers</li>
     </ul>
+    <p>Sometimes a seller or listing agent may perceive Conventional financing as simpler.</p>
+    <p>That perception isn’t the same thing as saying FHA, VA or USDA financing is inherently weak.</p>
+    <p>A well-qualified buyer with a strong lender and financing that fits the property can still write a very strong offer.</p>
+    <p>The important question is whether the financing creates a problem for this house and this transaction, not whether someone has a blanket opinion about the letters on the preapproval.</p>
 
-    <h3>Use Conventional If:</h3>
+    <h2 id="assistance">Your Mortgage and Your Down-Payment Assistance Aren’t Necessarily the Same Decision</h2>
+    <p>This is where first-time buyers often get understandably confused.</p>
+    <p>FHA, Conventional, VA and USDA describe ways the underlying purchase can be financed.</p>
+    <p>Programs such as MHDC can involve another layer of eligibility and assistance.</p>
+    <p>So don’t start with:</p>
+    <p><em>Which first-time-buyer loan should I get?</em></p>
+    <p>Start with two questions:</p>
+    <p><em>Which underlying mortgage fits me and the property?</em></p>
+    <p>and then:</p>
+    <p><em>Is there an assistance program I qualify for that works with that financing?</em></p>
+    <p>Those questions are related, but they aren’t identical.</p>
+    <p>If keeping more of your savings is important, compare the financing first and then review my <a href="/articles/first-time-buyer-programs-stl">St. Louis first-time home buyer programs and assistance guide</a>.</p>
+    <p>For Missouri buyers specifically considering MHDC, I also have a separate <a href="mhdc-first-place-next-step-missouri-guide">guide to MHDC First Place and Next Step</a> so the detailed program rules don't have to be crammed into this mortgage comparison.</p>
+
+    <h2 id="decision-guide">Which Loan Should You Investigate First?</h2>
+    <p>There isn’t a universal winner.</p>
+    <h3>Conventional deserves a serious look if:</h3>
+    <p>You qualify for competitive Conventional terms, want to compare low-down-payment options, value the possibility of eventually removing PMI, or you’re purchasing a property where a government-backed loan could create additional transaction friction.</p>
+    <h3>FHA deserves a serious look if:</h3>
+    <p>Its underwriting structure fits your financial profile and the combination of down payment, rate and mortgage insurance produces a better overall option than the Conventional alternatives available to you.</p>
+    <h3>VA deserves a serious look if:</h3>
+    <p>You’re eligible.</p>
+    <p>Don’t dismiss VA simply because another loan looks more familiar. Compare the funding fee, exemption status, interest rate, zero-down option and absence of monthly mortgage insurance before deciding.</p>
+    <h3>USDA deserves a serious look if:</h3>
+    <p>Your household appears eligible and you’re considering a property that may fall within USDA-eligible geography.</p>
+    <p>Don’t assume a property qualifies because it’s outside St. Louis City—or fails because it looks suburban. Check the actual address.</p>
+
+    <h2 id="what-changes">Don’t Ask Which Loan Is “Best.” Ask What Changes.</h2>
+    <p>Take the same house and change the financing.</p>
+    <p>What happens to:</p>
     <ul>
-      <li>Your credit score is 620 or higher (700+ for best rates and lowest PMI)</li>
-      <li>You have 5% or more saved for down payment</li>
-      <li>You are buying an <strong>older home</strong> (built before 1980) or a home with any condition concerns</li>
-      <li>You want mortgage insurance to cancel automatically at 20% equity</li>
-      <li>You want to strengthen your offer in a competitive situation</li>
+      <li>the cash you need up front?</li>
+      <li>the amount you borrow?</li>
+      <li>the monthly payment?</li>
+      <li>mortgage insurance?</li>
+      <li>the property you can buy?</li>
+      <li>the strength and complexity of the transaction?</li>
+      <li>the money you still have after closing?</li>
     </ul>
+    <p>That’s a much more useful comparison than simply asking whether FHA or Conventional is “better.”</p>
+    <p>The house may be identical.</p>
+    <p>The financing isn’t.</p>
 
-    <div class="callout">
-      <strong>Long-Term Cost Comparison</strong>
-      Even with a slightly higher down payment requirement, conventional loans typically cost less over time because mortgage insurance cancels at 20% equity. FHA mortgage insurance lasts the life of the loan if you put less than 10% down, which means you pay it for 30 years unless you refinance.
-    </div>
-    <p>Loan type is one decision in a longer process. The <a href="/complete-guide">complete guide to the St.&nbsp;Louis buying process</a> shows where it fits, from pre-approval to closing day.</p>
-
-    <h3>FHA Mortgage Insurance vs. Conventional PMI</h3>
-
-    <p><strong>FHA mortgage insurance</strong> has two components:</p>
-    <ul>
-      <li><strong>Upfront mortgage insurance premium:</strong> 1.75% of the loan amount (typically rolled into the loan)</li>
-      <li><strong>Annual mortgage insurance premium:</strong> 0.55% to 0.85% of the loan amount, divided into monthly payments</li>
+    <h2 id="sources">Sources &amp; methodology</h2>
+    <ul class="lc-sources">
+      <li>FHA: <a href="https://answers.hud.gov/FHA/s/article/What-is-the-FHA-Mortgage-Insurance-Premium-structure-for-forward-mortgage-loans" target="_blank" rel="noopener">HUD — FHA Mortgage Insurance Premium Structure</a> (1.75% upfront MIP; annual MIP tiers)</li>
+      <li>FHA: <a href="https://www.hud.gov/hud-partners/single-family-handbook-4000-1" target="_blank" rel="noopener">HUD — FHA Single Family Housing Policy Handbook 4000.1</a> (3.5% minimum required investment; financing of upfront MIP)</li>
+      <li>VA: <a href="https://www.va.gov/housing-assistance/home-loans/funding-fee-and-closing-costs/" target="_blank" rel="noopener">U.S. Department of Veterans Affairs — VA Funding Fee and Loan Closing Costs</a> (funding-fee rates, first vs. subsequent use, down-payment tiers, exemptions)</li>
+      <li>VA: <a href="https://www.va.gov/housing-assistance/home-loans/loan-types/purchase-loan/" target="_blank" rel="noopener">U.S. Department of Veterans Affairs — VA Purchase Loan</a> (no VA-required down payment under applicable circumstances; no PMI; eligibility)</li>
+      <li>USDA: <a href="https://www.rd.usda.gov/media/file/download/usda-rd-sfh-guarantee-loan-program-101-jan-2026.pdf" target="_blank" rel="noopener">USDA Rural Development — Single Family Housing Guaranteed Loan Program 101</a> (1% upfront guarantee fee; 0.35% annual fee; property and household-income eligibility)</li>
+      <li>USDA: <a href="https://eligibility.sc.egov.usda.gov/eligibility/welcomeAction.do?pageAction=sfp" target="_blank" rel="noopener">USDA — Property Eligibility</a> (verify a specific address)</li>
+      <li>Conventional: <a href="https://singlefamily.fanniemae.com/originating-underwriting/mortgage-products/97-loan-value-options" target="_blank" rel="noopener">Fannie Mae — 97% Loan-to-Value Options</a> (97% LTV transactions; first-time-buyer requirement for the standard 97% option; HomeReady)</li>
+      <li>Conventional: <a href="https://www.consumerfinance.gov/ask-cfpb/when-can-i-remove-private-mortgage-insurance-pmi-from-my-loan-en-202/" target="_blank" rel="noopener">Consumer Financial Protection Bureau — PMI Cancellation</a> (request at 80% of original value; automatic termination at 78%)</li>
     </ul>
-
-    <p>On a $250,000 FHA loan with 3.5% down, you pay $4,281 upfront (rolled into the loan) plus $135 to $210 per month in mortgage insurance. This monthly payment lasts for the entire life of the loan.</p>
-
-    <a href="stl-affordability-by-zip-code" class="int-link">
-      <span class="int-link-text">See how mortgage insurance affects your true monthly cost across 79 St. Louis zip codes. <strong>St. Louis Affordability by Zip Code &#8594;</strong></span>
-      <span class="int-link-arr">&#8594;</span>
-    </a>
-
-    <p><strong>Conventional private mortgage insurance (PMI)</strong> is based on your credit score, down payment amount, and loan-to-value ratio. Rates range from 0.25% to 2.25% annually, with most borrowers paying 0.5% to 1.0%.</p>
-
-    <p>On a $250,000 conventional loan with 5% down, PMI might cost $100 to $200 per month. The key difference: PMI automatically cancels when you reach 20% equity based on your original purchase price. For most buyers, this happens in 7 to 10 years through a combination of appreciation and principal paydown.</p>
-
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Mortgage Insurance Factor</th>
-          <th>FHA</th>
-          <th>Conventional</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Upfront Premium</td>
-          <td>1.75% of loan amount</td>
-          <td>None</td>
-        </tr>
-        <tr>
-          <td>Monthly Premium</td>
-          <td>0.55% - 0.85% annually</td>
-          <td>0.25% - 2.25% annually (credit-based)</td>
-        </tr>
-        <tr>
-          <td>When It Cancels</td>
-          <td>Never (under 10% down)</td>
-          <td>Automatically at 20% equity</td>
-        </tr>
-        <tr>
-          <td>Typical Duration</td>
-          <td>Life of loan (30 years)</td>
-          <td>7-10 years</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3>Credit Score Impact</h3>
-
-    <p>Your credit score matters more with conventional loans than FHA loans.</p>
-
-    <p>FHA mortgage insurance rates are relatively fixed regardless of credit score -- a 580 score and a 720 score pay nearly the same MIP rate. Conventional PMI rates are heavily influenced by credit score. A 760 credit score might pay 0.3% PMI while a 640 score pays 1.5% PMI on the same loan.</p>
-
-    <p>This means:</p>
-    <ul>
-      <li><strong>If your credit score is below 680:</strong> FHA may offer better overall pricing despite the upfront premium</li>
-      <li><strong>If your credit score is 700+:</strong> Conventional will almost always cost less over time due to lower PMI and cancellation at 20% equity</li>
-    </ul>
+    <p>Calculator defaults (7.00% illustrative rate, property taxes of 1.12% of price, homeowners insurance of 1% of price, 0.60% estimated PMI) are illustrative assumptions used across STL Home Journey’s affordability tools, not market quotes. See the calculator methodology above for how each payment is estimated.</p>
 
     <a href="credit-score-buy-home-st-louis" class="int-link">
       <span class="int-link-text">How your credit score affects your loan options, interest rate, and monthly payment in St. Louis. <strong>What Credit Score Do You Need to Buy a Home in St. Louis? &#8594;</strong></span>
       <span class="int-link-arr">&#8594;</span>
     </a>
-
-    <h3>Down Payment and First-Time Buyer Programs</h3>
-
-    <p>FHA's 3.5% down payment is often cited as the main advantage. However, conventional loans now offer 3% down payment options through Fannie Mae HomeReady, Freddie Mac Home Possible, and Conventional 97 programs.</p>
-
-    <p>The difference: conventional 3% down programs have income limits and require mortgage insurance until 20% equity, but they still offer PMI cancellation -- which FHA does not.</p>
-
-    <p>St. Louis first-time buyers also have access to MHDC (Missouri Housing Development Commission) programs that work with both FHA and conventional loans and can provide down payment and closing cost assistance of up to 4% of the first mortgage &mdash; about $10,000 on a $250,000 loan.</p>
-
-    <a href="buyer-closing-costs-st-louis" class="int-link">
-      <span class="int-link-text">Beyond down payment and mortgage insurance, understand all the costs due at closing. <strong>Buyer Closing Costs in St. Louis &#8594;</strong></span>
+    <a href="stl-affordability-by-zip-code" class="int-link">
+      <span class="int-link-text">See how mortgage insurance affects your true monthly cost across 79 St. Louis zip codes. <strong>St. Louis Affordability by Zip Code &#8594;</strong></span>
       <span class="int-link-arr">&#8594;</span>
     </a>
 
-    <a href="first-time-buyer-programs-stl" class="int-link">
-      <span class="int-link-text">Down payment assistance programs that work with both FHA and conventional loans in St. Louis. <strong>First-Time Buyer Programs in St. Louis &#8594;</strong></span>
-      <span class="int-link-arr">&#8594;</span>
-    </a>
-
-    <a href="mhdc-first-place-next-step-missouri-guide" class="int-link">
-      <span class="int-link-text">The complete MHDC transaction: income limits, lender fees, seller documents, the 60-day deadline and what 4% DPA actually means. <strong>MHDC First Place &amp; Next Step Guide &#8594;</strong></span>
-      <span class="int-link-arr">&#8594;</span>
-    </a>
-
-    <a href="how-much-down-payment-st-louis" class="int-link">
-      <span class="int-link-text">Real down payment requirements by loan type and what you need beyond the down payment. <strong>How Much Down Payment Do You Need in St. Louis? &#8594;</strong></span>
-      <span class="int-link-arr">&#8594;</span>
-    </a>
 
     <!-- ASK ME: component configured in /assets/ask-me.js -->
     <div data-ask-me="buyer-general"><p><a href="/ask?about=buyer-general&amp;from=/articles/conventional-vs-fha-loan-st-louis">Ask Me About the House</a></p></div>
@@ -784,5 +916,112 @@
   All content is for informational purposes only and does not constitute legal or financial advice. Mortgage rates, loan limits, and program terms change frequently -- verify current figures with a licensed Missouri lender.</p>
 </footer>
 <script src="/assets/ask-me.js?v=6" defer></script>
+<script>
+/* Loan comparison engine — same code is inlined in the article */
+var LC = (function () {
+  var FHA_MIN_DOWN = 0.035, FHA_UFMIP = 0.0175, FHA_LIMIT = 726200;
+  var USDA_UPFRONT = 0.01, USDA_ANNUAL = 0.0035;
+  function pmt(bal, rate, years) {
+    var n = years * 12, r = rate / 100 / 12;
+    if (bal <= 0) return 0;
+    if (r === 0) return bal / n;
+    return bal * r / (1 - Math.pow(1 + r, -n));
+  }
+  /* average of the 12 scheduled month-start balances in year one */
+  function avgYear1(bal, rate, years) {
+    var r = rate / 100 / 12, p = pmt(bal, rate, years), b = bal, sum = 0;
+    for (var k = 0; k < 12; k++) { sum += b; b = b - (p - b * r); }
+    return sum / 12;
+  }
+  /* HUD annual MIP table (ML 2023-05), applied to the FHA minimum-down case */
+  function fhaMipRate(base, value, years) {
+    var ltv = base / value;
+    if (years > 15) {
+      if (base <= FHA_LIMIT) return ltv > 0.95 ? 0.0055 : 0.0050;
+      return ltv > 0.95 ? 0.0075 : 0.0070;
+    }
+    if (base <= FHA_LIMIT) return ltv > 0.90 ? 0.0040 : 0.0015;
+    return ltv > 0.90 ? 0.0065 : (ltv > 0.78 ? 0.0040 : 0.0015);
+  }
+  function vaFeeRate(status, downPct) {
+    if (status === 'exempt') return 0;
+    if (downPct >= 10) return 0.0125;
+    if (downPct >= 5) return 0.015;
+    return status === 'subsequent' ? 0.033 : 0.0215;
+  }
+  function compute(i) {
+    var price = i.price, rate = i.rate, yrs = i.term;
+    var tax = i.taxes / 12, ins = i.insurance / 12, out = {};
+    function finish(o) { o.tax = tax; o.ins = ins; o.total = o.pi + o.mi + tax + ins; return o; }
+    // Conventional
+    var cd = price * i.convDown / 100, cb = price - cd;
+    out.conv = finish({ down: cd, base: cb, fee: 0, start: cb, pi: pmt(cb, rate, yrs),
+      mi: i.convDown >= 20 ? 0 : cb * i.pmi / 100 / 12, miRate: i.convDown >= 20 ? 0 : i.pmi / 100 });
+    // FHA (minimum required investment scenario)
+    var fd = price * FHA_MIN_DOWN, fb = price - fd, uf = fb * FHA_UFMIP, fs = fb + uf, fr = fhaMipRate(fb, price, yrs);
+    out.fha = finish({ down: fd, base: fb, fee: uf, start: fs, pi: pmt(fs, rate, yrs),
+      mi: avgYear1(fb, rate, yrs) * fr / 12, miRate: fr });
+    // VA
+    var vd = price * i.vaDown / 100, vb = price - vd, vr = vaFeeRate(i.vaStatus, i.vaDown), vf = vb * vr, vs = vb + vf;
+    out.va = finish({ down: vd, base: vb, fee: vf, start: vs, pi: pmt(vs, rate, yrs), mi: 0, miRate: 0, feeRate: vr });
+    // USDA
+    var ub = price, ug = ub * USDA_UPFRONT, us = ub + ug;
+    out.usda = finish({ down: 0, base: ub, fee: ug, start: us, pi: pmt(us, rate, yrs),
+      mi: avgYear1(us, rate, yrs) * USDA_ANNUAL / 12, miRate: USDA_ANNUAL });
+    return out;
+  }
+  return { compute: compute, pmt: pmt, fhaMipRate: fhaMipRate, vaFeeRate: vaFeeRate };
+})();
+(function () {
+  var form = document.getElementById('lc-form');
+  if (!form) return;
+  function num(id, dflt, lo, hi) {
+    var v = parseFloat(document.getElementById(id).value);
+    if (!isFinite(v)) v = dflt;
+    if (lo != null && v < lo) v = lo;
+    if (hi != null && v > hi) v = hi;
+    return v;
+  }
+  function money(x) { return '$' + Math.round(x).toLocaleString('en-US'); }
+  function pct(x) { return (x * 100).toFixed(2).replace(/0$/, '') + '%'; }
+  var subs = { conv: function (i) { return i.convDown + '% down' + (i.convDown >= 20 ? ', no PMI' : ', PMI estimate'); },
+               fha: function () { return '3.5% minimum down'; },
+               va: function (i) { return (i.vaDown ? i.vaDown + '% down' : '0% down') + ', ' + ({ first: 'first use', subsequent: 'subsequent use', exempt: 'fee exempt' })[i.vaStatus]; },
+               usda: function () { return '0% down'; } };
+  function update() {
+    var i = {
+      price: num('lc-price', 300000, 10000, 5000000),
+      rate: num('lc-rate', 7, 0, 25),
+      term: parseInt(document.getElementById('lc-term').value, 10) || 30,
+      taxes: num('lc-tax', 0, 0),
+      insurance: num('lc-ins', 0, 0),
+      convDown: num('lc-cdown', 5, 3, 100),
+      pmi: num('lc-pmi', 0.6, 0, 5),
+      vaDown: num('lc-vadown', 0, 0, 100),
+      vaStatus: document.getElementById('lc-vastatus').value
+    };
+    var o = LC.compute(i);
+    ['conv', 'fha', 'va', 'usda'].forEach(function (k) {
+      var r = o[k], card = document.querySelector('.lc-card[data-loan="' + k + '"]');
+      var set = function (f, v) { var el = card.querySelector('[data-f="' + f + '"]'); if (el) el.textContent = v; };
+      set('price', money(i.price)); set('down', money(r.down)); set('base', money(r.base)); set('fee', money(r.fee));
+      set('start', money(r.start)); set('pi', money(r.pi) + '/mo'); set('mi', money(r.mi) + '/mo');
+      set('tax', money(r.tax) + '/mo'); set('ins', money(r.ins) + '/mo'); set('total', money(r.total) + '/mo');
+      set('total-big', money(r.total)); set('down-sm', money(r.down));
+      var sub = card.querySelector('[data-f="sub"]');
+      if (sub) sub.firstChild.textContent = subs[k](i) + ' · initial down payment ';
+      document.querySelector('[data-sum="' + k + '"]').textContent = money(r.total);
+    });
+    document.getElementById('lc-miprate').textContent = pct(o.fha.miRate);
+    document.getElementById('lc-varate').textContent = pct(o.va.feeRate);
+  }
+  form.addEventListener('input', update);
+  form.addEventListener('change', update);
+  if (window.matchMedia && window.matchMedia('(max-width:640px)').matches) {
+    document.querySelectorAll('.lc-det').forEach(function (d) { d.removeAttribute('open'); });
+  }
+  update();
+})();
+</script>
 </body>
 </html>
