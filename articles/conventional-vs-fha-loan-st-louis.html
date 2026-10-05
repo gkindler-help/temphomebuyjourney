@@ -266,6 +266,8 @@
     .lc-table td span{color:var(--text-dim);font-size:.75rem;}
     .lc-table tr.lc-best td,.lc-table tr.lc-best th{background:var(--gold-soft);}
     .lc-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+    .lc-sub{display:block;font-size:.72rem!important;color:var(--text-dim)!important;margin-top:2px;}
+    .lc-insight{font-size:.88rem!important;line-height:1.55!important;color:var(--text)!important;margin:12px 0 0!important;padding:10px 12px;border-left:3px solid var(--gold);background:var(--surface);border-radius:0 8px 8px 0;}
     .lc-fine{font-size:.76rem!important;color:var(--text-dim)!important;margin:10px 0 0!important;line-height:1.5!important;}
     .lc-card{scroll-margin-top:80px;}
     .lc-back{display:inline-block;margin-top:10px;font-size:.8rem;font-weight:600;}
@@ -281,6 +283,7 @@
       .lc-table td[data-label="vs. lowest"]{grid-column:1/-1;font-size:.75rem;color:var(--text-dim);margin-top:-4px;}
       .lc-table td:not([data-label="Monthly payment"]):not([data-label="vs. lowest"])::before{content:attr(data-label);display:block;font-size:.62rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--text-dim);}
       .lc-table td{font-size:.82rem;}
+      .lc-table td[data-label="Monthly mortgage/program fee"]{grid-column:1/-1;}
     }
     .lc{margin:28px 0 36px;padding:22px 20px;background:var(--surface);border:1px solid var(--gold-line);border-radius:16px;}
     .lc h2{margin-top:0!important;}
@@ -495,8 +498,8 @@
       </fieldset>
       <div class="lc-summary" id="lc-summary">
         <h3 class="lc-sum-h">Your scenario at a glance</h3>
-        <div id="lc-summary-body" aria-live="polite"><ul class="lc-take"><li><strong>Lowest estimated monthly payment:</strong> Conventional and VA at $2,569/mo.</li><li><strong>Least cash for the down payment:</strong> VA and USDA at $0.</li><li><strong>Spread:</strong> payments range from $2,569 to $2,634/mo, a $65/mo difference.</li></ul><table class="lc-table"><caption class="lc-sr">Loan comparison for this scenario, sorted by estimated monthly payment</caption><thead><tr><th scope="col">Loan</th><th scope="col">Monthly payment</th><th scope="col">vs. lowest</th><th scope="col">Down payment</th><th scope="col">Starting balance</th><th scope="col">Monthly insurance / fee</th></tr></thead><tbody><tr class="lc-best"><th scope="row"><a href="#lc-card-conv">Conventional</a></th><td data-label="Monthly payment"><strong>$2,569</strong></td><td data-label="vs. lowest">Lowest</td><td data-label="Down payment">$15,000 <span>(5%)</span></td><td data-label="Starting balance">$285,000</td><td data-label="Monthly insurance / fee">$143 <span>PMI (est.)</span></td></tr><tr class="lc-best"><th scope="row"><a href="#lc-card-va">VA</a></th><td data-label="Monthly payment"><strong>$2,569</strong></td><td data-label="vs. lowest">Lowest</td><td data-label="Down payment">$0 <span>(0%)</span></td><td data-label="Starting balance">$306,450</td><td data-label="Monthly insurance / fee">$0 <span>none</span></td></tr><tr><th scope="row"><a href="#lc-card-fha">FHA</a></th><td data-label="Monthly payment"><strong>$2,622</strong></td><td data-label="vs. lowest">+$53</td><td data-label="Down payment">$10,500 <span>(3.5%)</span></td><td data-label="Starting balance">$294,566</td><td data-label="Monthly insurance / fee">$132 <span>MIP</span></td></tr><tr><th scope="row"><a href="#lc-card-usda">USDA</a></th><td data-label="Monthly payment"><strong>$2,634</strong></td><td data-label="vs. lowest">+$65</td><td data-label="Down payment">$0 <span>(0%)</span></td><td data-label="Starting balance">$303,000</td><td data-label="Monthly insurance / fee">$88 <span>annual fee</span></td></tr></tbody></table></div>
-        <p class="lc-fine">VA requires VA eligibility, and USDA requires an eligible household and property address. The lowest payment is not automatically the right loan. Change each loan’s down payment in the cards below; this summary updates as you go.</p>
+        <div id="lc-summary-body" aria-live="polite"><ul class="lc-take"><li><strong>Tied for lowest estimated monthly payment:</strong> Conventional and VA at $2,569/mo.</li><li><strong>Least cash for the down payment:</strong> VA and USDA at $0.</li><li><strong>Spread:</strong> payments range from $2,569 to $2,634/mo, a $65/mo difference.</li></ul><table class="lc-table"><caption class="lc-sr">Loan comparison for this scenario, sorted by estimated monthly payment</caption><thead><tr><th scope="col">Loan</th><th scope="col">Monthly payment</th><th scope="col">vs. lowest</th><th scope="col">Down payment</th><th scope="col">Starting balance</th><th scope="col">Monthly mortgage/program fee</th></tr></thead><tbody><tr class="lc-best"><th scope="row"><a href="#lc-card-conv">Conventional</a></th><td data-label="Monthly payment"><strong>$2,569</strong></td><td data-label="vs. lowest">Tied for lowest</td><td data-label="Down payment">$15,000 <span>(5%)</span></td><td data-label="Starting balance">$285,000</td><td data-label="Monthly mortgage/program fee">$143 PMI (est.)</td></tr><tr class="lc-best"><th scope="row"><a href="#lc-card-va">VA</a></th><td data-label="Monthly payment"><strong>$2,569</strong></td><td data-label="vs. lowest">Tied for lowest</td><td data-label="Down payment">$0 <span>(0%)</span></td><td data-label="Starting balance">$306,450<span class="lc-sub">Funding fee: $6,450 financed (2.15%)</span></td><td data-label="Monthly mortgage/program fee">$0 — no monthly mortgage insurance</td></tr><tr><th scope="row"><a href="#lc-card-fha">FHA</a></th><td data-label="Monthly payment"><strong>$2,622</strong></td><td data-label="vs. lowest">+$53</td><td data-label="Down payment">$10,500 <span>(3.5%)</span></td><td data-label="Starting balance">$294,566<span class="lc-sub">Upfront MIP: $5,066 financed (1.75%)</span></td><td data-label="Monthly mortgage/program fee">$132 MIP</td></tr><tr><th scope="row"><a href="#lc-card-usda">USDA</a></th><td data-label="Monthly payment"><strong>$2,634</strong></td><td data-label="vs. lowest">+$65</td><td data-label="Down payment">$0 <span>(0%)</span></td><td data-label="Starting balance">$303,000<span class="lc-sub">Guarantee fee: $3,000 financed (1%)</span></td><td data-label="Monthly mortgage/program fee">$88 annual-fee equivalent/mo</td></tr></tbody></table><p class="lc-insight">In this example, VA starts with a $21,450 larger loan balance than Conventional—but ties it for the lowest monthly payment because VA has no monthly mortgage insurance.</p></div>
+        <p class="lc-fine">VA requires VA eligibility, and USDA requires an eligible household and property address. Change each loan’s down payment in the cards below; this summary updates as you go.</p>
       </div>
       <div class="lc-cards">
       <article class="lc-card" id="lc-card-conv" data-loan="conv" aria-labelledby="lc-conv-h">
@@ -524,7 +527,7 @@
         <div class="lc-chips" role="group" aria-label="FHA down payment shortcuts"><button type="button" class="lc-chip" data-loan="fha" data-pct="3.5" aria-pressed="true">3.5%</button><button type="button" class="lc-chip" data-loan="fha" data-pct="5" aria-pressed="false">5%</button><button type="button" class="lc-chip" data-loan="fha" data-pct="10" aria-pressed="false">10%</button></div>
         <p class="lc-help" id="lc-fha-help">FHA minimum investment is 3.5%; lower entries are not modeled. Annual MIP follows HUD’s schedule for the resulting loan-to-value. <span class="lc-warn" data-f="warn" role="status"></span></p>
         <p class="lc-tier">Annual MIP for this scenario: <strong data-f="mip-rate">0.55%</strong> · upfront MIP 1.75%, financed</p>
-        <dl class="lc-key"><dt>Down payment</dt><dd data-f="down-key">$10,500 — 3.5%</dd><dt>Starting loan balance</dt><dd data-f="start-key">$294,566</dd><dt data-f="mi-lab">Monthly mortgage insurance (MIP)</dt><dd data-f="mi-key">$132</dd></dl>
+        <dl class="lc-key"><dt>Down payment</dt><dd data-f="down-key">$10,500 — 3.5%</dd><dt>Starting loan balance</dt><dd data-f="start-key">$294,566</dd><dt>Upfront MIP</dt><dd data-f="fee-key">$5,066 financed (1.75%)</dd><dt data-f="mi-lab">Monthly mortgage insurance (MIP)</dt><dd data-f="mi-key">$132</dd></dl>
         <details class="lc-det" open><summary>Full payment breakdown</summary><dl><dt>Purchase price</dt><dd data-f="price">$300,000</dd><dt>Down payment</dt><dd data-f="down">$10,500</dd><dt>Base loan</dt><dd data-f="base">$289,500</dd><dt>Loan-to-value</dt><dd data-f="ltv">96.5%</dd><dt>Financed upfront MIP (1.75%)</dt><dd data-f="fee">$5,066</dd><dt>Starting loan balance</dt><dd data-f="start">$294,566</dd><dt>Principal + interest</dt><dd data-f="pi">$1,960/mo</dd><dt>Annual MIP (monthly)</dt><dd data-f="mi">$132/mo</dd><dt>Property taxes</dt><dd data-f="tax">$280/mo</dd><dt>Homeowners insurance</dt><dd data-f="ins">$250/mo</dd><dt class="lc-strong">Estimated total monthly housing payment</dt><dd class="lc-strong" data-f="total">$2,622/mo</dd></dl></details>
         <p class="lc-note">FHA charges annual MIP at every down payment shown here; the rate depends on loan-to-value, term and loan amount.</p>
         <a class="lc-back" href="#lc-summary">&#8593; Back to summary</a>
@@ -541,7 +544,7 @@
         <p class="lc-help" id="lc-va-help">The funding fee changes at 5% and 10% down. <span class="lc-warn" data-f="warn" role="status"></span></p>
         <div class="lc-tiers" aria-label="VA funding fee tiers"><span data-tier="0">Under 5% down: <b data-f="t0">2.15%</b></span><span data-tier="5">5%+: <b>1.50%</b></span><span data-tier="10">10%+: <b>1.25%</b></span></div>
         <p class="lc-tier">Funding fee for this scenario: <strong data-f="va-rate">2.15%</strong> = <strong data-f="va-fee">$6,450</strong>, financed. This is a one-time fee, not mortgage insurance.</p>
-        <dl class="lc-key"><dt>Down payment</dt><dd data-f="down-key">$0 — 0%</dd><dt>Starting loan balance</dt><dd data-f="start-key">$306,450</dd><dt data-f="mi-lab">Monthly mortgage insurance</dt><dd data-f="mi-key">$0</dd></dl>
+        <dl class="lc-key"><dt>Down payment</dt><dd data-f="down-key">$0 — 0%</dd><dt>Starting loan balance</dt><dd data-f="start-key">$306,450</dd><dt>Funding fee</dt><dd data-f="fee-key">$6,450 financed (2.15%)</dd><dt data-f="mi-lab">Monthly mortgage insurance</dt><dd data-f="mi-key">$0</dd></dl>
         <details class="lc-det" open><summary>Full payment breakdown</summary><dl><dt>Purchase price</dt><dd data-f="price">$300,000</dd><dt>Down payment</dt><dd data-f="down">$0</dd><dt>Base loan</dt><dd data-f="base">$300,000</dd><dt>Loan-to-value</dt><dd data-f="ltv">100%</dd><dt>Financed VA funding fee</dt><dd data-f="fee">$6,450</dd><dt>Starting loan balance</dt><dd data-f="start">$306,450</dd><dt>Principal + interest</dt><dd data-f="pi">$2,039/mo</dd><dt>Monthly mortgage insurance</dt><dd data-f="mi">$0/mo</dd><dt>Property taxes</dt><dd data-f="tax">$280/mo</dd><dt>Homeowners insurance</dt><dd data-f="ins">$250/mo</dd><dt class="lc-strong">Estimated total monthly housing payment</dt><dd class="lc-strong" data-f="total">$2,569/mo</dd></dl></details>
         <p class="lc-note">VA does not require monthly mortgage insurance. Some eligible borrowers are exempt from the VA funding fee.</p>
         <a class="lc-back" href="#lc-summary">&#8593; Back to summary</a>
@@ -550,8 +553,8 @@
         <h3 id="lc-usda-h">USDA</h3>
         <div class="lc-total"><span data-f="total-big">$2,634</span>/mo<small>Estimated total monthly housing payment</small></div>
         <p class="lc-tier">0% down: USDA’s standard 100%-financing structure. 1.00% upfront guarantee fee, financed; 0.35% annual fee.</p>
-        <dl class="lc-key"><dt>Down payment</dt><dd data-f="down-key">$0 — 0%</dd><dt>Starting loan balance</dt><dd data-f="start-key">$303,000</dd><dt data-f="mi-lab">Monthly program fee (annual fee)</dt><dd data-f="mi-key">$88</dd></dl>
-        <details class="lc-det" open><summary>Full payment breakdown</summary><dl><dt>Purchase price</dt><dd data-f="price">$300,000</dd><dt>Down payment</dt><dd data-f="down">$0</dd><dt>Base loan</dt><dd data-f="base">$300,000</dd><dt>Loan-to-value</dt><dd data-f="ltv">100%</dd><dt>Financed guarantee fee (1.00%)</dt><dd data-f="fee">$3,000</dd><dt>Starting loan balance</dt><dd data-f="start">$303,000</dd><dt>Principal + interest</dt><dd data-f="pi">$2,016/mo</dd><dt>Annual fee (monthly)</dt><dd data-f="mi">$88/mo</dd><dt>Property taxes</dt><dd data-f="tax">$280/mo</dd><dt>Homeowners insurance</dt><dd data-f="ins">$250/mo</dd><dt class="lc-strong">Estimated total monthly housing payment</dt><dd class="lc-strong" data-f="total">$2,634/mo</dd></dl></details>
+        <dl class="lc-key"><dt>Down payment</dt><dd data-f="down-key">$0 — 0%</dd><dt>Starting loan balance</dt><dd data-f="start-key">$303,000</dd><dt>Guarantee fee</dt><dd data-f="fee-key">$3,000 financed (1%)</dd><dt data-f="mi-lab">USDA annual fee</dt><dd data-f="mi-key">$88/mo est.</dd></dl>
+        <details class="lc-det" open><summary>Full payment breakdown</summary><dl><dt>Purchase price</dt><dd data-f="price">$300,000</dd><dt>Down payment</dt><dd data-f="down">$0</dd><dt>Base loan</dt><dd data-f="base">$300,000</dd><dt>Loan-to-value</dt><dd data-f="ltv">100%</dd><dt>Financed guarantee fee (1.00%)</dt><dd data-f="fee">$3,000</dd><dt>Starting loan balance</dt><dd data-f="start">$303,000</dd><dt>Principal + interest</dt><dd data-f="pi">$2,016/mo</dd><dt>USDA annual fee (monthly est.)</dt><dd data-f="mi">$88/mo</dd><dt>Property taxes</dt><dd data-f="tax">$280/mo</dd><dt>Homeowners insurance</dt><dd data-f="ins">$250/mo</dd><dt class="lc-strong">Estimated total monthly housing payment</dt><dd class="lc-strong" data-f="total">$2,634/mo</dd></dl></details>
         <p class="lc-note">USDA eligibility depends on the borrower/household and the property’s location. This calculator does not determine USDA eligibility.</p>
         <a class="lc-back" href="#lc-summary">&#8593; Back to summary</a>
       </article>
@@ -1039,10 +1042,40 @@ var LC = (function () {
 /* Scenario summary builder (pure string output, shared by page script and static build) */
 var LCS = (function () {
   var NAME = { conv: 'Conventional', fha: 'FHA', va: 'VA', usda: 'USDA' };
-  var MI = { conv: 'PMI (est.)', fha: 'MIP', va: 'none', usda: 'annual fee' };
   function money(x) { return '$' + Math.round(x).toLocaleString('en-US'); }
   function pct(x) { return (Math.floor(x * 100 + 1e-9) / 100) + '%'; }
+  function rate(x) { var v = Math.round(x * 10000) / 100; return (v % 1 ? v.toFixed(2) : String(v)) + '%'; }
   function list(a) { return a.length < 2 ? a[0] : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1]; }
+  /* what was financed on top of the base loan */
+  function feeLine(k, r) {
+    if (k === 'fha') return 'Upfront MIP: ' + money(r.fee) + ' financed (' + rate(r.feeRate) + ')';
+    if (k === 'va') return r.feeRate ? 'Funding fee: ' + money(r.fee) + ' financed (' + rate(r.feeRate) + ')' : 'Funding fee: $0 (exempt)';
+    if (k === 'usda') return 'Guarantee fee: ' + money(r.fee) + ' financed (' + rate(r.feeRate) + ')';
+    return '';
+  }
+  /* monthly mortgage/program fee, in words */
+  function miLine(k, r) {
+    if (k === 'conv') return r.mi ? money(r.mi) + ' PMI (est.)' : '$0 — no PMI at 20% down';
+    if (k === 'fha') return money(r.mi) + ' MIP';
+    if (k === 'va') return '$0 — no monthly mortgage insurance';
+    return money(r.mi) + ' annual-fee equivalent/mo';
+  }
+  /* scenario-specific explanation: a loan that borrowed more but pays the same or less */
+  function insight(o, R, low, lowK) {
+    var keys = ['conv', 'fha', 'va', 'usda'], best = null;
+    keys.forEach(function (a) {
+      keys.forEach(function (b) {
+        if (a === b || o[a].mi > 0.5) return;               /* explain loans with no monthly MI */
+        var bal = o[a].start - o[b].start;
+        if (bal >= 500 && R(a) <= R(b) && (!best || bal > best.bal)) best = { a: a, b: b, bal: bal };
+      });
+    });
+    if (!best) return '';
+    var a = best.a, b = best.b, tie = R(a) === R(b), why = a === 'va' ? 'VA has no monthly mortgage insurance' : 'it has no monthly mortgage insurance at this down payment';
+    var outcome = tie ? (R(a) === low ? 'ties it for the lowest monthly payment' : 'ties it on the monthly payment')
+                      : (R(a) === low && lowK.length === 1 ? 'still has the lowest monthly payment' : 'still has a ' + money(R(b) - R(a)) + '/mo lower payment');
+    return 'In this example, ' + NAME[a] + ' starts with a ' + money(best.bal) + ' larger loan balance than ' + NAME[b] + '—but ' + outcome + ' because ' + why + '.';
+  }
   function build(o) {
     var keys = ['conv', 'fha', 'va', 'usda'];
     var R = function (k) { return Math.round(o[k].total); };
@@ -1053,7 +1086,7 @@ var LCS = (function () {
     var cashK = keys.filter(function (k) { return Math.round(o[k].down) === minDown; });
     var names = function (ks) { return list(ks.map(function (k) { return NAME[k]; })); };
     var lines = [];
-    lines.push('<li><strong>Lowest estimated monthly payment:</strong> ' + names(lowK) + ' at ' + money(low) + '/mo.</li>');
+    lines.push('<li><strong>' + (lowK.length > 1 ? 'Tied for lowest' : 'Lowest') + ' estimated monthly payment:</strong> ' + names(lowK) + ' at ' + money(low) + '/mo.</li>');
     lines.push('<li><strong>Least cash for the down payment:</strong> ' + names(cashK) + ' at ' + money(minDown) + '.</li>');
     var sharedK = lowK.filter(function (k) { return cashK.indexOf(k) > -1; });
     if (!sharedK.length) {
@@ -1063,20 +1096,22 @@ var LCS = (function () {
     }
     lines.push('<li><strong>Spread:</strong> payments range from ' + money(low) + ' to ' + money(high) + '/mo, a ' + money(high - low) + '/mo difference.</li>');
     var rows = sorted.map(function (k) {
-      var r = o[k], d = R(k) - low;
+      var r = o[k], d = R(k) - low, f = feeLine(k, r);
       return '<tr' + (R(k) === low ? ' class="lc-best"' : '') + '><th scope="row"><a href="#lc-card-' + k + '">' + NAME[k] + '</a></th>' +
         '<td data-label="Monthly payment"><strong>' + money(r.total) + '</strong></td>' +
-        '<td data-label="vs. lowest">' + (d ? '+' + money(d) : 'Lowest') + '</td>' +
+        '<td data-label="vs. lowest">' + (d ? '+' + money(d) : (lowK.length > 1 ? 'Tied for lowest' : 'Lowest')) + '</td>' +
         '<td data-label="Down payment">' + money(r.down) + ' <span>(' + pct(r.downPct) + ')</span></td>' +
-        '<td data-label="Starting balance">' + money(r.start) + '</td>' +
-        '<td data-label="Monthly insurance / fee">' + money(r.mi) + ' <span>' + MI[k] + '</span></td></tr>';
+        '<td data-label="Starting balance">' + money(r.start) + (f ? '<span class="lc-sub">' + f + '</span>' : '') + '</td>' +
+        '<td data-label="Monthly mortgage/program fee">' + miLine(k, r) + '</td></tr>';
     }).join('');
+    var ins = insight(o, R, low, lowK);
     return '<ul class="lc-take">' + lines.join('') + '</ul>' +
       '<table class="lc-table"><caption class="lc-sr">Loan comparison for this scenario, sorted by estimated monthly payment</caption>' +
-      '<thead><tr><th scope="col">Loan</th><th scope="col">Monthly payment</th><th scope="col">vs. lowest</th><th scope="col">Down payment</th><th scope="col">Starting balance</th><th scope="col">Monthly insurance / fee</th></tr></thead>' +
-      '<tbody>' + rows + '</tbody></table>';
+      '<thead><tr><th scope="col">Loan</th><th scope="col">Monthly payment</th><th scope="col">vs. lowest</th><th scope="col">Down payment</th><th scope="col">Starting balance</th><th scope="col">Monthly mortgage/program fee</th></tr></thead>' +
+      '<tbody>' + rows + '</tbody></table>' +
+      (ins ? '<p class="lc-insight">' + ins + '</p>' : '');
   }
-  return { build: build };
+  return { build: build, feeLine: feeLine, miLine: miLine };
 })();
 (function () {
   var form = document.getElementById('lc-form');
@@ -1127,7 +1162,8 @@ var LCS = (function () {
       set('fee', money(r.fee)); set('start', money(r.start)); set('pi', money(r.pi) + '/mo'); set('mi', money(r.mi) + '/mo');
       set('tax', money(r.tax) + '/mo'); set('ins', money(r.ins) + '/mo'); set('total', money(r.total) + '/mo');
       set('total-big', money(r.total));
-      set('down-key', money(r.down) + ' — ' + pct(Math.floor(r.downPct * 100 + 1e-9) / 100)); set('start-key', money(r.start)); set('mi-key', money(r.mi));
+      var fl = LCS.feeLine(k, r); if (fl) set('fee-key', fl.split(': ')[1]);
+      set('down-key', money(r.down) + ' — ' + pct(Math.floor(r.downPct * 100 + 1e-9) / 100)); set('start-key', money(r.start)); set('mi-key', k === 'usda' ? money(r.mi) + '/mo est.' : money(r.mi));
       if (LOANS.indexOf(k) > -1) {
         var typed = parseFloat($('lc-' + k + '-pct').value), w = card.querySelector('[data-f="warn"]');
         w.textContent = (isFinite(typed) && typed < LC.MIN[k]) ? 'Below the ' + LC.MIN[k] + '% minimum; ' + LC.MIN[k] + '% is used.' : (isFinite(typed) && typed > 95 ? 'Capped at 95% in this tool.' : '');
