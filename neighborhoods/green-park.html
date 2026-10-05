@@ -56,6 +56,22 @@
 .george-btn-about{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.72);font-weight:600;font-size:13px;letter-spacing:0.03em;padding:10px 19px;border-radius:8px;text-decoration:none;transition:color 0.18s;}
 .george-btn-about:hover{color:#ffcc4d;}
 @media (max-width:600px){.george-card{flex-direction:column;align-items:center;text-align:center;}.george-card-photo{width:90px;height:90px;}.george-card-btns{flex-direction:column;width:100%;}.george-btn-p,.george-btn-s,.george-btn-about{width:100%;justify-content:center;}}
+.hr-list{margin:10px 0 4px;padding-left:1.1em;color:rgba(255,255,255,.72);}
+.hr-list li{margin-bottom:8px;line-height:1.55;font-size:13px;}
+.hr-list strong{color:rgba(255,255,255,.92);}
+.hr-src{font-size:.78rem;color:rgba(255,255,255,.45);}
+.hr-src a{color:rgba(255,204,77,.75);}
+.hr-flag{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#080808;background:#ffcc4d;border-radius:4px;padding:1px 6px;margin-right:4px;vertical-align:1px;}
+[id]{scroll-margin-top:84px;}
+/* Jump FAB + panel */
+.jump-fab{position:fixed;right:16px;bottom:20px;z-index:200;display:inline-flex;align-items:center;gap:8px;background:#ffcc4d;color:#080808;font-weight:800;font-size:12px;letter-spacing:.05em;border:none;border-radius:999px;padding:12px 17px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.55);font-family:inherit;}
+.jump-fab-ico{font-size:15px;line-height:1;}
+.jump-panel{position:fixed;right:16px;bottom:74px;z-index:200;width:min(288px,calc(100vw - 32px));background:#0d0d0d;border:1px solid rgba(255,204,77,.34);border-radius:14px;padding:8px;box-shadow:0 12px 42px rgba(0,0,0,.6);opacity:0;transform:translateY(10px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .18s ease,transform .18s ease;max-height:72vh;overflow-y:auto;}
+.jump-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+.jump-panel-hd{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ffcc4d;padding:8px 12px 8px;}
+.jump-link{display:block;padding:9px 12px;border-radius:8px;font-size:.9rem;color:rgba(255,255,255,.72);text-decoration:none;line-height:1.35;border-left:2px solid transparent;}
+.jump-link:hover{background:rgba(255,204,77,.06);color:#fff;}
+.jump-link.active{color:#ffcc4d;border-left-color:#ffcc4d;background:rgba(255,204,77,.05);}
 </style>
 <script>
 /* GA4 Event Tracking — STL Home Journey */
@@ -155,6 +171,23 @@
   <span class="nbhd-bc-item active">Green Park | South County</span>
 </nav>
 
+<button id="jumpToggle" class="jump-fab" aria-label="Jump to a section" aria-expanded="false">
+  <span class="jump-fab-ico">&#9776;</span><span class="jump-fab-txt">Sections</span>
+</button>
+<nav id="jumpPanel" class="jump-panel" aria-hidden="true">
+  <div class="jump-panel-hd">In this Green Park guide</div>
+  <a href="#green-park-schools" class="jump-link">Schools</a>
+  <a href="#green-park-housing" class="jump-link">Housing Stock</a>
+  <a href="#green-park-buyers" class="jump-link">Buyer Context</a>
+  <a href="#green-park-map" class="jump-link">Map &amp; Boundaries</a>
+  <a href="#green-park-occupancy" class="jump-link">Occupancy Rules</a>
+  <a href="#green-park-sewer-lateral" class="jump-link">Sewer Lateral</a>
+  <a href="#green-park-permits" class="jump-link">Permits &amp; Projects</a>
+  <a href="#green-park-rentals" class="jump-link">Rentals &amp; Code</a>
+  <a href="#green-park-faq" class="jump-link">FAQ</a>
+  <a href="#green-park-actions" class="jump-link">Talk to George</a>
+</nav>
+
 <main class="tool-selector" id="neighborhood-content">
     <section aria-labelledby="green-park-hero">
       <div class="tool-result-card">
@@ -164,6 +197,23 @@
         <div class="tool-data-strip"><div class="tool-data-stat"><div class="tool-data-num">1.31 mi²</div><div class="tool-data-lbl">land area</div></div><div class="tool-data-stat"><div class="tool-data-num">2,705</div><div class="tool-data-lbl">2020 population</div></div><div class="tool-data-stat"><div class="tool-data-num">I-55</div><div class="tool-data-lbl">nearby access</div></div><div class="tool-data-stat"><div class="tool-data-num">63123</div><div class="tool-data-lbl">primary zip</div></div></div>
       </div>
     </section>
+    <section aria-label="In this guide">
+      <div class="tool-result-card" style="border:1px solid rgba(255,204,77,.18);background:rgba(255,204,77,.03);">
+        <div style="font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#ffcc4d;margin-bottom:12px;">In this Green Park guide</div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <a href="#green-park-schools" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Schools &amp; District Boundaries</a>
+          <a href="#green-park-housing" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Housing Stock: Fixer Upper vs. Move-In Ready</a>
+          <a href="#green-park-buyers" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">What Buyers Need to Understand</a>
+          <a href="#green-park-map" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Why the Map Matters Here</a>
+          <a href="#green-park-occupancy" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Occupancy Rules: Buying, Selling &amp; Renting</a>
+          <a href="#green-park-sewer-lateral" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Sewer Lateral Coverage</a>
+          <a href="#green-park-permits" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Permits for Home Projects</a>
+          <a href="#green-park-rentals" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);">Rentals &amp; Code Enforcement</a>
+          <a href="#green-park-faq" style="font-size:14px;font-weight:600;color:rgba(255,255,255,.82);text-decoration:none;padding:6px 0;">Frequently Asked Questions</a>
+        </div>
+      </div>
+    </section>
+
 <div style="margin:12px 16px 0;">
   <a href="../articles/where-to-live-in-st-louis" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid rgba(255,204,77,.3);border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.05em;color:#ffcc4d;text-decoration:none;background:rgba(255,204,77,.04);">📍 Comparing St. Louis areas? See the full area guide →</a>
 </div>
@@ -171,7 +221,7 @@
     <section aria-label="Schools in Green Park">
   <div class="tool-result-card">
     <div class="tool-section-hd">Schools</div>
-    <h2 class="tool-result-value">Schools in Green Park</h2>
+    <h2 class="tool-result-value" id="green-park-schools">Schools in Green Park</h2>
     <p class="tool-result-sub">Green Park is served primarily by <a href="../school-districts/lindbergh-schools">Lindbergh Schools</a>, though the community is split — parts of Green Park fall within the <a href="../school-districts/mehlville-school-district"><a href="mehlville">Mehlville</a> School District</a>, so the assigned district depends on the exact address. It is one of the more compact and practical pockets inside the Lindbergh footprint — buyers here tend to be drawn by location and school access more than by square footage or lot size. Lindbergh's reputation keeps steady buyer demand in this area, and homes that are priced and conditioned well typically do not sit long. For buyers who want Lindbergh without <a href="sunset-hills">Sunset Hills</a> pricing, Green Park is a legitimate option to run the numbers on.</p>
     <p class="tool-result-sub" style="font-size:13px;color:var(--text-muted,#8C8880);margin-top:12px;">⚠ School boundaries can vary by exact property address. Verify assigned schools directly with the district, county records, or your buyer agent before writing an offer.</p>
     <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;">
@@ -183,7 +233,7 @@
     <section aria-label="Fixer Upper vs. Move-In Ready Tool">
       <div class="tool-result-card">
         <div class="tool-section-hd">Buyer Tool</div>
-        <h2 class="tool-result-value">Fixer Upper vs. Move-In Ready</h2>
+        <h2 class="tool-result-value" id="green-park-housing">Fixer Upper vs. Move-In Ready</h2>
         <p class="tool-result-sub">School district confirmed. Now the real question — what does your budget actually buy here on both paths? The comparison tool shows which St. Louis neighborhoods offer a genuinely equivalent home within 5% of the same total cost. FHA, VA, and conventional math included.</p>
         <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;">
           <a class="tool-btn-primary" href="../fixer-upper-vs-move-in-stl">Compare Fixer Upper vs. Move-In Ready →</a>
@@ -195,7 +245,7 @@
     <section aria-label="The Honest Take">
       <div class="tool-result-card">
         <div class="tool-section-hd">The Honest Take</div>
-        <h2 class="tool-result-value">What Buyers Actually Need to Understand</h2>
+        <h2 class="tool-result-value" id="green-park-buyers">What Buyers Actually Need to Understand</h2>
         <p class="tool-result-sub">Green Park is not a giant search term, and that is part of the opportunity. It is a very small city with a straightforward advantage: it sits right in the middle of a functional South County road network without asking buyers to pay for a heavyweight brand name.</p>
         <p class="tool-result-sub">The city&#x27;s own planning material describes Green Park as strategically located between I-55, Lindbergh Boulevard, Tesson Ferry Road, and the Gateway Trailnet property. It also describes the city as largely built-out, which tells buyers to expect a mature pattern rather than a wave of brand-new development.</p>
       </div>
@@ -215,7 +265,7 @@
     <section aria-label="Location & Identity">
       <div class="tool-result-card">
         <div class="tool-section-hd">Location &amp; Identity</div>
-        <h2 class="tool-result-value">Why the Map Matters Here</h2>
+        <h2 class="tool-result-value" id="green-park-map">Why the Map Matters Here</h2>
         <p class="tool-result-sub">For buyers, Green Park is usually less about a singular downtown or landmark and more about daily movement. If your routine depends on getting across South County efficiently, Green Park&#x27;s footprint makes sense in a way that larger communities sometimes do not.</p>
       </div>
     </section>
@@ -234,10 +284,54 @@
       </div>
       <div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Buyers who care about South County access more than municipal brand prestige.</p></div><div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">Households looking for smaller-pocket alternatives near larger <a href="concord">Concord</a>, Mehlville, and Sunset Hills searches.</p></div><div class="tool-result-card"><div class="tool-result-label">Good fit</div><p class="tool-result-sub">People who want a mature built-out environment instead of active greenfield development.</p></div>
     </section>
+<!-- Home rules: from STLHJ Home Rules workbook, verified 2026-09-25 -->
+    <section aria-label="Green Park Occupancy Rules">
+      <div class="tool-result-card">
+        <div class="tool-section-hd">Occupancy</div>
+        <h2 class="tool-result-value" id="green-park-occupancy">Green Park Occupancy Rules for Buyers, Sellers &amp; Landlords</h2>
+        <p class="tool-result-sub">These City of Green Park rules apply to addresses inside Green Park city limits. A Green Park mailing address or ZIP code doesn&rsquo;t confirm that by itself; check the address in the <a href="https://gis.stlouiscountymo.gov/" rel="noopener" target="_blank">St. Louis County Geospatial Data Center</a>.</p>
+        <p class="tool-result-sub"><strong>Selling:</strong> an occupancy permit is required when a sale results in a change of occupant. Unlike nearby Crestwood, a normal occupant change can trigger occupancy permitting here. <span class="hr-src">(<a href="https://ecode360.com/29581438" rel="noopener" target="_blank">Chapter 500 — Technical Codes</a>)</span></p>
+        <p class="tool-result-sub"><strong>Rentals:</strong> the residential occupancy permit framework applies, and ordinary long-term rental is a permitted residential use. <span class="hr-src">(<a href="https://ecode360.com/29581438" rel="noopener" target="_blank">Chapter 500 — Technical Codes</a>)</span></p>
+        <p class="tool-result-sub"><strong>Fee:</strong> residential occupancy permit $110. <span class="hr-src">(<a href="https://ecode360.com/29578491" rel="noopener" target="_blank">Zoning Fees</a>)</span></p>
+<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Sources: <a href="https://ecode360.com/29581438" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Green Park &mdash; Chapter 500 — Technical Codes</a> &middot; <a href="https://ecode360.com/29578491" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Green Park &mdash; Zoning Fees</a> &middot; Verified September 25, 2026</p>
+      </div>
+    </section>
+    <section aria-label="Green Park Sewer Lateral">
+      <div class="tool-result-card">
+        <div class="tool-section-hd">Sewer Lateral</div>
+        <h2 class="tool-result-value" id="green-park-sewer-lateral">Sewer Lateral Coverage in Green Park</h2>
+        <p class="tool-result-sub">Green Park has a <strong>City sewer-lateral program</strong>. The annual residential charge may be up to $50 for qualifying laterals serving six or fewer dwelling units and qualifying condominiums.</p>
+<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Source: <a href="https://ecode360.com/29581438" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Green Park &mdash; Chapter 500 — Technical Codes</a> &middot; Verified September 25, 2026</p>
+      </div>
+    </section>
+    <section aria-label="Green Park Permits and Projects">
+      <div class="tool-result-card">
+        <div class="tool-section-hd">Permits</div>
+        <h2 class="tool-result-value" id="green-park-permits">Permits for Home Projects in Green Park</h2>
+        <p class="tool-result-sub">Green Park applies <strong>City code, with St. Louis County in inspection and contract roles</strong>. Residential building permit fee: $80. <span class="hr-src">(<a href="https://ecode360.com/29581438" rel="noopener" target="_blank">Chapter 500 — Technical Codes</a>; <a href="https://ecode360.com/29578491" rel="noopener" target="_blank">Zoning Fees</a>)</span></p>
+        <ul class="hr-list">
+          <li><strong>Fence:</strong> no permit for a conforming fence; zoning rules still apply. <span class="hr-src">(<a href="https://ecode360.com/29579372" rel="noopener" target="_blank">Accessory Uses and Fences</a>)</span></li>
+          <li><strong>Deck:</strong> regulated by zoning and building code. <span class="hr-src">(<a href="https://ecode360.com/29579372" rel="noopener" target="_blank">Accessory Uses and Fences</a>)</span></li>
+          <li><strong>Shed or accessory structure:</strong> regulated. <span class="hr-src">(<a href="https://ecode360.com/29579372" rel="noopener" target="_blank">Accessory Uses and Fences</a>)</span></li>
+          <li><strong>Pool:</strong> regulated, with setback and screening standards. <span class="hr-src">(<a href="https://ecode360.com/29579372" rel="noopener" target="_blank">Accessory Uses and Fences</a>)</span></li>
+          <li><strong>Electrical, plumbing &amp; mechanical:</strong> codes adopted and enforced through Chapter 500, with County roles. <span class="hr-src">(<a href="https://ecode360.com/29581438" rel="noopener" target="_blank">Chapter 500 — Technical Codes</a>)</span></li>
+        </ul>
+<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Sources: <a href="https://ecode360.com/29581438" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Green Park &mdash; Chapter 500 — Technical Codes</a> &middot; <a href="https://ecode360.com/29578491" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Green Park &mdash; Zoning Fees</a> &middot; Verified September 25, 2026</p>
+      </div>
+    </section>
+    <section aria-label="Green Park Rentals and Code Enforcement">
+      <div class="tool-result-card">
+        <div class="tool-section-hd">Rentals &amp; Code</div>
+        <h2 class="tool-result-value" id="green-park-rentals">Renting It Out &amp; Code Enforcement in Green Park</h2>
+        <p class="tool-result-sub"><span class="hr-flag">Not confirmed</span> <strong>Rental registration:</strong> a current municipal-code review did not locate a separate registration or license for ordinary residential rentals. That finding is still under review, so confirm with the City before relying on it. <span class="hr-src">(<a href="https://ecode360.com/29579149" rel="noopener" target="_blank">Residential District Regulations</a>)</span></p>
+        <p class="tool-result-sub"><strong>Property maintenance:</strong> the property-maintenance code applies. <span class="hr-src">(<a href="https://ecode360.com/29581438" rel="noopener" target="_blank">Chapter 500 — Technical Codes</a>)</span></p>
+<p class="tool-result-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:12px;">Sources: <a href="https://ecode360.com/29579149" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Green Park &mdash; Residential District Regulations</a> &middot; <a href="https://ecode360.com/29581438" rel="noopener" target="_blank" style="color:rgba(255,204,77,.75);">City of Green Park &mdash; Chapter 500 — Technical Codes</a> &middot; Verified September 25, 2026</p>
+      </div>
+    </section>
 <!-- ASK ME: component configured in /assets/ask-me.js -->
 <div data-ask-me="neighborhood" data-ask-name="Green Park"><p><a href="/ask?about=neighborhood&amp;from=/neighborhoods/green-park">Ask Me About the House</a></p></div>
 <section aria-label="Longtime homeowners"><div class="tool-result-card"><div class="tool-result-label">Own a home in Green Park?</div><h3 class="tool-result-value">Wondering whether to stay or go?</h3><p class="tool-result-sub">If you&rsquo;ve been in the house for years, start with <a href="/longtime-homeowners" style="color:var(--gold);">Longtime St.&nbsp;Louis Homeowner: Should You Stay or Should You Go?</a> &mdash; what staying really costs, what you&rsquo;d walk away with, and where you&rsquo;d go next.</p></div></section>
-<section aria-label="FAQ"><div class="tool-result-card"><div class="tool-section-hd">FAQ</div><h2 class="tool-result-value">Questions Buyers Ask Before They Commit</h2></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Where is Green Park?</h3><p class="tool-result-sub">Green Park is a small city in South St. Louis County near I-55, Lindbergh Boulevard, and Tesson Ferry Road.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What is Green Park known for?</h3><p class="tool-result-sub">It is best known for compact size and strategic location rather than a large civic center or major commercial district.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Why would a buyer search Green Park?</h3><p class="tool-result-sub">Usually because of a specific listing or because they want to stay in the South County corridor without paying for a larger-name municipality.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Is Green Park large?</h3><p class="tool-result-sub">No. It is one of the smaller South County municipalities, which makes it more of a targeted location than a broad search market.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Who is Green Park a good fit for?</h3><p class="tool-result-sub">Buyers who value access, efficiency, and mature surroundings more than neighborhood brand recognition.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What school district serves Green Park?</h3><p class="tool-result-sub">Green Park is split between two districts — most of the community is served by <a href="../school-districts/lindbergh-schools">Lindbergh Schools</a>, while parts fall within the <a href="../school-districts/mehlville-school-district">Mehlville School District</a>. Because it is a split community, verify the exact school assignment by specific address before making any education-driven decisions.</p></div>
+<section aria-label="FAQ" id="green-park-faq"><div class="tool-result-card"><div class="tool-section-hd">FAQ</div><h2 class="tool-result-value">Questions Buyers Ask Before They Commit</h2></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Where is Green Park?</h3><p class="tool-result-sub">Green Park is a small city in South St. Louis County near I-55, Lindbergh Boulevard, and Tesson Ferry Road.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What is Green Park known for?</h3><p class="tool-result-sub">It is best known for compact size and strategic location rather than a large civic center or major commercial district.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Why would a buyer search Green Park?</h3><p class="tool-result-sub">Usually because of a specific listing or because they want to stay in the South County corridor without paying for a larger-name municipality.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Is Green Park large?</h3><p class="tool-result-sub">No. It is one of the smaller South County municipalities, which makes it more of a targeted location than a broad search market.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Who is Green Park a good fit for?</h3><p class="tool-result-sub">Buyers who value access, efficiency, and mature surroundings more than neighborhood brand recognition.</p></div><div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What school district serves Green Park?</h3><p class="tool-result-sub">Green Park is split between two districts — most of the community is served by <a href="../school-districts/lindbergh-schools">Lindbergh Schools</a>, while parts fall within the <a href="../school-districts/mehlville-school-district">Mehlville School District</a>. Because it is a split community, verify the exact school assignment by specific address before making any education-driven decisions.</p></div>
 <div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">What is the population of Green Park?</h3><p class="tool-result-sub">Green Park had a 2020 census population of 2,705, making it one of the smallest municipalities in South St. Louis County.</p></div>
 <div class="tool-result-card"><div class="tool-result-label">FAQ</div><h3 class="tool-result-value">Does Green Park have its own services?</h3><p class="tool-result-sub">Yes. Green Park is an incorporated city with its own municipal identity, though given its small footprint buyers typically rely on the broader South County service network for daily needs.</p></div>
 </section>
@@ -297,6 +391,22 @@
       </div>
     </section>
 </main>
+<script>
+(function(){
+  var fab=document.getElementById('jumpToggle'),panel=document.getElementById('jumpPanel');
+  if(!fab||!panel)return;
+  function setOpen(o){panel.classList.toggle('open',o);fab.setAttribute('aria-expanded',o);panel.setAttribute('aria-hidden',!o);}
+  fab.addEventListener('click',function(e){e.stopPropagation();setOpen(!panel.classList.contains('open'));});
+  panel.addEventListener('click',function(e){if(e.target.classList.contains('jump-link'))setOpen(false);});
+  document.addEventListener('click',function(e){if(!panel.contains(e.target)&&e.target!==fab&&!fab.contains(e.target))setOpen(false);});
+  var links=[].slice.call(panel.querySelectorAll('.jump-link')),map={};
+  links.forEach(function(l){var id=l.getAttribute('href').slice(1),s=document.getElementById(id);if(s)map[id]=l;});
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(l){l.classList.remove('active');});if(map[en.target.id])map[en.target.id].classList.add('active');}});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    Object.keys(map).forEach(function(id){obs.observe(document.getElementById(id));});
+  }
+})();
+</script>
 <script src="/zip-data.js"></script>
 <script src="/resources.js"></script>
 <script src="/neighborhoods.js"></script>
