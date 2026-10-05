@@ -1528,7 +1528,7 @@ window.NEIGHBORHOODS_REGISTRY = [
   {
     "id": "patch",
     "title": "Patch, St. Louis",
-    "summary": "Patch neighborhood guide for buyers: location, housing character, market data, and what to know before searching this St. Louis City area.",
+    "summary": "Patch pairs older South City housing with an ~$140K entry point at St. Louis City’s southeast tip.",
     "url": "neighborhoods/patch",
     "type": "neighborhood",
     "slug": "patch",
