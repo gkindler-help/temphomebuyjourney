@@ -452,7 +452,7 @@
           <div class="fields">
             <div class="field">
               <label for="b-max">My maximum purchase price</label>
-              <input id="b-max" type="text" inputmode="numeric" autocomplete="off" value="$300,000">
+              <input id="b-max" type="text" inputmode="numeric" autocomplete="off" value="$300,000" aria-describedby="b-max-hint">
               <div class="chips" role="group" aria-label="Quick-select budget">
                 <button type="button" class="chip" data-budget="200000">$200K</button>
                 <button type="button" class="chip" data-budget="250000">$250K</button>
@@ -461,6 +461,7 @@
                 <button type="button" class="chip" data-budget="400000">$400K</button>
                 <button type="button" class="chip" data-budget="500000">$500K</button>
               </div>
+              <div class="field-hint" id="b-max-hint"></div>
             </div>
             <div class="field">
               <label for="b-dist">Compare a specific district</label>
@@ -500,13 +501,13 @@
               <select id="h-tol" aria-label="Square-footage range" style="margin-top:8px;">
                 <option value="100" selected>±100 sq. ft.</option>
                 <option value="200">±200 sq. ft.</option>
-                <option value="300">±300 sq. ft.</option>
               </select>
               <div class="field-hint" id="h-band"></div>
             </div>
             <div class="field">
               <label for="h-max">Maximum price <span style="text-transform:none;letter-spacing:0;font-weight:500;">(optional)</span></label>
               <input id="h-max" type="text" inputmode="numeric" autocomplete="off" placeholder="No maximum">
+              <div class="field-hint" id="h-max-hint"></div>
             </div>
             <div class="field field-wide">
               <span class="flabel" id="h-dist-l">Districts to compare</span>
@@ -1019,7 +1020,7 @@
   window.addEventListener('wheel', function (e) { e.stopImmediatePropagation(); }, { capture: true, passive: true });
   window.addEventListener('touchmove', function (e) { e.stopImmediatePropagation(); }, { capture: true, passive: true });
 </script>
-<script src="/assets/data/sd-county-sales-2026.js" defer></script>
+<script src="/assets/data/sd-county-agg-2026.js" defer></script>
 <script src="/assets/sd-county-tool.js" defer></script>
 <script src="/assets/ask-me.js?v=6" defer></script>
 </body>
