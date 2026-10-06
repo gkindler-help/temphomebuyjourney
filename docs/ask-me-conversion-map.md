@@ -344,7 +344,7 @@ Source of truth for which pages carry the **Ask Me** CTA. **263 pages** carry it
 | `/real-estate-photography-st-louis` | EXCLUDED | Off-topic (photography service page) |
 | `/scan/` | EXCLUDED | Noindex utility |
 | `/school-district-map` | EXCLUDED | Noindex embedded map |
-| `/stl-quiz` | EXCLUDED | Unreachable (redirect loop) until the _redirects rule is fixed |
+| `/stl-quiz` | EXCLUDED | Redirect loop fixed 2026-10-06 (removed `/stl-quiz → /stl-quiz.html 200` rule); Ask Me not yet added |
 
 ## Delivery
 
