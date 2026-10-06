@@ -94,6 +94,7 @@ Source of truth for which pages carry the **Ask Me** CTA. **263 pages** carry it
 | `/articles/renting-vs-buying-stl` | buyer | `rent-vs-buy` | Still not sure buying makes sense for you? | Ask Me About Your Situation | No | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
 | `/articles/repair-costs-affect-offer-price-stl` | buyer | `inspection-negotiation` | Got an inspection report and don’t know what to ask for? | Ask Me About the Report | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
 | `/articles/sell-house-fall-winter-st-louis` | seller | `winter-selling` | Have to sell before spring? | Ask Me How I’d Approach Your House | Yes | IMPLEMENTED | 2026-09-28 | Hand-placed at decision point (first batch) |
+| `/sellers/winter-listing-offer` | seller | `winter-selling` | Have to sell before spring? | Ask Me How I’d Approach Your House | Yes | IMPLEMENTED | 2026-10-06 | After the cost-of-waiting calculator |
 | `/articles/selling-home-south-st-louis-county` | seller | `south-county-selling` | Thinking about selling your South County house? | Ask Me About Your House | Yes | IMPLEMENTED | 2026-09-28 | Before <h2>Related Resources</h2> |
 | `/articles/should-you-accept-cash-offer-stl` | seller | `accept-cash-offer` | Before you sign it, want a second set of eyes? | Ask Me About the Offer | Yes | IMPLEMENTED | 2026-09-28 | Hand-placed at decision point (first batch) |
 | `/articles/showings-but-no-offers-st-louis` | seller | `showings-no-offers` | Getting traffic but nobody’s writing? | Ask Me What Buyers May Be Telling You | Yes | IMPLEMENTED | 2026-09-28 | Hand-placed at decision point (first batch) |
@@ -343,8 +344,7 @@ Source of truth for which pages carry the **Ask Me** CTA. **263 pages** carry it
 | `/real-estate-photography-st-louis` | EXCLUDED | Off-topic (photography service page) |
 | `/scan/` | EXCLUDED | Noindex utility |
 | `/school-district-map` | EXCLUDED | Noindex embedded map |
-| `/sellers/winter-listing-offer` | EXCLUDED | Landing page with its own call/text/email CTAs |
-| `/stl-quiz` | EXCLUDED | Unreachable (redirect loop) until the _redirects rule is fixed |
+| `/stl-quiz` | EXCLUDED | Redirect loop fixed 2026-10-06 (removed `/stl-quiz → /stl-quiz.html 200` rule); Ask Me not yet added |
 
 ## Delivery
 
