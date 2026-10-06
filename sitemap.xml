@@ -80,9 +80,15 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/school-districts</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/school-districts/st-louis-county</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://stlhomejourney.com/south-city-st-louis</loc>
