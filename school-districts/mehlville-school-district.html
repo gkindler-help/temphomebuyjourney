@@ -345,6 +345,17 @@
     .hs-source a { color: var(--gold); }
       span.nbhd-pill { cursor: default; opacity: .7; }
     span.nbhd-pill:hover { background: var(--gold-dim); }
+    .sd26-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid rgba(255,255,255,.08); border-radius: 12px; margin: 18px 0 14px; }
+    .sd26-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+    .sd26-table th, .sd26-table td { padding: 11px 14px; text-align: left; border-bottom: 1px solid rgba(255,255,255,.06); color: rgba(255,255,255,.8); }
+    .sd26-table thead th { font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: rgba(255,255,255,.5); font-weight: 700; }
+    .sd26-table tbody th { color: #fff; font-weight: 600; white-space: nowrap; }
+    .sd26-table td.num, .sd26-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .sd26-table tbody tr:last-child th, .sd26-table tbody tr:last-child td { border-bottom: none; }
+    .sd26 p { margin-bottom: 14px; }
+    .sd26-h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.15rem; color: #fff; margin: 26px 0 10px; }
+    .sd26-source { font-size: 12.5px !important; color: rgba(255,255,255,.45) !important; margin-top: 18px; }
+    .sd26 a { color: var(--gold); }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Are houses in the Oakville High area more expensive than the Mehlville High area?", "acceptedAnswer": {"@type": "Answer", "text": "Overall, they were in this 2026 dataset. The 137 sales listed as Oakville High had a $385,000 median, compared with $323,500 among 148 sales listed as Mehlville High. But the Oakville High-area homes were also larger and newer. When I compared 3-bedroom, 2-bath ranches from the same eras, the median gap narrowed to $6,500 for homes built from 1950–1964 and $10,000 for homes built from 1965–1979. The high-school assignment is based on MLS and should be verified by exact address."}}, {"@type": "Question", "name": "Do homes near Mehlville High sell faster than homes near Oakville High?", "acceptedAnswer": {"@type": "Answer", "text": "They did in several of these historical ranch comparisons. For 3-bedroom, 2-bath ranches built from 1950–1964, the median days on market was 4 days in the Mehlville High area versus 6 days in the Oakville High area. For homes built from 1965–1979, it was 4 days versus 14.5 days. Those are historical results from small groups of sales, not a prediction of how quickly the next house will sell."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"STL Home Journey","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"School Districts","item":"https://stlhomejourney.com/school-districts"},{"@type":"ListItem","position":3,"name":"Mehlville School District","item":"https://stlhomejourney.com/school-districts/mehlville-school-district"}]}</script>
@@ -368,10 +379,10 @@
         <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><circle cx="5" cy="5" r="5"/></svg>
         Strong tier
       </span>
-      <span class="price-range">Typical range: <strong>$175K–$375K</strong></span>
+      <span class="price-range">Typical range: <strong>$290K–$440K</strong></span>
     </div>
     <h1>Mehlville School District</h1>
-<p class="last-updated">Last updated October 6, 2026</p>
+<p class="last-updated">Last updated October 7, 2026</p>
     <div class="hero-rule" aria-hidden="true"></div>
   </header>
 <nav class="nbhd-breadcrumb" aria-label="Breadcrumb">
@@ -423,6 +434,30 @@
         </div>
         <p>I have seen Mehlville surprise buyers because the same district can feel completely different depending on whether you are in Oakville, Lemay, Concord, or a smaller pocket near the boundary. Buyers often make the mistake of treating Mehlville like one uniform market. It is not; the street, high school side, commute, and condition can change the buyer pool fast.</p>
       </div>
+    </section>
+
+    <!-- Section: 2026 sales data — budget reach (county dataset) -->
+    <section class="content-section sd26" id="2026-sales-data">
+      <h2><span class="section-label">2026 sales data</span>What did your budget reach in Mehlville School District?</h2>
+      <p>From January 1 through October 5, 2026, 285 qualifying single-family homes sold in Mehlville School District in this dataset.</p>
+      <div class="sd26-table-wrap" tabindex="0" role="region" aria-label="Share of Mehlville School District 2026 closed sales at or below each price">
+        <table class="sd26-table">
+          <thead><tr><th scope="col">Max price</th><th scope="col" class="num">Sales at or below</th><th scope="col" class="num">Share of district market</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">$250,000</th><td class="num">38 of 285</td><td class="num">13.3%</td></tr>
+            <tr><th scope="row">$300,000</th><td class="num">83 of 285</td><td class="num">29.1%</td></tr>
+            <tr><th scope="row">$350,000</th><td class="num">143 of 285</td><td class="num">50.2%</td></tr>
+            <tr><th scope="row">$400,000</th><td class="num">191 of 285</td><td class="num">67.0%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Median sold price in this dataset: <strong>$350,000</strong>. The middle half of these sales closed between $290,000 and $440,000.</p>
+      <p>Read it this way: a budget can “work” and still leave you shopping only a slice of the market. The share tells you how much of the closed-sale market was actually within reach—not whether a single house might exist at that price.</p>
+      <h3 class="sd26-h3">Same budget, nearby district</h3>
+      <p>At $300,000, Mehlville School District reached about 29.1% of its qualifying sales versus about 21.9% in <a href="/school-districts/lindbergh-schools">Lindbergh</a>. That is a housing-market position, not a school-quality ranking.</p>
+      <h3 class="sd26-h3">Comparable house: a roughly 1,400 sq. ft. ranch</h3>
+      <p>In this dataset, 18 ranches with exactly 3 bedrooms, 2 bathrooms and 1,300–1,500 square feet sold in Mehlville School District. The median sold price was $277,000, and the median days on market was 8. A broader comparison group for this specific house type.</p>
+      <p class="sd26-source">Source: MARIS closed single-family sales, January 1–October 5, 2026 (QA-clean). Historical sales are not current inventory. Verify school assignment for the exact address with the district. Full 22-district tables and methodology: <a href="/school-districts/st-louis-county">St. Louis County school districts: what can your budget buy?</a></p>
     </section>
 
     <!-- Section: Oakville High vs. Mehlville High (2026 sales data) -->
