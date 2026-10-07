@@ -469,17 +469,6 @@ window.RESOURCES_REGISTRY = [
     ]
   },
 
-  {
-    id:      'art-buying-a-home-in-oakville-mo',
-    title:   'Buying a Home in Oakville, MO',
-    summary: 'What buyers need to know about Oakville before making an offer — market speed, school districts, price ranges, and inspection priorities.',
-    url:     'articles/buying-a-home-in-oakville-mo',
-    tool:    false,
-    citations: [
-      { chapter: 2, scene: 2, context: 'Targeting Oakville? Here is what the market looks like and what to watch for at the showing.' },
-      { chapter: 4, scene: 0, context: 'Oakville is a competitive market. Here is what to know before you write an offer there.' }
-    ]
-  },
 
   {
     id:      'art-mehlville-vs-oakville-vs-concord-stl',

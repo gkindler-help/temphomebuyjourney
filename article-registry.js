@@ -682,20 +682,6 @@ window.ARTICLE_REGISTRY = {
     },
 
     {
-      slug: "buying-a-home-in-oakville-mo",
-      title: "Buying in Oakville MO: What the $318K Median Doesn't Tell You",
-      shortTitle: "Buying in Oakville MO",
-      description: "Oakville is 15.88 square miles -- and the southwest side is not the same market as the west. What buyers miss before searching South County's biggest community.",
-      pillLabel: "Buying in Oakville",
-      audience: "buyer",
-      series: "neighborhoods",
-      isHub: false,
-      chapters: [2, 3],
-      tags: ["neighborhoods", "south-county", "oakville", "buyer-guide", "market-speed"],
-      toolLink: null,
-      published: true
-    },
-    {
       slug: "average-price-reduction-after-inspection-st-louis",
       title: "How My Buyer Got $30,000 Off Before Inspections Even Started",
       shortTitle: "$30K Off Before Inspections: Case Study",
