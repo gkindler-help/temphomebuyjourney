@@ -667,6 +667,21 @@ window.ARTICLE_REGISTRY = {
     },
 
     {
+      slug: "clayton-vs-ladue-under-1-million",
+      title: "Clayton vs Ladue Under $1 Million: How Much of the Market Could You Actually Shop?",
+      shortTitle: "Clayton vs Ladue Under $1M",
+      description: "Shopping Clayton or Ladue under $1M? 2026 closed sales show the same budget put buyers in very different parts of each market.",
+      pillLabel: "Clayton vs Ladue Under $1M",
+      audience: "buyer",
+      series: "neighborhoods",
+      isHub: false,
+      chapters: [2, 3],
+      tags: ["neighborhoods", "schools", "clayton", "ladue", "district", "price-comparison", "2026-data"],
+      toolLink: null,
+      published: true
+    },
+
+    {
       slug: "buying-a-home-in-oakville-mo",
       title: "Buying in Oakville MO: What the $318K Median Doesn't Tell You",
       shortTitle: "Buying in Oakville MO",
