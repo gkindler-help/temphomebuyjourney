@@ -321,6 +321,17 @@
     }
       span.nbhd-pill { cursor: default; opacity: .7; }
     span.nbhd-pill:hover { background: var(--gold-dim); }
+    .sd26-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid rgba(255,255,255,.08); border-radius: 12px; margin: 18px 0 14px; }
+    .sd26-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+    .sd26-table th, .sd26-table td { padding: 11px 14px; text-align: left; border-bottom: 1px solid rgba(255,255,255,.06); color: rgba(255,255,255,.8); }
+    .sd26-table thead th { font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: rgba(255,255,255,.5); font-weight: 700; }
+    .sd26-table tbody th { color: #fff; font-weight: 600; white-space: nowrap; }
+    .sd26-table td.num, .sd26-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .sd26-table tbody tr:last-child th, .sd26-table tbody tr:last-child td { border-bottom: none; }
+    .sd26 p { margin-bottom: 14px; }
+    .sd26-h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.15rem; color: #fff; margin: 26px 0 10px; }
+    .sd26-source { font-size: 12.5px !important; color: rgba(255,255,255,.45) !important; margin-top: 18px; }
+    .sd26 a { color: var(--gold); }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"STL Home Journey","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"School Districts","item":"https://stlhomejourney.com/school-districts"},{"@type":"ListItem","position":3,"name":"Webster Groves School District","item":"https://stlhomejourney.com/school-districts/webster-groves-school-district"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/school-districts/webster-groves-school-district","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
@@ -343,10 +354,10 @@
         <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><circle cx="5" cy="5" r="5"/></svg>
         Elite tier
       </span>
-      <span class="price-range">Typical range: <strong>$300K–$750K</strong></span>
+      <span class="price-range">Typical range: <strong>$305K–$580K</strong></span>
     </div>
     <h1>Webster Groves School District</h1>
-<p class="last-updated">Last updated July 10, 2026</p>
+<p class="last-updated">Last updated October 7, 2026</p>
     <div class="hero-rule" aria-hidden="true"></div>
   </header>
 <nav class="nbhd-breadcrumb" aria-label="Breadcrumb">
@@ -395,6 +406,28 @@
         </div>
         <p>I have shown Webster homes where buyers cared less about the unfinished basement or small bedrooms than they did about the street, the school, and the ability to walk to coffee or dinner. The surprise is how emotional this market can get. Buyers who wait for a perfect deal in Webster often end up watching someone else buy the imperfect house they should have considered.</p>
       </div>
+    </section>
+
+    <!-- Section: 2026 sales data — budget reach (county dataset) -->
+    <section class="content-section sd26" id="2026-sales-data">
+      <h2><span class="section-label">2026 sales data</span>What did your budget reach in Webster Groves School District?</h2>
+      <p>From January 1 through October 5, 2026, 121 qualifying single-family homes sold in Webster Groves School District in this dataset.</p>
+      <div class="sd26-table-wrap" tabindex="0" role="region" aria-label="Share of Webster Groves School District 2026 closed sales at or below each price">
+        <table class="sd26-table">
+          <thead><tr><th scope="col">Max price</th><th scope="col" class="num">Sales at or below</th><th scope="col" class="num">Share of district market</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">$250,000</th><td class="num">9 of 121</td><td class="num">7.4%</td></tr>
+            <tr><th scope="row">$300,000</th><td class="num">30 of 121</td><td class="num">24.8%</td></tr>
+            <tr><th scope="row">$350,000</th><td class="num">43 of 121</td><td class="num">35.5%</td></tr>
+            <tr><th scope="row">$400,000</th><td class="num">57 of 121</td><td class="num">47.1%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Median sold price in this dataset: <strong>$425,000</strong>. The middle half of these sales closed between $305,000 and $580,000.</p>
+      <p>Read it this way: a budget can “work” and still leave you shopping only a slice of the market. The share tells you how much of the closed-sale market was actually within reach—not whether a single house might exist at that price.</p>
+      <h3 class="sd26-h3">Same budget, nearby district</h3>
+      <p>At $300,000, Webster Groves School District reached about 24.8% of its qualifying sales versus about 9.0% in <a href="/school-districts/kirkwood-school-district">Kirkwood</a>. That is a housing-market position, not a school-quality ranking.</p>
+      <p class="sd26-source">Source: MARIS closed single-family sales, January 1–October 5, 2026 (QA-clean). Historical sales are not current inventory. Verify school assignment for the exact address with the district. Full 22-district tables and methodology: <a href="/school-districts/st-louis-county">St. Louis County school districts: what can your budget buy?</a></p>
     </section>
 
     <!-- Section 5: Honest Take -->
