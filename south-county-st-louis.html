@@ -69,6 +69,29 @@
 .zip-chip:hover{border-color:rgba(255,204,77,.4);background:rgba(255,204,77,.04);}
 .zip-chip-code{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#ffcc4d;margin-bottom:4px;}
 .zip-chip-area{font-size:0.8rem;color:rgba(255,255,255,.72);line-height:1.4;}
+
+/* 2026 Buyer Opportunities section */
+.bo-card{padding:22px 20px;}
+.bo-card .tool-result-value{line-height:1.25;margin-bottom:14px;}
+.bo-p{font-size:15px;line-height:1.7;color:rgba(255,255,255,.78);margin:0 0 12px;}
+.bo-p strong{color:#fff;}
+.bo-p em{color:rgba(255,255,255,.92);}
+.bo-p a{color:#ffcc4d;font-weight:600;text-decoration:underline;text-underline-offset:3px;}
+.bo-h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:rgba(255,255,255,.96);margin:28px 0 10px;line-height:1.3;}
+.bo-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid rgba(255,255,255,.08);border-radius:12px;margin:18px 0 8px;max-width:560px;}
+.bo-table{width:100%;border-collapse:collapse;font-size:14.5px;}
+.bo-table caption{text-align:left;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,204,77,.05);}
+.bo-cap-t{display:block;font-weight:700;color:#fff;font-size:14px;}
+.bo-cap-s{display:block;font-size:12px;color:rgba(255,255,255,.55);margin-top:2px;}
+.bo-table th,.bo-table td{padding:9px 14px;border-bottom:1px solid rgba(255,255,255,.06);text-align:right;font-variant-numeric:tabular-nums;color:rgba(255,255,255,.82);}
+.bo-table thead th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.5);font-weight:700;}
+.bo-table th:first-child{text-align:left;}
+.bo-table tbody th{color:#fff;font-weight:600;}
+.bo-table tbody tr:last-child th,.bo-table tbody tr:last-child td{border-bottom:none;}
+.bo-note{font-size:12.5px;line-height:1.6;color:rgba(255,255,255,.55);margin:0 0 6px;max-width:640px;}
+.bo-callout{border-left:3px solid #ffcc4d;background:rgba(255,204,77,.07);border-radius:0 10px 10px 0;padding:16px 18px;margin:20px 0 8px;}
+.bo-callout-main{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#fff;line-height:1.4;margin:0 0 8px;}
+@media (max-width:600px){.bo-card{padding:18px 14px;}.bo-table th,.bo-table td{padding:9px 8px;font-size:14px;}.bo-table thead th{letter-spacing:.03em;font-size:10.5px;}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/south-county-st-louis","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
 </head>
@@ -261,6 +284,76 @@
 
       <div class="tool-result-card">
         <p class="tool-result-sub" style="font-size:13px;color:var(--text-muted,#8C8880);margin-top:12px;">⚠ School district boundaries do not follow ZIP codes or neighborhood names. Two houses on the same street can be in different districts. Always verify the assigned schools by exact property address with the county, the district, or your agent before making any school-driven decisions.</p>
+      </div>
+    </section>
+
+    <section aria-label="2026 Buyer Opportunities" id="buyer-opportunities-2026">
+      <div class="tool-result-card bo-card">
+        <div class="tool-section-hd">2026 Sales Data</div>
+        <h2 class="tool-result-value">Same Budget, Different District: How Many Chances Did Buyers Actually Get in 2026?</h2>
+        <p class="bo-p">A $300,000 budget can technically work in Affton, Mehlville and Lindbergh.</p>
+        <p class="bo-p">That doesn't mean you'll have the same home search in all three.</p>
+        <p class="bo-p">I went back through 2026 South County sales and looked at a specific buyer: someone searching for a 3+ bedroom home priced at $309,999 or less in Affton, Mehlville or Lindbergh.</p>
+        <p class="bo-p">Then I looked at when those opportunities actually appeared.</p>
+        <p class="bo-p">For this analysis, a <strong>Buyer Opportunity</strong> is a home matching that filter that was listed during the month and later closed within the study period. These are not live inventory counts, and they aren't every home listed in the district. They're a way of looking backward and asking: How often did this particular kind of buyer actually get a shot?</p>
+
+        <div class="bo-table-wrap" role="region" aria-labelledby="bo-cap" tabindex="0">
+          <table class="bo-table">
+            <caption id="bo-cap"><span class="bo-cap-t">2026 Buyer Opportunities</span><span class="bo-cap-s">3+ bedrooms · Original list price ≤ $309,999</span></caption>
+            <thead><tr><th scope="col">Month</th><th scope="col">Affton</th><th scope="col">Mehlville</th><th scope="col">Lindbergh</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">January</th><td>0</td><td>6</td><td>0</td></tr>
+              <tr><th scope="row">February</th><td>1</td><td>4</td><td>3</td></tr>
+              <tr><th scope="row">March</th><td>5</td><td>13</td><td>4</td></tr>
+              <tr><th scope="row">April</th><td>6</td><td>4</td><td>5</td></tr>
+              <tr><th scope="row">May</th><td>2</td><td>10</td><td>2</td></tr>
+              <tr><th scope="row">June</th><td>1</td><td>15</td><td>2</td></tr>
+              <tr><th scope="row">July</th><td>3</td><td>10</td><td>3</td></tr>
+              <tr><th scope="row">August</th><td>1</td><td>4</td><td>4</td></tr>
+              <tr><th scope="row">September</th><td>0</td><td>0</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="bo-note">“Buyer Opportunities” are homes matching this specific search that were listed during the month and later closed within the study cohort. These are not total listings or live inventory. A zero or blank month does not mean no qualifying homes existed or were listed.</p>
+
+        <h3 class="bo-h3">Mehlville Gave This Buyer More Chances</h3>
+        <p class="bo-p">The clearest difference was Mehlville.</p>
+        <p class="bo-p">Throughout much of 2026, qualifying Mehlville homes appeared with considerably more frequency than they did in Lindbergh or Affton.</p>
+        <p class="bo-p">Look at June: 15 Mehlville opportunities entered this study cohort compared with 2 in Lindbergh and 1 in Affton. In July, it was 10 in Mehlville compared with 3 in Lindbergh and 3 in Affton.</p>
+        <p class="bo-p">Lindbergh was different. Under the same 3-bedroom and $309,999-or-less filter, qualifying opportunities were frequently limited to only a handful of homes in a month.</p>
+        <p class="bo-p">Affton could also work at this budget, but its smaller market meant the number of opportunities could be thin outside the stronger spring period.</p>
+        <p class="bo-p">That's an important distinction if you're deciding where to search.</p>
+        <div class="bo-callout">
+          <p class="bo-callout-main">Being able to afford a district isn't the same as having something to buy there.</p>
+          <p class="bo-p" style="margin-bottom:0;">A buyer could have a reasonable budget for all three districts and still experience three very different searches.</p>
+        </div>
+
+        <h3 class="bo-h3">More Options Doesn't Necessarily Mean an Easier Purchase</h3>
+        <p class="bo-p">Mehlville having more opportunities shouldn't be confused with those homes sitting around unwanted.</p>
+        <p class="bo-p">Showing activity remained meaningful, and the Mehlville homes in this price band that sold frequently closed at or above their original asking prices.</p>
+        <p class="bo-p">So the lesson isn't:</p>
+        <p class="bo-p"><em>“Look in Mehlville because there's less competition.”</em></p>
+        <p class="bo-p">It's closer to:</p>
+        <p class="bo-p"><em>“Mehlville may give you more chances to compete.”</em></p>
+        <p class="bo-p">That's a meaningful difference.</p>
+        <p class="bo-p">If you're searching Lindbergh with the same budget, scarcity itself can become part of the problem. You may spend more time waiting for a house that fits before you even get to the question of whether you'll win it.</p>
+
+        <h3 class="bo-h3">The Time of Year Changed the Search, Too</h3>
+        <p class="bo-p">Spring generally produced a deeper pool of qualifying opportunities.</p>
+        <p class="bo-p">March through May produced noticeably more opportunities across these searches than the beginning of the year, particularly in Affton and Mehlville. Mehlville's opportunity count remained relatively deep into June and July before thinning later in the summer.</p>
+        <p class="bo-p">Do not interpret September's zeros as “there were no homes for sale.”</p>
+        <p class="bo-p">This analysis only tracks homes matching our specific filter that ultimately became part of the closed-sale study cohort.</p>
+        <p class="bo-p">It's useful as a pattern — not a live inventory report.</p>
+
+        <h3 class="bo-h3">Start With More Than the Price Ceiling</h3>
+        <p class="bo-p">If you're comparing South County school districts, I wouldn't stop at:</p>
+        <p class="bo-p"><em>“Can I afford a house there?”</em></p>
+        <p class="bo-p">I'd also ask:</p>
+        <p class="bo-p"><em>“How often does the kind of house I want actually become available at my budget?”</em></p>
+        <p class="bo-p">Those are two different questions.</p>
+        <p class="bo-p">The <a href="/school-districts/st-louis-county">St. Louis County school district data guide</a> looks at how much of each district's closed-sale market different budgets could reach during 2026. From there, you can go deeper into the individual <a href="/school-districts/lindbergh-schools">Lindbergh</a>, <a href="/school-districts/mehlville-school-district">Mehlville</a> and <a href="/school-districts/affton-school-district">Affton</a> guides.</p>
+        <p class="bo-p">And before making a decision based on a school district, verify the district for the exact property address. St. Louis County boundaries don't always follow the neighborhood, municipality or ZIP code the way you'd expect.</p>
+        <p class="bo-p">If you're trying to figure out which South County search actually fits your budget and the kind of house you want, you can <a href="/ask?about=area-comparison&amp;from=/south-county-st-louis" data-ask-link="area-comparison">ask me here</a>. No ranking of districts — just a closer look at what your particular search would involve.</p>
       </div>
     </section>
 
