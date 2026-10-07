@@ -1933,7 +1933,7 @@ function closeDrawer() {
           { title: "Explore All School Districts", url: "school-districts" },
           { title: "South County Neighborhood Guide", url: "articles/south-county-stl-neighborhood-guide" },
           { title: "South County Neighborhoods by Price", url: "articles/south-county-stl-neighborhoods-by-price" },
-          { title: "Buying a Home in Oakville, MO", url: "articles/buying-a-home-in-oakville-mo" },
+          { title: "Oakville Home Buying Guide (2026 Sales Data)", url: "neighborhoods/oakville" },
           { title: "Lindbergh vs. Mehlville School Districts", url: "articles/lindbergh-vs-mehlville-school-district-stl" },
           { title: "Mehlville vs. Oakville vs. Concord", url: "articles/mehlville-vs-oakville-vs-concord-stl" }
         ]

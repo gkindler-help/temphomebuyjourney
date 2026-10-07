@@ -1,3 +1,7 @@
+# Consolidated into the Oakville pillar (2026-10-07)
+/articles/buying-a-home-in-oakville-mo       /neighborhoods/oakville     301
+/articles/buying-a-home-in-oakville-mo.html  /neighborhoods/oakville     301
+
 # Clean URLs — strip .html sitewide (redirect .html → clean)
 /neighborhoods/:page.html       /neighborhoods/:page        301
 /articles/:page.html            /articles/:page             301
@@ -27,4 +31,4 @@
 /real-estate-photography-st-louis.html /real-estate-photography-st-louis 301
 /articles/flat-fee-mls-st-louis.html /articles/flat-fee-mls-st-louis 301
 /listings/13218-wintergreen-estates-drive-fenton-mo.html /listings/13218-wintergreen-estates-drive-fenton-mo 301
-/articles/buying-home-oakville-mo /articles/buying-a-home-in-oakville-mo 301
+/articles/buying-home-oakville-mo /neighborhoods/oakville 301
