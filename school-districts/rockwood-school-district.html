@@ -319,7 +319,20 @@
       .district-hero, .district-body { padding-left: 16px; padding-right: 16px; }
       .cta-block { padding: 32px 20px; }
     }
-  </style>
+      span.nbhd-pill { cursor: default; opacity: .7; }
+    span.nbhd-pill:hover { background: var(--gold-dim); }
+    .sd26-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid rgba(255,255,255,.08); border-radius: 12px; margin: 18px 0 14px; }
+    .sd26-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+    .sd26-table th, .sd26-table td { padding: 11px 14px; text-align: left; border-bottom: 1px solid rgba(255,255,255,.06); color: rgba(255,255,255,.8); }
+    .sd26-table thead th { font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: rgba(255,255,255,.5); font-weight: 700; }
+    .sd26-table tbody th { color: #fff; font-weight: 600; white-space: nowrap; }
+    .sd26-table td.num, .sd26-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .sd26-table tbody tr:last-child th, .sd26-table tbody tr:last-child td { border-bottom: none; }
+    .sd26 p { margin-bottom: 14px; }
+    .sd26-h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.15rem; color: #fff; margin: 26px 0 10px; }
+    .sd26-source { font-size: 12.5px !important; color: rgba(255,255,255,.45) !important; margin-top: 18px; }
+    .sd26 a { color: var(--gold); }
+</style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"STL Home Journey","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"School Districts","item":"https://stlhomejourney.com/school-districts"},{"@type":"ListItem","position":3,"name":"Rockwood School District","item":"https://stlhomejourney.com/school-districts/rockwood-school-district"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/school-districts/rockwood-school-district","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many high schools does Rockwood have, and which one will my home feed into?","acceptedAnswer":{"@type":"Answer","text":"Rockwood has four high schools \u2014 Marquette, Lafayette, Eureka, and Rockwood Summit. Which one a specific home feeds into depends on its exact address, not its city, because boundaries don't follow municipal lines. Verify any address on Rockwood's official maps-and-boundaries locator or with the district's Transportation Department before relying on the school shown on a listing."}},{"@type":"Question","name":"Is Rockwood School District fully accredited?","acceptedAnswer":{"@type":"Answer","text":"Yes. Rockwood has held full Missouri accreditation for many consecutive years and scored 90.0% on the 2024-25 DESE Annual Performance Report \u2014 first among the four Missouri K-12 districts with more than 18,000 students. Confirm current status with Missouri DESE, since scores update annually."}},{"@type":"Question","name":"Why do homes in the same district vary so much in price?","acceptedAnswer":{"@type":"Answer","text":"Rockwood spans a huge footprint \u2014 Ballwin, Ellisville, Wildwood, Chesterfield-area, Eureka, and more \u2014 so the same \"Rockwood schools\" label covers very different housing markets, lot sizes, and commutes. Wildwood and Chesterfield pockets often draw different buyers and price ceilings than Eureka or Pacific-area portions."}},{"@type":"Question","name":"Should I choose a home based on the district or the specific high school?","acceptedAnswer":{"@type":"Answer","text":"Both matter, but in a district this large the specific high school and commute often matter more than the district name. A home can look perfect online and still not fit once you test the school route and daily drive, so evaluate the exact address, not just the Rockwood brand."}}]}</script>
@@ -342,10 +355,10 @@
         <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><circle cx="5" cy="5" r="5"/></svg>
         Elite tier
       </span>
-      <span class="price-range">Typical range: <strong>$325K–$950K</strong></span>
+      <span class="price-range">Typical range: <strong>$410K–$731K</strong></span>
     </div>
     <h1>Rockwood School District</h1>
-<p class="last-updated">Last updated July 10, 2026</p>
+<p class="last-updated">Last updated October 7, 2026</p>
     <div class="hero-rule" aria-hidden="true"></div>
   </header>
 <nav class="nbhd-breadcrumb" aria-label="Breadcrumb">
@@ -377,10 +390,10 @@
       <p>Ballwin is a core Rockwood option with strong family demand, practical subdivisions, and prices that can still feel reachable compared with farther west luxury pockets. Ellisville feels established and convenient, with good access to shopping, parks, and mid-to-upper price points. Chesterfield portions bring higher price ceilings, larger homes, and buyers focused on prestige, space, and commute. Wildwood is the classic space-and-nature play, with larger lots, newer homes, and buyers who want room without leaving the district. Eureka offers a more small-town edge with access to Rockwood schools, often appealing to buyers who want value and space. Glencoe and Grover feel more rural and scenic, with buyers trading convenience for land, privacy, and setting. Pacific-area portions can offer a lower entry point, but buyers need to watch drive times, boundaries, and resale pool.</p>
       <div class="neighborhood-pills">
   <a href="/neighborhoods/chesterfield" class="nbhd-pill">Chesterfield</a>
-  <a href="/neighborhoods/ellisville" class="nbhd-pill">Ellisville</a>
-  <a href="/neighborhoods/wildwood" class="nbhd-pill">Wildwood</a>
+  <span class="nbhd-pill">Ellisville</span>
+  <span class="nbhd-pill">Wildwood</span>
   <a href="/neighborhoods/ballwin" class="nbhd-pill">Ballwin</a>
-  <a href="/neighborhoods/eureka" class="nbhd-pill">Eureka</a>
+  <span class="nbhd-pill">Eureka</span>
 </div>
 
     </section>
@@ -415,6 +428,28 @@
         </div>
         <p>I have watched buyers fall in love with Rockwood because the homes can feel bigger, newer, and more peaceful than what they saw closer in. The part that catches people is the drive; a home can look perfect online and still not work once you test the school route, office commute, or weekend errands. In Rockwood, lifestyle fit matters as much as school rating.</p>
       </div>
+    </section>
+
+    <!-- Section: 2026 sales data — budget reach (county dataset) -->
+    <section class="content-section sd26" id="2026-sales-data">
+      <h2><span class="section-label">2026 sales data</span>What did your budget reach in Rockwood School District?</h2>
+      <p>From January 1 through October 5, 2026, 388 qualifying single-family homes sold in Rockwood School District in this dataset.</p>
+      <div class="sd26-table-wrap" tabindex="0" role="region" aria-label="Share of Rockwood School District 2026 closed sales at or below each price">
+        <table class="sd26-table">
+          <thead><tr><th scope="col">Max price</th><th scope="col" class="num">Sales at or below</th><th scope="col" class="num">Share of district market</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">$250,000</th><td class="num">14 of 388</td><td class="num">3.6%</td></tr>
+            <tr><th scope="row">$300,000</th><td class="num">31 of 388</td><td class="num">8.0%</td></tr>
+            <tr><th scope="row">$350,000</th><td class="num">64 of 388</td><td class="num">16.5%</td></tr>
+            <tr><th scope="row">$400,000</th><td class="num">94 of 388</td><td class="num">24.2%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Median sold price in this dataset: <strong>$529,000</strong>. The middle half of these sales closed between $410,000 and $731,250.</p>
+      <p>Read it this way: a budget can “work” and still leave you shopping only a slice of the market. The share tells you how much of the closed-sale market was actually within reach—not whether a single house might exist at that price.</p>
+      <h3 class="sd26-h3">Same budget, nearby district</h3>
+      <p>At $300,000, Rockwood School District reached about 8.0% of its qualifying sales versus about 6.0% in <a href="/school-districts/parkway-school-district">Parkway</a>. That is a housing-market position, not a school-quality ranking.</p>
+      <p class="sd26-source">Source: MARIS closed single-family sales, January 1–October 5, 2026 (QA-clean). Historical sales are not current inventory. Verify school assignment for the exact address with the district. Full 22-district tables and methodology: <a href="/school-districts/st-louis-county">St. Louis County school districts: what can your budget buy?</a></p>
     </section>
 
     <!-- Section 5: Honest Take -->
