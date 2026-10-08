@@ -402,10 +402,49 @@
     #season-table tr.season-group th { text-align: left; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--gold); background: rgba(255,204,77,.04); }
     #season-table tr.season-group th span { text-transform: none; letter-spacing: 0; color: var(--text-muted); font-weight: 500; }
     @media (max-width: 560px) { .season-fig { padding: 12px 10px 10px; } .season-ro-list { columns: 2 140px; } }
+
+    /* Jump nav */
+    [id] { scroll-margin-top: 24px; }
+    .jump-fab { position: fixed; right: 16px; bottom: 20px; z-index: 200; display: inline-flex; align-items: center; gap: 8px; background: #ffcc4d; color: #080808; font-weight: 800; font-size: 12px; letter-spacing: .05em; border: none; border-radius: 999px; padding: 12px 17px; cursor: pointer; box-shadow: 0 6px 22px rgba(0,0,0,.55); font-family: inherit; }
+    .jump-fab:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+    .jump-fab-ico { font-size: 15px; line-height: 1; }
+    .jump-panel { position: fixed; right: 16px; bottom: 74px; z-index: 200; width: min(288px, calc(100vw - 32px)); background: #0d0d0d; border: 1px solid rgba(255,204,77,.34); border-radius: 14px; padding: 8px; box-shadow: 0 12px 42px rgba(0,0,0,.6); opacity: 0; transform: translateY(10px) scale(.98); transform-origin: bottom right; pointer-events: none; transition: opacity .18s ease, transform .18s ease; max-height: 72vh; overflow-y: auto; visibility: hidden; }
+    .jump-panel.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; visibility: visible; }
+    .jump-panel-hd { font-size: 9px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #ffcc4d; padding: 8px 12px; }
+    .jump-link { display: block; padding: 9px 12px; border-radius: 8px; font-size: .9rem; color: rgba(255,255,255,.72); text-decoration: none; line-height: 1.35; border-left: 2px solid transparent; }
+    .jump-link:hover, .jump-link:focus-visible { background: rgba(255,204,77,.06); color: #fff; outline: none; }
+    .jump-link.active { color: #ffcc4d; border-left-color: #ffcc4d; background: rgba(255,204,77,.05); }
+    /* Collapsible interactives */
+    .collapse-btn { display: inline-flex; align-items: center; gap: 8px; margin: 4px 0 16px; background: transparent; border: 1px solid var(--gold-border); color: var(--gold); border-radius: 999px; padding: 6px 14px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; min-height: 34px; }
+    .collapse-btn::before { content: ""; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-135deg) translate(-2px,-2px); transition: transform .15s ease; }
+    .collapse-btn[aria-expanded="false"]::before { transform: rotate(45deg) translate(-2px,-2px); }
+    .collapse-btn:hover { background: var(--gold-dim); }
+    .collapse-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .collapse-body[hidden] { display: none !important; }
   </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","datePublished":"2026-10-06","dateModified":"2026-10-06","url":"https://stlhomejourney.com/school-districts/st-louis-county","isPartOf":{"@type":"WebPage","@id":"https://stlhomejourney.com/school-districts"},"about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
 </head>
 <body class="school-districts-page">
+<button id="jumpToggle" class="jump-fab" type="button" aria-label="Jump to a section" aria-expanded="false" aria-controls="jumpPanel">
+  <span class="jump-fab-ico" aria-hidden="true">&#9776;</span><span class="jump-fab-txt">Sections</span>
+</button>
+<nav id="jumpPanel" class="jump-panel" aria-label="Jump to a section" aria-hidden="true">
+  <div class="jump-panel-hd">Jump to a section</div>
+  <a href="#tool" class="jump-link" tabindex="-1">The interactive</a>
+  <a href="#lindbergh-250k" class="jump-link" tabindex="-1">Lindbergh at $250K</a>
+  <a href="#mehlville-300k" class="jump-link" tabindex="-1">Mehlville at $300K</a>
+  <a href="#same-house" class="jump-link" tabindex="-1">Same house, different district</a>
+  <a href="#ranch-table" class="jump-link" tabindex="-1">1,400 sq. ft. ranch table</a>
+  <a href="#scarcity" class="jump-link" tabindex="-1">Scarcity</a>
+  <a href="#competition" class="jump-link" tabindex="-1">Competition</a>
+  <a href="#seasonal" class="jump-link" tabindex="-1">When buyers shop</a>
+  <a href="#add-50k" class="jump-link" tabindex="-1">Another $50K</a>
+  <a href="#lowest-prices" class="jump-link" tabindex="-1">Cheapest districts</a>
+  <a href="#budget-table" class="jump-link" tabindex="-1">Full budget table</a>
+  <a href="#methodology" class="jump-link" tabindex="-1">Methodology</a>
+  <a href="#faq" class="jump-link" tabindex="-1">FAQ</a>
+  <a href="#district-guides" class="jump-link" tabindex="-1">District guides</a>
+</nav>
 
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">STL Home Journey</a>
@@ -476,6 +515,8 @@
     <section class="section" id="tool" aria-labelledby="tool-h">
       <span class="section-label">Interactive</span>
       <h2 id="tool-h">Start With the Question You’re Actually Trying to Answer</h2>
+      <button type="button" class="collapse-btn" aria-expanded="true" aria-controls="tool-body" data-show="Show the interactive" data-hide="Hide the interactive">Hide the interactive</button>
+      <div class="collapse-body" id="tool-body">
       <div class="mode-grid" role="group" aria-label="Choose a mode">
         <a class="mode-btn" href="#budget-tool" data-mode="budget" aria-pressed="true">
           <span class="mode-name">I know my budget</span>
@@ -569,6 +610,7 @@
         </form>
         <div id="house-out" aria-live="polite"></div>
         <p class="source-note">Source: the same 2,868-sale dataset as the budget tool above.</p>
+      </div>
       </div>
     </section>
 
@@ -724,7 +766,8 @@
       <div class="prose">
         <p>Buyer activity changes throughout the year. Spring often brings stronger demand, while late summer and fall can bring fewer showings. The pattern isn&rsquo;t identical in every district.</p>
       </div>
-      <figure class="season-fig" aria-labelledby="season-cap">
+      <button type="button" class="collapse-btn" aria-expanded="true" aria-controls="season-fig" data-show="Show the chart" data-hide="Hide the chart">Hide the chart</button>
+      <figure class="season-fig collapse-body" id="season-fig" aria-labelledby="season-cap">
         <figcaption id="season-cap" class="season-cap">Showings per listing by month, January&ndash;September 2026, all 22 districts. Each district uses its own buyer filter, listed in the table below.</figcaption>
         <div class="season-legend" id="season-legend"></div>
         <div class="season-chart" id="season-chart" tabindex="0" aria-describedby="season-readout"></div>
@@ -1130,6 +1173,38 @@
     <p>STL Home Journey is an educational resource. Content is for informational purposes only and does not constitute legal or financial advice. School district information is provided for general guidance only; always verify assigned schools directly with the district before writing an offer. Equal Housing Opportunity.</p>
   </footer>
 
+<script>
+(function(){
+  /* Jump nav */
+  var fab=document.getElementById('jumpToggle'),panel=document.getElementById('jumpPanel');
+  if(fab&&panel){
+    var links=[].slice.call(panel.querySelectorAll('.jump-link'));
+    function setOpen(o,focusFab){panel.classList.toggle('open',o);fab.setAttribute('aria-expanded',o);panel.setAttribute('aria-hidden',!o);
+      links.forEach(function(l){l.tabIndex=o?0:-1;});if(o&&links[0])links[0].focus();if(!o&&focusFab)fab.focus();}
+    fab.addEventListener('click',function(e){e.stopPropagation();setOpen(!panel.classList.contains('open'));});
+    panel.addEventListener('click',function(e){if(e.target.classList.contains('jump-link'))setOpen(false);});
+    document.addEventListener('click',function(e){if(panel.classList.contains('open')&&!panel.contains(e.target)&&!fab.contains(e.target))setOpen(false);});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&panel.classList.contains('open'))setOpen(false,true);});
+    var map={};links.forEach(function(l){var id=l.getAttribute('href').slice(1);if(document.getElementById(id))map[id]=l;});
+    if('IntersectionObserver' in window){
+      var obs=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(l){l.classList.remove('active');});if(map[en.target.id])map[en.target.id].classList.add('active');}});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+      Object.keys(map).forEach(function(id){obs.observe(document.getElementById(id));});
+    }
+  }
+  /* Collapsible interactives */
+  function setBody(btn,open){var body=document.getElementById(btn.getAttribute('aria-controls'));if(!body)return;
+    body.hidden=!open;btn.setAttribute('aria-expanded',open);btn.textContent=open?btn.dataset.hide:btn.dataset.show;
+    if(open)window.dispatchEvent(new Event('resize'));}
+  var btns=[].slice.call(document.querySelectorAll('.collapse-btn[aria-controls]'));
+  btns.forEach(function(b){b.addEventListener('click',function(){setBody(b,b.getAttribute('aria-expanded')!=='true');});});
+  /* A link into a collapsed region opens it first */
+  function openFor(id){var t=id&&document.getElementById(id);if(!t)return;
+    btns.forEach(function(b){var body=document.getElementById(b.getAttribute('aria-controls'));if(body&&body.hidden&&body.contains(t))setBody(b,true);});}
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a)openFor(a.getAttribute('href').slice(1));},true);
+  window.addEventListener('hashchange',function(){openFor(location.hash.slice(1));});
+  if(location.hash)openFor(location.hash.slice(1));
+})();
+</script>
 <script src="/shared.js" defer></script>
 <script>
   // Page-only scroll unlock (same pattern as /school-districts)
