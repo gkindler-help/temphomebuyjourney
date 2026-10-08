@@ -375,6 +375,17 @@
     .season-lg-btn svg { flex: none; width: 22px !important; height: 10px !important; max-width: none; margin: 0; }
     .season-lg-btn span { white-space: nowrap; }
     .season-ro-list li svg { flex: none; width: 16px; height: 8px; }
+    .season-lg-title-btn { display: block; background: none; border: 0; padding: 2px 0; margin: 0; font: inherit; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); cursor: pointer; text-align: left; text-decoration: underline; text-decoration-color: rgba(255,255,255,.18); text-underline-offset: 3px; }
+    .season-lg-title-btn:hover { color: var(--text); }
+    .season-lg-title-btn[aria-pressed="true"] { color: var(--gold); text-decoration-color: var(--gold); }
+    .season-lg-title-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .season-lg-key { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--text); padding: 4px 10px 4px 0; }
+    .season-lg-key svg { flex: none; width: 26px; height: 10px; }
+    .season-lg-market { flex-basis: 100%; padding-bottom: 6px; }
+    .season-end-lbl { fill: #FFCC4D; font-size: 11.5px; font-weight: 700; font-family: inherit; paint-order: stroke; stroke: #0F0F0F; stroke-width: 3px; }
+    .season-ro-market { columns: 1; margin-bottom: 6px !important; padding-bottom: 6px !important; border-bottom: 1px solid var(--border); }
+    .season-ro-list li.is-market { color: var(--text); }
+    #season-table tr.season-market th, #season-table tr.season-market td { color: var(--text); font-weight: 600; }
     .season-lg-btn:hover { border-color: var(--gold-border); color: var(--text); }
     .season-lg-btn[aria-pressed="true"] { border-color: var(--gold); color: #fff; background: var(--gold-dim); font-weight: 600; }
     .season-lg-btn:focus-visible, .season-reset:focus-visible, .season-chart:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
@@ -401,7 +412,7 @@
     #season-table td.num, #season-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
     #season-table tr.season-group th { text-align: left; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--gold); background: rgba(255,204,77,.04); }
     #season-table tr.season-group th span { text-transform: none; letter-spacing: 0; color: var(--text-muted); font-weight: 500; }
-    @media (max-width: 560px) { .season-fig { padding: 12px 10px 10px; } .season-ro-list { columns: 2 140px; } }
+    @media (max-width: 560px) { .season-fig { padding: 12px 10px 10px; } .season-ro-list { columns: 2 140px; } .season-ro-market { columns: 1; } }
 
     /* Jump nav */
     [id] { scroll-margin-top: 24px; }
@@ -768,7 +779,7 @@
       </div>
       <button type="button" class="collapse-btn" aria-expanded="true" aria-controls="season-fig" data-show="Show the chart" data-hide="Hide the chart">Hide the chart</button>
       <figure class="season-fig collapse-body" id="season-fig" aria-labelledby="season-cap">
-        <figcaption id="season-cap" class="season-cap">Showings per listing by month, January&ndash;September 2026, all 22 districts. Each district uses its own buyer filter, listed in the table below.</figcaption>
+        <figcaption id="season-cap" class="season-cap">Showings per listing by month, January&ndash;September 2026. The gold line is the 3-month rolling average across all 22 districts; each district&rsquo;s own line sits behind it. Each district uses its own buyer filter, listed in the table below.</figcaption>
         <div class="season-legend" id="season-legend"></div>
         <div class="season-chart" id="season-chart" tabindex="0" aria-describedby="season-readout"></div>
         <div class="season-readout" id="season-readout" aria-live="polite"></div>
@@ -781,9 +792,12 @@
         <summary>Monthly showings per listing for all 22 districts</summary>
         <div class="table-wrap" tabindex="0" role="region" aria-labelledby="season-tcap">
           <table id="season-table">
-            <caption id="season-tcap">Showings per listing by month, January&ndash;September 2026. Districts are grouped by comparison group; each group&rsquo;s buyer filter is shown in its header row.</caption>
+            <caption id="season-tcap">Showings per listing by month, January&ndash;September 2026. The first two rows average all 22 districts; districts below are grouped by comparison group, with each group&rsquo;s buyer filter in its header row.</caption>
             <thead><tr><th scope="col">District</th><th scope="col" class="num">Jan</th><th scope="col" class="num">Feb</th><th scope="col" class="num">Mar</th><th scope="col" class="num">Apr</th><th scope="col" class="num">May</th><th scope="col" class="num">Jun</th><th scope="col" class="num">Jul</th><th scope="col" class="num">Aug</th><th scope="col" class="num">Sep</th></tr></thead>
             <tbody>
+            <tr class="season-group"><th colspan="10" scope="colgroup">All 22 districts <span>&middot; market average</span></th></tr>
+            <tr class="season-market" data-market="roll"><th scope="row">3-month rolling average</th><td class="num">—</td><td class="num">—</td><td class="num" data-v="9.7955">9.8</td><td class="num" data-v="10.2167">10.2</td><td class="num" data-v="9.8955">9.9</td><td class="num" data-v="8.7409">8.7</td><td class="num" data-v="7.6742">7.7</td><td class="num" data-v="6.9424">6.9</td><td class="num" data-v="6.5152">6.5</td></tr>
+            <tr class="season-market" data-market="avg"><th scope="row">Monthly average of all 22</th><td class="num" data-v="8.7636">8.8</td><td class="num" data-v="9.5591">9.6</td><td class="num" data-v="11.0636">11.1</td><td class="num" data-v="10.0273">10.0</td><td class="num" data-v="8.5955">8.6</td><td class="num" data-v="7.6">7.6</td><td class="num" data-v="6.8273">6.8</td><td class="num" data-v="6.4">6.4</td><td class="num" data-v="6.3182">6.3</td></tr>
             <tr class="season-group"><th colspan="10" scope="colgroup">South County <span>&middot; 3+ bedrooms · &le;$309,999</span></th></tr>
             <tr data-g="0" data-i="0" data-group="South County"><th scope="row">Affton 101</th><td class="num" data-v="14.5">14.5</td><td class="num" data-v="18.7">18.7</td><td class="num" data-v="16.8">16.8</td><td class="num" data-v="16.6">16.6</td><td class="num" data-v="9.8">9.8</td><td class="num" data-v="13">13.0</td><td class="num" data-v="11">11.0</td><td class="num" data-v="8.2">8.2</td><td class="num" data-v="8.1">8.1</td></tr>
             <tr data-g="0" data-i="1" data-group="South County"><th scope="row">Bayless</th><td class="num" data-v="14.9">14.9</td><td class="num" data-v="13.6">13.6</td><td class="num" data-v="21">21.0</td><td class="num" data-v="13.7">13.7</td><td class="num" data-v="12.1">12.1</td><td class="num" data-v="8.3">8.3</td><td class="num" data-v="8.3">8.3</td><td class="num" data-v="9.8">9.8</td><td class="num" data-v="12.4">12.4</td></tr>
@@ -817,7 +831,7 @@
           </table>
         </div>
       </details>
-      <p class="source-note">Source: STLHJ 2026 22-District Market Map, using MARIS InfoSparks Showings Per Listing for January&ndash;September 2026 (October is partial and excluded). <strong>Showings per listing</strong> is the average number of showings per listing in that month, as reported by InfoSparks for homes matching the district&rsquo;s buyer filter. It uses selected property criteria, not every listing in the district, and it&rsquo;s a separate measure from the 2,868 closed sales used elsewhere on this page. Parkway and Rockwood R-VI use the West County filter; Valley Park uses its own.</p>
+      <p class="source-note">Source: STLHJ 2026 22-District Market Map, using MARIS InfoSparks Showings Per Listing for January&ndash;September 2026 (October is partial and excluded). <strong>Showings per listing</strong> is the average number of showings per listing in that month, as reported by InfoSparks for homes matching the district&rsquo;s buyer filter. It uses selected property criteria, not every listing in the district, and it&rsquo;s a separate measure from the 2,868 closed sales used elsewhere on this page. The <strong>monthly average</strong> is the simple average of the 22 district values for that month&mdash;a read on general direction, not a market-wide total, since each district uses its own filter. The <strong>3-month rolling average</strong> averages that month and the two before it, so it begins in March. Parkway and Rockwood R-VI use the West County filter; Valley Park uses its own.</p>
     </section>
 
     <!-- ══ +$50K ══ -->
@@ -1221,7 +1235,7 @@
 </script>
 <script src="/assets/data/sd-county-agg-2026.js" defer></script>
 <script src="/assets/sd-county-tool.js" defer></script>
-<script src="/assets/sd-seasonal-chart.js" defer></script>
+<script src="/assets/sd-seasonal-chart.js?v=3" defer></script>
 <script src="/assets/ask-me.js?v=6" defer></script>
 </body>
 </html>
