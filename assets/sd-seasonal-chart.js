@@ -1,8 +1,7 @@
 /* Seasonal buyer-demand chart for /school-districts/st-louis-county.
    Reads every value from the crawlable #season-table so the chart and table
-   can never disagree. Default view: the market lines (3-month rolling average
-   and monthly average of all 22 districts) in front, the 22 districts lighter
-   behind. Readers can highlight one area (comparison group) or one district.
+   can never disagree. Default view: the average of all 22 districts in front,
+   the 22 districts lighter behind. Readers can highlight one area (comparison group) or one district.
    District color = comparison group, dash = district within group. */
 (function () {
   'use strict';
@@ -11,8 +10,7 @@
   var COLORS = ['#3987e5', '#d95926', '#199e70', '#c98500', '#d55181', '#008300', '#9085e9'];
   var DASHES = ['', '7 4', '2 3', '10 3 2 3'];
   var MARKET = {
-    roll: { name: '3-month rolling average', color: '#FFCC4D', dash: '', width: 4 },
-    avg: { name: 'Monthly average of all 22', color: '#E8E4DC', dash: '5 4', width: 2 }
+    avg: { name: 'Average of all 22 districts', color: '#FFCC4D', dash: '', width: 4 }
   };
   var NS = 'http://www.w3.org/2000/svg';
 
@@ -58,7 +56,7 @@
     });
     var nDist = all.length;
     if (!nDist) return;
-    ['roll', 'avg'].forEach(function (kind) {
+    ['avg'].forEach(function (kind) {
       var tr = table.querySelector('tbody tr[data-market="' + kind + '"]');
       if (!tr) return;
       var m = MARKET[kind];
@@ -139,7 +137,7 @@
     /* ---------- chart ---------- */
     var svg, paths = [], cross, dot, tag, tagText, tagBg, endLbl, geo;
     chartBox.setAttribute('role', 'group');
-    chartBox.setAttribute('aria-label', 'Line chart of showings per listing by month. The gold line is the 3-month rolling average across all 22 districts. Highlight an area or a district with the buttons above. Use the left and right arrow keys to move between months and the up and down arrow keys to move between lines. Press Escape to clear.');
+    chartBox.setAttribute('aria-label', 'Line chart of showings per listing by month. The gold line is the average of all 22 districts. Highlight an area or a district with the buttons above. Use the left and right arrow keys to move between months and the up and down arrow keys to move between lines. Press Escape to clear.');
 
     function render() {
       var W = Math.max(280, chartBox.clientWidth);
@@ -173,15 +171,15 @@
           'stroke-linejoin': 'round', 'stroke-linecap': 'round', 'class': 'season-line' + (s.market ? ' season-market-line' : ''),
           'data-district': s.name }, lines);
       });
-      /* direct label for the rolling average at its last point */
+      /* direct label for the market average at its last point */
       endLbl = null;
-      var rollIdx = all.length - 2;
-      if (all[rollIdx] && all[rollIdx].market === 'roll') {
-        var rv = all[rollIdx].vals, li = rv.length - 1;
+      var avgIdx = all.length - 1;
+      if (all[avgIdx] && all[avgIdx].market === 'avg') {
+        var rv = all[avgIdx].vals, li = rv.length - 1;
         while (li >= 0 && rv[li] == null) li--;
         if (li >= 0) {
           endLbl = el('text', { x: geo.x(li) - 4, y: geo.y(rv[li]) - 10, 'text-anchor': 'end', 'class': 'season-end-lbl' }, svg);
-          endLbl.textContent = 'Market 3-mo avg ' + fmt(rv[li]);
+          endLbl.textContent = 'Market average ' + fmt(rv[li]);
         }
       }
       dot = el('circle', { r: 5, 'class': 'season-dot', visibility: 'hidden' }, svg);
@@ -301,7 +299,7 @@
         var msg;
         if (state.pinned >= 0) msg = all[state.pinned].name + ' highlighted against the market average. Hover, tap or use the arrow keys to see each month’s values.';
         else if (areaOn) msg = state.area + ' highlighted (' + all.slice(0, nDist).filter(function (s) { return s.group === state.area; }).map(function (s) { return s.name; }).join(', ') + ') against the market average. Hover, tap or use the arrow keys to see each month’s values.';
-        else msg = 'The gold line is the 3-month rolling average across all 22 districts. Hover, tap or use the arrow keys to see each month’s values, or select an area or district above to highlight it.';
+        else msg = 'The gold line is the average of all 22 districts. Hover, tap or use the arrow keys to see each month’s values, or select an area or district above to highlight it.';
         h('p', 'season-hint', readout, msg);
         return;
       }
