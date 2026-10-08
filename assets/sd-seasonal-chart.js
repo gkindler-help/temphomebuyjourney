@@ -1,6 +1,7 @@
 /* Seasonal buyer-demand chart for /school-districts/st-louis-county.
    Reads every value from the crawlable #season-table so the chart and table
-   can never disagree. Color = comparison group, dash = district within group. */
+   can never disagree. Color = comparison group, dash = district within group.
+   Readers can highlight one area (comparison group) or one district. */
 (function () {
   'use strict';
   var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'];
@@ -47,7 +48,33 @@
     series.forEach(function (s) { s.vals.forEach(function (v) { if (v != null && v > maxV) maxV = v; }); });
     var yMax = Math.ceil(maxV / 5) * 5;
 
-    var state = { pinned: -1, month: -1, near: -1 };
+    var state = { pinned: -1, area: null, month: -1, near: -1 };
+    function inSel(i) { return state.pinned >= 0 ? i === state.pinned : (state.area ? series[i].group === state.area : true); }
+    function hasSel() { return state.pinned >= 0 || !!state.area; }
+
+    /* ---------- area buttons ---------- */
+    var areas = [];
+    series.forEach(function (s) { if (areas.indexOf(s.group) < 0) areas.push(s.group); });
+    var areaRow = h('div', 'season-areas');
+    areaRow.setAttribute('role', 'group');
+    areaRow.setAttribute('aria-label', 'Highlight an area');
+    h('span', 'season-areas-label', areaRow, 'Highlight an area:');
+    var areaBtns = [];
+    [null].concat(areas).forEach(function (a) {
+      var b = h('button', 'season-lg-btn season-area-btn', areaRow);
+      b.type = 'button';
+      b.setAttribute('aria-pressed', a === null ? 'true' : 'false');
+      if (a !== null) {
+        var col = series.filter(function (s) { return s.group === a; })[0].color;
+        var sw = el('svg', { width: 22, height: 10, viewBox: '0 0 22 10', 'aria-hidden': 'true', focusable: 'false' }, b);
+        el('line', { x1: 1, y1: 5, x2: 21, y2: 5, stroke: col, 'stroke-width': 3, 'stroke-linecap': 'round' }, sw);
+      }
+      h('span', '', b, a === null ? 'All areas' : a);
+      b.addEventListener('click', function () { selectArea(a === null || state.area === a ? null : a); });
+      b._area = a;
+      areaBtns.push(b);
+    });
+    legendBox.parentNode.insertBefore(areaRow, legendBox);
 
     /* ---------- legend ---------- */
     legendBox.setAttribute('role', 'group');
@@ -73,12 +100,12 @@
     var resetBtn = h('button', 'season-reset', legendBox, 'Show all 22 districts');
     resetBtn.type = 'button';
     resetBtn.disabled = true;
-    resetBtn.addEventListener('click', function () { pin(-1); chartBox.focus(); });
+    resetBtn.addEventListener('click', function () { state.area = null; pin(-1); chartBox.focus(); });
 
     /* ---------- chart ---------- */
     var svg, paths = [], cross, dot, tag, tagText, tagBg, geo;
     chartBox.setAttribute('role', 'group');
-    chartBox.setAttribute('aria-label', 'Line chart of showings per listing by month for 22 school districts. Use the left and right arrow keys to move between months and the up and down arrow keys to move between districts. Press Escape to clear.');
+    chartBox.setAttribute('aria-label', 'Line chart of showings per listing by month for 22 school districts. Highlight an area or a district with the buttons above. Use the left and right arrow keys to move between months and the up and down arrow keys to move between districts. Press Escape to clear.');
 
     function render() {
       var W = Math.max(280, chartBox.clientWidth);
@@ -109,7 +136,7 @@
           pen = true;
         });
         return el('path', { d: d, fill: 'none', stroke: s.color, 'stroke-width': 1.75, 'stroke-dasharray': s.dash,
-          'stroke-linejoin': 'round', 'stroke-linecap': 'round', 'class': 'season-line' }, lines);
+          'stroke-linejoin': 'round', 'stroke-linecap': 'round', 'class': 'season-line', 'data-district': s.name }, lines);
       });
       dot = el('circle', { r: 5, 'class': 'season-dot', visibility: 'hidden' }, svg);
       tag = el('g', { visibility: 'hidden', 'class': 'season-tag' }, svg);
@@ -126,7 +153,7 @@
       var best = -1, bd = Infinity;
       series.forEach(function (s, i) {
         var v = s.vals[mi];
-        if (v == null) return;
+        if (v == null || !inSel(i)) return;
         var dd = Math.abs(geo.y(v) - py);
         if (dd < bd) { bd = dd; best = i; }
       });
@@ -143,21 +170,45 @@
     }
     function clearHover() { state.month = -1; state.near = -1; paint(); }
 
+    function syncButtons() {
+      legendBtns.forEach(function (b, j) { b.setAttribute('aria-pressed', j === state.pinned ? 'true' : 'false'); });
+      areaBtns.forEach(function (b) { b.setAttribute('aria-pressed', b._area === state.area && state.pinned < 0 ? 'true' : 'false'); });
+      resetBtn.disabled = !hasSel();
+    }
     function pin(i) {
       state.pinned = i;
+      if (i >= 0) state.area = null;
       if (i >= 0 && state.month >= 0) state.near = i;
-      legendBtns.forEach(function (b, j) { b.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
-      resetBtn.disabled = i < 0;
+      else if (state.near >= 0 && !inSel(state.near)) state.near = -1;
+      syncButtons();
+      paint();
+    }
+    function selectArea(a) {
+      state.area = a;
+      state.pinned = -1;
+      if (state.near >= 0 && !inSel(state.near)) state.near = -1;
+      syncButtons();
       paint();
     }
 
     function paint() {
       var focus = state.pinned >= 0 ? state.pinned : (state.near >= 0 ? state.near : -1);
       paths.forEach(function (p, i) {
-        var on = focus < 0 || i === focus;
-        p.setAttribute('stroke-opacity', on ? (focus < 0 ? 0.9 : 1) : (state.pinned >= 0 ? 0.12 : 0.25));
-        p.setAttribute('stroke-width', i === focus ? 3.5 : 1.75);
+        var op, wd = 1.75;
+        if (state.area && state.pinned < 0) {            // area selected: its districts stay bright
+          op = inSel(i) ? 1 : 0.1;
+          wd = inSel(i) ? (i === focus ? 3.5 : 2.5) : 1.5;
+        } else {
+          var on = focus < 0 || i === focus;
+          op = on ? (focus < 0 ? 0.9 : 1) : (state.pinned >= 0 ? 0.12 : 0.25);
+          if (i === focus) wd = 3.5;
+        }
+        p.setAttribute('stroke-opacity', op);
+        p.setAttribute('stroke-width', wd);
       });
+      if (state.area && state.pinned < 0) {               // bring the area's lines to the front
+        paths.forEach(function (p, i) { if (inSel(i) && i !== focus) p.parentNode.appendChild(p); });
+      }
       if (focus >= 0) paths[focus].parentNode.appendChild(paths[focus]);   // bring to front
       var mi = state.month;
       if (mi < 0) {
@@ -184,15 +235,20 @@
 
     function renderReadout(mi) {
       readout.textContent = '';
+      var areaOn = state.area && state.pinned < 0;
       if (mi < 0) {
+        var members = series.filter(function (s) { return s.group === state.area; }).map(function (s) { return s.name; });
         h('p', 'season-hint', readout, state.pinned >= 0
           ? series[state.pinned].name + ' highlighted. Hover, tap or use the arrow keys to see each month’s values.'
-          : 'Hover, tap or use the arrow keys on the chart to see every district’s value for a month. Select a district in the legend above to highlight it.');
+          : areaOn
+            ? state.area + ' highlighted (' + members.join(', ') + '). Hover, tap or use the arrow keys to see each month’s values.'
+            : 'Hover, tap or use the arrow keys on the chart to see every district’s value for a month. Select an area or a district above to highlight it.');
         return;
       }
-      h('p', 'season-ro-hd', readout, MONTHS_LONG[mi] + ' 2026 · showings per listing');
+      h('p', 'season-ro-hd', readout, (areaOn ? state.area + ' · ' : '') + MONTHS_LONG[mi] + ' 2026 · showings per listing');
       var list = h('ol', 'season-ro-list', readout);
       series.map(function (s, i) { return { s: s, i: i, v: s.vals[mi] }; })
+        .filter(function (o) { return !areaOn || o.s.group === state.area; })
         .sort(function (a, b) { return (b.v == null ? -1 : b.v) - (a.v == null ? -1 : a.v); })
         .forEach(function (o) {
           var li = h('li', o.i === state.near || o.i === state.pinned ? 'is-on' : '', list);
@@ -208,17 +264,17 @@
       if (k === 'ArrowRight' || k === 'ArrowLeft') {
         state.month = state.month < 0 ? (k === 'ArrowRight' ? 0 : MONTHS.length - 1)
           : Math.max(0, Math.min(MONTHS.length - 1, state.month + (k === 'ArrowRight' ? 1 : -1)));
-        if (state.near < 0) state.near = state.pinned >= 0 ? state.pinned : 0;
+        if (state.near < 0) state.near = state.pinned >= 0 ? state.pinned : series.map(function (s, i) { return i; }).filter(inSel)[0];
       } else if (k === 'ArrowUp' || k === 'ArrowDown') {
         if (state.month < 0) state.month = 0;
         var mi = state.month;
-        var ranked = series.map(function (s, i) { return i; }).filter(function (i) { return series[i].vals[mi] != null; })
+        var ranked = series.map(function (s, i) { return i; }).filter(function (i) { return series[i].vals[mi] != null && (state.pinned >= 0 || inSel(i)); })
           .sort(function (a, b) { return series[b].vals[mi] - series[a].vals[mi]; });
         var pos = ranked.indexOf(state.near);
         pos = pos < 0 ? 0 : Math.max(0, Math.min(ranked.length - 1, pos + (k === 'ArrowDown' ? 1 : -1)));
         state.near = ranked[pos];
       } else if (k === 'Escape') {
-        clearHover(); pin(-1); return;
+        clearHover(); state.area = null; pin(-1); return;
       } else if ((k === 'Enter' || k === ' ') && state.near >= 0) {
         pin(state.pinned === state.near ? -1 : state.near);
       } else { return; }
