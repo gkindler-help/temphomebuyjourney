@@ -64,12 +64,9 @@
     'hillsdale': ['63121'],
     'norwood-court': ['63121'],
     'northwoods': ['63121'],
-    'olympian-village': ['63121'],
-    'parkdale': ['63121'],
     'pasadena-hills': ['63121'],
     'pasadena-park': ['63121'],
     'peaceful-village': ['63049'],
-    'scotsdale': ['63033'],
     'sycamore-hills': ['63114'],
     'uplands-park': ['63121'],
     'velda-city': ['63121'],
@@ -78,7 +75,6 @@
     'vinita-terrace': ['63121'],
     'woodson-terrace': ['63134'],
     'charlack': ['63114'],
-    'champ': ['63114'],
     'breckenridge-hills': ['63114'],
     'bellerive-acres': ['63121'],
     'beverly-hills': ['63121'],
@@ -103,9 +99,7 @@
     'dardenne-prairie': ['63368'],
     'weldon-spring': ['63304'],
     'weldon-spring-heights': ['63304'],
-    'josephville': ['63301'],
     'st-paul': ['63366'],
-    'west-alton': ['63301'],
     'arnold': ['63010'],
     'festus': ['63028'],
     'crystal-city': ['63019'],
@@ -298,12 +292,12 @@
 
     html +=
       '<div style="' +
-        'font-size:9px;' +
-        'color:var(--text-faint,rgba(255,255,255,.25));' +
+        'font-size:10.5px;' +
+        'line-height:1.5;' +
+        'color:var(--text-dim,rgba(255,255,255,.5));' +
         'padding:8px 14px;' +
         'border-top:1px solid var(--line,#1e1e1e);' +
-        'letter-spacing:.04em;' +
-      '">Source: MARIS MLS · 7,006 STL residential sales · 2025–26</div>';
+      '">ZIP-code data: all 2025–26 MARIS MLS residential sales in the ZIP shown, which can include neighboring towns. Not the same set of sales as any town-level figures on this page.</div>';
 
     strip.innerHTML = html;
 
