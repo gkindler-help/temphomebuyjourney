@@ -13,6 +13,8 @@
 
    Floating "Ask George" (opt-in): <div data-ask-float="KEY" hidden></div>, prompts in FLOATS.
    Plain links: <a href="/ask?about=KEY…" data-ask-link="KEY"> get context hand-off + tracking.
+   Situation picker: <div data-ask-path="KEY"><ul><li><a href="/ask?about=…">…</a></li></ul></div>,
+   options in PATHS; the fallback list stays for no-JS. Links added after load: AskMe.wire(a).
 
    Live chat: CHAT config below (Tawk.to, loaded only on tap). One shared loader
    (ensureChat, below CHAT) lazy-loads the Tawk script and tracks its ready
@@ -335,6 +337,127 @@
       headline: 'Want to talk about your house instead of another hypothetical?',
       support: 'Tell me about the property and what you’re trying to accomplish.',
       button: 'Ask Me About Selling It'
+    },
+
+    /* ---- repairs before selling (ask-path 'repairs') ---- */
+    'repair-list': {
+      intent: 'seller', label: 'Repairs you’re weighing before listing', address: true,
+      askTitle: 'Ask me about your repair list',
+      askIntro: 'Send me the address and the repairs you’re considering. I’ll tell you which ones I’d look at comparable sales for, which ones I’d leave alone, and which ones may be better handled through price.'
+    },
+    'repair-vs-price': {
+      intent: 'seller', label: 'Fix it or price for it', address: true,
+      askTitle: 'Ask me whether to fix it or price for it',
+      askIntro: 'Tell me what the house needs and roughly what you’ve been quoted. I’ll help you compare the repair cost with what comparable homes are selling for with and without that work.'
+    },
+    'seller-repair-request': {
+      intent: 'seller', label: 'Buyer repair request', address: true,
+      askTitle: 'Ask me about the buyer’s repair request',
+      askIntro: 'Tell me what the buyer asked for and where you are in the inspection period. I’ll help you think through your options and what each one could mean for the agreed price.'
+    },
+
+    /* ---- expired-listing diagnostic results (one per finding) ---- */
+    'expired-price': {
+      intent: 'seller', label: 'Expired listing: price and perceived value', address: true,
+      askTitle: 'Ask me about your expired listing',
+      askIntro: 'Your diagnostic pointed at price and perceived value. Send me the address or the old listing and I’ll help you compare it with what buyers could buy instead. That doesn’t automatically mean cutting the price.'
+    },
+    'expired-condition': {
+      intent: 'seller', label: 'Expired listing: condition', address: true,
+      askTitle: 'Ask me about your expired listing',
+      askIntro: 'Your diagnostic pointed at condition. Tell me what buyers kept mentioning and I’ll help you compare the cost of addressing it with the cost of adjusting the price.'
+    },
+    'expired-marketing': {
+      intent: 'seller', label: 'Expired listing: launch and marketing', address: true,
+      askTitle: 'Ask me about your expired listing',
+      askIntro: 'Your diagnostic pointed at the launch and marketing. Send me the old listing and tell me how showings were handled. I’ll help you work out whether buyers got a clean look at the house.'
+    },
+    'expired-timing': {
+      intent: 'seller', label: 'Expired listing: timing', address: true,
+      askTitle: 'Ask me about your expired listing',
+      askIntro: 'Your diagnostic pointed at timing. Tell me when the house launched and what was going on that week. I’ll help you separate timing from everything else before deciding what to change.'
+    },
+    'expired-contract': {
+      intent: 'seller', label: 'Expired listing: contract that fell through', address: true,
+      askTitle: 'Ask me about the contract that fell through',
+      askIntro: 'Your house reached a contract, so I’d start where the deal failed. Tell me what happened and when, and I’ll help you think through what that means before you relist.'
+    },
+    'expired-offers': {
+      intent: 'seller', label: 'Expired listing: offers received', address: true,
+      askTitle: 'Ask me about the offers you received',
+      askIntro: 'Buyers put real terms behind their opinions of your house. Tell me roughly what the offers looked like and I’ll help you work out what they may be saying about value.'
+    },
+    'expired-evidence': {
+      intent: 'seller', label: 'Expired listing: not enough evidence yet', address: true,
+      askTitle: 'Ask me about your expired listing',
+      askIntro: 'Your answers didn’t point clearly at one cause, and that’s useful too. Send me the address or the old listing and I’ll help you find the evidence before anyone guesses.'
+    },
+
+    /* ---- pricing disagreement (ask-path 'pricing') ---- */
+    'price-two-opinions': {
+      intent: 'seller', label: 'Two different price recommendations', address: true,
+      askTitle: 'Ask me about the prices you were given',
+      askIntro: 'Send me both recommendations and what each one was based on. I’ll explain where I agree, where I disagree, and why.'
+    },
+    'price-disagree': {
+      intent: 'seller', label: 'A price recommendation you don’t agree with', address: true,
+      askTitle: 'Ask me about the price you were given',
+      askIntro: 'Tell me the number, what it was based on, and what you expected instead. I’ll walk you through how I’d test it against what buyers can buy for the same money.'
+    },
+
+    /* ---- buyer representation (ask-path 'buyer-rep') ---- */
+    'rep-tour': {
+      intent: 'buyer', label: 'Touring a house', address: true,
+      askTitle: 'Ask me about touring a house',
+      askIntro: 'Tell me which house and when you’d like to see it. I’ll explain what the paperwork for touring with me says before you sign anything.'
+    },
+    'rep-agreement': {
+      intent: 'buyer', label: 'Buyer agreement questions', address: false,
+      askTitle: 'Ask me about the buyer agreement',
+      askIntro: 'Tell me what you’ve been asked to sign, or what you want to understand about it. I’ll explain what the terms mean in plain English.'
+    },
+    'rep-no-agent': {
+      intent: 'buyer', label: 'Buying without an agent', address: true,
+      askTitle: 'Ask me about buying without an agent',
+      askIntro: 'Tell me about the house and how you’re planning to handle the purchase. I’ll walk you through whose job is whose so you can decide with clear eyes.'
+    },
+    'rep-my-listing': {
+      intent: 'buyer', label: 'One of George’s listings', address: true,
+      askTitle: 'Ask me about one of my listings',
+      askIntro: 'Send me the address. I’ll explain your representation options before we talk about anything else, including staying unrepresented or using your own agent.'
+    }
+  };
+
+  /* Situation pickers: <div data-ask-path="KEY">. Each option links to /ask with its own context. */
+  var PATHS = {
+    'repairs': {
+      headline: 'Where are you with the repairs?',
+      support: 'Pick the one closest to your situation. I’ll know what you’re asking about before we talk.',
+      options: [
+        { about: 'repair-list', label: 'I have a list of repairs and don’t know which are worth doing' },
+        { about: 'repair-vs-price', label: 'I’m deciding whether to fix something or price for it' },
+        { about: 'cash-offer', label: 'I have a cash offer for the house as\u2011is' },
+        { about: 'seller-repair-request', label: 'I’m under contract and the buyer sent a repair request' }
+      ]
+    },
+    'pricing': {
+      headline: 'Not sure about the price you were given?',
+      support: 'Let’s look at what the number assumes about the buyers in your market. I’ll explain where I agree, where I disagree, and why.',
+      options: [
+        { about: 'price-two-opinions', label: 'Two agents gave me different prices' },
+        { about: 'price-disagree', label: 'I don’t agree with the price I was given' },
+        { about: 'expired-listing', label: 'My house didn’t sell at the price we chose' }
+      ]
+    },
+    'buyer-rep': {
+      headline: 'Which of these is closest to where you are?',
+      support: 'Pick one. I’ll explain your options for your situation, including buying without an agent.',
+      options: [
+        { about: 'rep-tour', label: 'I want to tour a house and haven’t signed anything' },
+        { about: 'rep-agreement', label: 'I’ve been asked to sign a buyer agreement and want to understand it' },
+        { about: 'rep-no-agent', label: 'I’m thinking about buying without an agent' },
+        { about: 'rep-my-listing', label: 'I’m interested in one of George’s listings' }
+      ]
     }
   };
 
@@ -517,6 +640,13 @@
     '.askfloat-x:hover{color:#fff;background:rgba(255,255,255,.06);}' +
     '@media(prefers-reduced-motion:reduce){.askfloat .askfloat-toggle{animation:none !important;transition:none;}}' +
     '@media(max-width:600px){.askfloat-toggle{font-size:12.5px;}.askfloat-toggle img{width:40px;height:40px;}}' +
+    '.askme ul.askme-opts{list-style:none;margin:0;padding:0;display:grid;gap:10px;}' +
+    '.askme ul.askme-opts li{margin:0;padding:0;}' +
+    '.askme ul.askme-opts li::before{content:none;}' +
+    '.askme a.askme-opt,.askme a.askme-opt:visited{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border:1px solid rgba(255,204,77,.38);border-radius:10px;background:rgba(0,0,0,.25);color:#fff;font:600 14.5px/1.4 "Inter",-apple-system,sans-serif;text-decoration:none;}' +
+    '.askme a.askme-opt::after{content:"\\2192";color:#ffcc4d;flex:none;}' +
+    '.askme a.askme-opt:hover{border-color:#ffcc4d;background:rgba(255,204,77,.08);color:#fff;text-decoration:none;}' +
+    '.askme a.askme-opt:focus-visible{outline:2px solid #ffcc4d;outline-offset:3px;}' +
     '@media(max-width:600px){.askme{margin:32px 0;padding:20px 18px 22px;}body>.askme,.askme.askme-center{margin-left:auto;margin-right:auto;width:calc(100% - 32px);}.askme a.askme-btn{display:block;text-align:center;}}';
 
   var count = 0;
@@ -557,11 +687,14 @@
   }
 
   /* Plain in-article links: <a href="/ask?about=KEY&from=..." data-ask-link="KEY"> get the same
-     context hand-off and click tracking as the component. */
+     context hand-off and click tracking as the component. The key is read at click time,
+     so a page may retarget a link after load (the expired-listing diagnostic does). */
   function wireLink(a) {
-    var key = a.getAttribute('data-ask-link'), c = CONTEXTS[key];
-    if (!c) return;
+    if (!a || a.getAttribute('data-ask-wired')) return;
+    a.setAttribute('data-ask-wired', '1');
     a.addEventListener('click', function () {
+      var key = a.getAttribute('data-ask-link'), c = CONTEXTS[key];
+      if (!c) return;
       var label = a.querySelector('strong') || a;
       remember(key, (label.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80), c.intent);
     });
@@ -685,9 +818,40 @@
     if (r.left < 8 || vw - r.right < 8 || aside.parentNode.clientWidth > aside.offsetWidth + 80) aside.className += ' askme-center';
   }
 
+  function renderPath(el) {
+    var key = el.getAttribute('data-ask-path'), p = PATHS[key];
+    if (!p) return; // unknown key: leave the fallback list in place
+    injectCSS();
+    var id = 'askme-path-' + key + (++count > 1 ? '-' + count : '');
+    var aside = document.createElement('aside');
+    aside.className = 'askme askme-path';
+    aside.setAttribute('aria-labelledby', id);
+    var items = p.options.filter(function (o) { return CONTEXTS[o.about]; }).map(function (o) {
+      var href = '/ask?about=' + encodeURIComponent(o.about) + '&from=' + encodeURIComponent(location.pathname);
+      return '<li><a class="askme-opt" href="' + esc(href) + '" data-about="' + esc(o.about) + '">' + esc(o.label) + '</a></li>';
+    }).join('');
+    aside.innerHTML =
+      '<div class="askme-top"><img class="askme-av" src="' + AVATAR + '" alt="" width="46" height="46" loading="lazy" decoding="async">' +
+      '<div><p class="askme-eyebrow">Ask me</p><p class="askme-who">' + esc(WHO) + '</p></div></div>' +
+      '<p class="askme-h" id="' + id + '">' + esc(p.headline) + '</p>' +
+      '<p class="askme-p">' + esc(p.support) + '</p>' +
+      '<ul class="askme-opts">' + items + '</ul>' +
+      '<p class="askme-note">' + esc(p.note || NOTES.general) + '</p>';
+    var as = aside.querySelectorAll('a.askme-opt');
+    for (var i = 0; i < as.length; i++) (function (a) {
+      var k = a.getAttribute('data-about');
+      a.addEventListener('click', function () { remember(k, a.textContent, CONTEXTS[k].intent); });
+    })(as[i]);
+    el.parentNode.replaceChild(aside, el);
+    var r = aside.getBoundingClientRect(), vw = document.documentElement.clientWidth;
+    if (r.left < 8 || vw - r.right < 8 || aside.parentNode.clientWidth > aside.offsetWidth + 80) aside.className += ' askme-center';
+  }
+
   function init() {
     var els = document.querySelectorAll('[data-ask-me]');
     for (var i = 0; i < els.length; i++) render(els[i]);
+    var paths = document.querySelectorAll('[data-ask-path]');
+    for (var k = 0; k < paths.length; k++) renderPath(paths[k]);
     var links = document.querySelectorAll('a[data-ask-link]');
     for (var j = 0; j < links.length; j++) wireLink(links[j]);
     var fl = document.querySelector('[data-ask-float]');
@@ -695,7 +859,7 @@
     renderChat();
   }
 
-  window.AskMe = { contexts: CONTEXTS, floats: FLOATS, store: STORE, track: track, openChat: openChat };
+  window.AskMe = { contexts: CONTEXTS, floats: FLOATS, paths: PATHS, store: STORE, track: track, openChat: openChat, wire: wireLink };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
