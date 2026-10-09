@@ -274,6 +274,7 @@
               _tierCell('Mid-Tier', fmt(Math.round(r.d.price * 0.93 / 1000) * 1000), 'some updating', '#FFCC4D') +
               _tierCell('Move-In', fmt(Math.round(r.d.price * 1.08 / 1000) * 1000), 'ready', '#5DCAA5') +
             '</div>' +
+            '<div style="font-size:10px;line-height:1.45;color:var(--text-dim,rgba(255,255,255,.45));margin-top:6px;">Condition tiers are estimates set from the ZIP median, not separate sale counts.</div>' +
           '</div>' +
           /* Market flag */
           '<div style="' +
