@@ -578,7 +578,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -1424,6 +1424,12 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/north-county-small-towns</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/south-county-small-towns</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
