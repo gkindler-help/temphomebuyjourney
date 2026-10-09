@@ -55,7 +55,7 @@ Source of truth for which pages carry the **Ask Me** CTA. **263 pages** carry it
 | `/articles/conventional-vs-fha-loan-st-louis` | buyer | `buyer-general` | Reading this because of a house you’re looking at? | Ask Me About the House | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
 | `/articles/cost-to-sell-home-stl` | seller | `cost-to-sell` | Thinking about selling and want the real number? | Ask Me What Selling Would Cost | Yes | IMPLEMENTED | 2026-09-28 | Hand-placed at decision point (first batch) |
 | `/articles/credit-score-buy-home-st-louis` | buyer | `buyer-general` | Reading this because of a house you’re looking at? | Ask Me About the House | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
-| `/articles/do-i-need-a-buyers-agent-stl` | buyer | `buyer-agent` | Want to know what I’d actually do for you? | Ask Me | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
+| `/articles/do-i-need-a-buyers-agent-stl` | buyer | path `buyer-rep` | Which of these is closest to where you are? | 4 situation options | Per option | IMPLEMENTED | 2026-10-09 | End of “The Decision” (replaced the `buyer-agent` component) |
 | `/articles/federal-pacific-panel-va-loan-st-louis` | buyer | `federal-pacific-va` | Found one of these panels in a house you’re considering? | Ask Me About the House | Yes | IMPLEMENTED | 2026-09-28 | Hand-placed at decision point (first batch) |
 | `/articles/first-time-buyer-programs-stl` | buyer | `buyer-start` | Ready to stop researching and start looking? | Ask Me to Help You Start | No | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
 | `/articles/fixer-upper-vs-move-in-ready-st-louis` | buyer | `fixer-upper` | Looking at a fixer right now? | Ask Me If the Numbers Make Sense | Yes | IMPLEMENTED | 2026-09-28 | Hand-placed at decision point (first batch) |
@@ -87,7 +87,7 @@ Source of truth for which pages carry the **Ask Me** CTA. **263 pages** carry it
 | `/articles/mortgage-pre-approval-st-louis` | buyer | `pre-approval` | Pre-approved and ready to start looking? | Ask Me What I’d Do Next | No | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
 | `/articles/most-affordable-zip-codes-stl-2026` | buyer | `buying-power` | Know your number. Not sure where to spend it? | Ask Me Where Your Budget Fits | No | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
 | `/articles/multiple-offers-without-overpaying-st-louis` | buyer | `multiple-offers` | About to compete for a house? | Ask Me How I’d Structure the Offer | Yes | IMPLEMENTED | 2026-09-28 | Hand-placed at decision point (first batch) |
-| `/articles/nar-settlement-buyer-representation-stl` | buyer | `buyer-agent` | Want to know what I’d actually do for you? | Ask Me | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
+| `/articles/nar-settlement-buyer-representation-stl` | buyer | path `buyer-rep` | Which of these is closest to where you are? | 4 situation options | Per option | IMPLEMENTED | 2026-10-09 | Before <div class='faq-section'> (replaced the `buyer-agent` component) |
 | `/articles/no-showings-st-louis-home` | seller | `no-showings` | Your house is listed and nobody’s coming? | Ask Me to Look at the Listing | Yes | IMPLEMENTED | 2026-09-28 | Hand-placed at decision point (first batch) |
 | `/articles/red-flags-bad-buyer-agent-stl` | buyer | `buyer-agent` | Want to know what I’d actually do for you? | Ask Me | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
 | `/articles/relist-house-st-louis-30-day-rule` | seller | `relisting` | Thinking about putting the house back on the market? | Ask Me What I’d Change First | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='cta-section' |
@@ -122,6 +122,17 @@ Source of truth for which pages carry the **Ask Me** CTA. **263 pages** carry it
 | `/articles/why-your-st-louis-home-didnt-sell` | seller | `expired-review` | Want me to look at what actually happened? | Ask Me to Review Your Listing | Yes | IMPLEMENTED | 2026-09-28 | Hand-placed at decision point (first batch) |
 | `/articles/zillow-pay-to-play-system` | buyer | `buyer-general` | Reading this because of a house you’re looking at? | Ask Me About the House | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
 | `/articles/zillow-zestimate-accurate-stl` | buyer | `price-value` | Found a house and wondering if the price makes sense? | Ask Me About the Price | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
+
+### Situation pickers and contextual entries (added 2026-10-09)
+
+A situation picker (`<div data-ask-path="KEY">`, options in `PATHS` in `/assets/ask-me.js`) lets the visitor pick the option closest to their situation; each option opens `/ask` with its own context, heading and intro. The fallback list of plain links stays in the HTML for no-JS.
+
+| URL | Entry | Contexts | Placement |
+|---|---|---|---|
+| `/articles/what-not-to-repair-before-selling-stl-pricing-strategy` | path `repairs` | `repair-list`, `repair-vs-price`, `cash-offer`, `seller-repair-request` | End of “So How Do You Decide What to Fix?” (the `what-not-to-repair` component stays at the end) |
+| `/articles/how-george-works-with-sellers` | path `pricing` | `price-two-opinions`, `price-disagree`, `expired-listing` | End of “Should You Hire the Agent Who Says Your House Is Worth the Most?” (replaced the “Two agents gave you different prices” callout) |
+| `/articles/do-i-need-a-buyers-agent-stl`, `/articles/nar-settlement-buyer-representation-stl` | path `buyer-rep` | `rep-tour`, `rep-agreement`, `rep-no-agent`, `rep-my-listing` | See rows above |
+| `/articles/why-your-st-louis-home-didnt-sell` | diagnostic results | `expired-price`, `expired-condition`, `expired-marketing`, `expired-timing`, `expired-contract`, `expired-offers`, `expired-evidence` | Each result card links to its own context; the “Yes — I’d like to ask George” button switches to the top finding’s context. The condition card also links to the repairs article. |
 
 ## Seller cash-offer pages (15)
 
