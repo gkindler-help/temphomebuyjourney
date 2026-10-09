@@ -607,25 +607,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/bel-nor</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/bel-ridge</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://stlhomejourney.com/neighborhoods/bellefontaine-neighbors</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/bellerive-acres</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -638,12 +620,6 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/berkeley</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/beverly-hills</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -667,19 +643,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/breckenridge-hills</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://stlhomejourney.com/neighborhoods/bridgeton</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/calverton-park</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -687,12 +651,6 @@
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/carondelet</loc>
     <lastmod>2026-05-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/castle-point</loc>
-    <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -710,12 +668,6 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/champ</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/charlack</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -739,20 +691,8 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/cool-valley</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://stlhomejourney.com/neighborhoods/cottleville</loc>
     <lastmod>2026-09-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/country-club-hills</loc>
-    <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -805,12 +745,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/edmundson</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://stlhomejourney.com/neighborhoods/ferguson</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -819,12 +753,6 @@
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/festus</loc>
     <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/flordell-hills</loc>
-    <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -847,12 +775,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/glen-echo-park</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://stlhomejourney.com/neighborhoods/gravois-park</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -861,18 +783,6 @@
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/green-park</loc>
     <lastmod>2026-10-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/greendale</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/hanley-hills</loc>
-    <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -890,12 +800,6 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/hillsboro</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/hillsdale</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -985,31 +889,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/normandy</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/normandy-park</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://stlhomejourney.com/neighborhoods/northampton</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/northwoods</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/norwood-court</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1033,25 +913,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/pagedale</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://stlhomejourney.com/neighborhoods/parkdale</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/pasadena-hills</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/pasadena-park</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1075,20 +937,8 @@
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/pine-lawn</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://stlhomejourney.com/neighborhoods/princeton-heights</loc>
     <lastmod>2026-06-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/riverview</loc>
-    <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1177,12 +1027,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/sycamore-hills</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://stlhomejourney.com/neighborhoods/the-hill</loc>
     <lastmod>2026-09-06</lastmod>
     <changefreq>monthly</changefreq>
@@ -1207,36 +1051,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/uplands-park</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/velda-city</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/velda-village-hills</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/vinita-park</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/vinita-terrace</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://stlhomejourney.com/neighborhoods/webster-groves</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
@@ -1251,12 +1065,6 @@
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/weldon-spring-heights</loc>
     <lastmod>2026-09-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/wellston</loc>
-    <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1613,5 +1421,11 @@
     <lastmod>2026-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/north-county-small-towns</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
