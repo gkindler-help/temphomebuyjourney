@@ -432,6 +432,18 @@
     .collapse-btn:hover { background: var(--gold-dim); }
     .collapse-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
     .collapse-body[hidden] { display: none !important; }
+
+    /* Prices by month */
+    .pm-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0 8px; }
+    .pm-fig { margin: 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px 12px 8px; }
+    .pm-cap { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 6px 4px; }
+    .pm-chart { display: block; width: 100%; height: auto; }
+    .pm-grid { stroke: rgba(255,255,255,.07); stroke-width: 1; }
+    .pm-tick { fill: var(--text-muted); font-size: 11px; font-family: inherit; }
+    .pm-line { stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+    .pm-dot { stroke: var(--surface); stroke-width: 2; }
+    .pm-lbl { fill: #fff; font-size: 12px; font-weight: 700; font-family: inherit; paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
+    @media (max-width: 700px) { .pm-grid2 { grid-template-columns: 1fr; } }
   </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","datePublished":"2026-10-06","dateModified":"2026-10-06","url":"https://stlhomejourney.com/school-districts/st-louis-county","isPartOf":{"@type":"WebPage","@id":"https://stlhomejourney.com/school-districts"},"about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
 </head>
@@ -449,6 +461,7 @@
   <a href="#scarcity" class="jump-link" tabindex="-1">Scarcity</a>
   <a href="#competition" class="jump-link" tabindex="-1">Competition</a>
   <a href="#seasonal" class="jump-link" tabindex="-1">When buyers shop</a>
+  <a href="#seasonal-prices" class="jump-link" tabindex="-1">Prices by month</a>
   <a href="#add-50k" class="jump-link" tabindex="-1">Another $50K</a>
   <a href="#lowest-prices" class="jump-link" tabindex="-1">Cheapest districts</a>
   <a href="#budget-table" class="jump-link" tabindex="-1">Full budget table</a>
@@ -512,6 +525,7 @@
           <li><a href="#scarcity">Scarcity</a></li>
           <li><a href="#competition">Competition</a></li>
           <li><a href="#seasonal">When buyers shop</a></li>
+          <li><a href="#seasonal-prices">Prices by month</a></li>
           <li><a href="#add-50k">Another $50K</a></li>
           <li><a href="#lowest-prices">Cheapest districts</a></li>
           <li><a href="#budget-table">Full budget table</a></li>
@@ -831,6 +845,41 @@
         </div>
       </details>
       <p class="source-note">Source: STLHJ 2026 22-District Market Map, using MARIS InfoSparks Showings Per Listing for January&ndash;September 2026 (October is partial and excluded). <strong>Showings per listing</strong> is the average number of showings per listing in that month, as reported by InfoSparks for homes matching the district&rsquo;s buyer filter. It uses selected property criteria, not every listing in the district, and it&rsquo;s a separate measure from the 2,868 closed sales used elsewhere on this page. The <strong>monthly average</strong> is the simple average of the 22 district values for that month&mdash;a read on general direction, not a market-wide total, since each district uses its own filter. Parkway and Rockwood R-VI use the West County filter; Valley Park uses its own.</p>
+    </section>
+
+    <!-- ══ PRICES BY MONTH ══ -->
+    <section class="section" id="seasonal-prices" aria-labelledby="pm-h">
+      <span class="section-label">Prices by Month</span>
+      <h2 id="pm-h">Did Prices Follow the Buyers?</h2>
+      <div class="prose">
+        <p>Yes&mdash;a couple of months later. In this year&rsquo;s St. Louis County-area sales, the median sale price climbed through spring, peaked in June at <strong>$379,500</strong> and was <strong>$302,750</strong> by September. Part of that drop is smaller homes selling later in the year: per square foot, prices went from $189 in June to $174 in July, August and September.</p>
+      </div>
+      <div class="pm-grid2">
+        <figure class="pm-fig">
+          <figcaption class="pm-cap">Median sale price</figcaption>
+          <svg class="pm-chart" viewBox="0 0 520 230" role="img" aria-label="Median sale price by closing month, St. Louis County-area, January–September 2026" preserveAspectRatio="xMidYMid meet"><title>Median sale price by closing month, St. Louis County-area, January–September 2026</title><line class="pm-grid" x1="56" x2="504" y1="202.0" y2="202.0"/><text class="pm-tick" x="48" y="206.0" text-anchor="end">$250K</text><line class="pm-grid" x1="56" x2="504" y1="140.7" y2="140.7"/><text class="pm-tick" x="48" y="144.7" text-anchor="end">$300K</text><line class="pm-grid" x1="56" x2="504" y1="79.3" y2="79.3"/><text class="pm-tick" x="48" y="83.3" text-anchor="end">$350K</text><line class="pm-grid" x1="56" x2="504" y1="18.0" y2="18.0"/><text class="pm-tick" x="48" y="22.0" text-anchor="end">$400K</text><text class="pm-tick" x="56.0" y="222" text-anchor="start">Jan</text><text class="pm-tick" x="112.0" y="222" text-anchor="middle">Feb</text><text class="pm-tick" x="168.0" y="222" text-anchor="middle">Mar</text><text class="pm-tick" x="224.0" y="222" text-anchor="middle">Apr</text><text class="pm-tick" x="280.0" y="222" text-anchor="middle">May</text><text class="pm-tick" x="336.0" y="222" text-anchor="middle">Jun</text><text class="pm-tick" x="392.0" y="222" text-anchor="middle">Jul</text><text class="pm-tick" x="448.0" y="222" text-anchor="middle">Aug</text><text class="pm-tick" x="504.0" y="222" text-anchor="end">Sep</text><polyline class="pm-line" fill="none" stroke="#FFCC4D" points="56.0,165.2 112.0,177.5 168.0,79.3 224.0,128.4 280.0,61.5 336.0,43.1 392.0,99.0 448.0,89.7 504.0,137.3"/><circle class="pm-dot" cx="56.0" cy="165.2" r="3.5" fill="#FFCC4D"><title>January 2026: $280,000</title></circle><circle class="pm-dot" cx="112.0" cy="177.5" r="3.5" fill="#FFCC4D"><title>February 2026: $270,000</title></circle><circle class="pm-dot" cx="168.0" cy="79.3" r="3.5" fill="#FFCC4D"><title>March 2026: $350,000</title></circle><circle class="pm-dot" cx="224.0" cy="128.4" r="3.5" fill="#FFCC4D"><title>April 2026: $310,000</title></circle><circle class="pm-dot" cx="280.0" cy="61.5" r="3.5" fill="#FFCC4D"><title>May 2026: $364,500</title></circle><circle class="pm-dot pm-peak" cx="336.0" cy="43.1" r="5" fill="#FFCC4D"><title>June 2026: $379,500</title></circle><circle class="pm-dot" cx="392.0" cy="99.0" r="3.5" fill="#FFCC4D"><title>July 2026: $334,000</title></circle><circle class="pm-dot" cx="448.0" cy="89.7" r="3.5" fill="#FFCC4D"><title>August 2026: $341,550</title></circle><circle class="pm-dot" cx="504.0" cy="137.3" r="5" fill="#FFCC4D"><title>September 2026: $302,750</title></circle><text class="pm-lbl" x="336.0" y="32.1" text-anchor="middle">$379,500</text><text class="pm-lbl pm-lbl-end" x="504.0" y="126.3" text-anchor="end">$302,750</text></svg>
+        </figure>
+        <figure class="pm-fig">
+          <figcaption class="pm-cap">Median price per square foot</figcaption>
+          <svg class="pm-chart" viewBox="0 0 520 230" role="img" aria-label="Median price per square foot by closing month, St. Louis County-area, January–September 2026" preserveAspectRatio="xMidYMid meet"><title>Median price per square foot by closing month, St. Louis County-area, January–September 2026</title><line class="pm-grid" x1="56" x2="504" y1="202.0" y2="202.0"/><text class="pm-tick" x="48" y="206.0" text-anchor="end">$150</text><line class="pm-grid" x1="56" x2="504" y1="165.2" y2="165.2"/><text class="pm-tick" x="48" y="169.2" text-anchor="end">$160</text><line class="pm-grid" x1="56" x2="504" y1="128.4" y2="128.4"/><text class="pm-tick" x="48" y="132.4" text-anchor="end">$170</text><line class="pm-grid" x1="56" x2="504" y1="91.6" y2="91.6"/><text class="pm-tick" x="48" y="95.6" text-anchor="end">$180</text><line class="pm-grid" x1="56" x2="504" y1="54.8" y2="54.8"/><text class="pm-tick" x="48" y="58.8" text-anchor="end">$190</text><line class="pm-grid" x1="56" x2="504" y1="18.0" y2="18.0"/><text class="pm-tick" x="48" y="22.0" text-anchor="end">$200</text><text class="pm-tick" x="56.0" y="222" text-anchor="start">Jan</text><text class="pm-tick" x="112.0" y="222" text-anchor="middle">Feb</text><text class="pm-tick" x="168.0" y="222" text-anchor="middle">Mar</text><text class="pm-tick" x="224.0" y="222" text-anchor="middle">Apr</text><text class="pm-tick" x="280.0" y="222" text-anchor="middle">May</text><text class="pm-tick" x="336.0" y="222" text-anchor="middle">Jun</text><text class="pm-tick" x="392.0" y="222" text-anchor="middle">Jul</text><text class="pm-tick" x="448.0" y="222" text-anchor="middle">Aug</text><text class="pm-tick" x="504.0" y="222" text-anchor="end">Sep</text><polyline class="pm-line" fill="none" stroke="#FFCC4D" points="56.0,131.1 112.0,152.3 168.0,108.4 224.0,88.4 280.0,77.1 336.0,57.7 392.0,112.4 448.0,113.7 504.0,113.8"/><circle class="pm-dot" cx="56.0" cy="131.1" r="3.5" fill="#FFCC4D"><title>January 2026: $169</title></circle><circle class="pm-dot" cx="112.0" cy="152.3" r="3.5" fill="#FFCC4D"><title>February 2026: $164</title></circle><circle class="pm-dot" cx="168.0" cy="108.4" r="3.5" fill="#FFCC4D"><title>March 2026: $175</title></circle><circle class="pm-dot" cx="224.0" cy="88.4" r="3.5" fill="#FFCC4D"><title>April 2026: $181</title></circle><circle class="pm-dot" cx="280.0" cy="77.1" r="3.5" fill="#FFCC4D"><title>May 2026: $184</title></circle><circle class="pm-dot pm-peak" cx="336.0" cy="57.7" r="5" fill="#FFCC4D"><title>June 2026: $189</title></circle><circle class="pm-dot" cx="392.0" cy="112.4" r="3.5" fill="#FFCC4D"><title>July 2026: $174</title></circle><circle class="pm-dot" cx="448.0" cy="113.7" r="3.5" fill="#FFCC4D"><title>August 2026: $174</title></circle><circle class="pm-dot" cx="504.0" cy="113.8" r="5" fill="#FFCC4D"><title>September 2026: $174</title></circle><text class="pm-lbl" x="336.0" y="46.7" text-anchor="middle">$189</text><text class="pm-lbl pm-lbl-end" x="504.0" y="102.8" text-anchor="end">$174</text></svg>
+        </figure>
+      </div>
+      <div class="prose">
+        <p>Buyer showings peaked in March and April (the chart above). Closings usually trail the contract by several weeks, so June&rsquo;s closings largely reflect deals negotiated during that spring rush.</p>
+        <p>Read the two charts together. The median sale price shows what a typical home closed for that month. Price per square foot strips out some of the size difference, because bigger homes tend to sell in late spring and smaller ones later in the year.</p>
+        <p>Monthly medians also move with the mix of homes that close. April&rsquo;s median ($310,000) came in below March&rsquo;s ($350,000) because of which homes closed that month&mdash;price per square foot actually rose, from $175 to $181.</p>
+      </div>
+      <details class="season-details">
+        <summary>Monthly prices and sales counts</summary>
+        <div class="table-wrap" tabindex="0" role="region" aria-labelledby="pm-tcap">
+          <table>
+            <caption id="pm-tcap">Qualifying single-family closed sales by closing month, St. Louis County-area school districts, January&ndash;September 2026.</caption>
+            <thead><tr><th scope="col">Closed in</th><th scope="col" class="num">Sales</th><th scope="col" class="num">Median price</th><th scope="col" class="num">Median sq. ft.</th><th scope="col" class="num">Median $/sq. ft.</th></tr></thead>
+            <tbody><tr><th scope="row">January</th><td class="num">188</td><td class="num">$280,000</td><td class="num">1,626</td><td class="num">$169</td></tr><tr><th scope="row">February</th><td class="num">191</td><td class="num">$270,000</td><td class="num">1,582</td><td class="num">$164</td></tr><tr><th scope="row">March</th><td class="num">233</td><td class="num">$350,000</td><td class="num">1,944</td><td class="num">$175</td></tr><tr><th scope="row">April</th><td class="num">339</td><td class="num">$310,000</td><td class="num">1,728</td><td class="num">$181</td></tr><tr><th scope="row">May</th><td class="num">332</td><td class="num">$364,500</td><td class="num">1,953</td><td class="num">$184</td></tr><tr><th scope="row">June</th><td class="num">468</td><td class="num">$379,500</td><td class="num">1,932</td><td class="num">$189</td></tr><tr><th scope="row">July</th><td class="num">407</td><td class="num">$334,000</td><td class="num">1,800</td><td class="num">$174</td></tr><tr><th scope="row">August</th><td class="num">372</td><td class="num">$341,550</td><td class="num">1,896</td><td class="num">$174</td></tr><tr><th scope="row">September</th><td class="num">310</td><td class="num">$302,750</td><td class="num">1,725</td><td class="num">$174</td></tr></tbody>
+          </table>
+        </div>
+      </details>
+      <p class="source-note">Source: MARIS closed single-family sales in the 22 St. Louis County-area school districts, the same 2,868-sale QA-clean dataset used on this page (vacant or owner-occupied), grouped by closing month. October is excluded; only 28 sales had closed by October 5. Historical sales, not current inventory or a forecast.</p>
     </section>
 
     <!-- ══ +$50K ══ -->
