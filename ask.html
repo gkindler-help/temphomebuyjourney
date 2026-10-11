@@ -20,7 +20,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/ask","name":"Ask a St. Louis Real Estate Agent a Question","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Am I actually chatting with George, or a bot?","acceptedAnswer":{"@type":"Answer","text":"It's really George. There's no chatbot and no call center — questions come to George Kindler directly, and he answers them himself."}},{"@type":"Question","name":"Do I have to be ready to buy or sell to ask something?","acceptedAnswer":{"@type":"Answer","text":"No. You don't need to be under contract, pre-approved, or even sure you're moving forward. It's fine to ask a question you're still working out."}},{"@type":"Question","name":"Is this free, and does it commit me to using George as my agent?","acceptedAnswer":{"@type":"Answer","text":"Yes, free, and no, it doesn't. Asking a question here doesn't create any agreement or obligation."}},{"@type":"Question","name":"What if George is offline when I chat?","acceptedAnswer":{"@type":"Answer","text":"Leave your question and how to reach you. George answers these himself and will get back to you — or call, text, or email him directly using the information on this page."}},{"@type":"Question","name":"What if I'd rather not use live chat?","acceptedAnswer":{"@type":"Answer","text":"Call or text 314.435.1087, or email georgeandlizk@gmail.com. Same person, same answer either way."}},{"@type":"Question","name":"Is what I send private?","acceptedAnswer":{"@type":"Answer","text":"What you type is used only to answer your question. No personal information from this page is ever sent to analytics."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Am I actually chatting with George, or a bot?","acceptedAnswer":{"@type":"Answer","text":"It's really George. There's no chatbot and no call center — questions come to George Kindler directly, and he answers them himself."}},{"@type":"Question","name":"Do I have to be ready to buy or sell to ask something?","acceptedAnswer":{"@type":"Answer","text":"No. You don't need to be under contract, pre-approved, or even sure you're moving forward. It's fine to ask a question you're still working out."}},{"@type":"Question","name":"Is this free, and does it commit me to using George as my agent?","acceptedAnswer":{"@type":"Answer","text":"Yes, free, and no, it doesn't. Asking a question here doesn't create any agreement or obligation."}},{"@type":"Question","name":"Will you sell or share my contact information?","acceptedAnswer":{"@type":"Answer","text":"No. Your question and your contact information come to me and stop there. I don't sell them, and I never will. That's different from sites like Zillow, where a Contact Agent form sends your details to an agent who pays Zillow for those connections."}},{"@type":"Question","name":"What if George is offline when I chat?","acceptedAnswer":{"@type":"Answer","text":"Leave your question and how to reach you. George answers these himself and will get back to you — or call, text, or email him directly using the information on this page."}},{"@type":"Question","name":"What if I'd rather not use live chat?","acceptedAnswer":{"@type":"Answer","text":"Call or text 314.435.1087, or email georgeandlizk@gmail.com. Same person, same answer either way."}},{"@type":"Question","name":"Is what I send private?","acceptedAnswer":{"@type":"Answer","text":"What you type is used only to answer your question. No personal information from this page is ever sent to analytics."}}]}</script>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -78,6 +78,13 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(32px,6.4vw,48px);font-we
 .alt-links{display:flex;flex-wrap:wrap;gap:10px;}
 .alt-links .btn{padding:11px 18px;font-size:13.5px;}
 
+.promise{margin-top:40px;border-left:2px solid var(--gold);background:var(--gold-wash);border-radius:0 12px 12px 0;padding:18px 22px 20px;}
+.promise h2{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:10px;}
+.promise p{font-size:15px;line-height:1.65;color:var(--soft);}
+.promise p+p{margin-top:10px;}
+.promise strong{color:#fff;font-weight:600;}
+.promise a{display:inline-block;margin-top:12px;font-size:14px;font-weight:600;color:var(--gold);}
+.promise a:hover{color:#ffd76e;}
 .faq-section{margin-top:48px;border-top:1px solid var(--line);padding-top:30px;}
 .faq-section h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:20px;}
 .faq-item{margin-bottom:20px;}
@@ -141,6 +148,13 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(32px,6.4vw,48px);font-we
     <p class="chat-cta-note">Opens live chat right here on the page. Nothing is sent until you type and send a message.</p>
   </div>
 
+  <section class="promise" aria-labelledby="promise-h">
+    <h2 id="promise-h">Your Question Stays With Me</h2>
+    <p>When you click &ldquo;Contact Agent&rdquo; on Zillow, your name, phone number and email go to a Premier Agent, an agent who pays Zillow for those connections. You become a lead.</p>
+    <p>Here, your question comes to me and stops there. <strong>I don&rsquo;t sell your contact information, and I never will.</strong> Ask what you need to know, take the answer, and decide on your own time.</p>
+    <a href="/articles/truth-about-zillow-stl">How Zillow&rsquo;s Premier Agent program works &rarr;</a>
+  </section>
+
   <section class="alt" aria-labelledby="alt-h">
     <h2 id="alt-h">Would rather not chat?</h2>
     <p>Call, text, or email me instead — same person, same answer either way.</p>
@@ -166,6 +180,10 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(32px,6.4vw,48px);font-we
       <p class="faq-a">Yes, free, and no, it doesn't. Asking a question here doesn't create any agreement or obligation.</p>
     </div>
     <div class="faq-item">
+      <p class="faq-q">Will you sell or share my contact information?</p>
+      <p class="faq-a">No. Your question and your contact information come to me and stop there. I don't sell them, and I never will. That's different from sites like Zillow, where a Contact Agent form sends your details to an agent who pays Zillow for those connections.</p>
+    </div>
+    <div class="faq-item">
       <p class="faq-q">What if George is offline when I chat?</p>
       <p class="faq-a">Leave your question and how to reach you. George answers these himself and will get back to you — or call, text, or email him directly using the information on this page.</p>
     </div>
@@ -186,7 +204,7 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(32px,6.4vw,48px);font-we
   <p style="margin-top:8px;">Content is educational and does not constitute legal, financial, or real estate advice for your specific situation.</p>
 </footer>
 
-<script src="/assets/ask-me.js?v=7" defer></script>
+<script src="/assets/ask-me.js?v=9" defer></script>
 <script>
 /* /ask page logic. Primary path = live chat, opened through the one shared
    Tawk loader in ask-me.js (window.AskMe.openChat) so this page never loads

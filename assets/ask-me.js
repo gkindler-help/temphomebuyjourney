@@ -595,11 +595,14 @@
 
   var AVATAR = '/assets/george-ask.webp';
   var WHO = 'George Kindler · 250+ St. Louis transactions';
-  var NOTES = {
-    buyer: 'You don’t need to be ready to buy. It’s just a question.',
-    seller: 'You don’t need to be ready to sell. It’s just a question.',
-    general: 'You don’t need to be ready to do anything. It’s just a question.'
-  };
+  // Privacy promise shown in every Ask box (mirrors the "Your Question Stays With Me" block on /ask).
+  var PRIVACY = 'Your question stays with me. On Zillow, a “Contact Agent” form goes to an agent who pays for that connection. I never sell your contact information.';
+  var PRIVACY_LINK = '/articles/truth-about-zillow-stl';
+  function privacyHTML() {
+    var self = location.pathname.replace(/\.html$/, '').replace(/\/$/, '') === PRIVACY_LINK;
+    return '<p class="askme-privacy">' + esc(PRIVACY) +
+      (self ? '' : ' <a href="' + PRIVACY_LINK + '">How Zillow’s lead system works</a>') + '</p>';
+  }
 
   var CSS =
     '.askme{margin:40px 0;padding:22px 24px 24px;border:0;border-left:2px solid #ffcc4d;border-radius:0 14px 14px 0;background:linear-gradient(135deg,rgba(255,204,77,.09),rgba(255,204,77,.03));max-width:720px;text-align:left;box-sizing:border-box;}' +
@@ -613,6 +616,10 @@
     '.askme a.askme-btn,.askme a.askme-btn:visited{display:inline-block;background:#ffcc4d;color:#080808;font:700 14px/1.2 "Inter",-apple-system,sans-serif;padding:14px 24px;border:0;border-radius:8px;text-decoration:none;box-shadow:none;}' +
     '.askme a.askme-btn:hover{background:#ffd76e;color:#080808;text-decoration:none;border:0;}' +
     '.askme a.askme-btn:focus-visible{outline:2px solid #ffcc4d;outline-offset:3px;}' +
+    '.askme p.askme-privacy{margin:18px 0 0;padding:14px 0 0;border-top:1px solid rgba(255,204,77,.18);font:400 13px/1.55 "Inter",-apple-system,sans-serif;color:rgba(255,255,255,.7);}' +
+    '.askme p.askme-privacy a,.askme p.askme-privacy a:visited{color:#ffcc4d;text-decoration:none;border:0;white-space:nowrap;}' +
+    '.askme p.askme-privacy a::after{content:" \\2192";}' +
+    '.askme p.askme-privacy a:hover{text-decoration:underline;}' +
     '.askme p.askme-note{margin:12px 0 0;padding:0;font:400 13px/1.5 "Inter",-apple-system,sans-serif;color:rgba(255,255,255,.6);}' +
     /* floating Ask George (bottom-left; the article "Sections" button owns bottom-right) */
     'body.has-askfloat{padding-bottom:84px;}' +
@@ -802,15 +809,16 @@
     aside.setAttribute('aria-labelledby', id);
     var name = (el.getAttribute('data-ask-name') || '').trim();
     var fill = function (t) { return String(t).replace(/\{name\}/g, name || 'this area'); };
-    var note = c.note === false ? '' : (c.note || NOTES[c.intent] || NOTES.general);
+    var note = c.note || '';
     aside.innerHTML =
       '<div class="askme-top"><img class="askme-av" src="' + AVATAR + '" alt="" width="46" height="46" loading="lazy" decoding="async">' +
       '<div><p class="askme-eyebrow">' + esc(c.eyebrow || 'Ask me') + '</p><p class="askme-who">' + esc(WHO) + '</p></div></div>' +
       '<p class="askme-h" id="' + id + '">' + esc(fill(c.headline)) + '</p>' +
       '<p class="askme-p">' + esc(fill(c.support)) + '</p>' +
       '<a class="askme-btn" href="' + esc(href) + '">' + esc(c.button) + '</a>' +
-      (note ? '<p class="askme-note">' + esc(note) + '</p>' : '');
-    aside.querySelector('a').addEventListener('click', function () { remember(key, c.button, c.intent); });
+      (note ? '<p class="askme-note">' + esc(note) + '</p>' : '') +
+      privacyHTML();
+    aside.querySelector('a.askme-btn').addEventListener('click', function () { remember(key, c.button, c.intent); });
     el.parentNode.replaceChild(aside, el);
     // Center it when the surrounding container is much wider than the component
     // or has no side padding (keeps it aligned on every page template).
@@ -836,7 +844,8 @@
       '<p class="askme-h" id="' + id + '">' + esc(p.headline) + '</p>' +
       '<p class="askme-p">' + esc(p.support) + '</p>' +
       '<ul class="askme-opts">' + items + '</ul>' +
-      '<p class="askme-note">' + esc(p.note || NOTES.general) + '</p>';
+      (p.note ? '<p class="askme-note">' + esc(p.note) + '</p>' : '') +
+      privacyHTML();
     var as = aside.querySelectorAll('a.askme-opt');
     for (var i = 0; i < as.length; i++) (function (a) {
       var k = a.getAttribute('data-about');
