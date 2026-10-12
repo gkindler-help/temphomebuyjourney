@@ -86,7 +86,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/school-districts/st-louis-county</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -98,7 +98,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/south-county-st-louis</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -523,12 +523,6 @@
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/listings/101-florwood-court-st-louis-mo</loc>
-    <lastmod>2026-09-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
     <loc>https://stlhomejourney.com/listings/12237-glenpark-drive-maryland-heights-mo</loc>
     <lastmod>2026-09-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -541,44 +535,14 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/listings/12053-la-padera-lane-florissant-mo</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/listings/12258-trailoaks-court-black-jack-mo</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
     <loc>https://stlhomejourney.com/listings/13218-wintergreen-estates-drive-fenton-mo</loc>
     <lastmod>2026-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/listings/3410-brunswick-drive-florissant-mo</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/listings/4347-varano-drive-florissant-mo</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/listings/6766-lesli-mari-court-florissant-mo</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
     <loc>https://stlhomejourney.com/neighborhoods/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -596,7 +560,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/ballwin</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -674,7 +638,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/chesterfield</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -758,7 +722,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/florissant</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -830,7 +794,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/kirkwood</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -872,7 +836,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/mehlville</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -902,7 +866,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/oakville</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1046,7 +1010,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/university-city</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1430,7 +1394,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/south-county-small-towns</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
