@@ -144,13 +144,11 @@ A situation picker (`<div data-ask-path="KEY">`, options in `PATHS` in `/assets/
 | `/sellers/how-investors-calculate-cash-offers/` | seller | `cash-buyer-math` | Have an offer and want to know how they probably got there? | Ask Me to Break Down the Offer | Yes | IMPLEMENTED | 2026-09-28 | Before <section class='related |
 | `/sellers/how-wholesaling-works-missouri/` | seller | `cash-offer` | Have an actual cash offer in front of you? | Ask Me to Look at the Offer | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
 | `/sellers/inherited-house-cash-offer-st-louis/` | seller | `inherited` | Dealing with an inherited house right now? | Ask Me About Your Options | Yes | IMPLEMENTED | 2026-09-28 | Before <section class='related |
-| `/sellers/oakville-cash-offer-guide/` | seller | `cash-offer` | Have an actual cash offer in front of you? | Ask Me to Look at the Offer | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
 | `/sellers/proof-of-funds-cash-buyer-st-louis/` | seller | `cash-offer` | Have an actual cash offer in front of you? | Ask Me to Look at the Offer | Yes | IMPLEMENTED | 2026-09-28 | Before <section class='related |
 | `/sellers/questions-to-ask-cash-buyer-st-louis/` | seller | `cash-offer` | Have an actual cash offer in front of you? | Ask Me to Look at the Offer | Yes | IMPLEMENTED | 2026-09-28 | Before <section class='related |
 | `/sellers/retrading-cash-offer-st-louis/` | seller | `cash-retrade` | Did your cash buyer just lower the offer? | Ask Me to Look at What Changed | Yes | IMPLEMENTED | 2026-09-28 | Before <section class='related |
 | `/sellers/sell-house-with-tenants-st-louis/` | seller | `tenants` | Trying to sell a house with tenants? | Ask Me About the Property | Yes | IMPLEMENTED | 2026-09-28 | Before <section class='related |
 | `/sellers/sell-vacant-house-st-louis/` | seller | `vacant` | Carrying a vacant house right now? | Ask Me What I’d Do With It | Yes | IMPLEMENTED | 2026-09-28 | Before <section class='related |
-| `/sellers/south-county-cash-offers/` | seller | `cash-offer` | Have an actual cash offer in front of you? | Ask Me to Look at the Offer | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
 | `/sellers/why-investors-ask-why-selling/` | seller | `cash-offer` | Have an actual cash offer in front of you? | Ask Me to Look at the Offer | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
 | `/sellers/why-sellers-accept-lower-cash-offers/` | seller | `cash-convenience` | Want to know what convenience is costing you? | Ask Me to Run the Difference | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='faq-section'> |
 

@@ -1318,34 +1318,6 @@ window.ARTICLE_REGISTRY = {
       toolLink: "/tools/cash-offer-decoder.html",
       published: true
     },
-    {
-      slug: "south-county-cash-offers",
-      title: "South County Cash Offers",
-      shortTitle: "South County Cash Offers",
-      description: "Cash offers in Oakville, Mehlville, Affton, Lemay, Concord, and nearby South County communities compared against local buyer demand and as-is MLS alternatives.",
-      pillLabel: "South County",
-      audience: "seller",
-      series: "cash-offer-hub",
-      isHub: false,
-      chapters: [],
-      tags: ["selling", "cash-offer", "south-county", "oakville", "mehlville", "affton"],
-      toolLink: "/tools/cash-offer-decoder.html",
-      published: true
-    },
-    {
-      slug: "oakville-cash-offer-guide",
-      title: "Oakville Cash Offer Guide",
-      shortTitle: "Oakville Cash Offers",
-      description: "Hyperlocal guide for Oakville sellers comparing investor math against Oakville buyer demand, school district pull, and as-is MLS alternatives before signing.",
-      pillLabel: "Oakville",
-      audience: "seller",
-      series: "cash-offer-hub",
-      isHub: false,
-      chapters: [],
-      tags: ["selling", "cash-offer", "oakville", "south-county", "local"],
-      toolLink: "/tools/cash-offer-decoder.html",
-      published: true
-    },
 
     /* ── EXPIRED LISTING CLUSTER ── */
     {
