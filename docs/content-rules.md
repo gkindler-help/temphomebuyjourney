@@ -10,14 +10,13 @@ Pages are built to be quoted by AI tools and still read well top to bottom.
 - **Subtopics are the questions people actually ask.** Each one is a heading. Write it the way a person would type it.
 - **Answer first.** Open with a sentence or two that can be quoted on its own. Then give the proof: a 2026 number, a table or a rule. Then George's take, in his voice.
 - **Order the questions for the reader.** Follow the path a reader takes through the topic, for example the total, then each cost, then what you control. Don't use the order the questions were written in.
-- **Top of the page: 3 to 5 headline questions** that sum up the page. Don't put a wall of questions there.
-- **Make section headings questions where it reads naturally.** The answer sits under its own heading once. Don't give it as a quick answer and then repeat it as a section.
-- **Related questions sit as subheadings (h3) under the section they belong to.**
-- **Bottom of the page: only the edge cases** that don't fit a section.
+- **Articles follow the seller-page progression** (like "When to Lower the Price"): a boxed Quick Answers section at the top with about 5 headline questions and a one-line source note; then the article itself, with descriptive or story headings for the detail, tables, steps and George's examples; then a boxed "More Questions" section at the end, grouped under short labels, for the rest of the page's questions. Don't repeat a question from the top box in the end box or as a section heading.
+- **Community and hub pages use the Oakville format:** one larger Quick Answers block near the top (about 8 to 13 questions), each with its own anchor id and a "See ... →" link to the detail section.
+- **Every Quick Answers answer** opens with the direct answer and a specific number, source or rule. When another page owns the question, give the short answer and link to the owner.
 - **Stories and data keep plain headings.** George's case studies, such as the Imperial listing, and data tables don't get forced into questions.
-- **Each question lives on one page.** Anywhere else it comes up, give one line and a link to the page that owns it. This prevents cannibalization.
+- **Each question lives on one page.** Its full answer and detail sit on the page that owns it. Another page's Quick Answers block can give a short answer with a "See ... →" link to the owner; anywhere else, give one line and a link. This prevents cannibalization.
 - **Only add questions you can answer with evidence or George's own experience.** No padding. As a guide, focused articles carry about 12 to 18 questions, and community pages and hubs about 20 to 35.
-- **FAQ schema matches what's visible.** Every question in FAQPage JSON-LD appears on the page, in reading order. No schema-only questions.
+- **FAQ schema matches what's visible.** FAQPage JSON-LD holds the questions in the top and end boxes (and any question headings), in reading order. No schema-only questions.
 
 ## 2. Data and accuracy
 
