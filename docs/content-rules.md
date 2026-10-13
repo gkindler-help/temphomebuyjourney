@@ -41,3 +41,5 @@ Pages are built to be quoted by AI tools and still read well top to bottom.
 - **Concessions:** never use one to generate a contract. Concessions belong in repair negotiations after the inspection, where they typically run $2,000 to $8,000. Homes that sell over asking rarely give one unless there's a major repair.
 - **Price reduction vs. concession or agent bonus:** lower the price. Buyers move first on price, then on inspections.
 - **Property taxes:** listing taxes are the seller's most recent bill. Use them to compare areas, then confirm the exact address with the St. Louis County Collector of Revenue.
+- **Earnest money:** about 1% is typical for a retail sale with a financed buyer. On cash deals George has always recommended 10%, and sellers taking an off-market offer should ask for more.
+- **Cash offers:** in George's experience, wholesale cash offers land around 50% of market value, rarely more than 60 to 65 cents on the dollar.
