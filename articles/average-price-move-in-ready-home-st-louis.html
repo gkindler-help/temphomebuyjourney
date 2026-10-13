@@ -73,6 +73,7 @@
     .data-table tr:last-child td{border-bottom:none;}
     .data-table td:first-child{color:var(--text);}
     .data-table .hl td{background:rgba(255,204,77,.05);color:var(--gold);}
+    @media (max-width:480px){.data-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}.data-table th,.data-table td{padding:9px 8px;}}
     .tradeoff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
     @media(max-width:600px){.tradeoff-grid{grid-template-columns:1fr;}}
     .tradeoff-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 16px;}
