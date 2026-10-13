@@ -4,6 +4,37 @@
 /.vscode/*                        /    301
 /assets/infographics/README.md    /    301
 
+# Cash-offer cluster consolidated into owner pages (2026-10-13)
+/articles/should-you-accept-cash-offer-stl                /articles/what-you-lose-with-cash-offer-stl    301
+/articles/should-you-accept-cash-offer-stl.html           /articles/what-you-lose-with-cash-offer-stl    301
+/sellers/cash-offer-vs-listing-st-louis                   /articles/what-you-lose-with-cash-offer-stl#options    301
+/sellers/cash-offer-vs-listing-st-louis/                  /articles/what-you-lose-with-cash-offer-stl#options    301
+/sellers/cash-offer-vs-listing-st-louis/index.html        /articles/what-you-lose-with-cash-offer-stl#options    301
+/sellers/why-sellers-accept-lower-cash-offers             /articles/what-you-lose-with-cash-offer-stl#why-sellers-accept    301
+/sellers/why-sellers-accept-lower-cash-offers/            /articles/what-you-lose-with-cash-offer-stl#why-sellers-accept    301
+/sellers/why-sellers-accept-lower-cash-offers/index.html  /articles/what-you-lose-with-cash-offer-stl#why-sellers-accept    301
+/sellers/inherited-house-cash-offer-st-louis              /articles/what-you-lose-with-cash-offer-stl#inherited    301
+/sellers/inherited-house-cash-offer-st-louis/             /articles/what-you-lose-with-cash-offer-stl#inherited    301
+/sellers/inherited-house-cash-offer-st-louis/index.html   /articles/what-you-lose-with-cash-offer-stl#inherited    301
+/sellers/sell-house-with-tenants-st-louis                 /articles/what-you-lose-with-cash-offer-stl#tenants    301
+/sellers/sell-house-with-tenants-st-louis/                /articles/what-you-lose-with-cash-offer-stl#tenants    301
+/sellers/sell-house-with-tenants-st-louis/index.html      /articles/what-you-lose-with-cash-offer-stl#tenants    301
+/sellers/sell-vacant-house-st-louis                       /articles/what-you-lose-with-cash-offer-stl#vacant    301
+/sellers/sell-vacant-house-st-louis/                      /articles/what-you-lose-with-cash-offer-stl#vacant    301
+/sellers/sell-vacant-house-st-louis/index.html            /articles/what-you-lose-with-cash-offer-stl#vacant    301
+/sellers/how-investors-calculate-cash-offers              /articles/how-cash-buyers-calculate-offers-stl    301
+/sellers/how-investors-calculate-cash-offers/             /articles/how-cash-buyers-calculate-offers-stl    301
+/sellers/how-investors-calculate-cash-offers/index.html   /articles/how-cash-buyers-calculate-offers-stl    301
+/sellers/how-wholesaling-works-missouri                   /sellers/assignment-contract-real-estate-missouri/    301
+/sellers/how-wholesaling-works-missouri/                  /sellers/assignment-contract-real-estate-missouri/    301
+/sellers/how-wholesaling-works-missouri/index.html        /sellers/assignment-contract-real-estate-missouri/    301
+/sellers/questions-to-ask-cash-buyer-st-louis             /sellers/proof-of-funds-cash-buyer-st-louis/#questions    301
+/sellers/questions-to-ask-cash-buyer-st-louis/            /sellers/proof-of-funds-cash-buyer-st-louis/#questions    301
+/sellers/questions-to-ask-cash-buyer-st-louis/index.html  /sellers/proof-of-funds-cash-buyer-st-louis/#questions    301
+/sellers/why-investors-ask-why-selling                    /sellers/proof-of-funds-cash-buyer-st-louis/#why-selling    301
+/sellers/why-investors-ask-why-selling/                   /sellers/proof-of-funds-cash-buyer-st-louis/#why-selling    301
+/sellers/why-investors-ask-why-selling/index.html         /sellers/proof-of-funds-cash-buyer-st-louis/#why-selling    301
+
 # South County and Oakville cash-offer guides folded into the South County selling page (2026-10-13)
 /sellers/south-county-cash-offers             /articles/selling-home-south-st-louis-county#cash-offer    301
 /sellers/south-county-cash-offers/            /articles/selling-home-south-st-louis-county#cash-offer    301

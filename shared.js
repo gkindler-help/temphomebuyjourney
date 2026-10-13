@@ -1978,9 +1978,8 @@ function closeDrawer() {
         articles: [
           { title: "5 Repairs That Won't Help You Sell", url: "articles/what-not-to-repair-before-selling-stl-pricing-strategy" },
           { title: "Selling in South County — Complete Guide", url: "articles/selling-home-south-st-louis-county" },
-          { title: "Should You Accept a Cash Offer?", url: "articles/should-you-accept-cash-offer-stl" },
           { title: "How Cash Buyers Calculate Offers", url: "articles/how-cash-buyers-calculate-offers-stl" },
-          { title: "What You Lose With a Cash Offer", url: "articles/what-you-lose-with-cash-offer-stl" },
+          { title: "Should You Take a Cash Offer?", url: "articles/what-you-lose-with-cash-offer-stl" },
           { title: "What Will I Net Selling My Home?", url: "articles/what-will-i-net-selling-stl" },
           { title: "What Does It Cost to Sell in St. Louis?", url: "articles/cost-to-sell-home-stl" },
           { title: "Who Pays the Buyer Agent Commission?", url: "articles/who-pays-buyer-agent-commission-stl" }
