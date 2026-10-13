@@ -42,4 +42,5 @@ Pages are built to be quoted by AI tools and still read well top to bottom.
 - **Price reduction vs. concession or agent bonus:** lower the price. Buyers move first on price, then on inspections.
 - **Property taxes:** listing taxes are the seller's most recent bill. Use them to compare areas, then confirm the exact address with the St. Louis County Collector of Revenue.
 - **Earnest money:** about 1% is typical for a retail sale with a financed buyer. On cash deals George has always recommended 10%, and sellers taking an off-market offer should ask for more.
+- **Down payment assistance:** MHDC (First Place and Next Step) is the primary down payment program for St. Louis buyers; keep the focus there. Local City or County programs get a short summary, a "subject to change" note and a link to the program's own site.
 - **Cash offers:** in George's experience, wholesale cash offers land around 50% of market value, rarely more than 60 to 65 cents on the dollar.
