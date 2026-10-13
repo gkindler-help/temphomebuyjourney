@@ -1,6 +1,6 @@
 # Ask Me — Conversion Map
 
-Source of truth for which pages carry the **Ask Me** CTA. **263 pages** carry it as of 2026-09-28. CTA copy lives in `/assets/ask-me.js` (`CONTEXTS`); this file tracks rollout.
+Source of truth for which pages carry the **Ask Me** CTA. **267 pages** carry it as of 2026-10-13. CTA copy lives in `/assets/ask-me.js` (`CONTEXTS`); this file tracks rollout.
 
 **How it works:** a page gets `<div data-ask-me="CONTEXT_KEY" [data-ask-name="Affton"]>…</div>` plus `<script src="/assets/ask-me.js?v=2" defer></script>`. The component shows George’s photo, the headline, supporting line and button (a context can add an optional `note`). Every box (single-button and path) also ends with the privacy promise from `PRIVACY` in `ask-me.js`, linking to the Zillow Premier Agent article except on that article itself. The button links to `/ask?about=CONTEXT_KEY&from=/page-path`; the source title and URL are carried automatically.
 
@@ -285,10 +285,13 @@ A situation picker (`<div data-ask-path="KEY">`, options in `PATHS` in `/assets/
 | URL | Intent | Context | CTA headline | CTA button | Address field | Status | Implemented | Placement |
 |---|---|---|---|---|---|---|---|---|
 | `/school-districts/affton-school-district` | buyer | `school-district` | Found a house you think is in Affton School District? | Ask Me About the Address | Yes | IMPLEMENTED | 2026-09-28 | Before <!-- CTA --> |
+| `/school-districts/bayless-school-district` | buyer | `school-district` | Found a house you think is in Bayless School District? | Ask Me About the Address | Yes | IMPLEMENTED | 2026-10-13 | After the All School Districts back link |
+| `/school-districts/brentwood-school-district` | buyer | `school-district` | Found a house you think is in Brentwood School District? | Ask Me About the Address | Yes | IMPLEMENTED | 2026-10-13 | After the All School Districts back link |
 | `/school-districts/clayton-school-district` | buyer | `school-district` | Found a house you think is in Clayton School District? | Ask Me About the Address | Yes | IMPLEMENTED | 2026-09-28 | Before <!-- CTA --> |
 | `/school-districts/ferguson-florissant-school-district` | buyer | `school-district` | Found a house you think is in Ferguson-Florissant School District? | Ask Me About the Address | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='cta-block'> |
 | `/school-districts/fort-zumwalt-school-district` | buyer | `school-district` | Found a house you think is in Fort Zumwalt School District? | Ask Me About the Address | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='cta-block'> |
 | `/school-districts/francis-howell-school-district` | buyer | `school-district` | Found a house you think is in Francis Howell School District? | Ask Me About the Address | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='cta-block'> |
+| `/school-districts/hancock-place-school-district` | buyer | `school-district` | Found a house you think is in Hancock Place School District? | Ask Me About the Address | Yes | IMPLEMENTED | 2026-10-13 | After the All School Districts back link |
 | `/school-districts/hazelwood-school-district` | buyer | `school-district` | Found a house you think is in Hazelwood School District? | Ask Me About the Address | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='cta-block'> |
 | `/school-districts/kirkwood-school-district` | buyer | `school-district` | Found a house you think is in Kirkwood School District? | Ask Me About the Address | Yes | IMPLEMENTED | 2026-09-28 | Before <!-- CTA --> |
 | `/school-districts/ladue-school-district` | buyer | `school-district` | Found a house you think is in Ladue School District? | Ask Me About the Address | Yes | IMPLEMENTED | 2026-09-28 | Before <!-- CTA --> |
@@ -302,6 +305,7 @@ A situation picker (`<div data-ask-path="KEY">`, options in `PATHS` in `/assets/
 | `/school-districts/rockwood-school-district` | buyer | `school-district` | Found a house you think is in Rockwood School District? | Ask Me About the Address | Yes | IMPLEMENTED | 2026-09-28 | Before <!-- CTA --> |
 | `/school-districts/st-louis-public-schools` | buyer | `school-district` | Found a house you think is in St. Louis Public Schools (SLPS)? | Ask Me About the Address | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='cta-block'> |
 | `/school-districts/university-city-school-district` | buyer | `school-district` | Found a house you think is in University City School District? | Ask Me About the Address | Yes | IMPLEMENTED | 2026-09-28 | Before <div class='cta-block'> |
+| `/school-districts/valley-park-school-district` | buyer | `school-district` | Found a house you think is in Valley Park School District? | Ask Me About the Address | Yes | IMPLEMENTED | 2026-10-13 | After the All School Districts back link |
 | `/school-districts/webster-groves-school-district` | buyer | `school-district` | Found a house you think is in Webster Groves School District? | Ask Me About the Address | Yes | IMPLEMENTED | 2026-09-28 | Before <!-- CTA --> |
 
 ## ZIP codes (6)
