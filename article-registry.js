@@ -214,6 +214,20 @@ window.ARTICLE_REGISTRY = {
       published: true
     },
     {
+      slug: "st-louis-buyers-bigger-problem-than-rates",
+      title: "Is Now a Good Time to Buy a House in St. Louis?",
+      shortTitle: "Good Time to Buy?",
+      description: "It depends on your budget, price range and whether you have a house to sell. 2026 sales by month, price range and days on market.",
+      pillLabel: "Buy Now or Wait?",
+      audience: "buyer",
+      series: "affordability",
+      isHub: false,
+      chapters: [1],
+      tags: ["affordability", "timing", "first-time-buyer", "decision", "market"],
+      toolLink: null,
+      published: true
+    },
+    {
       slug: "renting-vs-buying-stl",
       title: "Renting vs. Buying a Home in St. Louis: What the Numbers Actually Show",
       shortTitle: "Rent vs. Buy in STL",
