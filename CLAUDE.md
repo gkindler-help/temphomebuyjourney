@@ -7,4 +7,5 @@ Before you write or rebuild any page, read and follow `docs/content-rules.md`. I
 Workflow:
 - Merge only when George says "push" or "merge."
 - Keep scratch and proofreading files out of the repo.
+- Never publish directions or internal notes on the public site. Any new internal file (notes, rules, editor settings) must be blocked with a 301 to `/` at the top of `_redirects`.
 - Every page must validate JSON-LD and have no overflow at 390px.
