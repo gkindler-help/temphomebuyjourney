@@ -1,3 +1,9 @@
+# Internal notes and editor files: never served publicly (redirects always win over files)
+/CLAUDE.md                        /    301
+/docs/*                           /    301
+/.vscode/*                        /    301
+/assets/infographics/README.md    /    301
+
 # South County and Oakville cash-offer guides folded into the South County selling page (2026-10-13)
 /sellers/south-county-cash-offers             /articles/selling-home-south-st-louis-county#cash-offer    301
 /sellers/south-county-cash-offers/            /articles/selling-home-south-st-louis-county#cash-offer    301
