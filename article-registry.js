@@ -245,7 +245,7 @@ window.ARTICLE_REGISTRY = {
       slug: "first-time-buyer-programs-stl",
       title: "First-Time Home Buyer Programs in St. Louis: 2026 Guide",
       shortTitle: "First-Time Buyer Programs STL",
-      description: "MHDC First Place and Next Step, the City's HomeSTL, County assistance and FHA, VA and USDA loans: who qualifies and which to check first.",
+      description: "MHDC First Place and Next Step are the main down payment programs for St. Louis buyers: who qualifies, 2026 limits, and local and federal options.",
       pillLabel: "First-Time Buyer Programs",
       audience: "buyer",
       series: "affordability",
