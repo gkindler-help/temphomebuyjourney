@@ -1,3 +1,9 @@
+# Internal notes and editor files: never served publicly (redirects always win over files)
+/CLAUDE.md                        /    301
+/docs/*                           /    301
+/.vscode/*                        /    301
+/assets/infographics/README.md    /    301
+
 # Consolidated into the Oakville pillar (2026-10-07)
 /articles/buying-a-home-in-oakville-mo       /neighborhoods/oakville     301
 /articles/buying-a-home-in-oakville-mo.html  /neighborhoods/oakville     301
