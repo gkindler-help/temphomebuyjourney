@@ -7,6 +7,17 @@ George's direction: sewer and fire districts drive many of the inspections acros
 
 Status key: **CONFIRMED** = an official page says it · **PARTIAL** = official page says something but not the full rule · **OPEN** = not found; ask George or call
 
+## 0. Scope and tiers (George, 2026-10-15)
+
+George has worked the **I-55 corridor from the South County border down to Pevely**. He won't have first-hand answers for the rest of Jefferson County.
+
+- **Tier 1, George's corridor: Arnold, Imperial, Barnhart, Pevely.** Full treatment: home rules, 2026 sales data, George's experience where he has it. Close the gaps with four calls:
+  1. Antonia FPD (636-948-4433): residential inspection at sale for Imperial/Barnhart? Fee, process?
+  2. Rock Creek PSD (636-464-3305): does a home sale trigger the Private Lateral Inspection? Validity, fee?
+  3. Pevely building department (301 Main St): does an owner-occupied resale need a city occupancy inspection?
+  4. Barnhart: which fire and sewer districts serve it?
+- **Tier 2, outside the corridor: Festus, Crystal City, Hillsboro, De Soto, House Springs, High Ridge, Cedar Hill.** Publish only what official sources state, as facts with the authority's link and phone number. Where nothing is published, tell the reader who to call; never write "not confirmed" or "working to verify" on the public page. No George-experience claims on these pages.
+
 ## 1. Town matrix
 
 | Town | Status | City/county occupancy inspection at sale | Fire district(s) | Fire district resale inspection | Sewer |
@@ -52,7 +63,7 @@ Not yet a page, but relevant: **Byrnes Mill (city)** — occupancy inspection re
 - No county **sale-triggered** septic inspection found. State: local agencies mostly don't inspect at transfer; buyers/lenders hire a **DHSS-licensed** inspector or evaluator. Inspection (with hydraulic load test) is more thorough than an evaluation. (CONFIRMED, MO DHSS)
 - Do not use Jefferson County, Colorado or Iowa material (search results mix them in).
 
-## 5. Questions for George
+## 5. Open questions (Tier 1 calls above first; the rest only if a Tier 2 page needs them)
 1. Which fire districts actually require a resale inspection in practice? (Antonia, High Ridge, Cedar Hill, Dunklin, Goldman, Joachim-Plattin, De Soto Rural)
 2. Does Rock Creek PSD's Private Lateral Inspection get triggered at sale? Any other sewer district with a sale requirement (Northeast, Jeffco PSD)?
 3. Pevely and Hillsboro: do owner-occupied resales need a city inspection?
