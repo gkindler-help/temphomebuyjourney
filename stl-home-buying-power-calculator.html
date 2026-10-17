@@ -315,6 +315,8 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
 </div>
 
 <script>
+const NB_PAGES=new Set(["affton","arnold","ballwin","barnhart","bellefontaine-neighbors","benton-park","berkeley","bevo","black-jack","boulevard-heights","bridgeton","carondelet","cedar-hill","central-west-end","champ","chesterfield","clayton","concord","cottleville","crestwood","crystal-city","crystal-lake-park","dardenne-prairie","de-soto","dellwood","dogtown","dutchtown","ferguson","festus","florissant","forest-park-southeast","fox-park","gravois-park","green-park","hazelwood","high-ridge","hillsboro","house-springs","imperial","jennings","josephville","kirkwood","lafayette-square","lake-st-louis","lemay","lindenwood-park","maplewood","mckinley-heights","mehlville","moline-acres","mt-pleasant","north-county-small-towns","northampton","o-fallon","oakville","olympian-village","parkdale","patch","peaceful-village","pevely","princeton-heights","sappington","scotsdale","shaw","soulard","south-county-small-towns","southampton","southwest-garden","spanish-lake","st-ann","st-charles","st-john","st-louis-hills","st-paul","st-peters","sunset-hills","the-hill","tower-grove-east","tower-grove-south","university-city","webster-groves","weldon-spring","weldon-spring-heights","wentzville","west-alton","woodson-terrace"]);const NB_ALIAS={"bevo-mill":"bevo","desoto":"de-soto","concord-tesson":"concord","forest-park-s":"forest-park-southeast","u-city-olivette":"university-city"};function nbSlug(x){let s=String(x).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');s=NB_ALIAS[s]||s;if(!NB_PAGES.has(s))s=s.replace(/-(n|s|e|w|sw)$/,'');s=NB_ALIAS[s]||s;return NB_PAGES.has(s)?s:null;}
+
 // CONSTANTS
 const FHA_LIMIT_MO = 541287;
 const FHA_MIP_UPFRONT = 0.0175;
@@ -686,7 +688,7 @@ function runPhase1() {
                   }
                   ${!m.usedBand && sqftBand ? `<div class="detail-line" style="color:var(--text-dim);font-size:11px;margin-top:4px">Note: No matches in ${SQFT_LABELS[sqftBand]} range — showing all sizes</div>` : ''}
                 </div>
-                <a href="/neighborhoods/${m.city.toLowerCase().replace(/[^a-z0-9]+/g,'-')}" class="neighborhood-link">View Neighborhood Guide →</a>
+                ${nbSlug(m.city) ? `<a href="/neighborhoods/${nbSlug(m.city)}" class="neighborhood-link">View Neighborhood Guide →</a>` : ''}
               </div>
             `}).join('')}
           </div>
