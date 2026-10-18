@@ -1890,21 +1890,21 @@ function closeDrawer() {
         tag: "Buyers",
         articles: [
           { title: "Do You Need a Buyer's Agent?", url: "articles/do-i-need-a-buyers-agent-stl" },
-          { title: "What a Buyer's Agent Actually Does", url: "articles/what-buyer-agent-actually-does-stl" },
-          { title: "How to Interview a Buyer's Agent", url: "articles/how-to-interview-buyers-agent-stl" },
-          { title: "Red Flags of a Bad Buyer's Agent", url: "articles/red-flags-bad-buyer-agent-stl" },
-          { title: "NAR Settlement: What Changed", url: "articles/nar-settlement-buyer-representation-stl" }
+          { title: "What a Buyer's Agent Actually Does", url: "/articles/do-i-need-a-buyers-agent-stl#agent-job" },
+          { title: "How to Interview a Buyer's Agent", url: "/articles/do-i-need-a-buyers-agent-stl#interview-questions" },
+          { title: "Red Flags of a Bad Buyer's Agent", url: "/articles/do-i-need-a-buyers-agent-stl#red-flags" },
+          { title: "NAR Settlement: What Changed", url: "/articles/who-pays-buyer-agent-commission-stl#for-buyers" }
         ]
       },
       {
         label: "The Truth About Zillow",
         tag: "Buyers & Sellers",
         articles: [
-          { title: "The Truth About Zillow in St. Louis", url: "articles/truth-about-zillow-stl" },
-          { title: "How Zillow Pay-to-Play Works", url: "articles/zillow-pay-to-play-system" },
+          { title: "The Truth About Zillow in St. Louis", url: "/articles/what-happens-when-you-click-zillow" },
+          { title: "How Zillow Pay-to-Play Works", url: "/articles/what-happens-when-you-click-zillow#how-zillow-makes-money" },
           { title: "What Happens When You Click on Zillow", url: "articles/what-happens-when-you-click-zillow" },
           { title: "Is the Zestimate Accurate in St. Louis?", url: "articles/zillow-zestimate-accurate-stl" },
-          { title: "How to Use Zillow Smartly", url: "articles/how-to-use-zillow-without-getting-used" }
+          { title: "How to Use Zillow Smartly", url: "/articles/what-happens-when-you-click-zillow#use-without-getting-used" }
         ]
       },
       {
@@ -1923,7 +1923,7 @@ function closeDrawer() {
           { title: "Buyer Closing Costs in St. Louis", url: "articles/buyer-closing-costs-st-louis" },
           { title: "Renting vs. Buying in St. Louis", url: "articles/renting-vs-buying-stl" },
           { title: "First-Time Buyer Programs", url: "articles/first-time-buyer-programs-stl" },
-          { title: "Most Affordable Zip Codes (2026)", url: "articles/most-affordable-zip-codes-stl-2026" }
+          { title: "Most Affordable Zip Codes (2026)", url: "/articles/stl-affordability-by-zip-code#q-most-affordable" }
         ]
       },
       {
@@ -1935,7 +1935,7 @@ function closeDrawer() {
           { title: "South County Neighborhoods by Price", url: "articles/south-county-stl-neighborhoods-by-price" },
           { title: "Oakville Home Buying Guide (2026 Sales Data)", url: "neighborhoods/oakville" },
           { title: "Lindbergh vs. Mehlville School Districts", url: "articles/lindbergh-vs-mehlville-school-district-stl" },
-          { title: "Mehlville vs. Oakville vs. Concord", url: "articles/mehlville-vs-oakville-vs-concord-stl" }
+          { title: "Mehlville vs. Oakville vs. Concord", url: "/south-county-st-louis#sc-q-oak-mehl" }
         ]
       },
       {
@@ -1969,7 +1969,7 @@ function closeDrawer() {
         tag: "Buyers",
         articles: [
           { title: "$30K Price Reduction Case Study", url: "articles/st-louis-home-price-reduction-negotiation" },
-          { title: "Average Price Reduction After Inspection", url: "articles/average-price-reduction-after-inspection-st-louis" }
+          { title: "Average Price Reduction After Inspection", url: "/articles/repair-costs-affect-offer-price-stl#after-inspection" }
         ]
       },
       {

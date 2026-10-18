@@ -597,7 +597,7 @@
   var WHO = 'George Kindler · 250+ St. Louis transactions';
   // Privacy promise shown in every Ask box (mirrors the "Your Question Stays With Me" block on /ask).
   var PRIVACY = 'Your question stays with me. On Zillow, a “Contact Agent” form goes to an agent who pays for that connection. I never sell your contact information.';
-  var PRIVACY_LINK = '/articles/truth-about-zillow-stl';
+  var PRIVACY_LINK = '/articles/what-happens-when-you-click-zillow';
   function privacyHTML() {
     var self = location.pathname.replace(/\.html$/, '').replace(/\/$/, '') === PRIVACY_LINK;
     return '<p class="askme-privacy">' + esc(PRIVACY) +

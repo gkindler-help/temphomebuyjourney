@@ -4,6 +4,30 @@
 /.vscode/*                        /    301
 /assets/infographics/README.md    /    301
 
+# Older articles folded into owner pages (2026-10-18)
+/articles/truth-about-zillow-stl /articles/what-happens-when-you-click-zillow 301
+/articles/truth-about-zillow-stl.html /articles/what-happens-when-you-click-zillow 301
+/articles/zillow-pay-to-play-system /articles/what-happens-when-you-click-zillow#how-zillow-makes-money 301
+/articles/zillow-pay-to-play-system.html /articles/what-happens-when-you-click-zillow#how-zillow-makes-money 301
+/articles/how-to-use-zillow-without-getting-used /articles/what-happens-when-you-click-zillow#use-without-getting-used 301
+/articles/how-to-use-zillow-without-getting-used.html /articles/what-happens-when-you-click-zillow#use-without-getting-used 301
+/articles/what-buyer-agent-actually-does-stl /articles/do-i-need-a-buyers-agent-stl#agent-job 301
+/articles/what-buyer-agent-actually-does-stl.html /articles/do-i-need-a-buyers-agent-stl#agent-job 301
+/articles/red-flags-bad-buyer-agent-stl /articles/do-i-need-a-buyers-agent-stl#red-flags 301
+/articles/red-flags-bad-buyer-agent-stl.html /articles/do-i-need-a-buyers-agent-stl#red-flags 301
+/articles/how-to-interview-buyers-agent-stl /articles/do-i-need-a-buyers-agent-stl#interview-questions 301
+/articles/how-to-interview-buyers-agent-stl.html /articles/do-i-need-a-buyers-agent-stl#interview-questions 301
+/articles/nar-settlement-buyer-representation-stl /articles/who-pays-buyer-agent-commission-stl#for-buyers 301
+/articles/nar-settlement-buyer-representation-stl.html /articles/who-pays-buyer-agent-commission-stl#for-buyers 301
+/articles/average-price-reduction-after-inspection-st-louis /articles/repair-costs-affect-offer-price-stl#after-inspection 301
+/articles/average-price-reduction-after-inspection-st-louis.html /articles/repair-costs-affect-offer-price-stl#after-inspection 301
+/articles/most-affordable-zip-codes-stl-2026 /articles/stl-affordability-by-zip-code#q-most-affordable 301
+/articles/most-affordable-zip-codes-stl-2026.html /articles/stl-affordability-by-zip-code#q-most-affordable 301
+/articles/mehlville-vs-oakville-vs-concord-stl /south-county-st-louis#sc-q-oak-mehl 301
+/articles/mehlville-vs-oakville-vs-concord-stl.html /south-county-st-louis#sc-q-oak-mehl 301
+/articles/average-price-move-in-ready-home-st-louis /articles/fixer-upper-vs-move-in-ready-st-louis#move-in-ready 301
+/articles/average-price-move-in-ready-home-st-louis.html /articles/fixer-upper-vs-move-in-ready-st-louis#move-in-ready 301
+
 # Cash-offer cluster consolidated into owner pages (2026-10-13)
 /articles/should-you-accept-cash-offer-stl                /articles/what-you-lose-with-cash-offer-stl    301
 /articles/should-you-accept-cash-offer-stl.html           /articles/what-you-lose-with-cash-offer-stl    301
