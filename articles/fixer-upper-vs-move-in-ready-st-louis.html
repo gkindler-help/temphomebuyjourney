@@ -97,6 +97,14 @@ a{color:var(--gold);text-decoration:none;}
 .related-card-label{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:5px}
 .related-card-title{font-size:.88rem;font-weight:600;color:var(--text);line-height:1.4}
 @media(max-width:600px){.art-layout{padding:0 16px 64px}.art-title{font-size:1.5rem}}
+.lp-quick{border:1px solid rgba(255,204,77,.25);background:rgba(255,204,77,.04);border-radius:12px;padding:4px 20px 12px;margin:8px 0 40px;}
+.lp-quick h2{margin-top:24px !important;font-size:1.35rem !important;}
+.lp-qa{border-top:1px solid rgba(255,255,255,.08);padding:4px 0 0;}
+.lp-qa h3{margin:16px 0 8px !important;font-size:1.02rem !important;color:#fff !important;font-family:inherit;line-height:1.4;}
+.lp-qa p{margin:0 0 12px !important;font-size:.95rem !important;line-height:1.7;}
+.lp-qa p a,.lp-note a{color:#ffcc4d;font-weight:600;text-decoration:none;}
+p.lp-group{font-size:11px !important;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ffcc4d !important;margin:22px 0 2px !important;}
+p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 </style>
 <script>
 /* GA4 Event Tracking — STL Home Journey */
@@ -173,6 +181,7 @@ a{color:var(--gold);text-decoration:none;}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/articles/fixer-upper-vs-move-in-ready-st-louis","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
 <link rel="stylesheet" href="/assets/real-deal.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"STL Home Journey","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"Buyer Guides","item":"https://stlhomejourney.com/articles/"},{"@type":"ListItem","position":3,"name":"Fixer Upper vs. Move-In Ready","item":"https://stlhomejourney.com/articles/fixer-upper-vs-move-in-ready-st-louis"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does “move-in ready” mean in St. Louis?", "acceptedAnswer": {"@type": "Answer", "text": "Structural first, cosmetic second. A working HVAC system, a roof with life left, no active basement water, no major electrical red flags or foundation movement, and a house likely to get through financing and appraisal without drama. It doesn’t mean luxury finishes; a clean 1998 ranch with older countertops but solid systems can qualify. What move-in ready means"}}, {"@type": "Question", "name": "What does a move-in-ready home cost in St. Louis?", "acceptedAnswer": {"@type": "Answer", "text": "On the affordability map’s 2025–2026 MARIS sales, move-in-ready midpoints ran from about $219,000 in the 63125 Lemay corridor to about $600,000 in Kirkwood (63122) and $800,000 in Chesterfield (63005). The busiest move-in-ready range was $300,000 to $450,000 across South and West County. Move-in-ready prices"}}, {"@type": "Question", "name": "How much more does move-in ready cost than a fixer-upper?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the area. In South County, the gap between as-is and move-in-ready sales ran about $50,000 to $130,000 depending on the ZIP code. In St. Charles County, with newer homes, it’s narrower, closer to $25,000 to $40,000. In South City and inner-ring suburbs like Kirkwood, it can reach $150,000 to $200,000 when the renovation is strong. Why fixer-uppers look cheap"}}, {"@type": "Question", "name": "Is the cheaper fixer-upper really cheaper?", "acceptedAnswer": {"@type": "Answer", "text": "Sometimes not. A $250,000 house that needs a roof, HVAC, flooring and basement waterproofing can cost more than a $310,000 house that needs almost nothing, before you count contractor delays and financing complications. 2026 expected repair costs"}}, {"@type": "Question", "name": "Why does a home’s condition matter to my lender?", "acceptedAnswer": {"@type": "Answer", "text": "Peeling paint, foundation concerns, roof problems or active water intrusion can complicate FHA and VA loans, insurance underwriting and appraisals, even if you’re willing to do the work. That’s a big reason move-in-ready homes sell at a premium. How the financing path changes your options"}}, {"@type": "Question", "name": "Is a flipped house move-in ready?", "acceptedAnswer": {"@type": "Answer", "text": "Not necessarily. I’ve walked through beautifully staged flips with serious hidden issues behind the walls. Cosmetic updates don’t equal structural soundness, so the inspection matters just as much."}}, {"@type": "Question", "name": "How fast do move-in-ready homes sell in St. Louis?", "acceptedAnswer": {"@type": "Answer", "text": "In competitive zip codes — South County, Kirkwood, Webster Groves, St. Charles — well-priced move-in ready homes often go under contract within days, frequently before the weekend. Buyers who need time to think generally lose. That's not pressure — it's just how this market operates for condition-first inventory."}}, {"@type": "Question", "name": "Can VA buyers buy move-in-ready homes in St. Louis?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, and they’re often a better fit, because the VA appraisal has minimum property requirements. Deferred maintenance like roof issues, foundation concerns, peeling paint or water intrusion can fail a VA appraisal regardless of price. VA buyers and fixer-uppers"}}, {"@type": "Question", "name": "Is South County or St. Charles County better for move-in-ready homes?", "acceptedAnswer": {"@type": "Answer", "text": "Different trade-offs. South County has established neighborhoods, larger lots and closer commutes, but older homes with wider condition differences. St. Charles County has newer, more predictable homes and larger subdivisions, with longer commutes, more HOAs and less neighborhood character."}}]}</script>
 </head>
 <body>
 
@@ -195,7 +204,7 @@ a{color:var(--gold);text-decoration:none;}
 
   <div style="padding-top:36px">
     <h1 class="art-title">Fixer Upper vs. Move-In Ready in St. Louis:<br>The Real Math by Neighborhood</h1>
-<p class="last-updated">Last updated May 25, 2026</p>
+<p class="last-updated">Last updated October 18, 2026</p>
     <p class="art-lede">St. Louis has the largest price gap between fixer uppers and move-in ready homes of any major metro — 64% below on average. But the renovation costs, financing choice, and neighborhood shift change the comparison completely. Here's what your budget actually buys on both paths.</p>
     <div class="art-meta">
       <span class="aud-buyer">Buyer Guide</span>
@@ -209,6 +218,30 @@ a{color:var(--gold);text-decoration:none;}
   </div>
 
   <div class="art-body">
+<section class="lp-quick" id="quick-answer" aria-label="Fixer-Upper vs. Move-In Ready, Answered">
+<h2 id="quick-answer-h">Fixer-Upper vs. Move-In Ready, Answered</h2>
+<div class="lp-qa" id="q-mir-means">
+<h3>What does &ldquo;move-in ready&rdquo; mean in St. Louis?</h3>
+<p>Structural first, cosmetic second. A working HVAC system, a roof with life left, no active basement water, no major electrical red flags or foundation movement, and a house likely to get through financing and appraisal without drama. It doesn&rsquo;t mean luxury finishes; a clean 1998 ranch with older countertops but solid systems can qualify. <a href="#move-in-ready">What move-in ready means &darr;</a></p>
+</div>
+<div class="lp-qa" id="q-mir-cost">
+<h3>What does a move-in-ready home cost in St. Louis?</h3>
+<p>On the affordability map&rsquo;s 2025&ndash;2026 MARIS sales, move-in-ready midpoints ran from about $219,000 in the 63125 Lemay corridor to about $600,000 in Kirkwood (63122) and $800,000 in Chesterfield (63005). The busiest move-in-ready range was $300,000 to $450,000 across South and West County. <a href="#move-in-ready">Move-in-ready prices &darr;</a></p>
+</div>
+<div class="lp-qa" id="q-spread">
+<h3>How much more does move-in ready cost than a fixer-upper?</h3>
+<p>It depends on the area. In South County, the gap between as-is and move-in-ready sales ran about $50,000 to $130,000 depending on the ZIP code. In St.&nbsp;Charles County, with newer homes, it&rsquo;s narrower, closer to $25,000 to $40,000. In South City and inner-ring suburbs like Kirkwood, it can reach $150,000 to $200,000 when the renovation is strong. <a href="#the-gap">Why fixer-uppers look cheap &darr;</a></p>
+</div>
+<div class="lp-qa" id="q-cheaper-house">
+<h3>Is the cheaper fixer-upper really cheaper?</h3>
+<p>Sometimes not. A $250,000 house that needs a roof, HVAC, flooring and basement waterproofing can cost more than a $310,000 house that needs almost nothing, before you count contractor delays and financing complications. <a href="stl-home-repair-cost-guide">2026 expected repair costs &rarr;</a></p>
+</div>
+<div class="lp-qa" id="q-financing">
+<h3>Why does a home&rsquo;s condition matter to my lender?</h3>
+<p>Peeling paint, foundation concerns, roof problems or active water intrusion can complicate FHA and VA loans, insurance underwriting and appraisals, even if you&rsquo;re willing to do the work. That&rsquo;s a big reason move-in-ready homes sell at a premium. <a href="#financing">How the financing path changes your options &darr;</a></p>
+</div>
+</section>
+
 
         <!-- Infographic -->
     <div style="margin:28px 0 40px;text-align:center;">
@@ -270,6 +303,11 @@ a{color:var(--gold);text-decoration:none;}
       <span class="int-link-text"><strong>What to Look For When Buying a House in St. Louis</strong><br>The walkthrough checklist — Federal Pacific, cast iron, negative grading, and what else to flag before you offer</span>
       <span class="int-link-arr">→</span>
     </a>
+
+    <h2 id="move-in-ready">What Move-In Ready Means, and What It Costs</h2>
+    <p>The term gets abused online. To most St.&nbsp;Louis buyers, move-in ready means a working HVAC system, a roof with real life left, updated or well-maintained kitchen and baths, no active basement water, no major electrical red flags, no serious foundation movement, and a house likely to pass financing and appraisal without drama. It doesn&rsquo;t mean luxury finishes or a full remodel. In St.&nbsp;Louis, move-in ready is structural first, cosmetic second.</p>
+    <p>On the affordability map&rsquo;s 2025&ndash;2026 MARIS sales, move-in-ready homes (sold in under 14 days at or above list) clustered in three tiers: about $250,000 to $350,000 for entry-level ranches and updated older homes, $350,000 to $550,000 in the mid-range, and $600,000 and up where condition and location premiums stack. By ZIP, midpoints ran from about $219,000 in 63125 to about $600,000 in Kirkwood (63122) and $800,000 in Chesterfield (63005).</p>
+    <p class="data-age-note" style="font-size:14px;color:rgba(255,255,255,.7);">About this data: these figures come from 7,006 MARIS closed sales across 79 St.&nbsp;Louis-area ZIP codes, 2025&ndash;2026. I&rsquo;m refreshing them at the end of 2026.</p>
 
     <h2 id="fixer-upper-neighborhoods">Where Fixer Uppers Are Concentrated in St. Louis</h2>
     <p>Not all St. Louis markets have meaningful fixer upper inventory. The concentration is specific — and understanding it changes where you search and what you expect to find.</p>
@@ -445,6 +483,27 @@ a{color:var(--gold);text-decoration:none;}
     <!-- ASK ME: component configured in /assets/ask-me.js -->
     <div data-ask-me="fixer-upper"><p><a href="/ask?about=fixer-upper&amp;from=/articles/fixer-upper-vs-move-in-ready-st-louis">Ask Me If the Numbers Make Sense</a></p></div>
 
+<section class="lp-quick lp-more" id="more-questions" aria-label="More Questions About Move-In-Ready Homes">
+<h2 id="more-questions-h">More Questions About Move-In-Ready Homes</h2>
+<p class="lp-group">Move-in ready</p>
+<div class="lp-qa" id="q-flip">
+<h3>Is a flipped house move-in ready?</h3>
+<p>Not necessarily. I&rsquo;ve walked through beautifully staged flips with serious hidden issues behind the walls. Cosmetic updates don&rsquo;t equal structural soundness, so the inspection matters just as much.</p>
+</div>
+<div class="lp-qa" id="q-fast">
+<h3>How fast do move-in-ready homes sell in St. Louis?</h3>
+<p>In competitive zip codes — South County, Kirkwood, Webster Groves, St. Charles — well-priced move-in ready homes often go under contract within days, frequently before the weekend. Buyers who need time to think generally lose. That's not pressure — it's just how this market operates for condition-first inventory.</p>
+</div>
+<div class="lp-qa" id="q-va">
+<h3>Can VA buyers buy move-in-ready homes in St. Louis?</h3>
+<p>Yes, and they&rsquo;re often a better fit, because the VA appraisal has minimum property requirements. Deferred maintenance like roof issues, foundation concerns, peeling paint or water intrusion can fail a VA appraisal regardless of price. <a href="#va-buyers">VA buyers and fixer-uppers &darr;</a></p>
+</div>
+<div class="lp-qa" id="q-sc-vs-stc">
+<h3>Is South County or St. Charles County better for move-in-ready homes?</h3>
+<p>Different trade-offs. South County has established neighborhoods, larger lots and closer commutes, but older homes with wider condition differences. St.&nbsp;Charles County has newer, more predictable homes and larger subdivisions, with longer commutes, more HOAs and less neighborhood character.</p>
+</div>
+</section>
+
     <h2 id="find-your-match">Find Your Neighborhoods</h2>
     <p>The comparison tool runs your income, down payment, and renovation scope against 76 St. Louis zip codes with real MARIS price tiers by condition and square footage. It shows which neighborhoods offer a genuine equivalent on both paths — within 5% of the same total cost — and what each financing choice actually costs you in buying power. The only St. Louis tool built from the buyer's perspective on both paths, using real local sales data rather than national averages.</p>
 
@@ -464,7 +523,7 @@ a{color:var(--gold);text-decoration:none;}
         <div class="related-card-label">Walkthrough</div>
         <div class="related-card-title">What to Look For When Buying a House in St. Louis</div>
       </a>
-      <a href="average-price-reduction-after-inspection-st-louis" class="related-card">
+      <a href="/articles/repair-costs-affect-offer-price-stl#after-inspection" class="related-card">
         <div class="related-card-label">Negotiation</div>
         <div class="related-card-title">How Much Can You Negotiate After a Home Inspection in St. Louis?</div>
       </a>
@@ -480,7 +539,7 @@ a{color:var(--gold);text-decoration:none;}
         <div class="related-card-label">Neighborhoods</div>
         <div class="related-card-title">South County St. Louis: Every Neighborhood Ranked by Price</div>
       </a>
-      <a href="average-price-move-in-ready-home-st-louis" class="related-card">
+      <a href="/articles/fixer-upper-vs-move-in-ready-st-louis#move-in-ready" class="related-card">
         <div class="related-card-label">Market Pricing</div>
         <div class="related-card-title">What's the Average Price of a Move-In Ready Home in St. Louis?</div>
       </a>

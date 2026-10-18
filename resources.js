@@ -128,7 +128,7 @@ window.RESOURCES_REGISTRY = [
     id:      'art-truth-about-zillow-stl',
     title:   'The Truth About Zillow',
     summary: 'Zillow is the most visited real estate platform in the country. It is also a lead generation machine — not a buyer tool.',
-    url:     'articles/truth-about-zillow-stl',
+    url:     '/articles/what-happens-when-you-click-zillow',
     tool:    false,
     citations: [
       { chapter: 2, scene: 0, context: 'Before you rely on Zillow for anything — understand what it actually is and how it makes money.' },
@@ -140,7 +140,7 @@ window.RESOURCES_REGISTRY = [
     id:      'art-zillow-pay-to-play',
     title:   'How Zillow\'s Pay-to-Play System Works',
     summary: 'Zillow charges agents per lead referral. That cost gets passed somewhere — and it is not to the agent.',
-    url:     'articles/zillow-pay-to-play-system',
+    url:     '/articles/what-happens-when-you-click-zillow#how-zillow-makes-money',
     tool:    false,
     citations: [
       { chapter: 2, scene: 1, context: 'The agent who called you paid Zillow for your number. Here is what that means for you.' }
@@ -174,7 +174,7 @@ window.RESOURCES_REGISTRY = [
     id:      'art-how-to-use-zillow-without-getting-used',
     title:   'How to Use Zillow Without Getting Used by Zillow',
     summary: 'Zillow is useful — just not in the ways most buyers think. Here is how to extract the signal and ignore the noise.',
-    url:     'articles/how-to-use-zillow-without-getting-used',
+    url:     '/articles/what-happens-when-you-click-zillow#use-without-getting-used',
     tool:    false,
     citations: [
       { chapter: 2, scene: 3, context: 'Use Zillow as a search tool. Use this guide to know its limits.' },
@@ -238,7 +238,7 @@ window.RESOURCES_REGISTRY = [
     id:      'art-most-affordable-zip-codes-stl-2026',
     title:   'Most Affordable Zip Codes in St. Louis Right Now',
     summary: 'Where your dollar goes furthest in St. Louis right now — ranked by real monthly cost, not just list price.',
-    url:     'articles/most-affordable-zip-codes-stl-2026',
+    url:     '/articles/stl-affordability-by-zip-code#q-most-affordable',
     tool:    false,
     citations: [
       { chapter: 2, scene: 2, context: 'If budget is the primary constraint — here are the zip codes where it stretches furthest right now.' }
@@ -318,7 +318,7 @@ window.RESOURCES_REGISTRY = [
     id:      'art-what-buyer-agent-actually-does-stl',
     title:   'What a Buyer\'s Agent Actually Does',
     summary: 'The fiduciary duty, the pre-showing prep, the offer strategy, the inspection negotiation — what a good agent is doing that you cannot see.',
-    url:     'articles/what-buyer-agent-actually-does-stl',
+    url:     '/articles/do-i-need-a-buyers-agent-stl#agent-job',
     tool:    false,
     citations: [
       { chapter: 2, scene: 1, context: 'Here is what I am doing before every showing that most buyers never see.' },
@@ -330,7 +330,7 @@ window.RESOURCES_REGISTRY = [
     id:      'art-how-to-interview-buyers-agent-stl',
     title:   'How to Interview a Buyer\'s Agent in St. Louis',
     summary: 'Seven questions that reveal exactly who you are dealing with before you sign anything.',
-    url:     'articles/how-to-interview-buyers-agent-stl',
+    url:     '/articles/do-i-need-a-buyers-agent-stl#interview-questions',
     tool:    false,
     citations: [
       { chapter: 2, scene: 0, context: 'Before you sign a buyer agency agreement — ask these seven questions first.' }
@@ -341,7 +341,7 @@ window.RESOURCES_REGISTRY = [
     id:      'art-red-flags-bad-buyer-agent-stl',
     title:   'Red Flags: How to Spot a Bad Buyer\'s Agent',
     summary: 'Pressure tactics, the handoff to a junior agent, dual agency — the warning signs before they cost you.',
-    url:     'articles/red-flags-bad-buyer-agent-stl',
+    url:     '/articles/do-i-need-a-buyers-agent-stl#red-flags',
     tool:    false,
     citations: [
       { chapter: 2, scene: 1, context: 'If your agent is doing any of these things — you need to know before you go further.' }
@@ -352,7 +352,7 @@ window.RESOURCES_REGISTRY = [
     id:      'art-nar-settlement-buyer-representation-stl',
     title:   'What the NAR Settlement Changed for St. Louis Buyers',
     summary: 'What the August 2024 NAR settlement actually changed and what it means for your buyer agency agreement today.',
-    url:     'articles/nar-settlement-buyer-representation-stl',
+    url:     '/articles/who-pays-buyer-agent-commission-stl#for-buyers',
     tool:    false,
     citations: [
       { chapter: 2, scene: 0, context: 'The rules around buyer agent compensation changed in 2024. Here is what that means before you sign.' },
@@ -474,7 +474,7 @@ window.RESOURCES_REGISTRY = [
     id:      'art-mehlville-vs-oakville-vs-concord-stl',
     title:   'Mehlville vs. Oakville vs. Concord: Which Should You Buy In?',
     summary: 'Side-by-side comparison for buyers deciding between these three South County corridors — price, schools, competition, and character.',
-    url:     'articles/mehlville-vs-oakville-vs-concord-stl',
+    url:     '/south-county-st-louis#sc-q-oak-mehl',
     tool:    false,
     citations: [
       { chapter: 2, scene: 2, context: 'Mehlville, Oakville, or Concord — here is how they compare on price, schools, and market speed.' },

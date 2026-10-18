@@ -15,7 +15,7 @@ window.ARTICLE_REGISTRY = {
       slug: "zillow",
       audience: "both",
       description: "How Zillow's pay-to-play model works and how to use it without getting used.",
-      hubSlug: "truth-about-zillow-stl",
+      hubSlug: "what-happens-when-you-click-zillow",
       toolLink: null
     },
     "affordability": {
@@ -113,34 +113,6 @@ window.ARTICLE_REGISTRY = {
     /* ── BOTH: ZILLOW SERIES ── */
 
     {
-      slug: "truth-about-zillow-stl",
-      title: "The Truth About Zillow: What St. Louis Buyers and Sellers Need to Know",
-      shortTitle: "The Truth About Zillow",
-      description: "Zillow is the most visited real estate platform in the country. It is also a lead generation business.",
-      pillLabel: "The Truth About Zillow",
-      audience: "both",
-      series: "zillow",
-      isHub: true,
-      chapters: [2, 3],
-      tags: ["zillow", "consumer-protection", "agents", "lead-gen"],
-      toolLink: null,
-      published: true
-    },
-    {
-      slug: "zillow-pay-to-play-system",
-      title: "How Zillow's Pay-to-Play System Works -- and What It Costs You",
-      shortTitle: "Zillow Pay-to-Play Model",
-      description: "Zillow charges agents per lead referral. That cost gets passed somewhere.",
-      pillLabel: "How Zillow Makes Money",
-      audience: "both",
-      series: "zillow",
-      isHub: false,
-      chapters: [2],
-      tags: ["zillow", "consumer-protection", "agents", "lead-gen", "commissions"],
-      toolLink: null,
-      published: true
-    },
-    {
       slug: "what-happens-when-you-click-zillow",
       title: "What Happens the Moment You Click on Zillow",
       shortTitle: "What Clicking Zillow Triggers",
@@ -148,7 +120,7 @@ window.ARTICLE_REGISTRY = {
       pillLabel: "What Zillow Does With Your Click",
       audience: "buyer",
       series: "zillow",
-      isHub: false,
+      isHub: true,
       chapters: [2],
       tags: ["zillow", "consumer-protection", "agents", "lead-gen"],
       toolLink: null,
@@ -165,20 +137,6 @@ window.ARTICLE_REGISTRY = {
       isHub: false,
       chapters: [2, 6],
       tags: ["zillow", "valuation", "zestimate", "data", "maris"],
-      toolLink: null,
-      published: true
-    },
-    {
-      slug: "how-to-use-zillow-without-getting-used",
-      title: "How to Use Zillow Without Getting Used by Zillow",
-      shortTitle: "Using Zillow Smartly",
-      description: "Zillow is useful. Just not in the ways most buyers think.",
-      pillLabel: "Using Zillow Smartly",
-      audience: "buyer",
-      series: "zillow",
-      isHub: false,
-      chapters: [2, 3],
-      tags: ["zillow", "consumer-protection", "strategy"],
       toolLink: null,
       published: true
     },
@@ -269,36 +227,9 @@ window.ARTICLE_REGISTRY = {
       toolLink: null,
       published: true
     },
-    {
-      slug: "most-affordable-zip-codes-stl-2026",
-      title: "Most Affordable Zip Codes in St. Louis Right Now (2026 Data)",
-      shortTitle: "Most Affordable Zip Codes STL",
-      description: "Where your dollar goes furthest in St. Louis right now -- ranked by real monthly cost.",
-      pillLabel: "Most Affordable Zip Codes",
-      audience: "buyer",
-      series: "affordability",
-      isHub: false,
-      chapters: [2],
-      tags: ["affordability", "zip-codes", "budget", "neighborhoods", "data"],
-      toolLink: "https://gkindler-help.github.io/buyeraffordabilityheatmap/",
-      published: true
-    },
 
     /* ── BUYER: MOVE-IN READY PRICING ── */
 
-    {
-      slug: "average-price-move-in-ready-home-st-louis",
-      title: "What's the Average Price of a Move-In Ready Home in St. Louis? (And What Buyers Usually Get Wrong)",
-      shortTitle: "Move-In Ready Home Prices in St. Louis",
-      description: "Real sold data by area — South County, St. Charles, South City, West County. What move-in ready actually costs and the tradeoffs buyers learn too late.",
-      pillLabel: "Market Pricing",
-      audience: "buyer",
-      series: "fixer-upper",
-      isHub: false,
-      chapters: [2, 3, 4],
-      tags: ["move-in-ready", "pricing", "neighborhoods", "south-county", "st-charles", "relocation", "first-time-buyer", "va-buyer"],
-      published: true
-    },
 
     {
       slug: "what-300k-450k-600k-buys-st-louis",
@@ -490,62 +421,6 @@ window.ARTICLE_REGISTRY = {
       toolLink: null,
       published: true
     },
-    {
-      slug: "what-buyer-agent-actually-does-stl",
-      title: "What a Buyer's Agent Actually Does -- and What Most of Them Don't",
-      shortTitle: "What a Buyer's Agent Does",
-      description: "The fiduciary duty, the pre-showing prep, the offer strategy, the inspection negotiation.",
-      pillLabel: "What a Buyer's Agent Does",
-      audience: "buyer",
-      series: "representation",
-      isHub: false,
-      chapters: [2, 5],
-      tags: ["agents", "representation", "fiduciary", "consumer-protection"],
-      toolLink: null,
-      published: true
-    },
-    {
-      slug: "how-to-interview-buyers-agent-stl",
-      title: "How to Interview a Buyer's Agent in St. Louis (The 7 Questions That Matter)",
-      shortTitle: "How to Interview a Buyer's Agent",
-      description: "The seven questions that reveal exactly who you are dealing with before you sign anything.",
-      pillLabel: "Interview Your Agent",
-      audience: "buyer",
-      series: "representation",
-      isHub: false,
-      chapters: [2],
-      tags: ["agents", "representation", "zillow", "consumer-protection", "nar-settlement"],
-      toolLink: null,
-      published: true
-    },
-    {
-      slug: "red-flags-bad-buyer-agent-stl",
-      title: "Red Flags: How to Spot a Bad Buyer's Agent in St. Louis Before It Costs You",
-      shortTitle: "Red Flags: Bad Buyer's Agent",
-      description: "The warning signs of a bad buyer's agent -- pressure tactics, the handoff, dual agency.",
-      pillLabel: "Red Flags: Bad Agent",
-      audience: "buyer",
-      series: "representation",
-      isHub: false,
-      chapters: [2],
-      tags: ["agents", "representation", "zillow", "consumer-protection", "red-flags"],
-      toolLink: null,
-      published: true
-    },
-    {
-      slug: "nar-settlement-buyer-representation-stl",
-      title: "What the NAR Settlement Changed for St. Louis Buyers -- and What It Didn't",
-      shortTitle: "NAR Settlement for Buyers",
-      description: "What the August 2024 NAR settlement actually changed and what it means for your negotiation.",
-      pillLabel: "NAR Settlement Explained",
-      audience: "buyer",
-      series: "representation",
-      isHub: false,
-      chapters: [2, 9],
-      tags: ["agents", "representation", "nar-settlement", "commissions", "consumer-protection"],
-      toolLink: null,
-      published: true
-    },
 
     /* ── BUYER: MORTGAGE AND FINANCING SERIES ── */
 
@@ -652,20 +527,6 @@ window.ARTICLE_REGISTRY = {
       published: true
     },
     {
-      slug: "mehlville-vs-oakville-vs-concord-stl",
-      title: "Mehlville vs. Oakville vs. Concord: Which South County Suburb Is Right for You?",
-      shortTitle: "Mehlville vs. Oakville vs. Concord",
-      description: "Mehlville, Oakville, and Concord are South County's three most-searched communities -- compared on price, schools, market speed, and what buyers find when they show up.",
-      pillLabel: "Mehlville vs. Oakville vs. Concord",
-      audience: "buyer",
-      series: "neighborhoods",
-      isHub: false,
-      chapters: [2, 3],
-      tags: ["neighborhoods", "south-county", "mehlville", "oakville", "concord", "schools", "price-comparison"],
-      toolLink: null,
-      published: true
-    },
-    {
       slug: "lindbergh-vs-mehlville-school-district-stl",
       title: "Lindbergh vs. Mehlville School District: What South County Buyers Need to Know",
       shortTitle: "Lindbergh vs. Mehlville Schools",
@@ -695,20 +556,6 @@ window.ARTICLE_REGISTRY = {
       published: true
     },
 
-    {
-      slug: "average-price-reduction-after-inspection-st-louis",
-      title: "How My Buyer Got $30,000 Off Before Inspections Even Started",
-      shortTitle: "$30K Off Before Inspections: Case Study",
-      description: "90 days on market. Two failed contracts. Roof and foundation issues. Real case study showing exactly how a $30K price reduction happened -- and the math behind it.",
-      pillLabel: "The $30K Case Study",
-      audience: "buyer",
-      series: "repair-guide",
-      isHub: false,
-      chapters: [3, 5],
-      tags: ["negotiation", "days-on-market", "inspection", "price-reduction", "case-study", "repair-costs"],
-      toolLink: null,
-      published: true
-    },
 
         /* ── BUYER: SCHOOL DISTRICTS SERIES ── */
 
