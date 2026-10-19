@@ -16,6 +16,7 @@ Pages are built to be quoted by AI tools and still read well top to bottom.
 - **Stories and data keep plain headings.** George's case studies, such as the Imperial listing, and data tables don't get forced into questions.
 - **Each question lives on one page.** Its full answer and detail sit on the page that owns it. Another page's Quick Answers block can give a short answer with a "See ... →" link to the owner; anywhere else, give one line and a link. This prevents cannibalization.
 - **Only add questions you can answer with evidence or George's own experience.** No padding. As a guide, focused articles carry about 12 to 18 questions, and community pages and hubs about 20 to 35.
+- **No templated blocks across location pages (George, 2026-10-19).** Location + decision questions (MHDC, inspection, repairs, offer price, buyer representation) are written page by page. Each page gets only the two or three decisions where its own data stands out, asked from that angle, with links to different sections of the target guides. Don't give every page the same question set with the place name swapped. Before shipping a batch, check that the blocks don't share long repeated phrases.
 - **FAQ schema matches what's visible.** FAQPage JSON-LD holds the questions in the top and end boxes (and any question headings), in reading order. No schema-only questions.
 
 ## 2. Data and accuracy

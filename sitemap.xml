@@ -91,6 +91,96 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://stlhomejourney.com/school-districts/fox-c6-school-district</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/school-districts/northwest-r1-school-district</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/school-districts/hillsboro-r3-school-district</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/school-districts/festus-r6-school-district</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/school-districts/de-soto-73-school-district</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/school-districts/windsor-c1-school-district</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/school-districts/dunklin-r5-school-district</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/school-districts/crystal-city-47-school-district</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/school-districts/jefferson-r7-school-district</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/herculaneum</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/byrnes-mill</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/fenton-jefferson-county</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/neighborhoods/eureka-jefferson-county</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/jefferson-county-mo</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/school-districts/jefferson-county</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://stlhomejourney.com/south-city-st-louis</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
@@ -482,7 +572,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/arnold</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -494,7 +584,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/barnhart</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -548,7 +638,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/cedar-hill</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -596,7 +686,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/crystal-city</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -614,7 +704,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/de-soto</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -644,7 +734,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/festus</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -686,25 +776,25 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/high-ridge</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/hillsboro</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/house-springs</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/imperial</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -824,7 +914,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/pevely</loc>
-    <lastmod>2026-06-04</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
