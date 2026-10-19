@@ -1112,6 +1112,21 @@ window.ARTICLE_REGISTRY = {
       published: true
     },
 
+{
+      slug: "should-i-accept-this-offer-st-louis",
+      title: "Should I Accept This Offer? A St. Louis Seller's Guide",
+      shortTitle: "Should I Accept This Offer?",
+      description: "When to accept the first offer, an offer below asking, a home-sale contingency, an FHA or VA buyer or a rent-back, with 2026 St. Louis County sales.",
+      pillLabel: "Accept This Offer?",
+      audience: "seller",
+      series: "expired-listing",
+      isHub: false,
+      chapters: [],
+      tags: ["selling", "offers", "contingencies", "rent-back", "fha", "va", "negotiation"],
+      toolLink: null,
+      published: true
+    },
+
     /* ── SEASONAL SELLER STRATEGY ── */
     {
       slug: "sell-house-fall-winter-st-louis",
