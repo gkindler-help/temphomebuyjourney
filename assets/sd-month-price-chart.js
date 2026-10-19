@@ -94,6 +94,8 @@
         var c = el('circle', { 'class': 'pm-dot', cx: X(i), cy: Y(p.v), r: 4.5, fill: GOLD }, svg);
         el('title', {}, c).textContent = d.name + ', ' + MONTHS_LONG[i] + ' 2026: ' + money(p.v) + ' (' + sales(p.n) + ')';
       });
+      var key = document.getElementById('mp-k-sel');
+      if (key) key.textContent = d.name;
       box.innerHTML = '';
       box.appendChild(svg);
 
