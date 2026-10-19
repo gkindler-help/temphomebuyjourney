@@ -784,11 +784,11 @@ window.TOOL_MODULES['compare'] = (function () {
      desc:'Can be efficient if maintained. Issues include leaks, uneven heat, and expensive boiler replacement.',
      prompt:'Ask seller when boiler was last serviced. Check for rust staining around radiator valves.',
      budget:{low:4000,high:12000,negotiate:'Boiler replacement is a negotiating point if near end of life (20+ years).',maintain:'Annual service call ($150–$300) extends boiler life significantly.'}},
-    {id:'sewer-scope',era:['pre1950','e1950','e1980'],county:'St. Louis City',priority:'critical',
+    {id:'sewer-scope',era:['pre1950','e1950','e1980','e2000'],county:'all',priority:'critical',
      name:'Sewer Lateral — Scope Required',
-     desc:'Pre-1990 city homes frequently have original clay tile sewer laterals. Tree root infiltration and pipe collapse are common.',
-     prompt:'A sewer scope ($300–400) is non-negotiable on any pre-1990 city home.',
-     budget:{low:3000,high:15000,negotiate:'A failed sewer scope is one of the strongest negotiating positions you can have.',maintain:'Re-check every 5–7 years in older city homes.'}},
+     desc:'Every St. Louis home should get a sewer scope as part of due diligence. Older homes frequently have original clay tile laterals, where tree root infiltration and pipe collapse are common.',
+     prompt:'A sewer scope ($150–$300) is non-negotiable on every St. Louis home, whatever its age.',
+     budget:{low:4000,high:12000,negotiate:'A failed sewer scope is one of the strongest negotiating positions you can have.',maintain:'Re-check every 5–7 years in older city homes.'}},
     {id:'tuckpointing',era:['pre1950','e1950','e1980'],county:'St. Louis City',priority:'high',
      name:'Tuckpointing — Brick Mortar',
      desc:'Neglected mortar joints allow water infiltration, causing interior damage and eventually structural deterioration.',
@@ -1210,7 +1210,7 @@ window.TOOL_MODULES['compare'] = (function () {
     if (county === 'St. Louis City') {
       flags.push({ icon:'🧱', color:'var(--gold)',
         title:'St. Louis City — Brick & Sewer',
-        text: 'Pre-1960 brick construction is common. Check tuckpointing mortar. Sewer lateral scopes are strongly recommended — clay tile laterals are still present in many city neighborhoods and repair can run $8,000–$15,000.' });
+        text: 'Pre-1960 brick construction is common. Check tuckpointing mortar. Sewer lateral scopes are strongly recommended — clay tile laterals are still present in many city neighborhoods and replacement typically runs $4,000–$12,000 and can exceed $15,000 in some cases.' });
     }
     if (county === 'Jefferson County') {
       flags.push({ icon:'💵', color:'var(--green)',

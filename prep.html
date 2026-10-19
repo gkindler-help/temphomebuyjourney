@@ -831,8 +831,15 @@ window.TOOL_MODULES['prep'] = {
 
     if (county === 'St. Louis City') {
       out.push(me('caution', '🔧',
-        '<strong>St. Louis City homes commonly have original sewer laterals.</strong> Pre-1960 clay tile — tree roots find every joint. A sewer scope is not optional here.',
-        'A sewer scope is a camera inspection of the pipe running from your house to the city main — typically $300–400. In St. Louis City, clay tile laterals from the 1920s–1950s are still in place on many blocks. Root infiltration, joint separation, and partial collapse are common. A failed scope is one of the strongest negotiating positions you can have — or a reason to walk. <strong>Make your offer contingent on a scope. If the seller refuses, that tells you something.</strong>'
+        '<strong>St. Louis City homes commonly have original sewer laterals.</strong> Pre-1960 clay tile — tree roots find every joint. A sewer scope is not optional here, or anywhere in St. Louis.',
+        'A sewer scope is a camera inspection of the pipe running from your house to the city main — typically $150 to $300. In St. Louis City, clay tile laterals from the 1920s–1950s are still in place on many blocks. Root infiltration, joint separation, and partial collapse are common. A failed scope is one of the strongest negotiating positions you can have — or a reason to walk. <strong>Make your offer contingent on a scope. If the seller refuses, that tells you something.</strong>'
+      ));
+    }
+
+    if (county !== 'St. Louis City') {
+      out.push(me('tip', '🔧',
+        '<strong>Get a sewer scope on every St. Louis home.</strong> It is part of due diligence whatever the home\'s age.',
+        'A sewer scope is a camera inspection of the pipe running from your house to the public sewer main, typically $150 to $300. Older homes often have clay tile laterals; newer lines can still have root intrusion or damage. Replacement typically runs $4,000 to $12,000 and can exceed $15,000 in some cases. If the home is on a septic system instead, get a septic inspection.'
       ));
     }
 
