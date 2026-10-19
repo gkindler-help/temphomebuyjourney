@@ -1622,5 +1622,61 @@ window.NEIGHBORHOODS_REGISTRY = [
     "status": "published",
     "indexable": true,
     "template": "neighborhood"
+  },
+  {
+    "id": "herculaneum",
+    "title": "Herculaneum, Missouri",
+    "summary": "Herculaneum neighborhood guide for buyers: 2026 prices, city limits, school districts and property taxes in this Jefferson County area.",
+    "url": "neighborhoods/herculaneum",
+    "type": "neighborhood",
+    "slug": "herculaneum",
+    "group": "Jefferson County",
+    "tag": "Jefferson Co.",
+    "zips": ["63048"],
+    "status": "published",
+    "indexable": true,
+    "template": "neighborhood"
+  },
+  {
+    "id": "byrnes-mill",
+    "title": "Byrnes Mill, Missouri",
+    "summary": "Byrnes Mill neighborhood guide for buyers: 2026 prices, city limits, school districts and property taxes in this Jefferson County area.",
+    "url": "neighborhoods/byrnes-mill",
+    "type": "neighborhood",
+    "slug": "byrnes-mill",
+    "group": "Jefferson County",
+    "tag": "Jefferson Co.",
+    "zips": ["63051"],
+    "status": "published",
+    "indexable": true,
+    "template": "neighborhood"
+  },
+  {
+    "id": "fenton-jefferson-county",
+    "title": "Fenton (Jefferson County side), Missouri",
+    "summary": "Fenton (Jefferson County side) neighborhood guide for buyers: 2026 prices, city limits, school districts and property taxes in this Jefferson County area.",
+    "url": "neighborhoods/fenton-jefferson-county",
+    "type": "neighborhood",
+    "slug": "fenton-jefferson-county",
+    "group": "Jefferson County",
+    "tag": "Jefferson Co.",
+    "zips": ["63026"],
+    "status": "published",
+    "indexable": true,
+    "template": "neighborhood"
+  },
+  {
+    "id": "eureka-jefferson-county",
+    "title": "Eureka (Jefferson County side), Missouri",
+    "summary": "Eureka (Jefferson County side) neighborhood guide for buyers: 2026 prices, city limits, school districts and property taxes in this Jefferson County area.",
+    "url": "neighborhoods/eureka-jefferson-county",
+    "type": "neighborhood",
+    "slug": "eureka-jefferson-county",
+    "group": "Jefferson County",
+    "tag": "Jefferson Co.",
+    "zips": ["63025"],
+    "status": "published",
+    "indexable": true,
+    "template": "neighborhood"
   }
 ];
