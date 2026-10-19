@@ -208,7 +208,7 @@ window.ARTICLE_REGISTRY = {
       audience: "buyer",
       series: "market",
       isHub: false,
-      chapters: [1],
+      chapters: [4],
       tags: ["offer-price", "multiple-offers", "bidding-war", "negotiation", "market-update", "buyer", "2026"],
       toolLink: null,
       published: true
