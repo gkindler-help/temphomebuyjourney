@@ -1127,6 +1127,21 @@ window.ARTICLE_REGISTRY = {
       published: true
     },
 
+{
+      slug: "sell-first-or-buy-first-st-louis",
+      title: "Should I Sell First or Buy First in St. Louis?",
+      shortTitle: "Sell First or Buy First?",
+      description: "When to sell first, when to buy first, the real cost of a home-sale contingency, bridge loans and carrying two payments.",
+      pillLabel: "Sell First or Buy First?",
+      audience: "both",
+      series: "expired-listing",
+      isHub: false,
+      chapters: [],
+      tags: ["selling", "buying", "home-sale-contingency", "bridge-loan", "timing", "move-up", "downsizing"],
+      toolLink: null,
+      published: true
+    },
+
     /* ── SEASONAL SELLER STRATEGY ── */
     {
       slug: "sell-house-fall-winter-st-louis",
