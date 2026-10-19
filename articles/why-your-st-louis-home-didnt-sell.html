@@ -21,7 +21,7 @@
 <script type="application/ld+json">{
   "@context":"https://schema.org",
   "@graph":[
-    {"@type":"Article","headline":"Your St. Louis Home Didn’t Sell — Was It Your Agent?","author":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"},"url":"https://stlhomejourney.com/articles/why-your-st-louis-home-didnt-sell","description":"Diagnostic questionnaire and analysis for St. Louis sellers whose home failed to sell.","datePublished":"2026-09-19"},
+    {"@type":"Article","dateModified":"2026-10-19","headline":"Your St. Louis Home Didn’t Sell — Was It Your Agent?","author":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"},"url":"https://stlhomejourney.com/articles/why-your-st-louis-home-didnt-sell","description":"Diagnostic questionnaire and analysis for St. Louis sellers whose home failed to sell.","datePublished":"2026-09-19"},
     {"@type":"BreadcrumbList","itemListElement":[
       {"@type":"ListItem","position":1,"name":"Home","item":"https://stlhomejourney.com/"},
       {"@type":"ListItem","position":2,"name":"Articles","item":"https://stlhomejourney.com/articles/"},
@@ -103,7 +103,16 @@ a{color:#ffcc4d;text-decoration:none;}
 .stlhj-offer-text strong{color:#fff;}
 .stlhj-offer-arrow{color:#ffcc4d;font-size:16px;flex-shrink:0;}
 @media(max-width:500px){.stlhj-offer-inner{flex-wrap:wrap;gap:10px;}}
+.lp-quick{border:1px solid rgba(255,204,77,.25);background:rgba(255,204,77,.04);border-radius:12px;padding:4px 20px 12px;margin:8px 0 40px;}
+.lp-quick h2{margin-top:24px !important;font-size:1.35rem !important;}
+.lp-qa{border-top:1px solid rgba(255,255,255,.08);padding:4px 0 0;}
+.lp-qa h3{margin:16px 0 8px !important;font-size:1.02rem !important;color:#fff !important;font-family:inherit;line-height:1.4;}
+.lp-qa p{margin:0 0 12px !important;font-size:.95rem !important;line-height:1.7;}
+.lp-qa p a,.lp-note a{color:#ffcc4d;font-weight:600;text-decoration:none;}
+p.lp-group{font-size:11px !important;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ffcc4d !important;margin:22px 0 2px !important;}
+p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why didn’t my house sell?", "acceptedAnswer": {"@type": "Answer", "text": "Find where buyers stopped. If they didn’t see it, that’s exposure. If they saw it but didn’t schedule, look at price, presentation, competition and access. If they toured but didn’t offer, look at perceived value, condition and competition. If you got offers and said no, those offers are evidence. If a contract failed, diagnose the failure first. Views, showings and offers"}}, {"@type": "Question", "name": "Was it my agent’s fault my house didn’t sell?", "acceptedAnswer": {"@type": "Answer", "text": "Maybe. If buyers weren’t properly exposed to the house, the launch was poorly executed, obvious problems weren’t identified or the strategy never changed despite mounting evidence, that’s worth asking about. But if buyers saw it, toured it and consistently chose something else while your agent told you so, it’s more complicated. The point is to understand what happened so you don’t repeat it. Where the agent fits in"}}, {"@type": "Question", "name": "Should I change real estate agents if my house didn’t sell?", "acceptedAnswer": {"@type": "Answer", "text": "Decide on the plan, not a fresh MLS number. Changing agents doesn’t reset days on market in MARIS without a full 30 days off market. Ask what the evidence from the first listing says and what specifically will be different this time. Changing agents and days on market"}}, {"@type": "Question", "name": "Should I lower my price after my listing expired?", "acceptedAnswer": {"@type": "Answer", "text": "Look at what happened the last time you changed it. A price reduction is an experiment, and buyer behavior is the result. If showings, saves and offers didn’t move after a cut, the cut didn’t change the comparison or price wasn’t the only problem. A price reduction is an experiment"}}, {"@type": "Question", "name": "Should I relist right away?", "acceptedAnswer": {"@type": "Answer", "text": "You can relist an expired listing before 30 days, but days on market only reset after a full 30 days off market in MARIS. More important is what will be different when it comes back. The 30-day relist rule"}}, {"@type": "Question", "name": "How important is the first weekend?", "acceptedAnswer": {"@type": "Answer", "text": "Very. In a study of 2,369 MARIS MLS transactions, 1,220 homes went under contract in their first seven days, and 89% of those sold at or above their original list price. Listings that missed the first weekend had roughly a 90% chance of missing the market. The first weekend"}}, {"@type": "Question", "name": "What do several offers at similar prices tell me?", "acceptedAnswer": {"@type": "Answer", "text": "A lot. One offer is one buyer’s opinion. When two or three independent buyers land around the same number, multiple people have put real money behind their view of the value, and that deserves close attention. An offer is more than feedback"}}, {"@type": "Question", "name": "What if my house went under contract and fell through?", "acceptedAnswer": {"@type": "Answer", "text": "Start with why the contract failed: inspection, appraisal, financing, title or something about that buyer. A buyer losing financing doesn’t prove the house was overpriced, but several buyers walking over the same condition issue is worth investigating. When a contract fails"}}, {"@type": "Question", "name": "Should I fix up the house or lower the price before relisting?", "acceptedAnswer": {"@type": "Answer", "text": "Compare them on net. Marketing exposes the opportunity, condition changes what buyers are purchasing, and price is the largest lever because it changes the value proposition. A $400,000 sale after $30,000 of prep isn’t automatically better than $385,000 after $5,000. Chase the best net outcome"}}, {"@type": "Question", "name": "Should I renovate before I relist?", "acceptedAnswer": {"@type": "Answer", "text": "Only if you know what the money will change. Before spending $30,000, ask whether it changes which buyers consider the house, removes the objection buyers kept raising, or changes what they’ll pay, or whether a smaller price adjustment would do the same job. Condition has a price too"}}]}</script>
 </head>
 <body>
 
@@ -113,6 +122,7 @@ a{color:#ffcc4d;text-decoration:none;}
 </button>
 <nav id="jumpPanel" class="jump-panel" aria-hidden="true">
   <div class="jump-panel-hd">Jump to a section</div>
+  <a href="#quick-answer" class="jump-link">Quick Answers</a>
   <a href="#expired-listing-diagnostic" class="jump-link">Take the Diagnostic</a>
   <a href="#what-answers-tell-you" class="jump-link">What Answers Tell You</a>
   <a href="#fair-shot" class="jump-link">Did It Get a Fair Shot?</a>
@@ -129,6 +139,7 @@ a{color:#ffcc4d;text-decoration:none;}
   <a href="#net-outcome" class="jump-link">Net Outcome</a>
   <a href="#was-it-your-agent" class="jump-link">Was It Your Agent?</a>
   <a href="#contact-george" class="jump-link">Ask George</a>
+  <a href="#more-questions" class="jump-link">More Questions</a>
 </nav>
 
 <header class="art-hdr">
@@ -157,6 +168,7 @@ a{color:#ffcc4d;text-decoration:none;}
 <div class="article-opening">
 
 <h1>Your Home Didn&rsquo;t Sell. Was It Your Agent&mdash;or Something Else?</h1>
+<p class="last-updated">Last updated October 19, 2026</p>
 <p class="h1-deck">20 questions that will tell you what actually happened</p>
 
 <p>So your house failed to sell, and you know what? That sucks.</p>
@@ -328,6 +340,32 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <!-- ASK ME: component configured in /assets/ask-me.js -->
 <div data-ask-me="expired-review"><p><a href="/ask?about=expired-review&amp;from=/articles/why-your-st-louis-home-didnt-sell">Ask Me to Review Your Listing</a></p></div>
+
+<section class="lp-quick" id="quick-answer" aria-label="Quick Answers">
+<h2 id="quick-answer-h">Quick Answers</h2>
+<p class="lp-note">From my listing experience and a study of 2,369 MARIS MLS transactions in the St.&nbsp;Louis market.</p>
+<div class="lp-qa" id="ds-why">
+<h3>Why didn&rsquo;t my house sell?</h3>
+<p>Find where buyers stopped. If they didn&rsquo;t see it, that&rsquo;s exposure. If they saw it but didn&rsquo;t schedule, look at price, presentation, competition and access. If they toured but didn&rsquo;t offer, look at perceived value, condition and competition. If you got offers and said no, those offers are evidence. If a contract failed, diagnose the failure first. <a href="#funnel">Views, showings and offers &darr;</a></p>
+</div>
+<div class="lp-qa" id="ds-agent">
+<h3>Was it my agent&rsquo;s fault my house didn&rsquo;t sell?</h3>
+<p>Maybe. If buyers weren&rsquo;t properly exposed to the house, the launch was poorly executed, obvious problems weren&rsquo;t identified or the strategy never changed despite mounting evidence, that&rsquo;s worth asking about. But if buyers saw it, toured it and consistently chose something else while your agent told you so, it&rsquo;s more complicated. The point is to understand what happened so you don&rsquo;t repeat it. <a href="#was-it-your-agent">Where the agent fits in &darr;</a></p>
+</div>
+<div class="lp-qa" id="ds-change">
+<h3>Should I change real estate agents if my house didn&rsquo;t sell?</h3>
+<p>Decide on the plan, not a fresh MLS number. Changing agents doesn&rsquo;t reset days on market in MARIS without a full 30 days off market. Ask what the evidence from the first listing says and what specifically will be different this time. <a href="/articles/relist-house-st-louis-30-day-rule#change-agents">Changing agents and days on market &rarr;</a></p>
+</div>
+<div class="lp-qa" id="ds-lower">
+<h3>Should I lower my price after my listing expired?</h3>
+<p>Look at what happened the last time you changed it. A price reduction is an experiment, and buyer behavior is the result. If showings, saves and offers didn&rsquo;t move after a cut, the cut didn&rsquo;t change the comparison or price wasn&rsquo;t the only problem. <a href="#price-reduction">A price reduction is an experiment &darr;</a></p>
+</div>
+<div class="lp-qa" id="ds-relist">
+<h3>Should I relist right away?</h3>
+<p>You can relist an expired listing before 30 days, but days on market only reset after a full 30 days off market in MARIS. More important is what will be different when it comes back. <a href="/articles/relist-house-st-louis-30-day-rule">The 30-day relist rule &rarr;</a></p>
+</div>
+</section>
+
 
 <h2 id="what-answers-tell-you">What Your Answers Are Actually Telling You</h2>
 
@@ -565,7 +603,7 @@ a{color:#ffcc4d;text-decoration:none;}
 
 <a href="/articles/repair-costs-affect-offer-price-stl#after-inspection" class="int-link">
 <div class="int-link-label">Related</div>
-<div class="int-link-title">Average Price Reduction After Inspection in St.&nbsp;Louis &rarr;</div>
+<div class="int-link-title">What Buyers Negotiate After Inspection &rarr;</div>
 </a>
 
 <h2 id="contract-failure">If You Went Under Contract, Start Somewhere Else</h2>
@@ -625,7 +663,7 @@ a{color:#ffcc4d;text-decoration:none;}
 <div class="int-link-title">The Real Cost to Sell a Home in St.&nbsp;Louis &rarr;</div>
 </a>
 
-<h2 id="was-it-your-agent">So, Was It Your Agent?</h2>
+<h2 id="was-it-your-agent">Where the Agent Fits In</h2>
 
 <p>Maybe.</p>
 
@@ -688,6 +726,32 @@ a{color:#ffcc4d;text-decoration:none;}
 <p>That&rsquo;s how you move from <em>&ldquo;Why didn&rsquo;t my house sell?&rdquo;</em> to <strong>&ldquo;What is the smartest economic decision I can make before I try again?&rdquo;</strong></p>
 
 <!-- CTA -->
+<section class="lp-quick lp-more" id="more-questions" aria-label="More Questions About a Listing That Didn’t Sell">
+<h2 id="more-questions-h">More Questions About a Listing That Didn&rsquo;t Sell</h2>
+<p class="lp-group">Reading the first listing</p>
+<div class="lp-qa" id="ds-weekend">
+<h3>How important is the first weekend?</h3>
+<p>Very. In a study of 2,369 MARIS MLS transactions, 1,220 homes went under contract in their first seven days, and 89% of those sold at or above their original list price. Listings that missed the first weekend had roughly a 90% chance of missing the market. <a href="#first-weekend">The first weekend &darr;</a></p>
+</div>
+<div class="lp-qa" id="ds-offers">
+<h3>What do several offers at similar prices tell me?</h3>
+<p>A lot. One offer is one buyer&rsquo;s opinion. When two or three independent buyers land around the same number, multiple people have put real money behind their view of the value, and that deserves close attention. <a href="#offers">An offer is more than feedback &darr;</a></p>
+</div>
+<div class="lp-qa" id="ds-contract">
+<h3>What if my house went under contract and fell through?</h3>
+<p>Start with why the contract failed: inspection, appraisal, financing, title or something about that buyer. A buyer losing financing doesn&rsquo;t prove the house was overpriced, but several buyers walking over the same condition issue is worth investigating. <a href="#contract-failure">When a contract fails &darr;</a></p>
+</div>
+<p class="lp-group">Deciding what to change</p>
+<div class="lp-qa" id="ds-fix">
+<h3>Should I fix up the house or lower the price before relisting?</h3>
+<p>Compare them on net. Marketing exposes the opportunity, condition changes what buyers are purchasing, and price is the largest lever because it changes the value proposition. A $400,000 sale after $30,000 of prep isn&rsquo;t automatically better than $385,000 after $5,000. <a href="#net-outcome">Chase the best net outcome &darr;</a></p>
+</div>
+<div class="lp-qa" id="ds-renovate">
+<h3>Should I renovate before I relist?</h3>
+<p>Only if you know what the money will change. Before spending $30,000, ask whether it changes which buyers consider the house, removes the objection buyers kept raising, or changes what they&rsquo;ll pay, or whether a smaller price adjustment would do the same job. <a href="#condition">Condition has a price too &darr;</a></p>
+</div>
+</section>
+
 <div class="cta-section" id="contact-george">
 <h2>You Don&rsquo;t Need Another Listing Agreement. Not Yet.</h2>
 <p>You need to understand what happened the first time.</p>
