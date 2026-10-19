@@ -200,16 +200,16 @@ window.ARTICLE_REGISTRY = {
       published: true
     },
     {
-      slug: "multiple-offers-without-overpaying-st-louis",
-      title: "Multiple Offers in a Slower Market: The Weird St. Louis Reality of 2026",
-      shortTitle: "Multiple Offers Without Overpaying",
-      description: "Inventory is up but the best St. Louis homes still draw bidding wars. How to win a multiple-offer situation in 2026 without overpaying.",
-      pillLabel: "Winning Multiple Offers",
+      slug: "how-much-to-offer-on-a-house-st-louis",
+      title: "How Much Should I Offer on a House in St. Louis? What 2026 Sales Show",
+      shortTitle: "How Much to Offer",
+      description: "How much to offer on a St. Louis house, from 2026 sales by days on market, plus earnest money, escalation clauses and appraisal gaps.",
+      pillLabel: "How Much to Offer",
       audience: "buyer",
       series: "market",
       isHub: false,
-      chapters: [1],
-      tags: ["multiple-offers", "bidding-war", "negotiation", "market-update", "buyer", "2026"],
+      chapters: [4],
+      tags: ["offer-price", "multiple-offers", "bidding-war", "negotiation", "market-update", "buyer", "2026"],
       toolLink: null,
       published: true
     },

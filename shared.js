@@ -1943,7 +1943,7 @@ function closeDrawer() {
         tag: "Buyers",
         articles: [
           { title: "How Long Does It Take to Buy a House?", url: "articles/how-long-to-buy-house-st-louis" },
-          { title: "Multiple Offers Without Overpaying", url: "articles/multiple-offers-without-overpaying-st-louis" }
+          { title: "How Much to Offer on a House", url: "articles/how-much-to-offer-on-a-house-st-louis" }
         ]
       },
       {
