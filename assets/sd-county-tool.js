@@ -1,5 +1,6 @@
-/* St. Louis County housing-by-school-district interactive.
- * Reads aggregate results only (window.STLHJ_SD_AGG + /assets/data/sd-house/{beds}-{baths}.json).
+/* Housing-by-school-district interactive (St. Louis County and Jefferson County pages).
+ * Reads aggregate results only (window.STLHJ_SD_AGG + {houseBase}{beds}-{baths}.json).
+ * Optional agg keys: houseBase (default /assets/data/sd-house/), guides (district → guide slug, replaces the default map).
  * No individual sale records are shipped to the browser.
  * Budgets and price caps are evaluated in $25,000 steps; square footage centers in 100 sq. ft. steps.
  * Percentiles were precomputed with linear interpolation (Excel PERCENTILE.INC).
@@ -90,7 +91,8 @@
   function init() {
     var agg = window.STLHJ_SD_AGG;
     if (!agg) return;
-    var districts = agg.districts.slice(), STEP = agg.budget.step;
+    var districts = agg.districts.slice(), STEP = agg.budget.step, ND = districts.length;
+    if (agg.guides) GUIDES = agg.guides;
     document.querySelectorAll('.sd-form').forEach(function (f) { f.hidden = false; });
 
     // ── Mode switching ──
@@ -171,9 +173,9 @@
         return (b.share - a.share) || (b.count - a.count) || a.district.localeCompare(b.district);
       });
       var reach = list.filter(function (s) { return s.share >= 0.5; }).length;
-      bOut.innerHTML = '<div class="result-head"><h3>At ' + money(budget) + ', your budget reached at least half of the closed-sale market in ' + reach + ' of 22 districts.</h3>' +
+      bOut.innerHTML = '<div class="result-head"><h3>At ' + money(budget) + ', your budget reached at least half of the closed-sale market in ' + reach + ' of ' + ND + ' districts.</h3>' +
         '<p class="fine">' + INVENTORY_NOTE + '</p></div>' +
-        '<div class="results-bar"><span class="count">22 districts · share of each district’s 2026 closed sales at or below ' + money(budget) + '</span>' +
+        '<div class="results-bar"><span class="count">' + ND + ' districts · share of each district’s 2026 closed sales at or below ' + money(budget) + '</span>' +
         '<label style="font-size:13px;color:var(--text-muted);">Sort by <select id="b-sort">' +
         '<option value="share"' + (bSort === 'share' ? ' selected' : '') + '>Share within budget</option>' +
         '<option value="median"' + (bSort === 'median' ? ' selected' : '') + '>District median</option>' +
@@ -215,7 +217,7 @@
     function load(key) {
       if (cache[key]) return Promise.resolve(cache[key]);
       if (agg.house.combos.indexOf(key) < 0) return Promise.resolve({});
-      return fetch('/assets/data/sd-house/' + key + '.json').then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      return fetch((window.STLHJ_SD_AGG.houseBase || '/assets/data/sd-house/') + key + '.json').then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
         .then(function (j) { cache[key] = j; return j; });
     }
 
