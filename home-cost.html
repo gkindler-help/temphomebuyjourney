@@ -446,15 +446,15 @@ body.demo-mode #hc-map      { display: none; }
 <p>Use this on your phone when you walk your next house. Flag what you see room by room, and it adds up 2026 expected repair costs as you go. Save or email your results so you can compare houses later and walk into the offer conversation with real numbers.</p>
 <p>The ranges match my <a href="/articles/stl-home-repair-cost-guide">St.&nbsp;Louis repair cost guide</a>. For what to look at in each room, see the <a href="/articles/what-to-look-for-buying-house-stl">walkthrough checklist</a>.</p>
 <div class="hc-qa"><h3>How do I estimate repair costs while touring a house?</h3>
-<p>Walk it system by system and flag what you see as you go. Start with the expensive items: the age on the furnace, AC and water heater data plates, the electrical panel brand, signs of water in the basement, foundation cracks, the roof from the ground, and the mortar on brick walls. The tool puts a 2026 expected cost range on each flag and totals them, so you leave the showing with a repair budget instead of a feeling. Then get contractor quotes for the big items before you write the offer.</p></div>
+<p>Walk it system by system and flag what you see as you go. Start with the expensive items: the age on the furnace, AC and water heater data plates, the electrical panel brand, signs of water in the basement, foundation cracks, the roof from the ground, and the mortar on brick walls. The tool puts a 2026 expected cost range on each flag and totals them, so you leave the showing with a repair budget instead of a feeling. Then get contractor quotes for the big items before you write the offer. <a href="/articles/what-to-look-for-buying-house-stl">What to look for in each room &rarr;</a></p></div>
 <div class="hc-qa"><h3>What should I flag first during a home showing in St. Louis?</h3>
-<p>The items that change what the house is worth to you: HVAC and water heater age, a Federal Pacific or Zinsco panel, basement water (white efflorescence, staining at the floor line), horizontal or stair-step foundation cracks, roof wear you can see from the ground, and soft or crumbling mortar on brick. Cosmetic items can wait. <a href="/articles/what-to-look-for-buying-house-stl">The full walkthrough checklist &rarr;</a></p></div>
+<p>The items that change what the house is worth to you: HVAC and water heater age, a Federal Pacific or Zinsco panel, basement water (white efflorescence, staining at the floor line), horizontal or stair-step foundation cracks, roof wear you can see from the ground, and soft or crumbling mortar on brick. Cosmetic items can wait. <a href="/articles/what-to-look-for-buying-house-stl">The room-by-room walkthrough checklist &rarr;</a></p></div>
 <div class="hc-qa"><h3>How do I find out how old the furnace, AC or water heater is at a showing?</h3>
-<p>Look at the data plate on the unit; the manufacture date is printed there or encoded in the serial number, often in the first four characters. Furnaces over 15 years and AC condensers over 12 are nearing the end of their service life. Tank water heaters usually last 8 to 12 years. <a href="/articles/what-to-look-for-buying-house-stl">Mechanical systems on the checklist &rarr;</a></p></div>
+<p>Look at the data plate on the unit; the manufacture date is printed there or encoded in the serial number, often in the first four characters. Furnaces over 15 years and AC condensers over 12 are nearing the end of their service life. Tank water heaters usually last 8 to 12 years. <a href="/articles/what-to-look-for-buying-house-stl#mechanical">Mechanical systems on the checklist &rarr;</a></p></div>
 <div class="hc-qa"><h3>Which number should I use, the low end or the high end of the range?</h3>
 <p>For an offer, start with the midpoint. Asking for the top of a range looks like cherry-picking; the midpoint is defensible and harder for a seller to reject. Then replace the range with real contractor quotes as soon as you have them. <a href="/articles/repair-costs-affect-offer-price-stl#the-math">How repair costs become an offer &rarr;</a></p></div>
 <div class="hc-qa"><h3>What can&rsquo;t I see during a showing?</h3>
-<p>The sewer lateral, the inside of the electrical panel and parts of the attic. Plan on a sewer scope during the inspection on every St. Louis home, whatever its age. It runs $150 to $300, and clay laterals crack and collapse underground where no walkthrough can see them. <a href="/articles/stl-home-repair-cost-guide">2026 expected repair costs &rarr;</a></p></div>
+<p>The sewer lateral, the inside of the electrical panel and parts of the attic. Plan on a sewer scope during the inspection on every St. Louis home, whatever its age. It runs $150 to $300, and clay laterals crack and collapse underground where no walkthrough can see them. <a href="/articles/stl-home-repair-cost-guide">2026 expected repair costs &rarr;</a> <a href="/articles/what-to-look-for-buying-house-stl#basement">Where to find the sewer cleanout &rarr;</a></p></div>
 <div class="hc-qa"><h3>Should I price what I find into my offer or wait for the inspection?</h3>
 <p>Price it in when you can see it at the showing and have a reasonable cost, like an old furnace or failed tuckpointing. Wait for the inspection when the issue only shows up once the inspector gets into a system, or when a discounted offer would lose a competitive deal. <a href="/articles/repair-costs-affect-offer-price-stl#framework">Price it in or wait &rarr;</a></p></div>
 <div class="hc-qa"><h3>Is the walk-through tool a substitute for a home inspection?</h3>
@@ -880,6 +880,29 @@ window.TOOL_MODULES['home-cost'] = (function () {
     updateBadges();
   }
 
+  // ── DEEP LINK: ?flag=roof,sewer preselects items ──────────────
+  function applyFlagParam() {
+    var m = /[?&]flag=([^&#]*)/.exec(window.location.search);
+    if (!m) return;
+    var ids = decodeURIComponent(m[1]).split(','), first = null;
+    ids.forEach(function(id) {
+      var item = REPAIR_ITEMS.filter(function(x) { return x.id === id; })[0];
+      var el = _container.querySelector('#hc-rc-' + id);
+      if (!item || !el) return;
+      if (!repairReport.some(function(r) { return r.id === id; })) toggleRepairCard(item.id, item.name, item.low, item.high, el, item.cat);
+      if (!first) first = el;
+    });
+    syncZonesFromReport();
+    updateBadges();
+    if (!first) return;
+    if (typeof gtag === 'function') gtag('event', 'deep_flag', { items: ids.join(',') });
+    setTimeout(function() {
+      first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      first.classList.add('hc-demo-pulse');
+      setTimeout(function() { first.classList.remove('hc-demo-pulse'); }, 2400);
+    }, 400);
+  }
+
   function syncZonesFromReport() {
     Object.keys(ZONE_MAP).forEach(function(zoneId) {
       var itemIds = ZONE_MAP[zoneId];
@@ -1221,6 +1244,7 @@ window.TOOL_MODULES['home-cost'] = (function () {
       buildRepairList();
       buildWorkTypes();
       updateBadges();
+      applyFlagParam();
       // Init map after render
       setTimeout(function() {
         if (typeof L !== 'undefined') initMap();
