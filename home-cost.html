@@ -880,6 +880,29 @@ window.TOOL_MODULES['home-cost'] = (function () {
     updateBadges();
   }
 
+  // ── DEEP LINK: ?flag=roof,sewer preselects items ──────────────
+  function applyFlagParam() {
+    var m = /[?&]flag=([^&#]*)/.exec(window.location.search);
+    if (!m) return;
+    var ids = decodeURIComponent(m[1]).split(','), first = null;
+    ids.forEach(function(id) {
+      var item = REPAIR_ITEMS.filter(function(x) { return x.id === id; })[0];
+      var el = _container.querySelector('#hc-rc-' + id);
+      if (!item || !el) return;
+      if (!repairReport.some(function(r) { return r.id === id; })) toggleRepairCard(item.id, item.name, item.low, item.high, el, item.cat);
+      if (!first) first = el;
+    });
+    syncZonesFromReport();
+    updateBadges();
+    if (!first) return;
+    if (typeof gtag === 'function') gtag('event', 'deep_flag', { items: ids.join(',') });
+    setTimeout(function() {
+      first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      first.classList.add('hc-demo-pulse');
+      setTimeout(function() { first.classList.remove('hc-demo-pulse'); }, 2400);
+    }, 400);
+  }
+
   function syncZonesFromReport() {
     Object.keys(ZONE_MAP).forEach(function(zoneId) {
       var itemIds = ZONE_MAP[zoneId];
@@ -1221,6 +1244,7 @@ window.TOOL_MODULES['home-cost'] = (function () {
       buildRepairList();
       buildWorkTypes();
       updateBadges();
+      applyFlagParam();
       // Init map after render
       setTimeout(function() {
         if (typeof L !== 'undefined') initMap();
