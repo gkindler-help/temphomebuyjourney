@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://stlhomejourney.com/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -185,6 +185,12 @@
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/north-county-st-louis</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://stlhomejourney.com/south-county-st-louis</loc>
@@ -560,7 +566,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -590,7 +596,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/bellefontaine-neighbors</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -602,7 +608,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/berkeley</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -614,7 +620,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/black-jack</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -626,7 +632,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/bridgeton</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -710,7 +716,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/dellwood</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -728,7 +734,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/ferguson</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -740,7 +746,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/florissant</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -770,7 +776,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/hazelwood</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -800,7 +806,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/jennings</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -860,7 +866,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/moline-acres</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -962,13 +968,13 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/spanish-lake</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/st-ann</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -980,7 +986,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/st-john</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1064,7 +1070,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/woodson-terrace</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1382,7 +1388,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/north-county-small-towns</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
