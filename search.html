@@ -39,13 +39,14 @@ h1{font-family:var(--font-serif);font-size:clamp(1.6rem,5vw,2.2rem);font-weight:
 .chip{font:600 12px var(--font-sans);color:var(--text-soft);background:rgba(255,255,255,.03);border:1px solid var(--line-2);border-radius:999px;padding:7px 12px;cursor:pointer;}
 .chip:hover{border-color:var(--gold-line);color:var(--gold);}
 .recs{margin:22px 0 6px;border:1px solid var(--gold-line);border-radius:14px;background:linear-gradient(135deg,rgba(255,204,77,.06),rgba(255,204,77,.01));padding:16px 18px;}
-.recs[hidden],.status[hidden]{display:none;}
+[hidden]{display:none !important;}
 .recs-hd{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
 .rec{display:block;padding:10px 0;border-top:1px solid rgba(255,204,77,.14);}
 .rec:first-of-type{border-top:0;}
 .rec-t{font-weight:700;color:var(--text-strong);font-size:.98rem;line-height:1.35;}
 .rec-d{color:var(--text-dim);font-size:.85rem;margin-top:2px;}
-.status{color:var(--text-dim);font-size:.88rem;margin:20px 0 8px;}
+.status{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);margin:26px 0 4px;}
+.status.empty{font-size:.95rem;font-weight:500;letter-spacing:0;text-transform:none;color:var(--text-soft);}
 .res{padding:16px 0;border-top:1px solid var(--line);}
 .res-sec{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:3px;}
 .res-t{font-family:var(--font-serif);font-size:1.12rem;font-weight:700;color:var(--text-strong);line-height:1.3;display:block;}
@@ -82,7 +83,7 @@ mark{background:var(--gold-soft);color:var(--text-strong);border-radius:3px;padd
   <form class="box" id="ss-form" role="search" action="/search" method="get">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
     <label for="ss-q" style="position:absolute;left:-9999px;">Search</label>
-    <input id="ss-q" name="q" type="search" autocomplete="off" placeholder="Try &ldquo;commission&rdquo;, &ldquo;VA loan&rdquo; or &ldquo;63129&rdquo;">
+    <input id="ss-q" name="q" type="search" autocomplete="off" placeholder="Search guides, areas, ZIP codes">
     <button type="submit">Search</button>
   </form>
   <div class="chips" id="ss-chips" aria-label="Popular topics">

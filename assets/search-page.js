@@ -4,6 +4,8 @@
 (function () {
   'use strict';
   var PAGE = 8, RERANK = 30;
+  /* Index pages repeat every article's blurb, so they rank below the articles themselves. */
+  var INDEXES = /^\/(?:articles\/|neighborhoods\/|listings\/|articles\/lessons-from-a-sale|school-districts|)$/;
   var STOP = {};
   'a an and are at be by can do does for from get how i if in is it me my of on or should so the than that this to vs was what when where which who why will with you your st louis stl mo missouri'
     .split(' ').forEach(function (w) { STOP[w] = 1; });
@@ -80,15 +82,33 @@
       '<a class="res-t" href="' + esc(url) + '">' + esc(title) + '</a>' +
       '<p class="res-x">' + excerpt + '</p>' +
       (subs && subs.length ? '<div class="subs">' + subs.map(function (s) {
-        return '<a class="sub" href="' + esc(cleanUrl(s.url)) + '"><div class="sub-t">' + esc(s.title) + '</div><div class="sub-x">' + s.excerpt + '</div></a>';
+        return '<a class="sub" href="' + esc(cleanUrl(s.url)) + '"><div class="sub-t">' + esc(s.title) + '</div><div class="sub-x">' + tidy(s.excerpt) + '</div></a>';
       }).join('') + '</div>' : '') +
       '</article>';
   }
+  /* Excerpts come from the middle of a page: drop link arrows and show where they were cut. */
+  var qStems = [];
+  function stem(w) { return w.replace(/(ies|es|s|ing|ed)$/, ''); }
+  /* Pagefind also matches word beginnings ("pays" -> "payoff"); keep highlights only on real matches. */
+  function realMarks(x) {
+    return x.replace(/<mark>([^<]*)<\/mark>/g, function (m, w) {
+      var n = w.toLowerCase().replace(/[^a-z0-9]/g, '');
+      return qStems.some(function (q) { return n === q || stem(n) === q || (n.length > 4 && stem(n) === q); }) ? m : w;
+    });
+  }
+  function tidy(x) {
+    x = realMarks(x).replace(/\s*(?:\u2192|&rarr;|\u2190|\u2193|&darr;)\s*/g, ' ').replace(/\s+/g, ' ').trim();
+    if (/^(?:<mark>)?[a-z0-9(]/.test(x)) x = '\u2026' + x;
+    return /[.!?]$/.test(x.replace(/<[^>]+>/g, '')) ? x : x + '\u2026';
+  }
   function renderData(d) {
     var subs = (d.sub_results || []).filter(function (s) {
-      return s.url.indexOf('#') !== -1 && !/hero|quick-h|quick-answer/.test(s.url.split('#')[1]) && s.title !== d.meta.title;
+      return s.url.indexOf('#') !== -1 && !/hero|quick-h|quick-answer|method/.test(s.url.split('#')[1]) && s.title !== d.meta.title &&
+        realMarks(s.excerpt).indexOf('<mark>') !== -1;
     }).slice(0, 3);
-    return card(cleanUrl(d.url), d.meta.title || cleanUrl(d.url), d.filters && d.filters.section ? d.filters.section[0] : '', d.excerpt, subs);
+    /* Nothing left after dropping partial-word matches: not a real result. */
+    if (realMarks(d.excerpt).indexOf('<mark>') === -1 && !subs.length && titleScore(words(input.value), d.meta.title || '') < 1) return '';
+    return card(cleanUrl(d.url), d.meta.title || cleanUrl(d.url), d.filters && d.filters.section ? d.filters.section[0] : '', tidy(d.excerpt), subs);
   }
 
   /* Queue items are loaded data objects (re-ranked head) or Pagefind hits (lazy tail). */
@@ -102,6 +122,10 @@
         shownUrls[u] = 1;
         return true;
       }).map(renderData).join('');
+      if (!results.innerHTML && !html && !queue.length && !recsList.innerHTML) {
+        status.classList.add('empty');
+        status.textContent = 'Nothing matches \u201c' + input.value.trim() + '\u201d. Try fewer words, or ask George below.';
+      }
       results.insertAdjacentHTML('beforeend', html);
       more.hidden = !queue.length;
       if (!html && queue.length) return showMore(id);
@@ -132,15 +156,21 @@
     pagefind.debouncedSearch(core, {}, 200).then(function (r) {
       if (!r || id !== seq) return;
       var hits = r.results, qw = words(q);
+      qStems = core.toLowerCase().split(/\s+/).map(function (w) { return stem(w.replace(/[^a-z0-9]/g, '')); }).filter(Boolean);
       status.hidden = false;
-      status.textContent = hits.length ? hits.length + (hits.length === 1 ? ' page matches' : ' pages match') + ' “' + q + '”' :
-        'No pages match “' + q + '”. Try fewer words, or ask George below.';
+      var any = hits.length || top.length || recUrls.length;
+      status.classList.toggle('empty', !any);
+      status.textContent = !any ? 'Nothing matches “' + q + '”. Try fewer words, or ask George below.' :
+        (top.length || recUrls.length) ? 'More results' : 'Results for “' + q + '”';
       if (q !== lastLogged && typeof gtag === 'function') { lastLogged = q; gtag('event', 'search', { search_term: q, results: hits.length }); }
       var head = hits.slice(0, RERANK);
       return Promise.all(head.map(function (h) { return h.data(); })).then(function (data) {
         if (id !== seq) return;
         var n = data.length;
-        data = data.map(function (d, i) { return { d: d, s: titleScore(qw, d.meta.title || '') * 1.5 + (1 - i / n) }; })
+        data = data.map(function (d, i) {
+          var listing = INDEXES.test(cleanUrl(d.url)) ? 0.8 : 0;
+          return { d: d, s: titleScore(qw, d.meta.title || '') * 1.5 + (1 - i / n) - listing };
+        })
           .sort(function (a, b) { return b.s - a.s; }).map(function (x) { return x.d; });
         queue = data.concat(hits.slice(RERANK));
         return showMore(id);

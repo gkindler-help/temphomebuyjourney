@@ -20,7 +20,8 @@ SKIP_DIRS = ('.git/', 'docs/', 'pagefind/', 'node_modules/', 'scripts/', '.vscod
 
 # Site chrome that shouldn't be searchable.
 IGNORE = ['header', 'footer', '.nbhd-hdr', '.art-hdr', '.breadcrumb', '.nbhd-breadcrumb', '.george-card',
-          '[data-ask-me]', '.jump-panel', '.jump-fab', '.related-journey', '.icon-card-grid', '.mtc-mount']
+          '[data-ask-me]', '.jump-panel', '.jump-fab', '.related-journey', '.icon-card-grid', '.mtc-mount',
+          '.stlhj-offer']
 
 SECTIONS = [('articles/lessons-from-a-sale', 'Lessons From a Sale'), ('articles/', 'Guides'),
             ('neighborhoods/', 'Neighborhoods'), ('school-districts/', 'School districts'),
@@ -149,13 +150,20 @@ def stage(src, r):
 
 def clean_title(t):
     t = html.unescape(re.sub(r'\s+', ' ', t)).strip()
-    return re.split(r'\s+\|\s+|\s+[\u2013\u2014-]\s+(?:STL Home Journey|George Kindler)', t)[0]
+    t = re.split(r'\s+\|\s+|\s+[\u2013\u2014-]\s+(?:STL Home Journey|George Kindler)', t)[0]
+    # Journey chapters: "Home Buyer Journey · Chapter 8 · Final Walk-Through" -> "Buyer Journey, Chapter 8: Final Walk-Through"
+    m = re.match(r'(?:STL )?Home Buyer Journey \u00b7 (Chapter \d+|Walk With Me) \u00b7 (.+)', t)
+    return 'Buyer Journey, %s: %s' % m.groups() if m else t
 
 
 def head_text(s):
     t = re.search(r'<title>(.*?)</title>', s, re.S)
     d = re.search(r'<meta name="description" content="([^"]*)"', s)
-    return (clean_title(t.group(1)) if t else ''), (html.unescape(d.group(1)).strip() if d else '')
+    title = clean_title(t.group(1)) if t else ''
+    desc = html.unescape(d.group(1)).strip() if d else ''
+    if not desc and title.startswith('Buyer Journey'):
+        desc = 'A step in the interactive St. Louis home buyer journey, with George\u2019s take at each decision.'
+    return title, desc
 
 
 def page_info(path):
