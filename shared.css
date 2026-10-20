@@ -1712,6 +1712,26 @@ svg {
   background: rgba(255,204,77,.06);
 }
 
+.dash-tab-search {
+  color: var(--gold);
+}
+
+/* Phones: tabs scroll sideways from the left instead of clipping both ends. */
+@media (max-width: 600px) {
+  .dash-bar {
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .dash-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .dash-tab {
+    flex: 0 0 auto;
+    max-width: none;
+  }
+}
+
 /* ============================================================
    22. TOOL SLIDE PANEL
    ============================================================ */

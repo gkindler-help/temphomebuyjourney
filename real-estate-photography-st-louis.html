@@ -297,5 +297,6 @@ function portNav(d){PLB_IDX=(PLB_IDX+d+PLB_IMGS.length)%PLB_IMGS.length;portShow
 document.addEventListener('keydown',function(e){if(!document.getElementById('port-lb').classList.contains('open'))return;if(e.key==='ArrowRight')portNav(1);if(e.key==='ArrowLeft')portNav(-1);if(e.key==='Escape')portClose();});
 document.getElementById('port-lb').addEventListener('click',function(e){if(e.target===this)portClose();});
 </script>
+<script src="/assets/site-search.js" defer></script>
 </body>
 </html>
