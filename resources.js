@@ -287,6 +287,18 @@ window.RESOURCES_REGISTRY = [
   },
 
   {
+    id:      'art-lessons-from-a-sale-fenton-san-luis',
+    title:   'Lessons From a Sale: Right-Sizing to Fenton',
+    summary: 'A failing furnace fixed before closing plus a home warranty, and a Ring doorbell the sellers tried to take the night before closing.',
+    url:     'articles/lessons-from-a-sale-fenton-san-luis',
+    tool:    false,
+    citations: [
+      { chapter: 7, scene: 4, context: 'A failing furnace on a real sale: why we asked for the repair and a home warranty.' },
+      { chapter: 8, scene: 1, context: 'The sellers planned to take the Ring doorbell the night before closing. Here is how it was resolved.' }
+    ]
+  },
+
+  {
     id:      'art-home-inspection-st-louis',
     title:   'What Happens at a Home Inspection in St. Louis',
     summary: 'What to expect, what the inspector checks, and what to do with the results before your deadline.',
