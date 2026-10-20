@@ -5,8 +5,8 @@
      <div data-ask-me="CONTEXT_KEY" [data-ask-name="Affton"]><p><a href="/ask?about=CONTEXT_KEY">…</a></p></div>
      <script src="/assets/ask-me.js?v=1" defer></script>
    The placeholder's link is the no-JS fallback; this script replaces it with
-   the styled component. All CTA copy lives in CONTEXTS below (source of truth,
-   mirrored in /docs/ask-me-conversion-map.md). /ask reads the same registry.
+   the styled component. All CTA copy lives in CONTEXTS below (source of
+   truth). /ask reads the same registry.
 
    Source title and URL are taken from the page itself at click time, so they
    never need to be configured per page.
