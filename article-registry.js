@@ -421,6 +421,20 @@ window.ARTICLE_REGISTRY = {
       toolLink: null,
       published: true
     },
+    {
+      slug: "how-george-works-with-buyers",
+      title: "How I Work With St. Louis Home Buyers",
+      shortTitle: "How George Works With Buyers",
+      description: "George Kindler's buyer process from the lender conversation to the closing wire.",
+      pillLabel: "How George Works",
+      audience: "buyer",
+      series: "representation",
+      isHub: false,
+      chapters: [],
+      tags: ["buying", "process", "representation", "offers"],
+      toolLink: null,
+      published: true
+    },
 
     /* ── BUYER: MORTGAGE AND FINANCING SERIES ── */
 
