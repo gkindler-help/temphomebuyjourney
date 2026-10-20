@@ -9,3 +9,4 @@ Workflow:
 - Keep scratch and proofreading files out of the repo.
 - Never publish directions or internal notes on the public site. Any new internal file (notes, rules, editor settings) must be blocked with a 301 to `/` at the top of `_redirects`.
 - Every page must validate JSON-LD and have no overflow at 390px.
+- Site search: after any change to page content, titles or descriptions, run `python3 scripts/build-search.py` and commit `pagefind/` and `assets/search-recs.json` with the PR. Recommended-reading keywords live in `TOPICS` in that script.

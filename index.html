@@ -61,7 +61,8 @@
       "name":"STL Home Journey",
       "description":"Independent St. Louis real estate education: neighborhoods, school districts, affordability, pricing strategy, decision tools, and real transaction lessons from George Kindler.",
       "creator":{"@id":"https://stlhomejourney.com/#george-kindler"},
-      "publisher":{"@id":"https://stlhomejourney.com/#george-kindler"}
+      "publisher":{"@id":"https://stlhomejourney.com/#george-kindler"},
+      "potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://stlhomejourney.com/search?q={search_term_string}"},"query-input":"required name=search_term_string"}
     },
     {
       "@type":"WebPage",
@@ -815,5 +816,6 @@ a{color:var(--gold);text-decoration:none;}
 })();
 </script>
 <script src="/assets/ask-me.js?v=9" defer></script>
+<script src="/assets/site-search.js" defer></script>
 </body>
 </html>

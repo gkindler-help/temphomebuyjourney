@@ -1326,6 +1326,7 @@ function closeDrawer() {
     bar.className = "dash-bar";
     bar.id        = "dash-bar";
     bar.innerHTML =
+      '<a class="dash-tab dash-tab-search" href="/search" style="text-decoration:none;">Search</a>'  +
       '<button class="dash-tab" id="dash-tab-tools"         type="button">Tools</button>'         +
       '<button class="dash-tab" id="dash-tab-resources"     type="button">Resources</button>'     +
       '<button class="dash-tab" id="dash-tab-neighborhoods" type="button">Neighborhoods</button>' +
