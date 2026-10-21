@@ -32,6 +32,8 @@ SECTIONS = [('articles/lessons-from-a-sale', 'Lessons From a Sale'), ('articles/
 TOPICS = [
     (['commission', 'buyer agent fee', 'buyers agent', "buyer's agent", 'compensation', 'nar settlement', 'buyer agreement', 'agency agreement', 'realtor fee'],
      ['articles/who-pays-buyer-agent-commission-stl', 'articles/do-i-need-a-buyers-agent-stl', 'articles/how-george-works-with-buyers#commission', 'articles/lessons-from-a-sale-fenton-san-luis#commission']),
+    (['appraisal', 'appraise', 'appraised', 'appraiser', 'low appraisal', 'appraisal gap', 'appraised low', 'reconsideration of value'],
+     ['articles/appraisal-comes-in-low-st-louis', 'articles/how-much-to-offer-on-a-house-st-louis#appraisal-gap', 'articles/va-appraisal-failed-st-louis-what-happens-next']),
     (['contingency', 'contingencies', 'waive', 'waiving', 'waive inspection', 'waive the inspection', 'financing contingency', 'appraisal contingency', 'back out', 'backing out', 'earnest money back'],
      ['articles/which-contingencies-to-keep-st-louis', 'articles/how-much-to-offer-on-a-house-st-louis', 'articles/sell-first-or-buy-first-st-louis']),
     (['offer', 'offers', 'multiple offers', 'highest and best', 'escalation', 'bidding', 'over asking', 'appraisal gap', 'earnest money'],
