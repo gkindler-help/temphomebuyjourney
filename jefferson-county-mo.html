@@ -113,15 +113,13 @@
 .sc-h3{font-size:17px;font-weight:700;color:#fff;margin:22px 0 4px;}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/jefferson-county-mo","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
+<script>document.documentElement.classList.add('js-intro');</script>
+<link rel="stylesheet" href="/assets/intro-scene.css">
 </head>
 <body class="tool-page neighborhood-page">
-<header class="nbhd-hdr">
-  <a href="./" class="nbhd-hdr-l">
-    <div class="nbhd-hdr-ico"><img src="assets/STLhomebuyerjourneylogo.png" alt="STL Home Journey" onerror="this.style.display='none'"></div>
-    <div>
-      <div class="nbhd-hdr-t"><span>STL</span> Home Journey</div>
-      <div class="nbhd-hdr-name">George Kindler · 314.435.1087</div>
-    </div>
+<header class="nbhd-hdr" data-reveal-nav>
+  <a href="./" class="nbhd-hdr-l" aria-label="STL Home Journey home">
+    <img class="hdr-wordmark" src="/assets/brand/stlhj-logo-silver-dark.webp" alt="STL Home Journey" width="600" height="186" style="display:block;height:32px;width:auto;max-width:none;">
   </a>
   <nav class="nbhd-hdr-nav">
     <a href="neighborhoods/" class="nbhd-hdr-btn">All Neighborhoods</a>
@@ -129,6 +127,22 @@
     <a href="./" class="nbhd-hdr-btn gold">Journey</a>
   </nav>
 </header>
+<section class="intro" data-intro aria-labelledby="jefferson-county-hero">
+  <div class="intro-frame">
+    <div class="intro-stack">
+      <img class="intro-photo" style="aspect-ratio:1200/901" src="assets/jefferson-county-two-story-01.jpg" width="1200" height="901" fetchpriority="high" decoding="async" alt="Brick and vinyl two-story with a covered front porch and two-car garage in Jefferson County, Missouri">
+      <img class="intro-logo" src="/assets/brand/stlhj-logo-gold-dark.webp" width="900" height="274" alt="" aria-hidden="true">
+    </div>
+    <div class="intro-shade"></div>
+    <div class="intro-copy">
+      <p class="intro-eyebrow ifade">Jefferson County, Missouri · Area Guide</p>
+      <h1 id="jefferson-county-hero" class="ifade">Jefferson County, Missouri.</h1>
+      <p class="intro-sub ifade">16 communities &middot; 15 ZIP codes &middot; 12 school districts</p>
+    </div>
+    <a class="intro-arrow" href="#after-intro" aria-label="Scroll to the guide"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></a>
+  </div>
+</section>
+<div class="intro-after" id="after-intro"></div>
 <nav class="nbhd-breadcrumb" aria-label="Breadcrumb">
   <a href="./" class="nbhd-bc-item">Journey</a>
   <span class="nbhd-bc-sep">›</span>
@@ -138,10 +152,8 @@
 </nav>
 
 <main class="tool-selector" id="jefferson-county-content">
-<section aria-labelledby="jefferson-county-hero">
+<section aria-label="Overview">
       <div class="tool-result-card">
-        <div class="tool-result-label">Jefferson County, Missouri · Area Guide</div>
-        <h1 class="tool-result-value" id="jefferson-county-hero">Jefferson County, Missouri.</h1>
         <p class="tool-result-sub">16 communities. 15 ZIP codes. 12 school districts. More than half of 2026 sales were outside any city limits. The mistake is treating a Jefferson County mailing address like a city: an Arnold, Festus or Imperial address doesn&rsquo;t tell you the city, the school district or whose rules apply when you sell.</p>
       </div>
     </section>
@@ -620,5 +632,6 @@
 <script src="shared.js"></script>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script src="/assets/intro-scene.js" defer></script>
 </body>
 </html>

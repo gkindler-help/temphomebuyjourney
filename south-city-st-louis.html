@@ -63,15 +63,13 @@
 .nbhd-chip-meta{font-size:0.75rem;color:rgba(255,255,255,.5);line-height:1.5;}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/south-city-st-louis","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
+<script>document.documentElement.classList.add('js-intro');</script>
+<link rel="stylesheet" href="/assets/intro-scene.css">
 </head>
 <body class="tool-page neighborhood-page">
-<header class="nbhd-hdr">
-  <a href="./" class="nbhd-hdr-l">
-    <div class="nbhd-hdr-ico"><img src="assets/STLhomebuyerjourneylogo.png" alt="STL Home Journey" onerror="this.style.display='none'"></div>
-    <div>
-      <div class="nbhd-hdr-t"><span>STL</span> Home Journey</div>
-      <div class="nbhd-hdr-name">George Kindler · 314.435.1087</div>
-    </div>
+<header class="nbhd-hdr" data-reveal-nav>
+  <a href="./" class="nbhd-hdr-l" aria-label="STL Home Journey home">
+    <img class="hdr-wordmark" src="/assets/brand/stlhj-logo-silver-dark.webp" alt="STL Home Journey" width="600" height="186" style="display:block;height:32px;width:auto;max-width:none;">
   </a>
   <nav class="nbhd-hdr-nav">
     <a href="neighborhoods/" class="nbhd-hdr-btn">All Neighborhoods</a>
@@ -79,6 +77,22 @@
     <a href="./" class="nbhd-hdr-btn gold">Journey</a>
   </nav>
 </header>
+<section class="intro" data-intro aria-labelledby="south-city-hero">
+  <div class="intro-frame">
+    <div class="intro-stack">
+      <img class="intro-photo" style="aspect-ratio:1200/901" src="assets/south-city-miami-st-housing-01.jpg" width="1200" height="901" fetchpriority="high" decoding="async" alt="Brick bungalow with a bay window on Miami Street in South City St. Louis">
+      <img class="intro-logo" src="/assets/brand/stlhj-logo-gold-dark.webp" width="900" height="274" alt="" aria-hidden="true">
+    </div>
+    <div class="intro-shade"></div>
+    <div class="intro-copy">
+      <p class="intro-eyebrow ifade">St. Louis City · South City Area</p>
+      <h1 id="south-city-hero" class="ifade">South City St. Louis.</h1>
+      <p class="intro-sub ifade">22 neighborhoods &middot; One school district &middot; Brick on every block</p>
+    </div>
+    <a class="intro-arrow" href="#after-intro" aria-label="Scroll to the guide"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></a>
+  </div>
+</section>
+<div class="intro-after" id="after-intro"></div>
 <nav class="nbhd-breadcrumb" aria-label="Breadcrumb">
   <a href="./" class="nbhd-bc-item">Journey</a>
   <span class="nbhd-bc-sep">›</span>
@@ -101,11 +115,9 @@
   </div>
 </section>
 
-<section aria-labelledby="south-city-hero">
-    <div class="tool-result-card">
-      <div class="tool-result-label">St. Louis City · South City Area</div>
-      <h1 class="tool-result-value" id="south-city-hero">South City St. Louis.</h1>
-      <p class="tool-result-sub">22 neighborhoods. One school district. Brick on every block. The mistake is treating South City like one market — a $110K buyer and a $230K buyer are not shopping the same version of it, and the name recognition gap between adjacent neighborhoods is often worth $50K–$80K in price.</p>
+<section aria-label="Overview">
+      <div class="tool-result-card">
+        <p class="tool-result-sub">22 neighborhoods. One school district. Brick on every block. The mistake is treating South City like one market — a $110K buyer and a $230K buyer are not shopping the same version of it, and the name recognition gap between adjacent neighborhoods is often worth $50K–$80K in price.</p>
     </div>
   </section>
 
@@ -410,5 +422,6 @@
 <script src="shared.js"></script>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script src="/assets/intro-scene.js" defer></script>
 </body>
 </html>

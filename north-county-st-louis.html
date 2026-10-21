@@ -113,15 +113,13 @@
 .sc-h3{font-size:17px;font-weight:700;color:#fff;margin:22px 0 4px;}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/north-county-st-louis","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
+<script>document.documentElement.classList.add('js-intro');</script>
+<link rel="stylesheet" href="/assets/intro-scene.css">
 </head>
 <body class="tool-page neighborhood-page">
-<header class="nbhd-hdr">
-  <a href="./" class="nbhd-hdr-l">
-    <div class="nbhd-hdr-ico"><img src="assets/STLhomebuyerjourneylogo.png" alt="STL Home Journey" onerror="this.style.display='none'"></div>
-    <div>
-      <div class="nbhd-hdr-t"><span>STL</span> Home Journey</div>
-      <div class="nbhd-hdr-name">George Kindler · 314.435.1087</div>
-    </div>
+<header class="nbhd-hdr" data-reveal-nav>
+  <a href="./" class="nbhd-hdr-l" aria-label="STL Home Journey home">
+    <img class="hdr-wordmark" src="/assets/brand/stlhj-logo-silver-dark.webp" alt="STL Home Journey" width="600" height="186" style="display:block;height:32px;width:auto;max-width:none;">
   </a>
   <nav class="nbhd-hdr-nav">
     <a href="neighborhoods/" class="nbhd-hdr-btn">All Neighborhoods</a>
@@ -129,6 +127,22 @@
     <a href="./" class="nbhd-hdr-btn gold">Journey</a>
   </nav>
 </header>
+<section class="intro" data-intro aria-labelledby="north-county-hero">
+  <div class="intro-frame">
+    <div class="intro-stack">
+      <img class="intro-photo" style="aspect-ratio:1200/901" src="assets/willow-creek-listing-01.jpg" width="1200" height="901" fetchpriority="high" decoding="async" alt="Two-story brick colonial with a two-car garage in Florissant, North County St. Louis">
+      <img class="intro-logo" src="/assets/brand/stlhj-logo-gold-dark.webp" width="900" height="274" alt="" aria-hidden="true">
+    </div>
+    <div class="intro-shade"></div>
+    <div class="intro-copy">
+      <p class="intro-eyebrow ifade">North County St.&nbsp;Louis · Area Guide</p>
+      <h1 id="north-county-hero" class="ifade">North County St.&nbsp;Louis.</h1>
+      <p class="intro-sub ifade">762 home sales in 2026 &middot; 15 communities &middot; 32 small towns</p>
+    </div>
+    <a class="intro-arrow" href="#after-intro" aria-label="Scroll to the guide"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></a>
+  </div>
+</section>
+<div class="intro-after" id="after-intro"></div>
 <nav class="nbhd-breadcrumb" aria-label="Breadcrumb">
   <a href="./" class="nbhd-bc-item">Journey</a>
   <span class="nbhd-bc-sep">›</span>
@@ -138,10 +152,8 @@
 </nav>
 
 <main class="tool-selector" id="north-county-content">
-<section aria-labelledby="north-county-hero">
+<section aria-label="Overview">
       <div class="tool-result-card">
-        <div class="tool-result-label">North County St.&nbsp;Louis · Area Guide</div>
-        <h1 class="tool-result-value" id="north-county-hero">North County St.&nbsp;Louis.</h1>
         <p class="tool-result-sub">North County is part of the 250+ transactions I&rsquo;ve worked across St.&nbsp;Louis. This guide puts that experience next to 762 home sales from 2026 across 15 communities and 32 small towns: what each budget reaches, how fast homes sell, which school district and city you&rsquo;re in, and what the taxes run.</p>
       </div>
     </section>
@@ -587,5 +599,6 @@
 <script src="shared.js"></script>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script src="/assets/intro-scene.js" defer></script>
 </body>
 </html>
