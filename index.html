@@ -19,6 +19,7 @@
 <meta name="twitter:description" content="Shouldn’t your agent catch that? See what could cost you after closing, what to check before you offer, and what your agent should help you spot.">
 
 <!-- GA4 -->
+<script>document.documentElement.classList.add('js-intro');</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EEE14BZT9P');</script>
 
@@ -112,8 +113,32 @@ a{color:var(--gold);text-decoration:none;}
 .hp-nav-a:hover{color:#fff;}
 
 /* HERO */
-.hero{padding:64px 0 56px;}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:56px;align-items:center;}
+.hero{padding:56px 0 56px;}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:56px;align-items:center;max-width:680px;margin:0 auto;}
+/* Intro scene: the house and the gold logo hold the screen; scrolling fades the logo and brings in the headline */
+.intro{position:relative;height:200vh;height:200svh;}
+.intro-frame{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#000;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;}
+.intro-stack{position:absolute;inset:0;z-index:-2;display:flex;flex-direction:column;align-items:center;padding-top:min(7%,48px);}
+.intro-photo{display:block;width:min(100%,calc(54svh * 1.5));aspect-ratio:3/2;height:auto;object-fit:cover;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 78%,transparent 100%);}
+@media (min-aspect-ratio:1/1){.intro-photo{width:min(100%,calc(44svh * 1.5));-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 80%,transparent 100%),linear-gradient(90deg,transparent 0,#000 10%,#000 90%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 80%,transparent 100%),linear-gradient(90deg,transparent 0,#000 10%,#000 90%,transparent 100%);mask-composite:intersect;}}
+.intro-logo{display:block;width:min(86%,440px);height:auto;margin-top:clamp(18px,3svh,32px);filter:drop-shadow(0 2px 10px rgba(0,0,0,.55));}
+.intro-shade{position:absolute;inset:0;z-index:-1;opacity:0;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 45%,rgba(0,0,0,.72) 70%,rgba(0,0,0,.94) 100%);}
+.intro-copy{text-align:center;padding:0 20px calc(clamp(28px,6svh,64px) + 56px);max-width:760px;margin:0 auto;}
+.intro-copy .cta-row{justify-content:center;}
+.intro-copy h1{font-family:'Playfair Display',serif;font-size:clamp(32px,6vw,54px);font-weight:900;line-height:1.08;color:#fff;margin-bottom:16px;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.6);}
+.intro-copy .hero-sub{margin:0 auto 24px;}
+.intro-arrow{position:absolute;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:2;transform:translateX(-50%);display:grid;place-items:center;width:46px;height:46px;border-radius:50%;color:var(--gold);border:1px solid var(--gold-line);background:rgba(0,0,0,.5);animation:introbob 1.8s ease-in-out infinite;}
+@media (max-width:700px){.intro-arrow{bottom:calc(92px + env(safe-area-inset-bottom,0px));}.intro-copy{padding-bottom:calc(clamp(28px,6svh,64px) + 110px);}}
+.intro-active .jump{opacity:0;pointer-events:none;}
+.jump{transition:opacity .3s ease;}
+@keyframes introbob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
+.js-intro .ifade{opacity:0;transform:translateY(14px);}
+@media (prefers-reduced-motion:reduce){.intro-arrow{animation:none}.js-intro .ifade{opacity:1;transform:none}.intro-logo{display:none}.intro-shade{opacity:1}}
+/* Header waits until the intro is scrolled past */
+.hp-nav.reveal{position:fixed;left:0;right:0;top:0;transform:translateY(-110%);transition:transform .35s ease;}
+.hp-nav.reveal.show{transform:none;}
+.hp-nav-logo .hp-nav-wordmark{display:block;height:34px;width:auto;}
+@media(max-width:600px){.hp-nav-logo .hp-nav-wordmark{height:28px;}}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(34px,6.4vw,58px);font-weight:900;line-height:1.08;color:#fff;margin-bottom:20px;letter-spacing:-.01em;}
 .hero-sub{font-size:17px;line-height:1.7;color:var(--soft);max-width:34em;margin-bottom:28px;}
@@ -317,10 +342,9 @@ a{color:var(--gold);text-decoration:none;}
 <a class="skip" href="#main">Skip to content</a>
 
 <!-- NAV (unchanged): Buying · Selling · Neighborhoods · Tools · Experience -->
-<nav class="hp-nav" aria-label="Primary">
+<nav class="hp-nav reveal" aria-label="Primary">
   <a class="hp-nav-logo" href="/">
-    <img src="/assets/STLhomebuyerjourneylogo.webp" alt="STL Home Journey" width="28" height="28">
-    <div class="hp-nav-logo-t"><span>STL</span> Home Journey</div>
+    <img class="hp-nav-wordmark" src="/assets/brand/stlhj-logo-silver-dark.webp" alt="STL Home Journey" width="600" height="186">
   </a>
   <div class="hp-nav-links">
     <a class="hp-nav-a" href="/articles/#panel-buying">Buying</a>
@@ -334,17 +358,28 @@ a{color:var(--gold);text-decoration:none;}
 <main id="main">
 
 <!-- HERO: the moment after the listing -->
-<section class="hero" aria-labelledby="hero-h1">
-  <div class="wrap hero-grid">
-    <div>
-      <p class="eyebrow">You found the house.</p>
-      <h1 id="hero-h1">Now find out what you&rsquo;re really buying.</h1>
-      <p class="hero-sub">You already found the house. STL Home Journey helps you understand the decision.</p>
-      <div class="cta-row">
+<section class="intro" aria-labelledby="hero-h1" data-intro>
+  <div class="intro-frame">
+    <div class="intro-stack">
+      <img class="intro-photo" src="/assets/listings/13218-wintergreen/photo-01.webp" alt="13218 Wintergreen Estates Drive in Fenton, a split-level George Kindler listed and sold in 2026" width="1400" height="933" fetchpriority="high">
+      <img class="intro-logo" src="/assets/brand/stlhj-logo-gold-dark.webp" alt="STL Home Journey" width="900" height="274">
+    </div>
+    <div class="intro-shade"></div>
+    <div class="intro-copy">
+      <p class="eyebrow ifade">You found the house.</p>
+      <h1 id="hero-h1" class="ifade">Now find out what you&rsquo;re really buying.</h1>
+      <p class="hero-sub ifade">You already found the house. STL Home Journey helps you understand the decision.</p>
+      <div class="cta-row ifade">
         <a class="btn btn-primary" href="#before-you-buy">Before You Buy</a>
         <a class="btn btn-ghost" href="/neighborhoods/">Explore St. Louis Neighborhoods</a>
       </div>
     </div>
+    <a class="intro-arrow" href="#listing-gap" aria-label="Scroll to what the listing can&rsquo;t tell you"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></a>
+  </div>
+</section>
+
+<section class="hero" id="listing-gap" aria-label="What the listing can&rsquo;t tell you">
+  <div class="wrap hero-grid">
 
     <div class="gap">
       <div class="gap-known">
@@ -770,6 +805,36 @@ a{color:var(--gold);text-decoration:none;}
   <p style="margin-top:8px;">Content is educational and does not constitute legal, financial, or real estate advice for your specific situation.</p>
 </footer>
 
+<script>
+/* Intro scene: scroll drives the logo fade-out and headline fade-in; the header slides in once the intro is passed. */
+(function(){
+  var scene=document.querySelector('[data-intro]'), nav=document.querySelector('.hp-nav.reveal');
+  if(!scene){ if(nav) nav.classList.add('show'); return; }
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var photo=scene.querySelector('.intro-photo'), logo=scene.querySelector('.intro-logo'), shade=scene.querySelector('.intro-shade'), arrow=scene.querySelector('.intro-arrow');
+  var items=[].slice.call(scene.querySelectorAll('.ifade'));
+  function clamp(x){return x<0?0:x>1?1:x;}
+  function render(){
+    var r=scene.getBoundingClientRect(), span=scene.offsetHeight-window.innerHeight;
+    var p=reduce?1:clamp(-r.top/(span*0.8));
+    if(!reduce){
+      photo.style.opacity=(1-0.08*p).toFixed(3);
+      var l=clamp(p/0.28); logo.style.opacity=(1-l).toFixed(3); logo.style.transform='translateY('+(-20*l).toFixed(1)+'px)';
+      shade.style.opacity=clamp(p*1.4).toFixed(3);
+      arrow.style.opacity=(1-clamp(p*4)).toFixed(3); arrow.style.pointerEvents=p>0.2?'none':'';
+      items.forEach(function(el,i){ var q=clamp((p-(0.3+i*0.1))/0.3); el.style.opacity=q.toFixed(3); el.style.transform='translateY('+(14*(1-q)).toFixed(1)+'px)'; });
+    }
+    var past=r.bottom<=window.innerHeight*1.02;
+    document.documentElement.classList.toggle('intro-active', !past && !reduce);
+    if(nav) nav.classList.toggle('show', reduce || past || nav.contains(document.activeElement));
+  }
+  var ticking=false;
+  function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(function(){ ticking=false; render(); }); } }
+  window.addEventListener('scroll',onScroll,{passive:true}); window.addEventListener('resize',onScroll);
+  if(nav) nav.addEventListener('focusin',function(){ nav.classList.add('show'); });
+  render();
+})();
+</script>
 <script>
 /* Jump nav: tracks nav height for sticky offsets and highlights the section in view. Links work without JS. */
 (function(){
