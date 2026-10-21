@@ -37,7 +37,7 @@ TOPICS = [
     (['multiple offers on my house', 'multiple offers', 'highest and best', 'bidding war', 'two offers', 'several offers', 'backup offer', 'competing offers'],
      ['articles/multiple-offers-on-my-house-st-louis', 'articles/should-i-accept-this-offer-st-louis#compare', 'articles/how-much-to-offer-on-a-house-st-louis', 'articles/lessons-from-a-sale-fenton-san-luis#highest-and-best']),
     (['appraisal', 'appraise', 'appraised', 'appraiser', 'low appraisal', 'appraisal gap', 'appraised low', 'reconsideration of value'],
-     ['articles/appraisal-comes-in-low-st-louis', 'articles/how-much-to-offer-on-a-house-st-louis#appraisal-gap', 'articles/va-appraisal-failed-st-louis-what-happens-next']),
+     ['articles/appraisal-comes-in-low-st-louis', 'articles/lessons-from-a-sale-galena-appraisal', 'articles/how-much-to-offer-on-a-house-st-louis#appraisal-gap', 'articles/va-appraisal-failed-st-louis-what-happens-next']),
     (['contingency', 'contingencies', 'waive', 'waiving', 'waive inspection', 'waive the inspection', 'financing contingency', 'appraisal contingency', 'back out', 'backing out', 'earnest money back'],
      ['articles/which-contingencies-to-keep-st-louis', 'articles/how-much-to-offer-on-a-house-st-louis', 'articles/sell-first-or-buy-first-st-louis']),
     (['offer', 'offers', 'multiple offers', 'highest and best', 'escalation', 'bidding', 'over asking', 'appraisal gap', 'earnest money'],
