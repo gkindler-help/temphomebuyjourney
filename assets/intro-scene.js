@@ -2,6 +2,15 @@
 (function(){
   var scene=document.querySelector('[data-intro]'), nav=document.querySelector('[data-reveal-nav]');
   if(!scene){ if(nav) nav.classList.add('show'); return; }
+  /* shared.js drops its tab bar at the top of body; keep it below the intro */
+  function placeBar(){
+    var bar=document.getElementById('dash-bar');
+    if(bar && (scene.compareDocumentPosition(bar) & Node.DOCUMENT_POSITION_PRECEDING)){
+      var after=scene.nextElementSibling && scene.nextElementSibling.classList.contains('intro-after') ? scene.nextElementSibling : scene;
+      after.parentNode.insertBefore(bar, after.nextSibling);
+    }
+  }
+  placeBar(); document.addEventListener('DOMContentLoaded',placeBar); window.addEventListener('load',placeBar);
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var photo=scene.querySelector('.intro-photo'), logo=scene.querySelector('.intro-logo'), shade=scene.querySelector('.intro-shade'), arrow=scene.querySelector('.intro-arrow');
   var items=[].slice.call(scene.querySelectorAll('.ifade'));
@@ -22,7 +31,7 @@
   }
   var ticking=false;
   function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(function(){ ticking=false; render(); }); } }
-  window.addEventListener('scroll',onScroll,{passive:true}); window.addEventListener('resize',onScroll);
+  document.addEventListener('scroll',onScroll,{passive:true,capture:true}); window.addEventListener('resize',onScroll);
   if(nav) nav.addEventListener('focusin',function(){ nav.classList.add('show'); });
   render();
 })();

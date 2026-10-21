@@ -123,22 +123,35 @@ p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 p.wc-src{font-size:.8rem;color:var(--text-faint);}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/articles/west-county-st-louis-neighborhoods","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
+<script>document.documentElement.classList.add('js-intro');</script>
+<link rel="stylesheet" href="/assets/intro-scene.css">
 </head>
 <body>
-<header class="art-hdr">
-  <a href="../" class="art-hdr-l">
-    <div class="art-hdr-ico"><img src="../assets/STLhomebuyerjourneylogo.webp" alt="STL Home Journey" onerror="this.style.display='none'"></div>
-    <div>
-      <div class="art-hdr-t"><span>STL</span> Home Journey</div>
-      <div class="art-hdr-name">George Kindler</div>
-      <div class="art-hdr-tagline">Buyer education for St. Louis homebuyers</div>
-    </div>
+<header class="art-hdr" data-reveal-nav>
+  <a href="../" class="art-hdr-l" aria-label="STL Home Journey home">
+    <img class="hdr-wordmark" src="/assets/brand/stlhj-logo-silver-dark.webp" alt="STL Home Journey" width="600" height="186" style="display:block;height:32px;width:auto;max-width:none;">
   </a>
   <nav class="art-hdr-nav">
     <a href="/articles/" class="art-hdr-btn">All Guides</a>
     <a href="../" class="art-hdr-btn gold">Journey</a>
   </nav>
 </header>
+<section class="intro" data-intro aria-labelledby="west-county-h1">
+  <div class="intro-frame">
+    <div class="intro-stack">
+      <img class="intro-photo" style="aspect-ratio:1200/901" src="../assets/portfolio/portfolio-11.webp" width="1200" height="901" fetchpriority="high" decoding="async" alt="Brick-front two-story with a two-car garage in West County St. Louis">
+      <img class="intro-logo" src="/assets/brand/stlhj-logo-gold-dark.webp" width="900" height="274" alt="" aria-hidden="true">
+    </div>
+    <div class="intro-shade"></div>
+    <div class="intro-copy">
+      <p class="intro-eyebrow ifade">West County Guide</p>
+      <h1 id="west-county-h1" class="ifade">West County St. Louis: 2026 Home Prices, Taxes and School Districts by City</h1>
+      <p class="intro-sub ifade">14 cities &middot; 2026 medians from $304,000 to $1,430,000</p>
+    </div>
+    <a class="intro-arrow" href="#after-intro" aria-label="Scroll to the guide"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></a>
+  </div>
+</section>
+<div class="intro-after" id="after-intro"></div>
 <nav class="art-nav" aria-label="Breadcrumb">
   <a href="../" class="art-nav-item">Journey</a>
   <span style="color:var(--text-faint);padding:10px 2px;">›</span>
@@ -154,7 +167,6 @@ p.wc-src{font-size:.8rem;color:var(--text-faint);}
     <span>West County Guide</span>
   </div>
   <a href="../neighborhoods/" class="art-series-tag">St. Louis Area Guide &rarr;</a>
-  <h1 class="art-title">West County St. Louis: 2026 Home Prices, Taxes and School Districts by City</h1>
 <p class="last-updated">Last updated October 18, 2026</p>
   <p class="art-lede">West County isn&rsquo;t one housing market. In 2026 closed sales, median prices ran from $304,000 in Valley Park to $1,430,000 in Ladue across 14 cities, and several cities crossed school district lines. This guide compares <a href="../neighborhoods/chesterfield">Chesterfield</a>, <a href="../neighborhoods/ballwin">Ballwin</a>, <a href="../neighborhoods/kirkwood">Kirkwood</a>, Wildwood, Creve Coeur and nine more by price, budget, home type, school district and property tax.</p>
   <div class="art-meta">
@@ -469,5 +481,6 @@ p.wc-src{font-size:.8rem;color:var(--text-faint);}
 </footer>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script src="/assets/intro-scene.js" defer></script>
 </body>
 </html>
