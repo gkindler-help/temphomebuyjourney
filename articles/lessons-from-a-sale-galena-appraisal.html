@@ -179,6 +179,8 @@
 .lfs-review blockquote{font-size:.98rem;line-height:1.7;color:rgba(255,255,255,.86);font-style:italic;}
 .lfs-review cite{display:block;margin-top:12px;font-size:.8rem;font-style:normal;color:rgba(255,255,255,.55);letter-spacing:.03em;}
 </style>
+<script>document.documentElement.classList.add('js-intro');</script>
+<link rel="stylesheet" href="/assets/intro-scene.css">
 </head>
 <body>
 
@@ -198,14 +200,9 @@
   <a href="#your-takeaway" class="jump-link">What does this sale teach about terms and appraisals?</a>
 </nav>
 
-<header class="art-hdr">
-  <a class="art-hdr-l" href="../">
-    <div class="art-hdr-ico"><img src="../assets/STLhomebuyerjourneylogo.webp" alt="STL Home Journey"></div>
-    <div>
-      <div class="art-hdr-t"><span>STL</span> Home Buyer Journey</div>
-      <div class="art-hdr-name">George Kindler</div>
-      <div class="art-hdr-tagline">13 Years Of Real Estate Experience At Your Fingertips</div>
-    </div>
+<header class="art-hdr" data-reveal-nav>
+  <a class="art-hdr-l" href="../" aria-label="STL Home Journey home">
+    <img class="hdr-wordmark" src="/assets/brand/stlhj-logo-silver-dark.webp" alt="STL Home Journey" width="600" height="186">
   </a>
   <nav class="art-hdr-nav">
     <a class="art-hdr-btn" href="../articles/">Guides</a>
@@ -213,10 +210,28 @@
   </nav>
 </header>
 
-<div class="art-layout">
+<section class="intro" data-intro aria-labelledby="lesson-h1">
+  <div class="intro-frame">
+    <div class="intro-stack">
+      <picture>
+        <source srcset="../assets/lessons/galena/5021-galena-front.webp" type="image/webp">
+        <img class="intro-photo" style="aspect-ratio:1200/901" src="../assets/lessons/galena/5021-galena-front.jpg" width="1200" height="901" fetchpriority="high" decoding="async" alt="5021 Galena Court, a ranch with a brick front, covered porch, bay window and two-car garage behind a sloped front lawn">
+      </picture>
+      <img class="intro-logo" src="/assets/brand/stlhj-logo-gold-dark.webp" width="900" height="274" alt="" aria-hidden="true">
+    </div>
+    <div class="intro-shade"></div>
+    <div class="intro-copy">
+      <p class="intro-eyebrow ifade">Lessons From a Sale &middot; Unincorporated Jefferson County</p>
+      <h1 id="lesson-h1" class="ifade">The Appraisal Came In $6,000 Low. It Still Closed at $271,000.</h1>
+      <p class="intro-sub ifade">Listed at $250,000 &middot; 27 showings &middot; Sold for $271,000</p>
+    </div>
+    <a class="intro-arrow" href="#story" aria-label="Scroll to the story"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></a>
+  </div>
+</section>
+
+<div class="art-layout" id="story">
 
   <div class="art-meta">Lessons From a Sale &middot; A real transaction, start to finish</div>
-  <h1 class="art-title">The Appraisal Came In $6,000 Low. It Still Closed at $271,000.</h1>
   <p class="last-updated">Last updated October 21, 2026</p>
   <p class="art-lede">5021 Galena Court drew 27 showings and four offers in two days. My sellers, longtime friends of mine, chose the best one on paper, the appraisal came in low while they were on vacation, and the contract held. Step into my seat, make the calls, then read how each one played out.</p>
 
@@ -224,13 +239,6 @@
 
   <div class="art-body" id="full-story">
 
-<figure class="lfs-fig">
-  <picture>
-    <source srcset="../assets/lessons/galena/5021-galena-front.webp" type="image/webp">
-    <img src="../assets/lessons/galena/5021-galena-front.jpg" width="1200" height="901" loading="eager" decoding="async" alt="5021 Galena Court, a ranch with a brick front, covered porch, bay window and two-car garage behind a sloped front lawn">
-  </picture>
-  <figcaption>5021 Galena Court, unincorporated Jefferson County. Listed at the end of June 2025, under contract in two days.</figcaption>
-</figure>
 
 <div class="lfs-facts">
   <div class="lfs-facts-hd">The deal at a glance</div>
@@ -373,5 +381,6 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script src="/assets/intro-scene.js" defer></script>
 </body>
 </html>
