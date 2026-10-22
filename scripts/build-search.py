@@ -99,6 +99,7 @@ TOPICS = [
     (['fsbo', 'for sale by owner', 'flat fee', 'mls'], ['fsbo-st-louis', 'articles/flat-fee-mls-st-louis']),
     (['clayton', 'ladue'], ['articles/clayton-vs-ladue-under-1-million']),
     (['lindbergh', 'mehlville'], ['articles/lindbergh-vs-mehlville-school-district-stl']),
+    (['parkway', 'rockwood'], ['articles/parkway-vs-rockwood-st-louis', 'school-districts/parkway-school-district', 'school-districts/rockwood-school-district']),
     (['kirkwood', 'webster groves'], ['articles/kirkwood-vs-webster-groves-st-louis', 'neighborhoods/kirkwood', 'neighborhoods/webster-groves']),
     (['cheap house', 'regret', 'regrets'], ['articles/what-buyers-regret-cheap-house-st-louis']),
     (['300k', '450k', '600k', 'what can i buy'], ['articles/what-300k-450k-600k-buys-st-louis']),
