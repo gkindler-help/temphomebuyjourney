@@ -42,6 +42,7 @@ Pages are built to be quoted by AI tools and still read well top to bottom.
 - **Concessions:** never use one to generate a contract. Concessions belong in repair negotiations after the inspection, where they typically run $2,000 to $8,000. Homes that sell over asking rarely give one unless there's a major repair.
 - **Price reduction vs. concession or agent bonus:** lower the price. Buyers move first on price, then on inspections.
 - **Property taxes:** listing taxes are the seller's most recent bill. Use them to compare areas, then confirm the exact address with the St. Louis County Collector of Revenue.
+- **Tax figures come from confirmed taxes on the sales (George, 2026-10-22):** use the tax bills recorded on closed sales, the same bills closing prorations are figured on. Don't publish levy rates or third-party effective-rate estimates. A rate is that bill divided by the sale price.
 - **Earnest money:** about 1% is typical for a retail sale with a financed buyer. On cash deals George has always recommended 10%, and sellers taking an off-market offer should ask for more.
 - **Credit before closing:** George sends every buyer to a lender before they go under contract; the lender and George cover what not to touch on their credit. Hold big purchases such as cars and furniture until after closing.
 - **Reserves:** keep six months of house payments after the down payment and closing costs, regardless of what the loan program requires.
