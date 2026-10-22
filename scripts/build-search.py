@@ -87,7 +87,7 @@ TOPICS = [
     (['north county'], ['north-county-st-louis']),
     (['jefferson county', 'jeffco'], ['jefferson-county-mo', 'school-districts/jefferson-county']),
     (['south city', 'st louis city', 'city of st louis'], ['south-city-st-louis']),
-    (['fenton'], ['neighborhoods/fenton-jefferson-county', 'neighborhoods/south-county-small-towns#fenton', 'articles/lessons-from-a-sale-fenton-san-luis']),
+    (['fenton'], ['articles/fenton-mo-city-vs-unincorporated', 'neighborhoods/fenton-jefferson-county', 'neighborhoods/south-county-small-towns#fenton', 'articles/lessons-from-a-sale-fenton-san-luis']),
     (['occupancy', 'occupancy permit', 'occupancy inspection'], ['neighborhoods/maryland-heights#mh-q-occupancy', 'jefferson-county-mo']),
     (['zillow', 'zestimate'], ['articles/what-happens-when-you-click-zillow', 'articles/zillow-zestimate-accurate-stl']),
     (['rent', 'renting', 'rent vs buy'], ['articles/renting-vs-buying-stl']),
