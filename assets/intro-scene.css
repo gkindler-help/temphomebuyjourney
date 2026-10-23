@@ -23,6 +23,5 @@
 .jump-fab,.jump{transition:opacity .3s ease;}
 .intro + .art-layout{padding-top:72px;}
 .intro-after{height:64px;}
-.hdr-wordmark{display:block;height:32px;width:auto;}
-@media (max-width:600px){.hdr-wordmark{height:26px;}}
+.hdr-wordmark{display:block;height:clamp(30px,7.4vw,58px);width:auto;}
 @media (prefers-reduced-motion:reduce){.intro-arrow{animation:none}.js-intro .ifade{opacity:1;transform:none}.intro-logo{display:none}.intro-shade{opacity:1}}
