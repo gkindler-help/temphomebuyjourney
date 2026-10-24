@@ -714,6 +714,7 @@
 @media(max-width:520px){.np-grid{grid-template-columns:1fr;}}
 .np-field label{display:block;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--text-soft,rgba(255,255,255,.6));margin-bottom:5px;}
 .np-field input{width:100%;background:#111;border:1px solid var(--line,#2a2a2a);border-radius:8px;padding:11px 12px;color:#fff;font-family:inherit;font-size:15px;}
+.np-tip{margin-top:6px;}.np-tip summary{cursor:pointer;font-size:12px;color:var(--gold,#ffcc4d);list-style:none;display:inline-flex;align-items:center;gap:6px;}.np-tip summary::-webkit-details-marker{display:none;}.np-tip summary::after{content:"\25BE";font-size:12px;transition:transform .2s;}.np-tip[open] summary::after{transform:rotate(180deg);}.np-tip p{font-size:12px;line-height:1.55;color:var(--text-soft,rgba(255,255,255,.7));margin:6px 0 0;}
 .np-out{margin-top:18px;padding:18px;background:rgba(255,204,77,.08);border:1px solid var(--gold-line,rgba(255,204,77,.4));border-radius:12px;}
 .np-out-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-soft,rgba(255,255,255,.6));}
 .np-out-num{font-family:var(--font-serif,"Playfair Display",Georgia,serif);font-size:34px;font-weight:700;color:var(--gold,#ffcc4d);margin:3px 0 2px;line-height:1.1;}
@@ -729,7 +730,7 @@
     <div class="np-field"><label>Sale price</label><input id="npPrice" inputmode="numeric" placeholder="$300,000"></div>
     <div class="np-field"><label>Agent commission (%)</label><input id="npComm" inputmode="decimal" value="6"></div>
     <div class="np-field"><label>Title &amp; closing ($)</label><input id="npTitle" inputmode="numeric" value="1,350"></div>
-    <div class="np-field"><label>Prorated taxes ($)</label><input id="npTax" inputmode="numeric" placeholder="0"></div>
+    <div class="np-field"><label>Prorated taxes ($)</label><input id="npTax" inputmode="numeric" placeholder="0"><details class="np-tip"><summary>How tax proration works</summary><p>Taxes are paid in arrears in Missouri: each year&rsquo;s bill is paid in December. At closing you credit the buyer for the part of the year you owned the home. Example: closing at the end of April means about 4 months of taxes (January through April) paid at closing.</p></details></div>
     <div class="np-field"><label>Seller concessions (%)</label><input id="npConc" inputmode="decimal" placeholder="0"></div>
     <div class="np-field"><label>Mortgage payoff ($)</label><input id="npPayoff" inputmode="numeric" placeholder="0"></div>
   </div>
