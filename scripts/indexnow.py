@@ -10,7 +10,7 @@ Add --dry-run to print the URLs without sending.
 Only URLs listed in sitemap.xml are sent, so redirects and internal files never go out.
 The key file lives at the site root as <key>.txt, which is how IndexNow verifies ownership.
 """
-import glob, json, os, re, subprocess, sys, urllib.request
+import glob, json, os, re, subprocess, sys, urllib.error, urllib.request
 
 HOST = "stlhomejourney.com"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -59,10 +59,21 @@ def main(argv):
     print(f"{len(urls)} URL(s):"); print("\n".join("  " + u for u in urls))
     if dry:
         return
+    ua = {"User-Agent": "stlhomejourney-indexnow/1.0"}
+    # IndexNow answers 403 when it can't read the key file, so check it is live first.
+    try:
+        with urllib.request.urlopen(urllib.request.Request(body["keyLocation"], headers=ua), timeout=30) as r:
+            live = r.read().decode().strip()
+        print("key file:", r.status, "matches" if live == k else f"DOES NOT MATCH ({live[:40]!r})")
+    except urllib.error.HTTPError as e:
+        print("key file not reachable:", e.code, body["keyLocation"])
     req = urllib.request.Request(ENDPOINT, data=json.dumps(body).encode(),
-                                 headers={"Content-Type": "application/json; charset=utf-8"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        print("IndexNow response:", r.status)
+                                 headers={"Content-Type": "application/json; charset=utf-8", **ua})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            print("IndexNow response:", r.status)
+    except urllib.error.HTTPError as e:
+        sys.exit(f"IndexNow refused: {e.code} {e.read().decode(errors='replace')[:500]}")
 
 if __name__ == "__main__":
     main(sys.argv[1:])

@@ -21,7 +21,7 @@ jobs:
         with:
           fetch-depth: 0
       # Give Cloudflare Pages time to finish deploying before the crawlers come.
-      - run: sleep 180
+      - run: sleep 300
       - name: Submit changed pages
         if: github.event_name == 'push'
         run: python3 scripts/indexnow.py --changed "${{ github.event.before }}..${{ github.sha }}"
