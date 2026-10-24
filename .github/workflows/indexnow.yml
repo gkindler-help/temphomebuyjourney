@@ -1,0 +1,30 @@
+# After each push to main, tell IndexNow which pages changed so Bing (and Copilot,
+# DuckDuckGo and ChatGPT search, which draw on it) pick them up without waiting for a crawl.
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+    paths: ['**.html', 'sitemap.xml']
+  workflow_dispatch:
+    inputs:
+      all:
+        description: 'Submit every URL in sitemap.xml'
+        type: boolean
+        default: false
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # Give Cloudflare Pages time to finish deploying before the crawlers come.
+      - run: sleep 180
+      - name: Submit changed pages
+        if: github.event_name == 'push'
+        run: python3 scripts/indexnow.py --changed "${{ github.event.before }}..${{ github.sha }}"
+      - name: Submit all pages
+        if: github.event_name == 'workflow_dispatch' && inputs.all
+        run: python3 scripts/indexnow.py --all
