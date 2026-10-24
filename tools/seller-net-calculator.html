@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seller Net Calculator | STL Home Journey</title>
+<meta name="description" content="Estimate what you'll net selling a St. Louis home: sale price minus commission, title and closing, prorated taxes, concessions and your mortgage payoff.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://stlhomejourney.com/articles/what-will-i-net-selling-stl">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#050505;color:rgba(255,255,255,.88);font-family:"Inter",-apple-system,sans-serif;}
+.snc-wrap{max-width:640px;margin:0 auto;padding:16px 16px 40px;box-sizing:border-box;}
+.snc-intro{font-size:14px;line-height:1.6;color:rgba(255,255,255,.72);margin:4px 0 0;}
+.snc-more{font-size:13px;margin-top:6px;}
+.snc-more a{color:#ffcc4d;}
+.snc-field input{box-sizing:border-box;}
+</style>
+</head>
+<body>
+<div class="snc-wrap">
+<p class="snc-intro">Enter your numbers to estimate your net at closing. Commission and title are pre-filled with typical St.&nbsp;Louis defaults; change any of them.</p>
+
+<style>
+.snc-calc{background:rgba(255,255,255,.02);border:1px solid var(--gold-line,rgba(255,204,77,.34));border-radius:14px;padding:20px;margin:18px 0 30px;}
+.snc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:520px){.snc-grid{grid-template-columns:1fr;}}
+.snc-field label{display:block;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--text-soft,rgba(255,255,255,.6));margin-bottom:5px;}
+.snc-field input{width:100%;background:#111;border:1px solid var(--line,#2a2a2a);border-radius:8px;padding:11px 12px;color:#fff;font-family:inherit;font-size:15px;}
+.snc-out{margin-top:18px;padding:18px;background:rgba(255,204,77,.08);border:1px solid var(--gold-line,rgba(255,204,77,.4));border-radius:12px;}
+.snc-out-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-soft,rgba(255,255,255,.6));}
+.snc-out-num{font-family:var(--font-serif,"Playfair Display",Georgia,serif);font-size:34px;font-weight:700;color:var(--gold,#ffcc4d);margin:3px 0 2px;line-height:1.1;}
+.snc-out-sub{font-size:12px;color:var(--text-soft,rgba(255,255,255,.6));line-height:1.5;}
+.snc-break{margin-top:14px;border-top:1px solid var(--line,#242424);padding-top:10px;}
+.snc-line{display:flex;justify-content:space-between;gap:12px;font-size:13px;padding:4px 0;color:var(--text-soft,rgba(255,255,255,.75));}
+.snc-line b{color:#fff;font-weight:700;}
+.snc-line.sub span{color:#F0997B;}
+.snc-note{font-size:11px;color:var(--text-soft,rgba(255,255,255,.45));margin-top:12px;line-height:1.5;}
+</style>
+<div class="snc-calc">
+  <div class="snc-grid">
+    <div class="snc-field"><label>Sale price</label><input id="sncPrice" inputmode="numeric" placeholder="$300,000"></div>
+    <div class="snc-field"><label>Agent commission (%)</label><input id="sncComm" inputmode="decimal" value="6"></div>
+    <div class="snc-field"><label>Title &amp; closing ($)</label><input id="sncTitle" inputmode="numeric" value="1,350"></div>
+    <div class="snc-field"><label>Prorated taxes ($)</label><input id="sncTax" inputmode="numeric" placeholder="0"></div>
+    <div class="snc-field"><label>Seller concessions (%)</label><input id="sncConc" inputmode="decimal" placeholder="0"></div>
+    <div class="snc-field"><label>Mortgage payoff ($)</label><input id="sncPayoff" inputmode="numeric" placeholder="0"></div>
+  </div>
+  <div class="snc-out">
+    <div class="snc-out-label">Estimated net proceeds</div>
+    <div class="snc-out-num" id="sncNet">&mdash;</div>
+    <div class="snc-out-sub" id="sncSub">Enter a sale price to calculate.</div>
+    <div class="snc-break" id="sncBreak" style="display:none;"></div>
+  </div>
+  <div class="snc-note">An estimate to prepare you &mdash; not a closing statement. Commission is negotiable and title, tax, and concession figures vary by deal and timing. Confirm exact numbers with your title company and agent.</div>
+</div>
+<script>
+(function(){
+  function el(id){return document.getElementById(id);}
+  function num(id){var e=el(id);if(!e)return 0;var v=(e.value||'').replace(/[^0-9.]/g,'');return v?parseFloat(v):0;}
+  function fmt(n){return '$'+Math.round(n).toLocaleString();}
+  function ln(a,b,cls){return '<div class="snc-line'+(cls?' '+cls:'')+'">'+a+'<span>'+b+'</span></div>';}
+  function calc(){
+    var P=num('sncPrice');
+    if(!P){el('sncNet').innerHTML='&mdash;';el('sncSub').textContent='Enter a sale price to calculate.';el('sncBreak').style.display='none';return;}
+    var comm=P*(num('sncComm')/100),title=num('sncTitle'),tax=num('sncTax'),conc=P*(num('sncConc')/100),payoff=num('sncPayoff');
+    var costs=comm+title+tax+conc,before=P-costs,net=before-payoff,pct=(costs/P)*100;
+    el('sncNet').textContent=fmt(net);
+    el('sncSub').textContent=fmt(before)+' before mortgage payoff \u00b7 total costs '+fmt(costs)+' ('+pct.toFixed(1)+'% of sale price)';
+    var b=el('sncBreak');b.style.display='block';
+    b.innerHTML=ln('Sale price',fmt(P))
+      +ln('Agent commission ('+(num('sncComm')||0)+'%)','-'+fmt(comm),'sub')
+      +ln('Title &amp; closing','-'+fmt(title),'sub')
+      +(tax?ln('Prorated taxes','-'+fmt(tax),'sub'):'')
+      +(conc?ln('Seller concessions','-'+fmt(conc),'sub'):'')
+      +(payoff?ln('Mortgage payoff','-'+fmt(payoff),'sub'):'')
+      +ln('<b>Net proceeds</b>','<b>'+fmt(net)+'</b>');
+  }
+  window.sncSetPrice=function(v){var p=el('sncPrice');if(p){p.value=Math.round(v).toLocaleString();calc();try{p.scrollIntoView({behavior:'smooth',block:'center'});}catch(e){}}};
+  function init(){['sncPrice','sncComm','sncTitle','sncTax','sncConc','sncPayoff'].forEach(function(id){var e=el(id);if(e)e.addEventListener('input',calc);});}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+<p class="snc-more"><a href="/articles/what-will-i-net-selling-stl">What every line means, and how to net more &rarr;</a></p>
+</div>
+</body>
+</html>
