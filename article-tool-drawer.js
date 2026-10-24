@@ -39,6 +39,13 @@
       params: ['income'],
       defaultLabel: 'See What Your Budget Buys →',
     },
+    'seller-net': {
+      url: '/tools/seller-net-calculator',
+      title: 'Seller Net Calculator',
+      subtitle: 'What you walk away with at closing',
+      params: [],
+      defaultLabel: 'Calculate Your Net →',
+    },
     'matcher': {
       url: '/neighborhood-matcher',
       title: 'Neighborhood Matcher',
@@ -326,6 +333,14 @@
       '.atd-trigger.atd-trigger-visible{opacity:1;transform:translateX(-50%) translateY(0);}' +
       '.atd-trigger:active{opacity:.85;}' +
       '.atd-trigger-icon{font-size:16px;line-height:1}' +
+      /* Phones: chat sits bottom-left and Sections bottom-right, so the
+         calculator moves up a row on the right instead of covering them. */
+      '@media (max-width:699px){.atd-trigger{left:auto;right:calc(16px + env(safe-area-inset-right,0px));' +
+      'bottom:calc(82px + env(safe-area-inset-bottom,0px));transform:translateY(80px);padding:11px 16px;}' +
+      '.atd-trigger.atd-trigger-visible{transform:none;}}' +
+      /* Step aside while the chat or Sections panel is open. */
+      'body:has(.askfloat-panel:not([hidden])) .atd-trigger,body:has(.jump-panel.open) .atd-trigger' +
+      '{opacity:0!important;pointer-events:none!important;}' +
 
       '.atd-drawer{position:fixed;inset:0;z-index:400;display:flex;flex-direction:column;' +
       'background:#050505;transform:translateY(100%);' +
