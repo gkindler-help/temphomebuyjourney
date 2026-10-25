@@ -10,3 +10,4 @@ Workflow:
 - Never publish directions or internal notes on the public site. Any new internal file (notes, rules, editor settings) must be blocked with a 301 to `/` at the top of `_redirects`.
 - Every page must validate JSON-LD and have no overflow at 390px.
 - Site search: after any change to page content, titles or descriptions, run `python3 scripts/build-search.py` and commit `pagefind/` and `assets/search-recs.json` with the PR. Recommended-reading keywords live in `TOPICS` in that script.
+- Link previews: after adding a page or changing a page title, run `python3 scripts/build-og.py` (needs Node + Playwright; set `CHROME` to a Chromium binary if needed) and commit `assets/og/` and the updated pages. It makes one preview card per page from the page's title, with a "Calculator included" tag on pages that have a calculator.
