@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'Inter';font-weight:600;src:url('fonts/Inter-600.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-weight:700;src:url('fonts/Inter-700.woff2') format('woff2');}
+@font-face{font-family:'Playfair Display';font-weight:800;src:url('fonts/PlayfairDisplay-800.woff2') format('woff2');}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{position:relative;font-family:'Inter',sans-serif;color:#f2e8d1;
+ background:radial-gradient(ellipse 760px 520px at 88% 112%,rgba(176,118,28,.34),transparent 62%),
+            radial-gradient(ellipse 900px 600px at 18% -10%,rgba(90,64,22,.22),transparent 60%),
+            linear-gradient(160deg,#0d0c0a 0%,#070707 55%,#030303 100%)}
+body:after{content:"";position:absolute;inset:0;background-image:url(noise.png);opacity:.06;mix-blend-mode:overlay}
+.frame{position:absolute;inset:22px;border:1px solid rgba(212,165,55,.28);border-radius:6px}
+.mark{position:absolute;right:-120px;bottom:-24px;width:820px;opacity:.07}
+.logo{position:absolute;left:72px;top:62px;width:250px}
+.eb{position:absolute;left:72px;top:206px;font:700 17px/1 'Inter';letter-spacing:.22em;text-transform:uppercase;color:#e0b04a}
+.t{position:absolute;left:72px;top:240px;width:1010px;font:800 66px/1.08 'Playfair Display',serif;color:#fbf6ea;letter-spacing:-.005em;text-wrap:balance;font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1}
+.ft{position:absolute;left:72px;right:72px;bottom:58px;display:flex;align-items:center;gap:18px}
+.rule{height:2px;width:64px;background:linear-gradient(90deg,#f3c15a,#a8731b)}
+.u{font:600 19px/1 'Inter';letter-spacing:.04em;color:rgba(242,232,209,.78)}
+.calc{margin-left:auto;display:none;align-items:center;gap:10px;padding:11px 20px;border:1.5px solid #e0b04a;border-radius:999px;background:rgba(224,176,74,.10);font:700 16px/1 'Inter';letter-spacing:.14em;text-transform:uppercase;color:#f3c15a}
+.calc svg{width:18px;height:18px}
+body.has-calc .calc{display:inline-flex}
+</style></head><body>
+<div class="frame"></div>
+<img class="mark" src="mark.png" alt="">
+<img class="logo" src="logo.png" alt="">
+<div class="eb" id="eb"></div>
+<div class="t" id="t"></div>
+<div class="ft"><div class="rule"></div><div class="u">stlhomejourney.com</div>
+<div class="calc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2.5" width="14" height="19" rx="2"/><path d="M8 6.5h8M8.5 11h.01M12 11h.01M15.5 11h.01M8.5 14.5h.01M12 14.5h.01M15.5 14.5h.01M8.5 18h.01M12 18h3.5"/></svg>Calculator included</div></div>
+</body></html>
