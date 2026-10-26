@@ -1,0 +1,10 @@
+/* LESSON STRIP: one quiet line after a page's Quick Answers pointing to George's own
+   transactions. Built by scripts/build-lesson-strip.py; edit the map there, not the pages. */
+.lesson-strip{margin:22px 0 30px;padding:12px 0 12px 14px;border-left:2px solid var(--gold-line,rgba(255,204,77,.34));font-size:14.5px;line-height:1.6;color:var(--text-soft,rgba(255,255,255,.72));}
+.lesson-strip p{margin:0;}
+.lesson-strip .ls-k{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold,#ffcc4d);margin-bottom:2px;}
+.lesson-strip a{color:var(--text-strong,#fff);font-weight:600;text-decoration:underline;text-decoration-color:var(--gold-line,rgba(255,204,77,.5));text-underline-offset:3px;}
+.lesson-strip a:hover{color:var(--gold,#ffcc4d);}
+.lesson-strip a:focus-visible{outline:2px solid var(--gold,#ffcc4d);outline-offset:2px;border-radius:2px;}
+.lesson-strip .ls-hub{color:var(--text-soft,rgba(255,255,255,.72));font-weight:500;}
+.lesson-strip .ls-sep{margin:0 8px;opacity:.5;}
