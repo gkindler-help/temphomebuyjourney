@@ -94,6 +94,7 @@ def main():
     for r, out in edits:
         p = os.path.join(ROOT, r); s = open(p, encoding='utf-8').read(); o = s
         url = SITE + '/' + out
+        s = set_meta(s, 'property', 'og:site_name', 'STL Home Journey')
         s = set_meta(s, 'property', 'og:image', url)
         s = set_meta(s, 'property', 'og:image:width', '1200')
         s = set_meta(s, 'property', 'og:image:height', '630')
