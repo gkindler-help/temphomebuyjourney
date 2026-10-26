@@ -189,7 +189,17 @@ a{color:var(--gold);text-decoration:none;}
 .path-end{display:flex;align-items:center;gap:14px;margin-top:36px;padding-top:24px;border-top:1px dashed var(--gold-line);}
 .path-end-dot{flex:none;width:32px;height:32px;border-radius:50%;background:var(--gold);}
 .path-end p{font-family:'Playfair Display',serif;font-size:19px;line-height:1.4;color:#fff;}
-.path-caption{font-size:14px;color:var(--mute);margin-top:22px;max-width:40em;}
+.hero-ask{font-size:15px;line-height:1.5;color:var(--soft);margin:18px auto 0;max-width:34em;text-shadow:0 1px 8px rgba(0,0,0,.6);}
+.hero-ask a{color:var(--gold);font-weight:700;text-decoration:underline;text-underline-offset:3px;}
+.hero-ask a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px;}
+.proof{border:1px solid var(--gold-line);border-radius:12px;padding:22px 22px 20px;background:rgba(255,204,77,.04);}
+.proof-k{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.proof-h{font-family:'Playfair Display',serif;font-size:clamp(21px,3.4vw,26px);font-weight:700;line-height:1.25;color:#fff;margin-bottom:14px;}
+.proof-steps{list-style:none;display:grid;gap:10px;margin-bottom:14px;}
+.proof-steps li{font-size:15px;line-height:1.6;color:var(--soft);}
+.proof-steps strong{color:#fff;}
+.proof-note{font-size:13px;color:var(--mute);line-height:1.6;margin-bottom:10px;}
+.proof a{font-weight:700;font-size:14px;}
 
 /* QUESTION SECTIONS */
 .q-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:start;}
@@ -371,11 +381,12 @@ a{color:var(--gold);text-decoration:none;}
     <div class="intro-copy">
       <p class="eyebrow ifade">You found the house.</p>
       <h1 id="hero-h1" class="ifade">Now find out what you&rsquo;re really buying.</h1>
-      <p class="hero-sub ifade">You already found the house. STL Home Journey helps you understand the decision.</p>
+      <p class="hero-sub ifade">STL Home Journey helps you understand the decision: the price, the house, the address and the loan.</p>
       <div class="cta-row ifade">
         <a class="btn btn-primary" href="#before-you-buy">Before You Buy</a>
         <a class="btn btn-ghost" href="/neighborhoods/">Explore St. Louis Neighborhoods</a>
       </div>
+      <p class="hero-ask ifade">Considering a specific house? <a href="/ask?about=home&amp;from=/" data-ask-link="home">Send George the address and your question &rarr;</a></p>
     </div>
     <a class="intro-arrow" href="#listing-gap" aria-label="Scroll to what the listing can&rsquo;t tell you"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></a>
   </div>
@@ -405,6 +416,17 @@ a{color:var(--gold);text-decoration:none;}
       </div>
       <p class="gap-note">Zillow, Realtor.com, your agent&rsquo;s email, a yard sign &mdash; the questions are the same wherever you found it.</p>
     </div>
+
+    <aside class="proof" aria-labelledby="proof-h">
+      <p class="proof-k">From a St.&nbsp;Louis purchase George handled</p>
+      <h2 class="proof-h" id="proof-h">The listing called it a $180,000 house priced at $160,000.</h2>
+      <ul class="proof-steps">
+        <li><strong>What George checked before the offer:</strong> the comparable sales supported $160,000, not $180,000. A one-bedroom has a smaller buyer pool. The listing history showed the house had already gone under contract twice and come back.</li>
+        <li><strong>What happened:</strong> days after his buyer went under contract, the listing agent shared the earlier inspection reports, showing roof and foundation problems. Before any inspection of their own, the seller offered $30,000 off. The buyer closed at the lower price with repair bids in hand.</li>
+      </ul>
+      <p class="proof-note">A reduction that size is uncommon. This seller had already lost two buyers.</p>
+      <a href="/articles/st-louis-home-price-reduction-negotiation">Read the full story &rarr;</a>
+    </aside>
   </div>
 </section>
 
@@ -492,7 +514,6 @@ a{color:var(--gold);text-decoration:none;}
         <p>Then decide: make the offer, renegotiate, or walk away.</p>
       </div>
     </div>
-    <p class="path-caption">Zillow helps you find a house. STL Home Journey helps you understand it.</p>
   </div>
 </section>
 
