@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Build the link-preview card for every public page and point the page at it.
 
-One design for the whole site (scripts/og/card.html): the gold logo, a section label,
+One design for the whole site (scripts/og/card.html), centered so the middle square that
+Facebook crops for comment previews still shows the whole logo and title: the gold logo, a section label,
 the page's own headline, and a "Calculator included" tag on pages with a calculator.
 Cards go to assets/og/<page>.jpg; each page gets og:image, its size, twitter:card and
 twitter:image pointing there.

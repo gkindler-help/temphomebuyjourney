@@ -9,9 +9,10 @@ const { chromium } = require('playwright'); const fs = require('fs'); const path
   for (const j of jobs) {
     await p.evaluate(j => {
       document.getElementById('eb').textContent = j.eyebrow;
-      const t = document.getElementById('t'); t.textContent = j.title; let s = 66; t.style.fontSize = s + 'px';
-      while (t.scrollHeight > 3 * s * 1.08 + 4 && s > 42) { s -= 2; t.style.fontSize = s + 'px'; }
       document.body.classList.toggle('has-calc', !!j.calc);
+      // Centered layout so the middle 630px square (Facebook's comment crop) reads on its own.
+      const t = document.getElementById('t'), c = document.querySelector('.col'); t.textContent = j.title; let s = 52; t.style.fontSize = s + 'px';
+      while ((t.scrollHeight > 4 * s * 1.1 + 4 || c.scrollHeight > c.clientHeight) && s > 34) { s -= 2; t.style.fontSize = s + 'px'; }
     }, j);
     await p.screenshot({ path: j.out, type: 'jpeg', quality: 84 });
   }
