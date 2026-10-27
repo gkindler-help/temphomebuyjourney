@@ -34,6 +34,7 @@ DEFAULTS = {
 PAGES = {
     'articles/appraisal-comes-in-low-st-louis.html': 'galena',
     'articles/ballwin-vs-manchester-mo.html': 'buyer',
+    'articles/best-time-to-buy-sell-move-st-louis.html': 'lindbergh',
     'articles/best-st-louis-neighborhoods-for-buyers.html': 'buyer',
     'articles/can-you-buy-fixer-upper-va-loan-st-louis.html': 'buyer',
     'articles/chesterfield-vs-wildwood-mo.html': 'buyer',
