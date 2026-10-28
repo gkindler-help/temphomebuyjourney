@@ -127,7 +127,14 @@
     .guide-nav-desc{font-size:0.9rem;color:var(--text-soft);margin-bottom:18px;line-height:1.65;}
     .guide-nav-link{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--gold);color:#080808;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;transition:transform 0.1s;}
     .guide-nav-link:hover{transform:translateY(-2px);}
-    .pm-wrap{border:1px solid rgba(255,255,255,.1);border-radius:10px;margin:20px 0 24px;overflow:hidden;}
+    .tl-details{margin:20px 0 24px;}
+.tl-details>summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border:1px solid rgba(255,204,77,.35);border-radius:10px;background:rgba(255,204,77,.05);color:#ffcc4d;font-weight:700;font-size:.95rem;}
+.tl-details>summary::-webkit-details-marker{display:none;}
+.tl-details>summary::after{content:'+';font-size:1.3rem;line-height:1;}
+.tl-details[open]>summary::after{content:'\2212';}
+.tl-details[open]>summary{border-radius:10px 10px 0 0;}
+.tl-details .pm-wrap{margin:0;border-top:none;border-radius:0 0 10px 10px;}
+.pm-wrap{border:1px solid rgba(255,255,255,.1);border-radius:10px;margin:20px 0 24px;overflow:hidden;}
 .pm-table{width:100%;border-collapse:collapse;font-size:13px;}
 .pm-table caption{text-align:left;padding:10px 12px;font-size:12px;font-weight:600;color:rgba(255,255,255,.75);background:rgba(255,204,77,.05);border-bottom:1px solid rgba(255,255,255,.08);}
 .pm-table th,.pm-table td{padding:9px 10px;text-align:left;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.85);line-height:1.45;}
@@ -252,6 +259,8 @@
 
 <h2 id="timeline">How do you buy your next house before selling the one you have?</h2>
 <p>You make the purchase stand on its own, then sell into it. Here the buyers&rsquo; VA financing didn&rsquo;t depend on selling Autumn Ridge, so the Creek Side offer didn&rsquo;t need a home-sale contingency. We got the purchase under contract first, listed Autumn Ridge five days later, and set the two closings six days apart.</p>
+<details class="tl-details">
+<summary>See how it went down, by date</summary>
 <div class="pm-wrap" role="region" tabindex="0" aria-label="Two closings, one plan">
 <table class="pm-table tl-table">
 <caption>Two closings, one plan: Creek Side and Autumn Ridge, 2025</caption>
@@ -274,6 +283,7 @@
 </tbody>
 </table>
 </div>
+</details>
 <p>The rest of this page walks through each side, and where the two plans had to meet.</p>
 
 <h2 id="offer">Why offer without a home-sale contingency?</h2>
