@@ -131,7 +131,10 @@ p.lp-src{font-size:12px !important;color:rgba(255,255,255,.5) !important;line-he
 .zt th,.zt td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:left;}
 .zt th{color:var(--text-dim);font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;}
 .zt td.num{font-variant-numeric:tabular-nums;}
-    .st-wrap{margin:18px 0 22px;}
+    .php-cta{border:1px solid var(--gold-line);background:rgba(255,204,77,.06);border-radius:12px;padding:14px 18px;margin:6px 0 26px;}
+.php-cta a{color:var(--text-soft);}
+.php-cta strong{color:var(--gold);}
+.st-wrap{margin:18px 0 22px;}
 .zt.st caption{text-align:left;font-size:.8rem;color:var(--text-dim);padding:0 0 8px;}
 .zt.st th[scope="row"]{color:var(--text-strong);font-weight:600;text-align:left;}
 @media(max-width:640px){.zt.st thead{display:none;}.zt.st caption{display:block;width:100%;}.zt.st,.zt.st tbody,.zt.st tr,.zt.st td,.zt.st th{display:block;width:100%;}.zt.st tr{border-bottom:1px solid var(--line);padding:8px 0;}.zt.st td,.zt.st th{border:none;padding:3px 0;text-align:left;}.zt.st th[scope="row"]{color:var(--gold);}.zt.st td::before{content:attr(data-l) ": ";color:var(--text-dim);font-size:.8rem;}.zt.st td.st-empty{display:none;}}
@@ -287,6 +290,7 @@ p.lp-src{font-size:12px !important;color:rgba(255,255,255,.5) !important;line-he
         <select id="strategy">
           <option value="x2">Keep the mortgage under 2&times; gross income</option>
           <option value="pct">Keep total housing cost under a % of gross income</option>
+          <option value="budget">50/30/20 budget: housing fits in the 50% &ldquo;needs&rdquo; share of take-home pay</option>
           <option value="retire">Max retirement savings first, then a % of what&rsquo;s left</option>
           <option value="cap">My advisor gave me a price cap</option>
         </select>
@@ -294,14 +298,26 @@ p.lp-src{font-size:12px !important;color:rgba(255,255,255,.5) !important;line-he
       <label class="php-field" id="f-pct">Housing cost limit (% of gross)<input id="pct" type="number" inputmode="decimal" value="20" min="5" max="50" step="1"></label>
       <label class="php-field" id="f-retire">Yearly retirement savings ($)<input id="retire" type="number" inputmode="numeric" value="30000" min="0" step="1000"></label>
       <label class="php-field" id="f-cap">Price cap ($)<input id="cap" type="number" inputmode="numeric" value="700000" min="0" step="10000"></label>
-      <label class="php-check php-wide"><input id="loansFirst" type="checkbox"> My advisor wants student loans paid off before we buy</label>
+      <label class="php-field" id="f-take">Take-home pay ($/mo)<input id="take" type="number" inputmode="numeric" value="16500" min="0" step="500"></label>
+      <label class="php-field" id="f-needs">Other monthly needs: car, utilities, groceries, childcare ($/mo)<input id="needs" type="number" inputmode="numeric" value="2500" min="0" step="100"></label>
+      <label class="php-field php-wide">Student loan plan
+        <select id="loanPlan">
+          <option value="min">Invest while making the required payments</option>
+          <option value="split">Split extra cash 50/50 between loans and investing</option>
+          <option value="payoff">Pay the loans off aggressively before buying</option>
+        </select>
+      </label>
     </fieldset>
 
     <fieldset>
       <legend>2. Your numbers</legend>
       <label class="php-field">Household gross income ($/yr)<input id="income" type="number" inputmode="numeric" value="300000" min="0" step="5000"></label>
-      <label class="php-field">Cash available for the purchase ($)<input id="cash" type="number" inputmode="numeric" value="100000" min="0" step="5000"></label>
+      <label class="php-field">Cash saved ($)<input id="cash" type="number" inputmode="numeric" value="150000" min="0" step="5000"></label>
+      <label class="php-field">Months of expenses to keep in reserve<input id="resMonths" type="number" inputmode="numeric" value="6" min="0" max="12" step="1"></label>
+      <label class="php-field">Monthly living expenses, for the reserve ($)<input id="resExp" type="number" inputmode="numeric" value="10000" min="0" step="500"></label>
+      <label class="php-field">High-interest debt to pay off first ($)<input id="hiDebt" type="number" inputmode="numeric" value="0" min="0" step="1000"></label>
       <label class="php-field">Student loan balance ($)<input id="loans" type="number" inputmode="numeric" value="200000" min="0" step="5000"></label>
+      <label class="php-field">Student loan payment ($/mo)<input id="loanPmt" type="number" inputmode="numeric" value="1500" min="0" step="100"></label>
       <label class="php-field">Years you expect to stay<input id="years" type="number" inputmode="numeric" value="7" min="1" max="15" step="1"></label>
       <label class="php-field">Hospital
         <select id="hospital">
@@ -335,6 +351,7 @@ p.lp-src{font-size:12px !important;color:rgba(255,255,255,.5) !important;line-he
       <div class="php-kpi"><span class="k">Monthly cost to own</span><span class="v" id="o-month">&mdash;</span><span class="s" id="o-month-s"></span></div>
       <div class="php-kpi"><span class="k">Buying beats renting after</span><span class="v" id="o-be">&mdash;</span><span class="s" id="o-be-s"></span></div>
     </div>
+    <p class="php-note" id="o-order"></p>
     <p class="php-note" id="o-loans" hidden></p>
 
     <h2 id="areas">Areas near your hospital that fit</h2>
@@ -366,6 +383,8 @@ p.lp-src{font-size:12px !important;color:rgba(255,255,255,.5) !important;line-he
     <ul class="php-how">
       <li><strong>Prices and taxes</strong> are 2026 medians from single-family sales inside each city, from this site&rsquo;s city guides. Your house will differ.</li>
       <li><strong>Monthly cost</strong> is principal and interest on a 30-year loan, plus the city&rsquo;s median tax rate, 0.4% of the price a year for insurance and 1% for upkeep.</li>
+      <li><strong>Cash for the house</strong> is what you&rsquo;ve saved, minus the reserve and any high-interest debt you clear first, the order most physician financial plans follow.</li>
+      <li><strong>The 50/30/20 budget</strong> gives 50% of take-home pay to needs, including housing and minimum loan payments, 30% to saving and investing and 20% to wants or extra debt payments.</li>
       <li><strong>Cash to close</strong> is the down payment plus 2.5% closing costs. <strong>Selling</strong> is counted at 9.5%, the middle of the 8% to 11% St.&nbsp;Louis range.</li>
       <li><strong>Growth rates are assumptions you control.</strong> St.&nbsp;Louis County price per square foot rose about 5% a year from 2021 to 2025; that&rsquo;s history, not a forecast.</li>
       <li>This is real estate math, not investment, tax or legal advice. Your advisor and lender should run your own numbers.</li>
@@ -416,8 +435,8 @@ p.lp-src{font-size:12px !important;color:rgba(255,255,255,.5) !important;line-he
 
   function calc(){
     var s=$('strategy').value;
-    $('f-pct').hidden=(s!=='pct'&&s!=='retire'); $('f-retire').hidden=(s!=='retire'); $('f-cap').hidden=(s!=='cap');
-    var inc=num('income'), cash=num('cash'), loans=num('loans'), yrs=Math.max(1,Math.min(15,Math.round(num('years'))));
+    $('f-pct').hidden=(s!=='pct'&&s!=='retire'); $('f-retire').hidden=(s!=='retire'); $('f-cap').hidden=(s!=='cap'); $('f-take').hidden=(s!=='budget'); $('f-needs').hidden=(s!=='budget');
+    var inc=num('income'), saved=num('cash'), reserve=num('resMonths')*num('resExp'), hiDebt=num('hiDebt'), cash=Math.max(0,saved-reserve-hiDebt), loans=num('loans'), loanPmt=num('loanPmt'), yrs=Math.max(1,Math.min(15,Math.round(num('years'))));
     var d=parseFloat($('down').value), rate=num('rate'), ret=num('ret')/100, grow=num('grow')/100, rent0=num('rent'), rg=num('rentGrow')/100;
     var near=NEAR[$('hospital').value];
     var taxR=near.reduce(function(a,c){return a+CITY[c].r;},0)/near.length;
@@ -426,6 +445,7 @@ p.lp-src{font-size:12px !important;color:rgba(255,255,255,.5) !important;line-he
     if(s==='x2'){strat=2*inc/(1-d); why='mortgage of 2× income ('+usd(2*inc)+')';}
     else if(s==='pct'){strat=(num('pct')/100*inc/12)/perDollar; why=num('pct')+'% of gross on housing';}
     else if(s==='retire'){var left=Math.max(0,inc-num('retire'));strat=(num('pct')/100*left/12)/perDollar; why=num('pct')+'% of income after '+usd(num('retire'))+' to retirement';}
+    else if(s==='budget'){var room=Math.max(0,0.5*num('take')-num('needs')-loanPmt);strat=room/perDollar; why='the 50% needs share ('+usd(room)+'/mo left for housing)';}
     else {strat=num('cap'); why='your advisor’s price cap';}
     var cashCap=(d+CC)>0?cash/(d+CC):Infinity;
     var P=Math.min(strat,cashCap), bind=(cashCap<strat)?'Limited by cash to close':'Set by '+why;
@@ -438,11 +458,13 @@ p.lp-src{font-size:12px !important;color:rgba(255,255,255,.5) !important;line-he
     $('o-kept').textContent=usd(kept);
     $('o-kept-s').textContent=d<0.2?'stays in your portfolio with '+Math.round(d*100)+'% down instead of 20%':'20% down: nothing extra kept invested';
     $('o-month').textContent=usd(own);
-    var lim=(s==='pct'||s==='retire')?' · your limit '+usd(num('pct')/100*(s==='retire'?Math.max(0,inc-num('retire')):inc)/12):'';
+    var lim=(s==='budget')?' · your limit '+usd(Math.max(0,0.5*num('take')-num('needs')-loanPmt)):(s==='pct'||s==='retire')?' · your limit '+usd(num('pct')/100*(s==='retire'?Math.max(0,inc-num('retire')):inc)/12):'';
     $('o-month-s').textContent=Math.round(own/(inc/12)*100)+'% of gross income'+lim;
 
-    var lf=$('o-loans');
-    if($('loansFirst').checked&&loans>0){lf.hidden=false;lf.textContent='Your strategy pays off '+usd(loans)+' in student loans first. Read these results as the plan for after the loans are gone, and rent until then.';}
+    $('o-order').textContent='Order of money: '+usd(reserve)+' kept in reserve'+(hiDebt>0?', '+usd(hiDebt)+' to high-interest debt':'')+', leaving '+usd(cash)+' of your '+usd(saved)+' for the house.';
+    var lf=$('o-loans'), lp=$('loanPlan').value;
+    if(lp==='payoff'&&loans>0){lf.hidden=false;lf.textContent='Your plan pays off '+usd(loans)+' in student loans first. Read these results as the plan for after the loans are gone, and rent until then.';}
+    else if(lp==='split'&&loans>0){lf.hidden=false;lf.textContent='With a 50/50 split, half of any monthly savings goes to your loans instead of investments. The net worth table assumes it’s all invested, which overstates both paths about equally; ask your advisor how the split changes the comparison.';}
     else lf.hidden=true;
 
     /* areas */
@@ -452,14 +474,14 @@ p.lp-src{font-size:12px !important;color:rgba(255,255,255,.5) !important;line-he
 
     /* money */
     $('o-money').innerHTML=[
-      ['Purchase price',usd(P)],['Down payment ('+Math.round(d*100)+'%)',usd(P*d)],['Closing costs (2.5%)',usd(P*CC)],['Cash to close',usd(ctc)],
-      ['Cash left to invest',usd(cash-ctc)],['Loan amount',usd(loan)],['Principal and interest',usd(pi)+'/mo'],
+      ['Cash saved',usd(saved)],['Reserve kept in cash',usd(reserve)],hiDebt>0?['High-interest debt paid first',usd(hiDebt)]:null,['Cash available for the house',usd(cash)],['Purchase price',usd(P)],['Down payment ('+Math.round(d*100)+'%)',usd(P*d)],['Closing costs (2.5%)',usd(P*CC)],['Cash to close',usd(ctc)],
+      ['Cash left to invest',usd(Math.max(0,cash-ctc))],['Loan amount',usd(loan)],['Principal and interest',usd(pi)+'/mo'],
       ['Property tax (area median '+(taxR*100).toFixed(2)+'%)',usd(P*taxR/12)+'/mo'],['Insurance and upkeep',usd(P*(INS+MAINT)/12)+'/mo']
-    ].map(function(r){return '<tr><th scope="row">'+r[0]+'</th><td class="num">'+r[1]+'</td></tr>';}).join('');
+    ].filter(Boolean).map(function(r){return '<tr><th scope="row">'+r[0]+'</th><td class="num">'+r[1]+'</td></tr>';}).join('');
 
     /* net worth, monthly simulation */
     var i=rate/1200, rm=Math.pow(1+ret,1/12)-1, gm=Math.pow(1+grow,1/12)-1;
-    var bal=loan, val=P, invB=cash-ctc, invR=cash, rent=rent0, rows=[], be=null;
+    var bal=loan, val=P, invB=Math.max(0,cash-ctc), invR=cash, rent=rent0, rows=[], be=null;
     for(var m=1;m<=180;m++){
       var interest=bal*i; bal=Math.max(0,bal-(pi-interest)); val*=1+gm;
       var ownM=pi+val*(taxR+INS+MAINT)/12;
