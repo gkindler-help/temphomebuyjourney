@@ -415,6 +415,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://stlhomejourney.com/tools/physician-home-plan</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://stlhomejourney.com/articles/st-louis-home-buying-for-physicians</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>

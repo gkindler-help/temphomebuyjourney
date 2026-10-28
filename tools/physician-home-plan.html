@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="/assets/favicon-512.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physician Home Plan: St. Louis Home Buying Calculator for Doctors</title>
+  <meta name="description" content="Enter your financial advisor&rsquo;s housing rule and your numbers: see the price it allows, which areas near BJC, SLU, Mercy, Missouri Baptist and St. Luke&rsquo;s fit, how much stays invested with a physician loan, and buy vs. rent net worth.">
+  <meta name="author" content="George Kindler">
+  <meta property="og:title" content="Physician Home Plan: St. Louis Home Buying Calculator for Doctors">
+  <meta property="og:description" content="Enter your financial advisor&rsquo;s housing rule and your numbers: see the price it allows, which areas near BJC, SLU, Mercy, Missouri Baptist and St. Luke&rsquo;s fit, how much stays invested with a physician loan, and buy vs. rent net worth.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://stlhomejourney.com/tools/physician-home-plan">
+<meta property="og:site_name" content="STL Home Journey">
+<meta property="og:image" content="https://stlhomejourney.com/assets/og/tools--physician-home-plan.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://stlhomejourney.com/assets/og/tools--physician-home-plan.jpg">
+<meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://stlhomejourney.com/tools/physician-home-plan">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EEE14BZT9P');
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#050505;--bg-elev:#0a0a0a;--surface:#101010;--surface-2:#151515;--line:#242424;--line-2:#303030;--text-strong:rgba(255,255,255,.96);--text:rgba(255,255,255,.88);--text-soft:rgba(255,255,255,.72);--text-dim:rgba(255,255,255,.54);--text-faint:rgba(255,255,255,.34);--gold:#ffcc4d;--gold-soft:rgba(255,204,77,.18);--gold-line:rgba(255,204,77,.34);--green:#5dcaa5;--font-serif:"Playfair Display",Georgia,serif;--font-sans:"Inter",-apple-system,sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.7;overflow-x:hidden;}
+    a{color:var(--gold);text-decoration:none;}
+    img{max-width:100%;display:block;}
+    .art-hdr{background:rgba(5,5,5,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;position:sticky;top:0;z-index:100;}
+    .art-hdr-l{display:flex;align-items:center;gap:10px;min-width:0;text-decoration:none;}
+    .art-hdr-ico{width:32px;height:32px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+    .art-hdr-ico img{width:100%;height:100%;object-fit:contain;}
+    .art-hdr-t{font-family:var(--font-serif);font-size:14px;font-weight:600;letter-spacing:.03em;color:var(--text-strong);line-height:1.05;}
+    .art-hdr-t span{color:var(--gold);}
+    .art-hdr-name{font-size:10px;font-weight:600;color:var(--text-soft);letter-spacing:.04em;margin-top:2px;}
+    .art-hdr-tagline{font-size:9px;color:var(--text-dim);letter-spacing:.03em;}
+    .art-hdr-nav{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+    .art-hdr-btn{font-size:10px;font-weight:700;letter-spacing:.05em;padding:6px 11px;border-radius:999px;border:1px solid var(--line-2);color:var(--text-soft);background:rgba(255,255,255,.02);text-decoration:none;white-space:nowrap;transition:border-color .18s,color .18s;}
+    .art-hdr-btn:hover{border-color:var(--gold-line);color:var(--text-strong);}
+    .art-hdr-btn.gold{border-color:var(--gold-line);color:var(--gold);background:var(--gold-soft);}
+    .art-nav{background:rgba(16,16,16,.96);border-bottom:1px solid var(--line);padding:0 16px;display:flex;overflow-x:auto;scrollbar-width:none;}
+    .art-nav::-webkit-scrollbar{display:none;}
+    .art-nav-item{font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--text-faint);padding:10px 14px;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;transition:color .18s,border-color .18s;}
+    .art-nav-item:hover{color:var(--text-soft);}
+    .art-nav-item.active{color:var(--gold);border-bottom-color:var(--gold);}
+    .art-layout{max-width:780px;margin:0 auto;padding:0 20px 80px;}
+    .art-eyebrow{display:flex;align-items:center;gap:8px;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-top:36px;margin-bottom:14px;flex-wrap:wrap;}
+    .art-eyebrow a{color:var(--text-faint);}
+    .art-eyebrow a:hover{color:var(--gold);}
+    .art-series-tag{display:inline-block;padding:4px 10px;border:1px solid var(--gold-line);border-radius:999px;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);background:var(--gold-soft);text-decoration:none;margin-bottom:16px;}
+    .art-title{font-family:var(--font-serif);font-size:clamp(1.6rem,5vw,2.4rem);font-weight:700;color:var(--text-strong);line-height:1.18;margin-bottom:16px;}
+    .art-lede{font-size:1rem;color:var(--text-soft);line-height:1.72;max-width:620px;margin-bottom:22px;}
+    .art-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:10px;font-weight:600;letter-spacing:.04em;color:var(--text-faint);padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:32px;}
+    .art-meta-dot{opacity:.3;}
+    .aud-both{display:inline-block;padding:3px 8px;border-radius:999px;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--gold-soft);color:var(--gold);border:1px solid var(--gold-line);}
+    .art-body{line-height:1.75;}
+    .art-body h2{font-family:var(--font-serif);font-size:1.45rem;font-weight:700;color:var(--text-strong);margin:44px 0 14px;line-height:1.22;}
+    .art-body h3{font-family:var(--font-serif);font-size:1.05rem;font-weight:700;color:var(--gold);margin:30px 0 10px;}
+    .art-body p{color:var(--text-soft);margin-bottom:18px;font-size:.97rem;line-height:1.78;}
+    .art-body ul{color:var(--text-soft);padding-left:1.4em;margin-bottom:18px;}
+    .art-body li{margin-bottom:7px;line-height:1.68;font-size:.97rem;}
+    .art-body strong{color:var(--text-strong);font-weight:600;}
+    .callout{background:rgba(255,204,77,.06);border-left:2px solid var(--gold-line);border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0;color:var(--text);font-size:.93rem;}
+    .callout strong{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:7px;font-weight:700;}
+    .stat-block{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:24px 0;}
+    .stat-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 16px;text-align:center;}
+    .stat-num{font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--gold);line-height:1;display:block;margin-bottom:6px;}
+    .stat-lbl{font-size:10px;color:var(--text-faint);line-height:1.4;font-weight:600;letter-spacing:.04em;}
+    .int-link{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;margin:16px 0;transition:border-color .18s,background .18s;}
+    .int-link:hover{border-color:var(--gold-line);background:rgba(255,204,77,.03);}
+    .int-link-text{font-size:.86rem;color:var(--text);line-height:1.5;}
+    .int-link-arr{color:var(--gold);flex-shrink:0;}
+    .faq-section{border-top:1px solid var(--line);padding-top:32px;margin-top:44px;}
+    .faq-section>h2{font-family:var(--font-serif);font-size:1.3rem;color:var(--text-strong);margin-bottom:22px;margin-top:0;}
+    .faq-item{margin-bottom:22px;}
+    .faq-q{font-weight:600;color:var(--text);margin-bottom:7px;font-size:.93rem;}
+    .faq-a{color:var(--text-soft);font-size:.88rem;line-height:1.72;}
+    .sources{font-size:.72rem;color:var(--text-faint);border-top:1px solid var(--line);padding-top:18px;margin-top:32px;line-height:1.9;}
+    .sources strong{display:block;margin-bottom:6px;font-size:9px;text-transform:uppercase;letter-spacing:.10em;}
+    .series-nav{border-top:1px solid var(--line);padding-top:32px;margin-top:44px;}
+    .series-nav h3{font-family:var(--font-serif);font-size:1.05rem;color:var(--text-strong);margin-bottom:14px;}
+    .series-links{display:flex;flex-direction:column;gap:8px;}
+    .series-link{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 16px;text-decoration:none;transition:border-color .18s,background .18s;}
+    .series-link:hover{border-color:var(--gold-line);background:rgba(255,204,77,.03);}
+    .series-link-title{font-size:.86rem;color:var(--text);font-weight:500;line-height:1.4;}
+    .series-link-arr{color:var(--text-faint);font-size:.9rem;flex-shrink:0;}
+    .george-card{background:linear-gradient(135deg,rgba(255,204,77,0.04) 0%,rgba(255,204,77,0.01) 100%);border:1px solid var(--gold-line);border-radius:16px;padding:28px;margin:48px 0;display:flex;gap:24px;align-items:flex-start;}
+    .george-card-photo{width:100px;height:100px;border-radius:50%;overflow:hidden;border:2px solid var(--gold-line);flex-shrink:0;background:var(--surface);}
+    .george-card-photo img{width:100%;height:100%;object-fit:cover;}
+    .george-card-content{flex:1;min-width:0;}
+    .george-card-name{font-family:var(--font-serif);font-size:1.25rem;font-weight:700;color:var(--text-strong);margin-bottom:4px;}
+    .george-card-title{font-size:0.82rem;color:var(--text-dim);margin-bottom:14px;line-height:1.5;}
+    .george-card-line{font-size:0.92rem;color:var(--text-soft);line-height:1.68;margin-bottom:18px;}
+    .george-card-btns{display:flex;gap:10px;flex-wrap:wrap;}
+    .george-btn-p{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#080808;font-weight:700;font-size:13px;letter-spacing:0.03em;padding:11px 20px;border-radius:8px;text-decoration:none;transition:transform 0.1s;}
+    .george-btn-p:hover{transform:translateY(-1px);}
+    .george-btn-s{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--gold-line);color:var(--gold);font-weight:600;font-size:13px;letter-spacing:0.03em;padding:10px 19px;border-radius:8px;text-decoration:none;transition:background 0.18s;}
+    .george-btn-s:hover{background:var(--gold-soft);}
+    .george-btn-about{display:inline-flex;align-items:center;gap:6px;color:var(--text-soft);font-weight:600;font-size:13px;letter-spacing:0.03em;padding:10px 19px;border-radius:8px;text-decoration:none;transition:color 0.18s;}
+    .george-btn-about:hover{color:var(--gold);}
+    @media (max-width:600px){.george-card{flex-direction:column;align-items:center;text-align:center;}.george-card-photo{width:90px;height:90px;}.george-card-btns{flex-direction:column;width:100%;}.george-btn-p,.george-btn-s,.george-btn-about{width:100%;justify-content:center;}}.art-footer{border-top:1px solid var(--line);padding:20px;text-align:center;font-size:9px;font-weight:600;letter-spacing:.04em;color:var(--text-faint);line-height:1.9;text-transform:uppercase;}
+    @media(max-width:600px){.art-layout{padding:0 16px 64px;}.art-title{font-size:1.5rem;}.art-hdr-tagline{display:none;}}
+  .guide-nav-box{background:linear-gradient(135deg,rgba(255,204,77,0.06) 0%,rgba(255,204,77,0.02) 100%);border:1px solid var(--gold-line);border-radius:12px;padding:24px;margin:48px 0;text-align:center;}
+    .guide-nav-title{font-family:var(--font-serif);font-size:1.15rem;font-weight:700;color:var(--text-strong);margin-bottom:8px;}
+    .guide-nav-desc{font-size:0.9rem;color:var(--text-soft);margin-bottom:18px;line-height:1.65;}
+    .guide-nav-link{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--gold);color:#080808;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;transition:transform 0.1s;}
+    .guide-nav-link:hover{transform:translateY(-2px);}
+.last-updated{font-size:.78rem;color:var(--text-faint);margin:-6px 0 14px;letter-spacing:.03em;}
+.lp-quick{border:1px solid rgba(255,204,77,.25);background:rgba(255,204,77,.04);border-radius:12px;padding:4px 20px 12px;margin:8px 0 40px;}
+.lp-quick h2{margin-top:24px !important;font-size:1.35rem !important;}
+.lp-qa{border-top:1px solid rgba(255,255,255,.08);padding:4px 0 0;}
+.lp-qa h3{margin:16px 0 8px !important;font-size:1.02rem !important;color:#fff !important;font-family:inherit;line-height:1.4;}
+.lp-qa p{margin:0 0 12px !important;font-size:.95rem !important;line-height:1.7;}
+.lp-qa p a{color:#ffcc4d;font-weight:600;text-decoration:none;}
+p.lp-group{font-size:11px !important;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ffcc4d !important;margin:22px 0 2px !important;}
+p.lp-src{font-size:12px !important;color:rgba(255,255,255,.5) !important;line-height:1.55;margin:14px 0 6px !important;}
+.zt{width:100%;border-collapse:collapse;margin:18px 0;font-size:.9rem;}
+.zt th,.zt td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:left;}
+.zt th{color:var(--text-dim);font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;}
+.zt td.num{font-variant-numeric:tabular-nums;}
+    .st-wrap{margin:18px 0 22px;}
+.zt.st caption{text-align:left;font-size:.8rem;color:var(--text-dim);padding:0 0 8px;}
+.zt.st th[scope="row"]{color:var(--text-strong);font-weight:600;text-align:left;}
+@media(max-width:640px){.zt.st thead{display:none;}.zt.st caption{display:block;width:100%;}.zt.st,.zt.st tbody,.zt.st tr,.zt.st td,.zt.st th{display:block;width:100%;}.zt.st tr{border-bottom:1px solid var(--line);padding:8px 0;}.zt.st td,.zt.st th{border:none;padding:3px 0;text-align:left;}.zt.st th[scope="row"]{color:var(--gold);}.zt.st td::before{content:attr(data-l) ": ";color:var(--text-dim);font-size:.8rem;}.zt.st td.st-empty{display:none;}}
+</style>
+<script>
+/* GA4 Event Tracking — STL Home Journey */
+(function(){
+  if(typeof gtag!=='function')return;
+  var T=document.title,P=window.location.pathname;
+
+  /* 1. Phone clicks */
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(el){
+    el.addEventListener('click',function(){
+      gtag('event','phone_click',{page_title:T,page_path:P,
+        button_text:this.textContent.trim().slice(0,80),
+        button_class:this.className});
+    });
+  });
+
+  /* 2. Primary / secondary CTA buttons */
+  document.querySelectorAll('.tool-btn-primary,.tool-btn-secondary,.george-btn-p,.george-btn-s,.art-hdr-btn,.nbhd-hdr-btn').forEach(function(el){
+    el.addEventListener('click',function(){
+      if((this.href||'').indexOf('tel:')!==-1)return;
+      gtag('event','cta_click',{page_title:T,page_path:P,
+        button_text:this.textContent.trim().slice(0,80),
+        destination:(this.href||'').slice(0,200)});
+    });
+  });
+
+  /* 3. Content / navigation link clicks */
+  document.querySelectorAll('.int-link,.series-link,.icon-card,.article-card').forEach(function(el){
+    el.addEventListener('click',function(){
+      var dest=(this.href||(this.querySelector('a')||{}).href||'');
+      var type='internal';
+      if(dest.indexOf('/articles/')!==-1)type='article';
+      else if(dest.indexOf('/neighborhoods/')!==-1)type='neighborhood';
+      else if(dest.indexOf('/zip-codes/')!==-1)type='zip_code';
+      else if(dest.indexOf('/school-districts/')!==-1)type='school_district';
+      gtag('event','navigation_click',{page_title:T,page_path:P,
+        link_type:type,link_text:this.textContent.trim().slice(0,80),
+        destination:dest.slice(0,200)});
+    });
+  });
+
+  /* 4. Accordion toggles (articles/index.html) */
+  document.querySelectorAll('.topic-header').forEach(function(el){
+    el.addEventListener('click',function(){
+      gtag('event','accordion_toggle',{page_title:T,page_path:P,
+        topic_name:this.textContent.trim().slice(0,80),
+        state:this.getAttribute('aria-expanded')==='true'?'expanded':'collapsed'});
+    });
+  });
+
+  /* 5. FAQ item clicks */
+  document.querySelectorAll('.faq-item').forEach(function(el){
+    el.addEventListener('click',function(){
+      var q=this.querySelector('.faq-q');
+      gtag('event','faq_click',{page_title:T,page_path:P,
+        question:(q?q.textContent.trim():'').slice(0,120)});
+    });
+  });
+
+  /* 6. Scroll depth — fires once per milestone */
+  var fired={};
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(h<=0)return;
+    var pct=Math.round(window.scrollY/h*100);
+    [25,50,75,100].forEach(function(m){
+      if(pct>=m&&!fired[m]){fired[m]=true;
+        gtag('event','scroll_milestone',{page_title:T,page_path:P,milestone:m+'%'});}
+    });
+  },{passive:true});
+
+})();
+</script>
+<link rel="stylesheet" href="/assets/lesson-strip.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Physician Home Plan", "url": "https://stlhomejourney.com/tools/physician-home-plan", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "description": "Enter your financial advisor’s housing rule and your numbers: see the price it allows, which areas near BJC, SLU, Mercy, Missouri Baptist and St. Luke’s fit, how much stays invested with a physician loan, and buy vs. rent net worth.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@id": "https://stlhomejourney.com/#agent"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "STL Home Journey", "item": "https://stlhomejourney.com/"}, {"@type": "ListItem", "position": 2, "name": "Buying a Home in St. Louis as a Physician", "item": "https://stlhomejourney.com/articles/st-louis-home-buying-for-physicians"}, {"@type": "ListItem", "position": 3, "name": "Physician Home Plan", "item": "https://stlhomejourney.com/tools/physician-home-plan"}]}]}</script>
+<style>.php-form fieldset{border:1px solid var(--line);border-radius:12px;padding:16px 18px 6px;margin:0 0 16px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px;}
+.php-form legend{font-family:var(--font-serif);font-weight:700;color:var(--text-strong);padding:0 6px;font-size:1.02rem;}
+.php-hint{font-family:var(--font-sans);font-weight:400;font-size:.78rem;color:var(--text-dim);}
+.php-field{display:flex;flex-direction:column;gap:6px;font-size:.82rem;color:var(--text-soft);}
+.php-field[hidden]{display:none;}
+.php-wide{grid-column:1/-1;}
+.php-field input,.php-field select{background:var(--surface);border:1px solid var(--line-2);border-radius:8px;color:var(--text-strong);padding:10px 12px;font-size:16px;font-family:inherit;width:100%;}
+.php-field input:focus,.php-field select:focus{outline:2px solid var(--gold);outline-offset:1px;}
+.php-check{display:flex;gap:10px;align-items:center;font-size:.86rem;color:var(--text-soft);margin-bottom:10px;}
+.php-check input{width:18px;height:18px;accent-color:#ffcc4d;}
+.php-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:26px 0 10px;}
+.php-kpi{border:1px solid var(--line-2);border-radius:12px;padding:14px 16px;background:var(--surface);display:flex;flex-direction:column;gap:4px;}
+.php-kpi.gold{border-color:var(--gold-line);background:rgba(255,204,77,.06);}
+.php-kpi .k{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);}
+.php-kpi .v{font-family:var(--font-serif);font-size:1.6rem;font-weight:700;color:var(--text-strong);}
+.php-kpi.gold .v{color:var(--gold);}
+.php-kpi .s{font-size:.8rem;color:var(--text-soft);line-height:1.45;}
+.php-note{border-left:3px solid var(--gold);padding:8px 14px;background:rgba(255,204,77,.05);font-size:.9rem;}
+.php-areas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0 8px;}
+.php-area{display:flex;flex-direction:column;gap:2px;border:1px solid var(--line-2);border-radius:10px;padding:10px 12px;color:var(--text-soft) !important;}
+.php-area b{color:var(--text-strong);font-weight:600;}
+.php-area span{font-size:.8rem;}
+.php-area em{font-style:normal;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;}
+.php-area.ok{border-color:rgba(93,202,165,.45);}
+.php-area.ok em{color:#5dcaa5;}
+.php-area.over em{color:var(--text-dim);}
+.php-table th[scope="row"]{color:var(--text-soft);font-weight:500;}
+.php-table td.num{text-align:right;font-variant-numeric:tabular-nums;color:var(--text-strong);}
+.php-nw td.pos{color:#5dcaa5;} .php-nw td.neg{color:var(--gold);}
+.php-nw tr.php-hl th,.php-nw tr.php-hl td{background:rgba(255,204,77,.06);}
+.php-actions{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0;}
+.php-btn{display:inline-flex;align-items:center;padding:12px 18px;border-radius:8px;background:var(--gold);color:#080808 !important;font-weight:700;font-size:.92rem;border:0;cursor:pointer;font-family:inherit;}
+.php-btn.ghost{background:transparent;color:var(--gold) !important;border:1px solid var(--gold-line);}
+@media(max-width:600px){.php-form fieldset{grid-template-columns:1fr;}.php-kpis{grid-template-columns:1fr 1fr;}.php-kpi .v{font-size:1.25rem;}.php-areas{grid-template-columns:1fr;}
+ .php-nw thead{display:none;}.php-nw,.php-nw tbody,.php-nw tr,.php-nw td,.php-nw th{display:block;width:100%;}.php-nw tr{border-bottom:1px solid var(--line);padding:8px 0;}.php-nw td,.php-nw th{border:none;padding:2px 0;text-align:left !important;}.php-nw th{color:var(--gold) !important;}.php-nw td::before{content:attr(data-l) ": ";color:var(--text-dim);font-size:.8rem;}}
+@media print{.art-hdr,.art-nav,.jump-fab,.jump-panel,.php-actions,.art-footer,[data-ask-me],.george-card,.lesson-strip{display:none !important;}body{background:#fff;color:#000;}.php-results *{color:#000 !important;border-color:#999 !important;background:#fff !important;}.php-form{display:none;}}
+</style>
+</head>
+<body>
+
+<header class="art-hdr">
+  <a href="../" class="art-hdr-l" aria-label="STL Home Journey home">
+    <img class="hdr-wordmark" src="/assets/brand/stlhj-logo-silver-dark.webp" alt="STL Home Journey" width="600" height="186" style="display:block;height:32px;width:auto;max-width:none;">
+  </a>
+  <nav class="art-hdr-nav">
+    <a href="https://stlhomejourney.com/articles/" class="art-hdr-btn">Guides</a>
+    <a href="../" class="art-hdr-btn gold">Journey</a>
+  </nav>
+</header>
+
+<nav class="art-nav" aria-label="Breadcrumb">
+  <a href="../" class="art-nav-item">Journey</a>
+  <span class="art-nav-sep" style="color:var(--text-faint);padding:10px 2px;">›</span>
+  <a href="https://stlhomejourney.com/articles/" class="art-nav-item">Guides</a>
+  <span class="art-nav-sep" style="color:var(--text-faint);padding:10px 2px;">›</span>
+  <span class="art-nav-item active" style="cursor:default;">Physician Home Plan</span>
+</nav>
+
+<div class="art-layout">
+  <div class="art-eyebrow">
+    <a href="/">Journey</a><span>›</span>
+    <a href="/articles/st-louis-home-buying-for-physicians">Buying as a Physician</a><span>›</span>
+    <a href="/tools/physician-home-plan">Physician Home Plan</a>
+  </div>
+  <h1 class="art-title">Physician Home Plan: Fit a St.&nbsp;Louis House Into Your Financial Strategy</h1>
+  <p class="last-updated">Last updated October 28, 2026</p>
+  <p class="art-lede">Start with the rule your financial advisor gave you, not the listing. Enter your numbers and your strategy, and see the price it allows, which areas near your hospital fit, how much stays invested instead of going into a down payment, and your net worth if you buy versus rent. Built on 2026 St.&nbsp;Louis sales.</p>
+
+  <div class="art-body">
+
+  <form class="php-form" id="phpForm" onsubmit="return false">
+    <fieldset>
+      <legend>1. Your strategy</legend>
+      <label class="php-field php-wide">Your advisor&rsquo;s housing rule
+        <select id="strategy">
+          <option value="x2">Keep the mortgage under 2&times; gross income</option>
+          <option value="pct">Keep total housing cost under a % of gross income</option>
+          <option value="retire">Max retirement savings first, then a % of what&rsquo;s left</option>
+          <option value="cap">My advisor gave me a price cap</option>
+        </select>
+      </label>
+      <label class="php-field" id="f-pct">Housing cost limit (% of gross)<input id="pct" type="number" inputmode="decimal" value="20" min="5" max="50" step="1"></label>
+      <label class="php-field" id="f-retire">Yearly retirement savings ($)<input id="retire" type="number" inputmode="numeric" value="30000" min="0" step="1000"></label>
+      <label class="php-field" id="f-cap">Price cap ($)<input id="cap" type="number" inputmode="numeric" value="700000" min="0" step="10000"></label>
+      <label class="php-check php-wide"><input id="loansFirst" type="checkbox"> My advisor wants student loans paid off before we buy</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>2. Your numbers</legend>
+      <label class="php-field">Household gross income ($/yr)<input id="income" type="number" inputmode="numeric" value="300000" min="0" step="5000"></label>
+      <label class="php-field">Cash available for the purchase ($)<input id="cash" type="number" inputmode="numeric" value="100000" min="0" step="5000"></label>
+      <label class="php-field">Student loan balance ($)<input id="loans" type="number" inputmode="numeric" value="200000" min="0" step="5000"></label>
+      <label class="php-field">Years you expect to stay<input id="years" type="number" inputmode="numeric" value="7" min="1" max="15" step="1"></label>
+      <label class="php-field">Hospital
+        <select id="hospital">
+          <option value="bjc">WashU Medicine / Barnes-Jewish</option>
+          <option value="slu">SLU Hospital</option>
+          <option value="mercy">Mercy Hospital St. Louis</option>
+          <option value="mobap">Missouri Baptist Medical Center</option>
+          <option value="stlukes">St. Luke&rsquo;s Hospital</option>
+        </select>
+      </label>
+      <label class="php-field">Rent for a comparable house ($/mo)<input id="rent" type="number" inputmode="numeric" value="3800" min="0" step="100"></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>3. Loan and assumptions <span class="php-hint">(use your lender&rsquo;s quote and your advisor&rsquo;s return)</span></legend>
+      <label class="php-field">Physician loan down payment
+        <select id="down"><option value="0">0%</option><option value="0.05" selected>5%</option><option value="0.10">10%</option><option value="0.20">20%</option></select>
+      </label>
+      <label class="php-field">Mortgage rate (%)<input id="rate" type="number" inputmode="decimal" value="6.75" min="0" max="15" step="0.125"></label>
+      <label class="php-field">Investment return your advisor uses (%/yr)<input id="ret" type="number" inputmode="decimal" value="7" min="0" max="15" step="0.5"></label>
+      <label class="php-field">Home price growth (%/yr)<input id="grow" type="number" inputmode="decimal" value="4" min="-5" max="10" step="0.5"></label>
+      <label class="php-field">Rent increase (%/yr)<input id="rentGrow" type="number" inputmode="decimal" value="3" min="0" max="10" step="0.5"></label>
+      <label class="php-field">Price to test instead ($, optional)<input id="test" type="number" inputmode="numeric" placeholder="Uses your strategy&rsquo;s maximum" min="0" step="10000"></label>
+    </fieldset>
+  </form>
+
+  <section class="php-results" id="results" aria-live="polite">
+    <div class="php-kpis">
+      <div class="php-kpi"><span class="k">Price your strategy allows</span><span class="v" id="o-price">&mdash;</span><span class="s" id="o-bind"></span></div>
+      <div class="php-kpi gold"><span class="k">Kept invested vs. 20% down</span><span class="v" id="o-kept">&mdash;</span><span class="s" id="o-kept-s"></span></div>
+      <div class="php-kpi"><span class="k">Monthly cost to own</span><span class="v" id="o-month">&mdash;</span><span class="s" id="o-month-s"></span></div>
+      <div class="php-kpi"><span class="k">Buying beats renting after</span><span class="v" id="o-be">&mdash;</span><span class="s" id="o-be-s"></span></div>
+    </div>
+    <p class="php-note" id="o-loans" hidden></p>
+
+    <h2 id="areas">Areas near your hospital that fit</h2>
+    <p id="o-areas-intro"></p>
+    <div class="php-areas" id="o-areas"></div>
+
+    <h2 id="money">Where the money goes</h2>
+    <table class="zt php-table"><tbody id="o-money"></tbody></table>
+
+    <h2 id="networth">Net worth if you buy vs. rent</h2>
+    <p>Both paths start with the same cash. Renting keeps it all invested; buying puts some into the house and invests whatever is left, plus any monthly savings. Home equity is counted after selling costs.</p>
+    <table class="zt php-table php-nw"><thead><tr><th scope="col">Year</th><th scope="col">Buy</th><th scope="col">Rent and invest</th><th scope="col">Difference</th></tr></thead><tbody id="o-nw"></tbody></table>
+
+    <div class="php-actions">
+      <button type="button" class="php-btn" onclick="window.print()">Print this for your advisor</button>
+      <a class="php-btn ghost" href="/articles/st-louis-home-buying-for-physicians">Read the physician guide &rarr;</a>
+    </div>
+
+    <h2 id="advisor">Bring these to your advisor</h2>
+    <ol class="php-qs">
+      <li>Does this price fit our plan if we leave St.&nbsp;Louis earlier than we expect?</li>
+      <li>Is a physician loan with this down payment better for us than putting more down, given what that cash earns invested?</li>
+      <li>How should our student loans and repayment plan change what we borrow?</li>
+      <li>Is this monthly cost, including taxes, insurance and upkeep, inside our cash-flow plan?</li>
+      <li>How much should we keep in reserve after closing for repairs on an older house?</li>
+    </ol>
+
+    <h2 id="how">How the numbers work</h2>
+    <ul class="php-how">
+      <li><strong>Prices and taxes</strong> are 2026 medians from single-family sales inside each city, from this site&rsquo;s city guides. Your house will differ.</li>
+      <li><strong>Monthly cost</strong> is principal and interest on a 30-year loan, plus the city&rsquo;s median tax rate, 0.4% of the price a year for insurance and 1% for upkeep.</li>
+      <li><strong>Cash to close</strong> is the down payment plus 2.5% closing costs. <strong>Selling</strong> is counted at 9.5%, the middle of the 8% to 11% St.&nbsp;Louis range.</li>
+      <li><strong>Growth rates are assumptions you control.</strong> St.&nbsp;Louis County price per square foot rose about 5% a year from 2021 to 2025; that&rsquo;s history, not a forecast.</li>
+      <li>This is real estate math, not investment, tax or legal advice. Your advisor and lender should run your own numbers.</li>
+    </ul>
+  </section>
+
+  </div>
+</div>
+
+<footer class="art-footer">
+  <p>George Kindler · Missouri Licensed Real Estate Agent · The Closing Pros LLC<br>
+  314-998-4550 · georgeandlizk@gmail.com<br>
+  All content is for informational purposes only and does not constitute legal or financial advice.</p>
+</footer>
+
+<script src="/assets/ask-me.js?v=9" defer></script>
+<script src="/assets/site-search.js" defer></script>
+<script>
+(function(){
+  /* 2026 single-family sales inside each city: median price, median yearly tax, tax as share of price. */
+  var CITY = {
+    'Webster Groves':{m:444500,t:4816,r:0.0100,u:'/neighborhoods/webster-groves'},
+    'University City':{m:439200,t:4987,r:0.0110,u:'/neighborhoods/university-city'},
+    'Ballwin':{m:419950,t:4443,r:0.0106,u:'/neighborhoods/ballwin'},
+    'Kirkwood':{m:566750,t:4995,r:0.0090,u:'/neighborhoods/kirkwood'},
+    'Wildwood':{m:599000,t:6522,r:0.0106,u:'/articles/chesterfield-vs-wildwood-mo'},
+    'Creve Coeur':{m:640000,t:6685,r:0.0102,u:'/articles/west-county-st-louis-neighborhoods'},
+    'Chesterfield':{m:685000,t:6639,r:0.0096,u:'/neighborhoods/chesterfield'},
+    'Des Peres':{m:925000,t:6310,r:0.0083,u:'/articles/west-county-st-louis-neighborhoods'},
+    'Clayton':{m:1240000,t:11638,r:0.0096,u:'/neighborhoods/clayton'},
+    'Frontenac':{m:1325000,t:10898,r:0.0100,u:'/articles/town-and-country-vs-frontenac-vs-ladue'},
+    'Town and Country':{m:1348000,t:9308,r:0.0080,u:'/articles/town-and-country-vs-frontenac-vs-ladue'},
+    'Ladue':{m:1430000,t:13692,r:0.0093,u:'/articles/town-and-country-vs-frontenac-vs-ladue'}
+  };
+  var NEAR = {
+    bjc:['University City','Webster Groves','Kirkwood','Clayton','Ladue'],
+    slu:['Webster Groves','University City','Kirkwood','Clayton'],
+    mercy:['Kirkwood','Creve Coeur','Chesterfield','Des Peres','Frontenac','Town and Country','Ladue'],
+    mobap:['Ballwin','Kirkwood','Creve Coeur','Chesterfield','Des Peres','Frontenac','Town and Country'],
+    stlukes:['Ballwin','Wildwood','Creve Coeur','Chesterfield','Town and Country']
+  };
+  var CC=0.025, SELL=0.095, INS=0.004, MAINT=0.01, TERM=360;
+  function $(id){return document.getElementById(id);}
+  function num(id){var v=parseFloat($(id).value);return isFinite(v)?v:0;}
+  function usd(x){return (x<0?'−':'')+'$'+Math.round(Math.abs(x)).toLocaleString('en-US');}
+  function k(x){return x>=1e6?'$'+(x/1e6).toFixed(2).replace(/0$/,'')+'M':'$'+Math.round(x/1000)+'K';}
+  function pmtFactor(rate){var i=rate/1200;return i===0?1/TERM:i/(1-Math.pow(1+i,-TERM));}
+
+  function calc(){
+    var s=$('strategy').value;
+    $('f-pct').hidden=(s!=='pct'&&s!=='retire'); $('f-retire').hidden=(s!=='retire'); $('f-cap').hidden=(s!=='cap');
+    var inc=num('income'), cash=num('cash'), loans=num('loans'), yrs=Math.max(1,Math.min(15,Math.round(num('years'))));
+    var d=parseFloat($('down').value), rate=num('rate'), ret=num('ret')/100, grow=num('grow')/100, rent0=num('rent'), rg=num('rentGrow')/100;
+    var near=NEAR[$('hospital').value];
+    var taxR=near.reduce(function(a,c){return a+CITY[c].r;},0)/near.length;
+    var pf=pmtFactor(rate), perDollar=(1-d)*pf+(taxR+INS+MAINT)/12;
+    var strat, why;
+    if(s==='x2'){strat=2*inc/(1-d); why='mortgage of 2× income ('+usd(2*inc)+')';}
+    else if(s==='pct'){strat=(num('pct')/100*inc/12)/perDollar; why=num('pct')+'% of gross on housing';}
+    else if(s==='retire'){var left=Math.max(0,inc-num('retire'));strat=(num('pct')/100*left/12)/perDollar; why=num('pct')+'% of income after '+usd(num('retire'))+' to retirement';}
+    else {strat=num('cap'); why='your advisor’s price cap';}
+    var cashCap=(d+CC)>0?cash/(d+CC):Infinity;
+    var P=Math.min(strat,cashCap), bind=(cashCap<strat)?'Limited by cash to close':'Set by '+why;
+    var test=num('test'); if(test>0){P=test; bind='Testing a price you entered';}
+    P=Math.max(0,P);
+
+    var loan=P*(1-d), pi=loan*pf, own=pi+P*(taxR+INS+MAINT)/12, ctc=P*(d+CC);
+    $('o-price').textContent=usd(P); $('o-bind').textContent=bind;
+    var kept=Math.max(0,(0.20-d)*P);
+    $('o-kept').textContent=usd(kept);
+    $('o-kept-s').textContent=d<0.2?'stays in your portfolio with '+Math.round(d*100)+'% down instead of 20%':'20% down: nothing extra kept invested';
+    $('o-month').textContent=usd(own);
+    var lim=(s==='pct'||s==='retire')?' · your limit '+usd(num('pct')/100*(s==='retire'?Math.max(0,inc-num('retire')):inc)/12):'';
+    $('o-month-s').textContent=Math.round(own/(inc/12)*100)+'% of gross income'+lim;
+
+    var lf=$('o-loans');
+    if($('loansFirst').checked&&loans>0){lf.hidden=false;lf.textContent='Your strategy pays off '+usd(loans)+' in student loans first. Read these results as the plan for after the loans are gone, and rent until then.';}
+    else lf.hidden=true;
+
+    /* areas */
+    var fit=near.filter(function(c){return CITY[c].m<=P;}), stretch=near.filter(function(c){return CITY[c].m>P;});
+    $('o-areas-intro').textContent=fit.length?('At '+usd(P)+', a typical house is within reach in '+fit.length+' of the '+near.length+' areas near your hospital. The rest have medians above your price; you’d be shopping the lower end of those markets.'):('At '+usd(P)+', every area near your hospital has a higher median price. You’d be shopping the lower end of these markets, or a nearby area not listed.');
+    $('o-areas').innerHTML=near.slice().sort(function(a,b){return CITY[a].m-CITY[b].m;}).map(function(c){var x=CITY[c],ok=x.m<=P;return '<a class="php-area '+(ok?'ok':'over')+'" href="'+x.u+'"><b>'+c+'</b><span>Median '+k(x.m)+' · tax '+usd(x.t)+'/yr</span><em>'+(ok?'Fits':'Above your price')+'</em></a>';}).join('');
+
+    /* money */
+    $('o-money').innerHTML=[
+      ['Purchase price',usd(P)],['Down payment ('+Math.round(d*100)+'%)',usd(P*d)],['Closing costs (2.5%)',usd(P*CC)],['Cash to close',usd(ctc)],
+      ['Cash left to invest',usd(cash-ctc)],['Loan amount',usd(loan)],['Principal and interest',usd(pi)+'/mo'],
+      ['Property tax (area median '+(taxR*100).toFixed(2)+'%)',usd(P*taxR/12)+'/mo'],['Insurance and upkeep',usd(P*(INS+MAINT)/12)+'/mo']
+    ].map(function(r){return '<tr><th scope="row">'+r[0]+'</th><td class="num">'+r[1]+'</td></tr>';}).join('');
+
+    /* net worth, monthly simulation */
+    var i=rate/1200, rm=Math.pow(1+ret,1/12)-1, gm=Math.pow(1+grow,1/12)-1;
+    var bal=loan, val=P, invB=cash-ctc, invR=cash, rent=rent0, rows=[], be=null;
+    for(var m=1;m<=180;m++){
+      var interest=bal*i; bal=Math.max(0,bal-(pi-interest)); val*=1+gm;
+      var ownM=pi+val*(taxR+INS+MAINT)/12;
+      invB*=1+rm; invR*=1+rm;
+      if(rent>ownM) invB+=rent-ownM; else invR+=ownM-rent;
+      if(m%12===0){
+        var y=m/12, nb=val*(1-SELL)-bal+invB, nr=invR;
+        if(be===null&&nb>=nr) be=y;
+        if(y<=Math.max(yrs,5)&&(y===1||y===3||y===5||y===yrs||y===10)) rows.push([y,nb,nr]);
+        rent*=1+rg;
+      }
+    }
+    $('o-nw').innerHTML=rows.map(function(r){var diff=r[1]-r[2];return '<tr'+(r[0]===yrs?' class="php-hl"':'')+'><th scope="row" data-l="Year">'+r[0]+(r[0]===yrs?' (your stay)':'')+'</th><td class="num" data-l="Buy">'+usd(r[1])+'</td><td class="num" data-l="Rent and invest">'+usd(r[2])+'</td><td class="num '+(diff>=0?'pos':'neg')+'" data-l="Difference">'+(diff>=0?'Buy +':'Rent +')+usd(Math.abs(diff)).replace('−','')+'</td></tr>';}).join('');
+    $('o-be').textContent=be?be+(be===1?' year':' years'):'15+ years';
+    $('o-be-s').textContent=be?(be<=yrs?'inside your '+yrs+'-year stay':'longer than your '+yrs+'-year stay: renting likely wins'):'on these assumptions, renting wins';
+  }
+  document.getElementById('phpForm').addEventListener('input',calc);
+  document.getElementById('phpForm').addEventListener('change',calc);
+  calc();
+})();
+</script>
+
+</body>
+</html>
