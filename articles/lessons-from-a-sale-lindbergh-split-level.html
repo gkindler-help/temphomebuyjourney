@@ -172,6 +172,8 @@
 .lfs-slide{display:block;margin:22px 0;}
 .lfs-slide img{display:block;width:100%;height:auto;border-radius:14px;}
 </style>
+<script>document.documentElement.classList.add('js-intro');</script>
+<link rel="stylesheet" href="/assets/intro-scene.css">
 </head>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","datePublished":"2026-09-06","dateModified":"2026-10-21","headline":"Lessons From a Sale: Pricing a Renovated Split-Level in Lindbergh","image":"https://stlhomejourney.com/assets/listings/13218-wintergreen/photo-01.webp","description":"A real St. Louis sale from pricing to closing: thin comps, seasonal timing, an offer deadline, and a buyer who promised no repair requests.","url":"https://stlhomejourney.com/articles/lessons-from-a-sale-lindbergh-split-level","author":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@type":"Organization","name":"STL Home Journey","url":"https://stlhomejourney.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://stlhomejourney.com/articles/lessons-from-a-sale-lindbergh-split-level"},"isPartOf":{"@type":"CreativeWorkSeries","name":"Lessons From a Sale","url":"https://stlhomejourney.com/articles/lessons-from-a-sale"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"STL Home Journey","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"Lessons From a Sale","item":"https://stlhomejourney.com/articles/lessons-from-a-sale"},{"@type":"ListItem","position":3,"name":"Pricing a Split-Level in Lindbergh","item":"https://stlhomejourney.com/articles/lessons-from-a-sale-lindbergh-split-level"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you price a house when the only comps sold in spring?","acceptedAnswer":{"@type":"Answer","text":"Price for the season you're listing in, and use only true comps. Here that meant $399,900, below the two spring split-level sales at about $410,000 and $420,000, and ignoring a nearby $500,000 sale that wasn't the same kind of house."}},{"@type":"Question","name":"Should you set an offer deadline when you list?","acceptedAnswer":{"@type":"Answer","text":"Sometimes, but not automatically. My preference was to take offers as they came, but my seller's past success with deadlines and his upcoming vacation gave us a practical reason to set one, so we decided together. It passed after five days with two showings and no offers."}},{"@type":"Question","name":"Is a promise of no repair requests worth more than a higher price?","acceptedAnswer":{"@type":"Answer","text":"It can be, if you trust it. The $406,000 buyers kept every contingency in the contract, including the inspection, but their agent told me they wouldn’t ask for anything. Based on that agent and what I knew about the house’s condition, I treated it as about as strong as a $410,000 offer that might reopen the price over repairs."}},{"@type":"Question","name":"Did the $406,000 offer close smoothly?","acceptedAnswer":{"@type":"Answer","text":"Yes. The buyers kept their word and asked for no repairs, the appraisal came in without a problem and there was no gap to solve. It closed fast at $406,000, $6,100 over list."}},{"@type":"Question","name":"What can sellers learn from this sale?","acceptedAnswer":{"@type":"Answer","text":"Price for the season you're in, rely on true comps over convenient ones, and treat offer deadlines as a judgment call, not a rule."}},{"@type":"Question","name":"Do homes only appreciate in spring and summer?","acceptedAnswer":{"@type":"Answer","text":"No. Long-term appreciation and seasonal demand are different things — values can trend up over years while buyer activity still rises and softens within a single year. Here, the spring comps mattered, but so did the softer summer market we listed into."}},{"@type":"Question","name":"What makes a home a true comparable sale?","acceptedAnswer":{"@type":"Answer","text":"A comp should explain how buyers will value the home you're actually selling — so property type, condition, and buyer appeal matter as much as size and location. That's why I used the two split-level sales but not the nearby ~$500K 1.5-story."}}]}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/articles/lessons-from-a-sale-lindbergh-split-level","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
@@ -191,7 +193,7 @@
 </nav>
 
 
-<header class="art-hdr">
+<header class="art-hdr" data-reveal-nav>
   <a class="art-hdr-l" href="../" aria-label="STL Home Journey home">
     <img class="hdr-wordmark" src="/assets/brand/stlhj-logo-silver-dark.webp" alt="STL Home Journey" width="600" height="186" style="display:block;height:32px;width:auto;max-width:none;">
   </a>
@@ -201,11 +203,27 @@
   </nav>
 </header>
 
+<section class="intro" data-intro aria-labelledby="lesson-h1">
+  <div class="intro-frame">
+    <div class="intro-stack">
+      <picture>
+        <img class="intro-photo" style="aspect-ratio:1400/933" src="../assets/listings/13218-wintergreen/photo-01.webp" width="1400" height="933" fetchpriority="high" decoding="async" alt="13218 Wintergreen Estates Drive, Fenton MO: renovated split-level in Lindbergh Schools">
+      </picture>
+      <img class="intro-logo" src="/assets/brand/stlhj-key-logo-gold.webp" width="1320" height="593" alt="" aria-hidden="true">
+    </div>
+    <div class="intro-shade"></div>
+    <div class="intro-copy">
+      <p class="intro-eyebrow ifade">Fenton &middot; Lindbergh Schools</p>
+      <h1 id="lesson-h1" class="ifade">Lessons From a Sale: Pricing a Renovated Split-Level in Lindbergh</h1>
+      <p class="intro-sub ifade">Listed at $399,900 &middot; 5 days, 2 showings &middot; Sold for $406,000 with no repair requests</p>
+    </div>
+    <a class="intro-arrow" href="#story" aria-label="Scroll to the story"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></a>
+  </div>
+</section>
 
-<div class="art-layout">
+<div class="art-layout" id="story">
 
   <div class="art-meta">Lessons From a Sale &middot; A real St. Louis transaction, start to finish</div>
-  <h1 class="art-title">Lessons From a Sale: Pricing a Renovated Split-Level in Lindbergh</h1>
 <p class="last-updated">Last updated October 21, 2026</p>
   <p class="art-lede">A sold price can make a transaction look far simpler than it was. This home listed at $399,900 and sold for $406,000 &mdash; but the story worth learning from is the decisions in between. Step into my seat and make the calls yourself, then read exactly how each one played out.</p>
 
@@ -215,15 +233,13 @@
 <p>This home listed at $399,900 and sold for $406,000 &mdash; $6,100 over asking. Read that alone and you'd assume we priced it low, sparked a bidding war, and took the top offer. None of that is what happened.</p>
 <p>This was <a href="../listings/13218-wintergreen-estates-drive-fenton-mo">13218 Wintergreen Estates Drive</a>, a fully renovated split-level on the edge of the <a href="../school-districts/lindbergh-schools">Lindbergh School District</a> &mdash; clean, well-presented, no hidden issues, arguably the sharpest home around the $399K mark. The final number is the easy part of the story. The decisions behind it are the part worth learning from.</p>
 
-<img class="lfs-hero-img" src="../assets/listings/13218-wintergreen/photo-01.webp" alt="13218 Wintergreen Estates Drive, Fenton MO — renovated split-level in Lindbergh Schools" loading="eager">
-
 <div class="lfs-facts">
   <div class="lfs-facts-hd">The deal at a glance</div>
   <div class="lfs-facts-grid">
     <div class="lfs-fact"><span class="n">$399,900</span><span class="l">List price</span></div>
     <div class="lfs-fact"><span class="n">$406,000</span><span class="l">Sold price (+$6,100)</span></div>
     <div class="lfs-fact"><span class="n">5 days / 2</span><span class="l">On market / showings before the offer</span></div>
-    <div class="lfs-fact"><span class="n">Waived</span><span class="l">Inspection</span></div>
+    <div class="lfs-fact"><span class="n">$0</span><span class="l">Repair requests (inspection kept)</span></div>
     <div class="lfs-fact"><span class="n">Clean</span><span class="l">Appraisal (no gap)</span></div>
     <div class="lfs-fact"><span class="n">Lindbergh</span><span class="l">School district</span></div>
   </div>
@@ -335,5 +351,6 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script src="/assets/intro-scene.js" defer></script>
 </body>
 </html>
