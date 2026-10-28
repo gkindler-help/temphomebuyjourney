@@ -83,6 +83,7 @@ PAGES = {
     'articles/should-i-downsize-my-house-st-louis.html': 'fenton',
     'articles/showings-but-no-offers-st-louis.html': 'seller',
     'articles/st-louis-buyers-bigger-problem-than-rates.html': 'buyer',
+    'articles/st-louis-home-buying-for-physicians.html': 'creekside',
     'articles/stl-affordability-by-zip-code.html': 'buyer',
     'articles/stl-home-repair-cost-guide.html': 'countryglen',
     'articles/town-and-country-vs-frontenac-vs-ladue.html': 'buyer',
