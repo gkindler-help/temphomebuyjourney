@@ -191,6 +191,8 @@
 .lp-table tbody th{color:#fff;font-weight:600;}
 .lp-table tbody tr:last-child th,.lp-table tbody tr:last-child td{border-bottom:none;color:#ffcc4d;}
 </style>
+<script>document.documentElement.classList.add('js-intro');</script>
+<link rel="stylesheet" href="/assets/intro-scene.css">
 </head>
 <body>
 
@@ -212,7 +214,7 @@
   <a href="#your-takeaway" class="jump-link">What should sellers take from this sale?</a>
 </nav>
 
-<header class="art-hdr">
+<header class="art-hdr" data-reveal-nav>
   <a class="art-hdr-l" href="../" aria-label="STL Home Journey home">
     <img class="hdr-wordmark" src="/assets/brand/stlhj-logo-silver-dark.webp" alt="STL Home Journey" width="600" height="186" style="display:block;height:32px;width:auto;max-width:none;">
   </a>
@@ -222,24 +224,34 @@
   </nav>
 </header>
 
-<div class="art-layout">
+<section class="intro" data-intro aria-labelledby="lesson-h1">
+  <div class="intro-frame">
+    <div class="intro-stack">
+      <picture>
+        <source srcset="../assets/lessons/autumn-ridge/5154-autumn-ridge-imperial.webp" type="image/webp">
+        <img class="intro-photo" style="aspect-ratio:1200/900" src="../assets/lessons/autumn-ridge/5154-autumn-ridge-imperial.jpg" width="1200" height="900" fetchpriority="high" decoding="async" alt="Two-story brick and vinyl home with a two-car garage and covered front porch at 5154 Autumn Ridge Drive in Imperial, Missouri">
+      </picture>
+      <img class="intro-logo" src="/assets/brand/stlhj-key-logo-gold.webp" width="1320" height="593" alt="" aria-hidden="true">
+    </div>
+    <div class="intro-shade"></div>
+    <div class="intro-copy">
+      <p class="intro-eyebrow ifade">Lessons From a Sale &middot; Imperial (Jefferson County)</p>
+      <h1 id="lesson-h1" class="ifade">$15,000 Over Asking, and No Competing Offer</h1>
+      <p class="intro-sub ifade">Listed at $275,000 &middot; No competing offer &middot; Under contract at $290,000</p>
+    </div>
+    <a class="intro-arrow" href="#story" aria-label="Scroll to the story"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></a>
+  </div>
+</section>
+
+<div class="art-layout" id="story">
 
   <div class="art-meta">Lessons From a Sale &middot; A real transaction, start to finish</div>
-  <h1 class="art-title">$15,000 Over Asking, and No Competing Offer</h1>
   <p class="last-updated">Last updated October 27, 2026</p>
   <p class="art-lede">A seller doesn&rsquo;t need multiple offers to sell above asking. We listed 5154 Autumn Ridge Drive in Imperial at $275,000 and signed a $290,000 contract with no competing offer. Then we worked through an $8,000 window request, two leaking foundation cracks, a roof and siding replacement and the paperwork that nearly held up closing. Step into my seat, make the calls, then read how each one played out.</p>
 
   <div id="mtc-mount" class="mtc-mount"></div>
 
   <div class="art-body" id="full-story">
-
-<figure class="lfs-fig">
-  <picture>
-    <source srcset="../assets/lessons/autumn-ridge/5154-autumn-ridge-imperial.webp" type="image/webp">
-    <img src="../assets/lessons/autumn-ridge/5154-autumn-ridge-imperial.jpg" width="1200" height="900" loading="eager" decoding="async" alt="Two-story brick and vinyl home with a two-car garage and covered front porch at 5154 Autumn Ridge Drive in Imperial, Missouri">
-  </picture>
-  <figcaption>5154 Autumn Ridge Drive, Imperial. Listed at $275,000; under contract at $290,000 with no competing offer.</figcaption>
-</figure>
 
 <div class="lfs-facts">
   <div class="lfs-facts-hd">The deal at a glance</div>
@@ -401,5 +413,6 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script src="/assets/intro-scene.js" defer></script>
 </body>
 </html>
