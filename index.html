@@ -269,6 +269,15 @@ a{color:var(--gold);text-decoration:none;}
 .links.two li.lead,.links.two li.wide{grid-column:1/-1;}
 
 /* TOPIC DIRECTORY */
+.area-dir>summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:18px 20px;border:1px solid var(--gold-line);border-radius:12px;background:var(--gold-wash);}
+.area-dir>summary::-webkit-details-marker{display:none;}
+.area-dir>summary>span:first-child{font-family:'Playfair Display',Georgia,serif;font-size:1.25rem;font-weight:700;color:#fff;}
+.area-dir>summary>span:first-child::after{content:' +';color:var(--gold);}
+.area-dir[open]>summary>span:first-child::after{content:' \2212';}
+.area-dir-n{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);}
+.area-dir .dir{margin-top:24px;}
+.area-dir-all{margin-top:20px;font-size:14px;}
+@media(max-width:600px){.area-dir .dir{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}}
 .dir{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;margin-top:32px;}
 .dir h3{font-size:13px;font-weight:600;color:var(--gold);margin-bottom:10px;}
 .dir ul{list-style:none;}
@@ -810,6 +819,99 @@ a{color:var(--gold);text-decoration:none;}
         </ul>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- BROWSE BY AREA -->
+<section class="sec" id="areas" aria-labelledby="areas-h">
+  <div class="wrap">
+    <details class="area-dir">
+      <summary><span id="areas-h">Browse St.&nbsp;Louis by area</span><span class="area-dir-n">46 areas and districts</span></summary>
+      <div class="dir">
+      <div>
+        <h3>South County</h3>
+        <ul>
+          <li><a href="/neighborhoods/oakville">Oakville</a></li>
+          <li><a href="/neighborhoods/mehlville">Mehlville</a></li>
+          <li><a href="/neighborhoods/affton">Affton</a></li>
+          <li><a href="/neighborhoods/lemay">Lemay</a></li>
+          <li><a href="/neighborhoods/concord">Concord</a></li>
+          <li><a href="/neighborhoods/sappington">Sappington</a></li>
+          <li><a href="/neighborhoods/crestwood">Crestwood</a></li>
+          <li><a href="/neighborhoods/sunset-hills">Sunset Hills</a></li>
+          <li><a href="/neighborhoods/green-park">Green Park</a></li>
+          <li><a href="/neighborhoods/webster-groves">Webster Groves</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>St. Louis City</h3>
+        <ul>
+          <li><a href="/south-city-st-louis">South City overview</a></li>
+          <li><a href="/neighborhoods/dogtown">Dogtown</a></li>
+          <li><a href="/neighborhoods/tower-grove-south">Tower Grove South</a></li>
+          <li><a href="/neighborhoods/st-louis-hills">St.&nbsp;Louis Hills</a></li>
+          <li><a href="/neighborhoods/soulard">Soulard</a></li>
+          <li><a href="/neighborhoods/the-hill">The Hill</a></li>
+          <li><a href="/neighborhoods/shaw">Shaw</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>West and Central County</h3>
+        <ul>
+          <li><a href="/neighborhoods/kirkwood">Kirkwood</a></li>
+          <li><a href="/neighborhoods/chesterfield">Chesterfield</a></li>
+          <li><a href="/neighborhoods/ballwin">Ballwin</a></li>
+          <li><a href="/neighborhoods/clayton">Clayton</a></li>
+          <li><a href="/neighborhoods/maplewood">Maplewood</a></li>
+          <li><a href="/neighborhoods/university-city">University City</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>North County</h3>
+        <ul>
+          <li><a href="/neighborhoods/florissant">Florissant</a></li>
+          <li><a href="/neighborhoods/hazelwood">Hazelwood</a></li>
+          <li><a href="/neighborhoods/maryland-heights">Maryland Heights</a></li>
+          <li><a href="/neighborhoods/ferguson">Ferguson</a></li>
+          <li><a href="/neighborhoods/bridgeton">Bridgeton</a></li>
+          <li><a href="/neighborhoods/st-ann">St.&nbsp;Ann</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Jefferson County</h3>
+        <ul>
+          <li><a href="/neighborhoods/arnold">Arnold</a></li>
+          <li><a href="/neighborhoods/imperial">Imperial</a></li>
+          <li><a href="/neighborhoods/fenton-jefferson-county">Fenton (Jefferson County)</a></li>
+          <li><a href="/neighborhoods/festus">Festus</a></li>
+          <li><a href="/neighborhoods/high-ridge">High Ridge</a></li>
+          <li><a href="/neighborhoods/house-springs">House Springs</a></li>
+          <li><a href="/neighborhoods/hillsboro">Hillsboro</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>St. Charles County</h3>
+        <ul>
+          <li><a href="/neighborhoods/o-fallon">O&rsquo;Fallon</a></li>
+          <li><a href="/neighborhoods/st-charles">St.&nbsp;Charles</a></li>
+          <li><a href="/neighborhoods/st-peters">St.&nbsp;Peters</a></li>
+          <li><a href="/neighborhoods/wentzville">Wentzville</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>School districts</h3>
+        <ul>
+          <li><a href="/school-districts/lindbergh-schools">Lindbergh</a></li>
+          <li><a href="/school-districts/mehlville-school-district">Mehlville</a></li>
+          <li><a href="/school-districts/kirkwood-school-district">Kirkwood</a></li>
+          <li><a href="/school-districts/parkway-school-district">Parkway</a></li>
+          <li><a href="/school-districts/rockwood-school-district">Rockwood</a></li>
+          <li><a href="/school-districts/fox-c6-school-district">Fox C-6</a></li>
+        </ul>
+      </div>
+      </div>
+      <p class="area-dir-all"><a href="/site-index">See every guide, neighborhood and tool on the site &rarr;</a></p>
+    </details>
   </div>
 </section>
 
