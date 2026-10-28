@@ -15,7 +15,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGEFIND = 'pagefind@1.3.0'
 
 # Pages that should never show up in results.
-SKIP = {'404.html', 'pinterest-10a52.html', 'home-cost-demo.html', 'search.html', 'scan/index.html', 'tools/seller-net-calculator.html'}
+SKIP = {'404.html', 'site-index.html', 'pinterest-10a52.html', 'home-cost-demo.html', 'search.html', 'scan/index.html', 'tools/seller-net-calculator.html'}
 SKIP_DIRS = ('.git/', 'docs/', 'pagefind/', 'node_modules/', 'scripts/', '.vscode/')
 
 # Site chrome that shouldn't be searchable.
