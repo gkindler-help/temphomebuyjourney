@@ -24,7 +24,7 @@ LESSONS = {
     'autumn':    ('/articles/lessons-from-a-sale-imperial-autumn-ridge', '$15,000 over asking with no competing offer'),
     'countryglen': ('/articles/lessons-from-a-sale-imperial-country-glen', 'The buyers said no repairs, then asked for $4,000'),
     'winterpark': ('/articles/lessons-from-a-sale-fenton-winter-park', 'Three $300,000 offers, sold for $302,000'),
-    'maple':     ('/articles/lessons-from-a-sale-maplewood-maple-avenue', 'The repairs failed reinspection; it cost the seller $16,820'),
+    'maple':     ('/articles/lessons-from-a-sale-maplewood-maple-avenue', 'When the seller\'s repairs failed the final walk-through'),
     'blackforest': ('/articles/lessons-from-a-sale-blackforest-cash-condo', 'The "cash" buyer whose money depended on another sale'),
     'thirtyk':   ('/articles/st-louis-home-price-reduction-negotiation', 'How my buyer got $30,000 off before inspections'),
 }
