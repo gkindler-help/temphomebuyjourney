@@ -191,6 +191,8 @@
 .lp-table tbody th{color:#fff;font-weight:600;}
 .lp-table tbody tr:last-child th,.lp-table tbody tr:last-child td{border-bottom:none;}
 </style>
+<script>document.documentElement.classList.add('js-intro');</script>
+<link rel="stylesheet" href="/assets/intro-scene.css">
 </head>
 <body>
 
@@ -212,7 +214,7 @@
   <a href="#your-takeaway" class="jump-link">What should sellers take from this sale?</a>
 </nav>
 
-<header class="art-hdr">
+<header class="art-hdr" data-reveal-nav>
   <a class="art-hdr-l" href="../" aria-label="STL Home Journey home">
     <img class="hdr-wordmark" src="/assets/brand/stlhj-logo-silver-dark.webp" alt="STL Home Journey" width="600" height="186" style="display:block;height:32px;width:auto;max-width:none;">
   </a>
@@ -222,10 +224,28 @@
   </nav>
 </header>
 
-<div class="art-layout">
+<section class="intro" data-intro aria-labelledby="lesson-h1">
+  <div class="intro-frame">
+    <div class="intro-stack">
+      <picture>
+        <source srcset="../assets/lessons/winter-park/982-winter-park-fenton.webp" type="image/webp">
+        <img class="intro-photo" style="aspect-ratio:1600/900" src="../assets/lessons/winter-park/982-winter-park-fenton.jpg" width="1600" height="900" fetchpriority="high" decoding="async" alt="982 Winter Park Drive in Fenton: a split-level home with gray siding, a brick front, a two-car garage and a wooded hillside behind it">
+      </picture>
+      <img class="intro-logo" src="/assets/brand/stlhj-key-logo-gold.webp" width="1320" height="593" alt="" aria-hidden="true">
+    </div>
+    <div class="intro-shade"></div>
+    <div class="intro-copy">
+      <p class="intro-eyebrow ifade">Lessons From a Sale &middot; Fenton</p>
+      <h1 id="lesson-h1" class="ifade">Three Buyers Offered $300,000. Here&rsquo;s How We Sold for $302,000.</h1>
+      <p class="intro-sub ifade">Listed at $295,000 &middot; Three offers at $300,000 &middot; Sold for $302,000 cash</p>
+    </div>
+    <a class="intro-arrow" href="#story" aria-label="Scroll to the story"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></a>
+  </div>
+</section>
+
+<div class="art-layout" id="story">
 
   <div class="art-meta">Lessons From a Sale &middot; A real transaction, start to finish</div>
-  <h1 class="art-title">Three Buyers Offered $300,000. Here&rsquo;s How We Sold for $302,000.</h1>
   <p class="last-updated">Last updated October 27, 2026</p>
   <p class="art-lede">When I list a house, I don&rsquo;t just copy what comparable homes sold for. At 982 Winter Park Drive in Fenton, we listed at $295,000 in November 2023, had about 20 showings scheduled, received three offers at $300,000 and sold for $302,000. The extra $2,000 didn&rsquo;t happen by accident. Step into my seat, make the calls, then read how each one played out.</p>
 
@@ -252,6 +272,20 @@
 <h2 id="showings">What did 20 scheduled showings tell us?</h2>
 <p>That the price was reaching active buyers. By November 10, 2023, I was telling another agent we had about 20 showings scheduled, enough to set an offer deadline so every buyer and agent knew when offers would be reviewed.</p>
 <p>Those weren&rsquo;t online views or saves. Buyers were making appointments. A scheduled showing isn&rsquo;t a completed one and doesn&rsquo;t guarantee an offer, but it tells me whether the asking price is getting the attention of buyers who are actually shopping. And this was November, not spring. <a href="best-time-to-buy-sell-move-st-louis">When St.&nbsp;Louis buyers are most active &rarr;</a></p>
+
+<figure class="lfs-fig">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;">
+    <picture>
+      <source srcset="../assets/lessons/winter-park/982-winter-park-living-room.webp" type="image/webp">
+      <img src="../assets/lessons/winter-park/982-winter-park-living-room.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Living room at 982 Winter Park Drive with a vaulted ceiling, skylight, brick fireplace and hardwood floors">
+    </picture>
+    <picture>
+      <source srcset="../assets/lessons/winter-park/982-winter-park-kitchen.webp" type="image/webp">
+      <img src="../assets/lessons/winter-park/982-winter-park-kitchen.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Kitchen at 982 Winter Park Drive with white cabinets, stainless appliances and a tile floor">
+    </picture>
+  </div>
+  <figcaption>Inside 982 Winter Park: the vaulted living room and the kitchen buyers walked through in November.</figcaption>
+</figure>
 
 <h2 id="offers">How do you compare three offers at the same price?</h2>
 <p>By the terms, not the number. By November 13 I had three offers, each at $300,000, $5,000 over asking. One stood out because of what came with it:</p>
@@ -370,5 +404,6 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script src="/assets/intro-scene.js" defer></script>
 </body>
 </html>

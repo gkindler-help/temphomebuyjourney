@@ -191,6 +191,8 @@
 .lp-table tbody th{color:#fff;font-weight:600;}
 .lp-table tbody tr:last-child th,.lp-table tbody tr:last-child td{border-bottom:none;}
 </style>
+<script>document.documentElement.classList.add('js-intro');</script>
+<link rel="stylesheet" href="/assets/intro-scene.css">
 </head>
 <body>
 
@@ -207,7 +209,7 @@
   <a href="#your-takeaway" class="jump-link">What should sellers take from this sale?</a>
 </nav>
 
-<header class="art-hdr">
+<header class="art-hdr" data-reveal-nav>
   <a class="art-hdr-l" href="../" aria-label="STL Home Journey home">
     <img class="hdr-wordmark" src="/assets/brand/stlhj-logo-silver-dark.webp" alt="STL Home Journey" width="600" height="186" style="display:block;height:32px;width:auto;max-width:none;">
   </a>
@@ -217,10 +219,28 @@
   </nav>
 </header>
 
-<div class="art-layout">
+<section class="intro" data-intro aria-labelledby="lesson-h1">
+  <div class="intro-frame">
+    <div class="intro-stack">
+      <picture>
+        <source srcset="../assets/lessons/blackforest/2832-blackforest-condo.webp" type="image/webp">
+        <img class="intro-photo" style="aspect-ratio:1200/900" src="../assets/lessons/blackforest/2832-blackforest-condo.jpg" width="1200" height="900" fetchpriority="high" decoding="async" alt="The brick condo building at 2832 Blackforest Drive, with wood balconies, a curved stone retaining wall and a sloped lawn">
+      </picture>
+      <img class="intro-logo" src="/assets/brand/stlhj-key-logo-gold.webp" width="1320" height="593" alt="" aria-hidden="true">
+    </div>
+    <div class="intro-shade"></div>
+    <div class="intro-copy">
+      <p class="intro-eyebrow ifade">Lessons From a Sale &middot; St. Louis Condo</p>
+      <h1 id="lesson-h1" class="ifade">The &ldquo;Cash&rdquo; Buyer Was Waiting on a Sale in Hawaii</h1>
+      <p class="intro-sub ifade">$72,500 cash offer &middot; Inspections waived &middot; $725 earnest money to the seller</p>
+    </div>
+    <a class="intro-arrow" href="#story" aria-label="Scroll to the story"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></a>
+  </div>
+</section>
+
+<div class="art-layout" id="story">
 
   <div class="art-meta">Lessons From a Sale &middot; A real transaction, start to finish</div>
-  <h1 class="art-title">The &ldquo;Cash&rdquo; Buyer Was Waiting on a Sale in Hawaii</h1>
   <p class="last-updated">Last updated October 28, 2026</p>
   <p class="art-lede">&ldquo;Cash&rdquo; can describe how a buyer plans to pay, not money they have today. In April 2025, a buyer offered $72,500 cash for a condo at 2832 Blackforest Drive, Unit D, with inspections waived. The cash was coming from the sale of their home in Hawaii, scheduled to close two days before ours. Step into my seat, make the calls, then read how each one played out.</p>
 
@@ -330,5 +350,6 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script src="/assets/intro-scene.js" defer></script>
 </body>
 </html>
