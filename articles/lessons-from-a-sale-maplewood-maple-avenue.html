@@ -199,6 +199,8 @@
 .lp-table tbody th{color:#fff;font-weight:600;}
 .lp-table tbody tr:last-child th,.lp-table tbody tr:last-child td{border-bottom:none;}
 </style>
+<script>document.documentElement.classList.add('js-intro');</script>
+<link rel="stylesheet" href="/assets/intro-scene.css">
 </head>
 <body>
 
@@ -230,24 +232,34 @@
   </nav>
 </header>
 
-<div class="art-layout">
+<section class="intro" data-intro aria-labelledby="lesson-h1">
+  <div class="intro-frame">
+    <div class="intro-stack">
+      <picture>
+        <source srcset="../assets/lessons/maple-avenue/7441-maple-avenue-maplewood.webp" type="image/webp">
+        <img class="intro-photo" style="aspect-ratio:1200/900" src="../assets/lessons/maple-avenue/7441-maple-avenue-maplewood.jpg" width="1200" height="900" fetchpriority="high" decoding="async" alt="7441 Maple Avenue in Maplewood: a white two-story brick home with a covered front porch and white railings">
+      </picture>
+      <img class="intro-logo" src="/assets/brand/stlhj-key-logo-gold.webp" width="1320" height="593" alt="" aria-hidden="true">
+    </div>
+    <div class="intro-shade"></div>
+    <div class="intro-copy">
+      <p class="intro-eyebrow ifade">Lessons From a Sale &middot; Maplewood</p>
+      <h1 id="lesson-h1" class="ifade">The Repairs Failed the Final Walk-Through. It Cost the Seller $16,820.</h1>
+      <p class="intro-sub ifade">Contract $270,000 &middot; 26 of 30 items &ldquo;not resolved&rdquo; &middot; Sold for $253,180</p>
+    </div>
+    <a class="intro-arrow" href="#story" aria-label="Scroll to the story"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></a>
+  </div>
+</section>
+
+<div class="art-layout" id="story">
 
   <div class="art-meta">Lessons From a Sale &middot; A real transaction, start to finish</div>
-  <h1 class="art-title">The Repairs Failed the Final Walk-Through. It Cost the Seller $16,820.</h1>
   <p class="last-updated">Last updated October 28, 2026</p>
   <p class="art-lede">What happens when the seller&rsquo;s repairs fail the final walk-through? We found out at 7441 Maple Avenue in Maplewood. The house was under contract at $270,000; the buyer&rsquo;s inspector came back and marked most of the repairs &ldquo;not resolved,&rdquo; and the buyer wanted $16,820 off. Here&rsquo;s how it played out under an actual contract. Step into my seat, make the calls, then read what happened.</p>
 
   <div id="mtc-mount" class="mtc-mount"></div>
 
   <div class="art-body" id="full-story">
-
-<figure class="lfs-fig">
-  <picture>
-    <source srcset="../assets/lessons/maple-avenue/7441-maple-avenue-maplewood.webp" type="image/webp">
-    <img src="../assets/lessons/maple-avenue/7441-maple-avenue-maplewood.jpg" width="1200" height="900" loading="eager" decoding="async" alt="7441 Maple Avenue in Maplewood: a white two-story brick home with a covered front porch and white railings">
-  </picture>
-  <figcaption>7441 Maple Avenue, Maplewood. The renovation looked finished from the street. The inspection found what it missed.</figcaption>
-</figure>
 
 <div class="lfs-facts">
   <div class="lfs-facts-hd">The deal at a glance</div>
@@ -403,5 +415,6 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script src="/assets/intro-scene.js" defer></script>
 </body>
 </html>
