@@ -24,6 +24,8 @@ LESSONS = {
     'autumn':    ('/articles/lessons-from-a-sale-imperial-autumn-ridge', '$15,000 over asking with no competing offer'),
     'countryglen': ('/articles/lessons-from-a-sale-imperial-country-glen', 'The buyers said no repairs, then asked for $4,000'),
     'winterpark': ('/articles/lessons-from-a-sale-fenton-winter-park', 'Three $300,000 offers, sold for $302,000'),
+    'maple':     ('/articles/lessons-from-a-sale-maplewood-maple-avenue', 'The repairs failed reinspection; it cost the seller $16,820'),
+    'blackforest': ('/articles/lessons-from-a-sale-blackforest-cash-condo', 'The "cash" buyer whose money depended on another sale'),
     'thirtyk':   ('/articles/st-louis-home-price-reduction-negotiation', 'How my buyer got $30,000 off before inspections'),
 }
 # No story fits yet: how George works.
@@ -88,10 +90,10 @@ PAGES = {
     'articles/what-300k-450k-600k-buys-st-louis.html': 'buyer',
     'articles/what-buyers-regret-cheap-house-st-louis.html': 'thirtyk',
     'articles/what-happens-when-you-click-zillow.html': 'buyer',
-    'articles/what-not-to-repair-before-selling-stl-pricing-strategy.html': 'lindbergh',
+    'articles/what-not-to-repair-before-selling-stl-pricing-strategy.html': 'maple',
     'articles/what-to-look-for-buying-house-stl.html': 'thirtyk',
     'articles/what-will-i-net-selling-stl.html': 'autumn',
-    'articles/what-you-lose-with-cash-offer-stl.html': 'seller',
+    'articles/what-you-lose-with-cash-offer-stl.html': 'blackforest',
     'articles/when-can-i-move-in-after-closing-st-louis.html': 'buyer',
     'articles/when-to-lower-house-price-st-louis.html': 'lindbergh',
     'articles/where-should-i-move-when-downsizing-st-louis.html': 'fenton',
@@ -100,8 +102,8 @@ PAGES = {
     'articles/why-your-st-louis-home-didnt-sell.html': 'seller',
     'articles/zillow-zestimate-accurate-stl.html': 'thirtyk',
     'sellers/assignment-contract-real-estate-missouri/index.html': 'seller',
-    'sellers/cash-offers-st-louis.html': 'seller',
-    'sellers/proof-of-funds-cash-buyer-st-louis/index.html': 'seller',
+    'sellers/cash-offers-st-louis.html': 'blackforest',
+    'sellers/proof-of-funds-cash-buyer-st-louis/index.html': 'blackforest',
     'sellers/retrading-cash-offer-st-louis/index.html': 'seller',
 }
 
