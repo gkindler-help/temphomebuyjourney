@@ -47,6 +47,7 @@ PAGES = {
     'articles/cost-to-sell-home-stl.html': 'galena',
     'articles/credit-score-buy-home-st-louis.html': 'buyer',
     'articles/do-i-need-a-buyers-agent-stl.html': 'fenton',
+    'articles/does-seller-keep-earnest-money-st-louis.html': 'blackforest',
     'articles/federal-pacific-panel-va-loan-st-louis.html': 'buyer',
     'articles/fenton-mo-city-vs-unincorporated.html': 'fenton',
     'articles/first-time-buyer-programs-stl.html': 'buyer',
