@@ -178,6 +178,8 @@
 .lfs-slide{display:block;margin:22px 0;}
 .lfs-slide img{display:block;width:100%;height:auto;border-radius:14px;}
 </style>
+<script>document.documentElement.classList.add('js-intro');</script>
+<link rel="stylesheet" href="/assets/intro-scene.css">
 </head>
 <body>
 
@@ -197,7 +199,7 @@
   <a href="#your-takeaway" class="jump-link">What This Means for You</a>
 </nav>
 
-<header class="art-hdr">
+<header class="art-hdr" data-reveal-nav>
   <a class="art-hdr-l" href="../" aria-label="STL Home Journey home">
     <img class="hdr-wordmark" src="/assets/brand/stlhj-logo-silver-dark.webp" alt="STL Home Journey" width="600" height="186" style="display:block;height:32px;width:auto;max-width:none;">
   </a>
@@ -207,10 +209,27 @@
   </nav>
 </header>
 
-<div class="art-layout">
+<section class="intro" data-intro aria-labelledby="lesson-h1">
+  <div class="intro-frame">
+    <div class="intro-stack">
+      <picture>
+        <img class="intro-photo" style="aspect-ratio:1168/820" src="../assets/lessons/greyhawk-cabin-original.webp" width="1168" height="820" fetchpriority="high" decoding="async" alt="The original 1970s log cabin at Greyhawk Estates, Ste. Genevieve County, before the guest room addition">
+      </picture>
+      <img class="intro-logo" src="/assets/brand/stlhj-key-logo-gold.webp" width="1320" height="593" alt="" aria-hidden="true">
+    </div>
+    <div class="intro-shade"></div>
+    <div class="intro-copy">
+      <p class="intro-eyebrow ifade">Lessons From a Sale &middot; Ste. Genevieve County</p>
+      <h1 id="lesson-h1" class="ifade">The Septic Didn&rsquo;t Just Need Repair. It Changed Who Could Buy the House.</h1>
+      <p class="intro-sub ifade">A 1970s lake cabin &middot; A failing septic &middot; A $20,000 reduction held against a $15,000 counter</p>
+    </div>
+    <a class="intro-arrow" href="#story" aria-label="Scroll to the story"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></a>
+  </div>
+</section>
+
+<div class="art-layout" id="story">
 
   <div class="art-meta">Lessons From a Sale &middot; A real transaction, start to finish</div>
-  <h1 class="art-title">The Septic Didn&rsquo;t Just Need Repair. It Changed Who Could Buy the House.</h1>
   <p class="last-updated">Last updated October 26, 2026</p>
   <p class="art-lede">My parents wanted a lake house. What looked like a simple 1970s cabin turned into a lesson in what happens to a property&rsquo;s value when a defect doesn&rsquo;t just cost money &mdash; it changes who is willing and able to buy. Step into my seat, make the calls, then read exactly how each one played out.</p>
 
@@ -224,11 +243,6 @@
 <div class="article-graphic">
   <img src="../assets/articles/septic-changed-who-could-buy.webp" alt="Graphic showing how a failing septic system changed the central question from repair cost to who could realistically buy the property" loading="lazy" width="1254" height="1254">
 </div>
-
-<figure class="lfs-fig">
-  <img class="lfs-hero-img" src="../assets/lessons/greyhawk-cabin-original.webp" alt="The original 1970s log cabin at Greyhawk Estates, Ste. Genevieve County, before the guest room addition" loading="eager">
-  <figcaption>The original home, before the guest room addition.</figcaption>
-</figure>
 
 <div class="lfs-facts">
   <div class="lfs-facts-hd">The deal at a glance</div>
@@ -388,5 +402,6 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script src="/assets/intro-scene.js" defer></script>
 </body>
 </html>
