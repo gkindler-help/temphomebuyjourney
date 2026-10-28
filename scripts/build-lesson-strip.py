@@ -26,6 +26,7 @@ LESSONS = {
     'winterpark': ('/articles/lessons-from-a-sale-fenton-winter-park', 'Three $300,000 offers, sold for $302,000'),
     'maple':     ('/articles/lessons-from-a-sale-maplewood-maple-avenue', 'When the seller\'s repairs failed the final walk-through'),
     'blackforest': ('/articles/lessons-from-a-sale-blackforest-cash-condo', 'The "cash" buyer whose money depended on another sale'),
+    'creekside': ('/articles/lessons-from-a-sale-cedar-hill-creek-side', 'Buying the next house before selling the first'),
     'thirtyk':   ('/articles/st-louis-home-price-reduction-negotiation', 'How my buyer got $30,000 off before inspections'),
 }
 # No story fits yet: how George works.
@@ -75,7 +76,7 @@ PAGES = {
     'articles/parkway-vs-rockwood-st-louis.html': 'buyer',
     'articles/relist-house-st-louis-30-day-rule.html': 'seller',
     'articles/repair-costs-affect-offer-price-stl.html': 'autumn',
-    'articles/sell-first-or-buy-first-st-louis.html': 'seller',
+    'articles/sell-first-or-buy-first-st-louis.html': 'creekside',
     'articles/sell-house-fall-winter-st-louis.html': 'winterpark',
     'articles/selling-home-south-st-louis-county.html': 'lindbergh',
     'articles/should-i-accept-this-offer-st-louis.html': 'autumn',
