@@ -120,6 +120,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/south-county-st-louis","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
 <script>document.documentElement.classList.add('js-intro');</script>
 <link rel="stylesheet" href="/assets/intro-scene.css">
+<style data-fold-css>.data-fold{margin:18px 0 22px;border:1px solid rgba(255,204,77,.28);border-radius:10px;background:rgba(255,204,77,.03);}.data-fold>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:13px 16px;font-size:14px;line-height:1.4;}.data-fold>summary::-webkit-details-marker{display:none;}.data-fold>summary:focus-visible{outline:2px solid #ffcc4d;outline-offset:2px;border-radius:10px;}.df-label{font-weight:600;color:inherit;flex:1 1 220px;min-width:0;}.df-hint{color:#ffcc4d;font-weight:700;font-size:13px;white-space:nowrap;}.df-hint:after{content:" \25BE";}.data-fold[open] .df-hint:after{content:" \25B4";}.data-fold[open] .df-show{display:none;}.df-hide{display:none;}.data-fold[open] .df-hide{display:inline;}.data-fold>:not(summary){margin:4px 8px 8px;}.data-fold[data-cap] caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}@media print{.data-fold>summary{display:none;}}</style>
 </head>
 <body class="tool-page neighborhood-page">
 <header class="nbhd-hdr" data-reveal-nav>
@@ -333,7 +334,8 @@
         <div class="tool-section-hd">2026 Comparison</div>
         <h2 class="tool-result-value">How Do the Nine South County Communities Compare?</h2>
         <p class="tool-result-sub">One table with each community&rsquo;s 2026 median sale price, number of sales, typical time on market and school district split. Click a name for that community&rsquo;s full page.</p>
-        <div class="sc-table-wrap">
+        <details class="data-fold" data-cap><summary><span class="df-label">2026 closed single-family sales, lowest to highest median</span><span class="df-hint"><span class="df-show">Show all 9 rows</span><span class="df-hide">Hide table</span></span></summary>
+<div class="sc-table-wrap">
           <table class="sc-table">
             <caption>2026 closed single-family sales, lowest to highest median</caption>
             <thead><tr><th scope="col">Community</th><th scope="col">Median price</th><th scope="col">Sales</th><th scope="col">Median days on market</th><th scope="col">School districts (2026 sales)</th><th scope="col">Sales counted</th></tr></thead>
@@ -350,9 +352,11 @@
             </tbody>
           </table>
         </div>
+</details>
         <p class="sc-note">Each row repeats the figures published on that community&rsquo;s page, which has the full breakdown. Days on market is cumulative (CDOM). Sappington and Green Park are small samples. The areas are measured differently (Census boundary, city limits or MLS high school area), so the sales counts aren&rsquo;t meant to be added together.</p>
         <h3 class="sc-h3" id="south-county-typical-house">What Did the Typical South County House Look Like in 2026?</h3>
-        <div class="sc-table-wrap" role="region" tabindex="0" aria-label="Typical house by South County community">
+        <details class="data-fold" data-cap><summary><span class="df-label">Medians and shares of 2026 closed single-family sales</span><span class="df-hint"><span class="df-show">Show all 9 rows</span><span class="df-hide">Hide table</span></span></summary>
+<div class="sc-table-wrap" role="region" tabindex="0" aria-label="Typical house by South County community">
           <table class="sc-table">
             <caption>Medians and shares of 2026 closed single-family sales</caption>
             <thead><tr><th scope="col">Community</th><th scope="col">Median year built</th><th scope="col">Median sq ft</th><th scope="col">Ranch-style</th><th scope="col">Sold above original list</th></tr></thead>
@@ -369,6 +373,7 @@
             </tbody>
           </table>
         </div>
+</details>
         <p class="sc-note">Square footage is reported living area, rounded to the nearest foot. &ldquo;Sold above original list&rdquo; compares the sale price with the first asking price. Condition isn&rsquo;t in MLS data.</p>
       </div>
     </section>
@@ -466,7 +471,8 @@
         <div class="tool-section-hd">Budget Reach</div>
         <h2 class="tool-result-value">What Did $250K, $300K, $350K and $400K Reach in Each South County Community?</h2>
         <p class="tool-result-sub">The tiers above use medians. This table answers the more practical question: of all the 2026 sales in each community, how many closed at or below your budget? A higher share means more chances to buy.</p>
-        <div class="sc-table-wrap" role="region" tabindex="0" aria-label="Budget reach by South County community">
+        <details class="data-fold" data-cap><summary><span class="df-label">2026 closed single-family sales at or below each price</span><span class="df-hint"><span class="df-show">Show all 9 rows</span><span class="df-hide">Hide table</span></span></summary>
+<div class="sc-table-wrap" role="region" tabindex="0" aria-label="Budget reach by South County community">
           <table class="sc-table">
             <caption>2026 closed single-family sales at or below each price</caption>
             <thead><tr><th scope="col">Community</th><th scope="col">Sales</th><th scope="col">$250K or less</th><th scope="col">$300K or less</th><th scope="col">$350K or less</th><th scope="col">$400K or less</th></tr></thead>
@@ -483,6 +489,7 @@
             </tbody>
           </table>
         </div>
+</details>
         <p class="sc-note">Counts match each community&rsquo;s own page. Mehlville and Oakville are counted by MLS high school area; the others by Census boundary or city limits. With 14 and 10 sales, read Sappington and Green Park as directional.</p>
       </div>
     </section>
@@ -536,7 +543,8 @@
         <p class="bo-p">Then I looked at when those opportunities actually appeared.</p>
         <p class="bo-p">For this analysis, a <strong>Buyer Opportunity</strong> is a home matching that filter that was listed during the month and later closed within the study period. These are not live inventory counts, and they aren't every home listed in the district. They're a way of looking backward and asking: How often did this particular kind of buyer actually get a shot?</p>
 
-        <div class="bo-table-wrap" role="region" aria-labelledby="bo-cap" tabindex="0">
+        <details class="data-fold" data-cap><summary><span class="df-label">2026 Buyer Opportunities 3+ bedrooms · Original list price ≤ $309,999</span><span class="df-hint"><span class="df-show">Show all 8 rows</span><span class="df-hide">Hide table</span></span></summary>
+<div class="bo-table-wrap" role="region" aria-labelledby="bo-cap" tabindex="0">
           <table class="bo-table">
             <caption id="bo-cap"><span class="bo-cap-t">2026 Buyer Opportunities</span><span class="bo-cap-s">3+ bedrooms · Original list price ≤ $309,999</span></caption>
             <thead><tr><th scope="col">Month</th><th scope="col">Affton</th><th scope="col">Mehlville</th><th scope="col">Lindbergh</th></tr></thead>
@@ -552,6 +560,7 @@
             </tbody>
           </table>
         </div>
+</details>
         <p class="bo-note">“Buyer Opportunities” are homes matching this specific search that were listed during the month and later closed within the study cohort. These are not total listings or live inventory. A zero or blank month does not mean no qualifying homes existed or were listed. Each home is counted in the month it was listed, once it closes. September is not shown because many September listings were still pending when this data was pulled in early October, and August counts may still rise for the same reason.</p>
 
         <h3 class="bo-h3">Mehlville Gave This Buyer More Chances</h3>
@@ -913,5 +922,6 @@
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
 <script src="/assets/intro-scene.js" defer></script>
+<script data-fold-js>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(decodeURIComponent(h));if(!t)return;for(var d=t.closest("details.data-fold");d;d=d.parentElement&&d.parentElement.closest("details.data-fold"))d.open=true;t.scrollIntoView();}window.addEventListener("hashchange",o);if(document.readyState!=="loading")o();else document.addEventListener("DOMContentLoaded",o);window.addEventListener("beforeprint",function(){document.querySelectorAll("details.data-fold").forEach(function(d){d.open=true;});});})();</script>
 </body>
 </html>

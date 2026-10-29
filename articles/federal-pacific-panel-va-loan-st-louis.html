@@ -357,6 +357,7 @@
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/articles/federal-pacific-panel-va-loan-st-louis","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
 <link rel="stylesheet" href="/assets/lesson-strip.css">
+<style data-fold-css>.data-fold{margin:18px 0 22px;border:1px solid rgba(255,204,77,.28);border-radius:10px;background:rgba(255,204,77,.03);}.data-fold>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:13px 16px;font-size:14px;line-height:1.4;}.data-fold>summary::-webkit-details-marker{display:none;}.data-fold>summary:focus-visible{outline:2px solid #ffcc4d;outline-offset:2px;border-radius:10px;}.df-label{font-weight:600;color:inherit;flex:1 1 220px;min-width:0;}.df-hint{color:#ffcc4d;font-weight:700;font-size:13px;white-space:nowrap;}.df-hint:after{content:" \25BE";}.data-fold[open] .df-hint:after{content:" \25B4";}.data-fold[open] .df-show{display:none;}.df-hide{display:none;}.data-fold[open] .df-hide{display:inline;}.data-fold>:not(summary){margin:4px 8px 8px;}.data-fold[data-cap] caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}@media print{.data-fold>summary{display:none;}}</style>
 </head>
 <body>
 <header class="art-hdr">
@@ -450,7 +451,8 @@
 
     <h2 id="by-district">Homes Built in the Federal Pacific Era, by School District</h2>
     <p>These panels were installed from about the 1950s into the 1980s. Here is the share of each district&rsquo;s 2026 St. Louis County sales built from 1950 to 1979. It tells you how often you&rsquo;ll look at a house from that era, not how many have the panel today.</p>
-    <table class="data-table cmp-tight">
+    <details class="data-fold"><summary><span class="df-label">Homes Built in the Federal Pacific Era, by School District</span><span class="df-hint"><span class="df-show">Show all 23 rows</span><span class="df-hide">Hide table</span></span></summary>
+<table class="data-table cmp-tight">
       <tr><th>School district</th><th>Built 1950&ndash;1979</th></tr>
       <tr><td>Riverview Gardens</td><td>111 of 115 (96.5%)</td></tr>
       <tr><td>Ferguson-Florissant</td><td>181 of 232 (78.0%)</td></tr>
@@ -475,6 +477,7 @@
       <tr><td>Maplewood-Richmond Heights</td><td>3 of 35 (8.6%)</td></tr>
       <tr><td>Clayton</td><td>1 of 29 (3.4%)</td></tr>
     </table>
+</details>
     <p>Across St. Louis County, 1,565 of 2,872 sales with a recorded year built (54.5%) were from 1950 to 1979. Districts with fewer than 25 sales aren&rsquo;t shown.</p>
 
     <h2 id="va-series">More in the VA Buyer Guide</h2>
@@ -540,5 +543,6 @@
 </footer>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script data-fold-js>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(decodeURIComponent(h));if(!t)return;for(var d=t.closest("details.data-fold");d;d=d.parentElement&&d.parentElement.closest("details.data-fold"))d.open=true;t.scrollIntoView();}window.addEventListener("hashchange",o);if(document.readyState!=="loading")o();else document.addEventListener("DOMContentLoaded",o);window.addEventListener("beforeprint",function(){document.querySelectorAll("details.data-fold").forEach(function(d){d.open=true;});});})();</script>
 </body>
 </html>

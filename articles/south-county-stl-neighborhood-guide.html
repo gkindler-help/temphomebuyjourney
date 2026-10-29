@@ -241,6 +241,7 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/articles/south-county-stl-neighborhood-guide","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
+<style data-fold-css>.data-fold{margin:18px 0 22px;border:1px solid rgba(255,204,77,.28);border-radius:10px;background:rgba(255,204,77,.03);}.data-fold>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:13px 16px;font-size:14px;line-height:1.4;}.data-fold>summary::-webkit-details-marker{display:none;}.data-fold>summary:focus-visible{outline:2px solid #ffcc4d;outline-offset:2px;border-radius:10px;}.df-label{font-weight:600;color:inherit;flex:1 1 220px;min-width:0;}.df-hint{color:#ffcc4d;font-weight:700;font-size:13px;white-space:nowrap;}.df-hint:after{content:" \25BE";}.data-fold[open] .df-hint:after{content:" \25B4";}.data-fold[open] .df-show{display:none;}.df-hide{display:none;}.data-fold[open] .df-hide{display:inline;}.data-fold>:not(summary){margin:4px 8px 8px;}.data-fold[data-cap] caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}@media print{.data-fold>summary{display:none;}}</style>
 </head>
 <body>
 <header class="art-hdr">
@@ -304,7 +305,8 @@
     <h2 id="market-speed">How Fast Did South County Homes Sell in 2026?</h2>
     <p>Fast. In 2026 closed sales, the median home in all nine communities sold in 8 days or less, and in six of them more than half of sales closed above the original list price. These are past sales, not today&rsquo;s inventory, but they show what buyers were up against.</p>
 
-    <table class="data-table">
+    <details class="data-fold"><summary><span class="df-label">How Fast Did South County Homes Sell in 2026?</span><span class="df-hint"><span class="df-show">Show all 9 rows</span><span class="df-hide">Hide table</span></span></summary>
+<table class="data-table">
       <thead><tr><th>Community</th><th>2026 sales</th><th>Median days on market</th><th>Sold above original list</th></tr></thead>
       <tbody>
         <tr class="hl"><td>Crestwood</td><td>40</td><td>6.5 days</td><td>26 of 40 (65.0%)</td></tr>
@@ -318,6 +320,7 @@
         <tr><td>Sappington</td><td>14</td><td>6.5 days</td><td>5 of 14 (35.7%)</td></tr>
       </tbody>
     </table>
+</details>
 
     <p>Crestwood had the highest share of sales closing above the original list price, 65.0%, followed by Affton and Concord. Even where fewer homes sold over list, they didn&rsquo;t sit: Lemay&rsquo;s median was 8 days. Sappington and Green Park are small samples (14 and 10 sales). Mehlville and Oakville are counted by MLS high school area; the others by Census boundary or city limits.</p>
 
@@ -453,7 +456,8 @@
     <p>It depends on which jurisdiction covers the address. Some South County cities and unincorporated St. Louis County require an occupancy permit or inspection when a home sells or a new occupant moves in. Crestwood does not require one for an owner-occupied resale, and Fenton has no general resale occupancy permit for existing homes. Use the table below for the jurisdiction that actually covers the property.</p>
     <h3>Do occupancy rules differ between South County municipalities?</h3>
     <p>Yes. The trigger differs: some jurisdictions tie the permit to any change of occupancy, some to a change of ownership, some to rentals only, and Fenton to new dwellings. Who applies and when also differs. In Sunset Hills the seller commonly applies before closing, and in Lakeshire the seller is instructed to request the inspection before closing.</p>
-    <div class="occ-table-wrap">
+    <details class="data-fold" data-cap><summary><span class="df-label">Occupancy requirements by South County jurisdiction (official sources, verified September 25, 2026)</span><span class="df-hint"><span class="df-show">Show all 9 rows</span><span class="df-hide">Hide table</span></span></summary>
+<div class="occ-table-wrap">
       <table class="data-table occ-table">
         <caption class="occ-cap">Occupancy requirements by South County jurisdiction (official sources, verified September 25, 2026)</caption>
         <thead><tr><th scope="col">Community or area</th><th scope="col">Occupancy requirement supported by the research</th><th scope="col">Who handles it</th><th scope="col">What the buyer or occupant should verify</th></tr></thead>
@@ -470,6 +474,7 @@
         </tbody>
       </table>
     </div>
+</details>
     <p class="occ-note"><strong>The exact address controls.</strong> Affton, Concord, Lemay, Mehlville, Oakville, Sappington and the other listed local areas are community names, not cities. The County rule applies only if the parcel is in unincorporated St. Louis County; some addresses with these names sit inside a municipality with its own rules. City and village rows apply inside those city or village limits. South County areas not listed here aren&rsquo;t covered in this table; check with the local city or St. Louis County.</p>
     <h3>How do I find out which occupancy rules apply to a specific address?</h3>
     <p>Before closing or moving in, confirm the rule for the specific property:</p>
@@ -566,5 +571,6 @@
 <script src="../article-tool-drawer.js"></script>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script data-fold-js>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(decodeURIComponent(h));if(!t)return;for(var d=t.closest("details.data-fold");d;d=d.parentElement&&d.parentElement.closest("details.data-fold"))d.open=true;t.scrollIntoView();}window.addEventListener("hashchange",o);if(document.readyState!=="loading")o();else document.addEventListener("DOMContentLoaded",o);window.addEventListener("beforeprint",function(){document.querySelectorAll("details.data-fold").forEach(function(d){d.open=true;});});})();</script>
 </body>
 </html>
