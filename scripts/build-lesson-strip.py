@@ -53,6 +53,7 @@ PAGES = {
     'articles/lessons-from-a-sale-earnest-money-releases.html': 'blackforest',
     'articles/self-employed-mortgage-st-louis.html': 'fenton',
     'articles/st-louis-city-vs-county.html': 'covington',
+    'articles/buy-house-st-louis-from-out-of-state.html': 'thirtyk',
     'articles/st-louis-occupancy-permits-by-city.html': 'willow',
     'articles/federal-pacific-panel-va-loan-st-louis.html': 'buyer',
     'articles/fenton-mo-city-vs-unincorporated.html': 'fenton',

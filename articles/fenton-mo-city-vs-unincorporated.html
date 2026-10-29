@@ -365,6 +365,7 @@
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/articles/fenton-mo-city-vs-unincorporated","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
 <link rel="stylesheet" href="/assets/lesson-strip.css">
+<style data-fold-css>.data-fold{margin:18px 0 22px;border:1px solid rgba(255,204,77,.28);border-radius:10px;background:rgba(255,204,77,.03);}.data-fold>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:13px 16px;font-size:14px;line-height:1.4;}.data-fold>summary::-webkit-details-marker{display:none;}.data-fold>summary:focus-visible{outline:2px solid #ffcc4d;outline-offset:2px;border-radius:10px;}.df-label{font-weight:600;color:inherit;flex:1 1 220px;min-width:0;}.df-hint{color:#ffcc4d;font-weight:700;font-size:13px;white-space:nowrap;}.df-hint:after{content:" \25BE";}.data-fold[open] .df-hint:after{content:" \25B4";}.data-fold[open] .df-show{display:none;}.df-hide{display:none;}.data-fold[open] .df-hide{display:inline;}.data-fold>:not(summary){margin:4px 8px 8px;}.data-fold[data-cap] caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}@media print{.data-fold>summary{display:none;}}</style>
 </head>
 <body>
 <header class="art-hdr">
@@ -443,7 +444,8 @@
 <!-- lesson-strip:end -->
 
     <h2 id="overview">Three Fentons Side by Side</h2>
-    <table class="data-table cmp-tight">
+    <details class="data-fold"><summary><span class="df-label">Three Fentons Side by Side</span><span class="df-hint"><span class="df-show">Show all 8 rows</span><span class="df-hide">Hide table</span></span></summary>
+<table class="data-table cmp-tight">
       <tr><th></th><th>City of Fenton</th><th>Uninc. St. Louis Co.</th><th>Jefferson Co.</th></tr>
       <tr><td>Sales</td><td>13</td><td>47</td><td>51</td></tr>
       <tr><td>Median price</td><td>$327,000</td><td>$360,000</td><td>$350,500</td></tr>
@@ -453,10 +455,12 @@
       <tr class="hl"><td>Median tax bill</td><td>$3,524</td><td>$4,071</td><td>$3,088</td></tr>
       <tr class="hl"><td>Tax as % of price</td><td>1.08%</td><td>1.12%</td><td>0.87%</td></tr>
     </table>
+</details>
 
     <h2 id="taxes">Tax Rates by School District</h2>
     <p>Inside or outside the city, the St. Louis County side ran about 1.1% of the sale price. The bigger tax differences came from the county line and the school district.</p>
-    <table class="data-table cmp-tight">
+    <details class="data-fold"><summary><span class="df-label">Tax Rates by School District</span><span class="df-hint"><span class="df-show">Show all 7 rows</span><span class="df-hide">Hide table</span></span></summary>
+<table class="data-table cmp-tight">
       <tr><th>Part of Fenton, district (sales with a tax bill)</th><th>Median bill</th><th>% of price</th></tr>
       <tr><td>City of Fenton, Lindbergh (11)</td><td>$2,976</td><td>1.08%</td></tr>
       <tr><td>City of Fenton, Rockwood (2)</td><td>$5,738</td><td>1.09%</td></tr>
@@ -465,6 +469,7 @@
       <tr><td>Jefferson Co., Fox C-6 (32)</td><td>$4,012</td><td>1.00%</td></tr>
       <tr><td>Jefferson Co., Northwest R-I (18)</td><td>$1,790</td><td>0.66%</td></tr>
     </table>
+</details>
     <p>These come from the confirmed tax bill on each 2026 sale, the same bill the closing prorations are figured on, divided by the sale price. Several groups are tiny, so read them as examples. Your bill can change after you buy, because Missouri counties reassess property in odd-numbered years. Confirm the exact address with the St. Louis County or Jefferson County Collector of Revenue before you make an offer.</p>
     <p><a href="../neighborhoods/fenton-jefferson-county#fenton-jefferson-county-q-taxes">Jefferson County-side taxes &rarr;</a></p>
 
@@ -550,5 +555,6 @@
 </footer>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script data-fold-js>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(decodeURIComponent(h));if(!t)return;for(var d=t.closest("details.data-fold");d;d=d.parentElement&&d.parentElement.closest("details.data-fold"))d.open=true;t.scrollIntoView();}window.addEventListener("hashchange",o);if(document.readyState!=="loading")o();else document.addEventListener("DOMContentLoaded",o);window.addEventListener("beforeprint",function(){document.querySelectorAll("details.data-fold").forEach(function(d){d.open=true;});});})();</script>
 </body>
 </html>

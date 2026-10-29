@@ -213,6 +213,7 @@ p.lp-src{font-size:12px !important;color:rgba(255,255,255,.5) !important;line-he
 <style>.lfs-proof{border-left:3px solid rgba(255,204,77,.55);padding:2px 0 2px 14px;}
 .lfs-proof>span{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ffcc4d;margin-bottom:4px;}
 .ot-wrap{border:1px solid rgba(255,255,255,.1);border-radius:10px;margin:20px 0 24px;overflow:hidden;}.ot-table{width:100%;border-collapse:collapse;font-size:13px;}.ot-table caption{text-align:left;padding:10px 12px;font-size:12px;font-weight:600;color:rgba(255,255,255,.75);background:rgba(255,204,77,.05);border-bottom:1px solid rgba(255,255,255,.08);}.ot-table th,.ot-table td{padding:9px 10px;text-align:left;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.85);line-height:1.45;}.ot-table thead th{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);}.ot-table tbody th{color:#fff;font-weight:600;}.ot-yes{color:#ffcc4d;font-weight:700;}.ot-no{color:#5dcaa5;font-weight:700;}@media(max-width:700px){.ot-table thead{display:none;}.ot-table caption{display:block;width:100%;box-sizing:border-box;}.ot-table,.ot-table tbody,.ot-table tr,.ot-table th,.ot-table td{display:block;width:100%;box-sizing:border-box;}.ot-table tr{border-bottom:1px solid rgba(255,255,255,.12);padding:6px 0;}.ot-table th,.ot-table td{border:none;padding:3px 12px;}.ot-table td::before{content:attr(data-l);display:block;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1px;}}</style>
+<style data-fold-css>.data-fold{margin:18px 0 22px;border:1px solid rgba(255,204,77,.28);border-radius:10px;background:rgba(255,204,77,.03);}.data-fold>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:13px 16px;font-size:14px;line-height:1.4;}.data-fold>summary::-webkit-details-marker{display:none;}.data-fold>summary:focus-visible{outline:2px solid #ffcc4d;outline-offset:2px;border-radius:10px;}.df-label{font-weight:600;color:inherit;flex:1 1 220px;min-width:0;}.df-hint{color:#ffcc4d;font-weight:700;font-size:13px;white-space:nowrap;}.df-hint:after{content:" \25BE";}.data-fold[open] .df-hint:after{content:" \25B4";}.data-fold[open] .df-show{display:none;}.df-hide{display:none;}.data-fold[open] .df-hide{display:inline;}.data-fold>:not(summary){margin:4px 8px 8px;}.data-fold[data-cap] caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}@media print{.data-fold>summary{display:none;}}</style>
 </head>
 <body>
 
@@ -281,6 +282,7 @@ p.lp-src{font-size:12px !important;color:rgba(255,255,255,.5) !important;line-he
 <!-- lesson-strip:end -->
 <h2 id="by-city">Which St.&nbsp;Louis cities require an occupancy inspection when a house sells?</h2>
 <p>Most of the cities on the list below do, and a few don&rsquo;t. St.&nbsp;Louis County alone has 88 municipalities, so this table covers the cities and unincorporated areas this site has written up so far. Each row links to the full rules for that city.</p>
+<details class="data-fold" data-cap><summary><span class="df-label">Occupancy at resale: St. Louis County</span><span class="df-hint"><span class="df-show">Show all 15 rows</span><span class="df-hide">Hide table</span></span></summary>
 <div class="ot-wrap" role="region" tabindex="0" aria-label="Occupancy at resale: St. Louis County">
 <table class="ot-table">
 <caption>Occupancy at resale: St.&nbsp;Louis County</caption>
@@ -303,7 +305,8 @@ p.lp-src{font-size:12px !important;color:rgba(255,255,255,.5) !important;line-he
 <tr><th scope="row" data-l="City or area">City of Fenton</th><td data-l="Required at resale"><span class="ot-no">No</span></td><td data-l="What it means">No general occupancy permit for the resale of an existing home.</td><td data-l="Details"><a href="fenton-mo-city-vs-unincorporated">The three Fentons</a></td></tr>
 </tbody>
 </table>
-</div><div class="ot-wrap" role="region" tabindex="0" aria-label="Occupancy at resale: Jefferson County">
+</div>
+</details><div class="ot-wrap" role="region" tabindex="0" aria-label="Occupancy at resale: Jefferson County">
 <table class="ot-table">
 <caption>Occupancy at resale: Jefferson County</caption>
 <thead><tr><th scope="col">City or area</th><th scope="col">Required at resale</th><th scope="col">What it means</th><th scope="col">Details</th></tr></thead>
@@ -402,5 +405,6 @@ p.lp-src{font-size:12px !important;color:rgba(255,255,255,.5) !important;line-he
 <script src="/assets/site-search.js" defer></script>
 
 
+<script data-fold-js>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(decodeURIComponent(h));if(!t)return;for(var d=t.closest("details.data-fold");d;d=d.parentElement&&d.parentElement.closest("details.data-fold"))d.open=true;t.scrollIntoView();}window.addEventListener("hashchange",o);if(document.readyState!=="loading")o();else document.addEventListener("DOMContentLoaded",o);window.addEventListener("beforeprint",function(){document.querySelectorAll("details.data-fold").forEach(function(d){d.open=true;});});})();</script>
 </body>
 </html>

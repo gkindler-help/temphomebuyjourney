@@ -374,6 +374,7 @@
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/articles/kirkwood-vs-webster-groves-st-louis","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
 <link rel="stylesheet" href="/assets/lesson-strip.css">
+<style data-fold-css>.data-fold{margin:18px 0 22px;border:1px solid rgba(255,204,77,.28);border-radius:10px;background:rgba(255,204,77,.03);}.data-fold>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:13px 16px;font-size:14px;line-height:1.4;}.data-fold>summary::-webkit-details-marker{display:none;}.data-fold>summary:focus-visible{outline:2px solid #ffcc4d;outline-offset:2px;border-radius:10px;}.df-label{font-weight:600;color:inherit;flex:1 1 220px;min-width:0;}.df-hint{color:#ffcc4d;font-weight:700;font-size:13px;white-space:nowrap;}.df-hint:after{content:" \25BE";}.data-fold[open] .df-hint:after{content:" \25B4";}.data-fold[open] .df-show{display:none;}.df-hide{display:none;}.data-fold[open] .df-hide{display:inline;}.data-fold>:not(summary){margin:4px 8px 8px;}.data-fold[data-cap] caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}@media print{.data-fold>summary{display:none;}}</style>
 </head>
 <body>
 <header class="art-hdr">
@@ -453,7 +454,8 @@
 
     <h2 id="budget-reach">Same Budget, Different Number of Chances</h2>
     <p>The median tells you where the middle of each market sat. The better question is how much of the market your budget actually reached. Here&rsquo;s the share of 2026 sales in each city that closed at or below each price.</p>
-    <table class="data-table">
+    <details class="data-fold"><summary><span class="df-label">Same Budget, Different Number of Chances</span><span class="df-hint"><span class="df-show">Show all 7 rows</span><span class="df-hide">Hide table</span></span></summary>
+<table class="data-table">
       <tr><th>Budget (at or below)</th><th>Kirkwood (80 sales)</th><th>Webster Groves (82 sales)</th></tr>
       <tr><td>$300,000</td><td>9 of 80 (11.2%)</td><td>16 of 82 (19.5%)</td></tr>
       <tr class="hl"><td>$400,000</td><td>21 of 80 (26.2%)</td><td>32 of 82 (39.0%)</td></tr>
@@ -462,12 +464,14 @@
       <tr><td>$750,000</td><td>55 of 80 (68.8%)</td><td>69 of 82 (84.1%)</td></tr>
       <tr><td>$1,000,000</td><td>66 of 80 (82.5%)</td><td>75 of 82 (91.5%)</td></tr>
     </table>
+</details>
     <p>At every budget, Webster Groves had more sales in reach and a larger share of its market. The houses at the lower budgets were alike: at $400,000 or less, the median was about 1,260 sq ft built in 1948 in Kirkwood and 1,220 sq ft built in 1949 in Webster Groves. Both moved fast, with a median of 6 days on market in Kirkwood and 5 in Webster Groves.</p>
     <p>City by city: <a href="../neighborhoods/kirkwood#kirkwood-price-bands">every Kirkwood price band</a> and <a href="../neighborhoods/webster-groves#webster-groves-price-bands">every Webster Groves price band</a>.</p>
 
     <h2 id="size">Price per Square Foot by House Size</h2>
     <p>Comparing medians mixes very different houses. Holding size steady is a fairer test. These are all 2026 sales in each city, grouped by size.</p>
-    <table class="data-table kvw-tight">
+    <details class="data-fold"><summary><span class="df-label">Price per Square Foot by House Size</span><span class="df-hint"><span class="df-show">Show all 7 rows</span><span class="df-hide">Hide table</span></span></summary>
+<table class="data-table kvw-tight">
       <tr><th>Size</th><th>Kirkwood</th><th>Webster Groves</th></tr>
       <tr><td>Under 1,200 sq ft</td><td>$319/sq ft (8 sales)</td><td>$275/sq ft (17 sales)</td></tr>
       <tr><td>1,200&ndash;1,599 sq ft</td><td>$250/sq ft (11 sales)</td><td>$275/sq ft (11 sales)</td></tr>
@@ -476,6 +480,7 @@
       <tr><td>2,500&ndash;2,999 sq ft</td><td>$233/sq ft (11 sales)</td><td>$222/sq ft (12 sales)</td></tr>
       <tr><td>3,000 sq ft and up</td><td>$283/sq ft (21 sales)</td><td>$288/sq ft (11 sales)</td></tr>
     </table>
+</details>
     <p>Neither city carried a steady premium. The gap flips from one size range to the next, and the biggest gaps sit in groups of 8 to 17 sales, so read them as a guide. The top range isn&rsquo;t the same kind of house: Kirkwood&rsquo;s 3,000-plus sales were built at a median 2007, Webster Groves&rsquo; in 1920. Condition isn&rsquo;t in MLS data, and in both cities it moves price as much as size does.</p>
 
     <h2 id="age">Older Homes, Newer Homes</h2>
@@ -553,5 +558,6 @@
 </footer>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script data-fold-js>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(decodeURIComponent(h));if(!t)return;for(var d=t.closest("details.data-fold");d;d=d.parentElement&&d.parentElement.closest("details.data-fold"))d.open=true;t.scrollIntoView();}window.addEventListener("hashchange",o);if(document.readyState!=="loading")o();else document.addEventListener("DOMContentLoaded",o);window.addEventListener("beforeprint",function(){document.querySelectorAll("details.data-fold").forEach(function(d){d.open=true;});});})();</script>
 </body>
 </html>

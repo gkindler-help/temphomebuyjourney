@@ -107,6 +107,7 @@
 .nct-town .ok-stats{grid-template-columns:repeat(auto-fit,minmax(110px,1fr));}
 .hr-box{margin:14px 0 6px;border:1px solid rgba(255,204,77,.25);border-radius:10px;padding:10px 14px;background:rgba(255,204,77,.03);}.hr-box summary{cursor:pointer;color:#ffcc4d;font-weight:600;font-size:14.5px;padding:4px 0;}.hr-list{margin:8px 0 10px;}.hr-row{display:grid;grid-template-columns:minmax(120px,190px) 1fr;gap:4px 14px;padding:8px 0;border-top:1px solid rgba(255,255,255,.06);}.hr-row dt{font-size:13px;font-weight:700;color:#fff;}.hr-row dd{margin:0;font-size:14px;line-height:1.6;color:rgba(255,255,255,.8);}.hr-warn{border-left:2px solid #ffcc4d;padding-left:10px;}@media(max-width:520px){.hr-row{grid-template-columns:1fr;}}
 </style>
+<style data-fold-css>.data-fold{margin:18px 0 22px;border:1px solid rgba(255,204,77,.28);border-radius:10px;background:rgba(255,204,77,.03);}.data-fold>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:13px 16px;font-size:14px;line-height:1.4;}.data-fold>summary::-webkit-details-marker{display:none;}.data-fold>summary:focus-visible{outline:2px solid #ffcc4d;outline-offset:2px;border-radius:10px;}.df-label{font-weight:600;color:inherit;flex:1 1 220px;min-width:0;}.df-hint{color:#ffcc4d;font-weight:700;font-size:13px;white-space:nowrap;}.df-hint:after{content:" \25BE";}.data-fold[open] .df-hint:after{content:" \25B4";}.data-fold[open] .df-show{display:none;}.df-hide{display:none;}.data-fold[open] .df-hide{display:inline;}.data-fold>:not(summary){margin:4px 8px 8px;}.data-fold[data-cap] caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}@media print{.data-fold>summary{display:none;}}</style>
 </head>
 <body class="tool-page neighborhood-page">
 <header class="nbhd-hdr">
@@ -141,7 +142,8 @@
         <div class="tool-section-hd">2026 Sales Data</div>
         <h2 class="tool-result-value" id="nct-data-h">What Sold in Each Town in 2026</h2>
         <p class="ok-p">These towns are too different to blend into one median: Fenton and Shrewsbury had 13 and 15 sales, while the five smallest had one to three each. Here they are side by side.</p>
-        <div class="ok-table-wrap" role="region" tabindex="0" aria-label="2026 sales by town">
+        <details class="data-fold" data-cap><summary><span class="df-label">2026 sales by town</span><span class="df-hint"><span class="df-show">Show all 7 rows</span><span class="df-hide">Hide table</span></span></summary>
+<div class="ok-table-wrap" role="region" tabindex="0" aria-label="2026 sales by town">
           <table class="ok-table">
             <caption>2026 sales by town</caption>
             <thead><tr><th scope="col">Town</th><th scope="col">Sales</th><th scope="col">Median (or prices)</th><th scope="col">Median tax (or taxes)</th><th scope="col">School districts in sales</th><th scope="col">Land area</th></tr></thead>
@@ -156,6 +158,7 @@
             </tbody>
           </table>
         </div>
+</details>
         <p class="ok-src">Source: 38 closed 2026 sales from the STL Home Journey St. Louis County sales dataset whose listing coordinates fall inside each town&rsquo;s boundary in the Census Bureau&rsquo;s 2024 TIGER/Line place file. Borders are from the same file. Property taxes are the annual tax amount on each sale&rsquo;s MLS listing. Historical sales, not current inventory. Verify jurisdiction and school assignment for the exact address.</p>
       </div>
     </section>
@@ -469,5 +472,6 @@
 <script src="../shared.js"></script>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script data-fold-js>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(decodeURIComponent(h));if(!t)return;for(var d=t.closest("details.data-fold");d;d=d.parentElement&&d.parentElement.closest("details.data-fold"))d.open=true;t.scrollIntoView();}window.addEventListener("hashchange",o);if(document.readyState!=="loading")o();else document.addEventListener("DOMContentLoaded",o);window.addEventListener("beforeprint",function(){document.querySelectorAll("details.data-fold").forEach(function(d){d.open=true;});});})();</script>
 </body>
 </html>

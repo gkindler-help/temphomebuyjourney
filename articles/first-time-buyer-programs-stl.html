@@ -228,6 +228,7 @@
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/articles/first-time-buyer-programs-stl","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
 <link rel="stylesheet" href="/assets/lesson-strip.css">
+<style data-fold-css>.data-fold{margin:18px 0 22px;border:1px solid rgba(255,204,77,.28);border-radius:10px;background:rgba(255,204,77,.03);}.data-fold>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:13px 16px;font-size:14px;line-height:1.4;}.data-fold>summary::-webkit-details-marker{display:none;}.data-fold>summary:focus-visible{outline:2px solid #ffcc4d;outline-offset:2px;border-radius:10px;}.df-label{font-weight:600;color:inherit;flex:1 1 220px;min-width:0;}.df-hint{color:#ffcc4d;font-weight:700;font-size:13px;white-space:nowrap;}.df-hint:after{content:" \25BE";}.data-fold[open] .df-hint:after{content:" \25B4";}.data-fold[open] .df-show{display:none;}.df-hide{display:none;}.data-fold[open] .df-hide{display:inline;}.data-fold>:not(summary){margin:4px 8px 8px;}.data-fold[data-cap] caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}@media print{.data-fold>summary{display:none;}}</style>
 </head>
 <body>
 <header class="art-hdr">
@@ -289,7 +290,8 @@
 
     <h2 id="compare">The Programs Side by Side</h2>
     <p>Every program here works through a lender or a partner, not by applying to the program yourself. Terms are for 2026 and change with funding.</p>
-    <table class="data-table ftb-tight">
+    <details class="data-fold"><summary><span class="df-label">The Programs Side by Side</span><span class="df-hint"><span class="df-show">Show all 7 rows</span><span class="df-hide">Hide table</span></span></summary>
+<table class="data-table ftb-tight">
       <tr><th>Program</th><th>What you get</th><th>Who and where</th></tr>
       <tr><td><a href="#mhdc">MHDC First Place</a></td><td>4% of your first mortgage, a second loan forgiven from year 5 to 10</td><td>First-time buyers under the income and price limits, anywhere in the St.&nbsp;Louis area</td></tr>
       <tr><td><a href="#owned-before">MHDC Next Step</a></td><td>4% of your first mortgage, same forgiveness</td><td>First-time or repeat buyers, higher limits</td></tr>
@@ -298,6 +300,7 @@
       <tr><td><a href="#st-louis-city">HomeSTL</a></td><td>Fully reserved for 2026</td><td>City of St.&nbsp;Louis only</td></tr>
       <tr><td><a href="#federal">FHA, VA, USDA</a></td><td>3.5% down (FHA) or nothing down (VA, USDA)</td><td>Eligible buyers and, for USDA, eligible areas</td></tr>
     </table>
+</details>
 
     <h2 id="mhdc">MHDC First Place and Next Step</h2>
     <p>MHDC is the primary down payment assistance program for St.&nbsp;Louis buyers, so it&rsquo;s where I&rsquo;d focus first. It offers two mortgage programs, each with an optional assistance loan of 4% of your first mortgage for down payment and closing costs. The Missouri Housing Development Commission runs them through certified lenders, not directly, so you ask for them by name when you get pre-approved.</p>
@@ -498,5 +501,6 @@
 </footer>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script data-fold-js>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(decodeURIComponent(h));if(!t)return;for(var d=t.closest("details.data-fold");d;d=d.parentElement&&d.parentElement.closest("details.data-fold"))d.open=true;t.scrollIntoView();}window.addEventListener("hashchange",o);if(document.readyState!=="loading")o();else document.addEventListener("DOMContentLoaded",o);window.addEventListener("beforeprint",function(){document.querySelectorAll("details.data-fold").forEach(function(d){d.open=true;});});})();</script>
 </body>
 </html>
