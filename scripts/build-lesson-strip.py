@@ -27,6 +27,7 @@ LESSONS = {
     'maple':     ('/articles/lessons-from-a-sale-maplewood-maple-avenue', 'When the seller\'s repairs failed the final walk-through'),
     'blackforest': ('/articles/lessons-from-a-sale-blackforest-cash-condo', 'The "cash" buyer whose money depended on another sale'),
     'creekside': ('/articles/lessons-from-a-sale-cedar-hill-creek-side', 'Buying the next house before selling the first'),
+    'covington': ('/articles/lessons-from-a-sale-north-county-covington-gardens', 'Relisted with no new work: $20,000 more than it expired at'),
     'thirtyk':   ('/articles/st-louis-home-price-reduction-negotiation', 'How my buyer got $30,000 off before inspections'),
 }
 # No story fits yet: how George works.
@@ -75,7 +76,7 @@ PAGES = {
     'articles/no-showings-st-louis-home.html': 'seller',
     'articles/oakville-vs-arnold-mo.html': 'buyer',
     'articles/parkway-vs-rockwood-st-louis.html': 'buyer',
-    'articles/relist-house-st-louis-30-day-rule.html': 'seller',
+    'articles/relist-house-st-louis-30-day-rule.html': 'covington',
     'articles/repair-costs-affect-offer-price-stl.html': 'autumn',
     'articles/sell-first-or-buy-first-st-louis.html': 'creekside',
     'articles/sell-house-fall-winter-st-louis.html': 'winterpark',
@@ -103,7 +104,7 @@ PAGES = {
     'articles/where-should-i-move-when-downsizing-st-louis.html': 'fenton',
     'articles/which-contingencies-to-keep-st-louis.html': 'galena',
     'articles/who-pays-buyer-agent-commission-stl.html': 'fenton',
-    'articles/why-your-st-louis-home-didnt-sell.html': 'seller',
+    'articles/why-your-st-louis-home-didnt-sell.html': 'covington',
     'articles/zillow-zestimate-accurate-stl.html': 'thirtyk',
     'sellers/assignment-contract-real-estate-missouri/index.html': 'seller',
     'sellers/cash-offers-st-louis.html': 'blackforest',
