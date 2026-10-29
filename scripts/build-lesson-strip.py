@@ -52,6 +52,7 @@ PAGES = {
     'articles/do-i-need-a-buyers-agent-stl.html': 'fenton',
     'articles/lessons-from-a-sale-earnest-money-releases.html': 'blackforest',
     'articles/self-employed-mortgage-st-louis.html': 'fenton',
+    'articles/moving-to-st-louis.html': 'thirtyk',
     'articles/federal-pacific-panel-va-loan-st-louis.html': 'buyer',
     'articles/fenton-mo-city-vs-unincorporated.html': 'fenton',
     'articles/first-time-buyer-programs-stl.html': 'buyer',

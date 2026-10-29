@@ -30,6 +30,8 @@ SECTIONS = [('articles/lessons-from-a-sale', 'Lessons From a Sale'), ('articles/
 
 # Recommended reading by keyword. Titles and blurbs are read from each page.
 TOPICS = [
+    (['moving to st louis', 'move to st louis', 'relocating', 'relocation', 'out of state', 'remote closing', 'video tour', 'buy without seeing'],
+     ['articles/moving-to-st-louis', 'articles/moving-to-st-louis#remote', 'articles/where-to-live-in-st-louis']),
     (['self-employed', 'self employed', 'business owner', '1099', 'schedule c', 'k-1', 'bank statement loan', 'write-offs', 'tax returns'],
      ['articles/self-employed-mortgage-st-louis', 'articles/self-employed-mortgage-st-louis#write-offs', 'articles/mortgage-pre-approval-st-louis']),
     (['commission', 'buyer agent fee', 'buyers agent', "buyer's agent", 'compensation', 'nar settlement', 'buyer agreement', 'agency agreement', 'realtor fee'],
