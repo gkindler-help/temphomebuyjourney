@@ -7,7 +7,7 @@ import glob, html, json, os, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
-TEMPLATE = 'articles/does-seller-keep-earnest-money-st-louis.html'
+TEMPLATE = 'articles/lessons-from-a-sale-earnest-money-releases.html'
 OUT = 'site-index.html'
 URL = 'https://stlhomejourney.com/site-index'
 SKIP_DIRS = ('.git/', 'docs/', 'pagefind/', 'node_modules/', 'scripts/', '.vscode/', 'assets/')
