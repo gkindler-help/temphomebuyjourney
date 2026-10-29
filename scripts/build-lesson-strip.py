@@ -28,6 +28,7 @@ LESSONS = {
     'blackforest': ('/articles/lessons-from-a-sale-blackforest-cash-condo', 'The "cash" buyer whose money depended on another sale'),
     'creekside': ('/articles/lessons-from-a-sale-cedar-hill-creek-side', 'Buying the next house before selling the first'),
     'covington': ('/articles/lessons-from-a-sale-north-county-covington-gardens', 'Relisted with no new work: $20,000 more than it expired at'),
+    'willow':    ('/articles/lessons-from-a-sale-northwoods-va-purchase', 'Appraised $15,100 over the price, with six repairs still open'),
     'thirtyk':   ('/articles/st-louis-home-price-reduction-negotiation', 'How my buyer got $30,000 off before inspections'),
 }
 # No story fits yet: how George works.
@@ -69,7 +70,7 @@ PAGES = {
     'articles/how-much-house-afford-making-80k-st-louis.html': 'buyer',
     'articles/how-much-income-to-buy-home-stl.html': 'buyer',
     'articles/how-much-to-offer-on-a-house-st-louis.html': 'fenton',
-    'articles/how-to-screen-stl-homes-before-va-offer.html': 'buyer',
+    'articles/how-to-screen-stl-homes-before-va-offer.html': 'willow',
     'articles/kirkwood-vs-webster-groves-st-louis.html': 'buyer',
     'articles/lindbergh-vs-mehlville-school-district-stl.html': 'lindbergh',
     'articles/multiple-offers-on-my-house-st-louis.html': 'winterpark',
@@ -89,8 +90,8 @@ PAGES = {
     'articles/stl-affordability-by-zip-code.html': 'buyer',
     'articles/stl-home-repair-cost-guide.html': 'countryglen',
     'articles/town-and-country-vs-frontenac-vs-ladue.html': 'buyer',
-    'articles/va-appraisal-failed-st-louis-what-happens-next.html': 'buyer',
-    'articles/va-home-loan-st-louis-what-kills-deals.html': 'buyer',
+    'articles/va-appraisal-failed-st-louis-what-happens-next.html': 'willow',
+    'articles/va-home-loan-st-louis-what-kills-deals.html': 'willow',
     'articles/west-county-st-louis-neighborhoods.html': 'buyer',
     'articles/what-300k-450k-600k-buys-st-louis.html': 'buyer',
     'articles/what-buyers-regret-cheap-house-st-louis.html': 'thirtyk',
