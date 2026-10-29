@@ -282,6 +282,7 @@
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/articles/clayton-vs-ladue-under-1-million","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
 <style data-gk-glow>.gk-glow{display:block;margin:18px auto 20px;max-width:440px;padding:13px 16px;border:1.5px solid #ffcc4d;border-radius:12px;color:#ffcc4d;font-weight:600;font-size:15px;line-height:1.5;text-align:center;background:rgba(255,204,77,.05);box-shadow:0 0 10px rgba(255,204,77,.45),0 0 22px rgba(255,204,77,.2),inset 0 0 8px rgba(255,204,77,.12);animation:gkGlow 3.2s ease-in-out infinite;}@keyframes gkGlow{0%,100%{box-shadow:0 0 8px rgba(255,204,77,.35),0 0 18px rgba(255,204,77,.15),inset 0 0 6px rgba(255,204,77,.1);}50%{box-shadow:0 0 14px rgba(255,204,77,.6),0 0 30px rgba(255,204,77,.3),inset 0 0 10px rgba(255,204,77,.16);}}@media(prefers-reduced-motion:reduce){.gk-glow{animation:none;}}</style>
+<style data-fold-css>.data-fold{overflow-x:auto;max-width:100%;margin:18px 0 22px;border:1px solid rgba(255,204,77,.28);border-radius:10px;background:rgba(255,204,77,.03);}.data-fold>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:13px 16px;font-size:14px;line-height:1.4;}.data-fold>summary::-webkit-details-marker{display:none;}.data-fold>summary:focus-visible{outline:2px solid #ffcc4d;outline-offset:2px;border-radius:10px;}.df-label{font-weight:600;color:inherit;flex:1 1 220px;min-width:0;}.df-hint{color:#ffcc4d;font-weight:700;font-size:13px;white-space:nowrap;}.df-hint:after{content:" \25BE";}.data-fold[open] .df-hint:after{content:" \25B4";}.data-fold[open] .df-show{display:none;}.df-hide{display:none;}.data-fold[open] .df-hide{display:inline;}.data-fold>:not(summary){margin:4px 8px 8px;}.data-fold[data-cap] caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}@media print{.data-fold>summary{display:none;}}</style>
 </head>
 <body>
 <header class="art-hdr">
@@ -358,7 +359,8 @@
 
     <h2 id="same-ceiling">Same $1 Million Ceiling. Different Number of Chances.</h2>
     <p>This is where median price alone can hide something important.</p>
-    <div class="cl-table-wrap" role="region" aria-label="Clayton vs Ladue 2026 closed-sale comparison" tabindex="0">
+    <details class="data-fold" data-cap><summary><span class="df-label">2026 closed sales, QA-clean single-family, January 1–October 5, 2026</span><span class="df-hint"><span class="df-show">Show all 4 rows</span><span class="df-hide">Hide table</span></span></summary>
+<div class="cl-table-wrap" role="region" aria-label="Clayton vs Ladue 2026 closed-sale comparison" tabindex="0">
       <table class="data-table">
         <caption>2026 closed sales, QA-clean single-family, January 1–October 5, 2026</caption>
         <thead><tr><th scope="col">2026 Closed-Sale Measure</th><th scope="col">Clayton</th><th scope="col">Ladue</th></tr></thead>
@@ -370,6 +372,7 @@
         </tbody>
       </table>
     </div>
+</details>
     <p class="cl-note">The last row is deliberately directional. A Buyer Opportunity in the monthly analysis means a property with 2+ bedrooms and an original list price of $999,999 or less that entered the market during that month and later closed within the study cohort. It is not a live inventory count, and it isn't every listing that came to market.</p>
     <p>What it helps us see is the frequency with which a buyer fitting that search would have encountered eventual successful transactions.</p>
     <p>And that's where Clayton and Ladue start to separate.</p>
@@ -453,5 +456,6 @@
 </footer>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script data-fold-js>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(decodeURIComponent(h));if(!t)return;for(var d=t.closest("details.data-fold");d;d=d.parentElement&&d.parentElement.closest("details.data-fold"))d.open=true;t.scrollIntoView();}window.addEventListener("hashchange",o);if(document.readyState!=="loading")o();else document.addEventListener("DOMContentLoaded",o);window.addEventListener("beforeprint",function(){document.querySelectorAll("details.data-fold").forEach(function(d){d.open=true;});});})();</script>
 </body>
 </html>
