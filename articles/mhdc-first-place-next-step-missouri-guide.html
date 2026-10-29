@@ -123,6 +123,7 @@ em{color:rgba(255,255,255,.72);}
 p.lp-group{font-size:11px !important;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ffcc4d !important;margin:22px 0 2px !important;}
 p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 </style>
+<style data-fold-css>.data-fold{overflow-x:auto;max-width:100%;margin:18px 0 22px;border:1px solid rgba(255,204,77,.28);border-radius:10px;background:rgba(255,204,77,.03);}.data-fold>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:13px 16px;font-size:14px;line-height:1.4;}.data-fold>summary::-webkit-details-marker{display:none;}.data-fold>summary:focus-visible{outline:2px solid #ffcc4d;outline-offset:2px;border-radius:10px;}.df-label{font-weight:600;color:inherit;flex:1 1 220px;min-width:0;}.df-hint{color:#ffcc4d;font-weight:700;font-size:13px;white-space:nowrap;}.df-hint:after{content:" \25BE";}.data-fold[open] .df-hint:after{content:" \25B4";}.data-fold[open] .df-show{display:none;}.df-hide{display:none;}.data-fold[open] .df-hide{display:inline;}.data-fold>:not(summary){margin:4px 8px 8px;}.data-fold[data-cap] caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}@media print{.data-fold>summary{display:none;}}</style>
 </head>
 <body>
 
@@ -231,6 +232,7 @@ p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 
 <h3>First Place &mdash; Non-Targeted Area Income Limits</h3>
 
+<details class="data-fold"><summary><span class="df-label">First Place — Non-Targeted Area Income Limits</span><span class="df-hint"><span class="df-show">Show all 2 rows</span><span class="df-hide">Hide table</span></span></summary>
 <table class="data-table">
 <thead><tr><th>Household</th><th>Maximum Income</th></tr></thead>
 <tbody>
@@ -238,9 +240,11 @@ p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 <tr><td>3+ people</td><td>$130,525</td></tr>
 </tbody>
 </table>
+</details>
 
 <h3>Targeted Area / Next Step Income Limits</h3>
 
+<details class="data-fold"><summary><span class="df-label">Targeted Area / Next Step Income Limits</span><span class="df-hint"><span class="df-show">Show all 2 rows</span><span class="df-hide">Hide table</span></span></summary>
 <table class="data-table">
 <thead><tr><th>Household</th><th>Maximum Income</th></tr></thead>
 <tbody>
@@ -248,11 +252,13 @@ p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 <tr><td>3+ people</td><td>$158,900</td></tr>
 </tbody>
 </table>
+</details>
 
 <p id="household-income"><strong>Whose income counts:</strong> MHDC&rsquo;s lender materials count the income of each person on the loan and anyone married to them. A spouse who isn&rsquo;t on the loan still counts toward household income and household size, still has to meet the program&rsquo;s eligibility rules and signs the deed of trust, though not the note or the title. A spouse with no income verifies that on MHDC Form 522. Your MHDC-approved lender makes the final income calculation, so ask them about anyone else in the household before you rely on a limit.</p>
 
 <h3>2026 Purchase-Price Limits</h3>
 
+<details class="data-fold"><summary><span class="df-label">2026 Purchase-Price Limits</span><span class="df-hint"><span class="df-show">Show all 2 rows</span><span class="df-hide">Hide table</span></span></summary>
 <table class="data-table">
 <thead><tr><th>Property</th><th>Non-Targeted</th><th>Targeted / Next Step</th></tr></thead>
 <tbody>
@@ -260,6 +266,7 @@ p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 <tr><td>2-family</td><td>$725,146</td><td>$886,289</td></tr>
 </tbody>
 </table>
+</details>
 
 <p>MHDC&rsquo;s current limits became effective in May 2026.</p>
 
@@ -297,6 +304,7 @@ p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 
 <div class="example">
 <div class="example-hd">Example: $300,000 First Mortgage</div>
+<details class="data-fold"><summary><span class="df-label">What the 4% Actually Covers</span><span class="df-hint"><span class="df-show">Show all 4 rows</span><span class="df-hide">Hide table</span></span></summary>
 <table class="data-table">
 <tbody>
 <tr><td>First mortgage</td><td>$300,000</td></tr>
@@ -305,6 +313,7 @@ p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 <tr><td>DPA minus that fee</td><td>$9,000</td></tr>
 </tbody>
 </table>
+</details>
 </div>
 
 <p>That&rsquo;s effectively 3% of the first mortgage remaining after that particular charge.</p>
@@ -583,5 +592,6 @@ p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 </script>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script data-fold-js>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(decodeURIComponent(h));if(!t)return;for(var d=t.closest("details.data-fold");d;d=d.parentElement&&d.parentElement.closest("details.data-fold"))d.open=true;t.scrollIntoView();}window.addEventListener("hashchange",o);if(document.readyState!=="loading")o();else document.addEventListener("DOMContentLoaded",o);window.addEventListener("beforeprint",function(){document.querySelectorAll("details.data-fold").forEach(function(d){d.open=true;});});})();</script>
 </body>
 </html>

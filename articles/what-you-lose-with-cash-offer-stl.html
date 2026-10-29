@@ -221,6 +221,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/articles/what-you-lose-with-cash-offer-stl","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
 <link rel="stylesheet" href="/assets/lesson-strip.css">
 <style data-gk-glow>.gk-glow{display:block;margin:18px auto 20px;max-width:440px;padding:13px 16px;border:1.5px solid #ffcc4d;border-radius:12px;color:#ffcc4d;font-weight:600;font-size:15px;line-height:1.5;text-align:center;background:rgba(255,204,77,.05);box-shadow:0 0 10px rgba(255,204,77,.45),0 0 22px rgba(255,204,77,.2),inset 0 0 8px rgba(255,204,77,.12);animation:gkGlow 3.2s ease-in-out infinite;}@keyframes gkGlow{0%,100%{box-shadow:0 0 8px rgba(255,204,77,.35),0 0 18px rgba(255,204,77,.15),inset 0 0 6px rgba(255,204,77,.1);}50%{box-shadow:0 0 14px rgba(255,204,77,.6),0 0 30px rgba(255,204,77,.3),inset 0 0 10px rgba(255,204,77,.16);}}@media(prefers-reduced-motion:reduce){.gk-glow{animation:none;}}</style>
+<style data-fold-css>.data-fold{overflow-x:auto;max-width:100%;margin:18px 0 22px;border:1px solid rgba(255,204,77,.28);border-radius:10px;background:rgba(255,204,77,.03);}.data-fold>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:13px 16px;font-size:14px;line-height:1.4;}.data-fold>summary::-webkit-details-marker{display:none;}.data-fold>summary:focus-visible{outline:2px solid #ffcc4d;outline-offset:2px;border-radius:10px;}.df-label{font-weight:600;color:inherit;flex:1 1 220px;min-width:0;}.df-hint{color:#ffcc4d;font-weight:700;font-size:13px;white-space:nowrap;}.df-hint:after{content:" \25BE";}.data-fold[open] .df-hint:after{content:" \25B4";}.data-fold[open] .df-show{display:none;}.df-hide{display:none;}.data-fold[open] .df-hide{display:inline;}.data-fold>:not(summary){margin:4px 8px 8px;}.data-fold[data-cap] caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}@media print{.data-fold>summary{display:none;}}</style>
 </head>
 <body>
 <header class="art-hdr">
@@ -285,7 +286,8 @@
 
     <h2 id="the-gap">How much does a cash offer really cost me?</h2>
     <p>About half the home&rsquo;s value, minus the selling costs you skip. On homes worth $150,000 to $300,000, that&rsquo;s a gap of $60,100 to $123,100 in your pocket. The table compares a 50% cash offer with an MLS net after 6% commission, $1,400 in title and closing costs, $1,500 in prorated taxes and a cautious 2% repair concession. Those are the same assumptions used in <a href="what-will-i-net-selling-stl">What Will I Net Selling My House?</a></p>
-    <table class="data-table">
+    <details class="data-fold"><summary><span class="df-label">How much does a cash offer really cost me?</span><span class="df-hint"><span class="df-show">Show all 4 rows</span><span class="df-hide">Hide table</span></span></summary>
+<table class="data-table">
       <thead><tr><th>Market Value</th><th>Cash Offer (50%)</th><th>MLS Net</th><th>Gap</th></tr></thead>
       <tbody>
         <tr><td>$150,000</td><td>$75,000</td><td>$135,100</td><td class="hl">$60,100</td></tr>
@@ -294,6 +296,7 @@
         <tr><td>$300,000</td><td>$150,000</td><td>$273,100</td><td class="hl">$123,100</td></tr>
       </tbody>
     </table>
+</details>
     <p>The gap grows with the price of the house, about $21,000 for every $50,000 of value. That&rsquo;s the cost of the convenience. It&rsquo;s real money, and whether it&rsquo;s worth it depends on your situation.</p>
     <p>Cash buyers build that number from the after-repair value, then subtract repairs, holding costs, resale costs and their profit. The common rule is 70% of after-repair value minus repairs. Many compress your value twice, once at the starting value and again by inflating the repair estimate. <a href="how-cash-buyers-calculate-offers-stl">How cash buyers calculate offers</a> walks through the formula.</p>
 
@@ -436,5 +439,6 @@
 <script src="/assets/site-search.js" defer></script>
 <div class="atd-config" data-tool="seller-net"></div>
 <script src="/article-tool-drawer.js"></script>
+<script data-fold-js>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(decodeURIComponent(h));if(!t)return;for(var d=t.closest("details.data-fold");d;d=d.parentElement&&d.parentElement.closest("details.data-fold"))d.open=true;t.scrollIntoView();}window.addEventListener("hashchange",o);if(document.readyState!=="loading")o();else document.addEventListener("DOMContentLoaded",o);window.addEventListener("beforeprint",function(){document.querySelectorAll("details.data-fold").forEach(function(d){d.open=true;});});})();</script>
 </body>
 </html>

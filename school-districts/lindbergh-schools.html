@@ -356,6 +356,7 @@
 .tx26-det{margin:2px 0 8px}.tx26-det summary{cursor:pointer;color:#ffcc4d;font-weight:600;font-size:14px;padding:10px 0;min-height:44px;display:flex;align-items:center}.tx26-det[open] summary{padding-bottom:2px}.tx26 a{color:var(--gold)}
 @media(max-width:480px){.tx26-table{font-size:13px}.tx26-table th,.tx26-table td{padding:8px 6px}.tx26-table .num,.tx26-table tbody th{white-space:normal}.tx26-table thead th{font-size:10px;letter-spacing:.03em}.tx26-n{display:block}}
 </style>
+<style data-fold-css>.data-fold{overflow-x:auto;max-width:100%;margin:18px 0 22px;border:1px solid rgba(255,204,77,.28);border-radius:10px;background:rgba(255,204,77,.03);}.data-fold>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:13px 16px;font-size:14px;line-height:1.4;}.data-fold>summary::-webkit-details-marker{display:none;}.data-fold>summary:focus-visible{outline:2px solid #ffcc4d;outline-offset:2px;border-radius:10px;}.df-label{font-weight:600;color:inherit;flex:1 1 220px;min-width:0;}.df-hint{color:#ffcc4d;font-weight:700;font-size:13px;white-space:nowrap;}.df-hint:after{content:" \25BE";}.data-fold[open] .df-hint:after{content:" \25B4";}.data-fold[open] .df-show{display:none;}.df-hide{display:none;}.data-fold[open] .df-hide{display:inline;}.data-fold>:not(summary){margin:4px 8px 8px;}.data-fold[data-cap] caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}@media print{.data-fold>summary{display:none;}}</style>
 </head>
 <body class="district-page">
 
@@ -431,7 +432,8 @@
     <section class="content-section sd26" id="2026-sales-data">
       <h2><span class="section-label">2026 sales data</span>What did your budget reach in Lindbergh Schools?</h2>
       <p>From January 1 through October 5, 2026, 146 qualifying single-family homes sold in Lindbergh Schools in this dataset.</p>
-      <div class="sd26-table-wrap" tabindex="0" role="region" aria-label="Share of Lindbergh Schools 2026 closed sales at or below each price">
+      <details class="data-fold"><summary><span class="df-label">Share of Lindbergh Schools 2026 closed sales at or below each price</span><span class="df-hint"><span class="df-show">Show all 4 rows</span><span class="df-hide">Hide table</span></span></summary>
+<div class="sd26-table-wrap" tabindex="0" role="region" aria-label="Share of Lindbergh Schools 2026 closed sales at or below each price">
         <table class="sd26-table">
           <thead><tr><th scope="col">Max price</th><th scope="col" class="num">Sales at or below</th><th scope="col" class="num">Share of district market</th></tr></thead>
           <tbody>
@@ -442,6 +444,7 @@
           </tbody>
         </table>
       </div>
+</details>
       <p>Median sold price in this dataset: <strong>$400,000</strong>. The middle half of these sales closed between $320,875 and $553,825.</p>
       <p>Read it this way: a budget can “work” and still leave you shopping only a slice of the market. The share tells you how much of the closed-sale market was actually within reach—not whether a single house might exist at that price.</p>
       <h3 class="sd26-h3">Same budget, nearby district</h3>
@@ -517,5 +520,6 @@
 
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script data-fold-js>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(decodeURIComponent(h));if(!t)return;for(var d=t.closest("details.data-fold");d;d=d.parentElement&&d.parentElement.closest("details.data-fold"))d.open=true;t.scrollIntoView();}window.addEventListener("hashchange",o);if(document.readyState!=="loading")o();else document.addEventListener("DOMContentLoaded",o);window.addEventListener("beforeprint",function(){document.querySelectorAll("details.data-fold").forEach(function(d){d.open=true;});});})();</script>
 </body>
 </html>

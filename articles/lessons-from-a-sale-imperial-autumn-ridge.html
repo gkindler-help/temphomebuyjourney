@@ -194,6 +194,7 @@
 <script>document.documentElement.classList.add('js-intro');</script>
 <link rel="stylesheet" href="/assets/intro-scene.css">
 <style data-gk-glow>.gk-glow{display:block;margin:18px auto 20px;max-width:440px;padding:13px 16px;border:1.5px solid #ffcc4d;border-radius:12px;color:#ffcc4d;font-weight:600;font-size:15px;line-height:1.5;text-align:center;background:rgba(255,204,77,.05);box-shadow:0 0 10px rgba(255,204,77,.45),0 0 22px rgba(255,204,77,.2),inset 0 0 8px rgba(255,204,77,.12);animation:gkGlow 3.2s ease-in-out infinite;}@keyframes gkGlow{0%,100%{box-shadow:0 0 8px rgba(255,204,77,.35),0 0 18px rgba(255,204,77,.15),inset 0 0 6px rgba(255,204,77,.1);}50%{box-shadow:0 0 14px rgba(255,204,77,.6),0 0 30px rgba(255,204,77,.3),inset 0 0 10px rgba(255,204,77,.16);}}@media(prefers-reduced-motion:reduce){.gk-glow{animation:none;}}</style>
+<style data-fold-css>.data-fold{overflow-x:auto;max-width:100%;margin:18px 0 22px;border:1px solid rgba(255,204,77,.28);border-radius:10px;background:rgba(255,204,77,.03);}.data-fold>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:13px 16px;font-size:14px;line-height:1.4;}.data-fold>summary::-webkit-details-marker{display:none;}.data-fold>summary:focus-visible{outline:2px solid #ffcc4d;outline-offset:2px;border-radius:10px;}.df-label{font-weight:600;color:inherit;flex:1 1 220px;min-width:0;}.df-hint{color:#ffcc4d;font-weight:700;font-size:13px;white-space:nowrap;}.df-hint:after{content:" \25BE";}.data-fold[open] .df-hint:after{content:" \25B4";}.data-fold[open] .df-show{display:none;}.df-hide{display:none;}.data-fold[open] .df-hide{display:inline;}.data-fold>:not(summary){margin:4px 8px 8px;}.data-fold[data-cap] caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}@media print{.data-fold>summary{display:none;}}</style>
 </head>
 <body>
 
@@ -329,6 +330,7 @@
 
 <h2 id="result">What did the seller actually gain?</h2>
 <p>$5,750 above the original asking price, after the closing-cost contribution and the foundation repair. That figure excludes commissions and other selling expenses. The roof and siding were paid for with insurance proceeds the seller had already received.</p>
+<details class="data-fold" data-cap><summary><span class="df-label">Autumn Ridge result vs. the $275,000 asking price</span><span class="df-hint"><span class="df-show">Show all 6 rows</span><span class="df-hide">Hide table</span></span></summary>
 <div class="lp-table-wrap" role="region" tabindex="0" aria-label="Result compared with the asking price">
 <table class="lp-table">
 <caption>Autumn Ridge result vs. the $275,000 asking price</caption>
@@ -343,6 +345,7 @@
 </tbody>
 </table>
 </div>
+</details>
 <p>Count the roughly $1,500 window credit he received when he bought in 2020, and the result across both transactions is about $7,250 above the original asking price. That&rsquo;s an ownership-period comparison, not a number on the 2025 closing statement. The two figures answer different questions, and sellers deserve to understand the difference. <a href="what-will-i-net-selling-stl">What will I net selling my house? &rarr;</a></p>
 
 <h2 id="your-takeaway">What should sellers take from this sale?</h2>
@@ -417,5 +420,6 @@ document.addEventListener('DOMContentLoaded',function(){
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
 <script src="/assets/intro-scene.js" defer></script>
+<script data-fold-js>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(decodeURIComponent(h));if(!t)return;for(var d=t.closest("details.data-fold");d;d=d.parentElement&&d.parentElement.closest("details.data-fold"))d.open=true;t.scrollIntoView();}window.addEventListener("hashchange",o);if(document.readyState!=="loading")o();else document.addEventListener("DOMContentLoaded",o);window.addEventListener("beforeprint",function(){document.querySelectorAll("details.data-fold").forEach(function(d){d.open=true;});});})();</script>
 </body>
 </html>

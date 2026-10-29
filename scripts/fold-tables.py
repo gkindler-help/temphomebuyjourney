@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Collapse big data tables behind a "Show all N rows" toggle.
+"""Collapse data tables behind a "Show all N rows" toggle.
 
-Any table with 7 or more body rows is wrapped in <details class="data-fold">.
+Every table with at least one body row is wrapped in <details class="data-fold">.
 The rows stay in the HTML, so search engines and AI crawlers still read and
 cite every number; only the default view changes. Safe to rerun: tables
 already inside <details>, and tables a calculator writes from <script>, are
@@ -13,12 +13,12 @@ import os
 import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MIN_ROWS = 7
+MIN_ROWS = 1
 # Pages where the table is the tool itself (sortable/filterable records).
-SKIP = {'experience.html'}
+SKIP = {'experience.html', 'pinterest-10a52.html'}  # pinterest: domain-verification file
 
 CSS = ('<style data-fold-css>'
-       '.data-fold{margin:18px 0 22px;border:1px solid rgba(255,204,77,.28);border-radius:10px;background:rgba(255,204,77,.03);}'
+       '.data-fold{overflow-x:auto;max-width:100%;margin:18px 0 22px;border:1px solid rgba(255,204,77,.28);border-radius:10px;background:rgba(255,204,77,.03);}'
        '.data-fold>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:13px 16px;font-size:14px;line-height:1.4;}'
        '.data-fold>summary::-webkit-details-marker{display:none;}'
        '.data-fold>summary:focus-visible{outline:2px solid #ffcc4d;outline-offset:2px;border-radius:10px;}'
@@ -96,7 +96,7 @@ def fold(s):
         cap_attr = ' data-cap' if from_cap else ''
         out.append(s[pos:start])
         out.append(f'<details class="data-fold"{cap_attr}><summary><span class="df-label">{label}</span>'
-                   f'<span class="df-hint"><span class="df-show">Show all {rows} rows</span>'
+                   f'<span class="df-hint"><span class="df-show">{"Show all " + str(rows) + " rows" if rows > 1 else "Show the row"}</span>'
                    f'<span class="df-hide">Hide table</span></span></summary>\n')
         out.append(s[start:end])
         out.append('\n</details>')

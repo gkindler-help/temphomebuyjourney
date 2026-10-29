@@ -55,6 +55,7 @@ PAGES = {
     'articles/st-louis-city-vs-county.html': 'covington',
     'articles/buy-house-st-louis-from-out-of-state.html': 'thirtyk',
     'articles/where-to-live-if-you-work-at-bjc-st-louis.html': 'maple',
+    'articles/moving-from-chicago-to-st-louis.html': 'lindbergh',
     'articles/st-louis-occupancy-permits-by-city.html': 'willow',
     'articles/federal-pacific-panel-va-loan-st-louis.html': 'buyer',
     'articles/fenton-mo-city-vs-unincorporated.html': 'fenton',
