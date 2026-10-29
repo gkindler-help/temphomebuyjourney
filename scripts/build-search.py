@@ -91,6 +91,7 @@ TOPICS = [
     (['where to live', 'neighborhood', 'neighborhoods', 'best neighborhoods', 'best area', 'areas'],
      ['articles/where-to-live-in-st-louis', 'articles/best-st-louis-neighborhoods-for-buyers', 'neighborhood-matcher']),
     (['south county'], ['south-county-st-louis', 'articles/south-county-stl-neighborhood-guide', 'articles/south-county-stl-neighborhoods-by-price']),
+    (['mid county', 'mid-county', 'midcounty', 'central county'], ['mid-county-st-louis', 'articles/kirkwood-vs-webster-groves-st-louis', 'articles/clayton-vs-ladue-under-1-million']),
     (['west county'], ['articles/west-county-st-louis-neighborhoods']),
     (['north county'], ['north-county-st-louis']),
     (['jefferson county', 'jeffco'], ['jefferson-county-mo', 'school-districts/jefferson-county']),

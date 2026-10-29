@@ -31,7 +31,7 @@ REGION = {
     'St. Charles County': ['cottleville', 'dardenne-prairie', 'josephville', 'lake-st-louis', 'o-fallon', 'st-charles', 'st-paul',
                            'st-peters', 'weldon-spring', 'weldon-spring-heights', 'wentzville', 'west-alton'],
 }
-AREA_HUBS = ['south-city-st-louis', 'south-county-st-louis', 'north-county-st-louis', 'jefferson-county-mo', 'neighborhoods/',
+AREA_HUBS = ['south-city-st-louis', 'south-county-st-louis', 'north-county-st-louis', 'mid-county-st-louis', 'jefferson-county-mo', 'neighborhoods/',
              'articles/west-county-st-louis-neighborhoods', 'articles/south-county-stl-neighborhood-guide', 'school-districts',
              'school-district-map', 'afford', 'neighborhood-matcher', 'compare']
 START = ['', 'complete-guide', 'journey/', 'articles/', 'articles/lessons-from-a-sale', 'about', 'experience', 'ask', 'george-kindler']
