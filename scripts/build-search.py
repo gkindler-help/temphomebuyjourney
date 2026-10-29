@@ -30,6 +30,10 @@ SECTIONS = [('articles/lessons-from-a-sale', 'Lessons From a Sale'), ('articles/
 
 # Recommended reading by keyword. Titles and blurbs are read from each page.
 TOPICS = [
+    (['occupancy permit', 'occupancy inspection', 're-occupancy', 'reoccupancy', 'city inspection'],
+     ['articles/st-louis-occupancy-permits-by-city', 'articles/st-louis-city-vs-county#rules', 'articles/lessons-from-a-sale-northwoods-va-purchase#occupancy']),
+    (['unincorporated', 'earnings tax', 'city vs county', 'st louis city', 'municipality', 'which city'],
+     ['articles/st-louis-city-vs-county', 'articles/st-louis-occupancy-permits-by-city', 'articles/fenton-mo-city-vs-unincorporated']),
     (['moving to st louis', 'move to st louis', 'relocating', 'relocation', 'out of state', 'remote closing', 'video tour', 'buy without seeing'],
      ['articles/moving-to-st-louis', 'articles/moving-to-st-louis#remote', 'articles/where-to-live-in-st-louis']),
     (['self-employed', 'self employed', 'business owner', '1099', 'schedule c', 'k-1', 'bank statement loan', 'write-offs', 'tax returns'],
