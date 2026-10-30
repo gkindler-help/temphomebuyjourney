@@ -713,23 +713,16 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
 
       <div id="nm-cards-container"></div>
 
-      <!-- Lead capture -->
+      <!-- Lead capture: text or email George (no backend; opens the visitor's own app) -->
       <div class="nm-lead-card" id="nm-lead-card">
-        <div class="nm-lead-eyebrow">Free Deep-Dive Report</div>
-        <div class="nm-lead-title">Get the Full Picture on Your Top Matches</div>
-        <p class="nm-lead-sub">I'll send you a personalized breakdown: recent sales, tax bills, what each area's houses need, and my honest take on each one. One email. No drip campaigns.</p>
+        <div class="nm-lead-eyebrow">Want my take?</div>
+        <div class="nm-lead-title">Send Me Your Top Matches</div>
+        <p class="nm-lead-sub">Tap below and your results drop into a text or email to me. I&rsquo;ll reply myself with recent sales, tax bills and what the houses in those areas usually need. No forms, no drip campaigns.</p>
         <div class="nm-lead-fields">
-          <input type="text" id="nm-name" class="tool-input" placeholder="First name">
-          <input type="email" id="nm-email" class="tool-input" placeholder="your@email.com">
-          <button class="tool-btn-primary" style="margin:0;" onclick="nmSubmitLead()">Send My Report →</button>
+          <a class="tool-btn-primary" id="nm-sms" href="sms:3144351087" style="margin:0;text-align:center;">Text My Matches &rarr;</a>
+          <a class="tool-btn-secondary" id="nm-mail" href="mailto:georgeandlizk@gmail.com" style="margin:0;text-align:center;">Email My Matches</a>
         </div>
-        <p class="nm-lead-disclaimer">George Kindler · The Closing Pros LLC · 314-998-4550</p>
-      </div>
-
-      <div id="nm-lead-success" style="display:none;padding:20px 0;text-align:center;">
-        <div style="font-size:28px;margin-bottom:8px;">✓</div>
-        <div style="font-family:var(--font-serif);font-size:17px;color:var(--gold);margin-bottom:4px;">Report on the way.</div>
-        <div style="font-size:12px;color:var(--text-dim);">Check your inbox — usually within a few minutes.</div>
+        <p class="nm-lead-disclaimer">George Kindler &middot; 314.435.1087</p>
       </div>
 
       <!-- Actions -->
@@ -1164,6 +1157,9 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
   /* ============================================================
      NAVIGATION
   ============================================================ */
+  function nmTrack(name, params) { if (typeof gtag === "function") gtag("event", name, params || {}); }
+  var nmStarted = false;
+
   window.nmNext = function () {
     var q = QUESTIONS[step];
 
@@ -1177,6 +1173,8 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
       answers[q.id] = QUESTIONS[step].min;
     }
 
+    if (!nmStarted) { nmStarted = true; nmTrack("quiz_start"); }
+    nmTrack("quiz_step", { step: step + 1, question: q.id });
     if (step < QUESTIONS.length - 1) {
       step++;
       renderQ();
@@ -1217,6 +1215,8 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
 
     /* Show top 3 */
     var top3 = scored.slice(0, 3);
+    nmTop = top3.map(function (x) { return x.archetype.name; });
+    nmTrack("quiz_complete", { top_match: nmTop[0], match_2: nmTop[1], match_3: nmTop[2], budget: answers.budget, commute: answers.commute });
 
     var container = document.getElementById("nm-cards-container");
     container.innerHTML = top3.map(function (item, i) {
@@ -1257,6 +1257,7 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
           var url   = item.getAttribute("data-url");
           var title = item.getAttribute("data-name") || "Neighborhood";
           if (!url) return;
+          nmTrack("quiz_result_click", { neighborhood: title });
           if (window.parent && window.parent.SharedPlatform && window.parent.SharedPlatform.openNeighborhoodPanel) {
             window.parent.SharedPlatform.openNeighborhoodPanel(url, title);
           } else {
@@ -1415,24 +1416,17 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
     }
   };
 
-  window.nmSubmitLead = function () {
-    if (submitted) return;
-    var name  = (document.getElementById("nm-name")  || {}).value || "";
-    var email = (document.getElementById("nm-email") || {}).value || "";
-    if (!email || email.indexOf("@") === -1) {
-      var emailEl = document.getElementById("nm-email");
-      if (emailEl) {
-        emailEl.style.borderColor = "var(--red)";
-        setTimeout(function () { emailEl.style.borderColor = ""; }, 1500);
-      }
-      return;
-    }
-    submitted = true;
-    /* Wire to Formspree / Apps Script endpoint here */
-    console.log("NM Lead:", { name: name, email: email, answers: answers });
-    document.getElementById("nm-lead-card").style.display    = "none";
-    document.getElementById("nm-lead-success").style.display = "block";
-  };
+  var nmTop = [];
+  function nmMsg() {
+    return "Hi George, I took your neighborhood quiz. My top matches: " + (nmTop.length ? nmTop.join(", ") : "(not finished)") + ". Can you tell me more?";
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("#nm-sms, #nm-mail");
+    if (!a) return;
+    var body = encodeURIComponent(nmMsg());
+    if (a.id === "nm-sms") { a.href = "sms:3144351087?&body=" + body; nmTrack("quiz_contact", { method: "text", top_match: nmTop[0] || "" }); }
+    else { a.href = "mailto:georgeandlizk@gmail.com?subject=" + encodeURIComponent("My neighborhood quiz matches") + "&body=" + body; nmTrack("quiz_contact", { method: "email", top_match: nmTop[0] || "" }); }
+  });
 
   /* ============================================================
      INIT
