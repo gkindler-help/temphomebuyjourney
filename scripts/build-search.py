@@ -62,6 +62,8 @@ TOPICS = [
      ['articles/appraisal-comes-in-low-st-louis', 'articles/lessons-from-a-sale-galena-appraisal', 'articles/how-much-to-offer-on-a-house-st-louis#appraisal-gap', 'articles/va-appraisal-failed-st-louis-what-happens-next']),
     (['contingency', 'contingencies', 'waive', 'waiving', 'waive inspection', 'waive the inspection', 'financing contingency', 'appraisal contingency', 'back out', 'backing out', 'earnest money back'],
      ['articles/which-contingencies-to-keep-st-louis', 'articles/how-much-to-offer-on-a-house-st-louis', 'articles/sell-first-or-buy-first-st-louis']),
+    (['deal on a house', 'good deal', 'best deal', 'below market', 'motivated seller', 'sitting on the market', 'stale listing', 'days on market', 'price reduced', 'bank owned', 'reo', 'seller credit'],
+     ['articles/how-to-get-a-deal-on-a-house-st-louis', 'articles/how-to-get-a-deal-on-a-house-st-louis#find', 'articles/st-louis-home-price-reduction-negotiation', 'articles/how-much-to-offer-on-a-house-st-louis#days-on-market']),
     (['offer', 'offers', 'multiple offers', 'highest and best', 'escalation', 'bidding', 'over asking', 'appraisal gap', 'earnest money'],
      ['articles/how-much-to-offer-on-a-house-st-louis', 'articles/lessons-from-a-sale-fenton-san-luis#highest-and-best', 'articles/should-i-accept-this-offer-st-louis']),
     (['inspection', 'inspector', 'repair', 'repairs', 'credit', 'furnace', 'hvac', 'roof', 'foundation', 'sewer', 'sewer scope', 'radon', 'termite'],

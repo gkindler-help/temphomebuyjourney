@@ -34,7 +34,8 @@ Pages are built to be quoted by AI tools and still read well top to bottom.
 
 - Don't make school-quality or reputation claims, and don't rank or editorialize about schools. Cited facts, such as DESE APR scores, are fine when stated plainly.
 - Don't use "family/families" to describe neighborhoods.
-- Don't steer buyers toward or away from areas, and don't disparage any area.
+- Don't steer buyers toward or away from areas, and don't disparage any area. Steering means directing someone toward or away from an area because of a protected class (race, color, religion, sex, disability, familial status, national origin). Publishing the same market facts for every area, such as sale prices, days on market or how far houses that sat came down, is not steering, and those tables can rank areas by the numbers (George, 2026-10-30). Keep ad wording free of who a place is "for".
+- Seller concessions: don't publish concession statistics from MLS exports. Agents mark them too inconsistently to be reliable. George infers what a seller will give through the listing-agent call; describe that process instead (George, 2026-10-30).
 - Write "Mehlville R-IX" in full. Webster Groves is not South County.
 - Don't cut content from pages that AI tools are already citing. Add to them instead.
 
