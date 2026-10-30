@@ -30,6 +30,8 @@ SECTIONS = [('articles/lessons-from-a-sale', 'Lessons From a Sale'), ('articles/
 
 # Recommended reading by keyword. Titles and blurbs are read from each page.
 TOPICS = [
+    (['kansas city', 'kcmo', 'lees summit', 'lee\'s summit', 'independence', 'raytown', 'blue springs', 'liberty', 'northland', 'hyde park', 'brookside'],
+     ['articles/moving-from-kansas-city-to-st-louis', 'articles/moving-to-st-louis', 'articles/st-louis-city-vs-county#earnings-tax']),
     (['nashville', 'brentwood tn', 'brentwood tennessee', 'franklin', 'murfreesboro', 'hendersonville', 'east nashville', 'tennessee', 'williamson county'],
      ['articles/moving-from-nashville-to-st-louis', 'articles/moving-to-st-louis', 'articles/buy-house-st-louis-from-out-of-state']),
     (['atlanta', 'alpharetta', 'marietta', 'woodstock', 'decatur', 'buckhead', 'midtown', 'georgia', 'virginia-highland', 'east cobb'],

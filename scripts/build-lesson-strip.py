@@ -60,6 +60,7 @@ PAGES = {
     'articles/moving-from-houston-to-st-louis.html': 'winterpark',
     'articles/moving-from-atlanta-to-st-louis.html': 'countryglen',
     'articles/moving-from-nashville-to-st-louis.html': 'creekside',
+    'articles/moving-from-kansas-city-to-st-louis.html': 'lindbergh',
     'articles/st-louis-occupancy-permits-by-city.html': 'willow',
     'articles/federal-pacific-panel-va-loan-st-louis.html': 'buyer',
     'articles/fenton-mo-city-vs-unincorporated.html': 'fenton',
