@@ -30,6 +30,8 @@ SECTIONS = [('articles/lessons-from-a-sale', 'Lessons From a Sale'), ('articles/
 
 # Recommended reading by keyword. Titles and blurbs are read from each page.
 TOPICS = [
+    (['atlanta', 'alpharetta', 'marietta', 'woodstock', 'decatur', 'buckhead', 'midtown', 'georgia', 'virginia-highland', 'east cobb'],
+     ['articles/moving-from-atlanta-to-st-louis', 'articles/moving-to-st-louis', 'articles/buy-house-st-louis-from-out-of-state']),
     (['houston', 'katy', 'cypress', 'pearland', 'sugar land', 'the woodlands', 'heights', 'pasadena', 'river oaks', 'memorial'],
      ['articles/moving-from-houston-to-st-louis', 'articles/moving-to-st-louis', 'articles/buy-house-st-louis-from-out-of-state']),
     (['dallas', 'plano', 'frisco', 'mckinney', 'richardson', 'garland', 'texas', 'highland park', 'uptown', 'dfw'],
