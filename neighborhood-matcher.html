@@ -669,7 +669,7 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
 <style data-gk-glow>.gk-glow{display:block;margin:18px auto 20px;max-width:440px;padding:13px 16px;border:1.5px solid #ffcc4d;border-radius:12px;color:#ffcc4d;font-weight:600;font-size:15px;line-height:1.5;text-align:center;background:rgba(255,204,77,.05);box-shadow:0 0 10px rgba(255,204,77,.45),0 0 22px rgba(255,204,77,.2),inset 0 0 8px rgba(255,204,77,.12);animation:gkGlow 3.2s ease-in-out infinite;}@keyframes gkGlow{0%,100%{box-shadow:0 0 8px rgba(255,204,77,.35),0 0 18px rgba(255,204,77,.15),inset 0 0 6px rgba(255,204,77,.1);}50%{box-shadow:0 0 14px rgba(255,204,77,.6),0 0 30px rgba(255,204,77,.3),inset 0 0 10px rgba(255,204,77,.16);}}@media(prefers-reduced-motion:reduce){.gk-glow{animation:none;}}</style>
 <style data-zl-tease>.zl-tease{max-width:560px;margin:28px auto 14px;padding:0 4px;text-align:center;font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.72);}.zl-tease a{color:#ffcc4d;font-weight:600;white-space:nowrap;}</style>
 <style data-nm-areas>.nm-areas{max-width:860px;margin:48px auto 8px;padding:0 20px;}.nm-areas h2{font-family:var(--font-serif,'Playfair Display',serif);font-size:26px;line-height:1.25;margin-bottom:12px;color:#fff;}.nm-areas>p{color:rgba(255,255,255,.75);line-height:1.65;margin-bottom:18px;}.nm-areas a{color:var(--gold,#ffcc4d);}.nm-area-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin:0;padding:0;}.nm-area-list li{border:1px solid rgba(255,204,77,.25);border-radius:12px;padding:16px 16px 14px;background:rgba(255,204,77,.03);}.nm-area-list h3{font-family:var(--font-serif,'Playfair Display',serif);font-size:19px;color:#fff;margin:0 0 6px;}.nm-area-list p{font-size:14px;line-height:1.6;color:rgba(255,255,255,.75);margin:0 0 8px;}.nm-area-links{font-size:13px;font-weight:600;}.nm-new{margin-top:22px;}</style>
-<style data-nm-next>.nm-next{margin-top:16px;display:flex;flex-direction:column;gap:12px;}.nm-offer{border:1.5px solid #ffcc4d;border-radius:12px;padding:14px 14px 12px;background:rgba(255,204,77,.06);}.nm-offer-t{font-weight:700;color:#fff;font-size:15px;line-height:1.35;margin-bottom:4px;}.nm-offer-s{font-size:13px;line-height:1.5;color:rgba(255,255,255,.72);margin-bottom:10px;}.nm-offer-btn{display:block;text-align:center;background:#ffcc4d;color:#111;font-weight:700;border-radius:8px;padding:11px 12px;font-size:14px;}.nm-proof{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.72);}.nm-proof span{font-weight:700;color:#ffcc4d;text-transform:uppercase;font-size:11px;letter-spacing:.08em;margin-right:4px;}.nm-proof a,.nm-guides a,.nm-stage a{color:#ffcc4d;font-weight:600;}.nm-guides{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:13.5px;}.nm-stage{margin:18px 0 6px;padding:14px 16px;border:1px solid rgba(255,204,77,.3);border-radius:12px;font-size:14.5px;line-height:1.5;}</style>
+<style data-nm-next>.nm-next{margin-top:16px;display:flex;flex-direction:column;gap:12px;}.nm-offer{border:1.5px solid #ffcc4d;border-radius:12px;padding:14px 14px 12px;background:rgba(255,204,77,.06);}.nm-offer-t{font-weight:700;color:#fff;font-size:15px;line-height:1.35;margin-bottom:4px;}.nm-offer-s{font-size:13px;line-height:1.5;color:rgba(255,255,255,.72);margin-bottom:10px;}.nm-offer-alt{display:block;text-align:center;margin-top:10px;font-size:13.5px;font-weight:600;color:#ffcc4d;}.nm-offer-btn{display:block;text-align:center;background:#ffcc4d;color:#111;font-weight:700;border-radius:8px;padding:11px 12px;font-size:14px;}.nm-proof{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.72);}.nm-proof span{font-weight:700;color:#ffcc4d;text-transform:uppercase;font-size:11px;letter-spacing:.08em;margin-right:4px;}.nm-proof a,.nm-guides a,.nm-stage a{color:#ffcc4d;font-weight:600;}.nm-guides{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:13.5px;}.nm-stage{margin:18px 0 6px;padding:14px 16px;border:1px solid rgba(255,204,77,.3);border-radius:12px;font-size:14.5px;line-height:1.5;}</style>
 </head>
 <body class="tool-page" style="min-height: 100vh; overflow-y: auto;">
 
@@ -1291,16 +1291,17 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
     return /^under/i.test(b) ? " under " + b.replace(/^under\s*/i, "") : " at " + b;
   }
   function nmAreaMsg(arc) {
-    return "Hi George, I took your neighborhood quiz and matched with " + arc.name + ". Can you send me the last 90 days of sales there" + nmBudgetPhrase() + "?";
+    return "Hi George, I took your neighborhood quiz and matched with " + arc.name + ". Can you send me the listings there" + nmBudgetPhrase() + " that have been sitting, with room to negotiate?";
   }
   function buildExtras(arc) {
     var x = NM_EXTRA[arc.id] || { lesson: null, guides: [] };
     var lesson = x.lesson || ["/articles/how-george-works-with-buyers", "What I check before you write an offer"];
     return '<div class="nm-next">'
       + '<div class="nm-offer">'
-      +   '<div class="nm-offer-t">Want the last 90 days of sales in ' + arc.name + nmBudgetPhrase() + '?</div>'
-      +   '<div class="nm-offer-s">Text me and I&rsquo;ll send them myself: what sold, for how much and how fast. No call center, no showing pitch.</div>'
-      +   '<a class="nm-offer-btn" data-nm-offer="' + arc.id + '" href="sms:3144351087">Text Me for the Sales &rarr;</a>'
+      +   '<div class="nm-offer-t">Where&rsquo;s the room to negotiate in ' + arc.name + nmBudgetPhrase() + '?</div>'
+      +   '<div class="nm-offer-s">Houses that sit get cheaper. Across 2,865 St.&nbsp;Louis County sales in 2026, homes that sold in their first four days closed at a median 104.0% of the original asking price; after 60 days, 93.4%, and after 90, 88.0%. Text me and I&rsquo;ll send you the listings that have been sitting, with the real day count. Listing sites can reset it when a house is relisted; the MLS keeps the full count.</div>'
+      +   '<a class="nm-offer-btn" data-nm-offer="' + arc.id + '" href="sms:3144351087">Text Me the Listings With Room to Negotiate &rarr;</a>'
+      +   '<a class="nm-offer-alt" data-nm-address="' + arc.id + '" href="sms:3144351087">Already have a house in mind? Text me the address &rarr;</a>'
       + '</div>'
       + '<div class="nm-proof"><span>From my own deals:</span> <a data-nm-lesson="' + arc.id + '" href="' + lesson[0] + '">' + lesson[1] + ' &rarr;</a></div>'
       + '<ul class="nm-guides">' + x.guides.map(function (g) {
@@ -1469,12 +1470,15 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
     return s ? '<p class="nm-stage"><a data-nm-stage="' + answers.stage + '" href="' + s[0] + '">' + s[1] + ' &rarr;</a></p>' : '';
   }
   document.addEventListener("click", function (e) {
-    var a = e.target.closest && e.target.closest("[data-nm-offer],[data-nm-lesson],[data-nm-guide],[data-nm-stage]");
+    var a = e.target.closest && e.target.closest("[data-nm-offer],[data-nm-address],[data-nm-lesson],[data-nm-guide],[data-nm-stage]");
     if (!a) return;
     if (a.hasAttribute("data-nm-offer")) {
       var arc = ARCHETYPES.filter(function (x) { return x.id === a.getAttribute("data-nm-offer"); })[0];
       if (arc) a.href = "sms:3144351087?&body=" + encodeURIComponent(nmAreaMsg(arc));
-      nmTrack("quiz_offer_click", { area: arc ? arc.name : "", budget: nmBudgetLabel() });
+      nmTrack("quiz_offer_click", { offer: "stale_listings", area: arc ? arc.name : "", budget: nmBudgetLabel() });
+    } else if (a.hasAttribute("data-nm-address")) {
+      a.href = "sms:3144351087?&body=" + encodeURIComponent("Hi George, can you look at this house before I tour it? ");
+      nmTrack("quiz_offer_click", { offer: "address_check", area: a.getAttribute("data-nm-address"), budget: nmBudgetLabel() });
     } else if (a.hasAttribute("data-nm-lesson")) {
       nmTrack("quiz_lesson_click", { area: a.getAttribute("data-nm-lesson"), page: a.getAttribute("href") });
     } else if (a.hasAttribute("data-nm-guide")) {
