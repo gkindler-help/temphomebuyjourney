@@ -668,6 +668,7 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"STL Neighborhoods","item":"https://stlhomejourney.com/neighborhoods/"},{"@type":"ListItem","position":3,"name":"Neighborhood Quiz","item":"https://stlhomejourney.com/neighborhood-matcher"}]}</script>
 <style data-gk-glow>.gk-glow{display:block;margin:18px auto 20px;max-width:440px;padding:13px 16px;border:1.5px solid #ffcc4d;border-radius:12px;color:#ffcc4d;font-weight:600;font-size:15px;line-height:1.5;text-align:center;background:rgba(255,204,77,.05);box-shadow:0 0 10px rgba(255,204,77,.45),0 0 22px rgba(255,204,77,.2),inset 0 0 8px rgba(255,204,77,.12);animation:gkGlow 3.2s ease-in-out infinite;}@keyframes gkGlow{0%,100%{box-shadow:0 0 8px rgba(255,204,77,.35),0 0 18px rgba(255,204,77,.15),inset 0 0 6px rgba(255,204,77,.1);}50%{box-shadow:0 0 14px rgba(255,204,77,.6),0 0 30px rgba(255,204,77,.3),inset 0 0 10px rgba(255,204,77,.16);}}@media(prefers-reduced-motion:reduce){.gk-glow{animation:none;}}</style>
 <style data-zl-tease>.zl-tease{max-width:560px;margin:28px auto 14px;padding:0 4px;text-align:center;font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.72);}.zl-tease a{color:#ffcc4d;font-weight:600;white-space:nowrap;}</style>
+<style data-nm-areas>.nm-areas{max-width:860px;margin:48px auto 8px;padding:0 20px;}.nm-areas h2{font-family:var(--font-serif,'Playfair Display',serif);font-size:26px;line-height:1.25;margin-bottom:12px;color:#fff;}.nm-areas>p{color:rgba(255,255,255,.75);line-height:1.65;margin-bottom:18px;}.nm-areas a{color:var(--gold,#ffcc4d);}.nm-area-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin:0;padding:0;}.nm-area-list li{border:1px solid rgba(255,204,77,.25);border-radius:12px;padding:16px 16px 14px;background:rgba(255,204,77,.03);}.nm-area-list h3{font-family:var(--font-serif,'Playfair Display',serif);font-size:19px;color:#fff;margin:0 0 6px;}.nm-area-list p{font-size:14px;line-height:1.6;color:rgba(255,255,255,.75);margin:0 0 8px;}.nm-area-links{font-size:13px;font-weight:600;}.nm-new{margin-top:22px;}</style>
 </head>
 <body class="tool-page" style="min-height: 100vh; overflow-y: auto;">
 
@@ -707,6 +708,7 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
         <div class="nm-results-eyebrow">Your Match Report</div>
         <div class="nm-results-title">Here's Where You Fit in St. Louis</div>
         <p class="nm-results-sub">Ranked by fit score. Each result shows which specific neighborhoods to explore.</p>
+        <p class="nm-results-sub nm-results-new">New to St.&nbsp;Louis? <a href="/articles/moving-to-st-louis#from">Match the house you&rsquo;re leaving to the areas built in the same era &rarr;</a></p>
       </div>
 
       <div id="nm-cards-container"></div>
@@ -715,7 +717,7 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
       <div class="nm-lead-card" id="nm-lead-card">
         <div class="nm-lead-eyebrow">Free Deep-Dive Report</div>
         <div class="nm-lead-title">Get the Full Picture on Your Top Matches</div>
-        <p class="nm-lead-sub">I'll send you a personalized breakdown: school ratings, flood zone notes, price trend context, and my honest take on each area. One email. No drip campaigns.</p>
+        <p class="nm-lead-sub">I'll send you a personalized breakdown: recent sales, tax bills, what each area's houses need, and my honest take on each one. One email. No drip campaigns.</p>
         <div class="nm-lead-fields">
           <input type="text" id="nm-name" class="tool-input" placeholder="First name">
           <input type="email" id="nm-email" class="tool-input" placeholder="your@email.com">
@@ -758,6 +760,12 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
   <!-- ASK ME: component configured in /assets/ask-me.js -->
   <div data-ask-me="area-comparison"><p><a href="/ask?about=area-comparison&amp;from=/neighborhood-matcher">Ask Me to Compare Them</a></p></div>
 
+<section class="nm-areas" aria-labelledby="nm-areas-h">
+  <h2 id="nm-areas-h">The eight parts of St.&nbsp;Louis this quiz can match you to</h2>
+  <p>The quiz weighs your budget, commute, stage of life and priorities against these eight areas. Here&rsquo;s what each one is like, with 2026 sales, so you can compare them even before you take it. School district lines don&rsquo;t follow these areas, so check the district for any exact address on the <a href="/school-district-map">school district map</a>.</p>
+  <ul class="nm-area-list"><li><h3>South City</h3><p>Brick bungalows and flats from the 1910s to the 1940s, front porches and walkable business strips around Tower Grove Park. Every address is in the St.&nbsp;Louis Public Schools district and pays the City&rsquo;s 1% earnings tax.</p><p class="nm-area-links"><a href="/south-city-st-louis">South City guide &rarr;</a> &middot; <a href="/neighborhoods/tower-grove-south">Tower Grove South &rarr;</a> &middot; <a href="/neighborhoods/lindenwood-park">Lindenwood Park &rarr;</a></p></li><li><h3>Central West End</h3><p>Walkable streets between Forest Park and the medical campus, with condos, townhouses and renovated older homes. A common pick for people working at Barnes-Jewish or WashU.</p><p class="nm-area-links"><a href="/neighborhoods/central-west-end">Central West End &rarr;</a> &middot; <a href="/articles/where-to-live-if-you-work-at-bjc-st-louis">Working at BJC &rarr;</a></p></li><li><h3>Mid-County</h3><p>Kirkwood, Webster Groves, Maplewood, Clayton, University City and Ladue: older houses close to Clayton and the hospitals. 2026 medians ran from $295,000 in Maplewood to $1,430,000 in Ladue.</p><p class="nm-area-links"><a href="/mid-county-st-louis">Mid-County compared &rarr;</a> &middot; <a href="/neighborhoods/kirkwood">Kirkwood &rarr;</a> &middot; <a href="/neighborhoods/webster-groves">Webster Groves &rarr;</a></p></li><li><h3>South County</h3><p>Brick ranches and split-levels, much of it unincorporated. 2026 medians ran from $195,000 in Lemay to $729,050 in Sunset Hills, with Mehlville at $323,500 and Oakville at $385,000.</p><p class="nm-area-links"><a href="/south-county-st-louis">South County guide &rarr;</a> &middot; <a href="/neighborhoods/oakville">Oakville &rarr;</a> &middot; <a href="/neighborhoods/mehlville">Mehlville &rarr;</a></p></li><li><h3>West County</h3><p>Larger, newer suburbs: Wildwood&rsquo;s median house was built in 1992 and Chesterfield&rsquo;s in 1982. 2026 medians ran from $304,000 in Valley Park to $1,348,000 in Town and Country.</p><p class="nm-area-links"><a href="/articles/west-county-st-louis-neighborhoods">West County compared &rarr;</a> &middot; <a href="/neighborhoods/chesterfield">Chesterfield &rarr;</a> &middot; <a href="/neighborhoods/ballwin">Ballwin &rarr;</a></p></li><li><h3>St.&nbsp;Charles County</h3><p>Across the Missouri River along I-70 and Highway 364: newer subdivisions in O&rsquo;Fallon, St.&nbsp;Peters, Wentzville and Lake St.&nbsp;Louis, under a separate county government with its own tax bills.</p><p class="nm-area-links"><a href="/neighborhoods/st-charles">St.&nbsp;Charles &rarr;</a> &middot; <a href="/neighborhoods/o-fallon">O&rsquo;Fallon &rarr;</a> &middot; <a href="/neighborhoods/st-peters">St.&nbsp;Peters &rarr;</a></p></li><li><h3>North County</h3><p>Some of the lowest prices in St.&nbsp;Louis County, mostly houses from the 1950s to the 1970s. Florissant&rsquo;s 2026 median was $180,000 across 167 sales; Bridgeton&rsquo;s was $316,000.</p><p class="nm-area-links"><a href="/north-county-st-louis">North County guide &rarr;</a> &middot; <a href="/neighborhoods/florissant">Florissant &rarr;</a></p></li><li><h3>Jefferson County</h3><p>South of the Meramec River, with more land and the region&rsquo;s newest resale houses. 2026 medians ran from $222,000 in De&nbsp;Soto to $469,900 on the Jefferson County side of Eureka.</p><p class="nm-area-links"><a href="/jefferson-county-mo">Jefferson County guide &rarr;</a> &middot; <a href="/neighborhoods/imperial">Imperial &rarr;</a> &middot; <a href="/neighborhoods/arnold">Arnold &rarr;</a></p></li></ul>
+  <p class="nm-new">New to St.&nbsp;Louis? <a href="/articles/moving-to-st-louis#from">Match the house you&rsquo;re leaving</a>: guides for movers from Chicago, Dallas, Houston, Atlanta, Nashville and Kansas City. Or start with <a href="/articles/where-to-live-in-st-louis">where to live in St.&nbsp;Louis</a>.</p>
+</section>
   <p class="zl-tease">Want the MLS details on a house you found online? Here&rsquo;s how to get them without your phone blowing up. <a href="/articles/what-happens-when-you-click-zillow#text-me-the-address">Here&rsquo;s why &rarr;</a></p>
     <div class="george-card">
     <div class="george-card-photo">
@@ -795,7 +803,7 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
       icon:  "🌳",
       color: "#5dcaa5",
       archetype: "Historic Urban Charm",
-      desc:  "Brick bungalows, front porches, block associations that actually meet, and Tower Grove Park in your backyard. South City is where you buy character — walkable streets, local coffee shops, and neighbors who wave. The tradeoff is older housing stock and city school options that lean toward private and charter.",
+      desc:  "Brick bungalows and flats from the 1910s–40s, front porches, Tower Grove Park and walkable business strips. South City is where you buy character. Every address is in the St. Louis Public Schools district and pays the City’s 1% earnings tax, and condition varies block by block, so inspect closely.",
       groups: ["St. Louis City"],
       tags:   ["South City", "Southwest City", "Midtown"],
       scoreFn: function (a) {
@@ -816,7 +824,7 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
       icon:  "🏛",
       color: "#60a5fa",
       archetype: "Urban Professional",
-      desc:  "Walkable boulevards, Forest Park on your doorstep, and some of the best restaurants in the city within walking distance. CWE is where attorneys, physicians, and empty-nesters land when they want genuine city energy without the chaos. Condos, renovated Victorians, and a strong sense of place.",
+      desc:  "Walkable boulevards, Forest Park on one side and the medical campus on the other, with restaurants within a few blocks. Condos, townhouses and renovated older homes. A common pick for people working at Barnes-Jewish or WashU who want to walk to work.",
       groups: ["St. Louis City"],
       tags:   ["West End"],
       scoreFn: function (a) {
@@ -836,7 +844,7 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
       icon:  "🏡",
       color: "#f472b6",
       archetype: "Suburban Schools & Community",
-      desc:  "Kirkwood, Webster Groves, Maplewood, Clayton, University City. The Central Corridor is where school-conscious buyers and career-focused professionals converge. Top public school districts, charming downtowns, and genuine community identity. Competitive inventory and prices that reflect the demand.",
+      desc:  "Kirkwood, Webster Groves, Maplewood, Clayton, University City and Ladue. Older houses, mostly built from the 1920s to the 1950s, close to Clayton, WashU and the hospitals. 2026 medians ran from $295,000 in Maplewood to $1,430,000 in Ladue, and homes sold fast, often in under a week.",
       groups: ["Central Corridor"],
       tags:   ["Inner West"],
       scoreFn: function (a) {
@@ -856,7 +864,7 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
       icon:  "💡",
       color: "#86efac",
       archetype: "Underrated Value",
-      desc:  "Affton, Mehlville, Oakville, Sappington, Sunset Hills, Concord. South County is the most consistently underestimated part of the metro. Solid school districts, generous lot sizes, lower tax rates than West County, and a quiet, established feel. The value math here is hard to argue with.",
+      desc:  "Affton, Mehlville, Oakville, Sappington, Sunset Hills, Concord. Brick ranches and split-levels, much of it unincorporated. 2026 medians ran from $195,000 in Lemay to $729,050 in Sunset Hills, with Mehlville at $323,500 and Oakville at $385,000.",
       groups: ["South County"],
       tags:   [],
       scoreFn: function (a) {
@@ -877,7 +885,7 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
       icon:  "🛡",
       color: "#38bdf8",
       archetype: "Established Suburban",
-      desc:  "Chesterfield and Ballwin anchor the West County picture — master-planned neighborhoods, Rockwood and Parkway school districts, newer construction, and lower flood risk in most areas. Commutes run longer, but buyers consistently accept that tradeoff for the package. Top choice for growing families.",
+      desc:  "Chesterfield, Ballwin, Wildwood, Manchester and Town and Country. Larger, newer suburbs: Wildwood’s median house was built in 1992 and Chesterfield’s in 1982. 2026 medians ran from $304,000 in Valley Park to $1,348,000 in Town and Country, with Ballwin at $419,950; most of it is in the Parkway and Rockwood districts.",
       groups: ["West County"],
       tags:   [],
       scoreFn: function (a) {
@@ -899,7 +907,7 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
       icon:  "🌾",
       color: "#fbbf24",
       archetype: "Space & Growth",
-      desc:  "O\'Fallon, St. Peters, Wentzville, St. Charles, Lake St. Louis, Cottleville. St. Charles County offers the most square footage per dollar in the metro. Fast-growing, newer infrastructure, strong schools, and room to breathe. Commutes to downtown STL run 35-50 minutes — buyers who land here rarely leave.",
+      desc:  "O’Fallon, St. Peters, Wentzville, St. Charles, Lake St. Louis, Cottleville. Across the Missouri River, along I-70 and Highway 364: newer subdivisions, a separate county government and its own tax bills. Check the commute from the exact address before you commit.",
       groups: ["St. Charles County"],
       tags:   [],
       scoreFn: function (a) {
@@ -921,7 +929,7 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
       icon:  "🔑",
       color: "#c084fc",
       archetype: "Maximum Value",
-      desc:  "Florissant, Hazelwood, Bridgeton, St. Ann, Jennings, and more. North County is the most overlooked value play in the metro. Florissant in particular has historic character, solid school options, and prices that make first-time buyers do a double-take. Perception consistently lags reality here — which creates real opportunity for buyers who look past it.",
+      desc:  "Florissant, Hazelwood, Black Jack, Bridgeton, St. Ann and more. Some of the lowest prices in St. Louis County: 2026 medians ran up to $316,000 in Bridgeton, with Florissant at $180,000 across 167 sales. Mostly houses from the 1950s to the 1970s.",
       groups: ["North County"],
       tags:   [],
       scoreFn: function (a) {
@@ -942,7 +950,7 @@ input[type="range"].nm-range::-webkit-slider-thumb:hover {
       icon:  "🌲",
       color: "#6ee7b7",
       archetype: "Nature & Space",
-      desc:  "Arnold, Festus, Imperial, High Ridge, Hillsboro. Jefferson County is for buyers who want land, trees, and real quiet — and are willing to drive for it. Prices are low, lots are large, and the pace is different. Commutes to South City and South County jobs run 25-40 minutes; to downtown, longer.",
+      desc:  "Arnold, Festus, Imperial, High Ridge, Hillsboro, Eureka’s south side. South of the Meramec River, with more land and the region’s newest resale houses. 2026 medians ran from $222,000 in De Soto to $469,900 on the Jefferson County side of Eureka.",
       groups: ["Jefferson County"],
       tags:   [],
       scoreFn: function (a) {
