@@ -76,6 +76,8 @@ TOPICS = [
      ['articles/lessons-from-a-sale-ste-genevieve-septic']),
     (['list price', 'pricing', 'price my home', 'price my house', 'worth', 'home value', 'comps', 'comparable', 'listing agent'],
      ['articles/how-george-works-with-sellers', 'articles/lessons-from-a-sale-lindbergh-split-level', 'articles/what-not-to-repair-before-selling-stl-pricing-strategy']),
+    (['price my house', 'pricing my home', 'list price', 'listing price', 'asking price', 'overpriced', 'overpricing', 'price to sell', 'how to price', 'what to list'],
+     ['articles/how-to-price-a-house-to-sell-st-louis', 'articles/how-george-works-with-sellers#find-price', 'articles/when-to-lower-house-price-st-louis', 'articles/zillow-zestimate-accurate-stl']),
     (['price reduction', 'lower the price', 'lower my price', 'no offers', 'no showings', "didn't sell", 'didnt sell', 'expired', 'relist'],
      ['articles/when-to-lower-house-price-st-louis', 'articles/showings-but-no-offers-st-louis', 'articles/no-showings-st-louis-home', 'articles/why-your-st-louis-home-didnt-sell']),
     (['cash offer', 'cash buyer', 'we buy houses', 'investor', 'wholesale', 'wholesaler', 'as is', 'as-is'],
