@@ -80,6 +80,8 @@ PAGES = {
     'articles/how-much-house-afford-making-80k-st-louis.html': 'buyer',
     'articles/how-much-income-to-buy-home-stl.html': 'buyer',
     'articles/how-much-to-offer-on-a-house-st-louis.html': 'fenton',
+    'articles/how-to-get-a-deal-on-a-house-st-louis.html': 'thirtyk',
+    'articles/how-to-price-a-house-to-sell-st-louis.html': 'winterpark',
     'articles/how-to-screen-stl-homes-before-va-offer.html': 'willow',
     'articles/kirkwood-vs-webster-groves-st-louis.html': 'buyer',
     'articles/lindbergh-vs-mehlville-school-district-stl.html': 'lindbergh',
