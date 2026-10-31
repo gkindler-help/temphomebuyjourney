@@ -76,6 +76,10 @@ a{color:var(--gold);text-decoration:none;}
 .intro-stack{position:absolute;inset:0;z-index:-2;display:flex;flex-direction:column;align-items:center;padding-top:min(7%,48px);}
 .intro-photo{display:block;width:min(100%,calc(54svh * 1.5));aspect-ratio:3/2;height:auto;object-fit:cover;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 78%,transparent 100%);}
 @media (min-aspect-ratio:1/1){.intro-photo{width:min(100%,calc(44svh * 1.5));-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 80%,transparent 100%),linear-gradient(90deg,transparent 0,#000 10%,#000 90%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 80%,transparent 100%),linear-gradient(90deg,transparent 0,#000 10%,#000 90%,transparent 100%);mask-composite:intersect;}}
+.intro-quad{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;background:#000;overflow:hidden;}
+@media (max-width:599px){.intro-quad{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));aspect-ratio:1/1;}}
+@media (min-aspect-ratio:1/1){.intro-quad{width:min(92%,calc(58svh * 1.8));aspect-ratio:1.8/1;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 10%,#000 82%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 10%,#000 82%,transparent 100%);}}
+.intro-quad img{display:block;width:100%;height:100%;object-fit:cover;min-width:0;}
 .intro-logo{display:block;width:min(86%,440px);height:auto;margin-top:clamp(18px,3svh,32px);filter:drop-shadow(0 2px 10px rgba(0,0,0,.55));}
 .intro-shade{position:absolute;inset:0;z-index:-1;opacity:0;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 45%,rgba(0,0,0,.72) 70%,rgba(0,0,0,.94) 100%);}
 .intro-copy{text-align:center;padding:0 20px calc(clamp(28px,6svh,64px) + 56px);max-width:760px;margin:0 auto;}
@@ -313,6 +317,7 @@ a{color:var(--gold);text-decoration:none;}
 @media(max-width:640px){.hp-season-grid{grid-template-columns:1fr;}.hp-season-card{padding:18px 14px 14px;}}
 </style>
 <style data-hub-from>.from-grid{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:28px;}.from-grid a{display:block;height:100%;padding:18px 18px 16px;border:1px solid var(--gold-line);border-radius:12px;background:rgba(255,204,77,.03);}.from-grid a:hover{border-color:var(--gold);}.from-grid strong{display:block;font-family:'Playfair Display',serif;font-size:20px;color:#fff;margin-bottom:6px;}.from-grid span{display:block;font-size:14px;line-height:1.55;color:var(--mute);}.from-grid em{display:block;margin-top:10px;font-style:normal;font-size:13px;font-weight:700;color:var(--gold);}.from-job{margin-top:22px;font-size:15px;color:var(--mute);}.from-job a{color:var(--gold);font-weight:600;}</style>
+<style>.close-ask{max-width:36em;margin:0 auto 22px;font-size:16px;line-height:1.55;color:var(--soft);}.close-ask a,.move-zl a{color:var(--gold);font-weight:600;}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -336,7 +341,12 @@ a{color:var(--gold);text-decoration:none;}
 <section class="intro" aria-labelledby="hero-h1" data-intro>
   <div class="intro-frame">
     <div class="intro-stack">
-      <img class="intro-photo" src="/assets/lessons/maple-avenue/7441-maple-avenue-maplewood.webp" alt="A white brick two-story home with a covered front porch in Maplewood, one of the inner-ring St.&nbsp;Louis suburbs" width="1200" height="900" fetchpriority="high">
+      <div class="intro-photo intro-quad" role="group" aria-label="Four kinds of St.&nbsp;Louis houses">
+        <img src="/assets/carondelet-brick-flat-listing-01.jpg" alt="A two-story red brick flat in Carondelet, St.&nbsp;Louis City" width="1200" height="1598" style="object-position:50% 40%" fetchpriority="high">
+        <img src="/assets/southampton-tudor-bungalow-listing-01.jpg" alt="A brick Tudor bungalow with an arched front door in Southampton, South St.&nbsp;Louis City" width="1200" height="900" style="object-position:58% 50%">
+        <img src="/assets/hero/the-hill-two-story-front-porch-01.webp" alt="A two-story frame house with a covered front porch between brick neighbors on The Hill, St.&nbsp;Louis City" width="1400" height="1051" style="object-position:44% 50%">
+        <img src="/assets/west-county-two-story-01.jpg" alt="A two-story house with a front porch and side garage in West St.&nbsp;Louis County" width="1200" height="901" style="object-position:72% 55%">
+      </div>
       <img class="intro-logo" src="/assets/brand/stlhj-key-logo-gold.webp" alt="STL Home Journey" width="1320" height="593">
     </div>
     <div class="intro-shade"></div>
@@ -349,6 +359,7 @@ a{color:var(--gold);text-decoration:none;}
         <a class="btn btn-ghost" href="/neighborhoods/">Explore St.&nbsp;Louis Neighborhoods</a>
       </div>
       <p class="hero-ask ifade">Planning a move? <a href="/ask?about=general&amp;from=/articles/moving-to-st-louis">Tell George where you&rsquo;re coming from and when &rarr;</a></p>
+      <p class="hero-ask ifade">One text or email with the city you&rsquo;re leaving and your timeline is enough to start. <a href="sms:3144351087?&amp;body=Hi%20George%2C%20I%27m%20moving%20to%20St.%20Louis%20from%20" data-move-cta="text">Text George</a> &middot; <a href="mailto:georgeandlizk@gmail.com?subject=Moving%20to%20St.%20Louis" data-move-cta="email">Email George</a></p>
     </div>
     <a class="intro-arrow" href="#relocation-gap" aria-label="Scroll to what relocation guides can&rsquo;t tell you"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></a>
   </div>
@@ -515,6 +526,7 @@ a{color:var(--gold);text-decoration:none;}
       <h2 id="remote-h">Can you buy a house here before you move here?</h2>
       <p class="q-thought">&ldquo;We can&rsquo;t fly in every weekend. Can we still buy?&rdquo;</p>
       <p class="q-body">Yes, with a lender lined up first and an agent who becomes your eyes on the house. Get preapproved before you look, have your agent walk the house on live video and record it so you can revisit it, use the inspection to see what video can&rsquo;t, do the final walk-through on video, and close remotely through the title company.</p><p class="q-body">My buyer was living in Denver, moving back home to St.&nbsp;Louis, and saw the house once, at an open house. I walked it on video, saved 360 photos to a shared folder, did the final walk-through on video, and the buyer closed remotely; a family member picked up the keys. Going forward I&rsquo;m using private 3D tours.</p>
+      <p class="q-body move-zl">Searching from out of town? Before you give Zillow your number, read who&rsquo;ll be calling. You can text me any address instead, and you&rsquo;ll hear from me, not a sales team trained to book an appointment. <a href="/articles/what-happens-when-you-click-zillow#text-me-the-address">What happens when you click Zillow &rarr;</a></p>
       <ol class="layers" aria-label="Buying from out of state"><li>Lender first</li><li>Live video walk-through</li><li>360 photos or a 3D tour to revisit</li><li>Inspection and repair agreement</li><li>Video final walk-through and remote closing</li></ol>
     </div>
     <div>
@@ -568,6 +580,7 @@ a{color:var(--gold);text-decoration:none;}
 <section class="close" aria-labelledby="close-h">
   <div class="wrap">
     <p class="big" id="close-h">Moving to St.&nbsp;Louis? Start with the address, not the listing.</p>
+    <p class="close-ask">One text or email with the city you&rsquo;re leaving and your timeline is enough to start. <a href="sms:3144351087?&amp;body=Hi%20George%2C%20I%27m%20moving%20to%20St.%20Louis%20from%20" data-move-cta="text">Text George</a> &middot; <a href="mailto:georgeandlizk@gmail.com?subject=Moving%20to%20St.%20Louis" data-move-cta="email">Email George</a></p>
     <div class="cta-row">
       <a class="btn btn-primary" href="/articles/st-louis-city-vs-county">City vs. County, Explained</a>
       <a class="btn btn-ghost" href="/articles/where-to-live-in-st-louis">Where to Live in St.&nbsp;Louis</a>
@@ -661,5 +674,6 @@ a{color:var(--gold);text-decoration:none;}
 </script>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("[data-move-cta]");if(a&&typeof window.gtag==="function")window.gtag("event","move_contact_click",{method:a.getAttribute("data-move-cta")});});</script>
 </body>
 </html>
