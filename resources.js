@@ -458,10 +458,10 @@ window.RESOURCES_REGISTRY = [
   ══════════════════════════════════════════════════════════ */
 
   {
-    id:      'art-south-county-stl-neighborhood-guide',
-    title:   'South County St. Louis Neighborhood Guide',
+    id:      'art-south-county-hub',
+    title:   'South County St. Louis: 2026 Prices, Schools and Roads',
     summary: 'The full buyer\'s guide to South County — nine communities, school districts, market speed, and what each area actually feels like.',
-    url:     'articles/south-county-stl-neighborhood-guide',
+    url:     'south-county-st-louis',
     tool:    false,
     citations: [
       { chapter: 2, scene: 0, context: 'Considering South County? Here is the full picture — neighborhoods, school districts, and price ranges.' },

@@ -1932,7 +1932,7 @@ function closeDrawer() {
         tag: "Buyers",
         articles: [
           { title: "Explore All School Districts", url: "school-districts" },
-          { title: "South County Neighborhood Guide", url: "articles/south-county-stl-neighborhood-guide" },
+          { title: "South County St. Louis (2026 Sales)", url: "south-county-st-louis" },
           { title: "South County Neighborhoods by Price", url: "articles/south-county-stl-neighborhoods-by-price" },
           { title: "Oakville Home Buying Guide (2026 Sales Data)", url: "neighborhoods/oakville" },
           { title: "Lindbergh vs. Mehlville School Districts", url: "articles/lindbergh-vs-mehlville-school-district-stl" },
