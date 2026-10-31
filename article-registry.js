@@ -55,7 +55,7 @@ window.ARTICLE_REGISTRY = {
       slug: "neighborhoods",
       audience: "buyer",
       description: "What buyers actually need to know before committing to a St. Louis neighborhood -- schools, price tiers, tradeoffs, and honest comparisons.",
-      hubSlug: "south-county-stl-neighborhood-guide",
+      hubSlug: "south-county-stl-neighborhoods-by-price",
       toolLink: null
     },
     "va-buyer": {
@@ -512,20 +512,6 @@ window.ARTICLE_REGISTRY = {
     /* ── BUYER: NEIGHBORHOOD GUIDES SERIES ── */
 
 
-    {
-      slug: "south-county-stl-neighborhood-guide",
-      title: "South County St. Louis Neighborhood Guide: The Full Buyer Overview",
-      shortTitle: "South County Neighborhood Guide",
-      description: "South St. Louis County covers 9 communities from Lemay to Sunset Hills -- price tiers, school districts, market speed, and which neighborhood fits which buyer.",
-      pillLabel: "South County Guide",
-      audience: "buyer",
-      series: "neighborhoods",
-      isHub: true,
-      chapters: [2, 3],
-      tags: ["neighborhoods", "south-county", "buyer-guide", "schools", "price-tiers", "market-speed"],
-      toolLink: null,
-      published: true
-    },
     {
       slug: "south-county-stl-neighborhoods-by-price",
       title: "South County St. Louis Neighborhoods by Price: From $152K to $523K",

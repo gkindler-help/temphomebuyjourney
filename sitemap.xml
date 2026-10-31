@@ -667,12 +667,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/articles/south-county-stl-neighborhood-guide</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://stlhomejourney.com/articles/south-county-stl-neighborhoods-by-price</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -770,7 +764,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/articles/where-to-live-in-st-louis</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
