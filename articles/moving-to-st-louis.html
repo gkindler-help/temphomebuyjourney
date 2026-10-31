@@ -313,6 +313,7 @@ a{color:var(--gold);text-decoration:none;}
 @media(max-width:640px){.hp-season-grid{grid-template-columns:1fr;}.hp-season-card{padding:18px 14px 14px;}}
 </style>
 <style data-hub-from>.from-grid{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:28px;}.from-grid a{display:block;height:100%;padding:18px 18px 16px;border:1px solid var(--gold-line);border-radius:12px;background:rgba(255,204,77,.03);}.from-grid a:hover{border-color:var(--gold);}.from-grid strong{display:block;font-family:'Playfair Display',serif;font-size:20px;color:#fff;margin-bottom:6px;}.from-grid span{display:block;font-size:14px;line-height:1.55;color:var(--mute);}.from-grid em{display:block;margin-top:10px;font-style:normal;font-size:13px;font-weight:700;color:var(--gold);}.from-job{margin-top:22px;font-size:15px;color:var(--mute);}.from-job a{color:var(--gold);font-weight:600;}</style>
+<style>.close-ask{max-width:36em;margin:0 auto 22px;font-size:16px;line-height:1.55;color:var(--soft);}.close-ask a,.move-zl a{color:var(--gold);font-weight:600;}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -349,6 +350,7 @@ a{color:var(--gold);text-decoration:none;}
         <a class="btn btn-ghost" href="/neighborhoods/">Explore St.&nbsp;Louis Neighborhoods</a>
       </div>
       <p class="hero-ask ifade">Planning a move? <a href="/ask?about=general&amp;from=/articles/moving-to-st-louis">Tell George where you&rsquo;re coming from and when &rarr;</a></p>
+      <p class="hero-ask ifade">One text or email with the city you&rsquo;re leaving and your timeline is enough to start. <a href="sms:3144351087?&amp;body=Hi%20George%2C%20I%27m%20moving%20to%20St.%20Louis%20from%20" data-move-cta="text">Text George</a> &middot; <a href="mailto:georgeandlizk@gmail.com?subject=Moving%20to%20St.%20Louis" data-move-cta="email">Email George</a></p>
     </div>
     <a class="intro-arrow" href="#relocation-gap" aria-label="Scroll to what relocation guides can&rsquo;t tell you"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></a>
   </div>
@@ -515,6 +517,7 @@ a{color:var(--gold);text-decoration:none;}
       <h2 id="remote-h">Can you buy a house here before you move here?</h2>
       <p class="q-thought">&ldquo;We can&rsquo;t fly in every weekend. Can we still buy?&rdquo;</p>
       <p class="q-body">Yes, with a lender lined up first and an agent who becomes your eyes on the house. Get preapproved before you look, have your agent walk the house on live video and record it so you can revisit it, use the inspection to see what video can&rsquo;t, do the final walk-through on video, and close remotely through the title company.</p><p class="q-body">My buyer was living in Denver, moving back home to St.&nbsp;Louis, and saw the house once, at an open house. I walked it on video, saved 360 photos to a shared folder, did the final walk-through on video, and the buyer closed remotely; a family member picked up the keys. Going forward I&rsquo;m using private 3D tours.</p>
+      <p class="q-body move-zl">Searching from out of town? Before you give Zillow your number, read who&rsquo;ll be calling. You can text me any address instead, and you&rsquo;ll hear from me, not a sales team trained to book an appointment. <a href="/articles/what-happens-when-you-click-zillow#text-me-the-address">What happens when you click Zillow &rarr;</a></p>
       <ol class="layers" aria-label="Buying from out of state"><li>Lender first</li><li>Live video walk-through</li><li>360 photos or a 3D tour to revisit</li><li>Inspection and repair agreement</li><li>Video final walk-through and remote closing</li></ol>
     </div>
     <div>
@@ -568,6 +571,7 @@ a{color:var(--gold);text-decoration:none;}
 <section class="close" aria-labelledby="close-h">
   <div class="wrap">
     <p class="big" id="close-h">Moving to St.&nbsp;Louis? Start with the address, not the listing.</p>
+    <p class="close-ask">One text or email with the city you&rsquo;re leaving and your timeline is enough to start. <a href="sms:3144351087?&amp;body=Hi%20George%2C%20I%27m%20moving%20to%20St.%20Louis%20from%20" data-move-cta="text">Text George</a> &middot; <a href="mailto:georgeandlizk@gmail.com?subject=Moving%20to%20St.%20Louis" data-move-cta="email">Email George</a></p>
     <div class="cta-row">
       <a class="btn btn-primary" href="/articles/st-louis-city-vs-county">City vs. County, Explained</a>
       <a class="btn btn-ghost" href="/articles/where-to-live-in-st-louis">Where to Live in St.&nbsp;Louis</a>
@@ -661,5 +665,6 @@ a{color:var(--gold);text-decoration:none;}
 </script>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
+<script>document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("[data-move-cta]");if(a&&typeof window.gtag==="function")window.gtag("event","move_contact_click",{method:a.getAttribute("data-move-cta")});});</script>
 </body>
 </html>
