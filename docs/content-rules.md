@@ -30,6 +30,8 @@ Pages are built to be quoted by AI tools and still read well top to bottom.
 - No "working to verify," "not confirmed" or "could not be verified" text on public pages.
 - Fix typos and repeated sentences whenever you find them.
 
+- **MLS sales: no sale lists (George, 2026-11-02):** never publish a list of individual sales or comps (rows of sold homes with their prices or details), on a page or in a data file shipped to the browser. Group figures are fine: counts, medians, middle-50% ranges, shares, and the highest and lowest sale. Tools that filter small groups show only the count when fewer than 5 sales match, because a 1–4 sale group is effectively a sale record and thousands of them can be reassembled into a list. George's own transactions (Lessons From a Sale) are his to tell.
+
 ## 3. House style ("better safe than sorry")
 
 - Don't make school-quality or reputation claims, and don't rank or editorialize about schools. Cited facts, such as DESE APR scores, are fine when stated plainly.
