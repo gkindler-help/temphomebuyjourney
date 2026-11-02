@@ -19,7 +19,7 @@
     'Rockwood R-VI': 'rockwood-school-district', 'University City': 'university-city-school-district',
     'Webster Groves': 'webster-groves-school-district'
   };
-  var MIN_N = 5; // aggregates only: no price shown for fewer than 5 sales
+  var MIN_N = 5; // no sale lists: groups under 5 show the count only
   var F = { n: 0, median: 1, p25: 2, p75: 3, sqft: 4, year: 5, cdom: 6, ratio: 7, aboveN: 8, origN: 9, low: 10, high: 11, hist: 12 };
 
   // ── Engine (pure functions over aggregates, exposed for testing) ──
@@ -249,6 +249,7 @@
         '<dt>Middle 50% of sale prices</dt><dd>' + (s.count >= 2 ? money(s.p25) + '–' + money(s.p75) : '—') + '</dd>' +
         '<dt>Median days on market</dt><dd>' + (s.cdom == null ? '—' : s.cdom) + '</dd>' +
         '<dt>Sold above original asking</dt><dd>' + pct1(s.above) + '</dd>' +
+        '<dt>Lowest / highest matching sale</dt><dd>' + money(s.low) + ' / ' + money(s.high) + '</dd>' +
         (wb != null ? '<dt>Within your budget</dt><dd>' + wb + ' of ' + s.count + '</dd>' : '') +
         '</dl>' +
         '<p class="extra">Median ' + num(s.sqft) + ' sq. ft. · built ' + yearTxt(s.year) + ' · median sale at ' + (s.ratio == null ? '—' : (s.ratio * 100).toFixed(1) + '%') + ' of original list</p>' +
