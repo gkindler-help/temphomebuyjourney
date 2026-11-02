@@ -32,6 +32,8 @@ Pages are built to be quoted by AI tools and still read well top to bottom.
 
 - **MLS sales: no sale lists (George, 2026-11-02):** never publish a list of individual sales or comps (rows of sold homes with their prices or details), on a page or in a data file shipped to the browser. Group figures are fine: counts, medians, middle-50% ranges, shares, and the highest and lowest sale. Tools that filter small groups show only the count when fewer than 5 sales match, because a 1–4 sale group is effectively a sale record and thousands of them can be reassembled into a list. George's own transactions (Lessons From a Sale) are his to tell.
 
+- **Cast iron drain pipe (George, 2026-11-02):** builders phased cast iron drain pipe out for plastic between about 1968 and 1972. Homes built before then started with cast iron; some 1970s homes still have it; newer homes have plastic. Say "phased out 1968–1972," never a single cutoff year.
+
 ## 3. House style ("better safe than sorry")
 
 - Don't make school-quality or reputation claims, and don't rank or editorialize about schools. Cited facts, such as DESE APR scores, are fine when stated plainly.
