@@ -19,6 +19,7 @@
     'Rockwood R-VI': 'rockwood-school-district', 'University City': 'university-city-school-district',
     'Webster Groves': 'webster-groves-school-district'
   };
+  var MIN_N = 5; // aggregates only: no price shown for fewer than 5 sales
   var F = { n: 0, median: 1, p25: 2, p75: 3, sqft: 4, year: 5, cdom: 6, ratio: 7, aboveN: 8, origN: 9, low: 10, high: 11, hist: 12 };
 
   // ── Engine (pure functions over aggregates, exposed for testing) ──
@@ -235,6 +236,12 @@
     }
 
     function houseCard(d, s, q) {
+      if (s.count < MIN_N) {
+        return '<article class="rcard"><h4>' + esc(d) + '</h4>' +
+          '<dl><dt>Matching closed sales</dt><dd>' + s.count + '</dd></dl>' +
+          '<p class="means"><strong>What this means</strong>Fewer than ' + MIN_N + ' matching sales closed here, so no prices are shown. This house was hard to find in ' + esc(d) + '.</p>' +
+          guideLink(d) + '</article>';
+      }
       var wb = q.max != null ? withinBudget(s, q.max, STEP) : null;
       return '<article class="rcard"><h4>' + esc(d) + '</h4>' +
         '<dl><dt>Matching closed sales</dt><dd>' + s.count + '</dd>' +
@@ -242,7 +249,6 @@
         '<dt>Middle 50% of sale prices</dt><dd>' + (s.count >= 2 ? money(s.p25) + '–' + money(s.p75) : '—') + '</dd>' +
         '<dt>Median days on market</dt><dd>' + (s.cdom == null ? '—' : s.cdom) + '</dd>' +
         '<dt>Sold above original asking</dt><dd>' + pct1(s.above) + '</dd>' +
-        '<dt>Lowest / highest matching sale</dt><dd>' + money(s.low) + ' / ' + money(s.high) + '</dd>' +
         (wb != null ? '<dt>Within your budget</dt><dd>' + wb + ' of ' + s.count + '</dd>' : '') +
         '</dl>' +
         '<p class="extra">Median ' + num(s.sqft) + ' sq. ft. · built ' + yearTxt(s.year) + ' · median sale at ' + (s.ratio == null ? '—' : (s.ratio * 100).toFixed(1) + '%') + ' of original list</p>' +
@@ -280,7 +286,7 @@
           (others.length ? '<ul>' + others.map(function (x) { return '<li>' + esc(x.d) + ': <span class="big">' + x.n + '</span></li>'; }).join('') + '</ul>' : '<p>No other district had a matching sale.</p>') + '</div>');
       }
       cards.push('<div class="give-card"><h4>Wait</h4><p>Only ' + fc + ' matching home' + (fc === 1 ? '' : 's') + ' closed during the ' + STUDY_DAYS + '-day study period.</p><p>That tells you this house type appeared infrequently in the historical sales data. It does not predict when the next one will be listed.</p></div>');
-      return '<div class="give"><h3>Something Has to Give. Which Change Creates the Most Options?</h3><p class="fine" style="font-size:13px;color:var(--text-muted);">Each card changes one thing from your current search and keeps everything else the same.</p><div class="give-grid">' + cards.join('') + '</div></div>';
+      return '<div class="give"><h3>Something Has to Give. Which Change Creates the Most Options?</h3><p class="fine" style="font-size:13px;color:var(--text-muted);">Each card changes one thing from your current search and keeps everything else the same. With a price set, districts with fewer than 5 matching sales aren’t counted.</p><div class="give-grid">' + cards.join('') + '</div></div>';
     }
 
     function renderHouse() {
@@ -296,20 +302,23 @@
         var withM = rows.filter(function (x) { return x.s; }), zero = rows.filter(function (x) { return !x.s; }).map(function (x) { return x.d; });
         withM.sort(function (a, b) { return (b.s.count - a.s.count) || (a.s.median - b.s.median); });
         var all = withM.reduce(function (n, x) { return n + x.s.count; }, 0);
-        var inBudget = q.max != null ? withM.reduce(function (n, x) { return n + withinBudget(x.s, q.max, STEP); }, 0) : null;
-        var budgetLine = q.max != null ? '<p>' + inBudget + ' of ' + (all === 1 ? 'that sale' : 'those ' + all + ' sales') + ' closed at or below ' + money(q.max) + '.</p>' : '';
+        var inBudget = q.max != null ? withM.reduce(function (n, x) { return n + (x.s.count >= MIN_N ? withinBudget(x.s, q.max, STEP) : 0); }, 0) : null;
+        var smallN = withM.filter(function (x) { return x.s.count < MIN_N; }).length;
+        var budgetLine = q.max != null && !smallN ? '<p>' + inBudget + ' of ' + (all === 1 ? 'that sale' : 'those ' + all + ' sales') + ' closed at or below ' + money(q.max) + '.</p>' : '';
         var head;
         if (sel.length === 2 && withM.length === 2) {
           var A = withM[0], B = withM[1];
           head = '<h3>Same basic house. Different housing decision.</h3>' +
-            '<p>In ' + esc(A.d) + ', ' + A.s.count + ' matching homes sold at a median of ' + money(A.s.median) + '.</p>' +
-            '<p>In ' + esc(B.d) + ', ' + B.s.count + ' matching homes sold at a median of ' + money(B.s.median) + '.</p>' +
-            '<p>The difference isn’t just ' + money(Math.abs(A.s.median - B.s.median)) + '.</p>' +
+            (A.s.count >= MIN_N && B.s.count >= MIN_N
+              ? '<p>In ' + esc(A.d) + ', ' + A.s.count + ' matching homes sold at a median of ' + money(A.s.median) + '.</p>' +
+                '<p>In ' + esc(B.d) + ', ' + B.s.count + ' matching homes sold at a median of ' + money(B.s.median) + '.</p>' +
+                '<p>The difference isn’t just ' + money(Math.abs(A.s.median - B.s.median)) + '.</p>'
+              : '<p>' + A.s.count + ' matching home' + (A.s.count === 1 ? '' : 's') + ' sold in ' + esc(A.d) + ' and ' + B.s.count + ' in ' + esc(B.d) + '. Where fewer than ' + MIN_N + ' sold, no prices are shown.</p>') +
             '<p>It’s also ' + A.s.count + ' historical opportunities versus ' + B.s.count + '.</p>';
         } else if (sel.length === 1 && withM.length === 1) {
           var S = withM[0].s, D = withM[0].d;
           head = S.count < 5
-            ? '<h3>Your budget might not be the problem. The house itself was hard to find.</h3><p>Only ' + S.count + ' home' + (S.count === 1 ? '' : 's') + ' matching your criteria closed in ' + esc(D) + ' during the study period.</p><p>The median matching sale was ' + money(S.median) + ', but with this few sales, the count may be more useful than the median.</p><p>You could have enough money to buy one and still have very few opportunities to act.</p>'
+            ? '<h3>Your budget might not be the problem. The house itself was hard to find.</h3><p>Only ' + S.count + ' home' + (S.count === 1 ? '' : 's') + ' matching your criteria closed in ' + esc(D) + ' during the study period.</p><p>With fewer than ' + MIN_N + ' sales, no price is shown: the count is the useful number.</p><p>You could have enough money to buy one and still have very few opportunities to act.</p>'
             : '<h3>This house showed up here more often.</h3><p>' + S.count + ' homes matching your criteria closed in ' + esc(D) + ' during the study period.</p><p>The median matching sale was ' + money(S.median) + ', with the middle half of matching sales between ' + money(S.p25) + ' and ' + money(S.p75) + '.</p><p>That gives you both sides of the decision: what similar homes cost and how often buyers actually had a chance to purchase one.</p>';
         } else if (!withM.length) {
           head = '<h3>No matching closed sales.</h3><p>No homes matching ' + esc(describe(q)) + ' closed in the selected district' + (sel.length === 1 ? '' : 's') + ' during the study period.</p>';
