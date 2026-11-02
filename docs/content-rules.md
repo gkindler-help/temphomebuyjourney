@@ -34,6 +34,8 @@ Pages are built to be quoted by AI tools and still read well top to bottom.
 
 - **Cast iron drain pipe (George, 2026-11-02):** builders phased cast iron drain pipe out for plastic between about 1968 and 1972. Homes built before then started with cast iron; some 1970s homes still have it; newer homes have plastic. Say "phased out 1968–1972," never a single cutoff year.
 
+- **Pre-offer question ownership (George, 2026-11-02):** articles/what-to-look-for-buying-house-stl (the walkthrough checklist) owns generic "what do I look for in a St. Louis house" questions (water, panel brands, roof, cracks, grading, knob-and-tube, radon, fresh paint, sewer scope). articles/how-to-screen-stl-homes-before-va-offer owns VA showing screening. The planned Before You Offer tool page (not built yet) owns house-specific pre-offer questions only: whether a house is priced above its like-kind sales; how condition moves value within the comps; how much Zillow's square footage can overstate value; what a panel permit sticker tells you (when the electrical system was updated: a new panel gets an electrical inspection); how to tell furnace, A/C and water heater age (serial numbers; date sticker; olive green tops are '70s–'80s); how to tell if the sewer line was replaced (a broken-out, newer section of concrete at the floor drain, or a newer stack tied into original cast iron); and the cast iron to plastic changeover. Everything else on that page is a short answer and a link to the owner, and only its own questions go in its FAQ schema.
+
 ## 3. House style ("better safe than sorry")
 
 - Don't make school-quality or reputation claims, and don't rank or editorialize about schools. Cited facts, such as DESE APR scores, are fine when stated plainly.
