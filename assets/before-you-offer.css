@@ -106,3 +106,4 @@
 .bo-qa>summary:focus-visible,.bo-qt>summary:focus-visible{outline:2px solid #ffcc4d;outline-offset:2px;border-radius:6px}
 .bo-qt .lp-qa h3{margin:6px 0 4px !important}
 @media(prefers-reduced-motion:reduce){.bo-tool *{scroll-behavior:auto !important}}
+.bo-disc,.bo-sec p.bo-disc{font-size:12.5px;color:rgba(255,255,255,.6);border-left:2px solid rgba(255,204,77,.5);padding:2px 0 2px 10px;margin:8px 0 4px}
