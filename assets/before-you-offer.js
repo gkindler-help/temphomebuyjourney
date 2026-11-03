@@ -27,7 +27,7 @@
   var DOML = { '0': '0–4 days', '5': '5–7 days', '8': '8–14 days', '15': '15–30 days', '31': '31–60 days', '61': '61–90 days', '91': '91+ days' };
   var COND = { work: 0, orig: 0.28, upd: 0.55, reno: 1 };
   var CONDL = { work: 'needs work', orig: 'original, kept up', upd: 'partly updated', reno: 'recently renovated' };
-  var FIELDS = ['sd', 'city', 'away', 'sqft', 'style', 'beds', 'cond', 'list', 'yr', 'found', 'sewer', 'loan', 'dom', 'cut'];
+  var FIELDS = ['sd', 'city', 'away', 'sqft', 'style', 'beds', 'baths', 'cond', 'list', 'yr', 'found', 'sewer', 'loan', 'dom', 'cut'];
   var L = {
     inspect: ['Home inspections in St. Louis', '/articles/home-inspection-st-louis'],
     repair: ['Repair cost guide', '/articles/stl-home-repair-cost-guide'],
@@ -42,23 +42,38 @@
   function answers() {
     var a = {};
     FIELDS.forEach(function (f) { a[f] = val('bo-' + f); });
-    a.sqft = +a.sqft; a.list = +a.list; a.beds = +a.beds;
+    a.sqft = +a.sqft; a.list = +a.list; a.beds = +a.beds; a.baths = +a.baths;
+    a.jeff = DATA.jeffco.districts.indexOf(a.sd) >= 0;
     return a;
   }
 
   // ---------- value ----------
+  var JSTEPS = ['Same district, same beds and baths, same style, within 200 sq ft', 'Same district, same beds and baths, any style, within 200 sq ft'];
+  function jeffValue(a) {
+    var base = a.sd + '|' + Math.min(a.beds, 8) + '-' + a.baths + '|' + a.sqft + '|', sk = a.style === 'R' ? 'R' : a.style === 'T' ? 'T' : null;
+    var tries = [sk ? DATA.jeffco.comps[base + sk] : null, DATA.jeffco.comps[base + '*']];
+    var step = tries[0] && tries[0][0] >= 8 ? 0 : tries[1] && tries[1][0] >= 8 ? 1 : tries[0] ? 0 : tries[1] ? 1 : -1;
+    if (step < 0) return { html: '<p>Fewer than 5 like-kind 2026 sales in ' + esc(a.sd) + ' for this many beds and baths at this size. Jefferson County has fewer sales, so this happens more often here: exactly when you want me to pull comps by hand.</p>' };
+    var g = tries[step], thin = g[0] < 8;
+    // g: n, p25, median, p75, sale/list %, median days on market, median year built
+    return { g: [g[0], g[1], g[2], g[3], g[4], g[5]], year: g[6], counts: tries.map(function (t) { return t ? t[0] : 0; }), step: step, thin: thin, steps: JSTEPS };
+  }
   function value(a) {
-    var A = DATA.comps[a.sd + '|' + ERA[a.yr] + '|' + a.sqft + '|' + a.style];
+    var J = a.jeff ? jeffValue(a) : null;
+    if (J && J.html) return J;
+    var A = J ? [J.counts, J.step, J.g, J.thin ? 1 : 0] : DATA.comps[a.sd + '|' + ERA[a.yr] + '|' + a.sqft + '|' + a.style];
+    var STEPSU = J ? J.steps : STEPS;
     if (!A) return { html: '<p>Fewer than 5 like-kind 2026 sales, even after widening the search. That usually means an unusual house: exactly when you want me to pull comps by hand.</p>' };
     var counts = A[0], step = A[1], g = A[2], thin = A[3];
     var lo = g[1], mid = g[2], hi = g[3], est = lo + (hi - lo) * COND[a.cond];
     var pct = function (x) { return Math.max(0, Math.min(100, (x - lo) / (hi - lo || 1) * 100)); };
     var h = '<p>Like-kind sales are where I start to identify value. From here, we narrow it down by condition. If the house is older and original, the value moves toward the bottom of this range. If it was recently renovated, we’re looking at the top of these comparable homes. Either way, it’s a strong starting point for positioning your offer.</p>';
-    h += '<details class="bo-sub"><summary>How I pulled the comps: ' + g[0] + ' like-kind sales</summary><div class="bo-ring">' + STEPS.map(function (t, i) {
+    h += '<details class="bo-sub"><summary>How I pulled the comps: ' + g[0] + ' like-kind sales</summary><div class="bo-ring">' + STEPSU.map(function (t, i) {
       var used = i === step;
       return '<div class="bo-step' + (used ? ' used' : i > step ? ' later' : '') + '"><span>' + (used ? '✓ ' : i < step ? '↓ ' : '') + t + '</span><span>' + (i > step ? '' : counts[i] ? counts[i] + ' sales' : 'fewer than 5') + '</span></div>';
-    }).join('') + (thin ? '<div class="bo-thin">Thin sample: read this one as directional.</div>' : '') + '</div></details>';
-    h += '<div class="bo-big">' + fm(r5(lo)) + ' – ' + fm(r5(hi)) + '</div><div class="bo-mut">Middle of ' + g[0] + ' like-kind sales: ' + fm(r5(mid)) + ' · ' + SFL[a.sqft] + ' sq ft above ground</div>';
+    }).join('') + (thin ? '<div class="bo-thin">Thin sample: read this one as directional.</div>' : '') + (J ? '<div class="bo-thin">Jefferson County comps don’t match on year built yet. These sales had a median build year of ' + Math.round(J.year) + '.</div>' : '') + '</div></details>';
+    h += '<div class="bo-big">' + fm(r5(lo)) + ' – ' + fm(r5(hi)) + '</div><div class="bo-mut">Middle of ' + g[0] + ' like-kind sales: ' + fm(r5(mid)) + ' · ' + SFL[a.sqft] + ' sq ft above ground</div>' +
+      '<p class="bo-disc">A starting point, not a value. The best read on value is an agent’s comparative market analysis of the actual house. Use this to know where to start and what to ask.</p>';
     if (a.away === 'oos' && a.found === 'bsmt') h += '<p class="bo-mut">Coming from a state where houses sit on slabs? The basement here is a whole extra level, but it isn’t in the square footage these comps count. <a href="/articles/moving-to-st-louis#house">Basements and square footage &rarr;</a></p>';
     h += '<div class="bo-bar"><div class="bo-track"><span class="bo-dot" style="left:calc(' + pct(est) + '% - 9px)"></span>' + (a.list ? '<span class="bo-list" style="left:calc(' + pct(a.list) + '% - 1px)"></span>' : '') + '</div><div class="bo-ends"><span>Original or needs work</span><span>Renovated</span></div></div>';
     h += '<p class="bo-vs">For a <b>' + CONDL[a.cond] + '</b> house, I’d start around <b>' + fm(r5(est)) + '</b>.' + (a.list ? ' The thin line is the list price' + (a.list > hi ? ', above the top of the range' : a.list < lo ? ', below the bottom of the range' : '') + '.' : '') + '</p>';
@@ -67,7 +82,7 @@
       gap = (a.list - est) / est * 100;
       h += '<p class="bo-vs">At ' + fm(a.list) + ', it’s listed <b>' + Math.abs(gap).toFixed(0) + '% ' + (gap >= 0 ? 'above' : 'below') + '</b> that starting point.' + (gap > 5 ? ' That gap is your room to negotiate, especially if it’s been sitting.' : gap < -5 ? ' Priced under the comps: expect competition.' : ' Close to the comps.') + '</p>';
     }
-    h += '<details class="bo-sub"><summary>How these comps sold: ' + g[4].toFixed(1) + '% of list, ' + g[5] + ' days</summary><div class="bo-stats"><div class="bo-stat"><b>' + g[4].toFixed(1) + '%</b><span>median sale vs. original list</span></div><div class="bo-stat"><b>' + g[5] + '</b><span>median days on market</span></div><div class="bo-stat"><b>' + g[6] + ' of ' + g[0] + '</b><span>had cut their price</span></div></div>' +
+    h += '<details class="bo-sub"><summary>How these comps sold: ' + g[4].toFixed(1) + '% of list, ' + g[5] + ' days</summary><div class="bo-stats"><div class="bo-stat"><b>' + g[4].toFixed(1) + '%</b><span>median sale vs. original list</span></div><div class="bo-stat"><b>' + g[5] + '</b><span>median days on market</span></div>' + (J ? '<div class="bo-stat"><b>' + Math.round(J.year) + '</b><span>median year built</span></div>' : '<div class="bo-stat"><b>' + g[6] + ' of ' + g[0] + '</b><span>had cut their price</span></div>') + '</div>' +
       '<p class="bo-mut">The middle half of like-kind 2026 sale prices. Group figures only; no individual sales are shown or stored here. Text me the address and I’ll narrow it with the actual comps and the condition I see.</p></details>';
     return { html: h, est: est, lo: lo, hi: hi, gap: gap };
   }
@@ -98,6 +113,7 @@
         '<p>' + (+a.dom <= 7 ? 'In the first week, homes often sold above list: price close to the comps and keep your terms clean.' : +a.dom <= 14 ? 'By two weeks, the median sale was right at list.' : 'Past 30 days, the bidding-war window has usually passed. Days on market sets your leverage, not your opening number.') + '</p>' +
         '<p class="bo-mut">Grouped by when homes finally sold, from 2,865 St.&nbsp;Louis County sales in 2026. A house at day 40 today may sell later, or not at all.' + (a.cut === 'unk' ? ' Ask whether the price has been cut: it changes this picture.' : '') + '</p>';
     }
+    if (a.jeff) h += '<p class="bo-mut">These days-on-market figures come from St.&nbsp;Louis County sales; Jefferson County doesn’t have its own study yet.</p>';
     return h + '<div class="bo-ring"><b>Before we write, I call the listing agent</b><div>How much activity they’ve had, whether there are offers in hand, whether the seller is flexible on timing or terms, what issues I should know about, and whether the seller is open to repairs if the offer makes sense. Sometimes the answer changes the whole offer. <a href="/articles/how-george-works-with-buyers#listing-agent">What I ask &rarr;</a></div></div>' +
       '<p class="bo-mut"><a href="/articles/when-to-lower-house-price-st-louis">What 2026 price cuts show &rarr;</a> · <a href="/articles/how-much-to-offer-on-a-house-st-louis">How much to offer &rarr;</a></p>';
   }
@@ -124,15 +140,16 @@
   }
 
   function checks(a) {
-    var R = [], old = a.yr === 'pre50' || a.yr === '50s', occ = DATA.occupancy[a.city];
+    var R = [], old = a.yr === 'pre50' || a.yr === '50s', occ = DATA.occupancy[a.city], rule = occ ? occ.rule : null;
     if (a.sewer === 'public') R.push({ w: old ? 90 : 60, t: 'Sewer lateral', why: (old ? 'In a house this age the drain lines started out as cast iron, and the line to the street is often clay tile, where roots get in at the joints. ' : a.yr === '70s' ? 'Cast iron drain pipe was phased out between about 1968 and 1972, so some 1970s homes still have it. ' : 'A newer house has plastic drain pipe, which lowers the risk, but the line to the street still needs a scope. ') + 'Replacement typically runs $4,000 to $12,000 and can pass $15,000, and you won’t see it on a walk-through.',
       insp: 'Camera-scope the lateral all the way to the main, not just a visual. About $150–$300.' + (a.found === 'bsmt' ? ' Tell the inspector what you saw at the floor drain: a new section of concrete, or a newer stack tied into the original cast iron, means part of the line was replaced.' : ''), links: [L.inspect, L.repair] });
     if (a.yr === '50s' || a.yr === '70s') R.push({ w: a.loan === 'va' ? 95 : 80, t: 'Electrical panel (Federal Pacific)', why: 'Homes built about 1950–1980 are the ones most likely to have one. Many insurers won’t write a new policy on it' + (a.loan === 'va' ? ', and a VA appraiser who notes it can condition the loan on replacement.' : '.'),
       insp: 'Identify the panel brand in the report. If it’s Federal Pacific, get an electrician’s replacement quote ($2,000–$4,000 in 2026) before you write the offer.', links: [L.fpe] });
-    if (occ === true) R.push({ w: 85, t: 'Occupancy inspection: ' + a.city + ' requires one', why: a.city + ' requires an occupancy inspection when a house changes hands. Plan on weeks, not days. That failure list isn’t the same as your inspection report.',
+    if (rule === 'yes') R.push({ w: 85, t: 'Occupancy inspection: ' + a.city + ' requires one', why: a.city + ' requires an occupancy inspection when a house changes hands. Plan on weeks, not days. That failure list isn’t the same as your inspection report.',
       insp: 'Nothing extra: this is the local government’s inspection, not yours. Ask for the failure list in writing and compare it with your report.', links: [L.occ, L.nw] });
-    else if (occ === false) R.push({ w: 30, t: 'Occupancy: ' + a.city + ' doesn’t require one to sell', why: a.city + ' doesn’t require an occupancy inspection to sell an existing owner-occupied home. Confirm with the city; rules change.', insp: '', links: [L.occ] });
-    else R.push({ w: 70, t: 'Occupancy: check this city’s rule', why: 'Some County cities require an inspection at sale and some don’t, and the mailing address doesn’t tell you which city you’re in. It can take weeks, so find out before you write.', insp: '', links: [L.occ] });
+    else if (rule === 'no') R.push({ w: 30, t: 'Occupancy: ' + a.city + ' doesn’t require one to sell', why: a.city + ' doesn’t require an occupancy inspection to sell an existing owner-occupied home. Confirm with the city; rules change.', insp: '', links: [L.occ] });
+    else if (rule === 'depends') R.push({ w: 70, t: 'Occupancy: depends where in ' + a.city, why: 'In ' + a.city + ', whether an inspection is required depends on the area, and the mailing address doesn’t tell you. Find out before you write; it can take weeks.', insp: '', links: [L.occ] });
+    else R.push({ w: 70, t: 'Occupancy: check this city’s rule', why: 'Some cities require an inspection at sale and some don’t, and the mailing address doesn’t tell you which city you’re in. It can take weeks, so find out before you write.', insp: '', links: [L.occ] });
     if (a.sewer === 'septic') R.push({ w: a.loan === 'cash' ? 75 : 98, t: 'Septic system', why: 'FHA, VA and conventional loans all need the system working and sanitary at closing. A failing system can shrink the buyer pool, not just add a repair bill.' + (a.loan === 'cash' ? ' Paying cash gives you more room: you can close and fix it on your own timeline.' : ''),
       insp: 'Hire a septic inspection with pumping, separate from the home inspection, inside your inspection period.', links: [L.septic] });
     if (a.found === 'bsmt') R.push({ w: old ? 70 : 55, t: 'Basement water', why: 'White mineral deposits on the walls, staining or a waterline at the floor, patched or painted-over cracks and fresh basement paint all point to water. Find out where it came from and what was done about it.', insp: 'Ask the inspector to note moisture and any patched cracks.', links: [['Signs of water in a basement', '#wt-water']] });
@@ -190,7 +207,7 @@
     sum('bo-checks', R.length + ' checks · first: ' + R[0].t);
     sum('bo-loantxt', LOAN[a.loan] + (a.loan === 'va' || a.loan === 'fha' ? ': what the appraiser will look for' : a.loan === 'cash' ? ': where cash gives you leverage' : ': the appraisal still has to support the price'));
     runBudget();
-    var chips = [a.sd + ' district', occ === undefined ? '' : a.city, a.away === 'oos' ? 'Moving from out of state' : '', SFL[a.sqft] + ' sq ft', STYLE[a.style], a.beds + (a.beds === 5 ? '+' : '') + ' bed', 'Built ' + YR[a.yr],
+    var chips = [a.sd + ' district', occ === undefined ? '' : a.city, a.away === 'oos' ? 'Moving from out of state' : '', SFL[a.sqft] + ' sq ft', STYLE[a.style], a.beds + (a.beds === 5 ? '+' : '') + ' bed', a.baths + (a.baths === 4 ? '+' : '') + ' bath', 'Built ' + YR[a.yr],
       { bsmt: 'Basement', crawl: 'Crawlspace', slab: 'Slab' }[a.found], a.sewer === 'septic' ? 'Septic' : 'Public sewer', LOAN[a.loan], DOML[a.dom], a.cut === 'yes' ? 'Price cut' : a.cut === 'no' ? 'No price cut' : '', a.list ? 'Listed at ' + fm(a.list) : ''].filter(Boolean);
     $('bo-inp-sum').textContent = chips.join(' · ');
     var msg = 'Hi George, I ran Before You Offer' + (a.away === 'oos' ? ' (I’m moving from out of state)' : '') + ': ' + a.sd + ' district, ' + SFL[a.sqft] + ' sq ft ' + STYLE[a.style].toLowerCase() + ', built ' + YR[a.yr] + ', ' + LOAN[a.loan] + ', ' + DOML[a.dom] + (a.cut === 'yes' ? ', price cut' : '') + '. The address is: ';
@@ -213,10 +230,12 @@
 
   function fill() {
     var sd = $('bo-sd');
-    sd.innerHTML = DATA.districts.map(function (d) { return '<option value="' + esc(d) + '"' + (d === 'Lindbergh' ? ' selected' : '') + '>' + esc(d) + ' (' + DATA.districtSales[d] + ' sales)</option>'; }).join('');
+    var opt = function (counts) { return function (d) { return '<option value="' + esc(d) + '"' + (d === 'Lindbergh' ? ' selected' : '') + '>' + esc(d) + ' (' + counts[d] + ' sales)</option>'; }; };
+    sd.innerHTML = '<optgroup label="St. Louis County">' + DATA.districts.map(opt(DATA.districtSales)).join('') + '</optgroup><optgroup label="Jefferson County">' + DATA.jeffco.districts.map(opt(DATA.jeffco.districtSales)).join('') + '</optgroup>';
     var city = $('bo-city');
-    city.innerHTML = '<option value="">Not sure / another city</option>' + Object.keys(DATA.occupancy).map(function (c) { return '<option value="' + esc(c) + '"' + (c === 'Crestwood' ? ' selected' : '') + '>' + esc(c) + '</option>'; }).join('');
-    $('bo-through').textContent = DATA.sales.toLocaleString('en-US') + ' St. Louis County sales, ' + DATA.through;
+    var co = function (cty) { return Object.keys(DATA.occupancy).filter(function (c) { return DATA.occupancy[c].county === cty; }).map(function (c) { return '<option value="' + esc(c) + '"' + (c === 'Crestwood' ? ' selected' : '') + '>' + esc(c) + '</option>'; }).join(''); };
+    city.innerHTML = '<option value="">Not sure / another city</option><optgroup label="St. Louis County">' + co('stl') + '</optgroup><optgroup label="Jefferson County">' + co('jeff') + '</optgroup>';
+    $('bo-through').textContent = DATA.sales.toLocaleString('en-US') + ' St. Louis County and ' + DATA.jeffco.sales + ' Jefferson County sales, ' + DATA.through;
   }
 
   function fromHash() {

@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Build the data file for the Before You Offer check on the walkthrough page.
 
-Reads George's QA-clean MLS workbook (kept in his private Google Drive, never in this repo),
+Reads George's QA-clean MLS workbook for St. Louis County (kept in his private Google Drive, never
+in this repo), the Jefferson County group figures already published for the Jefferson County
+district hub (assets/data/sd-house-jeffco/, 5+ sale groups only; no year built, so Jefferson County
+comps match on district, beds/baths, style and size),
 the occupancy table on articles/st-louis-occupancy-permits-by-city and the property-tax
 tables on school-districts/st-louis-county, and writes ONE file of group figures:
 
@@ -172,19 +175,21 @@ def clean(c):
 
 
 def build_occupancy():
-    """County rows of the occupancy page's first table: city -> required at resale (True/False)."""
-    tb = re.findall(r'<table.*?</table>', page_text('articles/st-louis-occupancy-permits-by-city.html'), re.S)[0]
+    """Occupancy page tables (St. Louis County, then Jefferson County): city -> 'yes' | 'no' | 'depends'."""
+    tables = re.findall(r'<table.*?</table>', page_text('articles/st-louis-occupancy-permits-by-city.html'), re.S)[:2]
     occ = {}
-    for r in re.findall(r'<tr.*?</tr>', tb, re.S)[1:]:
-        c = cells(r)
-        if len(c) >= 2:
-            occ[clean(c[0])] = clean(c[1]).lower().startswith('yes')
+    for county, tb in zip(('stl', 'jeff'), tables):
+        for r in re.findall(r'<tr.*?</tr>', tb, re.S)[1:]:
+            c = cells(r)
+            if len(c) >= 2:
+                v = clean(c[1]).lower()
+                occ[clean(c[0])] = {'county': county, 'rule': 'yes' if v.startswith('yes') else 'no' if v.startswith('no') else 'depends'}
     return occ
 
 
-def build_tax():
-    """Median tax bill by district, and by district and size, from the County hub's tax tables."""
-    s = page_text('school-districts/st-louis-county.html')
+def build_tax(hub='school-districts/st-louis-county.html'):
+    """Median tax bill by district, and by district and size, from a district hub's tax tables."""
+    s = page_text(hub)
     seg = s[s.index('id="property-taxes"'):]
     tables = re.findall(r'<table.*?</table>', seg, re.S)
     tax = {}
@@ -203,18 +208,49 @@ def build_tax():
     return tax
 
 
+# size band -> cohort centers to try (each cohort is +/-200 sq ft); the best-populated one inside the band is used
+JEFF_CENTERS = {0: (700, 800, 900), 1: (1100, 1200, 1300, 1400), 2: (1600, 1700, 1800, 1900), 3: (2100, 2200, 2300, 2400),
+                4: (2600, 2700, 2800, 2900), 5: (3000, 3100, 3200, 3300, 3400, 3500)}
+JEFF_STYLE = {'R': 'Ranch', 'T': 'Traditional', '*': '*'}
+
+
+def build_jeffco():
+    """Jefferson County comps from the hub's published cohort files (already 5+ sale groups)."""
+    agg = page_text('assets/data/sd-jeffco-agg-2026.js')
+    agg = json.loads(agg[agg.index('{'):agg.rindex('}') + 1])
+    dists = agg['districts']
+    count = {d: agg['budget']['districts'][d]['total'] for d in dists}
+    folder = os.path.join(ROOT, 'assets', 'data', 'sd-house-jeffco')
+    comps = {}
+    for fn in sorted(os.listdir(folder)):
+        bb = fn[:-5]
+        data = json.load(open(os.path.join(folder, fn), encoding='utf-8'))
+        for d, styles in data.items():
+            for sk, sname in JEFF_STYLE.items():
+                for band, centers in JEFF_CENTERS.items():
+                    found = [(styles.get(sname) or {}).get('%d_200' % c) for c in centers]
+                    found = [x for x in found if x and x[0] >= MIN_PRICE_N and x[1] is not None]
+                    a = max(found, key=lambda x: x[0]) if found else None
+                    if a:
+                        # n, p25, median, p75, sale/list %, median days on market, median year built
+                        comps['%s|%s|%d|%s' % (d, bb, band, sk)] = [a[0], a[2], a[1], a[3], round(a[7] * 100, 1), a[6], a[5]]
+    return {'districts': dists, 'districtSales': count, 'comps': comps, 'sales': 756}
+
+
 def main():
     if len(sys.argv) < 2:
         sys.exit(__doc__)
     sales = load_sales(sys.argv[1])
     dists, count, near, comps = build_comps(sales)
+    tax = build_tax()
+    tax.update(build_tax('school-districts/jefferson-county.html'))
     data = {'through': THROUGH, 'sales': len(sales), 'districts': dists, 'districtSales': count, 'nearest': near,
-            'comps': comps, 'tax': build_tax(), 'occupancy': build_occupancy()}
+            'comps': comps, 'jeffco': build_jeffco(), 'tax': tax, 'occupancy': build_occupancy()}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, 'w', encoding='utf-8') as f:
         json.dump(data, f, separators=(',', ':'), ensure_ascii=False)
-    print('sales used: %d, districts: %d, comp groups: %d, occupancy rows: %d -> %s'
-          % (len(sales), len(dists), len(comps), len(data['occupancy']), os.path.relpath(OUT, ROOT)))
+    print('St. Louis County sales used: %d, districts: %d, comp groups: %d; Jefferson County cohorts: %d; occupancy rows: %d -> %s'
+          % (len(sales), len(dists), len(comps), len(data['jeffco']['comps']), len(data['occupancy']), os.path.relpath(OUT, ROOT)))
 
 
 if __name__ == '__main__':
