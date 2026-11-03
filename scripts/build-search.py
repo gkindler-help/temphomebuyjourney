@@ -68,6 +68,8 @@ TOPICS = [
      ['articles/how-much-to-offer-on-a-house-st-louis', 'articles/lessons-from-a-sale-fenton-san-luis#highest-and-best', 'articles/should-i-accept-this-offer-st-louis']),
     (['inspection', 'inspector', 'repair', 'repairs', 'credit', 'furnace', 'hvac', 'roof', 'foundation', 'sewer', 'sewer scope', 'radon', 'termite'],
      ['articles/home-inspection-st-louis', 'articles/repair-costs-affect-offer-price-stl', 'articles/stl-home-repair-cost-guide', 'articles/what-to-look-for-buying-house-stl']),
+    (['before you offer', 'what to look for', 'showing', 'walk-through checklist', 'comps', 'comparable sales', 'what is it worth', 'water heater age', 'furnace age', 'permit sticker', 'square footage', 'cast iron'],
+     ['articles/what-to-look-for-buying-house-stl#offer-check', 'articles/what-to-look-for-buying-house-stl', 'articles/how-much-to-offer-on-a-house-st-louis', 'articles/zillow-zestimate-accurate-stl']),
     (['home warranty', 'warranty'],
      ['articles/lessons-from-a-sale-fenton-san-luis#inspection', 'articles/repair-costs-affect-offer-price-stl']),
     (['fixture', 'fixtures', 'doorbell', 'walk-through', 'walkthrough', 'final walk'],
