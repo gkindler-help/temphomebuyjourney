@@ -196,6 +196,7 @@
     var a = answers(), V = value(a), R = checks(a), occ = DATA.occupancy[a.city];
     last = { a: a, V: V, R: R };
     var read = V.gap !== undefined && V.gap !== null && V.gap > 5 ? 'Listed above its comps, so you have room on price' : V.gap !== null && V.gap !== undefined && V.gap < -5 ? 'Priced under its comps, so expect competition' : (a.cut === 'yes' || +a.dom >= 31) ? 'Priced near its comps, and time is on your side' : +a.dom <= 7 ? 'Priced near its comps, so move quickly' : 'Priced near its comps';
+    if (sample) $('bo-sample-what').textContent = 'a ' + YR[a.yr].replace('the ', '') + ' ' + STYLE[a.style].toLowerCase() + ' in ' + a.sd;
     $('bo-read').textContent = read + ', and ' + R.length + ' things to check before you write.';
     $('bo-value').innerHTML = V.html; $('bo-tax').innerHTML = taxHtml(a); $('bo-price').innerHTML = priceHtml(a);
     $('bo-show').innerHTML = showHtml(a); $('bo-checks').innerHTML = checksHtml(R); $('bo-loantxt').innerHTML = loanHtml(a);
@@ -251,6 +252,8 @@
 
   function init() {
     fill();
+    var pre = /[?&]district=([^&#]+)/.exec(location.search), pd = pre && decodeURIComponent(pre[1].replace(/\+/g, ' '));
+    if (pd && [].some.call($('bo-sd').options, function (o) { return o.value === pd; })) { $('bo-sd').value = pd; $('bo-city').value = ''; }
     if (fromHash()) mine();
     run(false);
     $('bo-go').addEventListener('click', function () { mine(); run(true); });
