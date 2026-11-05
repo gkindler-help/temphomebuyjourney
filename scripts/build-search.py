@@ -46,6 +46,8 @@ TOPICS = [
      ['articles/moving-from-chicago-to-st-louis', 'articles/moving-to-st-louis', 'articles/buy-house-st-louis-from-out-of-state']),
     (['bjc', 'barnes', 'barnes-jewish', 'work at bjc', 'children\'s hospital', 'christian hospital', 'missouri baptist', 'progress west', 'hospital job', 'nurse'],
      ['articles/where-to-live-if-you-work-at-bjc-st-louis', 'articles/st-louis-home-buying-for-physicians', 'articles/st-louis-city-vs-county#earnings-tax']),
+    (['physician', 'doctor', 'physician loan', 'doctor loan', 'resident', 'residency', 'attending', 'fellowship', 'white coat', 'financial advisor'],
+     ['tools/physician-home-plan', 'articles/st-louis-home-buying-for-physicians', 'articles/where-to-live-if-you-work-at-bjc-st-louis']),
     (['occupancy permit', 'occupancy inspection', 're-occupancy', 'reoccupancy', 'city inspection'],
      ['articles/st-louis-occupancy-permits-by-city', 'articles/st-louis-city-vs-county#rules', 'articles/lessons-from-a-sale-northwoods-va-purchase#occupancy']),
     (['unincorporated', 'earnings tax', 'city vs county', 'st louis city', 'municipality', 'which city'],
