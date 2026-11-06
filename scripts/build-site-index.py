@@ -33,7 +33,7 @@ REGION = {
 }
 AREA_HUBS = ['south-city-st-louis', 'south-county-st-louis', 'north-county-st-louis', 'mid-county-st-louis', 'jefferson-county-mo', 'neighborhoods/',
              'articles/west-county-st-louis-neighborhoods', 'school-districts',
-             'school-district-map', 'afford', 'neighborhood-matcher', 'compare']
+             'school-district-map', 'neighborhood-matcher', 'compare']
 START = ['', 'complete-guide', 'journey/', 'articles/', 'articles/lessons-from-a-sale', 'about', 'experience', 'ask', 'george-kindler', 'tools/']
 
 

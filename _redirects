@@ -6,6 +6,10 @@
 /scripts/*                        /    301
 /.github/*                        /    301
 
+# Affordability map folded into the buying power calculator (2026-11-06)
+/afford /stl-home-buying-power-calculator 301
+/afford.html /stl-home-buying-power-calculator 301
+
 # South County neighborhood guide folded into the South County hub (2026-10-31)
 /articles/south-county-stl-neighborhood-guide /south-county-st-louis 301
 /articles/south-county-stl-neighborhood-guide.html /south-county-st-louis 301
