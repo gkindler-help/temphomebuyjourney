@@ -33,7 +33,7 @@
       defaultLabel: 'Decode Your Cash Offer →',
     },
     'affordability': {
-      url: '/afford',
+      url: '/stl-home-buying-power-calculator',
       title: 'Affordability Map',
       subtitle: 'St. Louis by zip code',
       params: ['income'],

@@ -93,7 +93,7 @@ TOPICS = [
     (['closing costs', 'closing cost'],
      ['articles/buyer-closing-costs-st-louis', 'articles/what-will-i-net-selling-stl']),
     (['afford', 'affordability', 'income', 'salary', 'how much house', 'dti', 'budget', 'monthly payment'],
-     ['articles/how-much-income-to-buy-home-stl', 'stl-home-buying-power-calculator', 'articles/stl-affordability-by-zip-code']),
+     ['stl-home-buying-power-calculator', 'articles/how-much-income-to-buy-home-stl', 'articles/stl-affordability-by-zip-code']),
     (['down payment', 'first time', 'first-time', 'mhdc', 'first place', 'next step', 'assistance', 'dpa'],
      ['articles/mhdc-first-place-next-step-missouri-guide', 'articles/first-time-buyer-programs-stl', 'articles/how-much-down-payment-st-louis']),
     (['fha', 'conventional', 'loan', 'mortgage', 'pre-approval', 'preapproval', 'pre approval', 'credit score', 'rate', 'rates', 'lender'],
