@@ -7,6 +7,8 @@
 /.github/*                        /    301
 
 # Affordability map folded into the buying power calculator (2026-11-06)
+/sellers/winter-listing-offer /articles/sell-house-fall-winter-st-louis 301
+/sellers/winter-listing-offer.html /articles/sell-house-fall-winter-st-louis 301
 /afford /stl-home-buying-power-calculator 301
 /afford.html /stl-home-buying-power-calculator 301
 
