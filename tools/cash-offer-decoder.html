@@ -903,7 +903,7 @@ function saveToStorage(){
 function loadFromStorage(){
   try{
     const raw=localStorage.getItem(STORAGE_KEY);
-    if(!raw){showSaved('Enter your information below');return;}
+    if(!raw){showSaved('Enter your information below');checkYear();buildRepairCards();calcCompressionPreview();updatePrint();return;}
     const data=JSON.parse(raw);
     if(data.inputs){
       TEXT_IDS.forEach(id=>{const el=document.getElementById(id);if(el&&data.inputs[id]!==undefined)el.value=data.inputs[id];});
@@ -922,7 +922,9 @@ function loadFromStorage(){
 
 function clearSaved(){
   if(!confirm('Clear all saved data and start fresh?')) return;
+  clearTimeout(saveTimer);saveTimer=null;
   try{localStorage.removeItem(STORAGE_KEY);}catch(e){}
+  SELECT_IDS.forEach(id=>{const el=document.getElementById(id);if(el)el.selectedIndex=0;});
   TEXT_IDS.forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
   const def={commission:'6',concessions:'2',closingFixed:'2500',listRatio:'99',occBuffer:'1500'};
   Object.keys(def).forEach(id=>{const el=document.getElementById(id);if(el)el.value=def[id];});
@@ -1069,7 +1071,7 @@ function buildRepairCards(){
         <div class="inv-input"><label>Condition investor described</label>
           <select onchange="setCondition('${r.id}',this.value)">${opts}</select></div>
         <div class="inv-input"><label>Their stated deduction ($) if known</label>
-          <input type="text" placeholder="${fmt(cond.investorCost)}" value="${s.investorOverride}" oninput="setOverride('${r.id}',this.value)"></div>
+          <input type="text" placeholder="${fmt(cond.investorCost)}" inputmode="numeric" value="${s.investorOverride}" oninput="setOverride('${r.id}',this.value)" onchange="commitOverride('${r.id}',this.value)"></div>
       </div>${reb}`:''}
     </div>`;
   }).join('');
@@ -1088,6 +1090,7 @@ function getRebuttal(r,s){
 function toggleRepair(id,val){repairState[id].included=val;buildRepairCards();calcCompressionPreview();saveToStorage();}
 function setCondition(id,val){repairState[id].conditionIdx=parseInt(val);buildRepairCards();calcCompressionPreview();saveToStorage();}
 function setOverride(id,val){repairState[id].investorOverride=val;calcCompressionPreview();scheduleSave();}
+function commitOverride(id,val){const n=parseFloat(String(val).replace(/[$,\s]/g,''));repairState[id].investorOverride=n>0?fmt(n):'';buildRepairCards();calcCompressionPreview();saveToStorage();}
 
 function showTab(t){
   document.querySelectorAll('.tab').forEach((el,i)=>el.classList.toggle('active',['inputs','repairs','results'][i]===t));
@@ -1234,8 +1237,8 @@ function calcResults(){
       <div class="cta-title">Get a precise number — at no cost to you</div>
       <div class="cta-sub">The most accurate value for your home comes from an experienced agent walking the property the same way the investor did — and seeing what they either missed or chose not to tell you. A walkthrough takes 30 minutes, costs nothing, and puts an actual comparable sales analysis in your hands. That's the number that holds up.</div>
       <div class="cta-actions">
-        <button class="cta-btn-primary" onclick="emailGeorge(${gap},${mlsNet},${cashNetAM},${trueMargin},${offer},${arv})">📧 Email George</button>
-        <button class="cta-btn-secondary" onclick="shareResults(${gap},${mlsNet},${cashNetAM},${trueMargin})">📤 Save / Share</button>
+        <button class="cta-btn-primary" onclick="emailGeorge(${gap},${mlsNet},${cashNetAM},${trueMargin},${totMfg})">📧 Email George</button>
+        <button class="cta-btn-secondary" onclick="shareResults(${gap},${mlsNet},${cashNetAM},${trueMargin},${totMfg})">📤 Save / Share</button>
       </div>
     </div>
     <div class="action-row">
@@ -1249,13 +1252,37 @@ function calcResults(){
   `;
 }
 
-function copyResults(gap,mlsNet,cashNet,margin,mfg){
+function summaryText(gap,mlsNet,cashNet,margin,mfg){
   const addr=gv('address'),inv=gv('investorName'),arv=pn('arv'),offer=pn('cashOffer');
   const tierLabels={low:'as-is',mid:'move-in ready',high:'renovated'};
   const tierStr=selectedTier?' ('+tierLabels[selectedTier]+' condition range)':'';
   const rangeStr=arvSource==='market'&&selectedTier&&lastEntry?' — market range: '+fmtRange(lastEntry[selectedTier]):'';
-  const txt=`CASH OFFER ANALYSIS\n${addr?addr+'\n':''}${inv?'Offer from: '+inv+'\n':''}\nCash offer: ${fmt(offer)}\nYour market value: ${fmt(arv)}${tierStr}${rangeStr}\nDiscount off market: ${fmtPct(((arv-offer)/arv)*100)}\n\nMLS net proceeds: ${fmt(mlsNet)}\nCash offer net: ${fmt(cashNet)}\nYou keep more going MLS: ${fmt(gap)}\n\nInvestor margin: ${fmt(margin)}${mfg>0?'\nManufactured justification: '+fmt(mfg):''}\n\nMarket ranges derived from aggregated sold data — not an appraisal. A no-cost agent walkthrough is the most accurate way to confirm value.\n\nAnalysis by George Kindler, Licensed Missouri Real Estate Agent, The Closing Pros, St. Louis MO`;
-  navigator.clipboard.writeText(txt).then(()=>alert('Copied to clipboard.')).catch(()=>alert('Use the PDF button instead.'));
+  return `CASH OFFER ANALYSIS\n${addr?addr+'\n':''}${inv?'Offer from: '+inv+'\n':''}\nCash offer: ${fmt(offer)}\nYour market value: ${fmt(arv)}${tierStr}${rangeStr}\nDiscount off market: ${fmtPct(((arv-offer)/arv)*100)}\n\nMLS net proceeds: ${fmt(mlsNet)}\nCash offer net: ${fmt(cashNet)}\nYou keep more going MLS: ${fmt(gap)}\n\nInvestor margin: ${fmt(margin)}${mfg>0?'\nManufactured justification: '+fmt(mfg):''}\n\nMarket ranges derived from aggregated sold data — not an appraisal. A no-cost agent walkthrough is the most accurate way to confirm value.\n\nAnalysis by George Kindler, Licensed Missouri Real Estate Agent, The Closing Pros, St. Louis MO\nhttps://stlhomejourney.com/tools/cash-offer-decoder`;
+}
+
+function copyText(txt,okMsg){
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(()=>alert(okMsg)).catch(()=>alert('Use the PDF button instead.'));
+  }else alert('Use the PDF button instead.');
+}
+
+function copyResults(gap,mlsNet,cashNet,margin,mfg){
+  copyText(summaryText(gap,mlsNet,cashNet,margin,mfg),'Copied to clipboard.');
+}
+
+function emailGeorge(gap,mlsNet,cashNet,margin,mfg){
+  const addr=gv('address');
+  const subject='Cash offer review'+(addr?' — '+addr:'');
+  const body='Hi George,\n\nI ran a cash offer through your decoder and would like a walkthrough to confirm the numbers.\n\n'+summaryText(gap,mlsNet,cashNet,margin,mfg);
+  window.location.href='mailto:georgeandlizk@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+}
+
+function shareResults(gap,mlsNet,cashNet,margin,mfg){
+  const txt=summaryText(gap,mlsNet,cashNet,margin,mfg);
+  saveToStorage();
+  if(navigator.share){
+    navigator.share({title:'Cash offer analysis',text:txt}).catch(()=>{});
+  }else copyText(txt,'Summary copied. Your inputs are also saved in this browser.');
 }
 
 attachListeners();
