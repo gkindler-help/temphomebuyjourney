@@ -6,6 +6,11 @@
   var root = document.getElementById('offer-check');
   if (!root) return;
   var DATA = null, sample = true;
+  // Hand-off from the walk-through tool (/home-cost): ?wt=<house id>&list=<price>. The tools stay separate;
+  // this only lets a buyer save the result onto a house they saved there (same phone, localStorage).
+  var WT_KEY = 'stlhj-walkthrough-v1', wtId = null;
+  function wtStore() { try { return JSON.parse(localStorage.getItem(WT_KEY) || 'null'); } catch (e) { return null; } }
+  function wtHouse(st) { if (!st || !st.houses) return null; for (var i = 0; i < st.houses.length; i++) if (st.houses[i].id === wtId) return st.houses[i]; return null; }
   var $ = function (id) { return document.getElementById(id); };
   var val = function (id) { return $(id).value; };
   var fm = function (n) { return '$' + Math.round(n).toLocaleString('en-US'); };
@@ -219,7 +224,50 @@
       try { history.replaceState(null, '', '#check=' + FIELDS.map(function (f) { return encodeURIComponent(val('bo-' + f)); }).join('.')); } catch (e) {}
       ev('byo_result', { district: a.sd, style: a.style, size: SFL[a.sqft] });
     }
+    if (wtId && $('bo-wt')) $('bo-wt').hidden = sample || !V.est;
     if (scroll) $('bo-out').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function wtSetup() {
+    var wm = /[?&]wt=([A-Za-z0-9]+)/.exec(location.search), lm = /[?&]list=(\d+)/.exec(location.search);
+    if (lm) {
+      var want = +lm[1], sel = $('bo-list'), after = null;
+      if (want >= 25000 && want <= 5000000) {
+        // Use the exact list price: add it to the list if it isn't one of the preset steps.
+        if (![].some.call(sel.options, function (o) { return +o.value === want; })) {
+          [].forEach.call(sel.options, function (o) { if (+o.value && +o.value < want) after = o; });
+          var opt = document.createElement('option'); opt.value = String(want); opt.textContent = fm(want);
+          sel.insertBefore(opt, after ? after.nextSibling : sel.options[1] || null);
+        }
+        sel.value = String(want);
+      }
+    }
+    if (!wm) return false;
+    wtId = wm[1];
+    var h = wtHouse(wtStore());
+    if (!h) { wtId = null; return false; }
+    var btn = document.createElement('button');
+    btn.className = 'bo-btn'; btn.id = 'bo-wt'; btn.type = 'button'; btn.hidden = true; btn.style.marginTop = '10px'; btn.style.width = '100%';
+    btn.textContent = 'Add this check to my walk-through' + (h.address ? ': ' + h.address : '');
+    var row = $('bo-share').parentNode; row.parentNode.insertBefore(btn, row.nextSibling);
+    btn.addEventListener('click', function () {
+      var st = wtStore(), hh = wtHouse(st);
+      if (!hh || !last || !last.V.est) { btn.textContent = 'That house isn’t saved on this phone anymore'; return; }
+      var a = last.a, V = last.V;
+      hh.byo = { sd: a.sd, lo: r5(V.lo), hi: r5(V.hi), est: r5(V.est), gap: V.gap === null || V.gap === undefined ? null : Math.round(V.gap), list: a.list || 0,
+        cond: CONDL[a.cond], size: SFL[a.sqft], read: $('bo-read').textContent, link: location.pathname + location.hash, at: Date.now() };
+      try { localStorage.setItem(WT_KEY, JSON.stringify(st)); } catch (e) { btn.textContent = 'Couldn’t save on this phone'; return; }
+      var back = document.createElement('a');
+      back.className = 'bo-btn'; back.href = '/home-cost'; back.style.cssText = 'display:block;margin-top:10px;text-align:center;text-decoration:none;';
+      back.textContent = 'Added ✓ Back to my walk-through →';
+      btn.parentNode.replaceChild(back, btn);
+      ev('byo_added_to_walkthrough', { district: a.sd });
+    });
+    var hint = document.createElement('p');
+    hint.className = 'bo-mut'; hint.id = 'bo-wt-hint';
+    hint.textContent = 'From your walk-through' + (h.address ? ' of ' + h.address : '') + (lm ? ': the list price is filled in.' : '.') + ' Pick the district, size and condition, run the check, then add it to that house.';
+    var ins = $('bo-inputs'); ins.parentNode.insertBefore(hint, ins);
+    return true;
   }
 
   function runBudget() {
@@ -244,7 +292,14 @@
     if (!m) return false;
     var v = m[1].split('.').map(decodeURIComponent);
     if (v.length !== FIELDS.length) return false;
-    FIELDS.forEach(function (f, i) { var el = $('bo-' + f); if ([].some.call(el.options, function (o) { return o.value === v[i]; })) el.value = v[i]; });
+    FIELDS.forEach(function (f, i) {
+      var el = $('bo-' + f);
+      if (f === 'list' && /^\d+$/.test(v[i]) && +v[i] >= 25000 && +v[i] <= 5000000 && ![].some.call(el.options, function (o) { return o.value === v[i]; })) {
+        var after = null; [].forEach.call(el.options, function (o) { if (+o.value && +o.value < +v[i]) after = o; });
+        var opt = document.createElement('option'); opt.value = v[i]; opt.textContent = fm(+v[i]); el.insertBefore(opt, after ? after.nextSibling : el.options[1] || null);
+      }
+      if ([].some.call(el.options, function (o) { return o.value === v[i]; })) el.value = v[i];
+    });
     return true;
   }
 
@@ -254,8 +309,10 @@
     fill();
     var pre = /[?&]district=([^&#]+)/.exec(location.search), pd = pre && decodeURIComponent(pre[1].replace(/\+/g, ' '));
     if (pd && [].some.call($('bo-sd').options, function (o) { return o.value === pd; })) { $('bo-sd').value = pd; $('bo-city').value = ''; }
+    var fromWalk = wtSetup();
     if (fromHash()) mine();
     run(false);
+    if (fromWalk) { $('bo-inputs').open = true; ev('byo_from_walkthrough'); }
     $('bo-go').addEventListener('click', function () { mine(); run(true); });
     ['bo-bBudget', 'bo-bDown', 'bo-bRate', 'bo-bIns', 'bo-bHelp'].forEach(function (id) { $(id).addEventListener('change', runBudget); });
     $('bo-edit').addEventListener('click', function (e) { e.preventDefault(); $('bo-inputs').open = true; $('bo-inputs').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
