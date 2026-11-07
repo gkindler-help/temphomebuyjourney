@@ -355,7 +355,7 @@ function renderAmountScene(sc,idx){
     +'<div class="input-content">'
     +'<div class="inp-george-row"><div class="inp-g-face"><img referrerpolicy="no-referrer" src="assets/george-serious.png" onerror="this.style.display=\'none\'"><div class="fb">GK</div></div>'
     +'<div class="inp-bubble">'+sc.speak+'</div></div>'
-    +'<div class="inp-field-wrap"><label class="inp-lbl">Pre-approval amount</label>'
+    +'<div class="inp-field-wrap"><label class="inp-lbl" for="amt-inp">Pre-approval amount</label>'
     +'<input class="big-inp" type="number" id="amt-inp" value="'+S.amount+'" min="50000" max="800000" step="5000" oninput="S.amount=parseInt(this.value)||280000;save();">'
     +'<div class="inp-note">'+sc.note+'</div></div>'
     +'<div style="margin:0 16px 14px;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--green);border-radius:6px;">'

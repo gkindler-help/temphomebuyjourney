@@ -41,14 +41,14 @@ body{margin:0;background:#050505;color:rgba(255,255,255,.88);font-family:"Inter"
 </style>
 <div class="snc-calc">
   <div class="snc-grid">
-    <div class="snc-field"><label>Sale price</label><input id="sncPrice" inputmode="numeric" placeholder="$300,000"></div>
-    <div class="snc-field"><label>Agent commission (%)</label><input id="sncComm" inputmode="decimal" value="6"></div>
-    <div class="snc-field"><label>Title &amp; closing ($)</label><input id="sncTitle" inputmode="numeric" value="1,350"></div>
-    <div class="snc-field"><label>Prorated taxes ($)</label><input id="sncTax" inputmode="numeric" placeholder="0"><details class="snc-tip"><summary>How tax proration works</summary><p>Taxes are paid in arrears in Missouri: each year&rsquo;s bill is paid in December. At closing you credit the buyer for the part of the year you owned the home. Example: closing at the end of April means about 4 months of taxes (January through April) paid at closing.</p></details></div>
-    <div class="snc-field"><label>Seller concessions (%)</label><input id="sncConc" inputmode="decimal" placeholder="0"></div>
-    <div class="snc-field"><label>Mortgage payoff ($)</label><input id="sncPayoff" inputmode="numeric" placeholder="0"></div>
+    <div class="snc-field"><label for="sncPrice">Sale price</label><input id="sncPrice" inputmode="numeric" placeholder="$300,000"></div>
+    <div class="snc-field"><label for="sncComm">Agent commission (%)</label><input id="sncComm" inputmode="decimal" value="6"></div>
+    <div class="snc-field"><label for="sncTitle">Title &amp; closing ($)</label><input id="sncTitle" inputmode="numeric" value="1,350"></div>
+    <div class="snc-field"><label for="sncTax">Prorated taxes ($)</label><input id="sncTax" inputmode="numeric" placeholder="0"><details class="snc-tip"><summary>How tax proration works</summary><p>Taxes are paid in arrears in Missouri: each year&rsquo;s bill is paid in December. At closing you credit the buyer for the part of the year you owned the home. Example: closing at the end of April means about 4 months of taxes (January through April) paid at closing.</p></details></div>
+    <div class="snc-field"><label for="sncConc">Seller concessions (%)</label><input id="sncConc" inputmode="decimal" placeholder="0"></div>
+    <div class="snc-field"><label for="sncPayoff">Mortgage payoff ($)</label><input id="sncPayoff" inputmode="numeric" placeholder="0"></div>
   </div>
-  <div class="snc-out">
+  <div class="snc-out" aria-live="polite">
     <div class="snc-out-label">Estimated net proceeds</div>
     <div class="snc-out-num" id="sncNet">&mdash;</div>
     <div class="snc-out-sub" id="sncSub">Enter a sale price to calculate.</div>

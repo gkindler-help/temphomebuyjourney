@@ -102,6 +102,8 @@
     _triggerEl = document.createElement('div');
     _triggerEl.className = 'atd-trigger';
     _triggerEl.setAttribute('role', 'button');
+    _triggerEl.setAttribute('tabindex', '0');
+    _triggerEl.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDrawer(); } });
     _triggerEl.innerHTML =
       '<span class="atd-trigger-icon">🔢</span>' +
       '<span class="atd-trigger-label">' + label + '</span>';

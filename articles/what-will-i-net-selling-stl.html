@@ -731,14 +731,14 @@
 </style>
 <div class="np-calc">
   <div class="np-grid">
-    <div class="np-field"><label>Sale price</label><input id="npPrice" inputmode="numeric" placeholder="$300,000"></div>
-    <div class="np-field"><label>Agent commission (%)</label><input id="npComm" inputmode="decimal" value="6"></div>
-    <div class="np-field"><label>Title &amp; closing ($)</label><input id="npTitle" inputmode="numeric" value="1,350"></div>
-    <div class="np-field"><label>Prorated taxes ($)</label><input id="npTax" inputmode="numeric" placeholder="0"><details class="np-tip"><summary>How tax proration works</summary><p>Taxes are paid in arrears in Missouri: each year&rsquo;s bill is paid in December. At closing you credit the buyer for the part of the year you owned the home. Example: closing at the end of April means about 4 months of taxes (January through April) paid at closing.</p></details></div>
-    <div class="np-field"><label>Seller concessions (%)</label><input id="npConc" inputmode="decimal" placeholder="0"></div>
-    <div class="np-field"><label>Mortgage payoff ($)</label><input id="npPayoff" inputmode="numeric" placeholder="0"></div>
+    <div class="np-field"><label for="npPrice">Sale price</label><input id="npPrice" inputmode="numeric" placeholder="$300,000"></div>
+    <div class="np-field"><label for="npComm">Agent commission (%)</label><input id="npComm" inputmode="decimal" value="6"></div>
+    <div class="np-field"><label for="npTitle">Title &amp; closing ($)</label><input id="npTitle" inputmode="numeric" value="1,350"></div>
+    <div class="np-field"><label for="npTax">Prorated taxes ($)</label><input id="npTax" inputmode="numeric" placeholder="0"><details class="np-tip"><summary>How tax proration works</summary><p>Taxes are paid in arrears in Missouri: each year&rsquo;s bill is paid in December. At closing you credit the buyer for the part of the year you owned the home. Example: closing at the end of April means about 4 months of taxes (January through April) paid at closing.</p></details></div>
+    <div class="np-field"><label for="npConc">Seller concessions (%)</label><input id="npConc" inputmode="decimal" placeholder="0"></div>
+    <div class="np-field"><label for="npPayoff">Mortgage payoff ($)</label><input id="npPayoff" inputmode="numeric" placeholder="0"></div>
   </div>
-  <div class="np-out">
+  <div class="np-out" aria-live="polite">
     <div class="np-out-label">Estimated net proceeds</div>
     <div class="np-out-num" id="npNet">&mdash;</div>
     <div class="np-out-sub" id="npSub">Enter a sale price to calculate.</div>

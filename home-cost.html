@@ -625,7 +625,7 @@ window.TOOL_MODULES['home-cost'] = (function () {
       '<div class="hc-save-note">Saves on this phone as you go. Nothing is sent anywhere unless you email or share it.</div>' +
       '<div class="hc-share-banner" id="hc-share-banner" role="status"></div>' +
       '<div class="hc-addr-bar">' +
-        '<input class="hc-addr-input" id="hc-addr" placeholder="Enter property address…" type="text">' +
+        '<input class="hc-addr-input" id="hc-addr" aria-label="Property address" placeholder="Enter property address…" type="text">' +
         '<button class="hc-addr-btn hc-btn-map" id="hc-map-btn">📍 Map</button>' +
         '<button class="hc-addr-btn hc-btn-geo" id="hc-geo-btn">📡 Locate</button>' +
       '</div>' +
@@ -863,6 +863,8 @@ window.TOOL_MODULES['home-cost'] = (function () {
       var el = document.createElement('div');
       el.className = 'hc-legend-item';
       el.id = 'hc-legend-' + zoneId;
+      el.setAttribute('role', 'button'); el.setAttribute('tabindex', '0'); el.setAttribute('aria-pressed', 'false');
+      el.setAttribute('aria-label', 'Flag ' + ZONE_LABELS[zoneId]);
       el.innerHTML = '<div class="hc-legend-dot" style="background:' + (ZONE_COLORS[zoneId] || '#888') + ';"></div>' + ZONE_LABELS[zoneId];
       el.addEventListener('click', function() { toggleZone(zoneId); });
       wrap.appendChild(el);
@@ -931,7 +933,7 @@ window.TOOL_MODULES['home-cost'] = (function () {
           (item.stl ? '<div class="hc-rc-stl">⚠ ' + item.stl + '</div>' : '') +
           '<textarea class="hc-item-note" data-note="' + item.id + '" rows="2" placeholder="Your note on this (optional)…" aria-label="Note on ' + item.name + '"></textarea>' +
         '</div>' +
-        '<div class="hc-rc-check">✓</div>';
+        '<div class="hc-rc-check" role="button" tabindex="0" aria-pressed="false" aria-label="Flag ' + item.name + ', $' + item.low.toLocaleString() + ' to $' + item.high.toLocaleString() + '">✓</div>';
       el.addEventListener('click', function(e) { if (e.target.closest && e.target.closest('.hc-item-note')) return; toggleRepairCard(item.id, item.name, item.low, item.high, el, item.cat); });
       var noteEl = el.querySelector('.hc-item-note');
       noteEl.addEventListener('input', function() {
@@ -1209,6 +1211,8 @@ window.TOOL_MODULES['home-cost'] = (function () {
     setBadge('badge-inspect', repairCount);
     setBadge('badge-measure', sfReport.length);
     setBadge('badge-report',  repairReport.length);
+    Array.prototype.forEach.call(_container.querySelectorAll('.hc-repair-card'), function(c) { var k = c.querySelector('.hc-rc-check'); if (k) k.setAttribute('aria-pressed', c.classList.contains('flagged') ? 'true' : 'false'); });
+    Array.prototype.forEach.call(_container.querySelectorAll('.hc-legend-item, .hs-zone'), function(z) { z.setAttribute('aria-pressed', z.classList.contains('flagged') ? 'true' : 'false'); });
     persist();
   }
 
@@ -1624,7 +1628,16 @@ window.TOOL_MODULES['home-cost'] = (function () {
     });
     // Zone clicks (SVG)
     Array.prototype.forEach.call(_container.querySelectorAll('.hs-zone'), function(zone) {
-      zone.addEventListener('click', function() { toggleZone(zone.getAttribute('data-zone')); });
+      var zid = zone.getAttribute('data-zone');
+      zone.setAttribute('role', 'button'); zone.setAttribute('tabindex', '0'); zone.setAttribute('aria-pressed', 'false');
+      zone.setAttribute('aria-label', 'Flag ' + (ZONE_LABELS[zid] || zid) + ' on the house drawing');
+      zone.addEventListener('click', function() { toggleZone(zid); });
+    });
+    // Keyboard and agents: Enter or Space on anything built as a button
+    _container.addEventListener('keydown', function(e) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      var t = e.target; if (!t || t.getAttribute('role') !== 'button' || /^(BUTTON|A)$/.test(t.tagName)) return;
+      e.preventDefault(); t.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
     // Measure
     var calcBtn = _container.querySelector('#hc-calc-btn');
