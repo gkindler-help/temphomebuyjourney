@@ -232,23 +232,23 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
       <div class="panel-title">Your Financial Situation</div>
       <div class="ig">
         <div class="field">
-          <label>Annual Income</label>
+          <label for="income">Annual Income</label>
           <input type="number" id="income" placeholder="80000" step="1000">
         </div>
         <div class="field">
-          <label>Down Payment ($)</label>
+          <label for="down">Down Payment ($)</label>
           <input type="number" id="down" placeholder="20000" step="1000" value="20000">
         </div>
         <div class="field">
-          <label>Interest Rate (%)</label>
+          <label for="rate">Interest Rate (%)</label>
           <input type="number" id="rate" placeholder="7.0" step="0.1" value="7.0">
         </div>
         <div class="field">
-          <label>Monthly Debts ($)</label>
+          <label for="debts">Monthly Debts ($)</label>
           <input type="number" id="debts" placeholder="400" step="50" value="0">
         </div>
         <div class="field">
-          <label>Target Home Size</label>
+          <label for="sqft">Target Home Size</label>
           <select id="sqft">
             <option value="">Any size</option>
             <option value="u1000">Under 1,000 sqft</option>
@@ -271,7 +271,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
 
     <button class="run-btn" onclick="runPhase1()">Show Me My Buying Power →</button>
 
-    <div id="phase1Results" style="margin-top:24px"></div>
+    <div id="phase1Results" aria-live="polite" style="margin-top:24px"></div>
 
   </div>
 
@@ -331,7 +331,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
 
     <button class="run-btn" onclick="runPhase2()">Compare Fixer vs. Move-In Ready →</button>
 
-    <div id="phase2Results" style="margin-top:24px"></div>
+    <div id="phase2Results" aria-live="polite" style="margin-top:24px"></div>
 
   </div>
 

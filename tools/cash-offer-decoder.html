@@ -349,22 +349,22 @@ footer a{color:var(--text-dim);}
   <div class="card">
     <div class="card-body" style="padding:0;">
       <div class="tabs" style="margin:0;padding:0 20px;">
-        <div class="tab active" onclick="showTab('inputs')">1. Offer &amp; property</div>
-        <div class="tab" onclick="showTab('repairs')">2. Repair claims</div>
-        <div class="tab" onclick="showTab('results')">3. Full breakdown</div>
+        <div class="tab active" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" onclick="showTab('inputs')">1. Offer &amp; property</div>
+        <div class="tab" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" onclick="showTab('repairs')">2. Repair claims</div>
+        <div class="tab" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}" onclick="showTab('results')">3. Full breakdown</div>
       </div>
 
       <!-- TAB 1 -->
       <div class="pane active" id="pane-inputs" style="padding:20px;">
         <div class="section-label">Property details</div>
         <div class="row2">
-          <div class="field"><label>Property address</label><input id="address" placeholder="123 Main St, St. Louis, MO 63119"></div>
-          <div class="field"><label>Investor / company name</label><input id="investorName" placeholder="ABC Home Buyers LLC"></div>
+          <div class="field"><label for="address">Property address</label><input id="address" placeholder="123 Main St, St. Louis, MO 63119"></div>
+          <div class="field"><label for="investorName">Investor / company name</label><input id="investorName" placeholder="ABC Home Buyers LLC"></div>
         </div>
         <div class="row3">
-          <div class="field"><label>Year built</label><input id="yearBuilt" placeholder="1958"><div id="yearFlag"></div></div>
-          <div class="field"><label>Square footage</label><input id="sqft" placeholder="1,450"></div>
-          <div class="field"><label>Bedrooms / baths</label><input id="beds" placeholder="3 bed / 2 bath"></div>
+          <div class="field"><label for="yearBuilt">Year built</label><input id="yearBuilt" placeholder="1958"><div id="yearFlag"></div></div>
+          <div class="field"><label for="sqft">Square footage</label><input id="sqft" placeholder="1,450"></div>
+          <div class="field"><label for="beds">Bedrooms / baths</label><input id="beds" placeholder="3 bed / 2 bath"></div>
         </div>
 
         <div class="divider"></div>
@@ -373,8 +373,8 @@ footer a{color:var(--text-dim);}
           <div class="arv-engine-head">Market value ranges — St. Louis sold data</div>
           <div class="arv-engine-sub">Enter your zip code and home size to see what homes in your area actually sold for, broken down by condition. Select the range that matches your home — or skip this and enter your own number below.</div>
           <div class="arv-lookup-row" style="grid-template-columns:1fr 1fr auto;">
-            <div class="field"><label>Zip code</label><input id="lookupZip" placeholder="63119" maxlength="5"></div>
-            <div class="field"><label>Home size (sq ft)</label>
+            <div class="field"><label for="lookupZip">Zip code</label><input id="lookupZip" placeholder="63119" maxlength="5"></div>
+            <div class="field"><label for="lookupSqft">Home size (sq ft)</label>
               <select id="lookupSqft">
                 <option value="">Select size</option>
                 <option value="u1000">Under 1,000</option>
@@ -397,15 +397,15 @@ footer a{color:var(--text-dim);}
 
         <div class="row2">
           <div class="field">
-            <label>Your estimated market value (ARV)</label>
+            <label for="arv">Your estimated market value (ARV)</label>
             <input id="arv" placeholder="Select a range above or enter your own">
             <span class="info-note" id="arvSource">Enter manually or select a condition tier above.</span>
           </div>
-          <div class="field"><label>Cash offer received</label><input id="cashOffer" placeholder="$180,000"></div>
+          <div class="field"><label for="cashOffer">Cash offer received</label><input id="cashOffer" placeholder="$180,000"></div>
         </div>
         <div class="row2">
-          <div class="field"><label>Outstanding mortgage balance</label><input id="mortgage" placeholder="$110,000"></div>
-          <div class="field"><label>Offer format</label>
+          <div class="field"><label for="mortgage">Outstanding mortgage balance</label><input id="mortgage" placeholder="$110,000"></div>
+          <div class="field"><label for="hasWritten">Offer format</label>
             <select id="hasWritten">
               <option value="verbal">Verbal only</option>
               <option value="written">Written — itemized repair list</option>
@@ -417,28 +417,28 @@ footer a{color:var(--text-dim);}
         <div class="section-label">What the investor told you</div>
         <div class="row2">
           <div class="field">
-            <label>Investor's stated "as-is" value</label>
+            <label for="investorArv">Investor's stated "as-is" value</label>
             <input id="investorArv" placeholder="$210,000 — leave blank if not stated">
             <span class="info-note">First compression point — ARV anchor before repairs start.</span>
           </div>
           <div class="field">
-            <label>Investor's total stated repair deductions</label>
+            <label for="investorRepairTotal">Investor's total stated repair deductions</label>
             <input id="investorRepairTotal" placeholder="$40,000 — leave blank if unknown">
             <span class="info-note">Second compression point — compare to actual costs in step 2.</span>
           </div>
         </div>
-        <div id="compression-preview"></div>
+        <div id="compression-preview" aria-live="polite"></div>
 
         <div class="divider"></div>
         <div class="section-label">MLS sale assumptions</div>
         <div class="row3">
-          <div class="field"><label>Agent commission (%)</label><input id="commission" value="6"></div>
-          <div class="field"><label>Seller concessions (%)</label><input id="concessions" value="2"></div>
-          <div class="field"><label>Title &amp; closing costs ($)</label><input id="closingFixed" value="2500"></div>
+          <div class="field"><label for="commission">Agent commission (%)</label><input id="commission" value="6"></div>
+          <div class="field"><label for="concessions">Seller concessions (%)</label><input id="concessions" value="2"></div>
+          <div class="field"><label for="closingFixed">Title &amp; closing costs ($)</label><input id="closingFixed" value="2500"></div>
         </div>
         <div class="row2">
-          <div class="field"><label>List-to-sale ratio (%)</label><input id="listRatio" value="99"></div>
-          <div class="field"><label>Occupancy inspection buffer ($)</label><input id="occBuffer" value="1500"></div>
+          <div class="field"><label for="listRatio">List-to-sale ratio (%)</label><input id="listRatio" value="99"></div>
+          <div class="field"><label for="occBuffer">Occupancy inspection buffer ($)</label><input id="occBuffer" value="1500"></div>
         </div>
         <button class="btn-nav" onclick="showTab('repairs')">Next: enter investor's repair claims →</button>
       </div>
@@ -452,7 +452,7 @@ footer a{color:var(--text-dim);}
 
       <!-- TAB 3 -->
       <div class="pane" id="pane-results" style="padding:20px;">
-        <div id="results-content"><div class="placeholder">Complete steps 1 and 2 first.</div></div>
+        <div id="results-content" aria-live="polite"><div class="placeholder">Complete steps 1 and 2 first.</div></div>
       </div>
 
     </div>
@@ -1093,14 +1093,14 @@ function buildRepairCards(){
         <span class="repair-name">${r.name}</span>
         <div class="repair-toggle">
           <span class="toggle-label">${s.included?'Investor cited':'Not cited'}</span>
-          <input type="checkbox" ${s.included?'checked':''} onchange="toggleRepair('${r.id}',this.checked)">
+          <input type="checkbox" aria-label="Investor cited ${r.name}" ${s.included?'checked':''} onchange="toggleRepair('${r.id}',this.checked)">
         </div>
       </div>
       ${s.included?`<div class="condition-row">
         <div class="inv-input"><label>Condition investor described</label>
-          <select onchange="setCondition('${r.id}',this.value)">${opts}</select></div>
+          <select aria-label="${r.name}: condition the investor described" onchange="setCondition('${r.id}',this.value)">${opts}</select></div>
         <div class="inv-input"><label>Their stated deduction ($) if known</label>
-          <input type="text" placeholder="${fmt(cond.investorCost)}" inputmode="numeric" value="${s.investorOverride}" oninput="setOverride('${r.id}',this.value)" onchange="commitOverride('${r.id}',this.value)"></div>
+          <input type="text" aria-label="${r.name}: investor stated deduction in dollars" placeholder="${fmt(cond.investorCost)}" inputmode="numeric" value="${s.investorOverride}" oninput="setOverride('${r.id}',this.value)" onchange="commitOverride('${r.id}',this.value)"></div>
       </div>${reb}`:''}
     </div>`;
   }).join('');
