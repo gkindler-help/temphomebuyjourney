@@ -433,6 +433,10 @@ body.demo-mode #hc-map      { display: none; }
 .george-btn-about:hover{color:#ffcc4d;}
 @media (max-width:600px){.george-card{flex-direction:column;align-items:center;text-align:center;}.george-card-photo{width:90px;height:90px;}.george-card-btns{flex-direction:column;width:100%;}.george-btn-p,.george-btn-s,.george-btn-about{width:100%;justify-content:center;}}
 
+.hc-share-banner { display: none; margin: 0; padding: 10px 14px; background: var(--green-soft); border-bottom: 1px solid var(--green-line); font-size: 12px; line-height: 1.5; color: var(--text-strong); }
+.hc-share-banner.visible { display: block; }
+.hc-share-note { font-size: 11px; color: var(--text-faint); text-align: center; margin: 6px 0 14px; line-height: 1.5; }
+.hc-hc-actions .hc-hc-share { background: transparent; color: var(--gold); border: 1px solid var(--gold-line); }
 /* Saved houses, notes, compare */
 body.demo-mode .hc-houses-bar, body.demo-mode .hc-price-bar, body.demo-mode .hc-save-note { display: none; }
 .hc-houses-bar { background: var(--bg-elev); padding: 10px 14px 4px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
@@ -612,7 +616,8 @@ window.TOOL_MODULES['home-cost'] = (function () {
         '<button class="hc-addr-btn hc-btn-geo" id="hc-new-house">+ New House</button>' +
         '<button class="hc-addr-btn hc-btn-map" id="hc-compare-btn">Compare</button>' +
       '</div>' +
-      '<div class="hc-save-note">Saves on this phone as you go. Nothing is sent anywhere unless you email it.</div>' +
+      '<div class="hc-save-note">Saves on this phone as you go. Nothing is sent anywhere unless you email or share it.</div>' +
+      '<div class="hc-share-banner" id="hc-share-banner" role="status"></div>' +
       '<div class="hc-addr-bar">' +
         '<input class="hc-addr-input" id="hc-addr" placeholder="Enter property address…" type="text">' +
         '<button class="hc-addr-btn hc-btn-map" id="hc-map-btn">📍 Map</button>' +
@@ -687,6 +692,8 @@ window.TOOL_MODULES['home-cost'] = (function () {
         '<div id="hc-report-ctx" style="display:none;"></div>' +
         '<div class="hc-sec-hd" style="margin-top:4px;">Next Steps</div>' +
         '<a href="tel:3144351087" class="hc-btn-primary">📞 Talk To George — 314.435.1087</a>' +
+        '<button class="hc-btn-secondary" id="hc-share-btn">🔗 Share This House As A Link</button>' +
+        '<div class="hc-share-note">For family, friends or a contractor. Anyone with the link can see this house&rsquo;s address, flags and notes.</div>' +
         '<button class="hc-btn-secondary" id="hc-goto-send">Save Or Email This Report →</button>' +
       '</div></div>' +
 
@@ -1390,11 +1397,14 @@ window.TOOL_MODULES['home-cost'] = (function () {
         (x.high ? '<div class="hc-hc-row"><span>Repair midpoint</span><b>$' + x.mid.toLocaleString() + '</b></div>' : '') +
         (x.price ? '<div class="hc-hc-row"><span>Price + repairs</span><b>$' + (x.price + x.mid).toLocaleString() + '</b></div>' : '') +
         (h.notes ? '<div class="hc-hc-notes">' + esc(h.notes.length > 220 ? h.notes.slice(0, 220) + '…' : h.notes) + '</div>' : '') +
-        '<div class="hc-hc-actions"><button class="hc-hc-open" data-open="' + h.id + '">' + (h.id === _cur ? 'Keep Working' : 'Open') + '</button><button class="hc-hc-del" data-delete="' + h.id + '">Delete</button></div>' +
+        '<div class="hc-hc-actions"><button class="hc-hc-open" data-open="' + h.id + '">' + (h.id === _cur ? 'Keep Working' : 'Open') + '</button><button class="hc-hc-share" data-share="' + h.id + '">Share</button><button class="hc-hc-del" data-delete="' + h.id + '">Delete</button></div>' +
       '</div>';
     }).join('');
     Array.prototype.forEach.call(list.querySelectorAll('[data-open]'), function(b) {
       b.addEventListener('click', function() { switchHouse(b.getAttribute('data-open')); switchTab('inspect'); });
+    });
+    Array.prototype.forEach.call(list.querySelectorAll('[data-share]'), function(b) {
+      b.addEventListener('click', function() { shareHouse(findHouse(b.getAttribute('data-share'))); });
     });
     Array.prototype.forEach.call(list.querySelectorAll('[data-delete]'), function(b) {
       b.addEventListener('click', function() { deleteHouse(b.getAttribute('data-delete')); });
@@ -1426,6 +1436,79 @@ window.TOOL_MODULES['home-cost'] = (function () {
     if (typeof gtag === 'function') gtag('event', 'walkthrough_compare_copied', { houses: _houses.length });
   }
 
+
+  // ── SHARE A HOUSE AS A LINK (#h=...; the part after # never reaches the server) ──
+  function b64urlEncode(str) { return btoa(unescape(encodeURIComponent(str))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); }
+  function b64urlDecode(code) { var b = code.replace(/-/g, '+').replace(/_/g, '/'); while (b.length % 4) b += '='; return decodeURIComponent(escape(atob(b))); }
+
+  function encodeHouse(h) {
+    var std = [], sfm = [];
+    (h.repairs || []).forEach(function(r) { if (r.id.indexOf('sf-') === 0) return; std.push(r.note ? [r.id, r.note] : [r.id]); });
+    (h.sf || []).forEach(function(r) { sfm.push([r.name, r.low, r.high]); });
+    var o = { v: 1, a: h.address || '', p: h.price || '', m: h.mode === 'seller' ? 's' : 'b', r: std, s: sfm, sm: h.sfMerged ? 1 : 0, n: h.notes || '' };
+    return b64urlEncode(JSON.stringify(o));
+  }
+
+  function decodeHouse(code) {
+    var o = JSON.parse(b64urlDecode(code));
+    if (!o || o.v !== 1) return null;
+    var h = newHouse();
+    h.address = String(o.a || '').slice(0, 200); h.price = String(o.p || '').slice(0, 20);
+    h.mode = o.m === 's' ? 'seller' : 'buyer'; h.notes = String(o.n || '').slice(0, 5000);
+    (o.r || []).forEach(function(x) {
+      var item = REPAIR_ITEMS.filter(function(it) { return it.id === x[0]; })[0];
+      if (item) h.repairs.push({ id: item.id, name: item.name, low: item.low, high: item.high, note: x[1] ? String(x[1]).slice(0, 1000) : '' });
+    });
+    (o.s || []).forEach(function(x, i) {
+      var low = +x[1] || 0, high = +x[2] || 0;
+      h.sf.push({ id: 'sf-shared-' + i + '-' + Date.now(), name: String(x[0] || 'Measured work').slice(0, 80), low: low, high: high });
+    });
+    h.sfMerged = !!o.sm;
+    if (h.sfMerged) h.sf.forEach(function(r) { h.repairs.push(Object.assign({}, r)); });
+    h.shareSrc = code;
+    return h;
+  }
+
+  function shareHouse(h) {
+    if (!h) return;
+    if (h.id === _cur) saveNow();
+    var code = encodeHouse(h);
+    h.shareSrc = code; writeStore(); // opening your own link goes back to this house, not a copy
+    var url = location.origin + location.pathname + '#h=' + code;
+    var title = 'Walk-through notes' + (h.address ? ': ' + h.address : '');
+    var x = houseTotals(h);
+    var text = title + (x.high ? '. Flagged repairs: $' + x.low.toLocaleString() + ' – $' + x.high.toLocaleString() + '.' : '.') + ' Open it to see every flag and note:';
+    if (typeof gtag === 'function') gtag('event', 'walkthrough_shared', { flagged: x.flagged, link_length: url.length });
+    if (navigator.share) {
+      navigator.share({ title: title, text: text, url: url }).catch(function() {});
+    } else if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(url).then(function() { alert('Link copied. Paste it into a text or email.'); }).catch(function() { fallbackCopy(url); });
+    } else { fallbackCopy(url); }
+  }
+
+  function importSharedFromHash() {
+    var m = /^#h=([A-Za-z0-9_-]+)$/.exec(location.hash || '');
+    if (!m) return false;
+    var h = null;
+    for (var i = 0; i < _houses.length; i++) if (_houses[i].shareSrc === m[1]) h = _houses[i];
+    if (!h) {
+      try { h = decodeHouse(m[1]); } catch (e) { h = null; }
+      if (!h) return false;
+      if (_houses.length === 1 && !houseHasData(_houses[0])) _houses = [];
+      _houses.push(h);
+    }
+    _cur = h.id;
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+    if (typeof gtag === 'function') gtag('event', 'walkthrough_share_opened', { flagged: h.repairs.length });
+    return true;
+  }
+
+  function showShareBanner() {
+    var b = _container.querySelector('#hc-share-banner'); if (!b) return;
+    b.innerHTML = '<strong>Someone shared this house with you.</strong> It&rsquo;s saved on this phone, so you can add your own flags and notes. Tap Compare to see it next to any houses you&rsquo;ve walked.';
+    b.classList.add('visible');
+  }
+
   // ── BIND ──────────────────────────────────────────────────────
   function bindAll() {
     // Mode buttons
@@ -1453,6 +1536,12 @@ window.TOOL_MODULES['home-cost'] = (function () {
     var newBtn2 = _container.querySelector('#hc-houses-new'); if (newBtn2) newBtn2.addEventListener('click', addHouse);
     var cmpBtn = _container.querySelector('#hc-compare-btn'); if (cmpBtn) cmpBtn.addEventListener('click', openCompare);
     var cpyCmp = _container.querySelector('#hc-copy-compare'); if (cpyCmp) cpyCmp.addEventListener('click', copyComparison);
+    var shareBtn = _container.querySelector('#hc-share-btn'); if (shareBtn) shareBtn.addEventListener('click', function() { shareHouse(findHouse(_cur)); });
+    window.addEventListener('hashchange', function() {
+      if (!_container || _noStore || !/^#h=/.test(location.hash)) return;
+      saveNow();
+      if (importSharedFromHash()) { writeStore(); applyHouse(findHouse(_cur)); showShareBanner(); switchTab('report'); }
+    });
     window.addEventListener('pagehide', function() { if (_container) saveNow(); });
     // Tabs
     Array.prototype.forEach.call(_container.querySelectorAll('.hc-tnav-btn'), function(btn) {
@@ -1495,12 +1584,14 @@ window.TOOL_MODULES['home-cost'] = (function () {
       buildRepairList();
       buildWorkTypes();
       loadStore();
-      if (/[?&]flag=/.test(window.location.search) && houseHasData(findHouse(_cur))) {
+      var shared = !_noStore && importSharedFromHash();
+      if (shared) writeStore();
+      if (!shared && /[?&]flag=/.test(window.location.search) && houseHasData(findHouse(_cur))) {
         var fresh = newHouse(); _houses.push(fresh); _cur = fresh.id;
       }
       applyHouse(findHouse(_cur));
       _loading = false;
-      applyFlagParam();
+      if (shared) { showShareBanner(); switchTab('report'); } else applyFlagParam();
       // Init map after render
       setTimeout(function() {
         if (typeof L !== 'undefined') initMap();
