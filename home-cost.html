@@ -432,10 +432,35 @@ body.demo-mode #hc-map      { display: none; }
 .george-btn-about{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.72);font-weight:600;font-size:13px;letter-spacing:0.03em;padding:10px 19px;border-radius:8px;text-decoration:none;transition:color 0.18s;}
 .george-btn-about:hover{color:#ffcc4d;}
 @media (max-width:600px){.george-card{flex-direction:column;align-items:center;text-align:center;}.george-card-photo{width:90px;height:90px;}.george-card-btns{flex-direction:column;width:100%;}.george-btn-p,.george-btn-s,.george-btn-about{width:100%;justify-content:center;}}
+
+/* Saved houses, notes, compare */
+body.demo-mode .hc-houses-bar, body.demo-mode .hc-price-bar, body.demo-mode .hc-save-note { display: none; }
+.hc-houses-bar { background: var(--bg-elev); padding: 10px 14px 4px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.hc-hb-label { font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); }
+.hc-house-sel { flex: 1; min-width: 0; padding: 9px 10px; background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 8px; color: var(--text-strong); font-family: var(--font-sans); font-size: 13px; }
+.hc-save-note { background: var(--bg-elev); padding: 2px 14px 8px; font-size: 11px; color: var(--text-faint); }
+.hc-price-bar { background: var(--surface); padding: 0 14px 10px; display: flex; gap: 8px; align-items: center; border-bottom: 1px solid var(--line); }
+.hc-price-bar label { font-size: 11px; font-weight: 700; color: var(--text-dim); white-space: nowrap; }
+.hc-item-note { display: none; width: 100%; margin-top: 8px; padding: 8px 10px; background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 8px; color: var(--text-strong); font-family: var(--font-sans); font-size: 13px; line-height: 1.45; resize: vertical; }
+.hc-repair-card.flagged .hc-item-note { display: block; }
+.hc-item-note:focus, .hc-notes:focus { outline: none; border-color: var(--gold-line); }
+.hc-rcr-note { display: block; margin-top: 3px; font-size: 11px; color: var(--text-dim); font-style: italic; white-space: pre-wrap; }
+.hc-notes { width: 100%; min-height: 96px; padding: 10px 12px; margin: 0 0 14px; background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 10px; color: var(--text-strong); font-family: var(--font-sans); font-size: 14px; line-height: 1.5; resize: vertical; }
+.hc-hc-card { border: 1px solid var(--line-2); border-radius: 12px; padding: 14px; margin: 0 0 12px; background: var(--surface); }
+.hc-hc-card.current { border-color: var(--gold-line); }
+.hc-hc-title { font-size: 15px; font-weight: 700; color: var(--text-strong); margin: 0 0 8px; overflow-wrap: anywhere; }
+.hc-hc-tag { display: inline-block; margin-left: 6px; padding: 2px 8px; border-radius: 999px; background: var(--green-soft); color: var(--green); font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; vertical-align: middle; }
+.hc-hc-row { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; padding: 3px 0; color: var(--text-soft); }
+.hc-hc-row b { color: var(--text-strong); font-weight: 700; text-align: right; }
+.hc-hc-notes { margin-top: 8px; font-size: 12px; color: var(--text-dim); font-style: italic; white-space: pre-wrap; overflow-wrap: anywhere; }
+.hc-hc-actions { display: flex; gap: 8px; margin-top: 12px; }
+.hc-hc-actions button { flex: 1; padding: 9px 10px; border-radius: 8px; font-family: var(--font-sans); font-size: 12px; font-weight: 700; cursor: pointer; }
+.hc-hc-open { background: var(--gold); color: #080808; border: none; }
+.hc-hc-del { background: transparent; color: var(--text-dim); border: 1px solid var(--line-2); }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/home-cost","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stlhomejourney.com/"},{"@type":"ListItem","position":2,"name":"True Cost to Own a Home","item":"https://stlhomejourney.com/home-cost"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I estimate repair costs while touring a house?", "acceptedAnswer": {"@type": "Answer", "text": "Walk it system by system and flag what you see as you go. Start with the expensive items: the age on the furnace, AC and water heater data plates, the electrical panel brand, signs of water in the basement, foundation cracks, the roof from the ground, and the mortar on brick walls. The tool puts a 2026 expected cost range on each flag and totals them, so you leave the showing with a repair budget instead of a feeling. Then get contractor quotes for the big items before you write the offer."}}, {"@type": "Question", "name": "What should I flag first during a home showing in St. Louis?", "acceptedAnswer": {"@type": "Answer", "text": "The items that change what the house is worth to you: HVAC and water heater age, a Federal Pacific or Zinsco panel, basement water (white efflorescence, staining at the floor line), horizontal or stair-step foundation cracks, roof wear you can see from the ground, and soft or crumbling mortar on brick. Cosmetic items can wait."}}, {"@type": "Question", "name": "Which number should I use, the low end or the high end of the range?", "acceptedAnswer": {"@type": "Answer", "text": "For an offer, start with the midpoint. Asking for the top of a range looks like cherry-picking; the midpoint is defensible and harder for a seller to reject. Then replace the range with real contractor quotes as soon as you have them."}}, {"@type": "Question", "name": "What can’t I see during a showing?", "acceptedAnswer": {"@type": "Answer", "text": "The sewer lateral, the inside of the electrical panel and parts of the attic. Plan on a sewer scope during the inspection on every St. Louis home, whatever its age. It runs $150 to $300, and clay laterals crack and collapse underground where no walkthrough can see them."}}, {"@type": "Question", "name": "Is the walk-through tool a substitute for a home inspection?", "acceptedAnswer": {"@type": "Answer", "text": "No. It helps you spot and budget for issues before you write an offer. A licensed home inspector, plus a sewer scope on every home, still decides what’s really there."}}, {"@type": "Question", "name": "Where do the repair cost ranges come from?", "acceptedAnswer": {"@type": "Answer", "text": "They’re 2026 expected costs for St. Louis, the same ranges as my repair cost guide. You still need quotes from licensed contractors for your house, but a range is a great place to start a budget."}}, {"@type": "Question", "name": "How do I use the walk-through tool at a showing?", "acceptedAnswer": {"@type": "Answer", "text": "Open it on your phone as you tour. Tap each area of the house, flag what you see, and the tool totals the repair ranges as you go."}}, {"@type": "Question", "name": "How do I compare the houses I’ve toured?", "acceptedAnswer": {"@type": "Answer", "text": "Save or email the report from each showing to yourself and your agent. Side by side, two houses at the same price can carry very different repair budgets, and that difference belongs in what you offer."}}, {"@type": "Question", "name": "What should I do with my results after the showing?", "acceptedAnswer": {"@type": "Answer", "text": "Get contractor quotes on the two or three biggest items, decide which ones go into your offer price and which you’ll raise after the inspection, and send me the report if you want a second opinion on what I’d do next."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I estimate repair costs while touring a house?", "acceptedAnswer": {"@type": "Answer", "text": "Walk it system by system and flag what you see as you go. Start with the expensive items: the age on the furnace, AC and water heater data plates, the electrical panel brand, signs of water in the basement, foundation cracks, the roof from the ground, and the mortar on brick walls. The tool puts a 2026 expected cost range on each flag and totals them, so you leave the showing with a repair budget instead of a feeling. Then get contractor quotes for the big items before you write the offer."}}, {"@type": "Question", "name": "What should I flag first during a home showing in St. Louis?", "acceptedAnswer": {"@type": "Answer", "text": "The items that change what the house is worth to you: HVAC and water heater age, a Federal Pacific or Zinsco panel, basement water (white efflorescence, staining at the floor line), horizontal or stair-step foundation cracks, roof wear you can see from the ground, and soft or crumbling mortar on brick. Cosmetic items can wait."}}, {"@type": "Question", "name": "Which number should I use, the low end or the high end of the range?", "acceptedAnswer": {"@type": "Answer", "text": "For an offer, start with the midpoint. Asking for the top of a range looks like cherry-picking; the midpoint is defensible and harder for a seller to reject. Then replace the range with real contractor quotes as soon as you have them."}}, {"@type": "Question", "name": "What can’t I see during a showing?", "acceptedAnswer": {"@type": "Answer", "text": "The sewer lateral, the inside of the electrical panel and parts of the attic. Plan on a sewer scope during the inspection on every St. Louis home, whatever its age. It runs $150 to $300, and clay laterals crack and collapse underground where no walkthrough can see them."}}, {"@type": "Question", "name": "Is the walk-through tool a substitute for a home inspection?", "acceptedAnswer": {"@type": "Answer", "text": "No. It helps you spot and budget for issues before you write an offer. A licensed home inspector, plus a sewer scope on every home, still decides what’s really there."}}, {"@type": "Question", "name": "Where do the repair cost ranges come from?", "acceptedAnswer": {"@type": "Answer", "text": "They’re 2026 expected costs for St. Louis, the same ranges as my repair cost guide. You still need quotes from licensed contractors for your house, but a range is a great place to start a budget."}}, {"@type": "Question", "name": "How do I use the walk-through tool at a showing?", "acceptedAnswer": {"@type": "Answer", "text": "Open it on your phone as you tour. Tap each area of the house, flag what you see, and the tool totals the repair ranges as you go."}}, {"@type": "Question", "name": "How do I compare the houses I’ve toured?", "acceptedAnswer": {"@type": "Answer", "text": "Tap + New House at each showing. The tool saves every house on your phone with its flags, notes and list price, and Compare lines them up side by side: repairs, repair midpoint and price plus repairs. Two houses at the same price can carry very different repair budgets, and that difference belongs in what you offer."}}, {"@type": "Question", "name": "What should I do with my results after the showing?", "acceptedAnswer": {"@type": "Answer", "text": "Get contractor quotes on the two or three biggest items, decide which ones go into your offer price and which you’ll raise after the inspection, and send me the report if you want a second opinion on what I’d do next."}}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "St. Louis Home Walk-Through Tool", "url": "https://stlhomejourney.com/home-cost", "description": "Free tool for St. Louis home showings: flag what you see room by room and see 2026 St. Louis repair cost ranges add up, from the site's St. Louis repair cost guide rather than national averages. Save or email the results to compare houses.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "areaServed": {"@type": "Place", "name": "St. Louis, Missouri"}, "creator": {"@id": "https://stlhomejourney.com/#agent"}, "isAccessibleForFree": true, "isBasedOn": {"@type": "CreativeWork", "name": "St. Louis home repair cost guide, 2026", "url": "https://stlhomejourney.com/articles/stl-home-repair-cost-guide", "creator": {"@id": "https://stlhomejourney.com/#agent"}}}</script>
 </head>
 <body class="tool-page">
@@ -469,7 +494,7 @@ body.demo-mode #hc-map      { display: none; }
 <div class="hc-qa"><h3>How do I use the walk-through tool at a showing?</h3>
 <p>Open it on your phone as you tour. Tap each area of the house, flag what you see, and the tool totals the repair ranges as you go.</p></div>
 <div class="hc-qa"><h3>How do I compare the houses I&rsquo;ve toured?</h3>
-<p>Save or email the report from each showing to yourself and your agent. Side by side, two houses at the same price can carry very different repair budgets, and that difference belongs in what you offer.</p></div>
+<p>Tap + New House at each showing. The tool saves every house on your phone with its flags, notes and list price, and Compare lines them up side by side: repairs, repair midpoint and price plus repairs. Two houses at the same price can carry very different repair budgets, and that difference belongs in what you offer.</p></div>
 <div class="hc-qa"><h3>What should I do with my results after the showing?</h3>
 <p>Get contractor quotes on the two or three biggest items, decide which ones go into your offer price and which you&rsquo;ll raise after the inspection, and send me the report if you want a second opinion on what I&rsquo;d do next. <a href="/ask?about=property-defect&amp;from=/home-cost">Ask me what I&rsquo;d do next &rarr;</a></p></div>
 </section>
@@ -581,11 +606,19 @@ window.TOOL_MODULES['home-cost'] = (function () {
         '<span class="hc-mode-desc" id="hc-mode-desc">Flag issues before you make an offer</span>' +
       '</div>' +
 
+      '<div class="hc-houses-bar">' +
+        '<label class="hc-hb-label" for="hc-house-sel">House</label>' +
+        '<select class="hc-house-sel" id="hc-house-sel" aria-label="Saved houses"></select>' +
+        '<button class="hc-addr-btn hc-btn-geo" id="hc-new-house">+ New House</button>' +
+        '<button class="hc-addr-btn hc-btn-map" id="hc-compare-btn">Compare</button>' +
+      '</div>' +
+      '<div class="hc-save-note">Saves on this phone as you go. Nothing is sent anywhere unless you email it.</div>' +
       '<div class="hc-addr-bar">' +
         '<input class="hc-addr-input" id="hc-addr" placeholder="Enter property address…" type="text">' +
         '<button class="hc-addr-btn hc-btn-map" id="hc-map-btn">📍 Map</button>' +
         '<button class="hc-addr-btn hc-btn-geo" id="hc-geo-btn">📡 Locate</button>' +
       '</div>' +
+      '<div class="hc-price-bar"><label for="hc-price">List price</label><input class="hc-addr-input" id="hc-price" inputmode="numeric" placeholder="Optional, to compare houses" type="text"></div>' +
       '<div id="hc-map"></div>' +
 
       '<div class="hc-tab-nav">' +
@@ -645,6 +678,8 @@ window.TOOL_MODULES['home-cost'] = (function () {
           '<div id="hc-sf-merged-rows"></div>' +
           '<div class="hc-total-row"><div><div class="hc-rct-label">SF Work Estimate</div></div><div class="hc-rct-val" id="hc-sf-merged-total">$0</div></div>' +
         '</div>' +
+        '<div class="hc-sec-hd">Your Notes On This House</div>' +
+        '<textarea class="hc-notes" id="hc-notes" rows="4" placeholder="What stood out? Layout, location, noise, smells, questions for the listing agent…"></textarea>' +
         '<div class="hc-grand-total" id="hc-grand-total" style="display:none;">' +
           '<div><div class="hc-gt-label">Total Estimated Cost</div><div class="hc-gt-val" id="hc-gt-val">$0</div><div class="hc-gt-sub">Low – High range</div></div>' +
           '<div style="text-align:right;"><div class="hc-gt-mid-label">Midpoint (use for negotiation)</div><div class="hc-gt-midpoint" id="hc-gt-midpoint">$0</div></div>' +
@@ -673,6 +708,14 @@ window.TOOL_MODULES['home-cost'] = (function () {
         '</div>' +
         '<div class="hc-data-source">George Kindler &middot; The Closing Pros LLC &middot; Licensed Missouri Real Estate Agent &middot; 2025–2026 St. Louis Market Rates</div>' +
         '<div class="hc-data-source" style="margin-top:4px;"><span style="font-size:8px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-right:4px;">Compliance</span>The Closing Pros LLC &middot; 314-998-4550</div>' +
+      '</div></div>' +
+
+      // ── PANEL: SAVED HOUSES ──
+      '<div id="hc-panel-houses" class="hc-panel"><div class="hc-wrap">' +
+        '<div class="hc-context"><strong>Your saved houses, side by side.</strong> Each one keeps its flags, notes and measurements on this phone. Add the list price to see price plus repairs.</div>' +
+        '<div id="hc-houses-list"></div>' +
+        '<button class="hc-btn-primary" id="hc-houses-new">+ Add Another House</button>' +
+        '<button class="hc-btn-secondary" id="hc-copy-compare">📋 Copy Comparison</button>' +
       '</div></div>'
     );
   }
@@ -760,7 +803,7 @@ window.TOOL_MODULES['home-cost'] = (function () {
   }
 
   // ── MODE ──────────────────────────────────────────────────────
-  function setMode(m) {
+  function setMode(m, silent) {
     mode = m;
     var bB = _container.querySelector('#hc-btn-buyer');
     var bS = _container.querySelector('#hc-btn-seller');
@@ -778,6 +821,8 @@ window.TOOL_MODULES['home-cost'] = (function () {
     var title = _container.querySelector('#hc-house-title');
     if (title) title.textContent = m === 'buyer' ? 'Tap A Zone To Flag An Issue' : 'Tap A Zone To Flag What Needs Attention';
     renderReport();
+    if (silent) return;
+    persist();
     if (typeof gtag === 'function') gtag('event', 'mode_switch', { mode: m });
   }
 
@@ -869,9 +914,15 @@ window.TOOL_MODULES['home-cost'] = (function () {
           '<div class="hc-rc-name">' + item.name + '</div>' +
           '<div class="hc-rc-range">$' + item.low.toLocaleString() + ' – $' + item.high.toLocaleString() + '</div>' +
           (item.stl ? '<div class="hc-rc-stl">⚠ ' + item.stl + '</div>' : '') +
+          '<textarea class="hc-item-note" data-note="' + item.id + '" rows="2" placeholder="Your note on this (optional)…" aria-label="Note on ' + item.name + '"></textarea>' +
         '</div>' +
         '<div class="hc-rc-check">✓</div>';
-      el.addEventListener('click', function() { toggleRepairCard(item.id, item.name, item.low, item.high, el, item.cat); });
+      el.addEventListener('click', function(e) { if (e.target.closest && e.target.closest('.hc-item-note')) return; toggleRepairCard(item.id, item.name, item.low, item.high, el, item.cat); });
+      var noteEl = el.querySelector('.hc-item-note');
+      noteEl.addEventListener('input', function() {
+        var r = repairReport.filter(function(x) { return x.id === item.id; })[0];
+        if (r) { r.note = noteEl.value; persist(); }
+      });
       wrap.appendChild(el);
     });
   }
@@ -882,6 +933,7 @@ window.TOOL_MODULES['home-cost'] = (function () {
     if (idx > -1) {
       repairReport.splice(idx, 1);
       el.classList.remove('flagged');
+      var nEl = el.querySelector('.hc-item-note'); if (nEl) nEl.value = '';
       syncZonesFromReport();
     } else {
       repairReport.push({ id:id, name:name, low:low, high:high });
@@ -1065,7 +1117,7 @@ window.TOOL_MODULES['home-cost'] = (function () {
       var rLow = 0, rHigh = 0;
       rpRows.innerHTML = repairItems.map(function(r) {
         rLow += r.low; rHigh += r.high;
-        return '<div class="hc-rc-row"><span class="hc-rcr-name">' + r.name + '</span><span class="hc-rcr-cost">$' + r.low.toLocaleString() + '–$' + r.high.toLocaleString() + '</span><button class="hc-rcr-del" data-del="' + r.id + '">✕</button></div>';
+        return '<div class="hc-rc-row"><span class="hc-rcr-name">' + r.name + (r.note ? '<span class="hc-rcr-note">' + esc(r.note) + '</span>' : '') + '</span><span class="hc-rcr-cost">$' + r.low.toLocaleString() + '–$' + r.high.toLocaleString() + '</span><button class="hc-rcr-del" data-del="' + r.id + '">✕</button></div>';
       }).join('');
       Array.prototype.forEach.call(rpRows.querySelectorAll('[data-del]'), function(btn) {
         btn.addEventListener('click', function() { deleteRepairFromReport(btn.getAttribute('data-del')); });
@@ -1141,6 +1193,7 @@ window.TOOL_MODULES['home-cost'] = (function () {
     setBadge('badge-inspect', repairCount);
     setBadge('badge-measure', sfReport.length);
     setBadge('badge-report',  repairReport.length);
+    persist();
   }
 
   // ── REPORT TEXT ───────────────────────────────────────────────
@@ -1150,11 +1203,13 @@ window.TOOL_MODULES['home-cost'] = (function () {
     var name   = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : 'there';
     var address = (addrEl && addrEl.value.trim()) ? addrEl.value.trim() : 'the property';
     var modeLabel = mode === 'buyer' ? 'BUYER INSPECTION REPORT' : 'PRE-LISTING COST ESTIMATE';
-    var text = modeLabel + '\n' + '═'.repeat(40) + '\nPrepared for: ' + name + '\nProperty: ' + address + '\n\n';
+    var priceEl = _container.querySelector('#hc-price');
+    var price = priceEl ? parseMoney(priceEl.value) : 0;
+    var text = modeLabel + '\n' + '═'.repeat(40) + '\nPrepared for: ' + name + '\nProperty: ' + address + (price ? '\nList price: $' + price.toLocaleString() : '') + '\n\n';
     var repairItems = repairReport.filter(function(r) { return r.id.indexOf('sf-') !== 0; });
     if (repairItems.length > 0) {
       text += 'FLAGGED REPAIR ITEMS\n' + '─'.repeat(36) + '\n';
-      repairItems.forEach(function(r) { text += '• ' + r.name + ': $' + r.low.toLocaleString() + ' – $' + r.high.toLocaleString() + '\n'; });
+      repairItems.forEach(function(r) { text += '• ' + r.name + ': $' + r.low.toLocaleString() + ' – $' + r.high.toLocaleString() + '\n' + (r.note ? '   Note: ' + r.note.replace(/\s*\n\s*/g, ' / ') + '\n' : ''); });
     }
     if (sfReport.length > 0) {
       text += '\nSF WORK SUMMARY\n' + '─'.repeat(36) + '\n';
@@ -1168,6 +1223,8 @@ window.TOOL_MODULES['home-cost'] = (function () {
       if (mode === 'buyer') text += '\nOFFER CONTEXT: A defensible adjustment is ~$' + Math.round(mid*0.87).toLocaleString() + ' – $' + Math.round(mid*0.92).toLocaleString() + ' below list.\n';
       else text += '\nLISTING CONTEXT: Buyers will find these. Fix, disclose, or price accordingly.\n';
     }
+    var notesEl = _container.querySelector('#hc-notes');
+    if (notesEl && notesEl.value.trim()) text += '\nMY NOTES\n' + '─'.repeat(36) + '\n' + notesEl.value.trim() + '\n';
     text += '\n' + '─'.repeat(36) + '\nGeorge Kindler · The Closing Pros LLC · 314.435.1087\nLicensed Missouri Real Estate Agent · 13 Years · St. Louis Market Rates';
     return text;
   }
@@ -1202,6 +1259,173 @@ window.TOOL_MODULES['home-cost'] = (function () {
     document.body.removeChild(ta);
   }
 
+
+  // ── SAVED HOUSES (this phone only: localStorage) ─────────────
+  var STORE_KEY = 'stlhj-walkthrough-v1';
+  var MAX_HOUSES = 30;
+  var _houses = [], _cur = null, _saveT = null, _noStore = false, _loading = false;
+
+  function esc(t) { return String(t).replace(/[&<>"']/g, function(c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function parseMoney(v) { var n = parseFloat(String(v || '').replace(/[^0-9.]/g, '')); return isFinite(n) && n > 0 ? Math.round(n) : 0; }
+  function newHouse() { return { id: 'h' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), address: '', price: '', mode: 'buyer', repairs: [], sf: [], sfMerged: false, notes: '', updated: Date.now() }; }
+  function findHouse(id) { for (var i = 0; i < _houses.length; i++) if (_houses[i].id === id) return _houses[i]; return null; }
+  function houseHasData(h) { return !!(h && (h.address || h.price || h.notes || (h.repairs && h.repairs.length) || (h.sf && h.sf.length))); }
+  function houseLabel(h, i) { return h.address ? h.address : 'House ' + (i + 1) + ' (no address yet)'; }
+
+  function loadStore() {
+    _houses = []; _cur = null;
+    if (!_noStore) {
+      try {
+        var d = JSON.parse(localStorage.getItem(STORE_KEY) || 'null');
+        if (d && d.houses && d.houses.length) { _houses = d.houses; _cur = d.current; }
+      } catch (e) {}
+    }
+    if (!_houses.length) { _houses = [newHouse()]; }
+    if (!findHouse(_cur)) _cur = _houses[0].id;
+  }
+
+  function captureState() {
+    var h = findHouse(_cur); if (!h || !_container) return;
+    h.mode = mode; h.repairs = repairReport; h.sf = sfReport; h.sfMerged = sfMerged;
+    var a = _container.querySelector('#hc-addr'); if (a) h.address = a.value.trim();
+    var p = _container.querySelector('#hc-price'); if (p) h.price = p.value.trim();
+    var n = _container.querySelector('#hc-notes'); if (n) h.notes = n.value;
+    h.updated = Date.now();
+  }
+
+  function writeStore() {
+    if (_noStore) return;
+    try { localStorage.setItem(STORE_KEY, JSON.stringify({ current: _cur, houses: _houses })); } catch (e) {}
+  }
+
+  function persist() {
+    if (_loading || !_container) return;
+    clearTimeout(_saveT);
+    _saveT = setTimeout(function() { captureState(); writeStore(); renderHouseSelect(); }, 250);
+  }
+
+  function saveNow() { clearTimeout(_saveT); captureState(); writeStore(); }
+
+  function renderHouseSelect() {
+    var sel = _container && _container.querySelector('#hc-house-sel'); if (!sel) return;
+    sel.innerHTML = _houses.map(function(h, i) {
+      var n = (h.repairs || []).filter(function(r) { return r.id.indexOf('sf-') !== 0; }).length;
+      return '<option value="' + h.id + '"' + (h.id === _cur ? ' selected' : '') + '>' + esc(houseLabel(h, i)) + (n ? ' · ' + n + ' flagged' : '') + '</option>';
+    }).join('');
+    var cmp = _container.querySelector('#hc-compare-btn');
+    if (cmp) cmp.textContent = 'Compare (' + _houses.length + ')';
+  }
+
+  function applyHouse(h) {
+    _loading = true;
+    repairReport = (h.repairs || []).map(function(r) { return Object.assign({}, r); });
+    sfReport = (h.sf || []).map(function(r) { return Object.assign({}, r); });
+    sfMerged = !!h.sfMerged; sfLast = null;
+    var a = _container.querySelector('#hc-addr'); if (a) a.value = h.address || '';
+    var p = _container.querySelector('#hc-price'); if (p) p.value = h.price || '';
+    var n = _container.querySelector('#hc-notes'); if (n) n.value = h.notes || '';
+    Array.prototype.forEach.call(_container.querySelectorAll('.hc-repair-card'), function(card) {
+      var id = card.id.replace('hc-rc-', '');
+      var r = repairReport.filter(function(x) { return x.id === id; })[0];
+      card.classList.toggle('flagged', !!r);
+      var ta = card.querySelector('.hc-item-note'); if (ta) ta.value = (r && r.note) || '';
+    });
+    var resEl = _container.querySelector('#hc-sf-result'); if (resEl) resEl.classList.remove('visible');
+    var addBtn = _container.querySelector('#hc-add-sf-btn'); if (addBtn) addBtn.style.display = 'none';
+    if (_marker && _map) { _map.removeLayer(_marker); _marker = null; }
+    syncZonesFromReport();
+    setMode(h.mode || 'buyer', true);
+    renderSFReport();
+    updateBadges();
+    renderHouseSelect();
+    _loading = false;
+  }
+
+  function switchHouse(id) {
+    if (id === _cur) return;
+    saveNow();
+    var h = findHouse(id); if (!h) return;
+    _cur = id; writeStore(); applyHouse(h);
+  }
+
+  function addHouse() {
+    saveNow();
+    if (_houses.length >= MAX_HOUSES) { alert('You have ' + MAX_HOUSES + ' saved houses. Delete one in Compare to add another.'); return; }
+    var h = newHouse(); _houses.push(h); _cur = h.id; writeStore(); applyHouse(h);
+    switchTab('inspect');
+    var a = _container.querySelector('#hc-addr'); if (a) a.focus();
+    if (typeof gtag === 'function') gtag('event', 'walkthrough_house_added', { houses: _houses.length });
+  }
+
+  function deleteHouse(id) {
+    var h = findHouse(id); if (!h) return;
+    if (!confirm('Delete ' + (h.address || 'this house') + ' and its notes from this phone?')) return;
+    _houses = _houses.filter(function(x) { return x.id !== id; });
+    if (!_houses.length) _houses = [newHouse()];
+    if (_cur === id) { _cur = _houses[0].id; applyHouse(_houses[0]); }
+    writeStore(); renderHouseSelect(); renderHouses();
+  }
+
+  function houseTotals(h) {
+    var low = 0, high = 0;
+    var items = (h.repairs || []).slice();
+    if (!h.sfMerged) items = items.concat(h.sf || []);
+    items.forEach(function(r) { low += r.low; high += r.high; });
+    var flagged = (h.repairs || []).filter(function(r) { return r.id.indexOf('sf-') !== 0; }).length;
+    return { low: low, high: high, mid: Math.round((low + high) / 2), flagged: flagged, price: parseMoney(h.price) };
+  }
+
+  function renderHouses() {
+    var list = _container.querySelector('#hc-houses-list'); if (!list) return;
+    var t = _houses.map(houseTotals);
+    var best = -1, bestVal = Infinity, priced = 0;
+    t.forEach(function(x, i) { if (x.price) { priced++; if (x.price + x.mid < bestVal) { bestVal = x.price + x.mid; best = i; } } });
+    list.innerHTML = _houses.map(function(h, i) {
+      var x = t[i];
+      return '<div class="hc-hc-card' + (h.id === _cur ? ' current' : '') + '">' +
+        '<div class="hc-hc-title">' + esc(houseLabel(h, i)) + (priced > 1 && i === best ? '<span class="hc-hc-tag">Lowest all-in</span>' : '') + '</div>' +
+        (x.price ? '<div class="hc-hc-row"><span>List price</span><b>$' + x.price.toLocaleString() + '</b></div>' : '') +
+        '<div class="hc-hc-row"><span>Flagged items</span><b>' + x.flagged + '</b></div>' +
+        '<div class="hc-hc-row"><span>Repairs</span><b>' + (x.high ? '$' + x.low.toLocaleString() + ' – $' + x.high.toLocaleString() : '—') + '</b></div>' +
+        (x.high ? '<div class="hc-hc-row"><span>Repair midpoint</span><b>$' + x.mid.toLocaleString() + '</b></div>' : '') +
+        (x.price ? '<div class="hc-hc-row"><span>Price + repairs</span><b>$' + (x.price + x.mid).toLocaleString() + '</b></div>' : '') +
+        (h.notes ? '<div class="hc-hc-notes">' + esc(h.notes.length > 220 ? h.notes.slice(0, 220) + '…' : h.notes) + '</div>' : '') +
+        '<div class="hc-hc-actions"><button class="hc-hc-open" data-open="' + h.id + '">' + (h.id === _cur ? 'Keep Working' : 'Open') + '</button><button class="hc-hc-del" data-delete="' + h.id + '">Delete</button></div>' +
+      '</div>';
+    }).join('');
+    Array.prototype.forEach.call(list.querySelectorAll('[data-open]'), function(b) {
+      b.addEventListener('click', function() { switchHouse(b.getAttribute('data-open')); switchTab('inspect'); });
+    });
+    Array.prototype.forEach.call(list.querySelectorAll('[data-delete]'), function(b) {
+      b.addEventListener('click', function() { deleteHouse(b.getAttribute('data-delete')); });
+    });
+  }
+
+  function openCompare() {
+    saveNow(); renderHouseSelect(); renderHouses(); switchTab('houses');
+    if (typeof gtag === 'function') gtag('event', 'walkthrough_compare', { houses: _houses.length });
+  }
+
+  function copyComparison() {
+    saveNow();
+    var text = 'HOUSES I WALKED\n' + '═'.repeat(40) + '\n';
+    _houses.forEach(function(h, i) {
+      var x = houseTotals(h);
+      text += '\n' + houseLabel(h, i) + '\n';
+      if (x.price) text += '  List price: $' + x.price.toLocaleString() + '\n';
+      text += '  Flagged items: ' + x.flagged + '\n';
+      if (x.high) text += '  Repairs: $' + x.low.toLocaleString() + ' – $' + x.high.toLocaleString() + ' (midpoint $' + x.mid.toLocaleString() + ')\n';
+      if (x.price) text += '  Price + repairs: $' + (x.price + x.mid).toLocaleString() + '\n';
+      (h.repairs || []).filter(function(r) { return r.id.indexOf('sf-') !== 0; }).forEach(function(r) { text += '   • ' + r.name + (r.note ? ' — ' + r.note.replace(/\s*\n\s*/g, ' / ') : '') + '\n'; });
+      if (h.notes && h.notes.trim()) text += '  Notes: ' + h.notes.trim().replace(/\s*\n\s*/g, ' / ') + '\n';
+    });
+    text += '\n' + '─'.repeat(36) + '\nRepair ranges: 2025–2026 St. Louis market rates, stlhomejourney.com/home-cost';
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function() { alert('Comparison copied.'); }).catch(function() { fallbackCopy(text); });
+    } else { fallbackCopy(text); }
+    if (typeof gtag === 'function') gtag('event', 'walkthrough_compare_copied', { houses: _houses.length });
+  }
+
   // ── BIND ──────────────────────────────────────────────────────
   function bindAll() {
     // Mode buttons
@@ -1216,6 +1440,20 @@ window.TOOL_MODULES['home-cost'] = (function () {
     if (mapBtn) mapBtn.addEventListener('click', searchAddress);
     if (geoBtn) geoBtn.addEventListener('click', geoLocate);
     if (addrIn) addrIn.addEventListener('keydown', function(e) { if (e.key === 'Enter') searchAddress(); });
+    if (addrIn) addrIn.addEventListener('input', persist);
+    // Saved houses
+    var priceIn = _container.querySelector('#hc-price');
+    var notesIn = _container.querySelector('#hc-notes');
+    var houseSel = _container.querySelector('#hc-house-sel');
+    if (priceIn) priceIn.addEventListener('input', persist);
+    if (priceIn) priceIn.addEventListener('change', function() { var v = parseMoney(priceIn.value); priceIn.value = v ? '$' + v.toLocaleString() : ''; persist(); });
+    if (notesIn) notesIn.addEventListener('input', persist);
+    if (houseSel) houseSel.addEventListener('change', function() { switchHouse(houseSel.value); });
+    var newBtn = _container.querySelector('#hc-new-house'); if (newBtn) newBtn.addEventListener('click', addHouse);
+    var newBtn2 = _container.querySelector('#hc-houses-new'); if (newBtn2) newBtn2.addEventListener('click', addHouse);
+    var cmpBtn = _container.querySelector('#hc-compare-btn'); if (cmpBtn) cmpBtn.addEventListener('click', openCompare);
+    var cpyCmp = _container.querySelector('#hc-copy-compare'); if (cpyCmp) cpyCmp.addEventListener('click', copyComparison);
+    window.addEventListener('pagehide', function() { if (_container) saveNow(); });
     // Tabs
     Array.prototype.forEach.call(_container.querySelectorAll('.hc-tnav-btn'), function(btn) {
       btn.addEventListener('click', function() { switchTab(btn.getAttribute('data-tab')); });
@@ -1250,11 +1488,18 @@ window.TOOL_MODULES['home-cost'] = (function () {
       sfMerged     = false;
       sfLast       = null;
       container.innerHTML = buildHTML();
+      _noStore = window.location.search.indexOf('demo=1') !== -1;
+      _loading = true;
       bindAll();
       buildLegend();
       buildRepairList();
       buildWorkTypes();
-      updateBadges();
+      loadStore();
+      if (/[?&]flag=/.test(window.location.search) && houseHasData(findHouse(_cur))) {
+        var fresh = newHouse(); _houses.push(fresh); _cur = fresh.id;
+      }
+      applyHouse(findHouse(_cur));
+      _loading = false;
       applyFlagParam();
       // Init map after render
       setTimeout(function() {
@@ -1262,6 +1507,7 @@ window.TOOL_MODULES['home-cost'] = (function () {
       }, 100);
     },
     unmount: function () {
+      if (_container) saveNow();
       if (_map) { _map.remove(); _map = null; _marker = null; }
       if (_container) _container.innerHTML = '';
       _container = null;
