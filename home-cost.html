@@ -437,6 +437,12 @@ body.demo-mode #hc-map      { display: none; }
 .hc-share-banner.visible { display: block; }
 .hc-share-note { font-size: 11px; color: var(--text-faint); text-align: center; margin: 6px 0 14px; line-height: 1.5; }
 .hc-hc-actions .hc-hc-share { background: transparent; color: var(--gold); border: 1px solid var(--gold-line); }
+.hc-pc { border: 1px solid var(--line-2); border-radius: 12px; padding: 14px; margin: 0 0 14px; background: var(--surface); font-size: 13px; color: var(--text-soft); line-height: 1.55; }
+.hc-pc p { margin: 0 0 10px; }
+.hc-pc .hc-hc-row { font-size: 13px; }
+.hc-pc a.hc-btn-primary, .hc-pc a.hc-btn-secondary { display: block; text-align: center; text-decoration: none; margin-top: 10px; }
+.hc-pc-links { margin-top: 10px; font-size: 12px; }
+.hc-pc-links a { color: var(--gold); }
 /* Saved houses, notes, compare */
 body.demo-mode .hc-houses-bar, body.demo-mode .hc-price-bar, body.demo-mode .hc-save-note { display: none; }
 .hc-houses-bar { background: var(--bg-elev); padding: 10px 14px 4px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
@@ -690,6 +696,8 @@ window.TOOL_MODULES['home-cost'] = (function () {
           '<div style="text-align:right;"><div class="hc-gt-mid-label">Midpoint (use for negotiation)</div><div class="hc-gt-midpoint" id="hc-gt-midpoint">$0</div></div>' +
         '</div>' +
         '<div id="hc-report-ctx" style="display:none;"></div>' +
+        '<div class="hc-sec-hd" style="margin-top:4px;">Is The Price Right?</div>' +
+        '<div class="hc-pc" id="hc-pc"></div>' +
         '<div class="hc-sec-hd" style="margin-top:4px;">Next Steps</div>' +
         '<a href="tel:3144351087" class="hc-btn-primary">📞 Talk To George — 314.435.1087</a>' +
         '<button class="hc-btn-secondary" id="hc-share-btn">🔗 Share This House As A Link</button>' +
@@ -1177,6 +1185,7 @@ window.TOOL_MODULES['home-cost'] = (function () {
       if (gtEl)  gtEl.style.display = 'none';
       if (ctxEl) ctxEl.style.display = 'none';
     }
+    renderPriceCheck();
   }
 
   function deleteRepairFromReport(id) {
@@ -1229,6 +1238,12 @@ window.TOOL_MODULES['home-cost'] = (function () {
       text += '\nTOTAL RANGE: $' + tLow.toLocaleString() + ' – $' + tHigh.toLocaleString() + '\nMIDPOINT: $' + mid.toLocaleString() + '\n';
       if (mode === 'buyer') text += '\nOFFER CONTEXT: A defensible adjustment is ~$' + Math.round(mid*0.87).toLocaleString() + ' – $' + Math.round(mid*0.92).toLocaleString() + ' below list.\n';
       else text += '\nLISTING CONTEXT: Buyers will find these. Fix, disclose, or price accordingly.\n';
+    }
+    var hb = findHouse(_cur);
+    if (hb && hb.byo) {
+      text += '\nPRICE CHECK (Before You Offer)\n' + '─'.repeat(36) + '\n';
+      byoLines(hb.byo).forEach(function(x) { text += '• ' + x[0] + ': ' + x[1] + '\n'; });
+      if (hb.byo.link) text += 'Full check: ' + location.origin + hb.byo.link + '\n';
     }
     var notesEl = _container.querySelector('#hc-notes');
     if (notesEl && notesEl.value.trim()) text += '\nMY NOTES\n' + '─'.repeat(36) + '\n' + notesEl.value.trim() + '\n';
@@ -1302,6 +1317,10 @@ window.TOOL_MODULES['home-cost'] = (function () {
 
   function writeStore() {
     if (_noStore) return;
+    try {
+      var d = JSON.parse(localStorage.getItem(STORE_KEY) || 'null');
+      if (d && d.houses) d.houses.forEach(function(sh) { var h = findHouse(sh.id); if (h && sh.byo && (!h.byo || sh.byo.at > h.byo.at)) h.byo = sh.byo; });
+    } catch (e) {}
     try { localStorage.setItem(STORE_KEY, JSON.stringify({ current: _cur, houses: _houses })); } catch (e) {}
   }
 
@@ -1396,6 +1415,7 @@ window.TOOL_MODULES['home-cost'] = (function () {
         '<div class="hc-hc-row"><span>Repairs</span><b>' + (x.high ? '$' + x.low.toLocaleString() + ' – $' + x.high.toLocaleString() : '—') + '</b></div>' +
         (x.high ? '<div class="hc-hc-row"><span>Repair midpoint</span><b>$' + x.mid.toLocaleString() + '</b></div>' : '') +
         (x.price ? '<div class="hc-hc-row"><span>Price + repairs</span><b>$' + (x.price + x.mid).toLocaleString() + '</b></div>' : '') +
+        (h.byo ? '<div class="hc-hc-row"><span>Like-kind sales (' + esc(h.byo.sd) + ')</span><b>$' + h.byo.lo.toLocaleString() + ' – $' + h.byo.hi.toLocaleString() + '</b></div>' : '') +
         (h.notes ? '<div class="hc-hc-notes">' + esc(h.notes.length > 220 ? h.notes.slice(0, 220) + '…' : h.notes) + '</div>' : '') +
         '<div class="hc-hc-actions"><button class="hc-hc-open" data-open="' + h.id + '">' + (h.id === _cur ? 'Keep Working' : 'Open') + '</button><button class="hc-hc-share" data-share="' + h.id + '">Share</button><button class="hc-hc-del" data-delete="' + h.id + '">Delete</button></div>' +
       '</div>';
@@ -1426,6 +1446,7 @@ window.TOOL_MODULES['home-cost'] = (function () {
       text += '  Flagged items: ' + x.flagged + '\n';
       if (x.high) text += '  Repairs: $' + x.low.toLocaleString() + ' – $' + x.high.toLocaleString() + ' (midpoint $' + x.mid.toLocaleString() + ')\n';
       if (x.price) text += '  Price + repairs: $' + (x.price + x.mid).toLocaleString() + '\n';
+      if (h.byo) text += '  Like-kind sales (' + h.byo.sd + '): $' + h.byo.lo.toLocaleString() + ' – $' + h.byo.hi.toLocaleString() + ', starting point $' + h.byo.est.toLocaleString() + '\n';
       (h.repairs || []).filter(function(r) { return r.id.indexOf('sf-') !== 0; }).forEach(function(r) { text += '   • ' + r.name + (r.note ? ' — ' + r.note.replace(/\s*\n\s*/g, ' / ') : '') + '\n'; });
       if (h.notes && h.notes.trim()) text += '  Notes: ' + h.notes.trim().replace(/\s*\n\s*/g, ' / ') + '\n';
     });
@@ -1446,6 +1467,7 @@ window.TOOL_MODULES['home-cost'] = (function () {
     (h.repairs || []).forEach(function(r) { if (r.id.indexOf('sf-') === 0) return; std.push(r.note ? [r.id, r.note] : [r.id]); });
     (h.sf || []).forEach(function(r) { sfm.push([r.name, r.low, r.high]); });
     var o = { v: 1, a: h.address || '', p: h.price || '', m: h.mode === 'seller' ? 's' : 'b', r: std, s: sfm, sm: h.sfMerged ? 1 : 0, n: h.notes || '' };
+    if (h.byo) o.b = [h.byo.sd, h.byo.lo, h.byo.hi, h.byo.est, h.byo.gap, h.byo.list, h.byo.cond, h.byo.link || '', h.byo.read || ''];
     return b64urlEncode(JSON.stringify(o));
   }
 
@@ -1464,6 +1486,10 @@ window.TOOL_MODULES['home-cost'] = (function () {
       h.sf.push({ id: 'sf-shared-' + i + '-' + Date.now(), name: String(x[0] || 'Measured work').slice(0, 80), low: low, high: high });
     });
     h.sfMerged = !!o.sm;
+    if (o.b && o.b.length >= 8 && +o.b[1] && +o.b[2]) {
+      var lk = String(o.b[7] || ''); if (lk.indexOf(BYO_PATH) !== 0) lk = '';
+      h.byo = { sd: String(o.b[0]).slice(0, 60), lo: +o.b[1], hi: +o.b[2], est: +o.b[3] || 0, gap: o.b[4] === null ? null : +o.b[4], list: +o.b[5] || 0, cond: String(o.b[6] || '').slice(0, 40), link: lk, read: String(o.b[8] || '').slice(0, 200), at: Date.now() };
+    }
     if (h.sfMerged) h.sf.forEach(function(r) { h.repairs.push(Object.assign({}, r)); });
     h.shareSrc = code;
     return h;
@@ -1509,6 +1535,53 @@ window.TOOL_MODULES['home-cost'] = (function () {
     b.classList.add('visible');
   }
 
+
+  // ── PRICE CHECK (a separate tool: Before You Offer). We only link to it and show a result the buyer saved here. ──
+  var BYO_PATH = '/articles/what-to-look-for-buying-house-stl';
+  function fmd(n) { return '$' + Math.round(n).toLocaleString(); }
+  function byoLines(b) {
+    var l = [['Like-kind sales in ' + b.sd, fmd(b.lo) + ' – ' + fmd(b.hi)], ['Starting point for its condition (' + b.cond + ')', fmd(b.est)]];
+    if (b.gap !== null && b.gap !== undefined && b.list) l.push(['List price ' + fmd(b.list) + ' vs. that', Math.abs(b.gap) + '% ' + (b.gap >= 0 ? 'above' : 'below')]);
+    return l;
+  }
+  function renderPriceCheck() {
+    var el = _container && _container.querySelector('#hc-pc'); if (!el) return;
+    var h = findHouse(_cur); if (!h) return;
+    var pIn = _container.querySelector('#hc-price');
+    var price = parseMoney(pIn ? pIn.value : h.price);
+    var href = BYO_PATH + '?wt=' + h.id + (price ? '&list=' + price : '') + '#offer-check';
+    if (h.byo) {
+      var b = h.byo;
+      el.innerHTML = byoLines(b).map(function(x) { return '<div class="hc-hc-row"><span>' + esc(x[0]) + '</span><b>' + esc(x[1]) + '</b></div>'; }).join('') +
+        (b.read ? '<p style="margin-top:8px;">' + esc(b.read) + '</p>' : '') +
+        (price && b.list && Math.abs(price - b.list) > 12500 ? '<p class="hc-rcr-note">The list price here has changed since this check. Run it again for the new price.</p>' : '') +
+        '<div class="hc-pc-links"><a href="' + esc(b.link || BYO_PATH + '#offer-check') + '">Open the full check &rarr;</a> &middot; <a href="' + esc(href) + '" data-pc-go>Run it again</a></div>';
+    } else {
+      el.innerHTML = '<p>Repairs are half the picture. Before You Offer shows what like-kind homes in this school district sold for in 2026 and whether the list price is high for this house&rsquo;s condition. It covers St.&nbsp;Louis County and Jefferson County houses.</p>' +
+        '<a class="hc-btn-secondary" href="' + esc(href) + '" data-pc-go>Check The Price &rarr;</a>' +
+        '<div class="hc-pc-links">When you&rsquo;re done there, tap &ldquo;Add this check to my walk-through&rdquo; and it shows up here.</div>';
+    }
+    Array.prototype.forEach.call(el.querySelectorAll('[data-pc-go]'), function(a) {
+      a.addEventListener('click', function() {
+        saveNow();
+        var pv = parseMoney(pIn ? pIn.value : h.price);
+        a.href = BYO_PATH + '?wt=' + h.id + (pv ? '&list=' + pv : '') + '#offer-check';
+        if (typeof gtag === 'function') gtag('event', 'walkthrough_price_check_click', { has_price: !!pv });
+      });
+    });
+  }
+  function syncFromStore() {
+    if (_noStore || !_container) return;
+    var d = null; try { d = JSON.parse(localStorage.getItem(STORE_KEY) || 'null'); } catch (e) {}
+    if (!d || !d.houses) return;
+    var changed = false;
+    d.houses.forEach(function(sh) {
+      var h = findHouse(sh.id);
+      if (h && sh.byo && (!h.byo || sh.byo.at > h.byo.at)) { h.byo = sh.byo; changed = true; }
+    });
+    if (changed) { renderPriceCheck(); if (_container.querySelector('#hc-panel-houses.active')) renderHouses(); }
+  }
+
   // ── BIND ──────────────────────────────────────────────────────
   function bindAll() {
     // Mode buttons
@@ -1543,6 +1616,8 @@ window.TOOL_MODULES['home-cost'] = (function () {
       if (importSharedFromHash()) { writeStore(); applyHouse(findHouse(_cur)); showShareBanner(); switchTab('report'); }
     });
     window.addEventListener('pagehide', function() { if (_container) saveNow(); });
+    window.addEventListener('pageshow', syncFromStore);
+    document.addEventListener('visibilitychange', function() { if (document.visibilityState === 'visible') syncFromStore(); });
     // Tabs
     Array.prototype.forEach.call(_container.querySelectorAll('.hc-tnav-btn'), function(btn) {
       btn.addEventListener('click', function() { switchTab(btn.getAttribute('data-tab')); });
