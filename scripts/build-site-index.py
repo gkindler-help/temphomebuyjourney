@@ -148,7 +148,16 @@ def build():
     top = rest[:rest.index('<div class="art-layout">')]
     top = re.sub(r'(<span class="art-nav-item active"[^>]*>).*?(</span>)', r'\1Site Index\2', top, count=1)
     top = re.sub(r'<button id="jumpToggle".*?</nav>\s*', '', top, count=1, flags=re.S)
+    # The template is an article page: drop its "Lessons From a Sale" breadcrumb step.
+    top = re.sub(r'\s*<a href="lessons-from-a-sale"[^>]*>Lessons From a Sale</a>\s*<span[^>]*>›</span>', '', top)
+    top = re.sub(r'\s*<a href="lessons-from-a-sale">Lessons From a Sale</a><span>›</span>', '', top)
     foot = rest[rest.index('<footer'):]
+    # The template lives in /articles/; this page lives at the root, so make its relative links absolute.
+    def absolute(t):
+        t = t.replace('href="../"', 'href="/"')
+        t = re.sub(r'(href|src)="\.\./([^"]*)"', r'\1="/\2"', t)
+        return re.sub(r'(href|src)="(?!/|#|https?:|mailto:|tel:|sms:|data:|javascript:)([^"]+)"', r'\1="/articles/\2"', t)
+    top, foot = absolute(top), absolute(foot)
     layout = f'''<div class="art-layout">
   <h1 class="art-title">Site Index</h1>
   <p class="art-lede">Every guide, neighborhood, school district and tool on the site, {total} pages, grouped by area and topic.</p>
