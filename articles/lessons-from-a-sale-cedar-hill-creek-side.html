@@ -441,6 +441,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
 <script src="/assets/calc-track.js" defer></script>
+<script src="/assets/jump-nav.js" defer></script>
 <script data-tc-js>(function(){var c=document.querySelector(".tc");if(!c)return;var t=c.querySelector(".tc-track"),s=t.children,d=c.querySelectorAll(".tc-dot"),p=c.querySelector(".tc-prev"),n=c.querySelector(".tc-next"),cur=0;function go(i){i=Math.max(0,Math.min(s.length-1,i));t.scrollTo({left:s[i].offsetLeft,behavior:"smooth"});}function upd(){cur=Math.round(t.scrollLeft/t.clientWidth);for(var k=0;k<d.length;k++)d[k].setAttribute("aria-current",k===cur?"true":"false");p.disabled=cur===0;n.disabled=cur===s.length-1;}p.addEventListener("click",function(){go(cur-1)});n.addEventListener("click",function(){go(cur+1)});for(var k=0;k<d.length;k++)d[k].addEventListener("click",function(){go(+this.getAttribute("data-i"))});t.addEventListener("keydown",function(e){if(e.key==="ArrowRight"){e.preventDefault();go(cur+1)}else if(e.key==="ArrowLeft"){e.preventDefault();go(cur-1)}});var r;t.addEventListener("scroll",function(){cancelAnimationFrame(r);r=requestAnimationFrame(upd)});window.addEventListener("resize",upd);upd();var seen={};t.addEventListener("scroll",function(){if(!seen[cur]&&typeof window.gtag==="function"){seen[cur]=1;window.gtag("event","tldr_slide_view",{slide:cur+1,page:"creek-side"});}});})();</script>
 </body>
 </html>
