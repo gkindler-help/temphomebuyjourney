@@ -274,7 +274,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Bonus: Tie "Walk me through it" button to a George intro
-    const walkBtn = document.querySelector('button, a').closest('*:contains("Walk me through it"), .walk-btn, [data-action="walk"]');
+    const walkBtn = document.querySelector('.walk-btn, [data-action="walk"]') ||
+      Array.prototype.find.call(document.querySelectorAll('button, a'), function (el) { return /Walk me through it/i.test(el.textContent || ''); });
     if (walkBtn) {
         walkBtn.addEventListener('click', () => {
             if (typeof showInterrupt === 'function') {
