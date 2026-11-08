@@ -1,15 +1,15 @@
 /* Key Takeaways (TL;DR) — reusable, HTML-first, crawlable.
    Gold-accented details boxes; open by default so all text is in raw HTML. */
 .tldr{
-  --tldr-gold:var(--gold,#ffcc4d);
-  --tldr-gold-soft:var(--gold-soft,rgba(255,204,77,.18));
-  --tldr-gold-line:var(--gold-line,rgba(255,204,77,.34));
-  --tldr-surface:var(--surface,#101010);
-  --tldr-line:var(--line,#242424);
-  --tldr-text:var(--text,rgba(255,255,255,.88));
-  --tldr-text-soft:var(--text-soft,rgba(255,255,255,.72));
-  --tldr-text-dim:var(--text-dim,rgba(255,255,255,.54));
-  background:linear-gradient(135deg,rgba(255,204,77,0.05) 0%,rgba(255,204,77,0.015) 100%);
+  --tldr-gold:var(--gold,#c9971c);
+  --tldr-gold-soft:var(--gold-soft,rgba(201,151,28,0.18));
+  --tldr-gold-line:var(--gold-line,rgba(201,151,28,0.374));
+  --tldr-surface:var(--surface,#f4eee2);
+  --tldr-line:var(--line,#ded4c0);
+  --tldr-text:var(--text,rgba(28,24,18,0.92));
+  --tldr-text-soft:var(--text-soft,rgba(28,24,18,0.76));
+  --tldr-text-dim:var(--text-dim,rgba(28,24,18,0.68));
+  background:linear-gradient(135deg,rgba(201,151,28,0.045) 0%,rgba(201,151,28,0.013) 100%);
   border:1px solid var(--tldr-gold-line);
   border-radius:14px;
   padding:22px 24px 8px;

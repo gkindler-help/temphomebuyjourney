@@ -236,11 +236,11 @@
       _bodyEl.innerHTML =
         '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;' +
         'height:100%;padding:32px 24px;text-align:center;">' +
-          '<div style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:20px;line-height:1.6">' +
+          '<div style="font-size:13px;color:rgba(28,24,18,0.64);margin-bottom:20px;line-height:1.6">' +
             'Tap below to open the full tool.' +
           '</div>' +
           '<a href="' + _toolUrl + '" target="_blank" ' +
-             'style="display:inline-flex;align-items:center;gap:8px;background:#ffcc4d;color:#050505;' +
+             'style="display:inline-flex;align-items:center;gap:8px;background:#c9971c;color:#050505;' +
              'font-weight:800;font-size:14px;padding:14px 28px;border-radius:10px;text-decoration:none;' +
              'letter-spacing:.04em;text-transform:uppercase;">' +
             'Open Tool →' +
@@ -327,7 +327,7 @@
     var s = document.createElement('style');
     s.textContent =
       '.atd-trigger{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;' +
-      'transform:translateX(-50%) translateY(80px);z-index:200;background:#ffcc4d;color:#050505;' +
+      'transform:translateX(-50%) translateY(80px);z-index:200;background:#c9971c;color:#050505;' +
       'display:flex;align-items:center;gap:8px;padding:12px 20px;border-radius:100px;' +
       'font-family:"Inter",sans-serif;font-size:13px;font-weight:800;letter-spacing:.03em;' +
       'white-space:nowrap;cursor:pointer;box-shadow:0 4px 24px rgba(0,0,0,.5);opacity:0;' +
@@ -345,30 +345,30 @@
       '{opacity:0!important;pointer-events:none!important;}' +
 
       '.atd-drawer{position:fixed;inset:0;z-index:400;display:flex;flex-direction:column;' +
-      'background:#050505;transform:translateY(100%);' +
+      'background:#f9f4eb;transform:translateY(100%);' +
       'transition:transform .4s cubic-bezier(.32,.72,0,1);border-radius:16px 16px 0 0;overflow:hidden;}' +
       '.atd-drawer.atd-open{transform:translateY(0);}' +
 
       '.atd-handle-bar{display:flex;justify-content:center;align-items:center;padding:10px 0 6px;' +
       'flex-shrink:0;cursor:grab;}' +
-      '.atd-handle{width:36px;height:4px;background:rgba(255,255,255,.15);border-radius:2px;}' +
+      '.atd-handle{width:36px;height:4px;background:rgba(70,52,20,0.145);border-radius:2px;}' +
 
       '.atd-drawer-header{display:flex;align-items:center;justify-content:space-between;' +
-      'padding:0 16px 12px;border-bottom:1px solid rgba(255,255,255,.08);flex-shrink:0;}' +
+      'padding:0 16px 12px;border-bottom:1px solid rgba(60,45,20,0.14);flex-shrink:0;}' +
       '.atd-drawer-title{font-family:"Playfair Display",serif;font-size:17px;font-weight:700;' +
-      'color:#fff;line-height:1.2;}' +
-      '.atd-drawer-subtitle{font-size:11px;color:rgba(255,255,255,.45);margin-top:2px;}' +
+      'color:#1c1812;line-height:1.2;}' +
+      '.atd-drawer-subtitle{font-size:11px;color:rgba(28,24,18,0.59);margin-top:2px;}' +
       '.atd-close{width:32px;height:32px;display:flex;align-items:center;justify-content:center;' +
-      'background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:50%;' +
-      'color:rgba(255,255,255,.7);cursor:pointer;font-family:inherit;flex-shrink:0;}' +
-      '.atd-close:hover{background:rgba(255,255,255,.14);}' +
+      'background:rgba(70,52,20,0.082);border:1px solid rgba(60,45,20,0.16);border-radius:50%;' +
+      'color:rgba(28,24,18,0.74);cursor:pointer;font-family:inherit;flex-shrink:0;}' +
+      '.atd-close:hover{background:rgba(70,52,20,0.136);}' +
 
       '.atd-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0;}' +
 
       '.atd-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;' +
-      'height:100%;gap:12px;color:rgba(255,255,255,.4);font-size:13px;font-family:"Inter",sans-serif;}' +
-      '.atd-spinner{width:24px;height:24px;border:2px solid rgba(255,204,77,.2);' +
-      'border-top-color:rgba(255,204,77,.8);border-radius:50%;animation:atd-spin .7s linear infinite;}' +
+      'height:100%;gap:12px;color:rgba(28,24,18,0.54);font-size:13px;font-family:"Inter",sans-serif;}' +
+      '.atd-spinner{width:24px;height:24px;border:2px solid rgba(201,151,28,0.22);' +
+      'border-top-color:rgba(201,151,28,0.88);border-radius:50%;animation:atd-spin .7s linear infinite;}' +
       '@keyframes atd-spin{to{transform:rotate(360deg)}}' +
 
       '.atd-tool-scope{padding-bottom:40px;}' +

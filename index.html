@@ -87,15 +87,15 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --ink:#050505;
-  --gold:#ffcc4d;
-  --gold-line:rgba(255,204,77,.32);
-  --gold-wash:rgba(255,204,77,.06);
-  --panel:rgba(16,16,16,.6);
-  --line:rgba(255,255,255,.08);
-  --text:rgba(255,255,255,.88);
-  --soft:rgba(255,255,255,.74);
-  --mute:rgba(255,255,255,.6);
+  --ink:#f9f4eb;
+  --gold:#a87508;
+  --gold-line:rgba(201,151,28,0.352);
+  --gold-wash:rgba(201,151,28,0.06);
+  --panel:rgba(244,238,226,0.6);
+  --line:rgba(60,45,20,0.14);
+  --text:rgba(28,24,18,0.92);
+  --soft:rgba(28,24,18,0.78);
+  --mute:rgba(28,24,18,0.64);
 }
 html{scroll-behavior:smooth;}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
@@ -108,31 +108,31 @@ a{color:var(--gold);text-decoration:none;}
 .wrap{max-width:1040px;margin:0 auto;padding:0 20px;}
 
 /* NAV (unchanged) */
-.hp-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(5,5,5,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);position:sticky;top:0;z-index:100;}
+.hp-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(249,244,235,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(60,45,20,0.12);position:sticky;top:0;z-index:100;}
 .hp-nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;}
 .hp-nav-logo img{width:28px;height:28px;object-fit:contain;}
-.hp-nav-logo-t{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:rgba(255,255,255,.88);}
+.hp-nav-logo-t{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:rgba(28,24,18,0.92);}
 .hp-nav-logo-t span{color:var(--gold);}
 .hp-nav-links{display:flex;gap:4px;flex-wrap:wrap;}
-.hp-nav-a{font-size:11px;font-weight:600;padding:7px 12px;border-radius:6px;color:rgba(255,255,255,.6);text-decoration:none;transition:color .15s;}
-.hp-nav-a:hover{color:#fff;}
+.hp-nav-a{font-size:11px;font-weight:600;padding:7px 12px;border-radius:6px;color:rgba(28,24,18,0.64);text-decoration:none;transition:color .15s;}
+.hp-nav-a:hover{color:#1c1812;}
 
 /* HERO */
 .hero{padding:56px 0 56px;}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:56px;align-items:center;max-width:680px;margin:0 auto;}
 /* Intro scene: the house and the gold logo hold the screen; scrolling fades the logo and brings in the headline */
 .intro{position:relative;height:200vh;height:200svh;}
-.intro-frame{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#000;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;}
+.intro-frame{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#fbf7ef;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;}
 .intro-stack{position:absolute;inset:0;z-index:-2;display:flex;flex-direction:column;align-items:center;padding-top:min(7%,48px);}
 .intro-photo{display:block;width:min(100%,calc(54svh * 1.5));aspect-ratio:3/2;height:auto;object-fit:cover;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 78%,transparent 100%);}
 @media (min-aspect-ratio:1/1){.intro-photo{width:min(100%,calc(44svh * 1.5));-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 80%,transparent 100%),linear-gradient(90deg,transparent 0,#000 10%,#000 90%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 80%,transparent 100%),linear-gradient(90deg,transparent 0,#000 10%,#000 90%,transparent 100%);mask-composite:intersect;}}
 .intro-logo{display:block;width:min(86%,440px);height:auto;margin-top:clamp(18px,3svh,32px);filter:drop-shadow(0 2px 10px rgba(0,0,0,.55));}
-.intro-shade{position:absolute;inset:0;z-index:-1;opacity:0;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 45%,rgba(0,0,0,.72) 70%,rgba(0,0,0,.94) 100%);}
+.intro-shade{position:absolute;inset:0;z-index:-1;opacity:0;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 45%,rgba(251,247,239,0.72) 70%,rgba(251,247,239,0.94) 100%);}
 .intro-copy{text-align:center;padding:0 20px calc(clamp(28px,6svh,64px) + 56px);max-width:760px;margin:0 auto;}
 .intro-copy .cta-row{justify-content:center;}
-.intro-copy h1{font-family:'Playfair Display',serif;font-size:clamp(32px,6vw,54px);font-weight:900;line-height:1.08;color:#fff;margin-bottom:16px;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.6);}
+.intro-copy h1{font-family:'Playfair Display',serif;font-size:clamp(32px,6vw,54px);font-weight:900;line-height:1.08;color:#1c1812;margin-bottom:16px;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.6);}
 .intro-copy .hero-sub{margin:0 auto 24px;}
-.intro-arrow{position:absolute;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:2;transform:translateX(-50%);display:grid;place-items:center;width:46px;height:46px;border-radius:50%;color:var(--gold);border:1px solid var(--gold-line);background:rgba(0,0,0,.5);animation:introbob 1.8s ease-in-out infinite;}
+.intro-arrow{position:absolute;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:2;transform:translateX(-50%);display:grid;place-items:center;width:46px;height:46px;border-radius:50%;color:var(--gold);border:1px solid var(--gold-line);background:rgba(70,52,20,0.125);animation:introbob 1.8s ease-in-out infinite;}
 @media (max-width:700px){.intro-arrow{bottom:calc(92px + env(safe-area-inset-bottom,0px));}.intro-copy{padding-bottom:calc(clamp(28px,6svh,64px) + 110px);}}
 .intro-active .jump{opacity:0;pointer-events:none;}
 .jump{transition:opacity .3s ease;}
@@ -146,33 +146,33 @@ a{color:var(--gold);text-decoration:none;}
 @media(max-width:600px){.hp-nav-logo .hp-nav-wordmark{height:28px;}}
 
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(34px,6.4vw,58px);font-weight:900;line-height:1.08;color:#fff;margin-bottom:20px;letter-spacing:-.01em;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(34px,6.4vw,58px);font-weight:900;line-height:1.08;color:#1c1812;margin-bottom:20px;letter-spacing:-.01em;}
 .hero-sub{font-size:17px;line-height:1.7;color:var(--soft);max-width:34em;margin-bottom:28px;}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;}
 .btn{display:inline-block;font-size:14px;font-weight:700;padding:14px 26px;border-radius:8px;text-decoration:none;line-height:1.2;text-align:center;}
 .btn-primary{background:var(--gold);color:#080808;}
-.btn-primary:hover{background:#ffd76e;}
-.btn-ghost{color:#fff;border:1px solid rgba(255,255,255,.22);}
+.btn-primary:hover{background:#c9971c;}
+.btn-ghost{color:#1c1812;border:1px solid rgba(60,45,20,0.28);}
 .btn-ghost:hover{border-color:var(--gold-line);color:var(--gold);}
 
 /* Listing vs decision panel: solid = what a listing shows, dashed gold = what's still unknown */
 .gap{position:relative;}
-.gap-known{border:1px solid var(--line);border-radius:12px 12px 0 0;padding:18px 20px;background:rgba(255,255,255,.03);}
+.gap-known{border:1px solid var(--line);border-radius:12px 12px 0 0;padding:18px 20px;background:rgba(70,52,20,0.037);}
 .gap-label{font-size:12px;font-weight:600;color:var(--mute);margin-bottom:8px;}
 .gap-known ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;}
-.gap-known li{font-size:14px;color:rgba(255,255,255,.7);padding:5px 12px;border:1px solid rgba(255,255,255,.12);border-radius:999px;}
+.gap-known li{font-size:14px;color:rgba(28,24,18,0.74);padding:5px 12px;border:1px solid rgba(60,45,20,0.18);border-radius:999px;}
 .gap-unknown{border:1px dashed var(--gold-line);border-top:none;border-radius:0 0 12px 12px;padding:20px 20px 8px;background:var(--gold-wash);}
 .gap-unknown .gap-label{color:var(--gold);}
 .gap-unknown ol{list-style:none;}
-.gap-unknown li{border-top:1px solid rgba(255,204,77,.14);}
+.gap-unknown li{border-top:1px solid rgba(201,151,28,0.154);}
 .gap-unknown li:first-child{border-top:none;}
-.gap-unknown a{display:block;padding:12px 2px;font-family:'Playfair Display',serif;font-size:18px;line-height:1.35;color:#fff;}
+.gap-unknown a{display:block;padding:12px 2px;font-family:'Playfair Display',serif;font-size:18px;line-height:1.35;color:#1c1812;}
 .gap-unknown a:hover{color:var(--gold);}
 .gap-note{font-size:13px;line-height:1.6;color:var(--mute);margin-top:16px;}
 
 /* SHARED SECTION TYPE */
-.sec{padding:64px 0;border-top:1px solid rgba(255,255,255,.06);}
-.sec h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4.2vw,38px);font-weight:700;line-height:1.15;color:#fff;letter-spacing:-.005em;}
+.sec{padding:64px 0;border-top:1px solid rgba(60,45,20,0.12);}
+.sec h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4.2vw,38px);font-weight:700;line-height:1.15;color:#1c1812;letter-spacing:-.005em;}
 .sec-intro{font-size:16px;line-height:1.75;color:var(--soft);max-width:38em;margin-top:14px;}
 
 /* FIVE-CHECK PATHWAY */
@@ -184,23 +184,23 @@ a{color:var(--gold);text-decoration:none;}
 .path>li:last-child::before{display:none;}
 .node{position:absolute;top:0;left:0;width:32px;height:32px;border-radius:50%;border:1px solid var(--gold);background:var(--ink);color:var(--gold);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
 .path h3{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;line-height:1.25;margin-bottom:10px;}
-.path h3 a{color:#fff;}
+.path h3 a{color:#1c1812;}
 .path h3 a:hover{color:var(--gold);}
 .path ul{list-style:none;}
 .path ul li{padding:0;font-size:13.5px;line-height:1.5;color:var(--mute);margin-bottom:4px;}
 .path ul li::before{display:none;}
 .path-end{display:flex;align-items:center;gap:14px;margin-top:36px;padding-top:24px;border-top:1px dashed var(--gold-line);}
 .path-end-dot{flex:none;width:32px;height:32px;border-radius:50%;background:var(--gold);}
-.path-end p{font-family:'Playfair Display',serif;font-size:19px;line-height:1.4;color:#fff;}
+.path-end p{font-family:'Playfair Display',serif;font-size:19px;line-height:1.4;color:#1c1812;}
 .hero-ask{font-size:15px;line-height:1.5;color:var(--soft);margin:18px auto 0;max-width:34em;text-shadow:0 1px 8px rgba(0,0,0,.6);}
 .hero-ask a{color:var(--gold);font-weight:700;text-decoration:underline;text-underline-offset:3px;}
 .hero-ask a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px;}
-.proof{border:1px solid var(--gold-line);border-radius:12px;padding:22px 22px 20px;background:rgba(255,204,77,.04);}
+.proof{border:1px solid var(--gold-line);border-radius:12px;padding:22px 22px 20px;background:rgba(201,151,28,0.036);}
 .proof-k{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
-.proof-h{font-family:'Playfair Display',serif;font-size:clamp(21px,3.4vw,26px);font-weight:700;line-height:1.25;color:#fff;margin-bottom:14px;}
+.proof-h{font-family:'Playfair Display',serif;font-size:clamp(21px,3.4vw,26px);font-weight:700;line-height:1.25;color:#1c1812;margin-bottom:14px;}
 .proof-steps{list-style:none;display:grid;gap:10px;margin-bottom:14px;}
 .proof-steps li{font-size:15px;line-height:1.6;color:var(--soft);}
-.proof-steps strong{color:#fff;}
+.proof-steps strong{color:#1c1812;}
 .proof-note{font-size:13px;color:var(--mute);line-height:1.6;margin-bottom:10px;}
 .proof a{font-weight:700;font-size:14px;}
 
@@ -212,15 +212,15 @@ a{color:var(--gold);text-decoration:none;}
 .q-body{font-size:15.5px;line-height:1.75;color:var(--soft);margin-top:16px;max-width:36em;}
 .q-body a{font-weight:600;border-bottom:1px solid var(--gold-line);}
 .q-body a:hover{border-bottom-color:var(--gold);}
-.q-aside{margin-top:22px;font-family:'Playfair Display',serif;font-size:24px;line-height:1.3;color:#fff;}
+.q-aside{margin-top:22px;font-family:'Playfair Display',serif;font-size:24px;line-height:1.3;color:#1c1812;}
 .chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.chips li{font-size:13px;color:rgba(255,255,255,.7);padding:5px 12px;border:1px solid rgba(255,255,255,.14);border-radius:999px;}
+.chips li{font-size:13px;color:rgba(28,24,18,0.74);padding:5px 12px;border:1px solid rgba(60,45,20,0.2);border-radius:999px;}
 .layers{list-style:none;margin-top:24px;border-left:1px solid var(--gold-line);}
 .layers li{font-size:14.5px;color:var(--soft);padding:9px 0 9px 18px;position:relative;}
-.layers li+li{border-top:1px dashed rgba(255,255,255,.1);}
+.layers li+li{border-top:1px dashed rgba(60,45,20,0.16);}
 .layers li::before{content:'';position:absolute;left:-4px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--gold);}
 .seq{list-style:none;display:flex;flex-wrap:wrap;gap:0;margin-top:24px;}
-.seq li{font-size:13.5px;font-weight:600;color:#fff;padding:7px 8px 7px 0;display:flex;align-items:center;}
+.seq li{font-size:13.5px;font-weight:600;color:#1c1812;padding:7px 8px 7px 0;display:flex;align-items:center;}
 .seq li+li::before{content:'';width:12px;height:1px;background:var(--gold);margin-right:8px;}
 
 /* LINK LISTS (stretched-link rows: title is the anchor, description is surrounding text) */
@@ -230,7 +230,7 @@ a{color:var(--gold);text-decoration:none;}
 .links{list-style:none;}
 .links li{position:relative;padding:15px 0;border-top:1px solid var(--line);}
 .links li:last-child{border-bottom:1px solid var(--line);}
-.links a{font-size:15.5px;font-weight:600;color:#fff;}
+.links a{font-size:15.5px;font-weight:600;color:#1c1812;}
 .links a::after{content:'';position:absolute;inset:0;}
 .links li:hover a{color:var(--gold);}
 .links a:focus-visible{outline-offset:-2px;}
@@ -241,7 +241,7 @@ a{color:var(--gold);text-decoration:none;}
 /* FEATURE (MHDC) */
 .feature{position:relative;border:1px solid var(--gold-line);border-radius:12px;padding:20px 22px;background:var(--gold-wash);margin-bottom:22px;}
 .feature .f-tag{font-size:12px;font-weight:600;color:var(--gold);margin-bottom:6px;}
-.feature a{font-family:'Playfair Display',serif;font-size:21px;line-height:1.3;font-weight:700;color:#fff;}
+.feature a{font-family:'Playfair Display',serif;font-size:21px;line-height:1.3;font-weight:700;color:#1c1812;}
 .feature a::after{content:'';position:absolute;inset:0;border-radius:12px;}
 .feature:hover a{color:var(--gold);}
 .feature p{font-size:14px;line-height:1.65;color:var(--soft);margin-top:8px;}
@@ -250,13 +250,13 @@ a{color:var(--gold);text-decoration:none;}
 
 /* AGENT QUESTION */
 .q-note{font-size:14px;line-height:1.7;color:var(--mute);margin-top:18px;max-width:36em;}
-.ask-h{font-family:'Playfair Display',serif;font-size:clamp(21px,3vw,26px);font-weight:700;line-height:1.25;color:#fff;}
+.ask-h{font-family:'Playfair Display',serif;font-size:clamp(21px,3vw,26px);font-weight:700;line-height:1.25;color:#1c1812;}
 .ask{list-style:none;margin-top:18px;border:1px dashed var(--gold-line);border-radius:12px;background:var(--gold-wash);padding:4px 20px;}
-.ask li{font-family:'Playfair Display',serif;font-size:17px;line-height:1.4;color:#fff;padding:12px 0;border-top:1px solid rgba(255,204,77,.14);}
+.ask li{font-family:'Playfair Display',serif;font-size:17px;line-height:1.4;color:#1c1812;padding:12px 0;border-top:1px solid rgba(201,151,28,0.154);}
 .ask li:first-child{border-top:none;}
 
 /* EXPERIENCE */
-.exp-line{font-family:'Playfair Display',serif;font-size:clamp(26px,4.4vw,40px);font-weight:700;line-height:1.2;color:#fff;}
+.exp-line{font-family:'Playfair Display',serif;font-size:clamp(26px,4.4vw,40px);font-weight:700;line-height:1.2;color:#1c1812;}
 .exp-line em{display:block;font-style:normal;color:var(--gold);margin-top:8px;}
 .who{display:flex;gap:16px;align-items:flex-start;margin-top:26px;}
 .who img{width:56px;height:56px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;flex:none;}
@@ -264,7 +264,7 @@ a{color:var(--gold);text-decoration:none;}
 .who p+p{margin-top:10px;}
 
 /* SELLERS (quieter band) */
-.sellers{background:rgba(255,255,255,.02);}
+.sellers{background:rgba(70,52,20,0.028);}
 .sellers .q-body{font-size:15px;}
 .links.two{display:grid;grid-template-columns:1fr 1fr;column-gap:32px;border-top:1px solid var(--line);}
 .links.two li{border-top:none;border-bottom:1px solid var(--line);}
@@ -273,7 +273,7 @@ a{color:var(--gold);text-decoration:none;}
 /* TOPIC DIRECTORY */
 .area-dir>summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:18px 20px;border:1px solid var(--gold-line);border-radius:12px;background:var(--gold-wash);}
 .area-dir>summary::-webkit-details-marker{display:none;}
-.area-dir>summary>span:first-child{font-family:'Playfair Display',Georgia,serif;font-size:1.25rem;font-weight:700;color:#fff;}
+.area-dir>summary>span:first-child{font-family:'Playfair Display',Georgia,serif;font-size:1.25rem;font-weight:700;color:#1c1812;}
 .area-dir>summary>span:first-child::after{content:' +';color:var(--gold);}
 .area-dir[open]>summary>span:first-child::after{content:' \2212';}
 .area-dir-n{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);}
@@ -288,25 +288,25 @@ a{color:var(--gold);text-decoration:none;}
 .dir a:hover{color:var(--gold);}
 
 /* CLOSE */
-.close{text-align:center;padding:72px 0 64px;border-top:1px solid rgba(255,255,255,.06);}
-.close p.big{font-family:'Playfair Display',serif;font-size:clamp(24px,4.2vw,36px);font-weight:700;line-height:1.25;color:#fff;max-width:20em;margin:0 auto 24px;}
+.close{text-align:center;padding:72px 0 64px;border-top:1px solid rgba(60,45,20,0.12);}
+.close p.big{font-family:'Playfair Display',serif;font-size:clamp(24px,4.2vw,36px);font-weight:700;line-height:1.25;color:#1c1812;max-width:20em;margin:0 auto 24px;}
 .close .cta-row{justify-content:center;}
 
 /* FOOTER (unchanged) */
-.hp-footer{max-width:720px;margin:0 auto;padding:32px 20px;border-top:1px solid rgba(255,255,255,.06);font-size:11px;color:rgba(255,255,255,.3);line-height:1.6;}
-.hp-footer a{color:rgba(255,255,255,.45);}
-.hp-footer strong{color:rgba(255,255,255,.5);}
+.hp-footer{max-width:720px;margin:0 auto;padding:32px 20px;border-top:1px solid rgba(60,45,20,0.12);font-size:11px;color:rgba(28,24,18,0.44);line-height:1.6;}
+.hp-footer a{color:rgba(28,24,18,0.59);}
+.hp-footer strong{color:rgba(28,24,18,0.64);}
 
 @media(min-width:901px){#address .q-grid>div:first-child{position:sticky;top:96px;}}
 
 /* JUMP NAV */
-.jump{position:sticky;top:var(--navh,57px);z-index:90;background:rgba(5,5,5,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);}
+.jump{position:sticky;top:var(--navh,57px);z-index:90;background:rgba(249,244,235,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(60,45,20,0.12);}
 .jump-t{display:none;}
 .jump ol{list-style:none;display:flex;gap:4px;overflow-x:auto;padding:8px 16px;scrollbar-width:none;position:relative;}
 .jump ol::-webkit-scrollbar{display:none;}
 .jump li{flex:none;}
 .jump a{display:block;font-size:12.5px;font-weight:600;color:var(--mute);padding:7px 12px;border-radius:999px;border:1px solid transparent;white-space:nowrap;}
-.jump a:hover{color:#fff;}
+.jump a:hover{color:#1c1812;}
 .jump a.on{color:var(--gold);border-color:var(--gold-line);background:var(--gold-wash);}
 @media(min-width:1200px){
   [id]{scroll-margin-top:calc(var(--navh,57px) + 20px);}
@@ -318,7 +318,7 @@ a{color:var(--gold);text-decoration:none;}
   .jump li{position:relative;}
   .jump a{padding:6px 0 6px 18px;border:none;border-radius:0;background:none;white-space:normal;font-size:13px;line-height:1.35;}
   .jump a::before{content:'';position:absolute;left:-4px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--ink);border:1px solid var(--gold-line);}
-  .jump a.on{color:#fff;background:none;}
+  .jump a.on{color:#1c1812;background:none;}
   .jump a.on::before{background:var(--gold);border-color:var(--gold);}
 }
 
@@ -349,17 +349,17 @@ a{color:var(--gold);text-decoration:none;}
 .hp-season{margin-top:40px;}
 .hp-season-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;}
 .hp-season-k{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
-.hp-season-h{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.25rem,3vw,1.6rem);font-weight:700;color:#fff;line-height:1.25;margin-bottom:16px;}
+.hp-season-h{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.25rem,3vw,1.6rem);font-weight:700;color:#1c1812;line-height:1.25;margin-bottom:16px;}
 .hp-season-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.hp-season-grid figure{margin:0;border:1px solid var(--line);border-radius:10px;padding:12px 10px 6px;background:rgba(0,0,0,.25);}
+.hp-season-grid figure{margin:0;border:1px solid var(--line);border-radius:10px;padding:12px 10px 6px;background:rgba(70,52,20,0.062);}
 .hp-season-grid figcaption{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin:0 0 4px 4px;}
 .hp-season-grid figcaption span{display:block;text-transform:none;letter-spacing:0;font-weight:600;font-size:13px;color:var(--text);margin-top:2px;}
 .pm-chart{display:block;width:100%;height:auto;}
-.pm-grid{stroke:rgba(255,255,255,.07);stroke-width:1;}
+.pm-grid{stroke:rgba(28,24,18,0.21);stroke-width:1;}
 .pm-tick{fill:var(--mute);font-size:11px;font-family:inherit;}
 .pm-line{stroke-width:3;stroke-linejoin:round;stroke-linecap:round;}
-.pm-dot{stroke:#0d0d0d;stroke-width:2;}
-.pm-lbl{fill:#fff;font-size:12px;font-weight:700;font-family:inherit;paint-order:stroke;stroke:#0d0d0d;stroke-width:3px;}
+.pm-dot{stroke:#fbf7ef;stroke-width:2;}
+.pm-lbl{fill:#1c1812;font-size:12px;font-weight:700;font-family:inherit;paint-order:stroke;stroke:#fbf7ef;stroke-width:3px;}
 .hp-season-note{font-size:13px;color:var(--mute);line-height:1.6;margin:14px 0 10px;}
 .hp-season-link{font-weight:700;font-size:14px;}
 @media(max-width:640px){.hp-season-grid{grid-template-columns:1fr;}.hp-season-card{padding:18px 14px 14px;}}
@@ -371,7 +371,7 @@ a{color:var(--gold);text-decoration:none;}
 <!-- NAV (unchanged): Buying · Selling · Neighborhoods · Tools · Experience -->
 <nav class="hp-nav reveal" aria-label="Primary">
   <a class="hp-nav-logo" href="/">
-    <img class="hp-nav-wordmark" src="/assets/brand/stlhj-logo-silver-dark.webp" alt="STL Home Journey" width="600" height="186">
+    <img class="hp-nav-wordmark" src="/assets/brand/stlhj-logo-gold-light.webp" alt="STL Home Journey" width="600" height="186">
   </a>
   <div class="hp-nav-links">
     <a class="hp-nav-a" href="/articles/#panel-buying">Buying</a>
@@ -389,7 +389,7 @@ a{color:var(--gold);text-decoration:none;}
   <div class="intro-frame">
     <div class="intro-stack">
       <img class="intro-photo" src="/assets/listings/13218-wintergreen/photo-01.webp" alt="13218 Wintergreen Estates Drive in Fenton, a split-level George Kindler listed and sold in 2026" width="1400" height="933" fetchpriority="high">
-      <img class="intro-logo" src="/assets/brand/stlhj-key-logo-gold.webp" alt="STL Home Journey" width="1320" height="593">
+      <img class="intro-logo" src="/assets/brand/stlhj-key-logo-gold-light.webp" alt="STL Home Journey" width="1320" height="593">
     </div>
     <div class="intro-shade"></div>
     <div class="intro-copy">
@@ -785,8 +785,8 @@ a{color:var(--gold);text-decoration:none;}
       <p class="hp-season-k">2026 St. Louis County-area sales</p>
       <h3 class="hp-season-h">Spring buyers set prices that fall buyers won&rsquo;t pay.</h3>
       <div class="hp-season-grid">
-        <figure><figcaption>Showings per home <span>11.1 in March &rarr; 6.3 in September</span></figcaption><svg class="pm-chart pm-mini" viewBox="0 0 360 170" role="img" aria-label="Average showings per home by month across 22 St. Louis County-area school districts, January–September 2026" preserveAspectRatio="xMidYMid meet"><title>Average showings per home by month across 22 St. Louis County-area school districts, January–September 2026</title><line class="pm-grid" x1="56" x2="344" y1="142.0" y2="142.0"/><text class="pm-tick" x="48" y="146.0" text-anchor="end">0</text><line class="pm-grid" x1="56" x2="344" y1="100.7" y2="100.7"/><text class="pm-tick" x="48" y="104.7" text-anchor="end">4</text><line class="pm-grid" x1="56" x2="344" y1="59.3" y2="59.3"/><text class="pm-tick" x="48" y="63.3" text-anchor="end">8</text><line class="pm-grid" x1="56" x2="344" y1="18.0" y2="18.0"/><text class="pm-tick" x="48" y="22.0" text-anchor="end">12</text><text class="pm-tick" x="56.0" y="162" text-anchor="start">Jan</text><text class="pm-tick" x="92.0" y="162" text-anchor="middle">Feb</text><text class="pm-tick" x="128.0" y="162" text-anchor="middle">Mar</text><text class="pm-tick" x="164.0" y="162" text-anchor="middle">Apr</text><text class="pm-tick" x="200.0" y="162" text-anchor="middle">May</text><text class="pm-tick" x="236.0" y="162" text-anchor="middle">Jun</text><text class="pm-tick" x="272.0" y="162" text-anchor="middle">Jul</text><text class="pm-tick" x="308.0" y="162" text-anchor="middle">Aug</text><text class="pm-tick" x="344.0" y="162" text-anchor="end">Sep</text><polyline class="pm-line" fill="none" stroke="#FFCC4D" points="56.0,51.4 92.0,43.2 128.0,27.7 164.0,38.4 200.0,53.2 236.0,63.5 272.0,71.5 308.0,75.9 344.0,76.7"/><circle class="pm-dot" cx="56.0" cy="51.4" r="3.5" fill="#FFCC4D"><title>January 2026: 8.8</title></circle><circle class="pm-dot" cx="92.0" cy="43.2" r="3.5" fill="#FFCC4D"><title>February 2026: 9.6</title></circle><circle class="pm-dot pm-peak" cx="128.0" cy="27.7" r="5" fill="#FFCC4D"><title>March 2026: 11.1</title></circle><circle class="pm-dot" cx="164.0" cy="38.4" r="3.5" fill="#FFCC4D"><title>April 2026: 10.0</title></circle><circle class="pm-dot" cx="200.0" cy="53.2" r="3.5" fill="#FFCC4D"><title>May 2026: 8.6</title></circle><circle class="pm-dot" cx="236.0" cy="63.5" r="3.5" fill="#FFCC4D"><title>June 2026: 7.6</title></circle><circle class="pm-dot" cx="272.0" cy="71.5" r="3.5" fill="#FFCC4D"><title>July 2026: 6.8</title></circle><circle class="pm-dot" cx="308.0" cy="75.9" r="3.5" fill="#FFCC4D"><title>August 2026: 6.4</title></circle><circle class="pm-dot" cx="344.0" cy="76.7" r="5" fill="#FFCC4D"><title>September 2026: 6.3</title></circle><text class="pm-lbl" x="128.0" y="16.7" text-anchor="middle">11.1</text><text class="pm-lbl pm-lbl-end" x="344.0" y="65.7" text-anchor="end">6.3</text></svg></figure>
-        <figure><figcaption>Median sale price <span>$379,500 in June &rarr; $302,750 in September</span></figcaption><svg class="pm-chart pm-mini" viewBox="0 0 360 170" role="img" aria-label="Median sale price by closing month, St. Louis County-area, January–September 2026" preserveAspectRatio="xMidYMid meet"><title>Median sale price by closing month, St. Louis County-area, January–September 2026</title><line class="pm-grid" x1="56" x2="344" y1="142.0" y2="142.0"/><text class="pm-tick" x="48" y="146.0" text-anchor="end">$250K</text><line class="pm-grid" x1="56" x2="344" y1="100.7" y2="100.7"/><text class="pm-tick" x="48" y="104.7" text-anchor="end">$300K</text><line class="pm-grid" x1="56" x2="344" y1="59.3" y2="59.3"/><text class="pm-tick" x="48" y="63.3" text-anchor="end">$350K</text><line class="pm-grid" x1="56" x2="344" y1="18.0" y2="18.0"/><text class="pm-tick" x="48" y="22.0" text-anchor="end">$400K</text><text class="pm-tick" x="56.0" y="162" text-anchor="start">Jan</text><text class="pm-tick" x="92.0" y="162" text-anchor="middle">Feb</text><text class="pm-tick" x="128.0" y="162" text-anchor="middle">Mar</text><text class="pm-tick" x="164.0" y="162" text-anchor="middle">Apr</text><text class="pm-tick" x="200.0" y="162" text-anchor="middle">May</text><text class="pm-tick" x="236.0" y="162" text-anchor="middle">Jun</text><text class="pm-tick" x="272.0" y="162" text-anchor="middle">Jul</text><text class="pm-tick" x="308.0" y="162" text-anchor="middle">Aug</text><text class="pm-tick" x="344.0" y="162" text-anchor="end">Sep</text><polyline class="pm-line" fill="none" stroke="#FFCC4D" points="56.0,117.2 92.0,125.5 128.0,59.3 164.0,92.4 200.0,47.3 236.0,34.9 272.0,72.6 308.0,66.3 344.0,98.4"/><circle class="pm-dot" cx="56.0" cy="117.2" r="3.5" fill="#FFCC4D"><title>January 2026: $280,000</title></circle><circle class="pm-dot" cx="92.0" cy="125.5" r="3.5" fill="#FFCC4D"><title>February 2026: $270,000</title></circle><circle class="pm-dot" cx="128.0" cy="59.3" r="3.5" fill="#FFCC4D"><title>March 2026: $350,000</title></circle><circle class="pm-dot" cx="164.0" cy="92.4" r="3.5" fill="#FFCC4D"><title>April 2026: $310,000</title></circle><circle class="pm-dot" cx="200.0" cy="47.3" r="3.5" fill="#FFCC4D"><title>May 2026: $364,500</title></circle><circle class="pm-dot pm-peak" cx="236.0" cy="34.9" r="5" fill="#FFCC4D"><title>June 2026: $379,500</title></circle><circle class="pm-dot" cx="272.0" cy="72.6" r="3.5" fill="#FFCC4D"><title>July 2026: $334,000</title></circle><circle class="pm-dot" cx="308.0" cy="66.3" r="3.5" fill="#FFCC4D"><title>August 2026: $341,550</title></circle><circle class="pm-dot" cx="344.0" cy="98.4" r="5" fill="#FFCC4D"><title>September 2026: $302,750</title></circle><text class="pm-lbl" x="236.0" y="23.9" text-anchor="middle">$379,500</text><text class="pm-lbl pm-lbl-end" x="344.0" y="87.4" text-anchor="end">$302,750</text></svg></figure>
+        <figure><figcaption>Showings per home <span>11.1 in March &rarr; 6.3 in September</span></figcaption><svg class="pm-chart pm-mini" viewBox="0 0 360 170" role="img" aria-label="Average showings per home by month across 22 St. Louis County-area school districts, January–September 2026" preserveAspectRatio="xMidYMid meet"><title>Average showings per home by month across 22 St. Louis County-area school districts, January–September 2026</title><line class="pm-grid" x1="56" x2="344" y1="142.0" y2="142.0"/><text class="pm-tick" x="48" y="146.0" text-anchor="end">0</text><line class="pm-grid" x1="56" x2="344" y1="100.7" y2="100.7"/><text class="pm-tick" x="48" y="104.7" text-anchor="end">4</text><line class="pm-grid" x1="56" x2="344" y1="59.3" y2="59.3"/><text class="pm-tick" x="48" y="63.3" text-anchor="end">8</text><line class="pm-grid" x1="56" x2="344" y1="18.0" y2="18.0"/><text class="pm-tick" x="48" y="22.0" text-anchor="end">12</text><text class="pm-tick" x="56.0" y="162" text-anchor="start">Jan</text><text class="pm-tick" x="92.0" y="162" text-anchor="middle">Feb</text><text class="pm-tick" x="128.0" y="162" text-anchor="middle">Mar</text><text class="pm-tick" x="164.0" y="162" text-anchor="middle">Apr</text><text class="pm-tick" x="200.0" y="162" text-anchor="middle">May</text><text class="pm-tick" x="236.0" y="162" text-anchor="middle">Jun</text><text class="pm-tick" x="272.0" y="162" text-anchor="middle">Jul</text><text class="pm-tick" x="308.0" y="162" text-anchor="middle">Aug</text><text class="pm-tick" x="344.0" y="162" text-anchor="end">Sep</text><polyline class="pm-line" fill="none" stroke="#c9971c" points="56.0,51.4 92.0,43.2 128.0,27.7 164.0,38.4 200.0,53.2 236.0,63.5 272.0,71.5 308.0,75.9 344.0,76.7"/><circle class="pm-dot" cx="56.0" cy="51.4" r="3.5" fill="#c9971c"><title>January 2026: 8.8</title></circle><circle class="pm-dot" cx="92.0" cy="43.2" r="3.5" fill="#c9971c"><title>February 2026: 9.6</title></circle><circle class="pm-dot pm-peak" cx="128.0" cy="27.7" r="5" fill="#c9971c"><title>March 2026: 11.1</title></circle><circle class="pm-dot" cx="164.0" cy="38.4" r="3.5" fill="#c9971c"><title>April 2026: 10.0</title></circle><circle class="pm-dot" cx="200.0" cy="53.2" r="3.5" fill="#c9971c"><title>May 2026: 8.6</title></circle><circle class="pm-dot" cx="236.0" cy="63.5" r="3.5" fill="#c9971c"><title>June 2026: 7.6</title></circle><circle class="pm-dot" cx="272.0" cy="71.5" r="3.5" fill="#c9971c"><title>July 2026: 6.8</title></circle><circle class="pm-dot" cx="308.0" cy="75.9" r="3.5" fill="#c9971c"><title>August 2026: 6.4</title></circle><circle class="pm-dot" cx="344.0" cy="76.7" r="5" fill="#c9971c"><title>September 2026: 6.3</title></circle><text class="pm-lbl" x="128.0" y="16.7" text-anchor="middle">11.1</text><text class="pm-lbl pm-lbl-end" x="344.0" y="65.7" text-anchor="end">6.3</text></svg></figure>
+        <figure><figcaption>Median sale price <span>$379,500 in June &rarr; $302,750 in September</span></figcaption><svg class="pm-chart pm-mini" viewBox="0 0 360 170" role="img" aria-label="Median sale price by closing month, St. Louis County-area, January–September 2026" preserveAspectRatio="xMidYMid meet"><title>Median sale price by closing month, St. Louis County-area, January–September 2026</title><line class="pm-grid" x1="56" x2="344" y1="142.0" y2="142.0"/><text class="pm-tick" x="48" y="146.0" text-anchor="end">$250K</text><line class="pm-grid" x1="56" x2="344" y1="100.7" y2="100.7"/><text class="pm-tick" x="48" y="104.7" text-anchor="end">$300K</text><line class="pm-grid" x1="56" x2="344" y1="59.3" y2="59.3"/><text class="pm-tick" x="48" y="63.3" text-anchor="end">$350K</text><line class="pm-grid" x1="56" x2="344" y1="18.0" y2="18.0"/><text class="pm-tick" x="48" y="22.0" text-anchor="end">$400K</text><text class="pm-tick" x="56.0" y="162" text-anchor="start">Jan</text><text class="pm-tick" x="92.0" y="162" text-anchor="middle">Feb</text><text class="pm-tick" x="128.0" y="162" text-anchor="middle">Mar</text><text class="pm-tick" x="164.0" y="162" text-anchor="middle">Apr</text><text class="pm-tick" x="200.0" y="162" text-anchor="middle">May</text><text class="pm-tick" x="236.0" y="162" text-anchor="middle">Jun</text><text class="pm-tick" x="272.0" y="162" text-anchor="middle">Jul</text><text class="pm-tick" x="308.0" y="162" text-anchor="middle">Aug</text><text class="pm-tick" x="344.0" y="162" text-anchor="end">Sep</text><polyline class="pm-line" fill="none" stroke="#c9971c" points="56.0,117.2 92.0,125.5 128.0,59.3 164.0,92.4 200.0,47.3 236.0,34.9 272.0,72.6 308.0,66.3 344.0,98.4"/><circle class="pm-dot" cx="56.0" cy="117.2" r="3.5" fill="#c9971c"><title>January 2026: $280,000</title></circle><circle class="pm-dot" cx="92.0" cy="125.5" r="3.5" fill="#c9971c"><title>February 2026: $270,000</title></circle><circle class="pm-dot" cx="128.0" cy="59.3" r="3.5" fill="#c9971c"><title>March 2026: $350,000</title></circle><circle class="pm-dot" cx="164.0" cy="92.4" r="3.5" fill="#c9971c"><title>April 2026: $310,000</title></circle><circle class="pm-dot" cx="200.0" cy="47.3" r="3.5" fill="#c9971c"><title>May 2026: $364,500</title></circle><circle class="pm-dot pm-peak" cx="236.0" cy="34.9" r="5" fill="#c9971c"><title>June 2026: $379,500</title></circle><circle class="pm-dot" cx="272.0" cy="72.6" r="3.5" fill="#c9971c"><title>July 2026: $334,000</title></circle><circle class="pm-dot" cx="308.0" cy="66.3" r="3.5" fill="#c9971c"><title>August 2026: $341,550</title></circle><circle class="pm-dot" cx="344.0" cy="98.4" r="5" fill="#c9971c"><title>September 2026: $302,750</title></circle><text class="pm-lbl" x="236.0" y="23.9" text-anchor="middle">$379,500</text><text class="pm-lbl pm-lbl-end" x="344.0" y="87.4" text-anchor="end">$302,750</text></svg></figure>
       </div>
       <p class="hp-season-note">Part of the price drop is smaller homes selling in the fall&mdash;per square foot, prices slipped from $189 to $174. Showings are the average across 22 school districts; prices are the median of 2,868 qualifying single-family sales.</p>
       <a class="hp-season-link" href="/school-districts/st-louis-county#seasonal">See the full St.&nbsp;Louis County data &rarr;</a>

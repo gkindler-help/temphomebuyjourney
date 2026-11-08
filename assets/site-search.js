@@ -22,7 +22,7 @@
     if (document.querySelector('.ss-btn, .dash-tab-search, script[src*="shared.js"]') || location.pathname.replace(/\.html$/, '') === '/search') return;
     var st = document.createElement('style');
     st.textContent = '.ss-btn{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}.ss-btn svg{display:block;}' +
-      '.ss-btn.ss-crumb{margin-right:10px;padding:5px 9px;border:1px solid rgba(255,204,77,.34);border-radius:999px;color:#ffcc4d;align-self:center;}';
+      '.ss-btn.ss-crumb{margin-right:10px;padding:5px 9px;border:1px solid rgba(201,151,28,0.374);border-radius:999px;color:#966800;align-self:center;}';
     document.head.appendChild(st);
 
     var nav = document.querySelector('.nbhd-hdr-nav, .art-hdr-nav, .hp-nav');

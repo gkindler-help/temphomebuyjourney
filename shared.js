@@ -1588,10 +1588,10 @@ function closeDrawer() {
     }).join("");
 
     var sellerSection =
-      '<div style="padding:12px 16px 4px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,204,77,.5);">Seller Tools</div>' +
+      '<div style="padding:12px 16px 4px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(150,104,0,0.5);">Seller Tools</div>' +
       '<div class="tool-selector">' + sellerCards + '</div>';
 
-    return strip + '<div style="padding:12px 16px 4px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);">Buyer Tools</div><div class="tool-selector">' + cards + '</div>' + sellerSection;
+    return strip + '<div style="padding:12px 16px 4px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(28,24,18,0.49);">Buyer Tools</div><div class="tool-selector">' + cards + '</div>' + sellerSection;
   }
 
   function _buildResourcesPanelHTML(chNum) {
@@ -2030,7 +2030,7 @@ function closeDrawer() {
     /* ── FEATURED: WALK WITH ME ── */
     var walkCard =
       '<div class="journey-panel-item" id="walk-with-me-card" data-file="03-interior.html" data-ch="3" style="' +
-        'background:rgba(255,204,77,.05);' +
+        'background:rgba(201,151,28,0.045);' +
         'border-bottom:1px solid var(--gold-line);' +
         'border-top:1px solid var(--gold-line);' +
         'margin-bottom:4px;' +
@@ -2136,7 +2136,7 @@ function closeDrawer() {
         '<button class="tool-panel-close" id="tool-panel-close" type="button">&#10005;</button>' +
       '</div>' +
       '<iframe id="tool-iframe" src="' + toolUrl + '" ' +
-        'style="flex:1;min-height:0;width:100%;height:100%;border:none;background:#050505;display:block;overflow:auto;"' +
+        'style="flex:1;min-height:0;width:100%;height:100%;border:none;background:#f9f4eb;display:block;overflow:auto;"' +
         'allow="geolocation" loading="lazy"></iframe>' +
       '<div class="tool-exit-card" id="tool-exit-card"></div>';
 
@@ -2219,7 +2219,7 @@ function closeDrawer() {
         '<button class="tool-panel-close" id="tool-panel-close" type="button">&#10005;</button>' +
       '</div>' +
       '<iframe id="tool-iframe" src="' + url + '" ' +
-        'style="flex:1;width:100%;height:100%;border:none;background:#050505;display:block;overflow:auto;"' +
+        'style="flex:1;width:100%;height:100%;border:none;background:#f9f4eb;display:block;overflow:auto;"' +
         'allow="geolocation" loading="lazy"></iframe>';
 
     safelyBind(byId("tool-panel-close"), "click", closeToolPanel);

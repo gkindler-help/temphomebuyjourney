@@ -33,12 +33,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#050505;--bg-elev:#0a0a0a;--surface:#101010;--surface-2:#151515;--line:#242424;--line-2:#303030;--text-strong:rgba(255,255,255,.96);--text:rgba(255,255,255,.88);--text-soft:rgba(255,255,255,.72);--text-dim:rgba(255,255,255,.54);--text-faint:rgba(255,255,255,.34);--gold:#ffcc4d;--gold-soft:rgba(255,204,77,.18);--gold-line:rgba(255,204,77,.34);--green:#5dcaa5;--red:#e05555;--font-serif:"Playfair Display",Georgia,serif;--font-sans:"Inter",-apple-system,sans-serif;}
+    :root{--bg:#f9f4eb;--bg-elev:#f6f1e7;--surface:#f4eee2;--surface-2:#f1ebde;--line:#ded4c0;--line-2:#ded4c0;--text-strong:rgba(28,24,18,1);--text:rgba(28,24,18,0.92);--text-soft:rgba(28,24,18,0.76);--text-dim:rgba(28,24,18,0.68);--text-faint:rgba(28,24,18,0.48);--gold:#a87508;--gold-soft:rgba(201,151,28,0.18);--gold-line:rgba(201,151,28,0.374);--green:#187656;--red:#b03434;--font-serif:"Playfair Display",Georgia,serif;--font-sans:"Inter",-apple-system,sans-serif;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.7;overflow-x:hidden;}
     a{color:var(--gold);text-decoration:none;}
-    .art-hdr{background:rgba(5,5,5,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;position:sticky;top:0;z-index:100;}
+    .art-hdr{background:rgba(249,244,235,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;position:sticky;top:0;z-index:100;}
     .art-hdr-l{display:flex;align-items:center;gap:10px;min-width:0;text-decoration:none;}
     .art-hdr-ico{width:32px;height:32px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;}
     .art-hdr-ico img{width:100%;height:100%;object-fit:contain;}
@@ -47,9 +47,9 @@
     .art-hdr-name{font-size:10px;font-weight:600;color:var(--text-soft);letter-spacing:.04em;margin-top:2px;}
     .art-hdr-tagline{font-size:9px;color:var(--text-dim);letter-spacing:.03em;}
     .art-hdr-nav{display:flex;align-items:center;gap:6px;flex-shrink:0;}
-    .art-hdr-btn{font-size:10px;font-weight:700;letter-spacing:.05em;padding:6px 11px;border-radius:999px;border:1px solid var(--line-2);color:var(--text-soft);background:rgba(255,255,255,.02);text-decoration:none;white-space:nowrap;}
+    .art-hdr-btn{font-size:10px;font-weight:700;letter-spacing:.05em;padding:6px 11px;border-radius:999px;border:1px solid var(--line-2);color:var(--text-soft);background:rgba(70,52,20,0.028);text-decoration:none;white-space:nowrap;}
     .art-hdr-btn.gold{border-color:var(--gold-line);color:var(--gold);background:var(--gold-soft);}
-    .art-nav{background:rgba(16,16,16,.96);border-bottom:1px solid var(--line);padding:0 16px;display:flex;overflow-x:auto;scrollbar-width:none;}
+    .art-nav{background:rgba(244,238,226,0.96);border-bottom:1px solid var(--line);padding:0 16px;display:flex;overflow-x:auto;scrollbar-width:none;}
     .art-nav::-webkit-scrollbar{display:none;}
     .art-nav-item{font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--text-faint);padding:10px 14px;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;}
     .art-nav-item.active{color:var(--gold);border-bottom-color:var(--gold);}
@@ -70,7 +70,7 @@
     .art-body ul,.art-body ol{color:var(--text-soft);padding-left:1.4em;margin-bottom:18px;}
     .art-body li{margin-bottom:7px;line-height:1.68;font-size:.97rem;}
     .art-body strong{color:var(--text-strong);font-weight:600;}
-    .callout{background:rgba(255,204,77,.06);border-left:2px solid var(--gold-line);border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0;color:var(--text);font-size:.93rem;}
+    .callout{background:rgba(201,151,28,0.054);border-left:2px solid var(--gold-line);border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0;color:var(--text);font-size:.93rem;}
     .callout strong{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:7px;font-weight:700;}
     .stat-block{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:24px 0;}
     .stat-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 16px;text-align:center;}
@@ -81,7 +81,7 @@
     .data-table td{padding:11px 14px;color:var(--text-soft);border-bottom:1px solid var(--line);}
     .data-table tr:last-child td{border-bottom:none;}
     .data-table td:first-child{color:var(--text);}
-    .data-table .hl td{background:rgba(255,204,77,.05);color:var(--gold);}
+    .data-table .hl td{background:rgba(201,151,28,0.045);color:var(--gold);}
     .do-dont{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0;}
     @media(max-width:560px){.do-dont{grid-template-columns:1fr;}}
     .do-card{background:rgba(93,202,165,.06);border:1px solid rgba(93,202,165,.22);border-radius:12px;padding:18px;}
@@ -90,12 +90,12 @@
     .dont-card h4{color:var(--red);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px;}
     .do-card ul,.dont-card ul{list-style:none;padding:0;}
     .do-card li,.dont-card li{font-size:.85rem;color:var(--text-soft);margin-bottom:7px;line-height:1.5;}
-    .tool-cta{background:linear-gradient(135deg,var(--surface) 0%,#0d0d00 100%);border:1px solid var(--gold-line);border-radius:14px;padding:24px;margin:28px 0;}
+    .tool-cta{background:linear-gradient(135deg,var(--surface) 0%,#f8f3ea 100%);border:1px solid var(--gold-line);border-radius:14px;padding:24px;margin:28px 0;}
     .tool-cta h4{font-family:var(--font-serif);font-size:1.05rem;color:var(--text-strong);margin-bottom:8px;}
     .tool-cta p{font-size:.86rem;color:var(--text-dim);margin-bottom:16px;line-height:1.65;}
     .tool-cta a{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#080808;font-weight:800;font-size:12px;letter-spacing:.04em;padding:10px 18px;border-radius:8px;text-decoration:none;}
     .int-link{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;margin:16px 0;transition:border-color .18s,background .18s;}
-    .int-link:hover{border-color:var(--gold-line);background:rgba(255,204,77,.03);}
+    .int-link:hover{border-color:var(--gold-line);background:rgba(201,151,28,0.027);}
     .int-link-text{font-size:.86rem;color:var(--text);line-height:1.5;}
     .int-link-arr{color:var(--gold);flex-shrink:0;}
     .qa-top{margin-top:8px;padding-top:24px;}
@@ -110,12 +110,12 @@
     .series-nav h3{font-family:var(--font-serif);font-size:1.05rem;color:var(--text-strong);margin-bottom:14px;}
     .series-links{display:flex;flex-direction:column;gap:8px;}
     .series-link{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 16px;text-decoration:none;transition:border-color .18s,background .18s;}
-    .series-link:hover{border-color:var(--gold-line);background:rgba(255,204,77,.03);}
+    .series-link:hover{border-color:var(--gold-line);background:rgba(201,151,28,0.027);}
     .series-link-title{font-size:.86rem;color:var(--text);font-weight:500;line-height:1.4;}
     .series-link-arr{color:var(--text-faint);font-size:.9rem;flex-shrink:0;}
     .sources{font-size:.72rem;color:var(--text-faint);border-top:1px solid var(--line);padding-top:18px;margin-top:32px;line-height:1.9;}
     .sources strong{display:block;margin-bottom:6px;font-size:9px;text-transform:uppercase;letter-spacing:.10em;}
-    .george-card{background:linear-gradient(135deg,rgba(255,204,77,0.04) 0%,rgba(255,204,77,0.01) 100%);border:1px solid var(--gold-line);border-radius:16px;padding:28px;margin:48px 0;display:flex;gap:24px;align-items:flex-start;}
+    .george-card{background:linear-gradient(135deg,rgba(201,151,28,0.036) 0%,rgba(201,151,28,0.009) 100%);border:1px solid var(--gold-line);border-radius:16px;padding:28px;margin:48px 0;display:flex;gap:24px;align-items:flex-start;}
     .george-card-photo{width:100px;height:100px;border-radius:50%;overflow:hidden;border:2px solid var(--gold-line);flex-shrink:0;background:var(--surface);}
     .george-card-photo img{width:100%;height:100%;object-fit:cover;}
     .george-card-content{flex:1;min-width:0;}
@@ -131,7 +131,7 @@
     .george-btn-about:hover{color:var(--gold);}
     @media (max-width:600px){.george-card{flex-direction:column;align-items:center;text-align:center;}.george-card-photo{width:90px;height:90px;}.george-card-btns{flex-direction:column;width:100%;}.george-btn-p,.george-btn-s,.george-btn-about{width:100%;justify-content:center;}}.art-footer{border-top:1px solid var(--line);padding:20px;text-align:center;font-size:9px;font-weight:600;letter-spacing:.04em;color:var(--text-faint);line-height:1.9;text-transform:uppercase;}
     @media(max-width:600px){.art-layout{padding:0 16px 64px;}.art-title{font-size:1.5rem;}.art-hdr-tagline{display:none;}}
-  .guide-nav-box{background:linear-gradient(135deg,rgba(255,204,77,0.06) 0%,rgba(255,204,77,0.02) 100%);border:1px solid var(--gold-line);border-radius:12px;padding:24px;margin:48px 0;text-align:center;}
+  .guide-nav-box{background:linear-gradient(135deg,rgba(201,151,28,0.054) 0%,rgba(201,151,28,0.018) 100%);border:1px solid var(--gold-line);border-radius:12px;padding:24px;margin:48px 0;text-align:center;}
     .guide-nav-title{font-family:var(--font-serif);font-size:1.15rem;font-weight:700;color:var(--text-strong);margin-bottom:8px;}
     .guide-nav-desc{font-size:0.9rem;color:var(--text-soft);margin-bottom:18px;line-height:1.65;}
     .guide-nav-link{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--gold);color:#080808;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;transition:transform 0.1s;}
@@ -214,14 +214,14 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "url": "https://stlhomejourney.com/articles/cost-to-sell-home-stl", "about": {"@id": "https://stlhomejourney.com/#agent"}, "publisher": {"@id": "https://stlhomejourney.com/#agent"}}</script>
 <link rel="stylesheet" href="/assets/tldr/tldr.css">
 <link rel="stylesheet" href="/assets/lesson-strip.css">
-<style data-fold-css>.data-fold{overflow-x:auto;max-width:100%;margin:18px 0 22px;border:1px solid rgba(255,204,77,.28);border-radius:10px;background:rgba(255,204,77,.03);}.data-fold>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:13px 16px;font-size:14px;line-height:1.4;}.data-fold>summary::-webkit-details-marker{display:none;}.data-fold>summary:focus-visible{outline:2px solid #ffcc4d;outline-offset:2px;border-radius:10px;}.df-label{font-weight:600;color:inherit;flex:1 1 220px;min-width:0;}.df-hint{color:#ffcc4d;font-weight:700;font-size:13px;white-space:nowrap;}.df-hint:after{content:" \25BE";}.data-fold[open] .df-hint:after{content:" \25B4";}.data-fold[open] .df-show{display:none;}.df-hide{display:none;}.data-fold[open] .df-hide{display:inline;}.data-fold>:not(summary){margin:4px 8px 8px;}.data-fold[data-cap] caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}@media print{.data-fold>summary{display:none;}}</style>
-<style data-gk-glow>.gk-glow{display:block;margin:18px auto 20px;max-width:440px;padding:13px 16px;border:1.5px solid #ffcc4d;border-radius:12px;color:#ffcc4d;font-weight:600;font-size:15px;line-height:1.5;text-align:center;background:rgba(255,204,77,.05);box-shadow:0 0 10px rgba(255,204,77,.45),0 0 22px rgba(255,204,77,.2),inset 0 0 8px rgba(255,204,77,.12);animation:gkGlow 3.2s ease-in-out infinite;}@keyframes gkGlow{0%,100%{box-shadow:0 0 8px rgba(255,204,77,.35),0 0 18px rgba(255,204,77,.15),inset 0 0 6px rgba(255,204,77,.1);}50%{box-shadow:0 0 14px rgba(255,204,77,.6),0 0 30px rgba(255,204,77,.3),inset 0 0 10px rgba(255,204,77,.16);}}@media(prefers-reduced-motion:reduce){.gk-glow{animation:none;}}</style>
+<style data-fold-css>.data-fold{overflow-x:auto;max-width:100%;margin:18px 0 22px;border:1px solid rgba(201,151,28,0.308);border-radius:10px;background:rgba(201,151,28,0.027);}.data-fold>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:13px 16px;font-size:14px;line-height:1.4;}.data-fold>summary::-webkit-details-marker{display:none;}.data-fold>summary:focus-visible{outline:2px solid #c9971c;outline-offset:2px;border-radius:10px;}.df-label{font-weight:600;color:inherit;flex:1 1 220px;min-width:0;}.df-hint{color:#966800;font-weight:700;font-size:13px;white-space:nowrap;}.df-hint:after{content:" \25BE";}.data-fold[open] .df-hint:after{content:" \25B4";}.data-fold[open] .df-show{display:none;}.df-hide{display:none;}.data-fold[open] .df-hide{display:inline;}.data-fold>:not(summary){margin:4px 8px 8px;}.data-fold[data-cap] caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}@media print{.data-fold>summary{display:none;}}</style>
+<style data-gk-glow>.gk-glow{display:block;margin:18px auto 20px;max-width:440px;padding:13px 16px;border:1.5px solid #c9971c;border-radius:12px;color:#966800;font-weight:600;font-size:15px;line-height:1.5;text-align:center;background:rgba(201,151,28,0.045);box-shadow:0 0 10px rgba(255,204,77,.45),0 0 22px rgba(255,204,77,.2),inset 0 0 8px rgba(255,204,77,.12);animation:gkGlow 3.2s ease-in-out infinite;}@keyframes gkGlow{0%,100%{box-shadow:0 0 8px rgba(255,204,77,.35),0 0 18px rgba(255,204,77,.15),inset 0 0 6px rgba(255,204,77,.1);}50%{box-shadow:0 0 14px rgba(255,204,77,.6),0 0 30px rgba(255,204,77,.3),inset 0 0 10px rgba(255,204,77,.16);}}@media(prefers-reduced-motion:reduce){.gk-glow{animation:none;}}</style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "Seller costs on four 2026 St. Louis home sales", "description": "Seller-paid costs from final ALTA settlement statements and paid repair receipts on four St. Louis-area home sales closed February to October 2026 (City of St. Louis, University City and two in Maryland Heights): commission, seller credit, prorated property taxes, title and settlement fees, staging, home warranty, final utility bills, notary and repairs paid before closing. Mortgage payoffs excluded. Total cost to sell ran 5.1% to 7.6% of the sale price.", "creator": {"@type": "Person", "name": "George Kindler", "url": "https://stlhomejourney.com/george-kindler", "jobTitle": "Licensed Missouri real estate agent"}, "temporalCoverage": "2026-02/2026-10", "spatialCoverage": {"@type": "Place", "name": "St. Louis, Missouri"}, "measurementTechnique": "Final ALTA seller settlement statements and paid contractor receipts", "variableMeasured": ["Commission", "Seller credit", "Prorated property taxes", "Title and settlement fees", "Repairs paid before closing", "Total cost to sell (% of sale price)"], "isAccessibleForFree": true, "license": "https://stlhomejourney.com/", "url": "https://stlhomejourney.com/articles/cost-to-sell-home-stl#real-closings", "dateModified": "2026-11-06"}</script>
 </head>
 <body>
 <header class="art-hdr">
   <a href="../" class="art-hdr-l" aria-label="STL Home Journey home">
-    <img class="hdr-wordmark" src="/assets/brand/stlhj-logo-silver-dark.webp" alt="STL Home Journey" width="600" height="186" style="display:block;height:32px;width:auto;max-width:none;">
+    <img class="hdr-wordmark" src="/assets/brand/stlhj-logo-gold-light.webp" alt="STL Home Journey" width="600" height="186" style="display:block;height:32px;width:auto;max-width:none;">
   </a>
   <nav class="art-hdr-nav">
     <a href="https://stlhomejourney.com/articles/" class="art-hdr-btn">Guides</a>
@@ -536,7 +536,7 @@
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
 <script src="/assets/calc-track.js" defer></script>
-<div class="atd-config" data-tool="seller-net"><p class="atd-static" style="font-size:14px;line-height:1.6;color:rgba(255,255,255,.62);max-width:760px;margin:24px auto 96px;padding:0 20px;">Calculator for this topic: <a href="/articles/what-will-i-net-selling-stl#the-math" style="color:#ffcc4d;">St.&nbsp;Louis seller net calculator</a>. It subtracts commission, title and settlement fees, prorated property taxes, any seller credit and your mortgage payoff from the sale price. <a href="/tools/" style="color:#ffcc4d;">All St.&nbsp;Louis calculators</a></p></div>
+<div class="atd-config" data-tool="seller-net"><p class="atd-static" style="font-size:14px;line-height:1.6;color:rgba(28,24,18,0.66);max-width:760px;margin:24px auto 96px;padding:0 20px;">Calculator for this topic: <a href="/articles/what-will-i-net-selling-stl#the-math" style="color:#966800;">St.&nbsp;Louis seller net calculator</a>. It subtracts commission, title and settlement fees, prorated property taxes, any seller credit and your mortgage payoff from the sale price. <a href="/tools/" style="color:#966800;">All St.&nbsp;Louis calculators</a></p></div>
 <script src="/article-tool-drawer.js"></script>
 <script data-fold-js>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(decodeURIComponent(h));if(!t)return;for(var d=t.closest("details.data-fold");d;d=d.parentElement&&d.parentElement.closest("details.data-fold"))d.open=true;t.scrollIntoView();}window.addEventListener("hashchange",o);if(document.readyState!=="loading")o();else document.addEventListener("DOMContentLoaded",o);window.addEventListener("beforeprint",function(){document.querySelectorAll("details.data-fold").forEach(function(d){d.open=true;});});})();</script>
 </body>

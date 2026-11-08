@@ -174,7 +174,7 @@
 
     var wrapper = document.createElement('div');
     wrapper.id = 'hood-map-wrapper';
-    wrapper.style.cssText = 'background:#0a0a0a;border-bottom:1px solid var(--line,#1e1e1e);';
+    wrapper.style.cssText = 'background:#f6f1e7;border-bottom:1px solid var(--line,#ded4c0);';
 
     var imgSrc = '/assets/maps/' + id + '-map.svg';
 
@@ -186,10 +186,10 @@
         'padding:8px 14px;' +
         'font-size:10px;' +
         'line-height:1.55;' +
-        'color:var(--text-dim,rgba(255,255,255,.38));' +
-        'border-top:1px solid var(--line,#1e1e1e);' +
+        'color:var(--text-dim,rgba(28,24,18,0.52));' +
+        'border-top:1px solid var(--line,#ded4c0);' +
       '">' +
-        '<strong style="color:var(--text-faint,rgba(255,255,255,.55));font-weight:500;">A note on boundaries:</strong> ' +
+        '<strong style="color:var(--text-faint,rgba(28,24,18,0.69));font-weight:500;">A note on boundaries:</strong> ' +
         'St. Louis has some of the most idiosyncratic municipal geography in the country — ' +
         'independent cities, overlapping ZIP codes, and neighborhood names that predate modern postal ' +
         'boundaries by decades. The shaded area reflects the ZIP code or codes most closely associated ' +
@@ -251,16 +251,16 @@
       var fmt = calc.fmt$ || function (n) { return '$' + Math.round(n).toLocaleString(); };
       html +=
         '<div style="' +
-          'background:var(--surface,#111);' +
-          'border-top:1px solid var(--line,#1e1e1e);' +
+          'background:var(--surface,#f3ede1);' +
+          'border-top:1px solid var(--line,#ded4c0);' +
           'padding:14px;' +
         '">' +
           /* ZIP label */
-          '<div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim,rgba(255,255,255,.38));margin-bottom:10px;">' +
+          '<div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim,rgba(28,24,18,0.52));margin-bottom:10px;">' +
             r.zip + (r.district ? ' · ' + r.district : '') +
           '</div>' +
           /* Stats row */
-          '<div style="display:flex;gap:0;background:var(--line,#1e1e1e);">' +
+          '<div style="display:flex;gap:0;background:var(--line,#ede6d7);">' +
             _statCell(fmt(r.d.price), 'Median Sale') +
             _statCell(r.d.dom + ' days', 'Median DOM') +
             _statCell(r.d.fw + '%', 'First Weekend') +
@@ -268,19 +268,19 @@
           '</div>' +
           /* Price tiers */
           '<div style="margin-top:10px;">' +
-            '<div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim,rgba(255,255,255,.38));margin-bottom:6px;">Estimated Price Tiers</div>' +
-            '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line,#1e1e1e);">' +
+            '<div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim,rgba(28,24,18,0.52));margin-bottom:6px;">Estimated Price Tiers</div>' +
+            '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line,#ede6d7);">' +
               _tierCell('As-Is', fmt(Math.round(r.d.price * 0.82 / 1000) * 1000), 'needs work', '#E8A020') +
               _tierCell('Mid-Tier', fmt(Math.round(r.d.price * 0.93 / 1000) * 1000), 'some updating', '#FFCC4D') +
               _tierCell('Move-In', fmt(Math.round(r.d.price * 1.08 / 1000) * 1000), 'ready', '#5DCAA5') +
             '</div>' +
-            '<div style="font-size:10px;line-height:1.45;color:var(--text-dim,rgba(255,255,255,.45));margin-top:6px;">Condition tiers are estimates set from the ZIP median, not separate sale counts.</div>' +
+            '<div style="font-size:10px;line-height:1.45;color:var(--text-dim,rgba(28,24,18,0.59));margin-top:6px;">Condition tiers are estimates set from the ZIP median, not separate sale counts.</div>' +
           '</div>' +
           /* Market flag */
           '<div style="' +
             'margin-top:10px;' +
             'font-size:10px;' +
-            'color:var(--text-dim,rgba(255,255,255,.5));' +
+            'color:var(--text-dim,rgba(28,24,18,0.64));' +
             'line-height:1.55;' +
             'border-left:2px solid ' + r.flag.color + ';' +
             'padding-left:8px;' +
@@ -295,9 +295,9 @@
       '<div style="' +
         'font-size:10.5px;' +
         'line-height:1.5;' +
-        'color:var(--text-dim,rgba(255,255,255,.5));' +
+        'color:var(--text-dim,rgba(28,24,18,0.64));' +
         'padding:8px 14px;' +
-        'border-top:1px solid var(--line,#1e1e1e);' +
+        'border-top:1px solid var(--line,#ded4c0);' +
       '">ZIP-code data: all 2025–26 MARIS MLS residential sales in the ZIP shown, which can include neighboring towns. Not the same set of sales as any town-level figures on this page.</div>';
 
     strip.innerHTML = html;
@@ -312,10 +312,10 @@
 
   function _tierCell(label, val, sub, color) {
     return (
-      '<div style="background:var(--surface2,#161616);padding:8px;text-align:center;">' +
-        '<div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim,rgba(255,255,255,.38));margin-bottom:3px;">' + label + '</div>' +
+      '<div style="background:var(--surface2,#f1eadd);padding:8px;text-align:center;">' +
+        '<div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim,rgba(28,24,18,0.52));margin-bottom:3px;">' + label + '</div>' +
         '<div style="font-family:Georgia,serif;font-size:1rem;font-weight:700;color:' + color + ';line-height:1;">' + val + '</div>' +
-        '<div style="font-size:8px;color:var(--text-faint,rgba(255,255,255,.25));margin-top:3px;">' + sub + '</div>' +
+        '<div style="font-size:8px;color:var(--text-faint,rgba(28,24,18,0.39));margin-top:3px;">' + sub + '</div>' +
       '</div>'
     );
   }
@@ -324,13 +324,13 @@
     return (
       '<div style="' +
         'flex:1;' +
-        'background:var(--surface2,#161616);' +
+        'background:var(--surface2,#f1eadd);' +
         'padding:10px 8px;' +
         'text-align:center;' +
         'margin:1px;' +
       '">' +
-        '<div style="font-family:\'Playfair Display\',Georgia,serif;font-size:1.1rem;font-weight:700;color:var(--gold,#ffcc4d);line-height:1;">' + val + '</div>' +
-        '<div style="font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim,rgba(255,255,255,.38));margin-top:4px;">' + label + '</div>' +
+        '<div style="font-family:\'Playfair Display\',Georgia,serif;font-size:1.1rem;font-weight:700;color:var(--gold,#966800);line-height:1;">' + val + '</div>' +
+        '<div style="font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim,rgba(28,24,18,0.52));margin-top:4px;">' + label + '</div>' +
       '</div>'
     );
   }
