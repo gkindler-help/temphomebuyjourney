@@ -88,6 +88,8 @@ TOPICS = [
      ['articles/when-to-lower-house-price-st-louis', 'articles/showings-but-no-offers-st-louis', 'articles/no-showings-st-louis-home', 'articles/why-your-st-louis-home-didnt-sell']),
     (['cash offer', 'cash buyer', 'we buy houses', 'investor', 'wholesale', 'wholesaler', 'as is', 'as-is'],
      ['articles/what-you-lose-with-cash-offer-stl', 'articles/how-cash-buyers-calculate-offers-stl', 'tools/cash-offer-decoder']),
+    (['how to sell', 'sell my house', 'sell a house', 'sell my home', 'selling a house', 'selling my house', 'selling process', 'steps to sell', 'how long to sell', 'list my house'],
+     ['articles/how-to-sell-a-house-st-louis', 'articles/how-george-works-with-sellers', 'articles/how-to-price-a-house-to-sell-st-louis']),
     (['net', 'proceeds', 'cost to sell', 'selling costs', 'seller closing costs'],
      ['articles/what-will-i-net-selling-stl', 'articles/cost-to-sell-home-stl']),
     (['closing costs', 'closing cost'],
