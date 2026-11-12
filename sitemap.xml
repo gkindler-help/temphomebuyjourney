@@ -913,12 +913,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/cottleville</loc>
-    <lastmod>2026-10-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://stlhomejourney.com/neighborhoods/crestwood</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -933,12 +927,6 @@
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/crystal-lake-park</loc>
     <lastmod>2026-10-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/dardenne-prairie</loc>
-    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1045,12 +1033,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/josephville</loc>
-    <lastmod>2026-10-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://stlhomejourney.com/neighborhoods/kirkwood</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -1059,12 +1041,6 @@
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/lafayette-square</loc>
     <lastmod>2026-10-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/lake-st-louis</loc>
-    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1118,12 +1094,6 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/northampton</loc>
-    <lastmod>2026-10-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/o-fallon</loc>
     <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1219,12 +1189,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stlhomejourney.com/neighborhoods/st-charles</loc>
-    <lastmod>2026-10-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://stlhomejourney.com/neighborhoods/st-john</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
@@ -1232,18 +1196,6 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/st-louis-hills</loc>
-    <lastmod>2026-10-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/st-paul</loc>
-    <lastmod>2026-10-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/st-peters</loc>
     <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1281,30 +1233,6 @@
   <url>
     <loc>https://stlhomejourney.com/neighborhoods/webster-groves</loc>
     <lastmod>2026-10-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/weldon-spring</loc>
-    <lastmod>2026-10-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/weldon-spring-heights</loc>
-    <lastmod>2026-10-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/wentzville</loc>
-    <lastmod>2026-10-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://stlhomejourney.com/neighborhoods/west-alton</loc>
-    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
