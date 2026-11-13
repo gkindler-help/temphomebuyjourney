@@ -92,6 +92,7 @@
     [/^maps\.app\.goo\.gl$|google\.[a-z.]+$/, /maps|^\/[A-Za-z0-9]+$/, 'Google Maps'],
     [/theclosingpros\.com$/, null, 'The Closing Pros'],
     [/github\.io$/, /affordability/i, 'Buyer affordability heat map'],
+    [/zillow\.com$/, /profile\/georgeandlizk/i, 'George on Zillow (claim as agent)'],
     [/zillow\.com$/, null, 'Zillow'],
     [/realtor\.com$|nar\.realtor$/, null, 'Realtor.com / NAR'],
     [/fox2now\.com$/, null, 'FOX 2 St. Louis'],
