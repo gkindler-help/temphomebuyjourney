@@ -21,7 +21,7 @@ import collections, html, json, math, os, re, statistics, sys, zipfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'assets', 'data', 'before-you-offer-2026.json')
-THROUGH = 'MLS sales Jan 1 – Oct 30, 2026 (Jefferson County through Oct 5)'
+THROUGH = 'Jan 1 – Oct 5, 2026'
 MIN_PRICE_N = 5      # smallest group that may show a price
 TARGET_N = 8         # widen the comp search until a step has this many
 SIZE_BANDS = [0, 1000, 1500, 2000, 2500, 3000, 10 ** 9]   # match the dropdown and the tax table

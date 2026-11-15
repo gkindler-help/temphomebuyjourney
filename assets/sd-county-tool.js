@@ -8,7 +8,7 @@
 (function () {
   'use strict';
 
-  var STUDY_DAYS = 303; // Jan 1 – Oct 30, 2026 inclusive
+  var STUDY_DAYS = 278; // Jan 1 – Oct 5, 2026 inclusive
   var GUIDES = {
     'Affton 101': 'affton-school-district', 'Clayton': 'clayton-school-district',
     'Ferguson-Florissant': 'ferguson-florissant-school-district', 'Hazelwood': 'hazelwood-school-district',
