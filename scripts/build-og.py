@@ -91,7 +91,8 @@ def main():
         s = open(os.path.join(ROOT, r), encoding='utf-8').read()
         if re.search(r'<meta name="robots" content="[^"]*noindex', s):
             continue
-        out = '%s/%s.jpg' % (OUT, slug(r))
+        # Photo cards get their own file name, so apps that cached the old title card fetch the new image.
+        out = '%s/%s%s.jpg' % (OUT, slug(r), '-photo' if r in PHOTO_CARDS else '')
         job = {'title': title_of(s), 'eyebrow': eyebrow(r, s), 'calc': has_calc(r, s),
                'out': os.path.join(ROOT, out)}
         if r in PHOTO_CARDS:
