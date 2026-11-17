@@ -7,6 +7,8 @@ the page's own headline, and a "Calculator included" tag on pages with a calcula
 Cards go to assets/og/<page>.jpg; each page gets og:image, its size, twitter:card and
 twitter:image pointing there.
 
+Listing pages in PHOTO_CARDS get their front elevation photo as the card instead.
+
 Run after changing any page title:  python3 scripts/build-og.py
 Needs Node with Playwright (set CHROME to a Chromium binary if Playwright's own isn't installed).
 """
@@ -22,6 +24,12 @@ bs = importlib.util.module_from_spec(spec); spec.loader.exec_module(bs)
 # Tool pages that are quizzes or forms rather than calculators.
 NOT_CALC = {'neighborhood-matcher.html'}
 SELLER_PREFIXES = ('sellers/',)
+
+# Listing pages whose preview card is the front elevation photo instead of the title card
+# (George, 2026-11-17). Photo path is relative to the repo root; it is center-cropped to 1200x630.
+PHOTO_CARDS = {
+    'listings/7205-meramar-drive-oakville-mo.html': 'assets/listings/7205-meramar-drive-oakville-mo/photo-01.webp',
+}
 
 
 def title_of(s):
@@ -84,8 +92,11 @@ def main():
         if re.search(r'<meta name="robots" content="[^"]*noindex', s):
             continue
         out = '%s/%s.jpg' % (OUT, slug(r))
-        jobs.append({'title': title_of(s), 'eyebrow': eyebrow(r, s), 'calc': has_calc(r, s),
-                     'out': os.path.join(ROOT, out)})
+        job = {'title': title_of(s), 'eyebrow': eyebrow(r, s), 'calc': has_calc(r, s),
+               'out': os.path.join(ROOT, out)}
+        if r in PHOTO_CARDS:
+            job['photo'] = os.path.join(ROOT, PHOTO_CARDS[r])
+        jobs.append(job)
         edits.append((r, out))
     os.makedirs(os.path.join(ROOT, OUT), exist_ok=True)
     with tempfile.NamedTemporaryFile('w', suffix='.json', delete=False) as f:
