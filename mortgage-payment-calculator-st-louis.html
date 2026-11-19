@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>St. Louis Mortgage Payment Calculator: FHA, VA &amp; Conventional</title>
+<meta name="description" content="Free St. Louis mortgage payment calculator: enter the price, rate, FHA, VA or conventional loan, taxes and insurance. Pick a school district to fill in 2026 property taxes.">
+<meta property="og:image" content="https://stlhomejourney.com/assets/og/mortgage-payment-calculator-st-louis.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="STL Home Journey">
+<meta name="twitter:image" content="https://stlhomejourney.com/assets/og/mortgage-payment-calculator-st-louis.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://stlhomejourney.com/mortgage-payment-calculator-st-louis">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="/assets/payment-calc.css">
+<script>/* Analytics only on the live domain: skips Cloudflare previews (*.pages.dev), copies and local tests */if(/(^|\.)stlhomejourney\.com$/.test(location.hostname)){var gs=document.createElement("script");gs.async=true;gs.src="https://www.googletagmanager.com/gtag/js?id=G-EEE14BZT9P";document.head.appendChild(gs);}</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EEE14BZT9P');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{overflow-y:scroll;-webkit-overflow-scrolling:touch}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-y:visible}
+
+/* HEADER */
+.art-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(5,5,5,.96);backdrop-filter:blur(8px);z-index:100}
+.art-hdr-l{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.art-hdr-ico img{width:32px;height:32px;border-radius:6px}
+.art-hdr-t{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--white);line-height:1.1}
+.art-hdr-t span{color:var(--gold)}
+.art-hdr-name{font-size:10px;color:var(--text-dim);font-weight:500;letter-spacing:.04em}
+.art-hdr-nav{display:flex;gap:16px}
+.art-hdr-nav a{font-size:12px;font-weight:600;color:var(--text-soft);text-decoration:none;letter-spacing:.04em;text-transform:uppercase}
+.art-hdr-nav a.gold{color:var(--gold)}
+
+/* LAYOUT */
+.tool-wrap{max-width:920px;margin:0 auto;padding:0 16px 80px}
+
+/* HERO */
+.tool-hero{padding:32px 0 24px;border-bottom:1px solid var(--line);margin-bottom:24px}
+.tool-badge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(255,204,77,.3);padding:4px 12px;border-radius:100px;margin-bottom:12px}
+.tool-hero h1,.tool-hero .tool-h1{font-family:'Playfair Display',serif;font-size:clamp(22px,5vw,34px);font-weight:900;color:var(--white);line-height:1.15;margin-bottom:10px}
+.tool-hero h1 em,.tool-hero .tool-h1 em{color:var(--gold);font-style:italic}
+.tool-hero p{font-size:14px;color:var(--text-soft);line-height:1.65;max-width:600px}
+
+/* PANELS */
+.panel{background:var(--surface);border:1px solid var(--line-2);border-radius:14px;padding:20px;margin-bottom:16px}
+.panel-title{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+
+/* INPUTS GRID */
+.ig{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text-dim)}
+.field input,.field select{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:7px;padding:9px 11px;font-size:13px;color:var(--white);font-family:'Inter',sans-serif;outline:none;transition:border-color .15s}
+.field input:focus,.field select:focus{border-color:rgba(255,204,77,.5)}
+.field select option{background:#111}
+
+/* LOAN TYPE TABS */
+.loan-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0}
+.ltab{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:700;color:var(--text-soft);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;letter-spacing:.02em}
+.ltab:hover{border-color:rgba(255,204,77,.4);color:var(--text)}
+.ltab.active{border-color:var(--gold);background:rgba(255,204,77,.1);color:var(--gold)}
+
+/* DIVIDER */
+.hdiv{height:1px;background:var(--line);margin:16px 0}
+
+/* RUN BTN */
+.run-btn{width:100%;background:var(--gold);color:#050505;border:none;border-radius:10px;padding:15px 20px;font-size:15px;font-weight:800;font-family:'Inter',sans-serif;cursor:pointer;letter-spacing:.04em;text-transform:uppercase;margin-top:16px;transition:opacity .2s}
+.run-btn:hover{opacity:.88}
+
+/* PHASE CONTAINER */
+.phase{display:none}
+.phase.active{display:block}
+
+/* BACK BUTTON */
+.back-btn{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--line-2);color:var(--text-soft);padding:10px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-bottom:16px;transition:all .15s}
+.back-btn:hover{border-color:rgba(255,204,77,.4);color:var(--gold)}
+
+/* REGIONAL CARDS */
+.region-card{background:var(--surface);border:1px solid var(--line-2);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:border-color .15s}
+.region-card.expanded{border-color:rgba(255,204,77,.3)}
+
+.region-header{padding:16px 20px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:background .15s}
+.region-header:hover{background:var(--surface-2)}
+
+.region-title{display:flex;align-items:center;gap:12px}
+.region-name{font-size:16px;font-weight:700;color:var(--white)}
+.region-count{font-size:12px;color:var(--text-dim);font-weight:500}
+
+.region-preview{font-size:12px;color:var(--text-soft);margin-top:4px}
+.region-preview span{color:var(--gold);font-weight:600}
+
+.region-chevron{font-size:14px;color:var(--text-dim);transition:transform .2s}
+.region-card.expanded .region-chevron{transform:rotate(180deg)}
+
+.region-body{display:none;overflow:hidden}
+.region-card.expanded .region-body{display:block}
+
+/* NEIGHBORHOOD LIST */
+.neighborhood-list{padding:0 20px 20px}
+.neighborhood-item{padding:14px 0;border-bottom:1px solid var(--line)}
+.neighborhood-item:last-child{border-bottom:none}
+
+.neighborhood-name{font-size:14px;font-weight:700;color:var(--white);margin-bottom:8px}
+
+.neighborhood-details{display:flex;flex-direction:column;gap:6px}
+.detail-line{font-size:13px;color:var(--text-soft);display:flex;align-items:baseline;gap:8px}
+.detail-line .price{color:var(--gold);font-weight:700}
+.detail-line .meta{color:var(--text-dim);font-size:11px}
+
+.neighborhood-link{display:inline-block;margin-top:8px;font-size:12px;color:var(--gold);text-decoration:none;font-weight:600;transition:opacity .15s}
+.neighborhood-link:hover{opacity:.7}
+
+/* NO RESULTS */
+.no-results{background:var(--surface-2);border:1px solid rgba(255,140,50,.3);border-radius:12px;padding:32px 24px;text-align:center}
+.no-results-icon{font-size:48px;margin-bottom:12px}
+.no-results-title{font-size:18px;font-weight:700;color:var(--white);margin-bottom:12px}
+.no-results-text{font-size:14px;color:var(--text-soft);line-height:1.6;margin-bottom:20px}
+.no-results-cta{display:inline-block;padding:12px 24px;background:var(--gold);color:#050505;font-weight:700;font-size:13px;border-radius:8px;text-decoration:none;letter-spacing:.04em;transition:opacity .15s}
+.no-results-cta:hover{opacity:.88}
+
+/* PHASE 2 CTA */
+.phase2-cta{background:rgba(255,204,77,.08);border:1px solid rgba(255,204,77,.25);border-radius:12px;padding:20px;margin-top:24px;text-align:center}
+.phase2-cta-title{font-size:16px;font-weight:700;color:var(--white);margin-bottom:12px}
+.phase2-cta-text{font-size:13px;color:var(--text-soft);line-height:1.6;margin-bottom:16px}
+.phase2-cta-btn{display:inline-block;padding:14px 28px;background:var(--gold);color:#050505;font-weight:800;font-size:14px;border-radius:10px;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;transition:opacity .15s;cursor:pointer;border:none;font-family:'Inter',sans-serif}
+.phase2-cta-btn:hover{opacity:.88}
+
+/* COMPLIANCE */
+.compliance-footer{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);font-size:11px;color:var(--text-dim);line-height:1.6;text-align:center}
+.compliance-footer strong{color:var(--text-soft)}
+
+/* PHASE 2 STYLES */
+.mode-toggle{display:flex;gap:8px;margin-bottom:16px}
+.mode-btn{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:8px;padding:10px 16px;font-size:13px;font-weight:600;color:var(--text-soft);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;flex:1}
+.mode-btn:hover{border-color:rgba(255,204,77,.4);color:var(--text)}
+.mode-btn.active{border-color:var(--gold);background:rgba(255,204,77,.1);color:var(--gold)}
+
+.simple-presets{display:grid;gap:12px;margin-bottom:16px}
+.sp-btn{background:var(--surface-2);border:1px solid var(--line-2);border-radius:10px;padding:14px 16px;text-align:left;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
+.sp-btn:hover{border-color:rgba(255,204,77,.4)}
+.sp-btn.active{border-color:var(--gold);background:rgba(255,204,77,.08)}
+.sn{display:block;font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px}
+.sr{display:block;font-size:12px;color:var(--text-soft);line-height:1.5}
+
+.custom-row{display:flex;align-items:center;gap:12px}
+.custom-row label{font-size:13px;color:var(--text-soft);font-weight:600}
+.custom-row input{flex:1;max-width:200px}
+
+.repair-grid{display:grid;gap:10px;margin-bottom:16px;max-height:400px;overflow-y:auto}
+.repair-item{display:flex;align-items:center;gap:12px;background:var(--surface-2);border:1px solid var(--line-2);border-radius:8px;padding:12px;font-size:13px}
+.repair-item input[type="checkbox"]{width:18px;height:18px;cursor:pointer}
+.repair-name{flex:1;color:var(--text-soft);font-weight:500}
+.repair-cost{color:var(--gold);font-weight:700;min-width:80px;text-align:right}
+.repair-total{font-size:15px;font-weight:700;color:var(--white);text-align:right;padding:12px 0;border-top:1px solid var(--line)}
+
+.fin-grid{display:grid;gap:10px}
+.fin-btn{background:var(--surface-2);border:1px solid var(--line-2);border-radius:10px;padding:14px 16px;text-align:left;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;position:relative}
+.fin-btn:hover{border-color:rgba(255,204,77,.4)}
+.fin-btn.active{border-color:var(--gold);background:rgba(255,204,77,.08)}
+.fin-btn.disabled{opacity:.4;cursor:not-allowed;pointer-events:none}
+.fin-name{display:block;font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px}
+.fin-desc{display:block;font-size:12px;color:var(--text-soft);line-height:1.5}
+.fin-badge{position:absolute;top:12px;right:12px;font-size:10px;font-weight:700;color:var(--gold);background:rgba(255,204,77,.15);padding:3px 8px;border-radius:4px;letter-spacing:.04em}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "url": "https://stlhomejourney.com/mortgage-payment-calculator-st-louis", "about": {"@id": "https://stlhomejourney.com/#agent"}, "publisher": {"@id": "https://stlhomejourney.com/#agent"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stlhomejourney.com/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://stlhomejourney.com/tools/"}, {"@type": "ListItem", "position": 3, "name": "Mortgage Payment Calculator", "item": "https://stlhomejourney.com/mortgage-payment-calculator-st-louis"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "St. Louis Mortgage Payment Calculator", "url": "https://stlhomejourney.com/mortgage-payment-calculator-st-louis", "description": "Free calculator: enter purchase price, interest rate, loan type (conventional, FHA or VA), down payment, property taxes, insurance and HOA to see the monthly payment and estimated cash to close. Pick a St. Louis County or Jefferson County school district to fill in its median 2026 property tax bill.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any (web browser)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@id": "https://stlhomejourney.com/#agent"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the monthly payment on a $250,000 house in St. Louis?", "acceptedAnswer": {"@type": "Answer", "text": "About $2,141 a month with a conventional loan, 5% down and a 7% rate: $1,580 principal and interest, $233 property taxes, $208 insurance and $119 PMI. With FHA and 3.5% down it’s about $2,185; with VA and nothing down, about $2,141. Taxes and insurance here are estimates (1.12% and 1% of the price a year), so enter the listing’s tax bill and your insurance quote in the calculator above."}}, {"@type": "Question", "name": "What is the monthly payment on a $300,000 house in St. Louis?", "acceptedAnswer": {"@type": "Answer", "text": "About $2,569 a month with a conventional loan and 5% down at 7%, $2,622 with FHA and 3.5% down, and $2,569 with VA and nothing down. Put 20% down on a conventional loan and PMI goes away: about $2,127 a month, but you’d need about $72,530 to close."}}, {"@type": "Question", "name": "What is included in a monthly mortgage payment?", "acceptedAnswer": {"@type": "Answer", "text": "Four parts, often called PITI: principal and interest on the loan, property taxes, and homeowners insurance, with the taxes and insurance usually collected each month into an escrow account. Add mortgage insurance with less than 20% down on a conventional loan (PMI) or on any FHA loan (MIP). VA loans have no monthly mortgage insurance. HOA dues are paid to the association, but count them in the monthly cost too."}}]}</script>
+<style data-fold-css>.data-fold{overflow-x:auto;max-width:100%;margin:18px 0 22px;border:1px solid rgba(255,204,77,.28);border-radius:10px;background:rgba(255,204,77,.03);}.data-fold>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;padding:13px 16px;font-size:14px;line-height:1.4;}.data-fold>summary::-webkit-details-marker{display:none;}.data-fold>summary:focus-visible{outline:2px solid #ffcc4d;outline-offset:2px;border-radius:10px;}.df-label{font-weight:600;color:inherit;flex:1 1 220px;min-width:0;}.df-hint{color:#ffcc4d;font-weight:700;font-size:13px;white-space:nowrap;}.df-hint:after{content:" \25BE";}.data-fold[open] .df-hint:after{content:" \25B4";}.data-fold[open] .df-show{display:none;}.df-hide{display:none;}.data-fold[open] .df-hide{display:inline;}.data-fold>:not(summary){margin:4px 8px 8px;}.data-fold[data-cap] caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}@media print{.data-fold>summary{display:none;}}</style>
+<link rel="stylesheet" href="/assets/lesson-strip.css">
+</head>
+<body>
+
+<header class="art-hdr">
+  <a href="/" class="art-hdr-l" aria-label="STL Home Journey home">
+    <img class="hdr-wordmark" src="/assets/brand/stlhj-logo-silver-dark.webp" alt="STL Home Journey" width="600" height="186" style="display:block;height:32px;width:auto;max-width:none;">
+  </a>
+  <nav class="art-hdr-nav">
+    <a href="/articles/">Guides</a>
+    <a href="/" class="gold">Journey</a>
+  </nav>
+</header>
+
+<div class="tool-wrap">
+
+  <div class="tool-hero">
+    <div class="tool-badge">Mortgage Payment Calculator</div>
+    <h1>What Will the House <em>Cost Each Month?</em></h1>
+    <p style="margin:0 0 12px;">This free St.&nbsp;Louis mortgage payment calculator turns a purchase price into the monthly payment and the cash you need to close. Enter the price, your rate, the loan type (conventional, FHA or VA), your down payment, the property taxes and the insurance.</p>
+    <p style="margin:0 0 12px;">Don&rsquo;t have a tax bill yet? Pick the school district and it fills in the median 2026 bill from MLS sales in St.&nbsp;Louis County and Jefferson County. Know your income but not your price? Start with the <a href="/stl-home-buying-power-calculator" style="color:#ffcc4d;">buying power calculator</a>.</p>
+  </div>
+
+  <div class="pay-calc" id="payment-calc" data-districts="1" data-store="stlhj-pay-v1">
+    <p class="pay-static">Monthly payment calculator: purchase price, interest rate, loan type (conventional, FHA or VA), down payment, loan term, property taxes (or pick a St.&nbsp;Louis County or Jefferson County school district), homeowners insurance, HOA dues, closing costs and seller credit. It shows principal and interest, taxes, insurance, mortgage insurance and the estimated cash to close. It needs JavaScript; the table below shows the same math at common prices.</p>
+  </div>
+
+<section id="quick-answers" style="margin:28px 0 8px;">
+<h2 style="font-size:22px;margin:8px 0 14px;">St.&nbsp;Louis Mortgage Payments, Answered</h2>
+<h3 style="font-size:17px;margin:20px 0 6px;">What is the monthly payment on a $250,000 house in St.&nbsp;Louis?</h3>
+<p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 12px;">About $2,141 a month with a conventional loan, 5% down and a 7% rate: $1,580 principal and interest, $233 property taxes, $208 insurance and $119 PMI. With FHA and 3.5% down it&rsquo;s about $2,185; with VA and nothing down, about $2,141. Taxes and insurance here are estimates (1.12% and 1% of the price a year), so enter the listing&rsquo;s tax bill and your insurance quote in the calculator above.</p>
+<h3 style="font-size:17px;margin:20px 0 6px;">What is the monthly payment on a $300,000 house in St.&nbsp;Louis?</h3>
+<p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 12px;">About $2,569 a month with a conventional loan and 5% down at 7%, $2,622 with FHA and 3.5% down, and $2,569 with VA and nothing down. Put 20% down on a conventional loan and PMI goes away: about $2,127 a month, but you&rsquo;d need about $72,530 to close.</p>
+<h3 style="font-size:17px;margin:20px 0 6px;">What is included in a monthly mortgage payment?</h3>
+<p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 12px;">Four parts, often called PITI: principal and interest on the loan, property taxes, and homeowners insurance, with the taxes and insurance usually collected each month into an escrow account. Add mortgage insurance with less than 20% down on a conventional loan (PMI) or on any FHA loan (MIP). VA loans have no monthly mortgage insurance. HOA dues are paid to the association, but count them in the monthly cost too.</p>
+<h3 style="font-size:17px;margin:20px 0 6px;">How much are property taxes on a St.&nbsp;Louis house?</h3>
+<p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 12px;">It depends on the school district far more than the price. Across 22 St.&nbsp;Louis County districts the median 2026 bill was $3,624, with district medians from $1,446 to $11,638; in Jefferson County the median was $2,084. Pick the district in the calculator to fill in its median. <a href="/school-districts/st-louis-county#property-taxes" style="color:#ffcc4d;">Every district&rsquo;s tax bill &rarr;</a></p>
+<h3 style="font-size:17px;margin:20px 0 6px;">How much cash do I need to close?</h3>
+<p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 12px;">Your down payment plus closing costs (usually 2% to 3% of the price in St.&nbsp;Louis), the first year of insurance, an escrow deposit and some prepaid interest. The calculator adds those up, less any seller credit. <a href="/articles/buyer-closing-costs-st-louis" style="color:#ffcc4d;">What&rsquo;s in buyer closing costs &rarr;</a></p>
+</section>
+<!-- lesson-strip:start -->
+<aside class="lesson-strip" aria-label="From George’s own transactions"><p><span class="ls-k">From George&rsquo;s own transactions</span><a href="/articles/lessons-from-a-sale-fenton-san-luis">How Roy and Karen stayed $27,000 under budget in Fenton &rarr;</a><span class="ls-sep" aria-hidden="true">&middot;</span><a class="ls-hub" href="/articles/lessons-from-a-sale">All Lessons From a Sale</a></p></aside>
+<!-- lesson-strip:end -->
+
+<section id="payment-by-price" style="margin:36px 0 8px;">
+<h2 style="font-size:22px;margin:8px 0 10px;">Monthly Payment by Price and Loan Type</h2>
+<p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 12px;">At a 7% rate on a 30-year loan, with property taxes at 1.12% and insurance at 1% of the price a year (the same assumptions as the <a href="/articles/how-much-house-afford-making-70k-st-louis#monthly-payment" style="color:#ffcc4d;">how-much-house guides</a>). Conventional at 5% down includes PMI; FHA at 3.5% down includes the upfront and monthly mortgage insurance; VA at 0% down includes the first-use funding fee.</p>
+<details class="data-fold" data-cap><summary><span class="df-label">Estimated monthly payment by purchase price, St. Louis, 7% rate</span><span class="df-hint"><span class="df-show">Show all 5 rows</span><span class="df-hide">Hide table</span></span></summary>
+<div class="z-table-wrap"><table class="z-table"><caption>Estimated monthly payment by purchase price, St.&nbsp;Louis, 7% rate</caption><thead><tr><th scope="col">Price</th><th scope="col">Conventional, 5% down</th><th scope="col">FHA, 3.5% down</th><th scope="col">VA, 0% down</th><th scope="col">Conventional, 20% down</th></tr></thead><tbody><tr><td>$200,000</td><td>$1,712</td><td>$1,748</td><td>$1,713</td><td>$1,418</td></tr><tr><td>$250,000</td><td>$2,141</td><td>$2,185</td><td>$2,141</td><td>$1,772</td></tr><tr><td>$300,000</td><td>$2,569</td><td>$2,622</td><td>$2,569</td><td>$2,127</td></tr><tr><td>$350,000</td><td>$2,997</td><td>$3,060</td><td>$2,997</td><td>$2,481</td></tr><tr><td>$400,000</td><td>$3,425</td><td>$3,497</td><td>$3,425</td><td>$2,836</td></tr></tbody></table></div>
+</details>
+<details class="data-fold" data-cap><summary><span class="df-label">Estimated cash to close by purchase price, St. Louis</span><span class="df-hint"><span class="df-show">Show all 5 rows</span><span class="df-hide">Hide table</span></span></summary>
+<div class="z-table-wrap"><table class="z-table"><caption>Estimated cash to close by purchase price, St.&nbsp;Louis</caption><thead><tr><th scope="col">Price</th><th scope="col">Conventional, 5% down</th><th scope="col">FHA, 3.5% down</th><th scope="col">VA, 0% down</th></tr></thead><tbody><tr><td>$200,000</td><td>$18,440</td><td>$15,458</td><td>$8,481</td></tr><tr><td>$250,000</td><td>$23,050</td><td>$19,323</td><td>$10,601</td></tr><tr><td>$300,000</td><td>$27,660</td><td>$23,187</td><td>$12,722</td></tr><tr><td>$350,000</td><td>$32,270</td><td>$27,052</td><td>$14,842</td></tr><tr><td>$400,000</td><td>$36,880</td><td>$30,917</td><td>$16,962</td></tr></tbody></table></div>
+</details>
+<p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 12px;">Cash to close here is the down payment, closing costs at 2.5% of the price, the first year of insurance, an escrow deposit and 15 days of prepaid interest, with no seller credit.</p>
+</section>
+
+<section id="how-it-works" style="margin:36px 0 8px;">
+<h2 style="font-size:22px;margin:8px 0 10px;">How the Calculator Works</h2>
+<p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 12px;"><strong>Conventional:</strong> PMI is added when you put less than 20% down. Auto uses typical yearly rates by down payment (0.75% under 5% down, 0.60% at 5%, 0.45% at 10%, 0.30% at 15%), but your credit score moves it, so type your lender&rsquo;s quote when you have one. Minimum 3% down.</p>
+<p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 12px;"><strong>FHA:</strong> 1.75% upfront mortgage insurance is added to the loan, plus monthly mortgage insurance of 0.55% a year (0.50% with 5% or more down) on a 30-year loan. Minimum 3.5% down.</p>
+<p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 12px;"><strong>VA:</strong> no monthly mortgage insurance. The funding fee is added to the loan: 2.15% with less than 5% down on first use, 1.5% with 5% down, 1.25% with 10%, 3.3% under 5% down if you&rsquo;ve used a VA loan before, and nothing if you&rsquo;re exempt for a VA disability rating.</p>
+<p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 12px;"><strong>Seller credit:</strong> capped at what the loan allows: 6% of the price on FHA, 4% on VA plus normal closing costs, and 3% to 9% on conventional depending on the down payment. It can&rsquo;t be more than your closing costs and prepaids.</p>
+<p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 12px;">Every number is an estimate. Your lender&rsquo;s Loan Estimate has the exact figures, and the tax bill on a listing is the seller&rsquo;s most recent bill, not a promise of yours.</p>
+</section>
+
+<section style="margin:36px 0 8px;">
+  <h2 style="font-size:22px;margin:8px 0 10px;">Related Calculators and Guides</h2>
+  <ul style="font-size:15px;line-height:1.9;padding-left:20px;color:rgba(255,255,255,.82);">
+    <li><a href="/stl-home-buying-power-calculator" style="color:#ffcc4d;">Buying power calculator</a>: start from your income instead of the price</li>
+    <li><a href="/articles/conventional-vs-fha-loan-st-louis" style="color:#ffcc4d;">Conventional vs. FHA in St.&nbsp;Louis</a></li>
+    <li><a href="/articles/buyer-closing-costs-st-louis" style="color:#ffcc4d;">Buyer closing costs in St.&nbsp;Louis</a></li>
+    <li><a href="/articles/what-to-look-for-buying-house-stl#offer-check" style="color:#ffcc4d;">Before You Offer check</a>: is this house priced right?</li>
+    <li><a href="/tools/" style="color:#ffcc4d;">All free St.&nbsp;Louis calculators</a></li>
+  </ul>
+  <p style="font-size:14px;color:rgba(255,255,255,.6);margin:18px 0 0;">Built by George Kindler, licensed Missouri real estate agent, 250+ St.&nbsp;Louis transactions.</p>
+</section>
+  <!-- ASK ME: component configured in /assets/ask-me.js -->
+  <div data-ask-me="pre-approval"><p><a href="/ask?about=pre-approval&amp;from=/mortgage-payment-calculator-st-louis">Ask Me About Your Numbers</a></p></div>
+
+  <div class="compliance-footer">
+    <strong>The Closing Pros LLC</strong> &middot; Licensed Missouri Real Estate Brokerage<br>
+    Office: 314-998-4550 &middot; George&rsquo;s Direct: 314.435.1087<br>
+    Payment and cash-to-close estimates only. District tax medians from MLS sales, January 1&ndash;October 5, 2026. Consult a licensed lender for actual figures.
+  </div>
+
+</div>
+
+<script src="/assets/payment-calc.js" defer></script>
+<script src="/assets/ask-me.js?v=9" defer></script>
+<script src="/assets/site-search.js" defer></script>
+<script src="/assets/calc-track.js" defer></script>
+<script src="/assets/jump-nav.js" defer></script>
+<script data-fold-js>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(decodeURIComponent(h));if(!t)return;for(var d=t.closest("details.data-fold");d;d=d.parentElement&&d.parentElement.closest("details.data-fold"))d.open=true;t.scrollIntoView();}window.addEventListener("hashchange",o);if(document.readyState!=="loading")o();else document.addEventListener("DOMContentLoaded",o);window.addEventListener("beforeprint",function(){document.querySelectorAll("details.data-fold").forEach(function(d){d.open=true;});});})();</script>
+</body>
+</html>

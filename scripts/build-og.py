@@ -43,7 +43,7 @@ def title_of(s):
 def has_calc(r, s):
     if r in NOT_CALC:
         return False
-    if 'atd-config' in s or 'class="bo-tool"' in s:
+    if 'atd-config' in s or 'class="bo-tool"' in s or 'class="pay-calc"' in s:
         return True
     inputs = re.findall(r'<input\b(?![^>]*type="(?:hidden|search|checkbox|radio|submit|email)")', s)
     return len(inputs) >= 3

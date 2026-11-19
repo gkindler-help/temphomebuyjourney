@@ -108,7 +108,7 @@ def build():
     take('Selling guides', sorted([p for p in P if panel.get(p) == 'panel-selling' or p.startswith('sellers/')], key=lambda p: P[p]))
     take('More guides', sorted([p for p in P if p.startswith('articles/')], key=lambda p: P[p]))
     take('Tools and calculators', sorted([p for p in P if p.startswith('tools/') or p in (
-        'stl-home-buying-power-calculator', 'home-cost', 'stl-quiz')], key=lambda p: P[p]))
+        'stl-home-buying-power-calculator', 'mortgage-payment-calculator-st-louis', 'home-cost', 'stl-quiz')], key=lambda p: P[p]))
     take('Listings', sorted([p for p in P if p.startswith('listings/')], key=lambda p: P[p]))
     take('Everything else', sorted([p for p in P if p not in used], key=lambda p: P[p]))
 
