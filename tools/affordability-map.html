@@ -264,9 +264,9 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);min-hei
     </div>
     <div class="fp-body">
       <div class="fp-row">
-        <label class="fp-label">Monthly Payment Target ($)</label>
+        <label class="fp-label">Monthly Budget ($)</label>
         <input class="fp-input" type="number" id="fp-payment" value="1500" placeholder="1500">
-        <div class="fp-hint">PITI + maintenance</div>
+        <div class="fp-hint">Everything you can pay each month: house plus other debts</div>
       </div>
       <div class="fp-row">
         <label class="fp-label">Down Payment ($)</label>
@@ -279,7 +279,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);min-hei
       <div class="fp-row">
         <label class="fp-label">Monthly Debts ($)</label>
         <input class="fp-input" type="number" id="fp-debts" value="0" placeholder="0">
-        <div class="fp-hint">Car, student loans, cards</div>
+        <div class="fp-hint">Car, student loans, cards: comes straight off your budget</div>
       </div>
       <div class="fp-row">
         <label class="fp-label">Bedrooms Needed</label>
@@ -339,7 +339,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);min-hei
 
 <section id="how-it-works" style="max-width:760px;margin:32px auto 8px;padding:0 20px;">
 <h2 style="font-family:'Playfair Display',serif;font-size:24px;color:#fff;margin:8px 0 12px;">How the Map Works Out Your Price</h2>
-<p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 12px;">Your price is the loan your monthly payment supports on a 30-year mortgage at your rate, after setting aside about 0.15% of the price a month for taxes, insurance and upkeep, plus your down payment. Monthly debts take 10% of their amount off the payment.</p>
+<p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 12px;">Your price is the loan your monthly budget supports on a 30-year mortgage at your rate, after setting aside about 0.15% of the price a month for taxes, insurance and upkeep, plus your down payment. Monthly debts come straight off that budget, so $400 a month in car payments leaves $400 less for the house.</p>
 <p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 12px;">The condition setting moves each ZIP&rsquo;s price before it&rsquo;s compared: as-is homes at about 82% of the median, mid-tier at 93% and move-in ready at 108%. Click a ZIP to see its sales, speed and an all-in monthly cost that uses that ZIP&rsquo;s tax rate.</p>
 <p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 12px;">Have a specific house in mind? Put its price, tax bill and insurance into the <a href="/mortgage-payment-calculator-st-louis" style="color:#ffcc4d;">mortgage payment calculator</a>. Starting from your income instead? Use the <a href="/stl-home-buying-power-calculator" style="color:#ffcc4d;">buying power calculator</a>.</p>
 </section>
@@ -521,7 +521,7 @@ function calcMaxPrice(payment, down, rate, debts){
   const r=(rate/100)/12, n=360;
   const mrf=r===0?1/n:(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);
   const factor=mrf+0.0015;
-  const net=payment-(debts*0.1);
+  const net=payment-debts; /* debts come straight out of the monthly budget */
   return Math.round(Math.max(0,net/factor)+down);
 }
 
