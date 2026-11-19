@@ -72,6 +72,7 @@ PAGES = {
     'articles/how-long-to-buy-house-st-louis.html': 'fenton',
     'articles/how-much-down-payment-st-louis.html': 'buyer',
     'articles/how-much-house-afford-making-100k-st-louis.html': 'buyer',
+    'mortgage-payment-calculator-st-louis.html': 'fenton',
     'articles/how-much-house-afford-making-120k-st-louis.html': 'buyer',
     'articles/how-much-house-afford-making-150k-st-louis.html': 'buyer',
     'articles/how-much-house-afford-making-200k-st-louis.html': 'buyer',

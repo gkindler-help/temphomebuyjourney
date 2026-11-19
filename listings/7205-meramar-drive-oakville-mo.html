@@ -110,6 +110,7 @@ h1:where(.hero-address){margin:0;font-size:inherit;font-weight:inherit;}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://stlhomejourney.com/listings/7205-meramar-drive-oakville-mo","about":{"@id":"https://stlhomejourney.com/#agent"},"publisher":{"@id":"https://stlhomejourney.com/#agent"}}</script>
 <style data-tc-css>.tc{margin:6px 0 28px;}.tc-track{display:flex;gap:0;margin:0;padding:0;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-radius:10px;outline:none;}.tc-track::-webkit-scrollbar{display:none;}.tc-slide{flex:0 0 100%;scroll-snap-align:start;margin:0;padding:0;}.tc-slide img{display:block;width:100%;height:auto;}.tc-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:10px;}.tc-btn{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,204,77,.4);background:rgba(255,204,77,.06);color:#ffcc4d;font-size:22px;line-height:1;cursor:pointer;}.tc-btn:disabled{opacity:.35;cursor:default;}.tc-dots{display:flex;gap:7px;}.tc-dot{width:9px;height:9px;padding:0;border-radius:50%;border:none;background:rgba(255,255,255,.28);cursor:pointer;}.tc-dot[aria-current="true"]{background:#ffcc4d;}.tc-track:focus-visible{box-shadow:0 0 0 2px #ffcc4d;}.tc-links{margin:12px 0 0 !important;font-size:14px !important;line-height:1.6;text-align:center;color:rgba(255,255,255,.7);}.tc-links a{color:#ffcc4d;font-weight:600;text-decoration:none;}</style>
+<link rel="stylesheet" href="/assets/payment-calc.css">
 </head>
 <body>
 <div class="lb" id="lb">
@@ -233,6 +234,15 @@ h1:where(.hero-address){margin:0;font-size:inherit;font-weight:inherit;}
       <strong>Coming soon: showings start Wednesday, November 18.</strong> Call or text George at <a href="tel:3144351087">314.435.1087</a> to get on the schedule, or ask a question about the house below.
     </div>
 
+    <div class="sec" id="monthly-payment">
+      <div class="sec-lbl">Monthly Payment</div>
+      <h2 class="sec-ttl" style="margin:0;">What Would 7205 Meramar Cost Each Month?</h2>
+      <div class="pay-calc" id="payment-calc" data-price="310000" data-tax="3509" data-hoa="200" data-label="7205 Meramar Dr">
+        <p class="pay-static">Monthly payment calculator for 7205 Meramar Dr, filled in with the $310,000 list price, the $3,509 tax bill (2025) and the $200 yearly HOA. Choose conventional, FHA or VA, your down payment and your rate to see the payment and estimated cash to close. <a href="/mortgage-payment-calculator-st-louis">Mortgage payment calculator &rarr;</a></p>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,.5);margin:0;">Insurance starts at an estimate of 1% of the price a year; replace it with your quote. Rate is an example: use your lender&rsquo;s. <a href="/mortgage-payment-calculator-st-louis" style="color:#ffcc4d;">Full calculator &rarr;</a></p>
+    </div>
+
     <div class="sec">
       <div class="sec-lbl">Oakville Market Context</div>
       <div class="sec-ttl">Where $310,000 Sits in Oakville</div>
@@ -311,6 +321,7 @@ function lbNav(d){LB_IDX=(LB_IDX+d+LB_IMGS.length)%LB_IMGS.length;lbShow();}
 document.addEventListener('keydown',function(e){if(!document.getElementById('lb').classList.contains('open'))return;if(e.key==='Escape')lbClose();if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='ArrowRight')lbNav(1);});
 document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)lbClose();});
 </script>
+<script src="/assets/payment-calc.js" defer></script>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
 <script src="/assets/calc-track.js" defer></script>
