@@ -199,8 +199,8 @@ var SCENES = [
    response:"I respect that. A true fixer at the right price can build real equity. But I need you walking in with a clear picture of what the conforming guidelines allow for your loan \u2014 before you fall in love with a house that won't fund.",
    deep:{title:'Conforming guidelines by loan type',body:"Conventional: most flexible, appraiser sets the floor but condition issues are negotiated. FHA: chipped paint, missing handrails, broken fixtures, non-functioning systems are all required repairs \u2014 seller must address before close. VA: safe, sound, and sanitary is the standard at every price point. I've seen $380K homes fail VA appraisals. Your benefit travels with your standards."}},
   {label:'Show me what my budget buys by zip code',icon:'',
-   response:"That's exactly what the Budget Matchmaker is for. Enter your number, pick your loan type, and see all 79 St. Louis MLS zip codes color-coded by what your approval actually reaches.",
-   deep:{title:'STL Budget Matchmaker',body:'79 zip codes covering St. Louis County, St. Louis City, St. Charles County, and Jefferson County \u2014 the full St. Louis side of the MARIS MLS. Shows true PITI \u2014 principal, interest, taxes, and insurance \u2014 not just the listing price.',link:'https://gkindler-help.github.io/buyeraffordabilityheatmap/'}}
+   response:"That's exactly what the STL Affordability Map is for. Enter your number, pick your loan type, and see all 79 St. Louis MLS zip codes color-coded by what your approval actually reaches.",
+   deep:{title:'STL Affordability Map',body:'79 zip codes covering St. Louis County, St. Louis City, St. Charles County, and Jefferson County \u2014 the full St. Louis side of the MARIS MLS. Shows true PITI \u2014 principal, interest, taxes, and insurance \u2014 not just the listing price.',link:'/tools/affordability-map'}}
  ]
 },
 // 7: MID RANGE
@@ -249,8 +249,8 @@ var SCENES = [
   {label:'I have a specific situation \u2014 can I call?',icon:'',
    response:'Yes. That\'s exactly what the call is for. 314.435.1087. No obligation. Buyer education is my favorite part of this job.'},
   {label:'Show me the zip code map',icon:'',
-   response:"The Budget Matchmaker covers all 79 St. Louis MLS zip codes \u2014 color-coded by what your approval actually reaches. True PITI, not just list price. Opens in a new tab.",
-   deep:{title:'STL Budget Matchmaker',body:'79 zip codes across St. Louis County, St. Louis City, St. Charles County, and Jefferson County. Uses actual municipal tax rates \u2014 not estimates. See exactly which zips fall inside your real monthly payment.',link:'https://gkindler-help.github.io/buyeraffordabilityheatmap/'}}
+   response:"The STL Affordability Map covers all 79 St. Louis MLS zip codes \u2014 color-coded by what your budget reaches. Tap \u201cGo deeper\u201d for the link.",
+   deep:{title:'STL Affordability Map',body:'79 zip codes across St. Louis County, St. Louis City, St. Charles County, and Jefferson County. Uses actual municipal tax rates \u2014 not estimates. See exactly which zips fall inside your real monthly payment.',link:'/tools/affordability-map'}}
  ],
  nextLabel:'The Interior \u2192',
  nextFile:'03-interior.html',
@@ -694,6 +694,7 @@ function showResponse(c){
 function showDeep(deep){
   if(window.SharedPlatform){
     SharedPlatform.showDeep(deep.title,deep.body);
+    if(deep.link){var c=document.getElementById('gc-context-copy');if(c){var a=document.createElement('a');a.href=deep.link;a.textContent='Open the map \u2192';a.style.cssText='display:block;margin-top:10px;color:#ffcc4d;font-weight:700;';c.appendChild(a);}}
     return;
   }
 }

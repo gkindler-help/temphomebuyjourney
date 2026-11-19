@@ -24,7 +24,7 @@ window.ARTICLE_REGISTRY = {
       audience: "buyer",
       description: "How far your budget actually goes across 79 St. Louis zip codes.",
       hubSlug: "stl-affordability-by-zip-code",
-      toolLink: "https://gkindler-help.github.io/buyeraffordabilityheatmap/"
+      toolLink: "/tools/affordability-map"
     },
     "repair-guide": {
       title: "St. Louis Home Repair Cost Guide for Buyers",
@@ -80,7 +80,7 @@ window.ARTICLE_REGISTRY = {
       audience: "seller",
       description: "What cash buyers are actually doing with your home and what it costs you to say yes.",
       hubSlug: "what-you-lose-with-cash-offer-stl",
-      toolLink: "https://gkindler-help.github.io/cashofferexposed/"
+      toolLink: "/tools/cash-offer-decoder"
     },
     "pricing": {
       title: "How to Price Your St. Louis Home to Sell",
@@ -154,7 +154,7 @@ window.ARTICLE_REGISTRY = {
       isHub: true,
       chapters: [1, 2],
       tags: ["affordability", "budget", "zip-codes", "property-tax", "tools"],
-      toolLink: "https://gkindler-help.github.io/buyeraffordabilityheatmap/",
+      toolLink: "/tools/affordability-map",
       published: true
     },
     {
@@ -168,7 +168,7 @@ window.ARTICLE_REGISTRY = {
       isHub: false,
       chapters: [1, 2],
       tags: ["affordability", "budget", "income", "first-time-buyer", "mortgage"],
-      toolLink: "https://gkindler-help.github.io/buyeraffordabilityheatmap/",
+      toolLink: "/tools/affordability-map",
       published: true
     },
     {
@@ -792,7 +792,7 @@ window.ARTICLE_REGISTRY = {
       isHub: false,
       chapters: [],
       tags: ["selling", "cash-offer", "investor", "arv", "consumer-protection"],
-      toolLink: "https://gkindler-help.github.io/cashofferexposed/",
+      toolLink: "/tools/cash-offer-decoder",
       published: true
     },
     {
@@ -806,7 +806,7 @@ window.ARTICLE_REGISTRY = {
       isHub: true,
       chapters: [],
       tags: ["selling", "cash-offer", "investor", "consumer-protection", "costs"],
-      toolLink: "https://gkindler-help.github.io/cashofferexposed/",
+      toolLink: "/tools/cash-offer-decoder",
       published: true
     },
     {
