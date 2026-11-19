@@ -94,6 +94,8 @@ TOPICS = [
      ['articles/what-will-i-net-selling-stl', 'articles/cost-to-sell-home-stl']),
     (['closing costs', 'closing cost'],
      ['articles/buyer-closing-costs-st-louis', 'articles/what-will-i-net-selling-stl']),
+    (['affordability map', 'heat map', 'heatmap', 'zip code map', 'map', 'which zip', 'zip codes i can afford'],
+     ['tools/affordability-map', 'articles/stl-affordability-by-zip-code', 'stl-home-buying-power-calculator']),
     (['monthly payment', 'mortgage payment', 'payment calculator', 'mortgage calculator', 'piti', 'escrow', 'cash to close', 'pmi'],
      ['mortgage-payment-calculator-st-louis', 'articles/conventional-vs-fha-loan-st-louis', 'articles/buyer-closing-costs-st-louis']),
     (['afford', 'affordability', 'income', 'salary', 'how much house', 'dti', 'budget'],
