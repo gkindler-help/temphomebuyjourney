@@ -48,7 +48,7 @@ Pages are built to be quoted by AI tools and still read well top to bottom.
 - Seller concessions: don't publish concession statistics from MLS exports. Agents mark them too inconsistently to be reliable. George infers what a seller will give through the listing-agent call; describe that process instead (George, 2026-10-30).
 - Write "Mehlville R-IX" in full. Webster Groves is not South County.
 - Don't cut content from pages that AI tools are already citing. Add to them instead.
-- **Most-cited pages: add only (George, 2026-11-21).** From Search Console's Generative AI features report (28 days to Nov 19, 2026, 934 impressions across 126 pages), these pages get the most AI citations. Any rebuild, restructure or Set B work on them adds sections, tables or boxes; it never removes, shortens or rewrites existing answers, numbers or headings. A correction to a wrong fact is allowed. Retitles of the search `<title>` are allowed. Re-check the list against a fresh export each quarter.
+- **Most-cited pages: add only (George, 2026-11-21).** From Search Console's Generative AI features report (28 days to Nov 19, 2026, 934 impressions across 126 pages), these pages get the most AI citations. Any rebuild, restructure or Set B work on them adds sections, tables or boxes; it never removes, shortens or rewrites existing answers, numbers or headings. A correction to a wrong fact is allowed, and so is a data refresh that replaces a figure with newer data of the same kind (same question, same answer shape). Retitles of the search `<title>` are allowed. Re-check the list against a fresh export each quarter.
   1. articles/home-inspection-st-louis (74)
   2. articles/cost-to-sell-home-stl (70)
   3. articles/first-time-buyer-programs-stl (43)
