@@ -40,6 +40,7 @@ DEFAULTS = {
 # page -> lesson key, or 'buyer' / 'seller' for the how-George-works default.
 # Pages that already carry a Real Deal box (septic) get a different story here.
 PAGES = {
+    'articles/ai-prompts-buy-sell-st-louis.html': 'lindbergh',
     'articles/appraisal-comes-in-low-st-louis.html': 'galena',
     'articles/ballwin-vs-manchester-mo.html': 'buyer',
     'articles/best-time-to-buy-sell-move-st-louis.html': 'lindbergh',
