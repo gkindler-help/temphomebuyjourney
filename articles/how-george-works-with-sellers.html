@@ -244,7 +244,7 @@
  ]
 }</script>
 <style>
-:root{--bg:#050505;--surface:#0e0e0e;--card:#131313;--card2:#181818;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.12);--gold:#ffcc4d;--gold-dim:rgba(255,204,77,.7);--gold-bg:rgba(255,204,77,.06);--gold-border:rgba(255,204,77,.22);--white:#fff;--text:rgba(255,255,255,.88);--soft:rgba(255,255,255,.62);--dim:rgba(255,255,255,.4);--serif:'Playfair Display',Georgia,serif;--sans:'Inter',-apple-system,sans-serif;}
+:root{--bg:#050505;--surface:#0e0e0e;--card:#131313;--card2:#181818;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.12);--gold:#ffcc4d;--gold-dim:rgba(255,204,77,.7);--gold-bg:rgba(255,204,77,.06);--gold-border:rgba(255,204,77,.22);--white:#fff;--text:rgba(255,255,255,.88);--soft:rgba(255,255,255,.62);--dim:rgba(255,255,255,.55);--serif:'Playfair Display',Georgia,serif;--sans:'Inter',-apple-system,sans-serif;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.72;overflow-x:hidden;}
 a{color:var(--gold);text-decoration:none;}
@@ -256,7 +256,7 @@ a{color:var(--gold);text-decoration:none;}
 .art-hdr-t{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--text);line-height:1.1;}
 .art-hdr-t span{color:var(--gold);}
 .art-hdr-name{font-size:10px;color:var(--soft);margin-top:2px;}
-.art-hdr-tagline{font-size:9px;color:rgba(255,255,255,.38);margin-top:1px;max-width:200px;}
+.art-hdr-tagline{font-size:9px;color:rgba(255,255,255,.55);margin-top:1px;max-width:200px;}
 .art-hdr-nav{display:flex;gap:6px;}
 .art-hdr-btn{font-size:11px;font-weight:700;padding:7px 14px;border-radius:6px;text-decoration:none;color:var(--soft);border:1px solid var(--line2);}
 .art-hdr-btn.gold{background:var(--gold);color:#080808;border-color:var(--gold);}
@@ -365,9 +365,9 @@ a{color:var(--gold);text-decoration:none;}
 }
 .art-nav{background:rgba(16,16,16,.96);border-bottom:1px solid rgba(255,255,255,.08);padding:0 16px;display:flex;overflow-x:auto;scrollbar-width:none;}
 .art-nav::-webkit-scrollbar{display:none;}
-.art-nav-item{font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:rgba(255,255,255,.34);padding:10px 14px;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;}
+.art-nav-item{font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:10px 14px;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;}
 .art-nav-item.active{color:#ffcc4d;border-bottom-color:#ffcc4d;}
-.art-nav-sep{color:rgba(255,255,255,.34);padding:10px 2px;}
+.art-nav-sep{color:rgba(255,255,255,.55);padding:10px 2px;}
 .jump-fab{position:fixed;right:16px;bottom:20px;z-index:200;display:inline-flex;align-items:center;gap:8px;background:#ffcc4d;color:#080808;font-weight:800;font-size:12px;letter-spacing:.05em;border:none;border-radius:999px;padding:12px 17px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.55);font-family:inherit;}
 .jump-fab-ico{font-size:15px;line-height:1;}
 .jump-panel{position:fixed;right:16px;bottom:74px;z-index:200;width:min(288px,calc(100vw - 32px));background:#0d0d0d;border:1px solid rgba(255,204,77,.34);border-radius:14px;padding:8px;box-shadow:0 12px 42px rgba(0,0,0,.6);opacity:0;transform:translateY(10px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .18s ease,transform .18s ease;max-height:72vh;overflow-y:auto;}
@@ -769,7 +769,7 @@ a{color:var(--gold);text-decoration:none;}
 The Closing Pros LLC &middot; Licensed Missouri Real Estate Brokerage<br>
 Office: 314-998-4550 &middot; George&rsquo;s Direct Line: 314.435.1087<br>
 MARIS study data: 2,369 St.&nbsp;Louis MLS transactions. 2,100+ showings: George&rsquo;s team, 2024. Market conditions vary.
-</footer>
+<nav class="legal-links" aria-label="Legal" style="text-align:center;font-size:12px;line-height:1.6;margin:12px auto 0;padding:0 16px;"><a href="/privacy" style="color:inherit;text-decoration:underline;">Privacy Policy</a> &middot; <a href="/terms" style="color:inherit;text-decoration:underline;">Terms of Use</a></nav></footer>
 
 <script>
 document.addEventListener('DOMContentLoaded',function(){
