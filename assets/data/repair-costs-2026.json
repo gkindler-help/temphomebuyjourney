@@ -1,0 +1,167 @@
+{
+ "source": "STL Home Journey, St. Louis repair cost guide: 2026 expected costs",
+ "source_url": "/articles/stl-home-repair-cost-guide",
+ "updated": "2026-11-20",
+ "items": [
+  {
+   "item": "Roof replacement (asphalt)",
+   "low": 8000,
+   "high": 20000,
+   "open_ended": false,
+   "per_unit": false,
+   "note": "Larger homes and steeper pitches at top end"
+  },
+  {
+   "item": "Full HVAC system",
+   "low": 7000,
+   "high": 15000,
+   "open_ended": false,
+   "per_unit": false,
+   "note": "Furnace + AC condenser. Furnace alone: $3,000--$6,000"
+  },
+  {
+   "item": "AC condenser only",
+   "low": 3500,
+   "high": 6000,
+   "open_ended": false,
+   "per_unit": false,
+   "note": "At 12+ years, factor replacement into offer"
+  },
+  {
+   "item": "Basement waterproofing (interior)",
+   "low": 5000,
+   "high": 12000,
+   "open_ended": false,
+   "per_unit": false,
+   "note": "Interior drain + sump pump system"
+  },
+  {
+   "item": "Basement waterproofing (exterior)",
+   "low": 15000,
+   "high": 25000,
+   "open_ended": true,
+   "per_unit": false,
+   "note": "Excavation required; St. Louis clay soil common driver"
+  },
+  {
+   "item": "Sewer lateral replacement",
+   "low": 4000,
+   "high": 12000,
+   "open_ended": false,
+   "per_unit": false,
+   "note": "Depth and length determine cost; can exceed $15,000 in some cases; camera scope: $150--$300"
+  },
+  {
+   "item": "Tuckpointing (full house)",
+   "low": 5000,
+   "high": 15000,
+   "open_ended": false,
+   "per_unit": false,
+   "note": "Single facade: $1,500--$4,000"
+  },
+  {
+   "item": "Electrical panel replacement",
+   "low": 2000,
+   "high": 4000,
+   "open_ended": false,
+   "per_unit": false,
+   "note": "Federal Pacific/Zinsco panels require replacement"
+  },
+  {
+   "item": "Full rewire (older home)",
+   "low": 8000,
+   "high": 15000,
+   "open_ended": true,
+   "per_unit": false,
+   "note": "Knob-and-tube or aluminum branch circuit"
+  },
+  {
+   "item": "Foundation repair (minor)",
+   "low": 3000,
+   "high": 8000,
+   "open_ended": false,
+   "per_unit": false,
+   "note": "Crack injection, pier stabilization"
+  },
+  {
+   "item": "Foundation repair (major)",
+   "low": 15000,
+   "high": 40000,
+   "open_ended": true,
+   "per_unit": false,
+   "note": "Horizontal cracks, significant lateral movement"
+  },
+  {
+   "item": "Water heater replacement",
+   "low": 900,
+   "high": 1800,
+   "open_ended": false,
+   "per_unit": false,
+   "note": "Tank unit installed; tankless runs higher"
+  },
+  {
+   "item": "Radon mitigation",
+   "low": 800,
+   "high": 1500,
+   "open_ended": false,
+   "per_unit": false,
+   "note": "Missouri has elevated radon in many areas"
+  },
+  {
+   "item": "Sewer scope (camera inspection)",
+   "low": 150,
+   "high": 300,
+   "open_ended": false,
+   "per_unit": false,
+   "note": "Add to every home inspection"
+  },
+  {
+   "item": "Chimney inspection and cleaning",
+   "low": 200,
+   "high": 400,
+   "open_ended": false,
+   "per_unit": false,
+   "note": ""
+  },
+  {
+   "item": "Grading and drainage correction",
+   "low": 500,
+   "high": 3000,
+   "open_ended": false,
+   "per_unit": false,
+   "note": ""
+  },
+  {
+   "item": "Gutter repair / replacement",
+   "low": 400,
+   "high": 1500,
+   "open_ended": false,
+   "per_unit": false,
+   "note": ""
+  },
+  {
+   "item": "Sump pump replacement",
+   "low": 600,
+   "high": 1200,
+   "open_ended": false,
+   "per_unit": false,
+   "note": ""
+  },
+  {
+   "item": "Attic insulation upgrade",
+   "low": 1500,
+   "high": 3500,
+   "open_ended": false,
+   "per_unit": false,
+   "note": ""
+  },
+  {
+   "item": "GFCI outlet updates",
+   "low": 200,
+   "high": 600,
+   "open_ended": false,
+   "per_unit": false,
+   "note": ""
+  }
+ ]
+}
