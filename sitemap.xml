@@ -224,7 +224,7 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/articles/</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -1608,6 +1608,10 @@
   </url>
   <url>
     <loc>https://stlhomejourney.com/terms</loc>
+    <lastmod>2026-11-21</lastmod>
+  </url>
+  <url>
+    <loc>https://stlhomejourney.com/articles/ai-prompts-buy-sell-st-louis</loc>
     <lastmod>2026-11-21</lastmod>
   </url>
 </urlset>
