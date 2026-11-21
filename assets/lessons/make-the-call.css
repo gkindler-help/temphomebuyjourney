@@ -6,7 +6,7 @@
 .mtc-dot{width:26px;height:4px;border-radius:3px;background:rgba(255,255,255,.14);transition:background .2s;}
 .mtc-dot.active{background:#ffcc4d;}
 .mtc-dot.done{background:rgba(255,204,77,.45);}
-.mtc-count{font-size:11px;color:rgba(255,255,255,.4);margin-left:6px;letter-spacing:.04em;}
+.mtc-count{font-size:11px;color:rgba(255,255,255,.55);margin-left:6px;letter-spacing:.04em;}
 .mtc-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:20px 20px 22px;}
 .mtc-label{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,204,77,.75);margin-bottom:10px;}
 .mtc-prompt{font-size:1.05rem;line-height:1.6;color:rgba(255,255,255,.92);margin-bottom:18px;font-weight:500;}
@@ -26,6 +26,6 @@
 .mtc-done-hd{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px;}
 .mtc-done-body{font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.6;max-width:520px;margin:0 auto 18px;}
 .mtc-done-cta{display:inline-block;background:#ffcc4d;color:#070707;font-weight:800;font-size:13px;padding:11px 22px;border-radius:8px;text-decoration:none;}
-.mtc-restart{display:block;margin:14px auto 0;background:none;border:none;color:rgba(255,255,255,.4);font-size:12px;cursor:pointer;font-family:inherit;text-decoration:underline;}
+.mtc-restart{display:block;margin:14px auto 0;background:none;border:none;color:rgba(255,255,255,.55);font-size:12px;cursor:pointer;font-family:inherit;text-decoration:underline;}
 .mtc-restart:hover{color:rgba(255,255,255,.7);}
 @media(max-width:560px){.mtc-wrap{padding:20px 16px 22px;}.mtc-prompt{font-size:1rem;}}

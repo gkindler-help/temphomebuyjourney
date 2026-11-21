@@ -1591,7 +1591,7 @@ function closeDrawer() {
       '<div style="padding:12px 16px 4px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,204,77,.5);">Seller Tools</div>' +
       '<div class="tool-selector">' + sellerCards + '</div>';
 
-    return strip + '<div style="padding:12px 16px 4px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);">Buyer Tools</div><div class="tool-selector">' + cards + '</div>' + sellerSection;
+    return strip + '<div style="padding:12px 16px 4px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);">Buyer Tools</div><div class="tool-selector">' + cards + '</div>' + sellerSection;
   }
 
   function _buildResourcesPanelHTML(chNum) {

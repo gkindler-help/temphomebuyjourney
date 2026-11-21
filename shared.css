@@ -46,7 +46,7 @@
   --text:         rgba(255,255,255,.88);
   --text-soft:    rgba(255,255,255,.72);
   --text-dim:     rgba(255,255,255,.54);
-  --text-faint:   rgba(255,255,255,.34);
+  --text-faint:   rgba(255,255,255,.55);
 
   --gold:       #ffcc4d;
   --gold-soft:  rgba(255,204,77,.18);
@@ -2277,7 +2277,7 @@ svg {
   border-color: var(--gold-line);
   color: var(--text-strong);
 }
-.last-updated{font-size:.78rem;color:rgba(140,136,128,.85);margin:2px 0 18px;font-style:italic;}
+.last-updated{font-size:.78rem;color:rgba(160,156,148,.9);margin:2px 0 18px;font-style:italic;}
 
 /* Fix: shared.js auto-injects the interactive scene (#app) with a floating
    George headshot onto EVERY page. It's only meant for the homepage app

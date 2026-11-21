@@ -31,7 +31,7 @@
 .art-hdr-t{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:rgba(255,255,255,.88);line-height:1.2;}
 .art-hdr-t span{color:#ffcc4d;}
 .art-hdr-name{font-size:10px;color:rgba(255,255,255,.54);margin-top:2px;}
-.art-hdr-tagline{font-size:9px;color:rgba(255,255,255,.38);margin-top:1px;max-width:200px;}
+.art-hdr-tagline{font-size:9px;color:rgba(255,255,255,.55);margin-top:1px;max-width:200px;}
 .art-hdr-nav{display:flex;gap:8px;}
 .art-hdr-btn{font-size:12px;font-weight:600;padding:8px 16px;border-radius:6px;text-decoration:none;color:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.08);transition:all 0.15s;}
 .art-hdr-btn.gold{background:#ffcc4d;color:#080808;border-color:#ffcc4d;}
@@ -66,9 +66,9 @@ a{color:#ffcc4d;text-decoration:none;}
 }
 .art-nav{background:rgba(16,16,16,.96);border-bottom:1px solid rgba(255,255,255,.08);padding:0 16px;display:flex;overflow-x:auto;scrollbar-width:none;}
 .art-nav::-webkit-scrollbar{display:none;}
-.art-nav-item{font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:rgba(255,255,255,.34);padding:10px 14px;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;}
+.art-nav-item{font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:10px 14px;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;}
 .art-nav-item.active{color:#ffcc4d;border-bottom-color:#ffcc4d;}
-.art-nav-sep{color:rgba(255,255,255,.34);padding:10px 2px;}
+.art-nav-sep{color:rgba(255,255,255,.55);padding:10px 2px;}
 .jump-fab{position:fixed;right:16px;bottom:20px;z-index:200;display:inline-flex;align-items:center;gap:8px;background:#ffcc4d;color:#080808;font-weight:800;font-size:12px;letter-spacing:.05em;border:none;border-radius:999px;padding:12px 17px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.55);font-family:inherit;}
 .jump-fab-ico{font-size:15px;line-height:1;}
 .jump-panel{position:fixed;right:16px;bottom:74px;z-index:200;width:min(288px,calc(100vw - 32px));background:#0d0d0d;border:1px solid rgba(255,204,77,.34);border-radius:14px;padding:8px;box-shadow:0 12px 42px rgba(0,0,0,.6);opacity:0;transform:translateY(10px) scale(.98);transform-origin:bottom right;pointer-events:none;transition:opacity .18s ease,transform .18s ease;max-height:72vh;overflow-y:auto;}
@@ -315,7 +315,7 @@ a{color:#ffcc4d;text-decoration:none;}
 </div>
 
 <!-- Compliance Footer -->
-<div style="margin-top:60px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:rgba(255,255,255,.4);line-height:1.5;">
+<div style="margin-top:60px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:rgba(255,255,255,.55);line-height:1.5;">
 <p style="margin:0 0 8px 0;"><strong style="color:rgba(255,255,255,.6);">The Closing Pros LLC</strong><br>Licensed Missouri Real Estate Brokerage<br>Office: 314-998-4550 &middot; George&rsquo;s Direct Line: 314.435.1087</p>
 <p style="margin:0;">Sales data: 2,865 closed single-family sales in St.&nbsp;Louis County, January 1&ndash;October 5, 2026, MARIS MLS. Positions are George&rsquo;s own experience as a listing agent. Market conditions vary.</p>
 </div>
@@ -345,5 +345,6 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="atd-config" data-tool="seller-net"><p class="atd-static" style="font-size:14px;line-height:1.6;color:rgba(255,255,255,.62);max-width:760px;margin:24px auto 96px;padding:0 20px;">Calculator for this topic: <a href="/articles/what-will-i-net-selling-stl#the-math" style="color:#ffcc4d;">St.&nbsp;Louis seller net calculator</a>. It subtracts commission, title and settlement fees, prorated property taxes, any seller credit and your mortgage payoff from the sale price. <a href="/tools/" style="color:#ffcc4d;">All St.&nbsp;Louis calculators</a></p></div>
 <script src="/article-tool-drawer.js"></script>
 <script data-fold-js>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(decodeURIComponent(h));if(!t)return;for(var d=t.closest("details.data-fold");d;d=d.parentElement&&d.parentElement.closest("details.data-fold"))d.open=true;t.scrollIntoView();}window.addEventListener("hashchange",o);if(document.readyState!=="loading")o();else document.addEventListener("DOMContentLoaded",o);window.addEventListener("beforeprint",function(){document.querySelectorAll("details.data-fold").forEach(function(d){d.open=true;});});})();</script>
+<nav class="legal-links" aria-label="Legal" style="text-align:center;font-size:12px;line-height:1.6;margin:28px auto 0;padding-bottom:28px;padding:0 16px;"><a href="/privacy" style="color:inherit;text-decoration:underline;">Privacy Policy</a> &middot; <a href="/terms" style="color:inherit;text-decoration:underline;">Terms of Use</a></nav>
 </body>
 </html>
