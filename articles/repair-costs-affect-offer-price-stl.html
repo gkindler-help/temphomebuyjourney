@@ -1259,6 +1259,26 @@
       background: #0b0b0b;
     }
 
+    .iw-branch > div.g {
+      border-color: var(--gold);
+    }
+
+    .iw-steps-cont {
+      counter-reset: iws 2;
+      position: relative;
+      margin-top: 26px;
+    }
+
+    .iw-steps-cont::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: -22px;
+      width: 2px;
+      height: 16px;
+      background: rgba(255,204,77,.7);
+    }
+
     .iw-branch strong {
       display: block;
       margin-bottom: 7px;
@@ -2898,6 +2918,44 @@
                 big items
               </span>
             </li>
+
+            <li>
+              <strong>Your choice</strong>
+              <span>
+                Pick one by your contract's inspection
+                deadline. Once you choose, you're locked in.
+              </span>
+            </li>
+
+          </ol>
+
+          <div
+            class="iw-branch"
+            aria-label="Your three options after the inspection">
+
+            <div>
+              <strong>Accept</strong>
+              <span>Resolved, no repairs requested</span>
+            </div>
+
+            <div>
+              <strong>Terminate</strong>
+              <span>
+                Provide the inspection report if the
+                seller requests it
+              </span>
+            </div>
+
+            <div class="g">
+              <strong>Negotiate</strong>
+              <span>Send a written request</span>
+            </div>
+
+          </div>
+
+          <ol
+            class="iw-steps iw-steps-cont"
+            aria-label="If you negotiate">
 
             <li class="g">
               <strong>Your written request</strong>
