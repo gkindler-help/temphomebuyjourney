@@ -166,6 +166,10 @@ def apply(rel, key):
     if not m:
         raise SystemExit(f'{rel}: no Quick Answers block')
     end = close_of(s, m.start(), m.group(1))
+    # A first-screen chart placed right after the Quick Answers keeps its spot; the strip follows it.
+    top = re.match(r'\s*<section class="[^"]*\btop-path\b', s[end:])
+    if top:
+        end = close_of(s, end + top.end() - len(top.group(0).lstrip()), 'section')
     s = s[:end] + '\n' + strip_html(key) + s[end:]
     if CSS not in s:
         s = s.replace('</head>', CSS + '\n</head>', 1)
