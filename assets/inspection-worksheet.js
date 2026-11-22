@@ -119,7 +119,7 @@
       '<div id="iw-counter"></div><div id="iw-e-george"></div></div>' +
 
       '<div class="iw-step" id="iw-f"><h3><span class="iw-n">F</span> Your negotiation summary</h3>' +
-      '<p class="iw-help">Copy it into a text to your agent, or print it. Nothing you enter leaves this page.</p>' +
+      '<p class="iw-help">Copy the summary, or print it. Nothing you enter leaves this page.</p>' +
       '<pre class="iw-sum" id="iw-sum" tabindex="0"></pre><div class="iw-row"><button type="button" class="iw-btn" id="iw-copy">Copy summary</button><button type="button" class="iw-btn ghost" id="iw-print">Print</button><button type="button" class="iw-btn ghost" id="iw-reset">Start over</button></div></div>';
     $('#iw-share').value = String(S.share);
     $('#iw-loan').value = S.loan; $('#iw-term').value = String(S.term); $('#iw-cform').value = S.counterForm;
