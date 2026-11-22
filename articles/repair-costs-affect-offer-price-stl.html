@@ -1259,6 +1259,24 @@
       background: #0b0b0b;
     }
 
+    .lede-fold { margin-bottom: 22px; }
+    .lede-fold > summary { cursor: pointer; list-style: none; margin-bottom: 0; }
+    .lede-fold > summary::-webkit-details-marker { display: none; }
+    .lede-more { color: var(--gold); font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .lede-more::after { content: " \25BE"; }
+    .lede-fold[open] .lede-more { display: none; }
+    .lede-fold > p.art-lede { margin: 8px 0 0; }
+    .art-lede + .art-meta, .lede-fold + .art-meta { padding-bottom: 18px; margin-bottom: 20px; }
+    .top-path { margin: 0 0 34px; }
+    .top-path .tl-h {
+      font-family: var(--font-serif);
+      font-size: clamp(1.15rem, 3vw, 1.4rem);
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--text-strong);
+      margin: 0 0 12px;
+    }
+
     .iw-branch > div.g {
       border-color: var(--gold);
     }
@@ -2299,11 +2317,10 @@
     Last updated November 22, 2026
   </p>
 
-  <p class="art-lede">
-    The inspection found problems. Now what should you ask the seller
-    for? Start with the repair costs, separate actual failures from
-    ordinary wear, and build a request you can support with evidence.
-  </p>
+  <details class="lede-fold">
+    <summary class="art-lede">The inspection found problems. Now what should you ask the seller for? <span class="lede-more">Read more</span></summary>
+    <p class="art-lede">Start with the repair costs, separate actual failures from ordinary wear, and build a request you can support with evidence.</p>
+  </details>
 
   <div class="art-meta">
     <span>George Kindler</span>
@@ -2312,6 +2329,110 @@
     <span class="art-meta-dot">&middot;</span>
     <span class="aud-buyer">For Buyers</span>
   </div>
+
+  <section class="iw-art timeline-panel top-path" id="inspection-path" aria-labelledby="inspection-path-h">
+
+          <h2 id="inspection-path-h" class="tl-h">From the inspection to a resolution</h2>
+
+          <ol
+            class="iw-steps"
+            aria-label="Inspection negotiation, step by step">
+
+            <li>
+              <strong>Inspection</strong>
+              <span>
+                The report, plus contractor quotes for the
+                big items
+              </span>
+            </li>
+
+            <li>
+              <strong>Your choice</strong>
+              <span>
+                Pick one by your contract's inspection
+                deadline. Once you choose, you're locked in.
+              </span>
+            </li>
+
+          </ol>
+
+          <div
+            class="iw-branch"
+            aria-label="Your three options after the inspection">
+
+            <div>
+              <strong>Accept</strong>
+              <span>Resolved, no repairs requested</span>
+            </div>
+
+            <div>
+              <strong>Terminate</strong>
+              <span>
+                Provide the inspection report if the
+                seller requests it
+              </span>
+            </div>
+
+            <div class="g">
+              <strong>Negotiate</strong>
+              <span>Send a written request</span>
+            </div>
+
+          </div>
+
+          <ol
+            class="iw-steps iw-steps-cont"
+            aria-label="If you negotiate">
+
+            <li class="g">
+              <strong>Your written request</strong>
+              <span>
+                Delivered before your contract's inspection
+                deadline
+              </span>
+            </li>
+
+            <li>
+              <strong>The seller responds</strong>
+              <span>
+                Within the time your contract gives
+              </span>
+            </li>
+
+          </ol>
+
+
+          <div
+            class="iw-branch"
+            aria-label="Possible seller responses">
+
+            <div>
+              <strong>Accepts</strong>
+              <span>Sign the addendum</span>
+            </div>
+
+            <div>
+              <strong>Counters</strong>
+              <span>Accept, counter again or walk</span>
+            </div>
+
+            <div>
+              <strong>Rejects</strong>
+              <span>
+                Proceed or terminate within your
+                inspection period
+              </span>
+            </div>
+
+          </div>
+
+          <p class="lp-note">
+            The dates and options come from your contract,
+            not this chart. In the SLAR contract, the inspection deadline
+            is Day 10.
+          </p>
+
+  </section>
 
   <div class="art-body">
 
@@ -2905,106 +3026,9 @@
           class="iw-art timeline-panel"
           id="objection-timeline">
 
-          <h3>From the inspection to a resolution</h3>
-
-          <ol
-            class="iw-steps"
-            aria-label="Inspection negotiation, step by step">
-
-            <li>
-              <strong>Inspection</strong>
-              <span>
-                The report, plus contractor quotes for the
-                big items
-              </span>
-            </li>
-
-            <li>
-              <strong>Your choice</strong>
-              <span>
-                Pick one by your contract's inspection
-                deadline. Once you choose, you're locked in.
-              </span>
-            </li>
-
-          </ol>
-
-          <div
-            class="iw-branch"
-            aria-label="Your three options after the inspection">
-
-            <div>
-              <strong>Accept</strong>
-              <span>Resolved, no repairs requested</span>
-            </div>
-
-            <div>
-              <strong>Terminate</strong>
-              <span>
-                Provide the inspection report if the
-                seller requests it
-              </span>
-            </div>
-
-            <div class="g">
-              <strong>Negotiate</strong>
-              <span>Send a written request</span>
-            </div>
-
-          </div>
-
-          <ol
-            class="iw-steps iw-steps-cont"
-            aria-label="If you negotiate">
-
-            <li class="g">
-              <strong>Your written request</strong>
-              <span>
-                Delivered before your contract's inspection
-                deadline
-              </span>
-            </li>
-
-            <li>
-              <strong>The seller responds</strong>
-              <span>
-                Within the time your contract gives
-              </span>
-            </li>
-
-          </ol>
-
-
-          <div
-            class="iw-branch"
-            aria-label="Possible seller responses">
-
-            <div>
-              <strong>Accepts</strong>
-              <span>Sign the addendum</span>
-            </div>
-
-            <div>
-              <strong>Counters</strong>
-              <span>Accept, counter again or walk</span>
-            </div>
-
-            <div>
-              <strong>Rejects</strong>
-              <span>
-                Proceed or terminate within your
-                inspection period
-              </span>
-            </div>
-
-          </div>
-
-          <p class="lp-note">
-            The dates and options come from your contract,
-            not this chart. In the SLAR contract, the inspection deadline
-            is Day 10.
+          <p class="lp-note" style="margin:0 0 4px;">
+            <a href="#inspection-path">The full path, from inspection to resolution &uarr;</a>
           </p>
-
 
           <div id="iw-tree">
 
