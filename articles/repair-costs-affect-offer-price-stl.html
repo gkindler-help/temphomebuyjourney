@@ -1259,6 +1259,39 @@
       border-color: var(--gold);
     }
 
+    /* Choice fork: grey drops to every option, the gold path runs through Negotiate */
+    .iw-choice { margin-top: 36px; }
+    .iw-choice > div { position: relative; }
+    .iw-choice::before {
+      content: "";
+      position: absolute;
+      top: -18px;
+      left: calc((100% - 20px) / 6);
+      width: calc(50% - (100% - 20px) / 6);
+      height: 2px;
+      background: rgba(255,255,255,.22);
+    }
+    .iw-choice::after {
+      content: "";
+      position: absolute;
+      top: -34px;
+      left: calc(50% - 1px);
+      right: calc((100% - 20px) / 6 - 1px);
+      height: 18px;
+      border-left: 2px solid rgba(255,204,77,.7);
+      border-bottom: 2px solid rgba(255,204,77,.7);
+    }
+    .iw-choice > div::before {
+      content: "";
+      position: absolute;
+      top: -17px;
+      left: calc(50% - 1px);
+      width: 2px;
+      height: 16px;
+      background: rgba(255,255,255,.22);
+    }
+    .iw-choice > div.g::before { background: rgba(255,204,77,.7); }
+
     .iw-steps-cont {
       counter-reset: iws 2;
       position: relative;
@@ -1268,7 +1301,7 @@
     .iw-steps-cont::before {
       content: "";
       position: absolute;
-      left: 50%;
+      left: calc(100% - (100% - 20px) / 6 - 1px);
       top: -22px;
       width: 2px;
       height: 16px;
@@ -2282,7 +2315,7 @@
             </ol>
 
             <div
-              class="iw-branch"
+              class="iw-branch iw-choice"
               aria-label="Your three options after the inspection">
 
               <div>
