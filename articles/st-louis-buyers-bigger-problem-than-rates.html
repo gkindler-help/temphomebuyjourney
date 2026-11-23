@@ -151,6 +151,12 @@ p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 .bp-chart{margin:18px 0 8px;}
 .bp-chart svg{color:rgba(255,255,255,.75);}
 .bp-chart figcaption{font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;margin-top:6px;}
+.qa-fold>summary{cursor:pointer;list-style:none;}
+.qa-fold>summary::-webkit-details-marker{display:none;}
+.lp-quick .qa-fold>summary>h2{margin:20px 0 6px !important;}
+.qa-more{display:inline-block;color:#ffcc4d;font-size:13px;font-weight:700;margin:0 0 14px;}
+.qa-more::after{content:" \25BE";}
+.qa-fold[open] .qa-more{display:none;}
 .rb-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0;}
 .rb-card{background:#101010;border:1px solid #303030;border-top:3px solid #ffcc4d;border-radius:12px;padding:16px;}
 .rb-card .rb-h{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);margin:0 0 4px;}
@@ -200,7 +206,8 @@ p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
     </div>
 
 <section class="lp-quick" id="quick-answers" aria-label="Buy now or wait questions answered with 2026 sales">
-<h2 id="quick-answers-h">Is Now a Good Time to Buy? Answered With 2026 Sales</h2>
+<details class="qa-fold">
+<summary><h2 id="quick-answers-h">Is Now a Good Time to Buy? Answered With 2026 Sales</h2><span class="qa-more">Quick answers: show all 5</span></summary>
 <p class="lp-note">From 2,864 single-family sales across 22 St.&nbsp;Louis County-area school districts, January 1 through October 5, 2026. &ldquo;Above asking&rdquo; means above the original list price. <a href="#2026-data">See the tables &darr;</a></p>
 <div class="lp-qa" id="q-good-time">
 <h3>Is now a good time to buy a house in St.&nbsp;Louis?</h3>
@@ -222,6 +229,7 @@ p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 <h3>When should I buy if I also have to sell a house?</h3>
 <p>If you need to sell before you can buy, list at the end of winter, around February, when prices and competition start to pick up; you catch some of the demand without carrying two mortgages, and you can buy quickly as spring inventory comes on. If you&rsquo;re buying first, buy in spring, when there&rsquo;s more inventory, and sell in summer, when demand is lower than spring but stronger than winter.</p>
 </div>
+</details>
 </section>
 <!-- lesson-strip:start -->
 <aside class="lesson-strip" aria-label="How George works"><p><span class="ls-k">How George works</span><a href="/articles/how-george-works-with-buyers">What I check before you write an offer &rarr;</a><span class="ls-sep" aria-hidden="true">&middot;</span><a class="ls-hub" href="/articles/lessons-from-a-sale">All Lessons From a Sale</a></p></aside>
@@ -716,6 +724,7 @@ p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
   });
 })();
 </script>
+<script>(function(){function o(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(decodeURIComponent(h));if(!t)return;var d=t.closest("details.qa-fold");if(d&&!d.open){d.open=true;t.scrollIntoView();}}window.addEventListener("hashchange",o);if(document.readyState!=="loading")o();else document.addEventListener("DOMContentLoaded",o);})();</script>
 <script src="/assets/ask-me.js?v=9" defer></script>
 <script src="/assets/site-search.js" defer></script>
 <script src="/assets/calc-track.js" defer></script>
