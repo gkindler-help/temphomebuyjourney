@@ -243,6 +243,9 @@ p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 .zl-demo .zl-card{border:1px solid var(--zl-line);border-radius:13px;overflow:hidden;background:#fff}
 .zl-demo .zl-house{height:115px;background:linear-gradient(155deg,#dce8f3 0 56%,#b6c9dc 56% 100%);display:flex;justify-content:center;align-items:center;color:#50677c}
 .zl-demo .zl-house svg{width:112px;height:78px}
+.zl-demo .zl-notice a{color:#174d94;font-weight:750;text-decoration:underline;text-underline-offset:3px}
+.zl-demo .zl-house img{display:block;width:100%;height:100%;object-fit:cover}
+.zl-demo .zl-house{height:auto;aspect-ratio:3/2;background:#dce8f3}
 .zl-demo .zl-cardbody{padding:15px}
 .zl-demo .zl-placeholder{display:inline-block;font-size:.69rem;font-weight:750;text-transform:uppercase;letter-spacing:.055em;color:#566577;background:#f0f3f7;padding:4px 7px;border-radius:5px;margin-bottom:8px}
 .zl-demo .zl-price{font-size:1.65rem;font-weight:800;line-height:1.2;margin-bottom:3px}
@@ -285,7 +288,7 @@ p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 .zl-demo .zl-tap-arrow{display:inline-block;animation:zl-tap-bob 1.6s ease-in-out infinite}
 @keyframes zl-contact-glow{0%,100%{box-shadow:0 0 0 0 rgba(23,97,207,0)}50%{box-shadow:0 0 0 6px rgba(23,97,207,.22)}}
 @keyframes zl-tap-bob{0%,100%{transform:translateY(-2px);opacity:.65}50%{transform:translateY(2px);opacity:1}}
-@media(min-width:540px){.zl-demo .zl-actions{grid-template-columns:1fr 1fr}.zl-demo .zl-house{height:135px}}
+@media(min-width:540px){.zl-demo .zl-actions{grid-template-columns:1fr 1fr}}
 @media(prefers-reduced-motion:reduce){.zl-demo .zl-scroll{scroll-behavior:auto}.zl-demo.zl-cue-on #zl-contact,.zl-demo .zl-tap-arrow{animation:none}}
 .art-layout>.zl-demo{margin:18px auto 22px}
 </style>
@@ -318,24 +321,24 @@ p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 <section class="zl-demo zl-cue-on" id="zillow-contact-demo" aria-label="Interactive demonstration of Zillow contact buttons">
 <div class="zl-shell">
 <header class="zl-head">
-<p class="zl-eyebrow">Interactive walkthrough · mock listing</p>
+<p class="zl-eyebrow">Interactive walkthrough · my listing</p>
 <h2>Tap “Contact Agent.” See who actually receives your information.</h2>
-<p class="zl-sub">I made this example to show the two paths. It is a schematic, not a Zillow screenshot. Zillow's interface can change. No information is collected or sent by this demo.</p>
+<p class="zl-sub">I used my own listing at 12237 Glenpark Drive to show the two paths. It is a mock-up, not a Zillow screenshot. Zillow's interface can change. No information is collected or sent by this demo.</p>
 </header>
 <div class="zl-stage">
 <div class="zl-panel" id="zl-start">
-<div class="zl-step"><span class="zl-dot"></span> STEP 1 · EXAMPLE LISTING</div>
+<div class="zl-step"><span class="zl-dot"></span> STEP 1 · THE LISTING</div>
 <div class="zl-card">
-<div class="zl-house" aria-label="Generic house illustration"><svg viewBox="0 0 120 85" role="img" aria-label="Schematic house"><path fill="#647f9b" d="M8 42 60 7l52 35-6 9-46-31-46 31z"/><path fill="#f8fbff" d="M22 43 60 18l38 25v36H22z"/><path fill="#abc1d6" d="M45 49h30v30H45z"/><path fill="#7697b7" d="M27 47h12v13H27zm54 0h12v13H81z"/></svg></div>
+<div class="zl-house"><img src="/assets/listings/12237-glenpark-drive-maryland-heights-mo/photo-01.webp" alt="Front of 12237 Glenpark Drive, Maryland Heights, MO 63043" width="1600" height="1067" loading="eager" decoding="async"></div>
 <div class="zl-cardbody">
-<span class="zl-placeholder">Example only · not a real listing</span>
-<div class="zl-price">$— <span style="font-size:.71rem;font-weight:500;color:#607085">placeholder price</span></div>
-<p class="zl-meta">— beds · — baths · Example home, St. Louis, MO</p>
+<span class="zl-placeholder">My listing · sold for $365,000</span>
+<div class="zl-price">$374,900 <span style="font-size:.71rem;font-weight:500;color:#607085">list price</span></div>
+<p class="zl-meta">3 beds · 3.5 baths · 2,410 sq ft · 12237 Glenpark Dr, Maryland Heights, MO 63043</p>
 <div class="zl-actions"><button type="button" class="zl-primary" id="zl-contact">Contact Agent</button><button type="button" class="zl-secondary" id="zl-find">Find the listing agent instead</button></div>
 <div class="zl-tap-hint"><span class="zl-tap-arrow" aria-hidden="true">☝</span><span>Tap it — watch where your details go</span></div>
 </div>
 </div>
-<p class="zl-notice">The “Contact Agent,” “Request a Tour,” and “Schedule Tour” buttons follow the contact route illustrated here.</p>
+<p class="zl-notice"><a href="/listings/12237-glenpark-drive-maryland-heights-mo">See the Glenpark listing &rarr;</a> The “Contact Agent,” “Request a Tour,” and “Schedule Tour” buttons follow the contact route illustrated here.</p>
 </div>
 <div class="zl-panel" id="zl-info" hidden>
 <div class="zl-step"><span class="zl-dot"></span> STEP 2 · ACCOUNT DETAILS</div>
@@ -348,7 +351,7 @@ p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 <div class="zl-field"><small>Email</small><strong>Your email</strong></div>
 </div>
 <div class="zl-callout">On Zillow, the button initiates sending this information. This demo never sends anything.</div>
-<div class="zl-stack"><button type="button" class="zl-primary" id="zl-send">Show where my details go</button><button type="button" class="zl-tertiary" data-zl-reset>Back to example listing</button></div>
+<div class="zl-stack"><button type="button" class="zl-primary" id="zl-send">Show where my details go</button><button type="button" class="zl-tertiary" data-zl-reset>Back to the listing</button></div>
 </div>
 <div class="zl-panel" id="zl-routing" hidden aria-live="polite">
 <div class="zl-step"><span class="zl-dot"></span> STEP 3 · WHERE IT GOES</div>
@@ -363,14 +366,14 @@ p.lp-note{font-size:.82rem !important;color:rgba(255,255,255,.6) !important;}
 <div class="zl-panel" id="zl-listed-panel" hidden>
 <div class="zl-step"><span class="zl-dot"></span> ALTERNATIVE PATH · FIND “LISTED BY”</div>
 <h3>I'd scroll down to “Listed by.”</h3>
-<p>That is where the listing agent's real contact appears. Watch the example listing move down to that section.</p>
-<div class="zl-scroll" id="zl-scroll" tabindex="0" aria-label="Scrollable example listing with Listed by section">
-<div class="zl-scrolltop"><strong>Example home, St. Louis, MO</strong><div>Listing details (schematic)</div></div>
+<p>That is where the listing agent's real contact appears. Watch the listing move down to that section.</p>
+<div class="zl-scroll" id="zl-scroll" tabindex="0" aria-label="Scrollable listing with Listed by section">
+<div class="zl-scrolltop"><strong>12237 Glenpark Dr, Maryland Heights, MO 63043</strong><div>$374,900 · 3 beds · 3.5 baths · 2,410 sq ft</div></div>
 <div class="zl-space">Scroll down ↓</div>
-<div class="zl-listed" id="zl-listed-target"><strong>Listed by</strong><small>Listing agent contact appears here on the real listing. No actual name, phone, or email is shown in this mock.</small></div>
+<div class="zl-listed" id="zl-listed-target"><strong>Listed by</strong><small>George Kindler · The Closing Pros LLC · 314.435.1087. On this house, the listing agent was me.</small></div>
 </div>
 <div class="zl-callout" id="zl-listed-callout" hidden>You've reached “Listed by.” That's the listing-agent route, instead of the paid Premier Agent contact button.</div>
-<div class="zl-stack"><button type="button" class="zl-secondary" id="zl-repeat-scroll">Show the scroll again</button><button type="button" class="zl-tertiary" data-zl-reset>Back to example listing</button></div>
+<div class="zl-stack"><button type="button" class="zl-secondary" id="zl-repeat-scroll">Show the scroll again</button><button type="button" class="zl-tertiary" data-zl-reset>Back to the listing</button></div>
 </div>
 </div>
 <footer class="zl-foot"><p>Want me to pull the MLS information on a home? I'd start with its address.</p><a class="zl-next" href="#text-me-the-address">Text me the address →</a></footer>
